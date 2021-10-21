@@ -1,0 +1,73 @@
+syntax = "proto3";
+
+import "utilities.proto";
+import "types.proto";
+
+package osirixgrpc;
+
+// Message responses
+message ROIVolumeTextureResponse{
+	Status status = 1;
+	bool texture = 2;
+}
+
+message ROIVolumeVolumeResponse{
+	Status status = 1;
+	float volume = 2;
+}
+
+message ROIVolumeColorResponse{
+	Status status = 1;
+	int32 r = 2;
+	int32 g = 3;
+	int32 b = 4;
+}
+
+message ROIVolumeOpacityResponse{
+	Status status = 1;
+	float opacity = 2;
+}
+
+message ROIVolumeFactorResponse{
+	Status status = 1;
+	float factor = 2;
+}
+
+message ROIVolumeVisibleResponse{
+	Status status = 1;
+	bool visible = 2;
+}
+
+message ROIVolumeNameResponse{
+	Status status = 1;
+	string name = 2;
+}
+
+
+// Message requests
+message ROIVolumeSetTextureRequest{
+	ROIVolume roi = 1;
+	bool texture = 2;
+}
+
+message ROIVolumeSetColorRequest{
+	ROIVolume roi = 1;
+	int32 r = 2;
+	int32 g = 3;
+	int32 b = 4;
+}
+
+message ROIVolumeSetOpacityRequest{
+	ROIVolume roi = 1;
+	float opacity = 2;
+}
+
+message ROIVolumeSetFactorRequest{
+	ROIVolume roi = 1;
+	float factor = 2;
+}
+
+message ROIVolumeSetVisibleRequest{
+	ROIVolume roi = 1;
+	bool visible = 2;
+}

@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+import "utilities.proto";
+import "types.proto";
+
+package osirixgrpc;
+
+// Message responses
+message BrowserControllerDatabaseSelectionResponse{
+	Status status = 1;
+	repeated DicomSeries series = 2;
+	repeated DicomStudy studies = 3;
+}
+
+// Message requests
+message BrowserControllerCopyFilesIfNeededRequest{
+	BrowserController browser = 1;
+	repeated string paths = 2;
+}

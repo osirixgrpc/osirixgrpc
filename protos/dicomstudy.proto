@@ -1,0 +1,126 @@
+syntax = "proto3";
+
+import "utilities.proto";
+import "types.proto";
+
+package osirixgrpc;
+
+// Message responses
+message DicomStudyPathsResponse{
+	Status status = 1;
+	repeated string paths = 2;
+}
+
+message DicomStudyImagesResponse{
+	Status status = 1;
+	repeated DicomImage images = 2;
+}
+
+message DicomStudyModalitiesResponse{
+	Status status = 1;
+	string modalities = 2;
+}
+
+message DicomStudyNoFilesResponse{
+	Status status = 1;
+	int32 no_files = 2;
+}
+
+message DicomStudyRawNoFilesResponse{
+	Status status = 1;
+	int32 no_files = 2;
+}
+
+message DicomStudyNoFilesExcludingMultiFramesResponse{
+	Status status = 1;
+	int32 no_files = 2;
+}
+
+message DicomStudyNumberOfImagesResponse{
+	Status status = 1;
+	int32 no_images = 2;
+}
+
+message DicomStudySeriesResponse{
+	Status status = 1;
+	repeated DicomSeries series = 2;
+}
+
+message DicomStudyNameResponse{
+	Status status = 1;
+	string name = 2;
+}
+
+message DicomStudyDateResponse{
+	Status status = 1;
+	int32 year = 2;
+ 	int32 month = 3;
+ 	int32 day = 4;
+ 	int32 hour = 5;
+ 	int32 minute = 6;
+ 	int32 second = 7;
+ 	int32 millisecond = 8;
+}
+
+message DicomStudyDateAddedResponse{
+	Status status = 1;
+	int32 year = 2;
+ 	int32 month = 3;
+ 	int32 day = 4;
+ 	int32 hour = 5;
+ 	int32 minute = 6;
+ 	int32 second = 7;
+ 	int32 millisecond = 8;
+}
+
+message DicomStudyDateOfBirthResponse{
+	Status status = 1;
+	int32 year = 2;
+ 	int32 month = 3;
+ 	int32 day = 4;
+}
+
+message DicomStudyInstitutionNameResponse{
+	Status status = 1;
+	string institution_name = 2;
+}
+
+message DicomStudyModalityResponse{
+	Status status = 1;
+	string modality = 2;
+}
+
+message DicomStudyPatientIDResponse{
+	Status status = 1;
+	string patient_id = 2;
+}
+
+message DicomStudyPatientUIDResponse{
+	Status status = 1;
+	string patient_uid = 2;
+}
+
+message DicomStudyPatientSexResponse{
+	Status status = 1;
+	string patient_sex = 2;
+}
+
+message DicomStudyPerformingPhysicianResponse{
+	Status status = 1;
+	string performing_physician = 2;
+}
+
+message DicomStudyReferringPhysicianResponse{
+	Status status = 1;
+	string referring_physician = 2;
+}
+
+message DicomStudyStudyInstanceUIDResponse{
+	Status status = 1;
+	string study_instance_uid = 2;
+}
+
+message DicomStudyStudyNameResponse{
+	Status status = 1;
+	string study_name = 2;
+}

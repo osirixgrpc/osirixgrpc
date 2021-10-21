@@ -1,0 +1,63 @@
+syntax = "proto3";
+
+import "utilities.proto";
+import "types.proto";
+
+package osirixgrpc;
+
+ // Message responses
+ message DicomImageWidthResponse{
+ 	Status status = 1;
+ 	uint32 width = 2;
+ }
+
+ message DicomImageHeightResponse{
+ 	Status status = 1;
+ 	uint32 height = 2;
+ }
+
+ message DicomImageSOPInstanceUIDResponse{
+ 	Status status = 1;
+ 	string sop_instance_uid = 2;
+ }
+
+ message DicomImageCompletePathResponse{
+ 	Status status = 1;
+ 	string path_name = 2;
+ }
+
+ message DicomImageDateResponse{
+ 	Status status = 1;
+ 	int32 year = 2;
+ 	int32 month = 3;
+ 	int32 day = 4;
+ 	int32 hour = 5;
+ 	int32 minute = 6;
+ 	int32 second = 7;
+ 	int32 millisecond = 8;
+ }
+
+ message DicomImageNumberOfFramesResponse{
+ 	Status status = 1;
+ 	uint32 number_of_frames = 2;
+ }
+
+ message DicomImageModalityResponse{
+ 	Status status = 1;
+ 	string modality = 2;
+ }
+
+ message DicomImageSeriesResponse{
+ 	Status status = 1;
+ 	DicomSeries series = 2;
+ }
+
+ message DicomImageSliceLocationResponse{
+ 	Status status = 1;
+ 	float slice_locations = 2;
+ }
+
+ message DicomImageInstanceNumberResponse{
+ 	Status status = 1;
+ 	uint32 instance_number = 2;
+ }

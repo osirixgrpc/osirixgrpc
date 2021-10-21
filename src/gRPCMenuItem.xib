@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17701"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="gRPCToolbarController">
+            <connections>
+                <outlet property="popUpButtonBrowserController" destination="L8O-SJ-ajr" id="81c-ke-u7l"/>
+                <outlet property="popUpButtonVRController" destination="L8O-SJ-ajr" id="Kek-o2-ITK"/>
+                <outlet property="popUpButtonViewBrowserController" destination="1" id="DPq-UT-CWK"/>
+                <outlet property="popUpButtonViewVRController" destination="1" id="6e6-uO-Rrn"/>
+                <outlet property="popUpButtonViewViewerController" destination="1" id="7eW-Td-XPk"/>
+                <outlet property="popUpButtonViewerController" destination="L8O-SJ-ajr" id="jyG-Sm-jeG"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="1">
+            <rect key="frame" x="0.0" y="0.0" width="59" height="49"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <popUpButton fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="L8O-SJ-ajr">
+                    <rect key="frame" x="35" y="0.0" width="24" height="19"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                    <popUpButtonCell key="cell" type="bevel" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" imageScaling="proportionallyDown" inset="2" pullsDown="YES" arrowPosition="arrowAtCenter" autoenablesItems="NO" altersStateOfSelectedItem="NO" selectedItem="vCc-yK-nCM" id="aGg-01-lzJ">
+                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="menu"/>
+                        <menu key="menu" title="OtherViews" autoenablesItems="NO" id="WY1-2h-Yo4">
+                            <items>
+                                <menuItem state="on" hidden="YES" id="vCc-yK-nCM"/>
+                                <menuItem title="Item 2" state="mixed" id="8Rs-2t-REG"/>
+                                <menuItem title="Item 3" id="xlz-ah-P4H"/>
+                            </items>
+                        </menu>
+                    </popUpButtonCell>
+                </popUpButton>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9Gh-GQ-no8">
+                    <rect key="frame" x="6" y="0.0" width="42" height="49"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="logo" id="Ega-4f-3O3"/>
+                </imageView>
+            </subviews>
+            <point key="canvasLocation" x="-82.5" y="153.5"/>
+        </customView>
+    </objects>
+    <resources>
+        <image name="logo" width="383.760009765625" height="285.1199951171875"/>
+    </resources>
+</document>

@@ -1,0 +1,73 @@
+syntax = "proto3";
+
+import "utilities.proto";
+import "types.proto";
+
+package osirixgrpc;
+
+// Message responses
+message DicomSeriesPathsResponse{
+	Status status = 1;
+	repeated string paths = 2;
+}
+
+message DicomSeriesPreviousSeriesResponse{
+	Status status = 1;
+	DicomSeries previous_series = 2;
+}
+
+message DicomSeriesNextSeriesResponse{
+	Status status = 1;
+	DicomSeries next_series = 2;
+}
+
+message DicomSeriesSortedImagesResponse{
+	Status status = 1;
+	repeated DicomImage sorted_images  = 2;
+}
+
+message DicomSeriesStudyResponse{
+	Status status = 1;
+	DicomStudy study = 2;
+}
+
+message DicomSeriesImagesResponse{
+	Status status = 1;
+	repeated DicomImage images = 2;
+}
+
+message DicomSeriesSeriesInstanceUIDResponse{
+	Status status = 1;
+	string series_instance_uid = 2;
+}
+
+message DicomSeriesSeriesSOPClassUIDResponse{
+	Status status = 1;
+	string series_sop_class_uid = 2;
+}
+
+message DicomSeriesSeriesDescriptionResponse{
+	Status status = 1;
+	string series_description = 2;
+}
+
+message DicomSeriesModalityResponse{
+	Status status = 1;
+	string modality = 2;
+}
+
+message DicomSeriesNameResponse{
+	Status status = 1;
+	string name = 2;
+}
+
+message DicomSeriesDateResponse{
+	Status status = 1;
+ 	int32 year = 2;
+ 	int32 month = 3;
+ 	int32 day = 4;
+ 	int32 hour = 5;
+ 	int32 minute = 6;
+ 	int32 second = 7;
+ 	int32 millisecond = 8;
+}

@@ -1,0 +1,127 @@
+syntax = "proto3";
+
+import "utilities.proto";
+import "types.proto";
+
+package osirixgrpc;
+
+// Message responses
+message DCMPixIsRGBResponse{
+	Status status = 1;
+	bool is_rgb = 2;
+}
+
+message DCMPixComputeROIResponse{
+	Status status = 1;
+	float mean = 2;
+	float total = 3;
+	float std_dev = 4;
+	float min = 5;
+	float max = 6;
+	float skewness = 7;
+	float kurtosis = 8;
+}
+
+message DCMPixROIValuesResponse{
+	Status status = 1;
+	repeated float values = 2;
+	repeated int32 row_indices = 3;
+	repeated int32 column_indices = 4;
+}
+
+message DCMPixDicomImageResponse{
+	Status status = 1;
+	DicomImage dicom_image = 2;
+}
+
+message DCMPixDicomSeriesResponse{
+	Status status = 1;
+	DicomSeries dicom_series = 2;
+}
+
+message DCMPixDicomStudyResponse{
+	Status status = 1;
+	DicomStudy dicom_study = 2;
+}
+
+message DCMPixImageResponse{
+	Status status = 1;
+	int32 rows = 2;
+	int32 columns = 3;
+	bool is_argb = 4;
+	repeated float image_data_float = 5;
+	repeated int32 image_data_argb = 6;
+}
+
+message DCMPixGetMapFromROIResponse{
+	Status status = 1;
+	int32 rows = 2;
+	int32 columns = 3;
+	repeated bool map = 4;
+}
+
+message DCMPixShapeResponse{
+	Status status = 1;
+	int32 rows = 2;
+	int32 columns = 3;
+}
+
+message DCMPixSpacingResponse{
+	Status status = 1;
+	float spacing_rows = 2;
+	float spacing_columns = 3;
+}
+
+message DCMPixOriginResponse{
+	Status status = 1;
+	float origin_rows = 2;
+	float origin_columns = 3;
+	float origin_slices = 4;
+}
+
+message DCMPixOrientationResponse{
+	Status status = 1;
+	repeated float orientation = 2;
+}
+
+message DCMPixSliceLocationResponse{
+	Status status = 1;
+	float slice_location = 2;
+}
+
+message DCMPixSourceFileResponse{
+	Status status = 1;
+	string source_file = 2;
+}
+
+// Message requests
+message DCMPixConvertToRGBRequest{
+	DCMPix pix = 1;
+	int32 rgb_channel = 2;
+}
+
+message DCMPixConvertToBWRequest{
+	DCMPix pix = 1;
+	int32 bw_channel = 2;
+}
+
+message DCMPixComputeROIRequest{
+	DCMPix pix = 1;
+	ROI roi = 2;
+}
+
+message DCMPixROIValuesRequest{
+	DCMPix pix = 1;
+	ROI roi = 2;
+}
+
+message DCMPixSetImageRequest{
+	DCMPix pix = 1;
+	repeated float image_data_float = 2;
+	repeated int32 image_data_argb = 3;
+}
+
+message DCMPixGetMapFromROIRequest{
+	DCMPix pix = 1;
+	ROI roi = 2;
+}

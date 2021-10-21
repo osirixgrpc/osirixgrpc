@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+package osirixgrpc;
+
+message BrowserController{
+	string osirixrpc_uid = 1;
+}
+
+message ViewerController{
+	string osirixrpc_uid = 1;
+}
+
+message VRController{
+	string osirixrpc_uid = 1;
+}
+
+message DCMPix{
+	string osirixrpc_uid = 1;
+}
+
+message ROI{
+	string osirixrpc_uid = 1;
+}
+
+message ROIVolume{
+	string osirixrpc_uid = 1;
+}
+
+message DicomImage{
+	string osirixrpc_uid = 1;
+}
+
+message DicomSeries{
+	string osirixrpc_uid = 1;
+}
+
+message DicomStudy{
+	string osirixrpc_uid = 1;
+}

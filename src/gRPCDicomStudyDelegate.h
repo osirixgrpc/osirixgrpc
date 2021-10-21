@@ -1,0 +1,28 @@
+#import "gRPCDelegate.h"
+#import "dicomstudy.pb.h"
+
+@interface gRPCDicomStudyDelegate : NSObject
+
+delegateDeclaration(DicomStudyPaths, DicomStudy, DicomStudyPathsResponse)
+delegateDeclaration(DicomStudyImages, DicomStudy, DicomStudyImagesResponse)
+delegateDeclaration(DicomStudyModalities, DicomStudy, DicomStudyModalitiesResponse)
+delegateDeclaration(DicomStudyNoFiles, DicomStudy, DicomStudyNoFilesResponse)
+delegateDeclaration(DicomStudyRawNoFiles, DicomStudy, DicomStudyRawNoFilesResponse)
+delegateDeclaration(DicomStudyNoFilesExcludingMultiFrames, DicomStudy, DicomStudyNoFilesExcludingMultiFramesResponse)
+delegateDeclaration(DicomStudyNumberOfImages, DicomStudy, DicomStudyNumberOfImagesResponse)
+delegateDeclaration(DicomStudySeries, DicomStudy, DicomStudySeriesResponse)
+delegateDeclaration(DicomStudyName, DicomStudy, DicomStudyNameResponse)
+delegateDeclaration(DicomStudyDate, DicomStudy, DicomStudyDateResponse)
+delegateDeclaration(DicomStudyDateAdded, DicomStudy, DicomStudyDateAddedResponse)
+delegateDeclaration(DicomStudyDateOfBirth, DicomStudy, DicomStudyDateOfBirthResponse)
+delegateDeclaration(DicomStudyInstitutionName, DicomStudy, DicomStudyInstitutionNameResponse)
+delegateDeclaration(DicomStudyModality, DicomStudy, DicomStudyModalityResponse)
+delegateDeclaration(DicomStudyPatientID, DicomStudy, DicomStudyPatientIDResponse)
+delegateDeclaration(DicomStudyPatientUID, DicomStudy, DicomStudyPatientUIDResponse)
+delegateDeclaration(DicomStudyPatientSex, DicomStudy, DicomStudyPatientSexResponse)
+delegateDeclaration(DicomStudyPerformingPhysician, DicomStudy, DicomStudyPerformingPhysicianResponse)
+delegateDeclaration(DicomStudyReferringPhysician, DicomStudy, DicomStudyReferringPhysicianResponse)
+delegateDeclaration(DicomStudyStudyInstanceUID, DicomStudy, DicomStudyStudyInstanceUIDResponse)
+delegateDeclaration(DicomStudyStudyName, DicomStudy, DicomStudyStudyNameResponse)
+
+@end

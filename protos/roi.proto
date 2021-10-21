@@ -1,0 +1,100 @@
+syntax = "proto3";
+
+import "utilities.proto";
+import "types.proto";
+
+package osirixgrpc;
+
+// Message responses
+message ROIAreaResponse{
+	Status status = 1;
+	float area = 2;
+}
+
+message ROICentroidResponse{
+	Status status = 1;
+	float x = 2;
+	float y = 3;
+}
+
+message ROIPixResponse{
+	Status status = 1;
+	DCMPix pix = 2;
+}
+
+message ROINameResponse{
+	Status status = 1;
+	string name = 2;
+}
+
+message ROIColorResponse{
+	Status status = 1;
+	int32 r = 2;
+	int32 g = 3;
+	int32 b = 4; 
+}
+
+message ROIOpacityResponse{
+	Status status = 1;
+	float opacity = 2;
+}
+
+message ROIThicknessResponse{
+	Status status = 1;
+	float thickness = 2;
+}
+
+message ROIPointsResponse{
+	message Point2D{
+		float x = 1;
+		float y = 2;
+	}
+	Status status = 1;
+	repeated Point2D points = 2;
+}
+
+// Message requests
+message ROIRotateRequest{
+	ROI roi = 1;
+	float degrees = 2;
+	float x = 3;
+	float y = 4;
+}
+
+message ROIMoveRequest{
+	ROI roi = 1;
+	int32 columns = 2;
+	int32 rows = 3;
+}
+
+message ROISetNameRequest{
+	ROI roi = 1;
+	string name = 2;
+}
+
+message ROISetColorRequest{
+	ROI roi = 1;
+	int32 r = 2;
+	int32 g = 3;
+	int32 b = 4;
+}
+
+message ROISetOpacityRequest{
+	ROI roi = 1;
+	float opacity = 2;
+}
+
+message ROISetThicknessRequest{
+	ROI roi = 1;
+	float thickness = 2;
+}
+
+message ROISetPointsRequest{
+	message Point2D{
+		float x = 1;
+		float y = 2;
+	}
+	ROI roi = 1;
+	repeated Point2D points = 2;
+}
+

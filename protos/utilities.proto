@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package osirixgrpc;
+
+message Status{
+	int32 status = 1;  // 0 for error, 1 for success
+	string message = 2;
+}
+
+// Base response for messages that don't pass anything back (e.g. setters)
+message Response{
+	Status status = 1;
+}
+
+message Empty{
+	
+}

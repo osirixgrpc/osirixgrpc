@@ -1,0 +1,56 @@
+syntax = "proto3";
+
+import "utilities.proto";
+import "types.proto";
+
+package osirixgrpc;
+
+// Message responses
+message VRControllerViewer2DResponse{
+	Status status = 1;
+	ViewerController viewer_controller = 2;
+}
+
+message VRControllerBlendingControllerResponse{
+	Status status = 1;
+	ViewerController viewer_controller = 2;
+}
+
+message VRControllerRenderingModeResponse{
+	Status status = 1;
+	string rendering_mode = 2;
+}
+
+message VRControllerWLWWResponse{
+	Status status = 1;
+	float wl = 2;
+	float ww = 3;
+}
+
+message VRControllerStyleResponse{
+	Status status = 1;
+	string style = 2;
+}
+
+message VRControllerTitleResponse{
+	Status status = 1;
+	string title = 2;
+}
+
+message VRControllerROIVolumesResponse{
+	Status status = 1;
+	repeated ROIVolume roi_volumes = 2;
+}
+
+// Message requests
+message VRControllerSetRenderingModeRequest{
+	VRController vr_controller = 1;
+	string rendering_mode = 2;
+}
+
+message VRControllerSetWLWWRequest{
+	VRController vr_controller = 1;
+	float wl = 2;
+	float ww = 3;
+}
+

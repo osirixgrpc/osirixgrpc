@@ -1,0 +1,19 @@
+#import "gRPCDelegate.h"
+#import "dicomseries.pb.h"
+
+@interface gRPCDicomSeriesDelegate : NSObject
+
+delegateDeclaration(DicomSeriesPaths, DicomSeries, DicomSeriesPathsResponse)
+delegateDeclaration(DicomSeriesPreviousSeries, DicomSeries, DicomSeriesPreviousSeriesResponse)
+delegateDeclaration(DicomSeriesNextSeries, DicomSeries, DicomSeriesNextSeriesResponse)
+delegateDeclaration(DicomSeriesSortedImages, DicomSeries, DicomSeriesSortedImagesResponse)
+delegateDeclaration(DicomSeriesStudy, DicomSeries, DicomSeriesStudyResponse)
+delegateDeclaration(DicomSeriesImages, DicomSeries, DicomSeriesImagesResponse)
+delegateDeclaration(DicomSeriesSeriesInstanceUID, DicomSeries, DicomSeriesSeriesInstanceUIDResponse)
+delegateDeclaration(DicomSeriesSeriesSOPClassUID, DicomSeries, DicomSeriesSeriesSOPClassUIDResponse)
+delegateDeclaration(DicomSeriesSeriesDescription, DicomSeries, DicomSeriesSeriesDescriptionResponse)
+delegateDeclaration(DicomSeriesModality, DicomSeries, DicomSeriesModalityResponse)
+delegateDeclaration(DicomSeriesName, DicomSeries, DicomSeriesNameResponse)
+delegateDeclaration(DicomSeriesDate, DicomSeries, DicomSeriesDateResponse)
+
+@end

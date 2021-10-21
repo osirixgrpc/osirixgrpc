@@ -1,0 +1,186 @@
+syntax = "proto3";
+
+import "utilities.proto";
+import "types.proto";
+
+package osirixgrpc;
+
+// Method responses
+message ViewerControllerPixListResponse{
+	Status status = 1;
+	repeated DCMPix pix = 2;
+}
+
+message ViewerControllerROIListResponse{
+	message ROISlice{
+		repeated ROI rois = 1; 
+
+	Status status = 1;
+	repeated ROISlice roi_slices = 2;
+}
+
+message ViewerControllerNewROIResponse{
+	Status status = 1;
+	ROI roi = 2;
+}
+
+message ViewerControllerCurDCMResponse{
+	Status status = 1;
+	Status status = 1;
+	DCMPix pix = 2;
+}
+
+message ViewerControllerROIsWithNameResponse{
+	Status status = 1;
+	repeated ROI rois = 2;
+}
+
+message ViewerControllerSelectedROIsResponse{
+	Status status = 1;
+	repeated ROI rois = 2;
+}
+
+message ViewerControllerIsDataVolumicResponse{
+	Status status = 1;
+	bool is_volumic = 2;
+}
+
+message ViewerControllerBlendingControllerResponse{
+	Status status = 1;
+	ViewerController blending_viewer = 2;
+}
+
+message ViewerControllerVRControllersResponse{
+	Status status = 1;
+	repeated VRController vr_controllers = 2;
+}
+
+message ViewerControllerTitleResponse{
+	Status status = 1;
+	string title = 2;
+}
+
+message ViewerControllerModalityResponse{
+	Status status = 1;
+	string modality = 2;
+}
+
+message ViewerControllerMovieIdxResponse{
+	Status status = 1;
+	int32 movie_idx = 2;
+}
+
+message ViewerControllerMaxMovieIdxResponse{
+	Status status = 1;
+	int32 max_movie_idx = 2;
+}
+
+message ViewerControllerIdxResponse{
+	Status status = 1;
+	int32 idx = 2;
+}
+
+message ViewerControllerWLWWResponse{
+	Status status = 1;
+	float wl = 2;
+	float ww = 3;
+}
+
+message ViewerControllerOpenVRViewerForModeResponse{
+	Status status = 1;
+	VRController vr_controller = 2;
+}
+
+
+// Message requests
+message ViewerControllerPixListRequest{
+	ViewerController viewer_controller = 1;
+	int32 movie_idx = 2;
+}
+
+message ViewerControllerROIListRequest{
+	ViewerController viewer_controller = 1;
+	int32 movie_idx = 2;
+}
+
+message ViewerControllerNewROIRequest{
+	message Buffer{
+		repeated bool buffer = 1;
+		int32 rows = 2;
+		int32 columns = 3;
+	}
+	message Point2D{
+		float x = 1;
+		float y = 2;
+	}
+	message Color{
+		int32 r = 1;
+		int32 g = 2;
+		int32 b = 3;
+	}
+	message Rect{
+		float origin_x = 1;
+		float origin_y = 2;
+		float height = 3;
+		float width = 4;
+	}
+	ViewerController viewer_controller = 1;
+	int32 itype = 2;
+	string name = 3;
+	int32 position = 4;
+	int32 movie_idx = 5;
+	int32 buffer_position_x = 6;
+	int32 buffer_position_y = 7;
+	Color color = 8;
+	float thickness = 9;
+	float opacity = 10;
+	Buffer buffer = 11;
+	repeated Point2D points = 12;
+	Rect rectangle = 13;
+}
+
+message ViewerControllerROIsWithNameRequest{
+	ViewerController viewer_controller = 1;
+	string name = 2;
+	int32 movie_idx = 3;
+	bool in_4d = 4;
+}
+
+message ViewerControllerResampleViewerControllerRequest{
+	ViewerController viewer_controller = 1;
+	ViewerController fixed_viewer_controller = 2;
+}
+
+message ViewerControllerCopyViewerWindowRequest{
+	ViewerController viewer_controller = 1;
+	bool in_4d = 2;
+}
+
+message ViewerControllerSetMovieIdxRequest{
+	ViewerController viewer_controller = 1;
+	int32 movie_idx = 2;
+}
+
+message ViewerControllerIsDataVolumicRequest{
+	ViewerController viewer_controller = 1;
+	bool in_4d = 2;
+}
+
+message ViewerControllerSetIdxRequest{
+	ViewerController viewer_controller = 1;
+	int32 idx = 2;
+}
+
+message ViewerControllerSetWLWWRequest{
+	ViewerController viewer_controller = 1;
+	float wl = 2;
+	float ww = 3;
+}
+	
+message ViewerControllerOpenVRViewerForModeRequest{
+	ViewerController viewer_controller = 1;
+	string mode = 2;
+}
+
+
+
