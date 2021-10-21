@@ -1,1 +1,1 @@
-# osirixgrpc-plugin
+# osirixgrpc
