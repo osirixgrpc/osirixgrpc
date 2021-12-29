@@ -36,11 +36,11 @@
     return @"com.instituteofcancerresearch.osirixgrpc";
 }
 
+// Called when OsiriX starts up.  This must instantiate all objects and the relevant server(s)
 - (void) initPlugin
 {
+    // Check that a support directory exists and create of not.
     [self checkSupportDirectoryExists];
-
-    toolbarController = [[gRPCToolbarController alloc] init];
     
     // Start the script manager
     scriptManager = [[gRPCScriptManager alloc] initWithStorageURL:[NSURL fileURLWithPath:[gRPCPluginFilter pluginSupportDirectory]]];
@@ -48,6 +48,9 @@
     // Create the service controller and start a service.
     serverController = [[gRPCServerController alloc] init];
     [serverController startInteractiveServer];
+    
+    // The toolbar controller will be used to control all interactions with the toolbar buttons (for starting user scripts)
+    toolbarController = [[gRPCToolbarController alloc] init];
 }
 
 - (void) dealloc
@@ -58,6 +61,12 @@
     [super dealloc];
 }
 
+/* Deal with all requests from the menu bar.
+ 
+ This will include:
+ - GRPC server configuration.
+ - Installation and removal of pre-defined scripts.
+ */
 - (long) filterImage:(NSString*) menuName
 {
 //    if ([menuName isEqualToString:@"Script Manager"]) {

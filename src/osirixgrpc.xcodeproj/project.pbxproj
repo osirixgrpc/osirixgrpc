@@ -457,9 +457,9 @@
 		8EB91AD4260DF2930034C16A /* Plugin Files */ = {
 			isa = PBXGroup;
 			children = (
-				8EF0197127044E4D0064E71D /* gRPCTaskController */,
-				8EF0196C2704481B0064E71D /* gRPCServerController */,
-				8EE9B197266D207500D887CC /* gRPCScriptController */,
+				8EF0197127044E4D0064E71D /* gRPCTaskMVC */,
+				8EF0196C2704481B0064E71D /* gRPCServerMVC */,
+				8EE9B197266D207500D887CC /* gRPCScriptMVC */,
 				8E95FD4D26249C0C00694A05 /* gRPCOsirixPrefix.pch */,
 				8EB91AD6260DF2CA0034C16A /* gRPCCache.h */,
 				8EB91AD8260DF2CA0034C16A /* gRPCCache.mm */,
@@ -467,16 +467,8 @@
 				8E700E9226610E0200FF1168 /* gRPCLog.m */,
 				8EB91ADB260DF2CA0034C16A /* gRPCPluginFilter.h */,
 				8EB91ADC260DF2CA0034C16A /* gRPCPluginFilter.mm */,
-				8EC17A7C26265BF400FB7E85 /* gRPCScript.h */,
-				8EC17A7D26265BF400FB7E85 /* gRPCScript.m */,
 				8EE2882226683D1400745DA0 /* gRPCScriptManager.h */,
 				8EE2882326683D1400745DA0 /* gRPCScriptManager.m */,
-				8EC17A812628902100FB7E85 /* gRPCServer.h */,
-				8EC17A802628902100FB7E85 /* gRPCServer.mm */,
-				8E4FF1F926247AEE0082346A /* gRPCService.h */,
-				8E4FF1FE26247AEE0082346A /* gRPCService.mm */,
-				8E4FF1FF26247AEE0082346A /* gRPCTask.h */,
-				8E4FF1FC26247AEE0082346A /* gRPCTask.m */,
 				8EB91BB2260E00680034C16A /* gRPCToolbarController.h */,
 				8EB91BB3260E00680034C16A /* gRPCToolbarController.m */,
 				8EA37F3B262E3FB00025D217 /* gRPCUtilities.h */,
@@ -575,7 +567,7 @@
 			path = ../protos/cpp;
 			sourceTree = "<group>";
 		};
-		8EE9B197266D207500D887CC /* gRPCScriptController */ = {
+		8EE9B197266D207500D887CC /* gRPCScriptMVC */ = {
 			isa = PBXGroup;
 			children = (
 				8E95FD4F26249C9800694A05 /* gRPCScriptController.h */,
@@ -586,26 +578,34 @@
 				8E7349DC266D8B5A0050E26F /* gRPCScriptControllerBlockingCellView.m */,
 				8E7349DF266D917B0050E26F /* gRPCScriptControllerTypeCellView.h */,
 				8E7349E0266D917B0050E26F /* gRPCScriptControllerTypeCellView.m */,
+				8EC17A7C26265BF400FB7E85 /* gRPCScript.h */,
+				8EC17A7D26265BF400FB7E85 /* gRPCScript.m */,
 			);
-			path = gRPCScriptController;
+			path = gRPCScriptMVC;
 			sourceTree = "<group>";
 		};
-		8EF0196C2704481B0064E71D /* gRPCServerController */ = {
+		8EF0196C2704481B0064E71D /* gRPCServerMVC */ = {
 			isa = PBXGroup;
 			children = (
 				8EF0196D270448510064E71D /* gRPCServerController.h */,
 				8EF0196E270448510064E71D /* gRPCServerController.m */,
+				8EC17A812628902100FB7E85 /* gRPCServer.h */,
+				8EC17A802628902100FB7E85 /* gRPCServer.mm */,
+				8E4FF1F926247AEE0082346A /* gRPCService.h */,
+				8E4FF1FE26247AEE0082346A /* gRPCService.mm */,
 			);
-			path = gRPCServerController;
+			path = gRPCServerMVC;
 			sourceTree = "<group>";
 		};
-		8EF0197127044E4D0064E71D /* gRPCTaskController */ = {
+		8EF0197127044E4D0064E71D /* gRPCTaskMVC */ = {
 			isa = PBXGroup;
 			children = (
 				8E4FF1FD26247AEE0082346A /* gRPCTaskController.h */,
 				8E4FF1FB26247AEE0082346A /* gRPCTaskController.m */,
+				8E4FF1FF26247AEE0082346A /* gRPCTask.h */,
+				8E4FF1FC26247AEE0082346A /* gRPCTask.m */,
 			);
-			path = gRPCTaskController;
+			path = gRPCTaskMVC;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
