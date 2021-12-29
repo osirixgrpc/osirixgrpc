@@ -27,16 +27,6 @@
 
 @synthesize address = _address;
 
--(id)init
-{
-    self = [super init];
-    if (!self) {
-        gRPCLogError(@"Could not initialize server");
-        return  nil;
-    }
-    lock = [[NSLock alloc] init];
-    return self;
-}
 
 -(void)dealloc
 {
@@ -46,11 +36,14 @@
 
 -(id)initWithAdress:(NSString *)address
 {
-    self = [self init];
-    if (self)
-    {
-        _address = address;
+    self = [super init];
+    if (!self) {
+        gRPCLogError(@"Could not initialize server");
+        return  nil;
     }
+    lock = [[NSLock alloc] init];
+    _address = address;
+    
     return self;
 }
 

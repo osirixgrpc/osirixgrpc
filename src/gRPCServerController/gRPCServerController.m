@@ -90,7 +90,7 @@
 - (void) startInteractiveServer
 {
     interactiveServer = [[gRPCServer alloc] initWithAdress:[self interactiveServerAddress]];
-    [interactiveServer startServer];
+    [interactiveServer start];
 }
 
 - (void)setWindowStatus:(NSString *) value

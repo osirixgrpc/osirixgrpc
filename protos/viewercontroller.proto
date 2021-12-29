@@ -14,7 +14,7 @@ message ViewerControllerPixListResponse{
 message ViewerControllerROIListResponse{
 	message ROISlice{
 		repeated ROI rois = 1; 
-
+	}
 	Status status = 1;
 	repeated ROISlice roi_slices = 2;
 }
@@ -25,7 +25,6 @@ message ViewerControllerNewROIResponse{
 }
 
 message ViewerControllerCurDCMResponse{
-	Status status = 1;
 	Status status = 1;
 	DCMPix pix = 2;
 }
@@ -181,6 +180,5 @@ message ViewerControllerOpenVRViewerForModeRequest{
 	ViewerController viewer_controller = 1;
 	string mode = 2;
 }
-
 
 

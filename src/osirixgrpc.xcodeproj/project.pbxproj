@@ -23,6 +23,32 @@
 		8E7349E2266D917B0050E26F /* gRPCScriptControllerTypeCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E7349E0266D917B0050E26F /* gRPCScriptControllerTypeCellView.m */; };
 		8E9486742703E7320039897F /* gRPCServerWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E9486732703E7320039897F /* gRPCServerWindow.xib */; };
 		8E95FD4E26249C0D00694A05 /* gRPCOsirixPrefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 8E95FD4D26249C0C00694A05 /* gRPCOsirixPrefix.pch */; };
+		8E98A0792741BC0D001F87A1 /* roivolume.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 8E98A05F2741BC0D001F87A1 /* roivolume.pb.cc */; };
+		8E98A07A2741BC0D001F87A1 /* viewercontroller.pb.h in Headers */ = {isa = PBXBuildFile; fileRef = 8E98A0602741BC0D001F87A1 /* viewercontroller.pb.h */; };
+		8E98A07B2741BC0D001F87A1 /* browsercontroller.pb.h in Headers */ = {isa = PBXBuildFile; fileRef = 8E98A0612741BC0D001F87A1 /* browsercontroller.pb.h */; };
+		8E98A07C2741BC0D001F87A1 /* dicomseries.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 8E98A0622741BC0D001F87A1 /* dicomseries.pb.cc */; };
+		8E98A07D2741BC0D001F87A1 /* osirix.pb.h in Headers */ = {isa = PBXBuildFile; fileRef = 8E98A0632741BC0D001F87A1 /* osirix.pb.h */; };
+		8E98A07E2741BC0D001F87A1 /* types.pb.h in Headers */ = {isa = PBXBuildFile; fileRef = 8E98A0642741BC0D001F87A1 /* types.pb.h */; };
+		8E98A07F2741BC0D001F87A1 /* osirix.grpc.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 8E98A0652741BC0D001F87A1 /* osirix.grpc.pb.cc */; };
+		8E98A0802741BC0D001F87A1 /* dicomimage.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 8E98A0662741BC0D001F87A1 /* dicomimage.pb.cc */; };
+		8E98A0812741BC0D001F87A1 /* dicomstudy.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 8E98A0672741BC0D001F87A1 /* dicomstudy.pb.cc */; };
+		8E98A0822741BC0D001F87A1 /* roi.pb.h in Headers */ = {isa = PBXBuildFile; fileRef = 8E98A0682741BC0D001F87A1 /* roi.pb.h */; };
+		8E98A0832741BC0D001F87A1 /* viewercontroller.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 8E98A0692741BC0D001F87A1 /* viewercontroller.pb.cc */; };
+		8E98A0842741BC0D001F87A1 /* dicomimage.pb.h in Headers */ = {isa = PBXBuildFile; fileRef = 8E98A06A2741BC0D001F87A1 /* dicomimage.pb.h */; };
+		8E98A0852741BC0D001F87A1 /* utilities.pb.h in Headers */ = {isa = PBXBuildFile; fileRef = 8E98A06B2741BC0D001F87A1 /* utilities.pb.h */; };
+		8E98A0862741BC0D001F87A1 /* dcmpix.pb.h in Headers */ = {isa = PBXBuildFile; fileRef = 8E98A06C2741BC0D001F87A1 /* dcmpix.pb.h */; };
+		8E98A0872741BC0D001F87A1 /* vrcontroller.pb.h in Headers */ = {isa = PBXBuildFile; fileRef = 8E98A06D2741BC0D001F87A1 /* vrcontroller.pb.h */; };
+		8E98A0882741BC0D001F87A1 /* browsercontroller.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 8E98A06E2741BC0D001F87A1 /* browsercontroller.pb.cc */; };
+		8E98A0892741BC0D001F87A1 /* roivolume.pb.h in Headers */ = {isa = PBXBuildFile; fileRef = 8E98A06F2741BC0D001F87A1 /* roivolume.pb.h */; };
+		8E98A08A2741BC0D001F87A1 /* osirix.grpc.pb.h in Headers */ = {isa = PBXBuildFile; fileRef = 8E98A0702741BC0D001F87A1 /* osirix.grpc.pb.h */; };
+		8E98A08B2741BC0D001F87A1 /* roi.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 8E98A0712741BC0D001F87A1 /* roi.pb.cc */; };
+		8E98A08C2741BC0D001F87A1 /* dcmpix.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 8E98A0722741BC0D001F87A1 /* dcmpix.pb.cc */; };
+		8E98A08D2741BC0D001F87A1 /* vrcontroller.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 8E98A0732741BC0D001F87A1 /* vrcontroller.pb.cc */; };
+		8E98A08E2741BC0D001F87A1 /* osirix.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 8E98A0742741BC0D001F87A1 /* osirix.pb.cc */; };
+		8E98A08F2741BC0D001F87A1 /* dicomseries.pb.h in Headers */ = {isa = PBXBuildFile; fileRef = 8E98A0752741BC0D001F87A1 /* dicomseries.pb.h */; };
+		8E98A0902741BC0D001F87A1 /* utilities.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 8E98A0762741BC0D001F87A1 /* utilities.pb.cc */; };
+		8E98A0912741BC0D001F87A1 /* dicomstudy.pb.h in Headers */ = {isa = PBXBuildFile; fileRef = 8E98A0772741BC0D001F87A1 /* dicomstudy.pb.h */; };
+		8E98A0922741BC0D001F87A1 /* types.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 8E98A0782741BC0D001F87A1 /* types.pb.cc */; };
 		8E9AB864262CEDDF008E8C2F /* gRPCLog.h in Headers */ = {isa = PBXBuildFile; fileRef = 8E95FD532624A07200694A05 /* gRPCLog.h */; };
 		8E9AB868262DB721008E8C2F /* gRPCScript.h in Headers */ = {isa = PBXBuildFile; fileRef = 8EC17A7C26265BF400FB7E85 /* gRPCScript.h */; };
 		8E9AB869262DB724008E8C2F /* gRPCScript.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EC17A7D26265BF400FB7E85 /* gRPCScript.m */; };
@@ -108,32 +134,6 @@
 		8EB91B78260DF3620034C16A /* libabsl_stacktrace.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EB91B47260DF3610034C16A /* libabsl_stacktrace.a */; };
 		8EB91B79260DF3620034C16A /* libgrpc++_alts.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EB91B48260DF3610034C16A /* libgrpc++_alts.a */; };
 		8EB91B7B260DF3700034C16A /* OsiriXAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EB91B7A260DF3700034C16A /* OsiriXAPI.framework */; };
-		8EB91B98260DF4190034C16A /* types.pb.h in Headers */ = {isa = PBXBuildFile; fileRef = 8EB91B7E260DF4180034C16A /* types.pb.h */; };
-		8EB91B99260DF4190034C16A /* utilities.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 8EB91B7F260DF4180034C16A /* utilities.pb.cc */; };
-		8EB91B9A260DF4190034C16A /* osirix.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 8EB91B80260DF4180034C16A /* osirix.pb.cc */; };
-		8EB91B9B260DF4190034C16A /* osirix.pb.h in Headers */ = {isa = PBXBuildFile; fileRef = 8EB91B81260DF4180034C16A /* osirix.pb.h */; };
-		8EB91B9C260DF4190034C16A /* osirix.grpc.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 8EB91B82260DF4180034C16A /* osirix.grpc.pb.cc */; };
-		8EB91B9D260DF4190034C16A /* dicomstudy.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 8EB91B83260DF4180034C16A /* dicomstudy.pb.cc */; };
-		8EB91B9E260DF4190034C16A /* dicomseries.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 8EB91B84260DF4180034C16A /* dicomseries.pb.cc */; };
-		8EB91B9F260DF4190034C16A /* roivolume.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 8EB91B85260DF4180034C16A /* roivolume.pb.cc */; };
-		8EB91BA0260DF4190034C16A /* dicomstudy.pb.h in Headers */ = {isa = PBXBuildFile; fileRef = 8EB91B86260DF4180034C16A /* dicomstudy.pb.h */; };
-		8EB91BA1260DF4190034C16A /* vrcontroller.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 8EB91B87260DF4180034C16A /* vrcontroller.pb.cc */; };
-		8EB91BA2260DF4190034C16A /* vrcontroller.pb.h in Headers */ = {isa = PBXBuildFile; fileRef = 8EB91B88260DF4180034C16A /* vrcontroller.pb.h */; };
-		8EB91BA3260DF4190034C16A /* osirix.grpc.pb.h in Headers */ = {isa = PBXBuildFile; fileRef = 8EB91B89260DF4180034C16A /* osirix.grpc.pb.h */; };
-		8EB91BA4260DF4190034C16A /* dcmpix.pb.h in Headers */ = {isa = PBXBuildFile; fileRef = 8EB91B8A260DF4180034C16A /* dcmpix.pb.h */; };
-		8EB91BA5260DF4190034C16A /* utilities.pb.h in Headers */ = {isa = PBXBuildFile; fileRef = 8EB91B8B260DF4180034C16A /* utilities.pb.h */; };
-		8EB91BA6260DF4190034C16A /* browsercontroller.pb.h in Headers */ = {isa = PBXBuildFile; fileRef = 8EB91B8C260DF4180034C16A /* browsercontroller.pb.h */; };
-		8EB91BA7260DF4190034C16A /* browsercontroller.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 8EB91B8D260DF4180034C16A /* browsercontroller.pb.cc */; };
-		8EB91BA8260DF4190034C16A /* dicomimage.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 8EB91B8E260DF4180034C16A /* dicomimage.pb.cc */; };
-		8EB91BA9260DF4190034C16A /* dicomseries.pb.h in Headers */ = {isa = PBXBuildFile; fileRef = 8EB91B8F260DF4180034C16A /* dicomseries.pb.h */; };
-		8EB91BAA260DF4190034C16A /* types.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 8EB91B90260DF4180034C16A /* types.pb.cc */; };
-		8EB91BAB260DF4190034C16A /* viewercontroller.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 8EB91B91260DF4180034C16A /* viewercontroller.pb.cc */; };
-		8EB91BAC260DF4190034C16A /* dicomimage.pb.h in Headers */ = {isa = PBXBuildFile; fileRef = 8EB91B92260DF4180034C16A /* dicomimage.pb.h */; };
-		8EB91BAD260DF4190034C16A /* dcmpix.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 8EB91B93260DF4180034C16A /* dcmpix.pb.cc */; };
-		8EB91BAE260DF4190034C16A /* roi.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 8EB91B94260DF4180034C16A /* roi.pb.cc */; };
-		8EB91BAF260DF4190034C16A /* roi.pb.h in Headers */ = {isa = PBXBuildFile; fileRef = 8EB91B95260DF4190034C16A /* roi.pb.h */; };
-		8EB91BB0260DF4190034C16A /* viewercontroller.pb.h in Headers */ = {isa = PBXBuildFile; fileRef = 8EB91B96260DF4190034C16A /* viewercontroller.pb.h */; };
-		8EB91BB1260DF4190034C16A /* roivolume.pb.h in Headers */ = {isa = PBXBuildFile; fileRef = 8EB91B97260DF4190034C16A /* roivolume.pb.h */; };
 		8EB91BB4260E00680034C16A /* gRPCToolbarController.h in Headers */ = {isa = PBXBuildFile; fileRef = 8EB91BB2260E00680034C16A /* gRPCToolbarController.h */; };
 		8EB91BB5260E00680034C16A /* gRPCToolbarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EB91BB3260E00680034C16A /* gRPCToolbarController.m */; };
 		8EC17A822628902100FB7E85 /* gRPCServer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8EC17A802628902100FB7E85 /* gRPCServer.mm */; };
@@ -182,6 +182,32 @@
 		8E95FD4F26249C9800694A05 /* gRPCScriptController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gRPCScriptController.h; sourceTree = "<group>"; };
 		8E95FD5026249C9800694A05 /* gRPCScriptController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = gRPCScriptController.m; sourceTree = "<group>"; };
 		8E95FD532624A07200694A05 /* gRPCLog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = gRPCLog.h; sourceTree = "<group>"; };
+		8E98A05F2741BC0D001F87A1 /* roivolume.pb.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = roivolume.pb.cc; sourceTree = "<group>"; };
+		8E98A0602741BC0D001F87A1 /* viewercontroller.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = viewercontroller.pb.h; sourceTree = "<group>"; };
+		8E98A0612741BC0D001F87A1 /* browsercontroller.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = browsercontroller.pb.h; sourceTree = "<group>"; };
+		8E98A0622741BC0D001F87A1 /* dicomseries.pb.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = dicomseries.pb.cc; sourceTree = "<group>"; };
+		8E98A0632741BC0D001F87A1 /* osirix.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = osirix.pb.h; sourceTree = "<group>"; };
+		8E98A0642741BC0D001F87A1 /* types.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = types.pb.h; sourceTree = "<group>"; };
+		8E98A0652741BC0D001F87A1 /* osirix.grpc.pb.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = osirix.grpc.pb.cc; sourceTree = "<group>"; };
+		8E98A0662741BC0D001F87A1 /* dicomimage.pb.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = dicomimage.pb.cc; sourceTree = "<group>"; };
+		8E98A0672741BC0D001F87A1 /* dicomstudy.pb.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = dicomstudy.pb.cc; sourceTree = "<group>"; };
+		8E98A0682741BC0D001F87A1 /* roi.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = roi.pb.h; sourceTree = "<group>"; };
+		8E98A0692741BC0D001F87A1 /* viewercontroller.pb.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = viewercontroller.pb.cc; sourceTree = "<group>"; };
+		8E98A06A2741BC0D001F87A1 /* dicomimage.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dicomimage.pb.h; sourceTree = "<group>"; };
+		8E98A06B2741BC0D001F87A1 /* utilities.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = utilities.pb.h; sourceTree = "<group>"; };
+		8E98A06C2741BC0D001F87A1 /* dcmpix.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dcmpix.pb.h; sourceTree = "<group>"; };
+		8E98A06D2741BC0D001F87A1 /* vrcontroller.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vrcontroller.pb.h; sourceTree = "<group>"; };
+		8E98A06E2741BC0D001F87A1 /* browsercontroller.pb.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = browsercontroller.pb.cc; sourceTree = "<group>"; };
+		8E98A06F2741BC0D001F87A1 /* roivolume.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = roivolume.pb.h; sourceTree = "<group>"; };
+		8E98A0702741BC0D001F87A1 /* osirix.grpc.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = osirix.grpc.pb.h; sourceTree = "<group>"; };
+		8E98A0712741BC0D001F87A1 /* roi.pb.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = roi.pb.cc; sourceTree = "<group>"; };
+		8E98A0722741BC0D001F87A1 /* dcmpix.pb.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = dcmpix.pb.cc; sourceTree = "<group>"; };
+		8E98A0732741BC0D001F87A1 /* vrcontroller.pb.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = vrcontroller.pb.cc; sourceTree = "<group>"; };
+		8E98A0742741BC0D001F87A1 /* osirix.pb.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = osirix.pb.cc; sourceTree = "<group>"; };
+		8E98A0752741BC0D001F87A1 /* dicomseries.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dicomseries.pb.h; sourceTree = "<group>"; };
+		8E98A0762741BC0D001F87A1 /* utilities.pb.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = utilities.pb.cc; sourceTree = "<group>"; };
+		8E98A0772741BC0D001F87A1 /* dicomstudy.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dicomstudy.pb.h; sourceTree = "<group>"; };
+		8E98A0782741BC0D001F87A1 /* types.pb.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = types.pb.cc; sourceTree = "<group>"; };
 		8EA37F3B262E3FB00025D217 /* gRPCUtilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = gRPCUtilities.h; sourceTree = "<group>"; };
 		8EA37F3C262E3FB00025D217 /* gRPCUtilities.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = gRPCUtilities.m; sourceTree = "<group>"; };
 		8EA37F3F262E45B90025D217 /* gRPCScriptWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = gRPCScriptWindow.xib; sourceTree = "<group>"; };
@@ -262,32 +288,6 @@
 		8EB91B47260DF3610034C16A /* libabsl_stacktrace.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libabsl_stacktrace.a; path = ../grpc/install/lib/libabsl_stacktrace.a; sourceTree = "<group>"; };
 		8EB91B48260DF3610034C16A /* libgrpc++_alts.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libgrpc++_alts.a"; path = "../grpc/install/lib/libgrpc++_alts.a"; sourceTree = "<group>"; };
 		8EB91B7A260DF3700034C16A /* OsiriXAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = OsiriXAPI.framework; sourceTree = "<group>"; };
-		8EB91B7E260DF4180034C16A /* types.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = types.pb.h; path = ../src/cpp/types.pb.h; sourceTree = "<group>"; };
-		8EB91B7F260DF4180034C16A /* utilities.pb.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = utilities.pb.cc; path = ../src/cpp/utilities.pb.cc; sourceTree = "<group>"; };
-		8EB91B80260DF4180034C16A /* osirix.pb.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = osirix.pb.cc; path = ../src/cpp/osirix.pb.cc; sourceTree = "<group>"; };
-		8EB91B81260DF4180034C16A /* osirix.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = osirix.pb.h; path = ../src/cpp/osirix.pb.h; sourceTree = "<group>"; };
-		8EB91B82260DF4180034C16A /* osirix.grpc.pb.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = osirix.grpc.pb.cc; path = ../src/cpp/osirix.grpc.pb.cc; sourceTree = "<group>"; };
-		8EB91B83260DF4180034C16A /* dicomstudy.pb.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = dicomstudy.pb.cc; path = ../src/cpp/dicomstudy.pb.cc; sourceTree = "<group>"; };
-		8EB91B84260DF4180034C16A /* dicomseries.pb.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = dicomseries.pb.cc; path = ../src/cpp/dicomseries.pb.cc; sourceTree = "<group>"; };
-		8EB91B85260DF4180034C16A /* roivolume.pb.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = roivolume.pb.cc; path = ../src/cpp/roivolume.pb.cc; sourceTree = "<group>"; };
-		8EB91B86260DF4180034C16A /* dicomstudy.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dicomstudy.pb.h; path = ../src/cpp/dicomstudy.pb.h; sourceTree = "<group>"; };
-		8EB91B87260DF4180034C16A /* vrcontroller.pb.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = vrcontroller.pb.cc; path = ../src/cpp/vrcontroller.pb.cc; sourceTree = "<group>"; };
-		8EB91B88260DF4180034C16A /* vrcontroller.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = vrcontroller.pb.h; path = ../src/cpp/vrcontroller.pb.h; sourceTree = "<group>"; };
-		8EB91B89260DF4180034C16A /* osirix.grpc.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = osirix.grpc.pb.h; path = ../src/cpp/osirix.grpc.pb.h; sourceTree = "<group>"; };
-		8EB91B8A260DF4180034C16A /* dcmpix.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dcmpix.pb.h; path = ../src/cpp/dcmpix.pb.h; sourceTree = "<group>"; };
-		8EB91B8B260DF4180034C16A /* utilities.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = utilities.pb.h; path = ../src/cpp/utilities.pb.h; sourceTree = "<group>"; };
-		8EB91B8C260DF4180034C16A /* browsercontroller.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = browsercontroller.pb.h; path = ../src/cpp/browsercontroller.pb.h; sourceTree = "<group>"; };
-		8EB91B8D260DF4180034C16A /* browsercontroller.pb.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = browsercontroller.pb.cc; path = ../src/cpp/browsercontroller.pb.cc; sourceTree = "<group>"; };
-		8EB91B8E260DF4180034C16A /* dicomimage.pb.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = dicomimage.pb.cc; path = ../src/cpp/dicomimage.pb.cc; sourceTree = "<group>"; };
-		8EB91B8F260DF4180034C16A /* dicomseries.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dicomseries.pb.h; path = ../src/cpp/dicomseries.pb.h; sourceTree = "<group>"; };
-		8EB91B90260DF4180034C16A /* types.pb.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = types.pb.cc; path = ../src/cpp/types.pb.cc; sourceTree = "<group>"; };
-		8EB91B91260DF4180034C16A /* viewercontroller.pb.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = viewercontroller.pb.cc; path = ../src/cpp/viewercontroller.pb.cc; sourceTree = "<group>"; };
-		8EB91B92260DF4180034C16A /* dicomimage.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dicomimage.pb.h; path = ../src/cpp/dicomimage.pb.h; sourceTree = "<group>"; };
-		8EB91B93260DF4180034C16A /* dcmpix.pb.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = dcmpix.pb.cc; path = ../src/cpp/dcmpix.pb.cc; sourceTree = "<group>"; };
-		8EB91B94260DF4180034C16A /* roi.pb.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = roi.pb.cc; path = ../src/cpp/roi.pb.cc; sourceTree = "<group>"; };
-		8EB91B95260DF4190034C16A /* roi.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = roi.pb.h; path = ../src/cpp/roi.pb.h; sourceTree = "<group>"; };
-		8EB91B96260DF4190034C16A /* viewercontroller.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = viewercontroller.pb.h; path = ../src/cpp/viewercontroller.pb.h; sourceTree = "<group>"; };
-		8EB91B97260DF4190034C16A /* roivolume.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = roivolume.pb.h; path = ../src/cpp/roivolume.pb.h; sourceTree = "<group>"; };
 		8EB91BB2260E00680034C16A /* gRPCToolbarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = gRPCToolbarController.h; sourceTree = "<group>"; };
 		8EB91BB3260E00680034C16A /* gRPCToolbarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = gRPCToolbarController.m; sourceTree = "<group>"; };
 		8EC17A7C26265BF400FB7E85 /* gRPCScript.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = gRPCScript.h; sourceTree = "<group>"; };
@@ -544,34 +544,35 @@
 		8EB91B7D260DF3FD0034C16A /* Protobuf C++ */ = {
 			isa = PBXGroup;
 			children = (
-				8EB91B8D260DF4180034C16A /* browsercontroller.pb.cc */,
-				8EB91B8C260DF4180034C16A /* browsercontroller.pb.h */,
-				8EB91B93260DF4180034C16A /* dcmpix.pb.cc */,
-				8EB91B8A260DF4180034C16A /* dcmpix.pb.h */,
-				8EB91B8E260DF4180034C16A /* dicomimage.pb.cc */,
-				8EB91B92260DF4180034C16A /* dicomimage.pb.h */,
-				8EB91B84260DF4180034C16A /* dicomseries.pb.cc */,
-				8EB91B8F260DF4180034C16A /* dicomseries.pb.h */,
-				8EB91B83260DF4180034C16A /* dicomstudy.pb.cc */,
-				8EB91B86260DF4180034C16A /* dicomstudy.pb.h */,
-				8EB91B82260DF4180034C16A /* osirix.grpc.pb.cc */,
-				8EB91B89260DF4180034C16A /* osirix.grpc.pb.h */,
-				8EB91B80260DF4180034C16A /* osirix.pb.cc */,
-				8EB91B81260DF4180034C16A /* osirix.pb.h */,
-				8EB91B94260DF4180034C16A /* roi.pb.cc */,
-				8EB91B95260DF4190034C16A /* roi.pb.h */,
-				8EB91B85260DF4180034C16A /* roivolume.pb.cc */,
-				8EB91B97260DF4190034C16A /* roivolume.pb.h */,
-				8EB91B90260DF4180034C16A /* types.pb.cc */,
-				8EB91B7E260DF4180034C16A /* types.pb.h */,
-				8EB91B7F260DF4180034C16A /* utilities.pb.cc */,
-				8EB91B8B260DF4180034C16A /* utilities.pb.h */,
-				8EB91B91260DF4180034C16A /* viewercontroller.pb.cc */,
-				8EB91B96260DF4190034C16A /* viewercontroller.pb.h */,
-				8EB91B87260DF4180034C16A /* vrcontroller.pb.cc */,
-				8EB91B88260DF4180034C16A /* vrcontroller.pb.h */,
+				8E98A06E2741BC0D001F87A1 /* browsercontroller.pb.cc */,
+				8E98A0612741BC0D001F87A1 /* browsercontroller.pb.h */,
+				8E98A0722741BC0D001F87A1 /* dcmpix.pb.cc */,
+				8E98A06C2741BC0D001F87A1 /* dcmpix.pb.h */,
+				8E98A0662741BC0D001F87A1 /* dicomimage.pb.cc */,
+				8E98A06A2741BC0D001F87A1 /* dicomimage.pb.h */,
+				8E98A0622741BC0D001F87A1 /* dicomseries.pb.cc */,
+				8E98A0752741BC0D001F87A1 /* dicomseries.pb.h */,
+				8E98A0672741BC0D001F87A1 /* dicomstudy.pb.cc */,
+				8E98A0772741BC0D001F87A1 /* dicomstudy.pb.h */,
+				8E98A0652741BC0D001F87A1 /* osirix.grpc.pb.cc */,
+				8E98A0702741BC0D001F87A1 /* osirix.grpc.pb.h */,
+				8E98A0742741BC0D001F87A1 /* osirix.pb.cc */,
+				8E98A0632741BC0D001F87A1 /* osirix.pb.h */,
+				8E98A0712741BC0D001F87A1 /* roi.pb.cc */,
+				8E98A0682741BC0D001F87A1 /* roi.pb.h */,
+				8E98A05F2741BC0D001F87A1 /* roivolume.pb.cc */,
+				8E98A06F2741BC0D001F87A1 /* roivolume.pb.h */,
+				8E98A0782741BC0D001F87A1 /* types.pb.cc */,
+				8E98A0642741BC0D001F87A1 /* types.pb.h */,
+				8E98A0762741BC0D001F87A1 /* utilities.pb.cc */,
+				8E98A06B2741BC0D001F87A1 /* utilities.pb.h */,
+				8E98A0692741BC0D001F87A1 /* viewercontroller.pb.cc */,
+				8E98A0602741BC0D001F87A1 /* viewercontroller.pb.h */,
+				8E98A0732741BC0D001F87A1 /* vrcontroller.pb.cc */,
+				8E98A06D2741BC0D001F87A1 /* vrcontroller.pb.h */,
 			);
 			name = "Protobuf C++";
+			path = ../protos/cpp;
 			sourceTree = "<group>";
 		};
 		8EE9B197266D207500D887CC /* gRPCScriptController */ = {
@@ -617,43 +618,43 @@
 				8EA37F3D262E3FB00025D217 /* gRPCUtilities.h in Headers */,
 				8EE2882426683D1400745DA0 /* gRPCScriptManager.h in Headers */,
 				8E4FF20426247AEE0082346A /* gRPCService.h in Headers */,
-				8EB91BA5260DF4190034C16A /* utilities.pb.h in Headers */,
-				8EB91BA9260DF4190034C16A /* dicomseries.pb.h in Headers */,
 				8EF0196F270448510064E71D /* gRPCServerController.h in Headers */,
 				8E7349DD266D8B5A0050E26F /* gRPCScriptControllerBlockingCellView.h in Headers */,
 				8EB91B07260DF2EA0034C16A /* gRPCDelegate.h in Headers */,
-				8EB91BA6260DF4190034C16A /* browsercontroller.pb.h in Headers */,
 				8EB91AE0260DF2CB0034C16A /* gRPCCache.h in Headers */,
 				8EB91B02260DF2EA0034C16A /* gRPCDCMPixDelegate.h in Headers */,
-				8EB91B9B260DF4190034C16A /* osirix.pb.h in Headers */,
-				8EB91BA2260DF4190034C16A /* vrcontroller.pb.h in Headers */,
 				8E4FF20A26247AEE0082346A /* gRPCTask.h in Headers */,
-				8EB91B98260DF4190034C16A /* types.pb.h in Headers */,
-				8EB91BB0260DF4190034C16A /* viewercontroller.pb.h in Headers */,
-				8EB91BA4260DF4190034C16A /* dcmpix.pb.h in Headers */,
-				8EB91BAF260DF4190034C16A /* roi.pb.h in Headers */,
 				8EB91B09260DF2EA0034C16A /* gRPCOsirixDelegate.h in Headers */,
+				8E98A0892741BC0D001F87A1 /* roivolume.pb.h in Headers */,
 				8E9AB864262CEDDF008E8C2F /* gRPCLog.h in Headers */,
+				8E98A07A2741BC0D001F87A1 /* viewercontroller.pb.h in Headers */,
+				8E98A08F2741BC0D001F87A1 /* dicomseries.pb.h in Headers */,
+				8E98A0912741BC0D001F87A1 /* dicomstudy.pb.h in Headers */,
 				8EB91B0C260DF2EA0034C16A /* gRPCViewerControllerDelegate.h in Headers */,
 				8EB91B0F260DF2EA0034C16A /* gRPCROIDelegate.h in Headers */,
 				8EB91B0A260DF2EA0034C16A /* gRPCROIVolumeDelegate.h in Headers */,
 				8E4FF20826247AEE0082346A /* gRPCTaskController.h in Headers */,
+				8E98A0852741BC0D001F87A1 /* utilities.pb.h in Headers */,
 				8EB91AE5260DF2CB0034C16A /* gRPCPluginFilter.h in Headers */,
 				8E7349E1266D917B0050E26F /* gRPCScriptControllerTypeCellView.h in Headers */,
 				8EA37F42262EED780025D217 /* gRPCScriptController.h in Headers */,
 				8E7349D9266D83580050E26F /* gRPCScriptControllerInterpreterCellView.h in Headers */,
+				8E98A07D2741BC0D001F87A1 /* osirix.pb.h in Headers */,
+				8E98A08A2741BC0D001F87A1 /* osirix.grpc.pb.h in Headers */,
+				8E98A07E2741BC0D001F87A1 /* types.pb.h in Headers */,
 				8EB91B0E260DF2EA0034C16A /* gRPCDicomStudyDelegate.h in Headers */,
+				8E98A0822741BC0D001F87A1 /* roi.pb.h in Headers */,
 				8EB91AFF260DF2EA0034C16A /* gRPCDicomSeriesDelegate.h in Headers */,
-				8EB91BAC260DF4190034C16A /* dicomimage.pb.h in Headers */,
-				8EB91BB1260DF4190034C16A /* roivolume.pb.h in Headers */,
 				8E9AB868262DB721008E8C2F /* gRPCScript.h in Headers */,
 				8EC17A832628902100FB7E85 /* gRPCServer.h in Headers */,
-				8EB91BA0260DF4190034C16A /* dicomstudy.pb.h in Headers */,
-				8EB91BA3260DF4190034C16A /* osirix.grpc.pb.h in Headers */,
 				8EB91B01260DF2EA0034C16A /* gRPCVRControllerDelegate.h in Headers */,
 				8EB91B12260DF2EA0034C16A /* gRPCBrowserControllerDelegate.h in Headers */,
+				8E98A0862741BC0D001F87A1 /* dcmpix.pb.h in Headers */,
 				8E95FD4E26249C0D00694A05 /* gRPCOsirixPrefix.pch in Headers */,
+				8E98A0842741BC0D001F87A1 /* dicomimage.pb.h in Headers */,
+				8E98A0872741BC0D001F87A1 /* vrcontroller.pb.h in Headers */,
 				8EB91B05260DF2EA0034C16A /* gRPCDicomImageDelegate.h in Headers */,
+				8E98A07B2741BC0D001F87A1 /* browsercontroller.pb.h in Headers */,
 				8EB91BB4260E00680034C16A /* gRPCToolbarController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -739,45 +740,45 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E98A0832741BC0D001F87A1 /* viewercontroller.pb.cc in Sources */,
 				8EB91B10260DF2EA0034C16A /* gRPCDCMPixDelegate.mm in Sources */,
 				8E4FF20926247AEE0082346A /* gRPCService.mm in Sources */,
 				8EB91AE2260DF2CB0034C16A /* gRPCCache.mm in Sources */,
-				8EB91BAE260DF4190034C16A /* roi.pb.cc in Sources */,
 				8EB91B03260DF2EA0034C16A /* gRPCBrowserControllerDelegate.mm in Sources */,
 				8EB91BB5260E00680034C16A /* gRPCToolbarController.m in Sources */,
+				8E98A0792741BC0D001F87A1 /* roivolume.pb.cc in Sources */,
 				8E4FF20626247AEE0082346A /* gRPCTaskController.m in Sources */,
 				8EB91B00260DF2EA0034C16A /* gRPCDicomStudyDelegate.mm in Sources */,
+				8E98A0812741BC0D001F87A1 /* dicomstudy.pb.cc in Sources */,
 				8E9AB869262DB724008E8C2F /* gRPCScript.m in Sources */,
+				8E98A0882741BC0D001F87A1 /* browsercontroller.pb.cc in Sources */,
 				8EB91B0B260DF2EA0034C16A /* gRPCROIVolumeDelegate.mm in Sources */,
-				8EB91B99260DF4190034C16A /* utilities.pb.cc in Sources */,
 				8EB91AFE260DF2EA0034C16A /* gRPCViewerControllerDelegate.mm in Sources */,
 				8EB91AE6260DF2CB0034C16A /* gRPCPluginFilter.mm in Sources */,
-				8EB91B9F260DF4190034C16A /* roivolume.pb.cc in Sources */,
-				8EB91B9C260DF4190034C16A /* osirix.grpc.pb.cc in Sources */,
+				8E98A0922741BC0D001F87A1 /* types.pb.cc in Sources */,
 				8E7349E2266D917B0050E26F /* gRPCScriptControllerTypeCellView.m in Sources */,
-				8EB91BA7260DF4190034C16A /* browsercontroller.pb.cc in Sources */,
+				8E98A08C2741BC0D001F87A1 /* dcmpix.pb.cc in Sources */,
 				8E7349DA266D83580050E26F /* gRPCScriptControllerInterpreterCellView.m in Sources */,
 				8EF01970270448510064E71D /* gRPCServerController.m in Sources */,
 				8EA37F3E262E3FB00025D217 /* gRPCUtilities.m in Sources */,
 				8EA37F43262EED7B0025D217 /* gRPCScriptController.m in Sources */,
-				8EB91BAA260DF4190034C16A /* types.pb.cc in Sources */,
+				8E98A07F2741BC0D001F87A1 /* osirix.grpc.pb.cc in Sources */,
+				8E98A08E2741BC0D001F87A1 /* osirix.pb.cc in Sources */,
 				8EB91B08260DF2EA0034C16A /* gRPCVRControllerDelegate.mm in Sources */,
-				8EB91B9E260DF4190034C16A /* dicomseries.pb.cc in Sources */,
 				8EB91B06260DF2EA0034C16A /* gRPCROIDelegate.mm in Sources */,
 				8EB91B11260DF2EA0034C16A /* gRPCDicomSeriesDelegate.mm in Sources */,
+				8E98A07C2741BC0D001F87A1 /* dicomseries.pb.cc in Sources */,
+				8E98A08D2741BC0D001F87A1 /* vrcontroller.pb.cc in Sources */,
 				8E7349DE266D8B5A0050E26F /* gRPCScriptControllerBlockingCellView.m in Sources */,
 				8E4FF20726247AEE0082346A /* gRPCTask.m in Sources */,
 				8EB91B04260DF2EA0034C16A /* gRPCOsirixDelegate.mm in Sources */,
 				8EC17A822628902100FB7E85 /* gRPCServer.mm in Sources */,
-				8EB91BAB260DF4190034C16A /* viewercontroller.pb.cc in Sources */,
-				8EB91B9A260DF4190034C16A /* osirix.pb.cc in Sources */,
-				8EB91BAD260DF4190034C16A /* dcmpix.pb.cc in Sources */,
 				8EB91B0D260DF2EA0034C16A /* gRPCDicomImageDelegate.mm in Sources */,
+				8E98A0802741BC0D001F87A1 /* dicomimage.pb.cc in Sources */,
 				8EE2882526683D1400745DA0 /* gRPCScriptManager.m in Sources */,
+				8E98A0902741BC0D001F87A1 /* utilities.pb.cc in Sources */,
 				8E700E9326610E0200FF1168 /* gRPCLog.m in Sources */,
-				8EB91B9D260DF4190034C16A /* dicomstudy.pb.cc in Sources */,
-				8EB91BA8260DF4190034C16A /* dicomimage.pb.cc in Sources */,
-				8EB91BA1260DF4190034C16A /* vrcontroller.pb.cc in Sources */,
+				8E98A08B2741BC0D001F87A1 /* roi.pb.cc in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
