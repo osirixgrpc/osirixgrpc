@@ -13,6 +13,6 @@
     IBOutlet NSButton *checkBox;
 }
 
-@property (readwrite) NSButton *checkBox;
+@property (readonly) NSButton *checkBox;
 
 @end

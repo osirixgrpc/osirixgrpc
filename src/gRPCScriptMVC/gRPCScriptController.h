@@ -29,4 +29,6 @@
 
 - (IBAction)addRemoveScript:(id)sender;
 
++ (NSString *) gRPCScriptControllerErrorDomain;
+
 @end

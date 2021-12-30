@@ -16,7 +16,7 @@
         <window title="Script Database" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <rect key="contentRect" x="1372" y="552" width="655" height="380"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1792" height="1097"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="3440" height="1417"/>
             <view key="contentView" wantsLayer="YES" id="EiT-Mj-1SZ">
                 <rect key="frame" x="0.0" y="0.0" width="655" height="380"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -43,11 +43,11 @@
                         <rect key="frame" x="20" y="59" width="615" height="301"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <clipView key="contentView" id="NNv-XB-lP0">
-                            <rect key="frame" x="1" y="0.0" width="613" height="300"/>
+                            <rect key="frame" x="1" y="0.0" width="613" height="285"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" tableStyle="fullWidth" alternatingRowBackgroundColors="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="8eR-6P-FED" viewBased="YES" id="azt-Ad-EjX">
-                                    <rect key="frame" x="0.0" y="0.0" width="619" height="275"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="619" height="260"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <size key="intercellSpacing" width="3" height="2"/>
                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -273,7 +273,7 @@
                             </subviews>
                         </clipView>
                         <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="CRJ-xD-XLk">
-                            <rect key="frame" x="1" y="284" width="613" height="16"/>
+                            <rect key="frame" x="1" y="285" width="613" height="15"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                         <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="txY-D3-dTR">
@@ -286,7 +286,7 @@
                         </tableHeaderView>
                     </scrollView>
                     <segmentedControl verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="R9y-nu-XR9">
-                        <rect key="frame" x="564.5" y="28" width="71" height="23"/>
+                        <rect key="frame" x="565" y="28" width="71" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                         <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedRounded" trackingMode="selectOne" id="dgL-jU-CBM">
                             <font key="font" metaFont="system"/>

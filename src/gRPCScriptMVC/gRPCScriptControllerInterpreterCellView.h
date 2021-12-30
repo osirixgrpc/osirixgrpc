@@ -14,6 +14,6 @@
 }
 
 @property (readonly) NSButton *openButton;
-@property (readwrite) NSTextField *textField;
+@property (readonly) NSTextField *textField;
 
 @end

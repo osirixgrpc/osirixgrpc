@@ -47,7 +47,6 @@
     
     // Create the service controller and start a service.
     serverController = [[gRPCServerController alloc] init];
-    [serverController startInteractiveServer];
     
     // The toolbar controller will be used to control all interactions with the toolbar buttons (for starting user scripts)
     toolbarController = [[gRPCToolbarController alloc] init];

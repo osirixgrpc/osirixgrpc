@@ -12,6 +12,6 @@
     IBOutlet NSPopUpButton *popUpButton;
 }
 
-@property (assign) NSPopUpButton *popUpButton;
+@property (readonly) NSPopUpButton *popUpButton;
 
 @end

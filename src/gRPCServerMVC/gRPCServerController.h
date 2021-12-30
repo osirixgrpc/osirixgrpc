@@ -2,29 +2,31 @@
 
 #import "gRPCServer.h"
 
-@interface gRPCServerController : NSWindowController <NSWindowDelegate>
+@interface gRPCServerController : NSWindowController <NSWindowDelegate, NSTableViewDataSource, NSTableViewDelegate>
 {
-    IBOutlet NSTextField *addressField;
     IBOutlet NSTextField *statusField;
-    gRPCServer *interactiveServer;
+    IBOutlet NSTableView *serverTable;
+    IBOutlet NSWindow *newServerSheet;
+    IBOutlet NSTextField *newServerAddress;
+    IBOutlet NSTextField *newServerStatus;
+    IBOutlet NSButton *newServerOKButton;
+    IBOutlet NSButton *newServerCancelButton;
 }
 
-@property (readonly) NSMutableDictionary *configuration;
+@property (readonly) NSMutableArray *servers;
 
 + (BOOL) isValidAddress:(NSString *)address;
 
 + (NSString *)serverConfigurationPath;
-- (void)saveConfiguration:(NSDictionary *)configuration;
-- (NSMutableDictionary *)loadConfiguration;
+- (void)saveServers:(NSArray *)servers;
+- (NSMutableArray *)loadServers;
 
-// Access to server configuration options
-+ (NSString *) interactiveServerAddressKey;
-- (NSString *) interactiveServerAddress;
-- (void) setInteractiveServerAddress: (NSString *) address;
+- (IBAction) addRemoveServerConfig:(id) sender;
+- (IBAction) startStopServer:(id) sender;
 
-- (void) startInteractiveServer;
-
-- (IBAction) changePushed:(id) sender;
+# pragma mark modal sheet actions
+- (IBAction) okPushed:(id) sender;
 - (IBAction) cancelPushed:(id) sender;
+
 
 @end

@@ -5,9 +5,6 @@
 //  Created by Richard Holbrey on 12/12/2020.
 //
 
-#import <OsiriXAPI/ViewerController.h>
-#import <OsiriXAPI/browserController.h>
-
 #import "gRPCServer.h"
 #import "gRPCService.h"
 #import "gRPCLog.h"
@@ -27,9 +24,9 @@
 
 @synthesize address = _address;
 
-
 -(void)dealloc
 {
+    [_address release];
     [lock release];
     [super dealloc];
 }
@@ -42,7 +39,7 @@
         return  nil;
     }
     lock = [[NSLock alloc] init];
-    _address = address;
+    _address = [address retain];
     
     return self;
 }
@@ -60,6 +57,7 @@
 {
     if ([notification object] == serverThread)
     {
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:NSThreadWillExitNotification object:serverThread];
         [serverThread release];
     }
 }
@@ -68,7 +66,7 @@
 {
     if ([self active])
     {
-        gRPCLogError(@"Server cannot be started as already initialised.");
+        gRPCLogError(@"Server cannot be started as already active.");
         return;
     }
     serverThread = [[NSThread alloc] initWithTarget:self selector:@selector(spawn) object:nil];
@@ -80,10 +78,12 @@
 {
     if (![self active])
     {
-        gRPCLogError(@"Server cannot be shut down as already started.");
+        gRPCLogError(@"Server cannot be shut down as not active.");
         return;
     }
+    [lock lock];
     server->Shutdown(); // This should end the spawned thread.
+    [lock unlock];
 }
 
 // Always called as another thread.

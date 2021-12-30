@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		8E1A3E6F25E31D3F00ABB854 /* gRPCMenuItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E1A3E6E25E31D3E00ABB854 /* gRPCMenuItem.xib */; };
+		8E49B6FB277D1B8D00215DC9 /* gRPCServerControllerActiveCellView.h in Headers */ = {isa = PBXBuildFile; fileRef = 8E49B6F9277D1B8D00215DC9 /* gRPCServerControllerActiveCellView.h */; };
+		8E49B6FC277D1B8D00215DC9 /* gRPCServerControllerActiveCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E49B6FA277D1B8D00215DC9 /* gRPCServerControllerActiveCellView.m */; };
 		8E4FF20426247AEE0082346A /* gRPCService.h in Headers */ = {isa = PBXBuildFile; fileRef = 8E4FF1F926247AEE0082346A /* gRPCService.h */; };
 		8E4FF20626247AEE0082346A /* gRPCTaskController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E4FF1FB26247AEE0082346A /* gRPCTaskController.m */; };
 		8E4FF20726247AEE0082346A /* gRPCTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E4FF1FC26247AEE0082346A /* gRPCTask.m */; };
@@ -164,6 +166,8 @@
 		8D5B49B7048680CD000E48DA /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8E1A3E6E25E31D3E00ABB854 /* gRPCMenuItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = gRPCMenuItem.xib; sourceTree = "<group>"; };
 		8E3F254625F0358F00526BCF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		8E49B6F9277D1B8D00215DC9 /* gRPCServerControllerActiveCellView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = gRPCServerControllerActiveCellView.h; sourceTree = "<group>"; };
+		8E49B6FA277D1B8D00215DC9 /* gRPCServerControllerActiveCellView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = gRPCServerControllerActiveCellView.m; sourceTree = "<group>"; };
 		8E4FF1F926247AEE0082346A /* gRPCService.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = gRPCService.h; sourceTree = "<group>"; };
 		8E4FF1FB26247AEE0082346A /* gRPCTaskController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = gRPCTaskController.m; sourceTree = "<group>"; };
 		8E4FF1FC26247AEE0082346A /* gRPCTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = gRPCTask.m; sourceTree = "<group>"; };
@@ -589,6 +593,8 @@
 			children = (
 				8EF0196D270448510064E71D /* gRPCServerController.h */,
 				8EF0196E270448510064E71D /* gRPCServerController.m */,
+				8E49B6F9277D1B8D00215DC9 /* gRPCServerControllerActiveCellView.h */,
+				8E49B6FA277D1B8D00215DC9 /* gRPCServerControllerActiveCellView.m */,
 				8EC17A812628902100FB7E85 /* gRPCServer.h */,
 				8EC17A802628902100FB7E85 /* gRPCServer.mm */,
 				8E4FF1F926247AEE0082346A /* gRPCService.h */,
@@ -637,6 +643,7 @@
 				8E98A0852741BC0D001F87A1 /* utilities.pb.h in Headers */,
 				8EB91AE5260DF2CB0034C16A /* gRPCPluginFilter.h in Headers */,
 				8E7349E1266D917B0050E26F /* gRPCScriptControllerTypeCellView.h in Headers */,
+				8E49B6FB277D1B8D00215DC9 /* gRPCServerControllerActiveCellView.h in Headers */,
 				8EA37F42262EED780025D217 /* gRPCScriptController.h in Headers */,
 				8E7349D9266D83580050E26F /* gRPCScriptControllerInterpreterCellView.h in Headers */,
 				8E98A07D2741BC0D001F87A1 /* osirix.pb.h in Headers */,
@@ -769,6 +776,7 @@
 				8EB91B11260DF2EA0034C16A /* gRPCDicomSeriesDelegate.mm in Sources */,
 				8E98A07C2741BC0D001F87A1 /* dicomseries.pb.cc in Sources */,
 				8E98A08D2741BC0D001F87A1 /* vrcontroller.pb.cc in Sources */,
+				8E49B6FC277D1B8D00215DC9 /* gRPCServerControllerActiveCellView.m in Sources */,
 				8E7349DE266D8B5A0050E26F /* gRPCScriptControllerBlockingCellView.m in Sources */,
 				8E4FF20726247AEE0082346A /* gRPCTask.m in Sources */,
 				8EB91B04260DF2EA0034C16A /* gRPCOsirixDelegate.mm in Sources */,

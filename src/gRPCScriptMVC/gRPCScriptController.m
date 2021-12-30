@@ -4,9 +4,12 @@
 #import "gRPCScriptControllerTypeCellView.h"
 #import "gRPCLog.h"
 
-NSString * const gRPCScriptControllerErrorDomain = @"com.InstituteOfCancerResearch.osirixgrpc.scriptControllerErrorDomain";
-
 @implementation gRPCScriptController
+
++ (NSString *) gRPCScriptControllerErrorDomain
+{
+    return [NSString stringWithFormat:@"%@.scriptControllerErrorDomain", [gRPCPluginFilter pluginIdentifier]];
+}
 
 #pragma mark -
 #pragma mark Initializer
