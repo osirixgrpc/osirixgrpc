@@ -68,10 +68,6 @@
  */
 - (long) filterImage:(NSString*) menuName
 {
-//    if ([menuName isEqualToString:@"Script Manager"]) {
-//        gRPCScriptController *controller = [[gRPCScriptController alloc] initWithScriptManager:scriptManager];
-//        [controller showWindow:self];
-//    }
     if ([menuName isEqualToString:@"Server Configuration"]) {
         [serverController showWindow:self];
     }

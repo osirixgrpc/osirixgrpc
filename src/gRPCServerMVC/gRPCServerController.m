@@ -1,19 +1,25 @@
 #import <Quartz/Quartz.h>
+#import <Security/SecImportExport.h>
+#import <Security/SecCertificate.h>
 
 #import "gRPCServerController.h"
 #import "gRPCPluginFilter.h"
 #import "gRPCLog.h"
+#import "gRPCUtilities.h"
 #import "gRPCServerControllerActiveCellView.h"
 
 @implementation gRPCServerController
 
-@synthesize servers = _servers;
-
-+ (BOOL) isValidAddress:(NSString *) address
+- (BOOL) isValidAddress:(NSString *) address
 {
     BOOL bOK = TRUE;
     NSArray *components = [address componentsSeparatedByString:@":"];
-    if ((int)[components count] != 2){
+    if ((int)[components count] != 2)
+    {
+        bOK = FALSE;
+    }
+    if (![(NSString *)[components objectAtIndex:0] isEqualToString:@"localhost"])
+    {
         bOK = FALSE;
     }
     return bOK;
@@ -36,7 +42,9 @@
         {
             isActive = @"YES";
         }
-        NSDictionary *serverRepresentation = [NSDictionary dictionaryWithObjectsAndKeys:[server address], @"address", isActive, @"active", nil];
+        
+        NSDictionary *serverRepresentation = [NSDictionary dictionaryWithObjectsAndKeys:[server address], @"address", isActive, @"active", [[server certificateAuthorityURL] path], @"certificateAuthorityPath", [[server serverCertificateURL] path], @"serverCertificatePath", [[server serverKeyURL] path], @"serverKeyPath", nil];
+        
         [jsonArray addObject:serverRepresentation];
     }
     return jsonArray;
@@ -55,49 +63,64 @@
 {
     NSString *configPath = [gRPCServerController serverConfigurationPath];
     NSFileManager *fileManager = [NSFileManager defaultManager];
-    NSMutableArray *servers = nil;
-    if (![fileManager fileExistsAtPath:configPath])
-    {
-        gRPCServer *defaultServer = [[gRPCServer alloc] initWithAdress:@"localhost:8888"];
-        [defaultServer start];
-        servers = [NSMutableArray arrayWithObjects:defaultServer, nil];
-        [servers retain];
-        [self saveServers:servers];
-        [defaultServer release];
-    }
-    else
+    NSMutableArray *servers_ = [[NSMutableArray alloc] init];
+    if ([fileManager fileExistsAtPath:configPath])
     {
         NSData *jsonData = [NSData dataWithContentsOfFile:configPath];
         NSArray *serverRepresentations = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:nil];
-        servers = [[NSMutableArray alloc] init];
         for (NSDictionary *serverRepresentation in serverRepresentations)
         {
             NSString *address = [serverRepresentation objectForKey:@"address"];
             NSString *isActive = [serverRepresentation objectForKey:@"active"];
-            gRPCServer *server = [[gRPCServer alloc] initWithAdress:address];
+            NSURL *certificateAuthorityURL = [NSURL fileURLWithPath:[serverRepresentation objectForKey:@"certificateAuthorityPath"]];
+            NSURL *serverCertificateURL = [NSURL fileURLWithPath:[serverRepresentation objectForKey:@"serverCertificatePath"]];
+            NSURL *serverKeyURL = [NSURL fileURLWithPath:[serverRepresentation objectForKey:@"serverKeyPath"]];
+            gRPCServer *server = [[gRPCServer alloc] initWithAdress:address certificateAuthority:certificateAuthorityURL serverCertificate:serverCertificateURL serverKey:serverKeyURL];
             if ([isActive isEqualToString:@"YES"])
             {
                 [server start];
             }
-            [servers addObject:server];
+            [servers_ addObject:server];
         }
     }
-    return servers;
+    return servers_;
 }
 
 - (void) removeServerAtIndex:(NSInteger) index
 {
-    
+    if (index < 0 || index >= [servers count])
+    {
+        gRPCLogDefault(@"Attempted to remove server outside of index range");
+        return;
+    }
+    gRPCServer *server = [servers objectAtIndex:index];
+    [self removeServer:server];
+}
+
+- (void) removeServer:(gRPCServer *) server
+{
+    if (![servers containsObject:server])
+    {
+        gRPCLogDefault(@"Tried to remove invalid server");
+        return;
+    }
+    if ([server active])
+    {
+        [server shutdown];
+    }
+    [servers removeObject:server];
+    [self saveServers:servers];
 }
 
 - (void) addServer:(gRPCServer *) server
 {
-    
+    [servers addObject:server];
+    [self saveServers:servers];
 }
 
 - (void) dealloc
 {
-    [_servers release];
+    [servers release];
     [super dealloc];
 }
 
@@ -108,7 +131,7 @@
         gRPCLogError(@"Could not initialize server controller");
         return  nil;
     }
-    _servers = [self loadServers];
+    servers = [self loadServers];
     return self;
 }
 
@@ -119,33 +142,46 @@
 {
     // Can be used to perform any set-up of the window.
     [super windowDidLoad];
+    [serverTable reloadData];
 }
 
 - (void) setWindowStatus:(NSString *) value
 {
-    [statusField setStringValue:value];
+    [status setStringValue:value];
 }
 
 - (void) clearWindowStatus
 {
-    [statusField setStringValue:@" "];
+    [self setWindowStatus:@" "];
 }
 
-- (void) removeServer
+- (void) removeServerConfig
 {
     NSInteger selectedRow = [serverTable selectedRow];
-    
+    gRPCServer *server = [servers objectAtIndex:selectedRow];
+    if ([server active])
+    {
+        [server shutdown];
+    }
+    [self removeServer:server];
+    [serverTable reloadData];
+    [self setWindowStatus:@"Removed Server"];
 }
 
-- (void) addServer
+- (void) addServerConfig
 {
     // Ensure that the form is empty.
     [newServerStatus setStringValue:@""];
-    [newServerAddress setStringValue:@""];
+    [newServerIPAddress setStringValue:@"localhost"];
+    [newServerPort setStringValue:@""];
+    [newServerCertificateAuthorityFile setURL:[NSURL fileURLWithPath:NSHomeDirectory()]];
+    [newServerCertificateFile setURL:[NSURL fileURLWithPath:NSHomeDirectory()]];
+    [newServerKeyFile setURL:[NSURL fileURLWithPath:NSHomeDirectory()]];
     [newServerSheet makeFirstResponder:newServerOKButton];
     
     // Control is given to the new server sheet
     [[self window] beginSheet: newServerSheet completionHandler:nil];
+    [self setWindowStatus:@"Added Server"];
 }
 
 - (IBAction) addRemoveServerConfig:(id) sender
@@ -153,24 +189,51 @@
     NSSegmentedCell *cell = (NSSegmentedCell *)sender;
     switch ([cell selectedSegment]) {
         case 0:
-            [self removeServer];
+            [self removeServerConfig];
             break;
         case 1:
-            [self addServer];
+            [self addServerConfig];
             break;
         default:
             break;
     }
 }
 
-- (IBAction) startStopServer:(id) sender
+- (void) stopServer
 {
-    NSLog(@"Start/stop server");
+    NSInteger index = [serverTable selectedRow];
+    gRPCServer *server = [servers objectAtIndex:index];
+    if ([server active])
+    {
+        [server shutdown];
+        [serverTable reloadData];
+    }
 }
 
-- (IBAction) addressChanged:(id) sender
+- (void) startServer
 {
-    NSLog(@"Address Changed");
+    NSInteger index = [serverTable selectedRow];
+    gRPCServer *server = [servers objectAtIndex:index];
+    if (![server active])
+    {
+        [server start];
+        [serverTable reloadData];
+    }
+}
+
+- (IBAction) startStopServer:(id) sender
+{
+    NSSegmentedCell *cell = (NSSegmentedCell *)sender;
+    switch ([cell selectedSegment]) {
+        case 0:
+            [self stopServer];
+            break;
+        case 1:
+            [self startServer];
+            break;
+        default:
+            break;
+    }
 }
 
 # pragma mark -
@@ -178,14 +241,14 @@
 
 - (NSInteger) numberOfRowsInTableView:(NSTableView *)tableView
 {
-    return [[self servers] count];
+    return [servers count];
 }
 
 - (NSView *) tableView:(NSTableView *) tableView viewForTableColumn:(NSTableColumn *) tableColumn row:(NSInteger) row
 {
     NSString *identifier = [tableColumn identifier];
     
-    gRPCServer *server = [[self servers] objectAtIndex:row];
+    gRPCServer *server = [servers objectAtIndex:row];
     
     if ([identifier isEqualToString:@"address"])
     {
@@ -213,15 +276,95 @@
     }
 }
 
-# pragma mark modal sheet actions
+# pragma mark -
+# pragma mark Modal Sheet Actions
+
+- (void) setNewServerStatus:(NSString *) status
+{
+    [newServerStatus setStringValue:status];
+}
+
 - (IBAction) okPushed:(id) sender
 {
-    [self shakeWindow: newServerSheet];
+    // Perform checks of the user values
+    NSString *ipAddress = [newServerIPAddress stringValue];
+    NSString *port = [newServerPort stringValue];
+    NSString *address = [NSString stringWithFormat:@"%@:%@", ipAddress, port];
+    if (![self isValidAddress:address])
+    {
+        [self shakeWindow: newServerSheet];
+        [self setNewServerStatus:@"address must have form: 'localhost:1234'"];
+        return;
+    }
+    
+    NSURL *certificateAuthorityURL = [newServerCertificateAuthorityFile URL];
+    if (![[certificateAuthorityURL pathExtension] isEqualToString:@"pem"])
+    {
+        [self shakeWindow: newServerSheet];
+        [self setNewServerStatus:@"Incorrect certificate authority"];
+        return;
+    }
+    
+    NSURL *serverCertificateURL = [newServerCertificateFile URL];
+    if (![[serverCertificateURL pathExtension] isEqualToString:@"pem"])
+    {
+        [self shakeWindow: newServerSheet];
+        [self setNewServerStatus:@"Incorrect server certificate"];
+        return;
+    }
+    
+    NSURL *serverKeyURL = [newServerKeyFile URL] ;
+    if (![[serverKeyURL pathExtension] isEqualToString:@"pem"])
+    {
+        [self shakeWindow: newServerSheet];
+        [self setNewServerStatus:@"Incorrect server key"];
+        return;
+    }
+    
+    // Create a new server
+    gRPCServer *server = [[gRPCServer alloc] initWithAdress:address certificateAuthority:certificateAuthorityURL serverCertificate:serverCertificateURL serverKey:serverKeyURL];
+    [self addServer:server];
+    [server release];
+    [[self window] endSheet:newServerSheet];
+    [serverTable reloadData];
 }
 
 - (IBAction) cancelPushed:(id) sender
 {
     [[self window] endSheet:newServerSheet];
+}
+
+- (IBAction) certificateAuthoritySelectPushed:(id) sender
+{
+    NSURL *caURL = [gRPCUtilities selectURLWithExtension:@"pem" allowingDirectories:NO allowingFiles:YES];
+    if (caURL == nil)
+    {
+        return;
+    }
+    [newServerCertificateAuthorityFile setURL:caURL];
+    [newServerCertificateAuthorityFile setToolTip:[caURL path]];
+}
+
+- (IBAction) serverCertificateSelectPushed:(id) sender
+{
+    NSURL *certURL = [gRPCUtilities selectURLWithExtension:@"pem" allowingDirectories:NO allowingFiles:YES];
+    if (certURL == nil)
+    {
+        return;
+    }
+    [newServerCertificateFile setURL:certURL];
+    [newServerCertificateFile setToolTip:[certURL path]];
+}
+
+- (IBAction) serverKeySelectPushed:(id) sender
+{
+    NSURL *keyURL = [gRPCUtilities selectURLWithExtension:@"pem" allowingDirectories:NO allowingFiles:YES];
+    if (keyURL == nil)
+    {
+        return;
+    }
+    [newServerKeyFile setURL:keyURL];
+    [newServerKeyFile setToolTip:[keyURL path]];
 }
 
 - (void) shakeWindow:(NSWindow *) window

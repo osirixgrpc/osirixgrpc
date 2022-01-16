@@ -4,18 +4,22 @@
 
 @interface gRPCServerController : NSWindowController <NSWindowDelegate, NSTableViewDataSource, NSTableViewDelegate>
 {
-    IBOutlet NSTextField *statusField;
+    NSMutableArray *servers;
+    IBOutlet NSTextField *status;
     IBOutlet NSTableView *serverTable;
+    
     IBOutlet NSWindow *newServerSheet;
-    IBOutlet NSTextField *newServerAddress;
+    IBOutlet NSTextField *newServerIPAddress;
+    IBOutlet NSTextField *newServerPort;
     IBOutlet NSTextField *newServerStatus;
+    IBOutlet NSPathControl *newServerCertificateAuthorityFile;
+    IBOutlet NSPathControl *newServerCertificateFile;
+    IBOutlet NSPathControl *newServerKeyFile;
     IBOutlet NSButton *newServerOKButton;
     IBOutlet NSButton *newServerCancelButton;
 }
 
-@property (readonly) NSMutableArray *servers;
-
-+ (BOOL) isValidAddress:(NSString *)address;
+- (BOOL) isValidAddress:(NSString *)address;
 
 + (NSString *)serverConfigurationPath;
 - (void)saveServers:(NSArray *)servers;
@@ -27,6 +31,9 @@
 # pragma mark modal sheet actions
 - (IBAction) okPushed:(id) sender;
 - (IBAction) cancelPushed:(id) sender;
+- (IBAction) certificateAuthoritySelectPushed:(id) sender;
+- (IBAction) serverCertificateSelectPushed:(id) sender;
+- (IBAction) serverKeySelectPushed:(id) sender;
 
 
 @end

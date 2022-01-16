@@ -3,6 +3,34 @@
 @interface gRPCUtilities : NSObject
 
 /**
+ * Check whether a given string conforms to IPV4 or IPV6
+ *
+ * @param ipAddress
+ *
+ * @return Boolean value
+ */
++ (BOOL)isValidIPAddress:(nonnull NSString *)ipAddress;
+
+/**
+ * Check whether a given string conforms to IPV4 or IPV6
+ *
+ * @param ipAddress
+ *
+ * @return Boolean value
+ */
++ (NSURL *)selectURLWithExtension:(nullable NSString *)extension allowingDirectories:(BOOL)allowDirs allowingFiles:(BOOL)allowFiles;
+
+/**
+ * Check whether a given string conforms to IPV4 or IPV6
+ *
+ * @param ipAddress
+ *
+ * @return Boolean value
+ */
++ (NSString *)selectFilePathWithExtension:(nullable NSString *)extension allowingDirectories:(BOOL)allowDirs allowingFiles:(BOOL)allowFiles;
+
+
+/**
  * Alert the user with a pop-up window with a given message and button options.
  *
  * @param message What you want to display to the reader as primary message.

@@ -22,7 +22,6 @@
 	<string>${CURRENT_PROJECT_VERSION}</string>
 	<key>MenuTitles</key>
 	<array>
-		<string>gRPC</string>
 		<string>Server Configuration</string>
 	</array>
 	<key>NSPrincipalClass</key>
