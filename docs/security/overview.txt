@@ -1,0 +1,25 @@
+@startuml
+
+!$certauth = certauth
+!$server = server
+!$client = client
+!function $keypairfname($name)
+!return $name.privkey.pem\n$name.pubcert.pem
+!endfunction
+
+node "Server (osirixgrpc)"{
+[$keypairfname($certauth)]
+[$keypairfname($server)]
+[server.ipaddresses.json]
+}
+
+node "Client"{
+[$keypairfname($client)]
+}
+
+[$keypairfname($certauth)] --> [$keypairfname($certauth)] : self-signs
+[$keypairfname($certauth)] --> [$keypairfname($server)] : signs
+[$keypairfname($certauth)] --> [$keypairfname($client)] : signs
+[$keypairfname($server)] .. [server.ipaddresses.json] : implements
+
+@enduml

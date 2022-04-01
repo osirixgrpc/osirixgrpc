@@ -27,7 +27,7 @@
         <window title="Server List" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <rect key="contentRect" x="488" y="330" width="484" height="375"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="3440" height="1417"/>
             <value key="minSize" type="size" width="424" height="142"/>
             <value key="minFullScreenContentSize" type="size" width="424" height="142"/>
             <view key="contentView" wantsLayer="YES" id="EiT-Mj-1SZ">
@@ -193,7 +193,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="1150" y="-742" width="379" height="286"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+            <rect key="screenRect" x="969" y="-900" width="1440" height="877"/>
             <view key="contentView" id="LWw-eh-aXX">
                 <rect key="frame" x="0.0" y="0.0" width="379" height="286"/>
                 <autoresizingMask key="autoresizingMask"/>
