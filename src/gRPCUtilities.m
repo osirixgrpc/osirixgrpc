@@ -52,6 +52,22 @@
     return nil;
 }
 
++ (NSString *)readFileContentsAtPath:(NSString *)filePath
+{
+    NSString* content = [NSString stringWithContentsOfFile:filePath
+                                                  encoding:NSUTF8StringEncoding
+                                                      error:NULL];
+    return content;
+}
+
++ (NSString *)readFileContentsAtURL:(NSURL *)url
+{
+    NSString* content = [NSString stringWithContentsOfURL:url
+                                                  encoding:NSUTF8StringEncoding
+                                                      error:NULL];
+    return content;
+}
+
 + (NSInteger)alertWithMessageText:(nonnull NSString *)message :(nonnull NSString *)firstButton :(nullable NSString *)secondButton :(nullable NSString *)thirdButton :(nullable NSString *)informativeTextWithFormat, ...
 {
     NSAlert *alert = [[NSAlert alloc] init];

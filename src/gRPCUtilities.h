@@ -12,23 +12,48 @@
 + (BOOL)isValidIPAddress:(nonnull NSString *)ipAddress;
 
 /**
- * Check whether a given string conforms to IPV4 or IPV6
+ * Select a file URL with a particular extension
  *
- * @param ipAddress
+ * @param extension The allowed extension to use.  If NULL then any file extension is allowed
  *
- * @return Boolean value
+ * @param allowDirs Whether to allow selection of directories.
+ *
+ * @param allowFiles Whether to allow selection of files.
+ *
+ * @return The file URL
  */
 + (NSURL *)selectURLWithExtension:(nullable NSString *)extension allowingDirectories:(BOOL)allowDirs allowingFiles:(BOOL)allowFiles;
 
 /**
- * Check whether a given string conforms to IPV4 or IPV6
+ * Select a file path with a particular extension
  *
- * @param ipAddress
+ * @param extension The allowed extension to use.  If NULL then any file extension is allowed
  *
- * @return Boolean value
+ * @param allowDirs Whether to allow selection of directories.
+ *
+ * @param allowFiles Whether to allow selection of files.
+ *
+ * @return The file path
  */
 + (NSString *)selectFilePathWithExtension:(nullable NSString *)extension allowingDirectories:(BOOL)allowDirs allowingFiles:(BOOL)allowFiles;
 
+/**
+ * Read the contents of file at a specified file path
+ *
+ * @param filePath The file path to read
+ *
+ * @return An NSString representing the contents of the file
+ */
++ (NSString *)readFileContentsAtPath:(NSString *)filePath;
+
+/**
+ * Read the contents of file at a specified URL
+ *
+ * @param url The url to use
+ *
+ * @return An NSString representing the contents of the file
+ */
++ (NSString *)readFileContentsAtURL:(NSURL *)url;
 
 /**
  * Alert the user with a pop-up window with a given message and button options.

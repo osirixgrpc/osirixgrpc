@@ -43,7 +43,7 @@
             isActive = @"YES";
         }
         
-        NSDictionary *serverRepresentation = [NSDictionary dictionaryWithObjectsAndKeys:[server address], @"address", isActive, @"active", [[server certificateAuthorityURL] path], @"certificateAuthorityPath", [[server serverCertificateURL] path], @"serverCertificatePath", [[server serverKeyURL] path], @"serverKeyPath", nil];
+        NSDictionary *serverRepresentation = [NSDictionary dictionaryWithObjectsAndKeys:[server address], @"address", isActive, @"active", nil];
         
         [jsonArray addObject:serverRepresentation];
     }
@@ -72,10 +72,7 @@
         {
             NSString *address = [serverRepresentation objectForKey:@"address"];
             NSString *isActive = [serverRepresentation objectForKey:@"active"];
-            NSURL *certificateAuthorityURL = [NSURL fileURLWithPath:[serverRepresentation objectForKey:@"certificateAuthorityPath"]];
-            NSURL *serverCertificateURL = [NSURL fileURLWithPath:[serverRepresentation objectForKey:@"serverCertificatePath"]];
-            NSURL *serverKeyURL = [NSURL fileURLWithPath:[serverRepresentation objectForKey:@"serverKeyPath"]];
-            gRPCServer *server = [[gRPCServer alloc] initWithAdress:address certificateAuthority:certificateAuthorityURL serverCertificate:serverCertificateURL serverKey:serverKeyURL];
+            gRPCServer *server = [[gRPCServer alloc] initWithAddress:address];
             if ([isActive isEqualToString:@"YES"])
             {
                 [server start];
@@ -174,9 +171,6 @@
     [newServerStatus setStringValue:@""];
     [newServerIPAddress setStringValue:@"localhost"];
     [newServerPort setStringValue:@""];
-    [newServerCertificateAuthorityFile setURL:[NSURL fileURLWithPath:NSHomeDirectory()]];
-    [newServerCertificateFile setURL:[NSURL fileURLWithPath:NSHomeDirectory()]];
-    [newServerKeyFile setURL:[NSURL fileURLWithPath:NSHomeDirectory()]];
     [newServerSheet makeFirstResponder:newServerOKButton];
     
     // Control is given to the new server sheet
@@ -297,32 +291,8 @@
         return;
     }
     
-    NSURL *certificateAuthorityURL = [newServerCertificateAuthorityFile URL];
-    if (![[certificateAuthorityURL pathExtension] isEqualToString:@"pem"])
-    {
-        [self shakeWindow: newServerSheet];
-        [self setNewServerStatus:@"Incorrect certificate authority"];
-        return;
-    }
-    
-    NSURL *serverCertificateURL = [newServerCertificateFile URL];
-    if (![[serverCertificateURL pathExtension] isEqualToString:@"pem"])
-    {
-        [self shakeWindow: newServerSheet];
-        [self setNewServerStatus:@"Incorrect server certificate"];
-        return;
-    }
-    
-    NSURL *serverKeyURL = [newServerKeyFile URL] ;
-    if (![[serverKeyURL pathExtension] isEqualToString:@"pem"])
-    {
-        [self shakeWindow: newServerSheet];
-        [self setNewServerStatus:@"Incorrect server key"];
-        return;
-    }
-    
     // Create a new server
-    gRPCServer *server = [[gRPCServer alloc] initWithAdress:address certificateAuthority:certificateAuthorityURL serverCertificate:serverCertificateURL serverKey:serverKeyURL];
+    gRPCServer *server = [[gRPCServer alloc] initWithAddress:address];
     [self addServer:server];
     [server release];
     [[self window] endSheet:newServerSheet];
@@ -332,39 +302,6 @@
 - (IBAction) cancelPushed:(id) sender
 {
     [[self window] endSheet:newServerSheet];
-}
-
-- (IBAction) certificateAuthoritySelectPushed:(id) sender
-{
-    NSURL *caURL = [gRPCUtilities selectURLWithExtension:@"pem" allowingDirectories:NO allowingFiles:YES];
-    if (caURL == nil)
-    {
-        return;
-    }
-    [newServerCertificateAuthorityFile setURL:caURL];
-    [newServerCertificateAuthorityFile setToolTip:[caURL path]];
-}
-
-- (IBAction) serverCertificateSelectPushed:(id) sender
-{
-    NSURL *certURL = [gRPCUtilities selectURLWithExtension:@"pem" allowingDirectories:NO allowingFiles:YES];
-    if (certURL == nil)
-    {
-        return;
-    }
-    [newServerCertificateFile setURL:certURL];
-    [newServerCertificateFile setToolTip:[certURL path]];
-}
-
-- (IBAction) serverKeySelectPushed:(id) sender
-{
-    NSURL *keyURL = [gRPCUtilities selectURLWithExtension:@"pem" allowingDirectories:NO allowingFiles:YES];
-    if (keyURL == nil)
-    {
-        return;
-    }
-    [newServerKeyFile setURL:keyURL];
-    [newServerKeyFile setToolTip:[keyURL path]];
 }
 
 - (void) shakeWindow:(NSWindow *) window

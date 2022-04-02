@@ -8,12 +8,9 @@
 }
 
 @property (readonly) NSString *address;
-@property (readonly) NSURL *certificateAuthorityURL;
-@property (readonly) NSURL *serverCertificateURL;
-@property (readonly) NSURL *serverKeyURL;
 @property (readonly) BOOL active;
 
--(id)initWithAdress:(NSString *)address certificateAuthority:(NSURL *)certificateAuthotiryCertificateURL serverCertificate:(NSURL *)serverCertificateURL serverKey:(NSURL *)serverKeyURL;
+-(id)initWithAddress:(NSString *)address;
 
 -(void)start;
 -(void)shutdown;
