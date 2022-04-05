@@ -64,8 +64,16 @@
     if (study)
     {
         NSString *modalities = [study modalities];
-        response->set_modalities([modalities UTF8String]);
-        response->mutable_status()->set_status(1);
+        if (modalities)
+        {
+            response->set_modalities([modalities UTF8String]);
+            response->mutable_status()->set_status(1);
+        }
+        else
+        {
+            response->mutable_status()->set_status(0);
+            response->mutable_status()->set_message("Modalities not available");
+        }
     }
     else
     {
@@ -83,8 +91,17 @@
     
     if (study)
     {
-        response->set_no_files([[study noFiles] intValue]);
-        response->mutable_status()->set_status(1);
+        NSNumber * noFiles = [study noFiles];
+        if (noFiles)
+        {
+            response->set_no_files([noFiles intValue]);
+            response->mutable_status()->set_status(1);
+        }
+        else
+        {
+            response->mutable_status()->set_status(0);
+            response->mutable_status()->set_message("Number of files not available");
+        }
     }
     else
     {
@@ -102,8 +119,17 @@
     
     if (study)
     {
-        response->set_no_files([[study rawNoFiles] intValue]);
-        response->mutable_status()->set_status(1);
+        NSNumber *rawNoFiles = [study rawNoFiles];
+        if (rawNoFiles)
+        {
+            response->set_no_files([rawNoFiles intValue]);
+            response->mutable_status()->set_status(1);
+        }
+        else
+        {
+            response->mutable_status()->set_status(0);
+            response->mutable_status()->set_message("Raw number of files not available");
+        }
     }
     else
     {
@@ -121,8 +147,17 @@
     
     if (study)
     {
-        response->set_no_files([[study noFilesExcludingMultiFrames] intValue]);
-        response->mutable_status()->set_status(1);
+        NSNumber *noFilesExcludingMultiFrames = [study noFilesExcludingMultiFrames];
+        if (noFilesExcludingMultiFrames)
+        {
+            response->set_no_files([noFilesExcludingMultiFrames intValue]);
+            response->mutable_status()->set_status(1);
+        }
+        else
+        {
+            response->mutable_status()->set_status(0);
+            response->mutable_status()->set_message("Number of files exclusing multi frames not available");
+        }
     }
     else
     {
@@ -140,8 +175,17 @@
     
     if (study)
     {
-        response->set_no_images([[study numberOfImages] intValue]);
-        response->mutable_status()->set_status(1);
+        NSNumber *numberOfImages = [study numberOfImages];
+        if (numberOfImages)
+        {
+            response->set_no_images([numberOfImages intValue]);
+            response->mutable_status()->set_status(1);
+        }
+        else
+        {
+            response->mutable_status()->set_status(0);
+            response->mutable_status()->set_message("Number of images not available");
+        }
     }
     else
     {
@@ -189,8 +233,16 @@
     if (study)
     {
         NSString *name = [study name];
-        response->set_name([name UTF8String]);
-        response->mutable_status()->set_status(1);
+        if (name)
+        {
+            response->set_name([name UTF8String]);
+            response->mutable_status()->set_status(1);
+        }
+        else
+        {
+            response->mutable_status()->set_status(0);
+            response->mutable_status()->set_message("Study name not available");
+        }
     }
     else
     {
@@ -209,15 +261,23 @@
     if (study)
     {
         NSDate *date = [study date];
-        NSDateComponents *comps = [[NSCalendar currentCalendar] components:NSCalendarUnitNanosecond | NSCalendarUnitSecond | NSCalendarUnitMinute | NSCalendarUnitHour | NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:date];
-        response->set_year((int)[comps year]);
-        response->set_month((int)[comps month]);
-        response->set_day((int)[comps day]);
-        response->set_hour((int)[comps hour]);
-        response->set_minute((int)[comps minute]);
-        response->set_second((int)[comps second]);
-        response->set_millisecond(1000 * (int)[comps nanosecond]);
-        response->mutable_status()->set_status(1);
+        if (date)
+        {
+            NSDateComponents *comps = [[NSCalendar currentCalendar] components:NSCalendarUnitNanosecond | NSCalendarUnitSecond | NSCalendarUnitMinute | NSCalendarUnitHour | NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:date];
+            response->set_year((int)[comps year]);
+            response->set_month((int)[comps month]);
+            response->set_day((int)[comps day]);
+            response->set_hour((int)[comps hour]);
+            response->set_minute((int)[comps minute]);
+            response->set_second((int)[comps second]);
+            response->set_millisecond(1000 * (int)[comps nanosecond]);
+            response->mutable_status()->set_status(1);
+        }
+        else
+        {
+            response->mutable_status()->set_status(0);
+            response->mutable_status()->set_message("Study date not available");
+        }
     }
     else
     {
@@ -236,15 +296,23 @@
     if (study)
     {
         NSDate *date = [study dateAdded];
-        NSDateComponents *comps = [[NSCalendar currentCalendar] components:NSCalendarUnitNanosecond | NSCalendarUnitSecond | NSCalendarUnitMinute | NSCalendarUnitHour | NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:date];
-        response->set_year((int)[comps year]);
-        response->set_month((int)[comps month]);
-        response->set_day((int)[comps day]);
-        response->set_hour((int)[comps hour]);
-        response->set_minute((int)[comps minute]);
-        response->set_second((int)[comps second]);
-        response->set_millisecond(1000 * (int)[comps nanosecond]);
-        response->mutable_status()->set_status(1);
+        if (date)
+        {
+            NSDateComponents *comps = [[NSCalendar currentCalendar] components:NSCalendarUnitNanosecond | NSCalendarUnitSecond | NSCalendarUnitMinute | NSCalendarUnitHour | NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:date];
+            response->set_year((int)[comps year]);
+            response->set_month((int)[comps month]);
+            response->set_day((int)[comps day]);
+            response->set_hour((int)[comps hour]);
+            response->set_minute((int)[comps minute]);
+            response->set_second((int)[comps second]);
+            response->set_millisecond(1000 * (int)[comps nanosecond]);
+            response->mutable_status()->set_status(1);
+        }
+        else
+        {
+            response->mutable_status()->set_status(0);
+            response->mutable_status()->set_message("Date added not available");
+        }
     }
     else
     {
@@ -263,11 +331,19 @@
     if (study)
     {
         NSDate *date = [study dateOfBirth];
-        NSDateComponents *comps = [[NSCalendar currentCalendar] components: NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:date];
-        response->set_year((int)[comps year]);
-        response->set_month((int)[comps month]);
-        response->set_day((int)[comps day]);
-        response->mutable_status()->set_status(1);
+        if (date)
+        {
+            NSDateComponents *comps = [[NSCalendar currentCalendar] components: NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:date];
+            response->set_year((int)[comps year]);
+            response->set_month((int)[comps month]);
+            response->set_day((int)[comps day]);
+            response->mutable_status()->set_status(1);
+        }
+        else
+        {
+            response->mutable_status()->set_status(0);
+            response->mutable_status()->set_message("Date of birth not available");
+        }
     }
     else
     {
@@ -285,8 +361,17 @@
     
     if (study)
     {
-        response->set_institution_name([[study institutionName] UTF8String]);
-        response->mutable_status()->set_status(1);
+        NSString *institutionName = [study institutionName];
+        if (institutionName)
+        {
+            response->set_institution_name([institutionName UTF8String]);
+            response->mutable_status()->set_status(1);
+        }
+        else
+        {
+            response->mutable_status()->set_status(0);
+            response->mutable_status()->set_message("Institution name not available");
+        }
     }
     else
     {
@@ -304,8 +389,17 @@
     
     if (study)
     {
-        response->set_modality([[study modality] UTF8String]);
-        response->mutable_status()->set_status(1);
+        NSString *modality = [study modality];
+        if (modality)
+        {
+            response->set_modality([modality UTF8String]);
+            response->mutable_status()->set_status(1);
+        }
+        else
+        {
+            response->mutable_status()->set_status(0);
+            response->mutable_status()->set_message("Modality not available");
+        }
     }
     else
     {
@@ -323,8 +417,17 @@
     
     if (study)
     {
-        response->set_patient_id([[study patientID] UTF8String]);
-        response->mutable_status()->set_status(1);
+        NSString *patientID = [study patientID];
+        if (patientID)
+        {
+            response->set_patient_id([patientID UTF8String]);
+            response->mutable_status()->set_status(1);
+        }
+        else
+        {
+            response->mutable_status()->set_status(0);
+            response->mutable_status()->set_message("Patient ID not available");
+        }
     }
     else
     {
@@ -342,8 +445,17 @@
     
     if (study)
     {
-        response->set_patient_uid([[study patientUID] UTF8String]);
-        response->mutable_status()->set_status(1);
+        NSString *patientUID = [study patientUID];
+        if (patientUID)
+        {
+            response->set_patient_uid([patientUID UTF8String]);
+            response->mutable_status()->set_status(1);
+        }
+        else
+        {
+            response->mutable_status()->set_status(0);
+            response->mutable_status()->set_message("Patient UID not available");
+        }
     }
     else
     {
@@ -361,8 +473,17 @@
     
     if (study)
     {
-        response->set_patient_sex([[study patientSex] UTF8String]);
-        response->mutable_status()->set_status(1);
+        NSString *patientSex = [study patientSex];
+        if (patientSex)
+        {
+            response->set_patient_sex([patientSex UTF8String]);
+            response->mutable_status()->set_status(1);
+        }
+        else
+        {
+            response->mutable_status()->set_status(0);
+            response->mutable_status()->set_message("Patient sex not available");
+        }
     }
     else
     {
@@ -380,8 +501,17 @@
     
     if (study)
     {
-        response->set_performing_physician([[study performingPhysician] UTF8String]);
-        response->mutable_status()->set_status(1);
+        NSString *performingPhysician = [study performingPhysician];
+        if (performingPhysician)
+        {
+            response->set_performing_physician([performingPhysician UTF8String]);
+            response->mutable_status()->set_status(1);
+        }
+        else
+        {
+            response->mutable_status()->set_status(0);
+            response->mutable_status()->set_message("Performing physician not available");
+        }
     }
     else
     {
@@ -399,8 +529,17 @@
     
     if (study)
     {
-        response->set_referring_physician([[study referringPhysician] UTF8String]);
-        response->mutable_status()->set_status(1);
+        NSString *referringPhysician = [study referringPhysician];
+        if (referringPhysician)
+        {
+            response->set_referring_physician([referringPhysician UTF8String]);
+            response->mutable_status()->set_status(1);
+        }
+        else
+        {
+            response->mutable_status()->set_status(0);
+            response->mutable_status()->set_message("Referring physician not available");
+        }
     }
     else
     {
@@ -418,8 +557,17 @@
     
     if (study)
     {
-        response->set_study_instance_uid([[study studyInstanceUID] UTF8String]);
-        response->mutable_status()->set_status(1);
+        NSString *studyInstanceUID = [study studyInstanceUID];
+        if (studyInstanceUID)
+        {
+            response->set_study_instance_uid([studyInstanceUID UTF8String]);
+            response->mutable_status()->set_status(1);
+        }
+        else
+        {
+            response->mutable_status()->set_status(0);
+            response->mutable_status()->set_message("Study instance UID not available");
+        }
     }
     else
     {
@@ -437,8 +585,17 @@
     
     if (study)
     {
-        response->set_study_name([[study studyName] UTF8String]);
-        response->mutable_status()->set_status(1);
+        NSString *studyName = [study studyName];
+        if (studyName)
+        {
+            response->set_study_name([[study studyName] UTF8String]);
+            response->mutable_status()->set_status(1);
+        }
+        else
+        {
+            response->mutable_status()->set_status(0);
+            response->mutable_status()->set_message("Study name not available");
+        }
     }
     else
     {

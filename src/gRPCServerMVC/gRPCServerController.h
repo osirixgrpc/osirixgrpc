@@ -16,11 +16,12 @@
     IBOutlet NSButton *newServerCancelButton;
 }
 
-- (BOOL) isValidAddress:(NSString *)address;
+- (BOOL) isValidIPAddress:(NSString *)address andPort:(NSInteger) port;
 
 + (NSString *)serverConfigurationPath;
 - (void)saveServers:(NSArray *)servers;
 - (NSMutableArray *)loadServers;
+- (BOOL)containsServerWithIPAddress:(NSString *)address andPort:(NSInteger)port;
 
 - (IBAction) addRemoveServerConfig:(id) sender;
 - (IBAction) startStopServer:(id) sender;

@@ -7,12 +7,13 @@
     NSLock *lock;
 }
 
-@property (readonly) NSString *address;
+@property (readonly) NSString *ipAddress;
+@property (readonly) NSInteger port;
 @property (readonly) BOOL active;
 
--(id)initWithAddress:(NSString *)address;
+-(id)initWithIPAddress:(NSString *)ipAddress andPort:(NSInteger)port;
 
--(void)start;
+-(BOOL)start:(NSError **)error;
 -(void)shutdown;
 
 @end

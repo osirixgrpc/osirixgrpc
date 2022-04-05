@@ -1,10 +1,23 @@
 #import "gRPCUtilities.h"
+#import "gRPCErrorCodes.h"
 
 #include <arpa/inet.h>
 
 @implementation gRPCUtilities
 
-+ (BOOL)isValidIPAddress:(nonnull NSString *)ipAddress
++ (NSInteger)isValidPortNumber:(NSInteger)port
+{
+    NSInteger validPort = 1;
+    if (port < 1024){
+        validPort = 0;
+    }
+    if (port > 65535){
+        validPort = 0;
+    }
+    return validPort;
+}
+
++ (NSInteger)isValidIPAddress:(NSString *)ipAddress
 {
     // Adapted from https://stackoverflow.com/a/10971521
     const char *utf8 = [ipAddress UTF8String];
@@ -17,7 +30,56 @@
         success = inet_pton(AF_INET6, utf8, &dst6);
     }
 
-    return success == 1;
+    return (NSInteger)success;
+}
+
++ (NSInteger)isPort:(NSInteger) port openAtIPAddress:(NSString *)ipAddress withError:(NSError **)error
+{
+    // Adapted from https://www.binarytides.com/tcp-connect-port-scanner-c-code-linux-sockets/
+    
+    if ([gRPCUtilities isValidPortNumber:port] < 1)
+    {
+        gRPCLogDefault(@"Invalid port number");
+        NSDictionary *info = [NSDictionary dictionaryWithObjectsAndKeys:NSLocalizedString(@"Invalid Port Number", nil), NSLocalizedDescriptionKey, nil];
+        *error = [NSError errorWithDomain:[gRPCPluginFilter pluginIdentifier] code:gRPCInvalidIPAddress userInfo:info];
+        return -1;
+    }
+    
+    if ([gRPCUtilities isValidIPAddress:ipAddress] < 1)
+    {
+        gRPCLogDefault(@"Invalid IP address");
+        NSDictionary *info = [NSDictionary dictionaryWithObjectsAndKeys:NSLocalizedString(@"Invalid IP Address", nil), NSLocalizedDescriptionKey, nil];
+        *error = [NSError errorWithDomain:[gRPCPluginFilter pluginIdentifier] code:gRPCInvalidIPAddress userInfo:info];
+        return -1;
+    }
+    
+    const char *utf8 = [ipAddress UTF8String];
+    
+    // Set up the socket information
+    struct sockaddr_in sa;
+    sa.sin_family = AF_INET;
+    sa.sin_addr.s_addr = inet_addr(utf8);
+    sa.sin_port = htons((int) port);
+    
+    // Create the socket and return an error if not successful
+    int sock = socket(AF_INET , SOCK_STREAM , 0);
+    if (sock < 0)
+    {
+        NSDictionary *info = [NSDictionary dictionaryWithObjectsAndKeys:NSLocalizedString(@"Socket creation unsuccessful", nil), NSLocalizedDescriptionKey, nil];
+        *error = [NSError errorWithDomain:[gRPCPluginFilter pluginIdentifier] code:gRPCSocketError userInfo:info];
+        return -1;
+    }
+    
+    // connect to the socket
+    NSInteger success = 0;
+    int err = connect(sock , (struct sockaddr*)&sa , sizeof sa);
+    if (err >= 0)
+    {
+        success = 1;
+    }
+    close(sock);
+    
+    return success;
 }
 
 + (NSURL *)selectURLWithExtension:(nullable NSString *)extension allowingDirectories:(BOOL)allowDirs allowingFiles:(BOOL)allowFiles

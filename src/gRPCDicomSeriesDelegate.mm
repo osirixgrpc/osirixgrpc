@@ -209,8 +209,16 @@
     if (series)
     {
         NSString *seriesDescription = [series seriesDescription];
-        response->set_series_description([seriesDescription UTF8String]);
-        response->mutable_status()->set_status(1);
+        if (seriesDescription)
+        {
+            response->set_series_description([seriesDescription UTF8String]);
+            response->mutable_status()->set_status(1);
+        }
+        else
+        {
+            response->mutable_status()->set_status(0);
+            response->mutable_status()->set_message("No series description available");
+        }
     }
     else
     {

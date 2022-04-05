@@ -1,15 +1,39 @@
 #import <Foundation/Foundation.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface gRPCUtilities : NSObject
+
+/**
+ * Check whether a given integer is a valid port number. This does not check whether it is open.
+ *
+ * @param port
+ *
+ * @return 0: Invalid port number, 1:Valid port number
+ */
++ (NSInteger)isValidPortNumber:(NSInteger)port;
 
 /**
  * Check whether a given string conforms to IPV4 or IPV6
  *
  * @param ipAddress
  *
- * @return Boolean value
+ * @return 0: Invalid IP address, 1:Valid IP address
  */
-+ (BOOL)isValidIPAddress:(nonnull NSString *)ipAddress;
++ (NSInteger)isValidIPAddress:(nonnull NSString *)ipAddress;
+
+/**
+ * Check whether a given port is open at the IP Address
+ *
+ * @param port An integer representing the port.  Should be 0 <= port <= 65535
+ *
+ * @param ipAddress The IP address. Currently this assumes a IPV4 numeric address, not another representation.
+ *
+ * @param error An NSError container for more information if something goes wrong.
+ *
+ * @return 0: Port not open, 1: Port open, -1: Error occurred.
+ */
++ (NSInteger)isPort:(NSInteger) port openAtIPAddress:(NSString *)ipAddress withError:(NSError **)error;
 
 /**
  * Select a file URL with a particular extension
@@ -73,3 +97,5 @@
 + (NSInteger)alertWithMessageText:(nonnull NSString *)message :(nonnull NSString *)firstButton :(nullable NSString *)secondButton :(nullable NSString *)thirdButton :(nullable NSString *)informativeTextWithFormat, ...;
 
 @end
+
+NS_ASSUME_NONNULL_END

@@ -10,15 +10,14 @@
 
 @implementation gRPCServerController
 
-- (BOOL) isValidAddress:(NSString *) address
+- (BOOL) isValidIPAddress:(NSString *)address andPort:(NSInteger) port
 {
     BOOL bOK = TRUE;
-    NSArray *components = [address componentsSeparatedByString:@":"];
-    if ((int)[components count] != 2)
+    if (![address isEqualToString:@"127.0.0.1"])
     {
         bOK = FALSE;
     }
-    if (![(NSString *)[components objectAtIndex:0] isEqualToString:@"localhost"])
+    if (![gRPCUtilities isValidPortNumber:port])
     {
         bOK = FALSE;
     }
@@ -43,7 +42,7 @@
             isActive = @"YES";
         }
         
-        NSDictionary *serverRepresentation = [NSDictionary dictionaryWithObjectsAndKeys:[server address], @"address", isActive, @"active", nil];
+        NSDictionary *serverRepresentation = [NSDictionary dictionaryWithObjectsAndKeys:[server ipAddress], @"ipaddress", [NSString stringWithFormat:@"%d", (int)[server port]], @"port", isActive, @"active", nil];
         
         [jsonArray addObject:serverRepresentation];
     }
@@ -70,12 +69,18 @@
         NSArray *serverRepresentations = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:nil];
         for (NSDictionary *serverRepresentation in serverRepresentations)
         {
-            NSString *address = [serverRepresentation objectForKey:@"address"];
+            NSString *ipAddress = [serverRepresentation objectForKey:@"ipaddress"];
+            NSInteger port = [[serverRepresentation objectForKey:@"port"] integerValue];
             NSString *isActive = [serverRepresentation objectForKey:@"active"];
-            gRPCServer *server = [[gRPCServer alloc] initWithAddress:address];
+            gRPCServer *server = [[gRPCServer alloc] initWithIPAddress:ipAddress andPort:port];
             if ([isActive isEqualToString:@"YES"])
             {
-                [server start];
+                NSError *err;
+                BOOL ok = [server start:&err];
+                if (!ok)
+                {
+                    gRPCLogDefault(@"Could not start server after loading. Error: %@", [err localizedDescription]);
+                }
             }
             [servers_ addObject:server];
         }
@@ -113,6 +118,19 @@
 {
     [servers addObject:server];
     [self saveServers:servers];
+}
+
+- (BOOL)containsServerWithIPAddress:(NSString *)ipAddress andPort:(NSInteger)port
+{
+    BOOL serverContained = FALSE;
+    for (gRPCServer * server in servers)
+    {
+        if ([ipAddress isEqualToString:[server ipAddress]] && port == [server port])
+        {
+            serverContained = TRUE;
+        }
+    }
+    return serverContained;
 }
 
 - (void) dealloc
@@ -169,7 +187,7 @@
 {
     // Ensure that the form is empty.
     [newServerStatus setStringValue:@""];
-    [newServerIPAddress setStringValue:@"localhost"];
+    [newServerIPAddress setStringValue:@"127.0.0.1"];
     [newServerPort setStringValue:@""];
     [newServerSheet makeFirstResponder:newServerOKButton];
     
@@ -210,8 +228,17 @@
     gRPCServer *server = [servers objectAtIndex:index];
     if (![server active])
     {
-        [server start];
-        [serverTable reloadData];
+        NSError *err;
+        BOOL ok = [server start:&err];
+        if (ok)
+        {
+            [serverTable reloadData];
+        }
+        else
+        {
+            gRPCLogDefault(@"Could not starte server. Error: %@", err)
+            [self setWindowStatus:[NSString stringWithFormat:@"%@", [err localizedDescription]]];
+        }
     }
 }
 
@@ -247,8 +274,9 @@
     if ([identifier isEqualToString:@"address"])
     {
         NSTableCellView *view = [tableView makeViewWithIdentifier:@"address" owner:self];
-        [[view textField] setStringValue: [server address]];
-        [[view textField] setToolTip: [server address]];
+        NSString *address = [NSString stringWithFormat:@"%@:%d", [server ipAddress], (int)[server port]];
+        [[view textField] setStringValue: address];
+        [[view textField] setToolTip: address];
         return view;
     }
     else if ([identifier isEqualToString:@"active"])
@@ -282,17 +310,23 @@
 {
     // Perform checks of the user values
     NSString *ipAddress = [newServerIPAddress stringValue];
-    NSString *port = [newServerPort stringValue];
-    NSString *address = [NSString stringWithFormat:@"%@:%@", ipAddress, port];
-    if (![self isValidAddress:address])
+    NSInteger port = [newServerPort integerValue];
+    if (![self isValidIPAddress:ipAddress andPort:port])
     {
         [self shakeWindow: newServerSheet];
-        [self setNewServerStatus:@"address must have form: 'localhost:1234'"];
+        [self setNewServerStatus:@"address must have form: '127.0.0.1:1234'"];
+        return;
+    }
+    
+    if ([self containsServerWithIPAddress:ipAddress andPort:port])
+    {
+        [self shakeWindow: newServerSheet];
+        [self setNewServerStatus:@"address already contained"];
         return;
     }
     
     // Create a new server
-    gRPCServer *server = [[gRPCServer alloc] initWithAddress:address];
+    gRPCServer *server = [[gRPCServer alloc] initWithIPAddress:ipAddress andPort:port];
     [self addServer:server];
     [server release];
     [[self window] endSheet:newServerSheet];

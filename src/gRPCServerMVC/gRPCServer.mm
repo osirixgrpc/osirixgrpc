@@ -6,8 +6,11 @@
 //
 
 #import "gRPCServer.h"
+#import "gRPCErrorCodes.h"
 #import "gRPCService.h"
 #import "gRPCLog.h"
+#import "gRPCUtilities.h"
+#import "gRPCPluginFilter.h"
 
 #include <string>
 
@@ -24,16 +27,17 @@
 
 @implementation gRPCServer
 
-@synthesize address = _address;
+@synthesize ipAddress = _ipAddress;
+@synthesize port = _port;
 
 -(void)dealloc
 {
-    [_address release];
+    [_ipAddress release];
     [lock release];
     [super dealloc];
 }
 
--(id)initWithAddress:(NSString *)address
+-(id)initWithIPAddress:(NSString *)ipAddress andPort:(NSInteger)port
 {
     self = [super init];
     if (!self) {
@@ -41,7 +45,8 @@
         return  nil;
     }
     lock = [[NSLock alloc] init];
-    _address = [address retain];
+    _ipAddress = [ipAddress retain];
+    _port = port;
     return self;
 }
 
@@ -64,16 +69,34 @@
     }
 }
 
--(void)start
+-(BOOL)start:(NSError **)error
 {
     if ([self active])
     {
-        gRPCLogError(@"Server cannot be started as already active.");
-        return;
+        gRPCLogDefault(@"Server cannot be started as already active.");
+        NSDictionary *info = [NSDictionary dictionaryWithObjectsAndKeys:NSLocalizedString(@"Server has already started", nil), NSLocalizedDescriptionKey, nil];
+        *error = [NSError errorWithDomain:[gRPCPluginFilter pluginIdentifier] code:gRPCServerStarted userInfo:info];
+        return FALSE;
     }
+    
+    // Check the port is available
+    NSInteger serverAvailable = [gRPCUtilities isPort:_port openAtIPAddress:_ipAddress withError:error];
+    if (serverAvailable < 0)
+    {
+        gRPCLogDefault(@"Error occurred when checking for open port");
+        return FALSE;
+    }
+    else if (serverAvailable == 1)
+    {
+        NSDictionary *info = [NSDictionary dictionaryWithObjectsAndKeys:NSLocalizedString(@"Port unavailable", nil), NSLocalizedDescriptionKey, nil];
+        *error = [NSError errorWithDomain:[gRPCPluginFilter pluginIdentifier] code:gRPCPortUnavailable userInfo:info];
+        return FALSE;
+    }
+    
     serverThread = [[NSThread alloc] initWithTarget:self selector:@selector(spawnInsecure) object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(endThreadNotification:) name:NSThreadWillExitNotification object:serverThread];
     [serverThread start];
+    return TRUE;
 }
 
 -(void)shutdown
@@ -100,7 +123,8 @@
     
     grpc::ServerBuilder builder;
     [lock lock];
-    builder.AddListeningPort([_address UTF8String], grpc::InsecureServerCredentials());
+    NSString *address = [NSString stringWithFormat:@"%@:%d", _ipAddress, (int)_port];
+    builder.AddListeningPort([address UTF8String], grpc::InsecureServerCredentials());
     [lock unlock];
     
     builder.RegisterService(&service);
