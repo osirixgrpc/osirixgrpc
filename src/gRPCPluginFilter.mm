@@ -49,7 +49,7 @@
     serverController = [[gRPCServerController alloc] initWithStorageURL:[NSURL fileURLWithPath:[gRPCPluginFilter pluginSupportDirectory]]];
     
     // The toolbar controller will be used to control all interactions with the toolbar buttons (for starting user scripts)
-    toolbarController = [[gRPCToolbarController alloc] init];
+    toolbarController = [[gRPCToolbarController alloc] initWithScriptController:scriptController];
 }
 
 - (void) dealloc

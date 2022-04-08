@@ -1,7 +1,6 @@
 #import <Cocoa/Cocoa.h>
 
 #import "gRPCScript.h"
-#import "gRPCScriptManager.h"
 
 /**
  * Manages the location and properties of installed scripts, which can be anywhere on the user system.
@@ -16,8 +15,6 @@
 
 @interface gRPCScriptController : NSWindowController <NSWindowDelegate, NSTableViewDataSource, NSTableViewDelegate>
 {
-    gRPCScriptManager *scriptManager;
-    
     IBOutlet NSTableView *scriptTable;
     NSURL *storageURL;
     NSMutableArray *scripts;

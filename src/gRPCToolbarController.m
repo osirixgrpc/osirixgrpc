@@ -2,10 +2,11 @@
 
 @implementation gRPCToolbarController
 
-- (id) init
+- (id) initWithScriptController:(gRPCScriptController *) scriptController_
 {
     if (self = [super init])
     {
+        scriptController = [scriptController_ retain];
         tasks = [[NSMutableArray alloc] init];
     }
     return self;
@@ -13,6 +14,7 @@
 
 - (void) dealloc
 {
+    [scriptController release];
     [tasks release];
     [super dealloc];
 }
@@ -47,30 +49,39 @@
     NSMenuItem *item0 = [[[NSMenuItem alloc] initWithTitle:@"" action:nil keyEquivalent:@""] autorelease];
     [menu addItem:item0];
     
-    // Image Filter options
     NSMenuItem *imageFilterItem = [[[NSMenuItem alloc] initWithTitle:@"Image Filter" action:nil keyEquivalent:@""] autorelease];
-    [menu addItem:imageFilterItem];
+    NSMenuItem *roiFilterItem = [[[NSMenuItem alloc] initWithTitle:@"ROI Filter" action:nil keyEquivalent:@""] autorelease];
     
     NSMenu *imageFilterMenu = [[[NSMenu alloc] init] autorelease];
-    [imageFilterItem setSubmenu:imageFilterMenu];
+    NSMenu *roiFilterMenu = [[[NSMenu alloc] init] autorelease];
     
-    // ADC uncertainty
-    NSMenuItem *adcUncertaintyItem = [[[NSMenuItem alloc] initWithTitle:@"ADC uncertainty" action:@selector(adcUncertainty:) keyEquivalent:@""] autorelease];
-    [imageFilterMenu addItem:adcUncertaintyItem];
-    [adcUncertaintyItem setTarget:self];
+    for (gRPCScript *script in [scriptController scripts])
+    {
+        gRPCScriptType type = [script type];
+        NSMenu *subMenu = nil;
+        if (type == gRPCImageTool)
+            subMenu = imageFilterMenu;
+        else if (type == gRPCROITool)
+            subMenu = roiFilterMenu;
+        if (subMenu)
+        {
+            NSMenuItem *scriptMenuItem = [[[NSMenuItem alloc] initWithTitle:[script name] action:@selector(runScript:) keyEquivalent:@""] autorelease];
+            [subMenu addItem:scriptMenuItem];
+            [scriptMenuItem setTarget:self];
+        }
+    }
     
-    // WBDWI segmentation
-    NSMenuItem *wbdwiSegItem = [[[NSMenuItem alloc] initWithTitle:@"WBDWI segmentation" action:@selector(wbdwiSegmentation:) keyEquivalent:@""] autorelease];
-    [imageFilterMenu addItem:wbdwiSegItem];
-    [wbdwiSegItem setTarget:self];
+    if ([[imageFilterMenu itemArray] count] > 0)
+    {
+        [menu addItem:imageFilterItem];
+        [imageFilterItem setSubmenu:imageFilterMenu];
+    }
     
-    // Stereo view
-    NSMenuItem *stereoMIPItem = [[[NSMenuItem alloc] initWithTitle:@"Stereo MIP" action:@selector(stereoMIP:) keyEquivalent:@""] autorelease];
-    [imageFilterMenu addItem:stereoMIPItem];
-    [stereoMIPItem setTarget:self];
-
-//    NSMenuItem *sep = [NSMenuItem separatorItem];
-//    [menu addItem:sep];
+    if ([[roiFilterMenu itemArray] count] > 0)
+    {
+        [menu addItem:roiFilterItem];
+        [roiFilterItem setSubmenu:roiFilterMenu];
+    }
     
     [popUpButtonViewerController setMenu:menu];
     [menu release];
@@ -96,12 +107,16 @@
     NSMenuItem *item0 = [[[NSMenuItem alloc] initWithTitle:@"" action:nil keyEquivalent:@""] autorelease];
     [menu addItem:item0];
     
-    NSMenuItem *startTermItem = [[[NSMenuItem alloc] initWithTitle:@"Start gRPC VR" action:@selector(startGRPC) keyEquivalent:@""] autorelease];
-    [menu addItem:startTermItem];
-    [startTermItem setTarget:self];
-    
-    NSMenuItem *sep = [NSMenuItem separatorItem];
-    [menu addItem:sep];
+    for (gRPCScript *script in [scriptController scripts])
+    {
+        gRPCScriptType type = [script type];
+        if (type == gRPCVolumeRenderTool)
+        {
+            NSMenuItem *scriptMenuItem = [[[NSMenuItem alloc] initWithTitle:[script name] action:@selector(runScript:) keyEquivalent:@""] autorelease];
+            [menu addItem:scriptMenuItem];
+            [scriptMenuItem setTarget:self];
+        }
+    }
     
     [popUpButtonVRController setMenu:menu];
     [menu release];
@@ -127,12 +142,16 @@
     NSMenuItem *item0 = [[[NSMenuItem alloc] initWithTitle:@"" action:nil keyEquivalent:@""] autorelease];
     [menu addItem:item0];
     
-    NSMenuItem *startTermItem = [[[NSMenuItem alloc] initWithTitle:@"Start gRPC browser" action:@selector(startGRPC) keyEquivalent:@""] autorelease];
-    [menu addItem:startTermItem];
-    [startTermItem setTarget:self];
-    
-    NSMenuItem *sep = [NSMenuItem separatorItem];
-    [menu addItem:sep];
+    for (gRPCScript *script in [scriptController scripts])
+    {
+        gRPCScriptType type = [script type];
+        if (type == gRPCDatabaseTool)
+        {
+            NSMenuItem *scriptMenuItem = [[[NSMenuItem alloc] initWithTitle:[script name] action:@selector(runScript:) keyEquivalent:@""] autorelease];
+            [menu addItem:scriptMenuItem];
+            [scriptMenuItem setTarget:self];
+        }
+    }
     
     [popUpButtonBrowserController setMenu:menu];
     [menu release];
@@ -143,40 +162,24 @@
     return toolbarItem;
 }
 
-- (void) wbdwiSegmentation: (NSMenuItem *)item
+- (void) runScript: (NSMenuItem *)item
 {
-    NSTask * task = [[[NSTask alloc] init] autorelease];
-    [tasks addObject:task];
-    NSString *pythonFile = nil;
-    NSString *pythonExecutable = nil;
-    [task setLaunchPath:pythonExecutable];
-    [task setArguments:@[pythonFile]];
-    [task launch];
-}
-
-- (void) sereoMIP: (NSMenuItem *)item
-{
-    NSTask * task = [[[NSTask alloc] init] autorelease];
-    [tasks addObject:task];
-    NSString *pythonFile = @"/Users/adminmblackledge/Desktop/stereoMIP.py";
-    NSString *pythonExecutable = @"/Users/adminmblackledge/opt/miniconda3/bin/python";
-    [task setLaunchPath:pythonExecutable];
-    [task setArguments:@[pythonFile]];
-    [task launch];
-//    [task waitUntilExit];
+    // Get the relevant variables
+    NSString *scriptName = [item title];
+    gRPCScript *script = [scriptController scriptWithName:scriptName];
+    NSURL *scriptURL = [script url];
+    NSURL *interpreterURL = [script interpreter];
+    BOOL blocking = [script blocking];
     
-//    int status = [task terminationStatus];
-//
-//    if (status == 0) {
-//        NSLog(@"Task succeeded.");
-//    } else {
-//        NSLog(@"Task failed.");
-//    }
-}
-
-- (void) adcUncertainty: (NSMenuItem *)item
-{
-    NSLog(@"ADC uncertainty");
+    NSTask * task = [[[NSTask alloc] init] autorelease];
+    [tasks addObject:task];
+    [task setExecutableURL:interpreterURL];
+    [task setArguments:@[[scriptURL path]]];
+    [task launch];
+    if (blocking)
+    {
+        [task waitUntilExit];
+    }
 }
 
 @end

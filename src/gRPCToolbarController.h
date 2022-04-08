@@ -1,5 +1,7 @@
 #import <Cocoa/Cocoa.h>
 
+#import "gRPCScriptController.h"
+
 @interface gRPCToolbarController : NSViewController
 {
     IBOutlet NSView * popUpButtonViewViewerController;
@@ -10,7 +12,10 @@
     IBOutlet NSPopUpButton * popUpButtonVRController;
     
     NSMutableArray *tasks;
+    gRPCScriptController *scriptController;
 }
+
+- (id)initWithScriptController:(gRPCScriptController *) scriptController;
 
 + (NSString *) viewerControllerToolbarID;
 + (NSString *) browserControllerToolbarID;
