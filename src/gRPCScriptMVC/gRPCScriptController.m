@@ -34,7 +34,7 @@
         return nil;
     }
     
-    [self loadScripts];
+    scripts = [self loadScripts];
     
     return self;
 }
@@ -49,50 +49,110 @@
 #pragma mark -
 #pragma mark Storage/retrieval
 
-- (NSURL *) databaseFile
+- (NSString *) scriptConfigurationPath
 {
-    return [storageURL URLByAppendingPathComponent:@".scripts.db"];
+    return [[storageURL path] stringByAppendingPathComponent:@"script_configs.json"];
 }
 
-- (BOOL) saveScripts
+// Create a representation object of a script array that can be converted to JSON
+- (NSArray *) jsonScriptRepresentation:(NSArray *) servers
 {
-    NSError *error;
-    NSData *archivedData = [NSKeyedArchiver archivedDataWithRootObject:scripts requiringSecureCoding:NO error:&error];
-    if (!archivedData)
+    NSMutableArray *jsonArray = [[NSMutableArray alloc] init];
+    for (gRPCScript *script in scripts)
     {
-        gRPCLogError(@"Could not extract archive data: %@", error);
-        return NO;
+        NSString *path = [[script url] path];
+        NSString *interpreterPath = [[script interpreter] path];
+        NSString *name = [script name];
+        BOOL blocking = [script blocking];
+        gRPCScriptType type = [script type];
+        
+        NSString *blockingString = @"NO";
+        if (blocking)
+        {
+            blockingString = @"YES";
+        }
+        
+        NSString *typeString = nil;
+        switch (type){
+            case gRPCImageTool:
+                typeString = @"gRPCImageTool";
+                break;
+            case gRPCROITool:
+                typeString = @"gRPCROITool";
+                break;
+            case gRPCDatabaseTool:
+                typeString = @"gRPCDatabaseTool";
+                break;
+            case gRPCVolumeRenderTool:
+                typeString = @"gRPCVolumeRenderTool";
+                break;
+            default:
+                gRPCLogError(@"No valid type found");
+        }
+        
+        NSDictionary *scriptRepresentation = [NSDictionary dictionaryWithObjectsAndKeys:path, @"path", interpreterPath, @"interpreterPath", name, @"name", typeString, @"type", blockingString, @"blocking", nil];
+        
+        [jsonArray addObject:scriptRepresentation];
     }
-    [archivedData writeToURL:[self databaseFile] atomically:YES];
-    return YES;
+    return jsonArray;
 }
 
-- (BOOL) loadScripts
+- (void) saveScripts:(NSArray *) scripts
 {
-    NSFileManager *manager = [NSFileManager defaultManager];
-    
-    // This happens if the file is not available yet.
-    if (![manager fileExistsAtPath:[[self databaseFile] path]])
+    NSString *configPath = [self scriptConfigurationPath];
+    NSArray *scriptRepresentations = [self jsonScriptRepresentation:scripts];
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:scriptRepresentations options:NSJSONWritingPrettyPrinted error:nil];
+    [jsonData writeToFile:configPath atomically:YES];
+    [scriptRepresentations release];
+}
+
+- (NSMutableArray *) loadScripts
+{
+    NSString *configPath = [self scriptConfigurationPath];
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSMutableArray *scripts_ = [[NSMutableArray alloc] init];
+    if ([fileManager fileExistsAtPath:configPath])
     {
-        scripts = [[NSMutableArray alloc] init];
-        return YES;
+        NSData *jsonData = [NSData dataWithContentsOfFile:configPath];
+        NSArray *scriptRepresentations = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:nil];
+        for (NSDictionary *scriptRepresentation in scriptRepresentations)
+        {
+            NSString *path = [scriptRepresentation objectForKey:@"path"];
+            NSString *interpreterPath = [scriptRepresentation objectForKey:@"interpreterPath"];
+            NSString *name = [scriptRepresentation objectForKey:@"name"];
+            NSString *blockingString = [scriptRepresentation objectForKey:@"blocking"];
+            NSString *typeString = [scriptRepresentation objectForKey:@"type"];
+            
+            BOOL blocking = NO;
+            if ([blockingString isEqualToString:@"YES"])
+            {
+                blocking = YES;
+            }
+            
+            gRPCScriptType scriptType;
+            if ([typeString isEqualToString:@"gRPCImageTool"])
+            {
+                scriptType = gRPCImageTool;
+            }
+            else if ([typeString isEqualToString:@"gRPCROITool"])
+            {
+                scriptType = gRPCROITool;
+            }
+            else if ([typeString isEqualToString:@"gRPCDatabaseTool"])
+            {
+                scriptType = gRPCDatabaseTool;
+            }
+            else
+            {
+                scriptType = gRPCVolumeRenderTool;
+            }
+            
+            gRPCScript *script = [[gRPCScript alloc] initWithURL:[NSURL fileURLWithPath:path] interpreter:[NSURL fileURLWithPath:interpreterPath] name:name type:scriptType isBlocking:blocking];
+            [script setType:scriptType];
+            [scripts_ addObject:script];
+        }
     }
-    
-    if (scripts)
-        [scripts release];
-    
-    NSData *archivedData = [NSData dataWithContentsOfURL:[self databaseFile]];
-    
-    NSError *error;
-    NSSet *classes = [NSSet setWithObjects:[NSMutableArray class], [gRPCScript class], nil];
-    scripts = [[NSKeyedUnarchiver unarchivedObjectOfClasses:classes fromData:archivedData error:&error] retain];
-    if (!scripts)
-    {
-        gRPCLogError(@"Could not load scripts: %@", error);
-        return NO;
-    }
-    
-    return YES;
+    return scripts_;
 }
 
 #pragma mark -
@@ -149,8 +209,13 @@
 
 - (void) unregisterScript: (gRPCScript *)script
 {
+    if (![scripts containsObject:script])
+    {
+        gRPCLogDefault(@"Tried to remove invalid script");
+        return;
+    }
     [scripts removeObject:script];
-    [self saveScripts];
+    [self saveScripts:scripts];
 }
 
 - (void) unregisterScripts:(NSArray *)scripts
@@ -167,9 +232,9 @@
    NSString *name = [gRPCScript detectNameOfScriptAtURL:url];
     
     // Add to the storage - there are many defaults that can be later changed by the user.
-    gRPCScript *script = [[gRPCScript alloc] initWithURL:url interpreter:[NSURL fileURLWithPath:@"/Users/adminmblackledge/opt/miniconda3/bin/python"] name:name type:gRPCImageTool isBlocking:NO];
+    gRPCScript *script = [[gRPCScript alloc] initWithURL:url interpreter:[NSURL fileURLWithPath:@"/usr/bin/python"] name:name type:gRPCImageTool isBlocking:NO];
     [scripts addObject:script];
-    [self saveScripts];
+    [self saveScripts:scripts];
 }
 
 # pragma mark -
@@ -188,7 +253,7 @@
         long row = [scriptTable rowForView:sender];
         gRPCScript *script = [scripts objectAtIndex:row];
         [script setInterpreter:url];
-        [self saveScripts];
+        [self saveScripts:scripts];
         [scriptTable reloadData];
     }
 }
@@ -199,7 +264,7 @@
     long row = [scriptTable rowForView:sender];
     gRPCScript *script = [scripts objectAtIndex:row];
     [script setBlocking:value>0?YES:NO];
-    [self saveScripts];
+    [self saveScripts:scripts];
     [scriptTable reloadData];
 }
 
@@ -224,7 +289,7 @@
         default:
             gRPCLogError(@"Incorrect button value encountered.");
     }
-    [self saveScripts];
+    [self saveScripts:scripts];
     [scriptTable reloadData];
 }
 
@@ -234,25 +299,13 @@
     long row = [scriptTable rowForView:sender];
     gRPCScript *script = [scripts objectAtIndex:row];
     [script setName:name];
-    [self saveScripts];
+    [self saveScripts:scripts];
     [scriptTable reloadData];
 }
 
 - (NSInteger) numberOfRowsInTableView:(NSTableView *)tableView
 {
     return [scripts count];
-}
-
-- (void) windowDidLoad
-{
-    [super windowDidLoad];
-    [scriptTable setUsesAutomaticRowHeights:NO];
-    [scriptTable setRowHeight:25.0];
-}
-
-- (CGFloat) tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row
-{
-    return 25.0;
 }
 
 - (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row

@@ -136,10 +136,10 @@
  * @abstract
  * Save current scripts to file
  *
- * @return
- * A boolean indicating the success or failure of script saving.
+ * @param scripts
+ * An NSArray of gRPCScript instances
  */
-- (BOOL) saveScripts;
+- (void) saveScripts:(NSArray *) scripts;
 
 # pragma mark -
 # pragma mark Script window methods
