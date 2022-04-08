@@ -16,3 +16,6 @@ grpc/
 # Any generated protobuf files
 protos/cpp/
 protos/python/
+
+# Any Python cache files
+__pycache__

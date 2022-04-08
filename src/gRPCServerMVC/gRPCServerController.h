@@ -5,6 +5,8 @@
 @interface gRPCServerController : NSWindowController <NSWindowDelegate, NSTableViewDataSource, NSTableViewDelegate>
 {
     NSMutableArray *servers;
+    NSURL *storageURL;
+    
     IBOutlet NSTextField *status;
     IBOutlet NSTableView *serverTable;
     
@@ -16,9 +18,23 @@
     IBOutlet NSButton *newServerCancelButton;
 }
 
+# pragma mark -
+# pragma mark initializer
+/*!
+ * @abstract
+ * Initialise the class with a URL to which the database file will be saved.
+ *
+ * @param url
+ * The url in which to store the database.
+ *
+ * @return
+ * A reference to the create instance of the gRPCScriptManager.
+ */
+- (id)initWithStorageURL:(NSURL *)url;
+
 - (BOOL) isValidIPAddress:(NSString *)address andPort:(NSInteger) port;
 
-+ (NSString *)serverConfigurationPath;
+- (NSString *)serverConfigurationPath;
 - (void)saveServers:(NSArray *)servers;
 - (NSMutableArray *)loadServers;
 - (BOOL)containsServerWithIPAddress:(NSString *)address andPort:(NSInteger)port;

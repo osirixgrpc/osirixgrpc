@@ -24,10 +24,9 @@
     return bOK;
 }
 
-+ (NSString *) serverConfigurationPath
+- (NSString *) serverConfigurationPath
 {
-    NSString *pluginSupportDirectory = [gRPCPluginFilter pluginSupportDirectory];
-    return [pluginSupportDirectory stringByAppendingPathComponent:@"server_configs.json"];
+    return [[storageURL path] stringByAppendingPathComponent:@"server_configs.json"];
 }
 
 // Create a representation object of a server array that can be converted to JSON
@@ -51,7 +50,7 @@
 
 - (void) saveServers:(NSArray *) servers
 {
-    NSString *configPath = [gRPCServerController serverConfigurationPath];
+    NSString *configPath = [self serverConfigurationPath];
     NSArray *serverRepresentations = [self jsonServerRepresentation:servers];
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:serverRepresentations options:NSJSONWritingPrettyPrinted error:nil];
     [jsonData writeToFile:configPath atomically:YES];
@@ -60,7 +59,7 @@
 
 - (NSMutableArray *) loadServers
 {
-    NSString *configPath = [gRPCServerController serverConfigurationPath];
+    NSString *configPath = [self serverConfigurationPath];
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSMutableArray *servers_ = [[NSMutableArray alloc] init];
     if ([fileManager fileExistsAtPath:configPath])
@@ -139,13 +138,24 @@
     [super dealloc];
 }
 
-- (id) init
+- (id)initWithStorageURL:(NSURL *)url;
 {
     self = [super initWithWindowNibName:@"gRPCServerWindow"];
     if (!self) {
         gRPCLogError(@"Could not initialize server controller");
         return  nil;
     }
+    
+    storageURL = [url copy];
+    NSFileManager *manager = [NSFileManager defaultManager];
+    BOOL isDirectory;
+    BOOL fileExists = [manager fileExistsAtPath:[storageURL path] isDirectory:&isDirectory];
+    if (!fileExists || !isDirectory)
+    {
+        gRPCLogError(@"srageURL not available");
+        return nil;
+    }
+    
     servers = [self loadServers];
     return self;
 }

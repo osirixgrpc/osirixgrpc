@@ -43,10 +43,10 @@
     [self checkSupportDirectoryExists];
     
     // Start the script manager
-    scriptManager = [[gRPCScriptManager alloc] initWithStorageURL:[NSURL fileURLWithPath:[gRPCPluginFilter pluginSupportDirectory]]];
+    scriptController = [[gRPCScriptController alloc] initWithStorageURL:[NSURL fileURLWithPath:[gRPCPluginFilter pluginSupportDirectory]]];
     
     // Create the service controller and start a service.
-    serverController = [[gRPCServerController alloc] init];
+    serverController = [[gRPCServerController alloc] initWithStorageURL:[NSURL fileURLWithPath:[gRPCPluginFilter pluginSupportDirectory]]];
     
     // The toolbar controller will be used to control all interactions with the toolbar buttons (for starting user scripts)
     toolbarController = [[gRPCToolbarController alloc] init];
@@ -56,7 +56,7 @@
 {
     [serverController release];
     [toolbarController release];
-    [scriptManager release];
+    [scriptController release];
     [super dealloc];
 }
 
@@ -70,6 +70,10 @@
 {
     if ([menuName isEqualToString:@"Server Configuration"]) {
         [serverController showWindow:self];
+    }
+    
+    if ([menuName isEqualToString:@"Script Manager"]) {
+        [scriptController showWindow:self];
     }
 
     return 1;

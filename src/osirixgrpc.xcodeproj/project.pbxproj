@@ -465,8 +465,6 @@
 				8E700E9226610E0200FF1168 /* gRPCLog.m */,
 				8EB91ADB260DF2CA0034C16A /* gRPCPluginFilter.h */,
 				8EB91ADC260DF2CA0034C16A /* gRPCPluginFilter.mm */,
-				8EE2882226683D1400745DA0 /* gRPCScriptManager.h */,
-				8EE2882326683D1400745DA0 /* gRPCScriptManager.m */,
 				8EB91BB2260E00680034C16A /* gRPCToolbarController.h */,
 				8EB91BB3260E00680034C16A /* gRPCToolbarController.m */,
 				8EA37F3B262E3FB00025D217 /* gRPCUtilities.h */,
@@ -568,6 +566,8 @@
 		8EE9B197266D207500D887CC /* gRPCScriptMVC */ = {
 			isa = PBXGroup;
 			children = (
+				8EE2882226683D1400745DA0 /* gRPCScriptManager.h */,
+				8EE2882326683D1400745DA0 /* gRPCScriptManager.m */,
 				8E95FD4F26249C9800694A05 /* gRPCScriptController.h */,
 				8E95FD5026249C9800694A05 /* gRPCScriptController.m */,
 				8E7349D7266D83580050E26F /* gRPCScriptControllerInterpreterCellView.h */,

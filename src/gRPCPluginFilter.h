@@ -3,7 +3,7 @@
 
 #import "gRPCServerController.h"
 #import "gRPCToolbarController.h"
-#import "gRPCScriptManager.h"
+#import "gRPCScriptController.h"
 
 /*
  The core class for the plugin, and used to interface with OsiriX.
@@ -19,7 +19,7 @@
     
     gRPCServerController *serverController;
     gRPCToolbarController *toolbarController;
-    gRPCScriptManager *scriptManager;
+    gRPCScriptController *scriptController;
     
 }
 

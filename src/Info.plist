@@ -23,6 +23,7 @@
 	<key>MenuTitles</key>
 	<array>
 		<string>Server Configuration</string>
+		<string>Script Manager</string>
 	</array>
 	<key>NSPrincipalClass</key>
 	<string>gRPCPluginFilter</string>
