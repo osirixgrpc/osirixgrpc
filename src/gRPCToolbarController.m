@@ -1,13 +1,14 @@
 #import "gRPCToolbarController.h"
+#import "gRPCTaskController.h"
 
 @implementation gRPCToolbarController
 
-- (id) initWithScriptController:(gRPCScriptController *) scriptController_
+- (id) initWithScriptController:(gRPCScriptController *) scriptController_ andTaskController:(gRPCTaskController *) taskController_
 {
     if (self = [super init])
     {
         scriptController = [scriptController_ retain];
-        tasks = [[NSMutableArray alloc] init];
+        taskController = [taskController_ retain];
     }
     return self;
 }
@@ -15,7 +16,7 @@
 - (void) dealloc
 {
     [scriptController release];
-    [tasks release];
+    [taskController release];
     [super dealloc];
 }
 
@@ -167,19 +168,7 @@
     // Get the relevant variables
     NSString *scriptName = [item title];
     gRPCScript *script = [scriptController scriptWithName:scriptName];
-    NSURL *scriptURL = [script url];
-    NSURL *interpreterURL = [script interpreter];
-    BOOL blocking = [script blocking];
-    
-    NSTask * task = [[[NSTask alloc] init] autorelease];
-    [tasks addObject:task];
-    [task setExecutableURL:interpreterURL];
-    [task setArguments:@[[scriptURL path]]];
-    [task launch];
-    if (blocking)
-    {
-        [task waitUntilExit];
-    }
+    [taskController runScript:script];
 }
 
 @end

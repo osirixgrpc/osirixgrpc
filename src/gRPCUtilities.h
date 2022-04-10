@@ -62,6 +62,15 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSString *)selectFilePathWithExtension:(nullable NSString *)extension allowingDirectories:(BOOL)allowDirs allowingFiles:(BOOL)allowFiles;
 
 /**
+ * Select a file URL to save a file
+ *
+ * @param title The title of the save panel
+ *
+ * @return The file URL.  Nil if none found or user cancelled operation
+ */
++ (NSURL *)saveURLWithTitle:(nullable NSString *)title;
+
+/**
  * Read the contents of file at a specified file path
  *
  * @param filePath The file path to read

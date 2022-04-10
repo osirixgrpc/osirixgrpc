@@ -24,6 +24,7 @@
 	<array>
 		<string>Server Configuration</string>
 		<string>Script Manager</string>
+		<string>Script Console</string>
 	</array>
 	<key>NSPrincipalClass</key>
 	<string>gRPCPluginFilter</string>

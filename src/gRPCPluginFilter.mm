@@ -48,15 +48,19 @@
     // Create the service controller and start a service.
     serverController = [[gRPCServerController alloc] initWithStorageURL:[NSURL fileURLWithPath:[gRPCPluginFilter pluginSupportDirectory]]];
     
+    // Create the task contoller - will be used to run script processes
+    taskContoller = [[gRPCTaskController alloc] init];
+    
     // The toolbar controller will be used to control all interactions with the toolbar buttons (for starting user scripts)
-    toolbarController = [[gRPCToolbarController alloc] initWithScriptController:scriptController];
+    toolbarController = [[gRPCToolbarController alloc] initWithScriptController:scriptController andTaskController:taskContoller];
 }
 
 - (void) dealloc
 {
-    [serverController release];
-    [toolbarController release];
     [scriptController release];
+    [serverController release];
+    [taskContoller release];
+    [toolbarController release];
     [super dealloc];
 }
 
@@ -74,6 +78,10 @@
     
     if ([menuName isEqualToString:@"Script Manager"]) {
         [scriptController showWindow:self];
+    }
+    
+    if ([menuName isEqualToString:@"Script Console"]) {
+        [taskContoller showWindow:self];
     }
 
     return 1;

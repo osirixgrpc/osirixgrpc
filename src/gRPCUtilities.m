@@ -114,6 +114,25 @@
     return nil;
 }
 
++ (NSURL *)saveURLWithTitle:(nullable NSString *)title
+{
+    NSSavePanel *savePanel = [NSSavePanel savePanel];
+    [savePanel setCanCreateDirectories:YES];
+    [savePanel setCanSelectHiddenExtension:YES];
+    [savePanel setPrompt:@"save"];
+    if (title)
+    {
+        [savePanel setTitle:title];
+    }
+    NSModalResponse ok = [savePanel runModal];
+    if (ok == NSModalResponseOK)
+    {
+        NSURL *url = [savePanel URL];
+        return url;
+    }
+    return nil;
+}
+
 + (NSString *)readFileContentsAtPath:(NSString *)filePath
 {
     NSString* content = [NSString stringWithContentsOfFile:filePath
