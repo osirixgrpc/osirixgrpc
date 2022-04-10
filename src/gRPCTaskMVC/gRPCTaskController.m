@@ -3,7 +3,7 @@
 
 @implementation gRPCTaskController
 
-@synthesize textColor;
+@synthesize stdOutColor, stdErrColor, backgroundColor, consoleTextColor;
 
 - (id)init
 {
@@ -12,7 +12,10 @@
         gRPCLogError(@"Could not initialize task controller");
         return  nil;
     }
-    textColor = [NSColor greenColor];
+    stdOutColor = [NSColor greenColor];
+    stdErrColor = [NSColor redColor];
+    consoleTextColor = [NSColor whiteColor];
+    backgroundColor = [NSColor blackColor];
     
     return self;
 }
@@ -22,16 +25,17 @@
     [[self window] setLevel: NSStatusWindowLevel];
     [textView setEditable:NO];
     [textView setDrawsBackground:YES];
-    [textView setBackgroundColor:[NSColor blackColor]];
+    [textView setBackgroundColor:backgroundColor];
+    [infoLabel setStringValue:@""];
     [textView displayIfNeeded];
 }
 
-- (void) appendTextToView: (NSString *)text
+- (void) appendTextToView: (NSString *)text withColor:(NSColor *)color
 {
     int start = (int)[[textView textStorage] length];
     int len = (int)[text length];
     [[[textView textStorage] mutableString] appendString:text];
-    [textView setTextColor: textColor range: NSMakeRange(start, len)];
+    [textView setTextColor: color range: NSMakeRange(start, len)];
     [textView scrollToEndOfDocument:nil];
     [textView displayIfNeeded];
 }
@@ -46,13 +50,28 @@
     return dateString;
 }
 
-- (void) fileHandleDataAvailable:(id) sender
+- (void) stdOutDataAvailable:(id) sender
 {
     NSFileHandle *fileHandle = (NSFileHandle *)[sender object];
     NSData *data = [fileHandle availableData];
     if ([data length] > 0)
     {
-        [self appendTextToView:[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]];
+        [self appendTextToView:[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] withColor:stdOutColor];
+        [fileHandle waitForDataInBackgroundAndNotify];
+    }
+    else
+    {
+        gRPCLogError(@"EOF for handle");
+    }
+}
+
+- (void) stdErrDataAvailable:(id) sender
+{
+    NSFileHandle *fileHandle = (NSFileHandle *)[sender object];
+    NSData *data = [fileHandle availableData];
+    if ([data length] > 0)
+    {
+        [self appendTextToView:[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] withColor:stdErrColor];
         [fileHandle waitForDataInBackgroundAndNotify];
     }
     else
@@ -63,7 +82,7 @@
 
 - (void) taskTerminated:(id) sender
 {
-    [self appendTextToView:[NSString stringWithFormat:@"\n%@\n\n", [self currentTimeString]]];
+    [self appendTextToView:[NSString stringWithFormat:@"Task finished: %@\n\n", [self currentTimeString]] withColor:consoleTextColor];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
@@ -97,22 +116,25 @@
     // Set up the stdout to print to screen
     NSFileHandle *fileHandleStdOut = [pipeStdOut fileHandleForReading];
     [fileHandleStdOut waitForDataInBackgroundAndNotify];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fileHandleDataAvailable:) name:NSFileHandleDataAvailableNotification object:fileHandleStdOut];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(stdOutDataAvailable:) name:NSFileHandleDataAvailableNotification object:fileHandleStdOut];
     
     // Set up the stderr to print to screen
     NSFileHandle *fileHandleStdErr = [pipeStdErr fileHandleForReading];
     [fileHandleStdErr waitForDataInBackgroundAndNotify];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fileHandleDataAvailable:) name:NSFileHandleDataAvailableNotification object:fileHandleStdErr];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(stdErrDataAvailable:) name:NSFileHandleDataAvailableNotification object:fileHandleStdErr];
     
     // Listen for when the task terminates
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(taskTerminated:) name:NSTaskDidTerminateNotification object:task];
+    
+    // Clear the previous stdout - is this a good feature?
+    [textView setString:@""];
     
     // Launch the task and wait if required.
     [task launch];
     
     // Append text to the view so we know this is a new session
     
-    [self appendTextToView:[NSString stringWithFormat:@"Starting task with file: %@\n%@\n", [scriptURL path], [self currentTimeString]]];
+    [self appendTextToView:[NSString stringWithFormat:@"Starting task with file: %@\n%@\n", [scriptURL path], [self currentTimeString]] withColor:consoleTextColor];
 
     
     if (blocking)

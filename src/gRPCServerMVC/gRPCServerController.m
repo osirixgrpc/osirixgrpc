@@ -167,17 +167,8 @@
 {
     // Can be used to perform any set-up of the window.
     [super windowDidLoad];
+    [status setStringValue:@""];
     [serverTable reloadData];
-}
-
-- (void) setWindowStatus:(NSString *) value
-{
-    [status setStringValue:value];
-}
-
-- (void) clearWindowStatus
-{
-    [self setWindowStatus:@" "];
 }
 
 - (void) removeServerConfig
@@ -190,7 +181,7 @@
     }
     [self removeServer:server];
     [serverTable reloadData];
-    [self setWindowStatus:@"Removed Server"];
+    [status setStringValue:@"Removed Server"];
 }
 
 - (void) addServerConfig
@@ -202,8 +193,13 @@
     [newServerSheet makeFirstResponder:newServerOKButton];
     
     // Control is given to the new server sheet
-    [[self window] beginSheet: newServerSheet completionHandler:nil];
-    [self setWindowStatus:@"Added Server"];
+    [[self window] beginSheet: newServerSheet completionHandler:^(NSModalResponse returnCode) {
+        if (returnCode == NSModalResponseOK)
+        {
+            [status setStringValue:@"Added Server"];
+        }
+    }];
+    
 }
 
 - (IBAction) addRemoveServerConfig:(id) sender
@@ -247,7 +243,7 @@
         else
         {
             gRPCLogDefault(@"Could not starte server. Error: %@", err)
-            [self setWindowStatus:[NSString stringWithFormat:@"%@", [err localizedDescription]]];
+            [status setStringValue:[NSString stringWithFormat:@"%@", [err localizedDescription]]];
         }
     }
 }
@@ -311,11 +307,6 @@
 # pragma mark -
 # pragma mark Modal Sheet Actions
 
-- (void) setNewServerStatus:(NSString *) status
-{
-    [newServerStatus setStringValue:status];
-}
-
 - (IBAction) okPushed:(id) sender
 {
     // Perform checks of the user values
@@ -324,14 +315,14 @@
     if (![self isValidIPAddress:ipAddress andPort:port])
     {
         [self shakeWindow: newServerSheet];
-        [self setNewServerStatus:@"address must have form: '127.0.0.1:1234'"];
+        [newServerStatus setStringValue:@"Allowed range: 1024->65535"];
         return;
     }
     
     if ([self containsServerWithIPAddress:ipAddress andPort:port])
     {
         [self shakeWindow: newServerSheet];
-        [self setNewServerStatus:@"address already contained"];
+        [newServerStatus setStringValue:@"Address already contained"];
         return;
     }
     
@@ -339,13 +330,13 @@
     gRPCServer *server = [[gRPCServer alloc] initWithIPAddress:ipAddress andPort:port];
     [self addServer:server];
     [server release];
-    [[self window] endSheet:newServerSheet];
+    [[self window] endSheet:newServerSheet returnCode:NSModalResponseOK];
     [serverTable reloadData];
 }
 
 - (IBAction) cancelPushed:(id) sender
 {
-    [[self window] endSheet:newServerSheet];
+    [[self window] endSheet:newServerSheet returnCode:NSModalResponseCancel];
 }
 
 - (void) shakeWindow:(NSWindow *) window

@@ -10,7 +10,10 @@ NS_ASSUME_NONNULL_BEGIN
     IBOutlet NSTextField *infoLabel;
 }
 
-@property (retain, nonatomic) NSColor * textColor;
+@property (retain, nonatomic) NSColor * stdOutColor;
+@property (retain, nonatomic) NSColor * stdErrColor;
+@property (retain, nonatomic) NSColor * consoleTextColor;
+@property (retain, nonatomic) NSColor * backgroundColor;
 
 - (void)runScript:(gRPCScript *)script;
 

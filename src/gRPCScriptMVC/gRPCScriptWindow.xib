@@ -22,47 +22,15 @@
                 <rect key="frame" x="0.0" y="0.0" width="655" height="380"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SYy-3A-0JG">
-                        <rect key="frame" x="18" y="35" width="248" height="16"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <textFieldCell key="cell" lineBreakMode="clipping" alignment="left" title="Please restart for changes to take effect" id="hXo-EC-KI6">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kd8-i5-8Kj">
-                        <rect key="frame" x="18" y="14" width="302" height="16"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <textFieldCell key="cell" lineBreakMode="clipping" alignment="left" title="Scripts must be used for research purposes only!" id="c0f-6g-xZj">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
-                    <segmentedControl verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="R9y-nu-XR9">
-                        <rect key="frame" x="565" y="28" width="71" height="23"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                        <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedRounded" trackingMode="momentary" id="dgL-jU-CBM">
-                            <font key="font" metaFont="system"/>
-                            <segments>
-                                <segment image="NSRemoveTemplate" width="32"/>
-                                <segment image="NSAddTemplate" width="32" tag="1"/>
-                            </segments>
-                            <connections>
-                                <action selector="addRemoveScript:" target="-2" id="bzl-4H-hGT"/>
-                            </connections>
-                        </segmentedCell>
-                    </segmentedControl>
                     <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NGO-Ow-qkp">
-                        <rect key="frame" x="20" y="80" width="616" height="301"/>
+                        <rect key="frame" x="20" y="70" width="616" height="311"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <clipView key="contentView" id="NNv-XB-lP0">
-                            <rect key="frame" x="1" y="0.0" width="614" height="300"/>
+                            <rect key="frame" x="1" y="0.0" width="614" height="310"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" tableStyle="fullWidth" alternatingRowBackgroundColors="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="8eR-6P-FED" viewBased="YES" id="azt-Ad-EjX">
-                                    <rect key="frame" x="0.0" y="0.0" width="614" height="275"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="614" height="285"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <size key="intercellSpacing" width="3" height="2"/>
                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -87,7 +55,7 @@
                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ETE-Pw-Na7">
                                                             <rect key="frame" x="0.0" y="0.0" width="116" height="16"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                                            <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" title="Script Name" id="8jp-f4-U0S">
+                                                            <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" sendsActionOnEndEditing="YES" title="Script Name" id="8jp-f4-U0S">
                                                                 <font key="font" usesAppearanceFont="YES"/>
                                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -306,6 +274,38 @@
                             <autoresizingMask key="autoresizingMask"/>
                         </tableHeaderView>
                     </scrollView>
+                    <segmentedControl verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="R9y-nu-XR9">
+                        <rect key="frame" x="564" y="19" width="71" height="23"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                        <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedRounded" trackingMode="momentary" id="dgL-jU-CBM">
+                            <font key="font" metaFont="system"/>
+                            <segments>
+                                <segment image="NSRemoveTemplate" width="32"/>
+                                <segment image="NSAddTemplate" width="32" tag="1"/>
+                            </segments>
+                            <connections>
+                                <action selector="addRemoveScript:" target="-2" id="bzl-4H-hGT"/>
+                            </connections>
+                        </segmentedCell>
+                    </segmentedControl>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SYy-3A-0JG">
+                        <rect key="frame" x="18" y="41" width="248" height="16"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <textFieldCell key="cell" lineBreakMode="clipping" alignment="left" title="Please restart for changes to take effect" id="hXo-EC-KI6">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kd8-i5-8Kj">
+                        <rect key="frame" x="18" y="20" width="302" height="16"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <textFieldCell key="cell" lineBreakMode="clipping" alignment="left" title="Scripts must be used for research purposes only!" id="c0f-6g-xZj">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
                 </subviews>
             </view>
             <point key="canvasLocation" x="-409.5" y="150"/>
