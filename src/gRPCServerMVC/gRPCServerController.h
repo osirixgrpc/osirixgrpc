@@ -41,6 +41,7 @@
 
 - (IBAction) addRemoveServerConfig:(id) sender;
 - (IBAction) startStopServer:(id) sender;
+- (IBAction) reorderServers:(id) sender;
 
 # pragma mark modal sheet actions
 - (IBAction) okPushed:(id) sender;

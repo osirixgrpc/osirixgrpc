@@ -76,7 +76,7 @@
         [serverController showWindow:self];
     }
     
-    if ([menuName isEqualToString:@"Script Manager"]) {
+    if ([menuName isEqualToString:@"Script Management"]) {
         [scriptController showWindow:self];
     }
     

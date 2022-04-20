@@ -33,9 +33,9 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mSX-nv-cqU">
-                        <rect key="frame" x="99" y="23" width="288" height="19"/>
+                        <rect key="frame" x="178" y="23" width="209" height="19"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" alignment="center" title="..." id="3La-YM-GZJ">
+                        <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" alignment="left" title="..." id="3La-YM-GZJ">
                             <font key="font" metaFont="smallSystem"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -183,6 +183,20 @@
                             <action selector="startStopServer:" target="-2" id="eAK-iw-UcK"/>
                         </connections>
                     </segmentedControl>
+                    <segmentedControl verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2UZ-k7-6mf">
+                        <rect key="frame" x="101" y="19" width="71" height="23"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedRounded" trackingMode="momentary" id="KSP-Pa-N5o">
+                            <font key="font" metaFont="system"/>
+                            <segments>
+                                <segment image="NSTouchBarGoUpTemplate" width="32"/>
+                                <segment image="NSTouchBarGoDownTemplate" width="32" tag="1"/>
+                            </segments>
+                        </segmentedCell>
+                        <connections>
+                            <action selector="reorderServers:" target="-2" id="sIH-4I-dfo"/>
+                        </connections>
+                    </segmentedControl>
                 </subviews>
             </view>
             <point key="canvasLocation" x="-17" y="83.5"/>
@@ -280,6 +294,8 @@ Gw
         <image name="NSAddTemplate" width="11" height="11"/>
         <image name="NSRemoveTemplate" width="11" height="11"/>
         <image name="NSStatusAvailable" width="16" height="16"/>
+        <image name="NSTouchBarGoDownTemplate" width="16" height="30"/>
+        <image name="NSTouchBarGoUpTemplate" width="16" height="30"/>
         <image name="NSTouchBarPlayTemplate" width="14" height="30"/>
         <image name="NSTouchBarRecordStopTemplate" width="12" height="30"/>
     </resources>

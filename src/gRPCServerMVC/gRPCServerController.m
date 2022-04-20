@@ -224,6 +224,7 @@
     if ([server active])
     {
         [server shutdown];
+        [self saveServers:servers];
         [serverTable reloadData];
     }
 }
@@ -239,6 +240,7 @@
         if (ok)
         {
             [serverTable reloadData];
+            [self saveServers:servers];
         }
         else
         {
@@ -257,6 +259,54 @@
             break;
         case 1:
             [self startServer];
+            break;
+        default:
+            break;
+    }
+}
+
+- (void) moveObjectInArray:(NSMutableArray *) array atIndex:(NSUInteger)fromIndex toIndex:(NSUInteger)toIndex
+{
+    id object = [array objectAtIndex:fromIndex];
+    [array removeObjectAtIndex:fromIndex];
+    [array insertObject:object atIndex:toIndex];
+}
+
+- (void) moveServerUp
+{
+    NSInteger selectedRow = [serverTable selectedRow];
+    NSInteger newRow = selectedRow + 1;
+    if (newRow < [servers count])
+    {
+        [self moveObjectInArray:servers atIndex:selectedRow toIndex:newRow];
+        [serverTable reloadData];
+        [serverTable selectRowIndexes:[NSIndexSet indexSetWithIndex:newRow] byExtendingSelection:NO];
+        [self saveServers:servers];
+    }
+}
+
+- (void) moveServerDown
+{
+    NSInteger selectedRow = [serverTable selectedRow];
+    NSInteger newRow = selectedRow - 1;
+    if (newRow >= 0)
+    {
+        [self moveObjectInArray:servers atIndex:selectedRow toIndex:newRow];
+        [serverTable reloadData];
+        [serverTable selectRowIndexes:[NSIndexSet indexSetWithIndex:newRow] byExtendingSelection:NO];
+        [self saveServers:servers];
+    }
+}
+
+- (IBAction) reorderServers:(id) sender
+{
+    NSSegmentedCell *cell = (NSSegmentedCell *)sender;
+    switch ([cell selectedSegment]) {
+        case 0:
+            [self moveServerDown];
+            break;
+        case 1:
+            [self moveServerUp];
             break;
         default:
             break;
