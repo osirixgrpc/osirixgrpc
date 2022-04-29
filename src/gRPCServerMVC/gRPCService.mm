@@ -75,6 +75,7 @@ gRPCServiceMessageImplementation(ROICentroid, ROI, ROICentroidResponse, gRPCROID
 gRPCServiceMessageImplementation(ROIRotate, ROIRotateRequest, Response, gRPCROIDelegate)
 gRPCServiceMessageImplementation(ROIMove, ROIMoveRequest, Response, gRPCROIDelegate)
 gRPCServiceMessageImplementation(ROIPix, ROI, ROIPixResponse, gRPCROIDelegate)
+gRPCServiceMessageImplementation(ROIIType, ROI, ROIITypeResponse, gRPCROIDelegate)
 gRPCServiceMessageImplementation(ROIName, ROI, ROINameResponse, gRPCROIDelegate)
 gRPCServiceMessageImplementation(ROISetName, ROISetNameRequest, Response, gRPCROIDelegate)
 gRPCServiceMessageImplementation(ROIColor, ROI, ROIColorResponse, gRPCROIDelegate)

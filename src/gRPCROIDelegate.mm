@@ -166,6 +166,26 @@
     
 }
 
++ (void) ROIIType:(const osirixgrpc::ROI *) request :(osirixgrpc::ROIITypeResponse *) response :(gRPCCache *) cache
+{
+    NSString *uid = stringFromGRPCString(request->osirixrpc_uid());
+    
+    ROI *roi = [cache objectForUID:uid];
+    
+    if (roi)
+    {
+        int itype = (int)[roi type];
+        response->set_itype(itype);
+        response->mutable_status()->set_status(1);
+    }
+    else
+    {
+        response->mutable_status()->set_status(0);
+        response->mutable_status()->set_message("No ROI cached");
+    }
+    
+}
+
 + (void) ROIName:(const osirixgrpc::ROI *) request :(osirixgrpc::ROINameResponse *) response :(gRPCCache *) cache
 {
     NSString *uid = stringFromGRPCString(request->osirixrpc_uid());

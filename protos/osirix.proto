@@ -32,6 +32,7 @@ service OsiriXService {
   rpc ROIMove (ROIMoveRequest) returns (Response) {}
   rpc ROIPix (ROI) returns (ROIPixResponse) {}
   rpc ROIName (ROI) returns (ROINameResponse) {}
+  rpc ROIIType (ROI) returns (ROIITypeResponse) {}
   rpc ROISetName (ROISetNameRequest) returns (Response) {}
   rpc ROIColor (ROI) returns (ROIColorResponse) {}
   rpc ROISetColor (ROISetColorRequest) returns (Response) {}

@@ -54,6 +54,10 @@ class TestROI(GrpcTest):
 		response = self.stub.ROIPix(self.roi)
 		self.assertEqual(response.status.status, 1)
 
+	def testROIIType(self):
+		response = self.stub.ROIIType(self.roi)
+		self.assertEqual(response.status.status, 1)
+
 	def testROIName(self):
 		response = self.stub.ROIName(self.roi)
 		self.assertEqual(response.status.status, 1)

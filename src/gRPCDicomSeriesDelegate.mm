@@ -36,13 +36,21 @@
     if (series)
     {
         DicomSeries *series_ = [series previousSeries];
-        NSString *seriesUID = [cache uidForObject:series_];
-        if (!seriesUID)
+        if (!series_)
         {
-            seriesUID = [cache addObject:series_];
+            response->mutable_status()->set_status(0);
+            response->mutable_status()->set_message("No previous series");
         }
-        response->mutable_previous_series()->set_osirixrpc_uid([seriesUID UTF8String]);
-        response->mutable_status()->set_status(1);
+        else
+        {
+            NSString *seriesUID = [cache uidForObject:series_];
+            if (!seriesUID)
+            {
+                seriesUID = [cache addObject:series_];
+            }
+            response->mutable_previous_series()->set_osirixrpc_uid([seriesUID UTF8String]);
+            response->mutable_status()->set_status(1);
+        }
     }
     else
     {
@@ -61,13 +69,21 @@
     if (series)
     {
         DicomSeries *series_ = [series nextSeries];
-        NSString *seriesUID = [cache uidForObject:series_];
-        if (!seriesUID)
+        if (!series_)
         {
-            seriesUID = [cache addObject:series_];
+            response->mutable_status()->set_status(0);
+            response->mutable_status()->set_message("No next series");
         }
-        response->mutable_next_series()->set_osirixrpc_uid([seriesUID UTF8String]);
-        response->mutable_status()->set_status(1);
+        else
+        {
+            NSString *seriesUID = [cache uidForObject:series_];
+            if (!seriesUID)
+            {
+                seriesUID = [cache addObject:series_];
+            }
+            response->mutable_next_series()->set_osirixrpc_uid([seriesUID UTF8String]);
+            response->mutable_status()->set_status(1);
+        }
     }
     else
     {

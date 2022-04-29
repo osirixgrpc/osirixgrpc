@@ -53,6 +53,11 @@ message ROIPointsResponse{
 	repeated Point2D points = 2;
 }
 
+message ROIITypeResponse{
+	Status status = 1;
+	int32 itype = 2;
+}
+
 // Message requests
 message ROIRotateRequest{
 	ROI roi = 1;

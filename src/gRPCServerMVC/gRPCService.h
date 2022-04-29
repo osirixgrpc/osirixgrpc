@@ -97,6 +97,7 @@ private:
     gRPCServiceMessageDeclaration(ROIRotate, ROIRotateRequest, Response)
     gRPCServiceMessageDeclaration(ROIMove, ROIMoveRequest, Response)
     gRPCServiceMessageDeclaration(ROIPix, ROI, ROIPixResponse)
+    gRPCServiceMessageDeclaration(ROIIType, ROI, ROIITypeResponse)
     gRPCServiceMessageDeclaration(ROIName, ROI, ROINameResponse)
     gRPCServiceMessageDeclaration(ROISetName, ROISetNameRequest, Response)
     gRPCServiceMessageDeclaration(ROIColor, ROI, ROIColorResponse)
