@@ -141,6 +141,7 @@ gRPCServiceMessageImplementation(DicomSeriesSeriesDescription, DicomSeries, Dico
 gRPCServiceMessageImplementation(DicomSeriesModality, DicomSeries, DicomSeriesModalityResponse, gRPCDicomSeriesDelegate)
 gRPCServiceMessageImplementation(DicomSeriesName, DicomSeries, DicomSeriesNameResponse, gRPCDicomSeriesDelegate)
 gRPCServiceMessageImplementation(DicomSeriesDate, DicomSeries, DicomSeriesDateResponse, gRPCDicomSeriesDelegate)
+gRPCServiceMessageImplementation(DicomSeriesNumberOfImages, DicomSeries, DicomSeriesNumberOfImagesResponse, gRPCDicomSeriesDelegate)
 
 // DicomStudy messages
 gRPCServiceMessageImplementation(DicomStudyPaths, DicomStudy, DicomStudyPathsResponse, gRPCDicomStudyDelegate)

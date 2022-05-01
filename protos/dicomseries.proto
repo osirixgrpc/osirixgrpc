@@ -61,6 +61,12 @@ message DicomSeriesNameResponse{
 	string name = 2;
 }
 
+
+message DicomSeriesNumberOfImagesResponse{
+	Status status = 1;
+	int32 number_of_images = 2;
+}
+
 message DicomSeriesDateResponse{
 	Status status = 1;
  	int32 year = 2;

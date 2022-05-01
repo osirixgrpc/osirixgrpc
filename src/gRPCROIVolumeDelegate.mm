@@ -69,9 +69,9 @@
     
     if (rv)
     {
-        response->set_r((int) [rv red] / 256);
-        response->set_g((int) [rv green] / 256);
-        response->set_b((int) [rv blue] / 256);
+        response->set_r([rv red]);
+        response->set_g([rv green]);
+        response->set_b([rv blue]);
         response->mutable_status()->set_status(1);
     }
     else
@@ -90,9 +90,9 @@
     
     if (rv)
     {
-        [rv setRed:(float) request->r() * 256];
-        [rv setGreen:(float) request->g() * 256];
-        [rv setBlue:(float) request->b() * 256];
+        [rv setRed:(float) request->r()];
+        [rv setGreen:(float) request->g()];
+        [rv setBlue:(float) request->b()];
         response->mutable_status()->set_status(1);
     }
     else

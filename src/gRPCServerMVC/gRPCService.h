@@ -163,6 +163,7 @@ private:
     gRPCServiceMessageDeclaration(DicomSeriesModality, DicomSeries, DicomSeriesModalityResponse)
     gRPCServiceMessageDeclaration(DicomSeriesName, DicomSeries, DicomSeriesNameResponse)
     gRPCServiceMessageDeclaration(DicomSeriesDate, DicomSeries, DicomSeriesDateResponse)
+    gRPCServiceMessageDeclaration(DicomSeriesNumberOfImages, DicomSeries, DicomSeriesNumberOfImagesResponse)
     
     // DicomStudy messages
     gRPCServiceMessageDeclaration(DicomStudyPaths, DicomStudy, DicomStudyPathsResponse)

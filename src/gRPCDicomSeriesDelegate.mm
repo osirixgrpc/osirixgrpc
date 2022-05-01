@@ -284,6 +284,25 @@
     
 }
 
++ (void) DicomSeriesNumberOfImages:(const osirixgrpc::DicomSeries *) request :(osirixgrpc::DicomSeriesNumberOfImagesResponse *) response :(gRPCCache *)cache
+{
+    NSString *uid = stringFromGRPCString(request->osirixrpc_uid());
+    
+    DicomSeries *series = [cache objectForUID:uid];
+    
+    if (series)
+    {
+        NSNumber *nimages = [series numberOfImages];
+        response->set_number_of_images([nimages intValue]);
+        response->mutable_status()->set_status(1);
+    }
+    else
+    {
+        response->mutable_status()->set_status(0);
+        response->mutable_status()->set_message("No DicomSeries cached");
+    }
+}
+
 + (void) DicomSeriesDate:(const osirixgrpc::DicomSeries *) request :(osirixgrpc::DicomSeriesDateResponse *) response :(gRPCCache *)cache
 {
     NSString *uid = stringFromGRPCString(request->osirixrpc_uid());

@@ -18,9 +18,9 @@ message ROIVolumeVolumeResponse{
 
 message ROIVolumeColorResponse{
 	Status status = 1;
-	int32 r = 2;
-	int32 g = 3;
-	int32 b = 4;
+	float r = 2;
+	float g = 3;
+	float b = 4;
 }
 
 message ROIVolumeOpacityResponse{
@@ -52,9 +52,9 @@ message ROIVolumeSetTextureRequest{
 
 message ROIVolumeSetColorRequest{
 	ROIVolume roi = 1;
-	int32 r = 2;
-	int32 g = 3;
-	int32 b = 4;
+	float r = 2;
+	float g = 3;
+	float b = 4;
 }
 
 message ROIVolumeSetOpacityRequest{

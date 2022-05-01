@@ -15,5 +15,6 @@ delegateDeclaration(DicomSeriesSeriesDescription, DicomSeries, DicomSeriesSeries
 delegateDeclaration(DicomSeriesModality, DicomSeries, DicomSeriesModalityResponse)
 delegateDeclaration(DicomSeriesName, DicomSeries, DicomSeriesNameResponse)
 delegateDeclaration(DicomSeriesDate, DicomSeries, DicomSeriesDateResponse)
+delegateDeclaration(DicomSeriesNumberOfImages, DicomSeries, DicomSeriesNumberOfImagesResponse)
 
 @end

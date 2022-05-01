@@ -141,6 +141,7 @@ service OsiriXService {
   rpc DicomSeriesModality (DicomSeries) returns (DicomSeriesModalityResponse) {}
   rpc DicomSeriesName (DicomSeries) returns (DicomSeriesNameResponse) {}
   rpc DicomSeriesDate (DicomSeries) returns (DicomSeriesDateResponse) {}
+  rpc DicomSeriesNumberOfImages (DicomSeries) returns (DicomSeriesNumberOfImagesResponse) {}
 
   // DicomStudy messages
   rpc DicomStudyPaths (DicomStudy) returns (DicomStudyPathsResponse) {}
