@@ -53,9 +53,8 @@ service OsiriXService {
   rpc ROIVolumeSetOpacity(ROIVolumeSetOpacityRequest) returns (Response) {}
   rpc ROIVolumeFactor(ROIVolume) returns (ROIVolumeFactorResponse) {}
   rpc ROIVolumeSetFactor(ROIVolumeSetFactorRequest) returns (Response) {}
-  rpc ROIVolumeVisible(ROIVolume) returns (ROIVolumeVisibleResponse) {}
-  rpc ROIVolumeSetVisible(ROIVolumeSetVisibleRequest) returns (Response) {}
   rpc ROIVolumeName(ROIVolume) returns (ROIVolumeNameResponse) {}
+  rpc ROIVolumeVisible (ROIVolume) returns (ROIVolumeVisibleResponse) {}
 
   // DCMPix messages
   rpc DCMPixConvertToRGB (DCMPixConvertToRGBRequest) returns (Response) {}
@@ -86,6 +85,9 @@ service OsiriXService {
   rpc VRControllerSetRenderingMode (VRControllerSetRenderingModeRequest) returns (Response) {}
   rpc VRControllerWLWW (VRController) returns (VRControllerWLWWResponse) {}
   rpc VRControllerSetWLWW (VRControllerSetWLWWRequest) returns (Response) {}
+  rpc VRControllerHideROIVolume (VRControllerHideROIVolumeRequest) returns (Response) {}
+  rpc VRControllerDisplayROIVolume (VRControllerDisplayROIVolumeRequest) returns (Response) {}
+  rpc VRControllerNeedsDisplayUpdate (VRController) returns (Response) {}
 
   // ViewerController messages
   rpc ViewerControllerCloseViewer (ViewerController) returns (Response) {}

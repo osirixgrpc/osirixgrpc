@@ -33,6 +33,10 @@ class TestVRController(GrpcTest):
 		response = self.stub.VRControllerROIVolumes(self.vr_controller)
 		self.assertEqual(response.status.status, 1)
 
+	def testVRControllerNeedsDisplayUpdate(self):
+		response = self.stub.VRControllerNeedsDisplayUpdate(self.vr_controller)
+		self.assertEqual(response.status.status, 1)
+
 	def testVRControllerRenderingMode(self):
 		response = self.stub.VRControllerRenderingMode(self.vr_controller)
 		self.assertEqual(response.status.status, 1)

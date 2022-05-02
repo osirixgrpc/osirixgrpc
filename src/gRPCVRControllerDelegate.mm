@@ -213,4 +213,80 @@
     }
 }
 
++ (void) VRControllerHideROIVolume:(const osirixgrpc::VRControllerHideROIVolumeRequest *) request :(osirixgrpc::Response *) response :(gRPCCache *) cache
+{
+    NSString *uid = stringFromGRPCString(request->vr_controller().osirixrpc_uid());
+    
+    VRController *vrc = [cache objectForUID:uid];
+    
+    if (vrc)
+    {
+        NSString *roiuid = stringFromGRPCString(request->roi_volume().osirixrpc_uid());
+        ROIVolume *roi = [cache objectForUID:roiuid];
+        if (roi)
+        {
+            [vrc hideROIVolume:roi];
+            [roi setVisible:FALSE];
+            response->mutable_status()->set_status(1);
+        }
+        else
+        {
+            response->mutable_status()->set_status(0);
+            response->mutable_status()->set_message("No ROIVolume cached");
+        }
+    }
+    else
+    {
+        response->mutable_status()->set_status(0);
+        response->mutable_status()->set_message("No VRController cached");
+    }
+}
+
++ (void) VRControllerDisplayROIVolume:(const osirixgrpc::VRControllerDisplayROIVolumeRequest *) request :(osirixgrpc::Response *) response :(gRPCCache *) cache
+{
+    NSString *uid = stringFromGRPCString(request->vr_controller().osirixrpc_uid());
+    
+    VRController *vrc = [cache objectForUID:uid];
+    
+    if (vrc)
+    {
+        NSString *roiuid = stringFromGRPCString(request->roi_volume().osirixrpc_uid());
+        ROIVolume *roi = [cache objectForUID:roiuid];
+        if (roi)
+        {
+            [vrc displayROIVolume:roi];
+            [roi setVisible:TRUE];
+            response->mutable_status()->set_status(1);
+        }
+        else
+        {
+            response->mutable_status()->set_status(0);
+            response->mutable_status()->set_message("No ROIVolume cached");
+        }
+    }
+    else
+    {
+        response->mutable_status()->set_status(0);
+        response->mutable_status()->set_message("No VRController cached");
+    }
+}
+
++ (void) VRControllerNeedsDisplayUpdate:(const osirixgrpc::VRController *) request :(osirixgrpc::Response *) response :(gRPCCache *) cache
+{
+    NSString *uid = stringFromGRPCString(request->osirixrpc_uid());
+    
+    VRController *vrc = [cache objectForUID:uid];
+    
+    if (vrc)
+    {
+        [[vrc view] display];
+        response->mutable_status()->set_status(1);
+    }
+    else
+    {
+        response->mutable_status()->set_status(0);
+        response->mutable_status()->set_message("No VRController cached");
+    }
+}
+
 @end

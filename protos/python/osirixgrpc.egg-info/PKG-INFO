@@ -1,0 +1,13 @@
+Metadata-Version: 2.1
+Name: osirixgrpc
+Version: 0.0.0
+Summary: Python protobuf definitions for the osirixgrpc project
+Home-page: https://github.com/osirixgrpc/osirixgrpc/tree/main/protos/python
+Author: Matthew D Blackledge
+Author-email: matthew.blackledge@icr.ac.uk
+License: BSD 3-clause
+Platform: UNKNOWN
+License-File: LICENSE
+
+UNKNOWN
+

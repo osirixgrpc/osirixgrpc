@@ -66,8 +66,3 @@ message ROIVolumeSetFactorRequest{
 	ROIVolume roi = 1;
 	float factor = 2;
 }
-
-message ROIVolumeSetVisibleRequest{
-	ROIVolume roi = 1;
-	bool visible = 2;
-}

@@ -54,3 +54,13 @@ message VRControllerSetWLWWRequest{
 	float ww = 3;
 }
 
+message VRControllerHideROIVolumeRequest{
+	VRController vr_controller = 1;
+	ROIVolume roi_volume = 2;
+}
+
+message VRControllerDisplayROIVolumeRequest{
+	VRController vr_controller = 1;
+	ROIVolume roi_volume = 2;
+}
+

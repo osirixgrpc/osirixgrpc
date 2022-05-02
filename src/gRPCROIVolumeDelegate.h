@@ -13,7 +13,6 @@ delegateDeclaration(ROIVolumeSetOpacity, ROIVolumeSetOpacityRequest, Response)
 delegateDeclaration(ROIVolumeFactor, ROIVolume, ROIVolumeFactorResponse)
 delegateDeclaration(ROIVolumeSetFactor, ROIVolumeSetFactorRequest, Response)
 delegateDeclaration(ROIVolumeVisible, ROIVolume, ROIVolumeVisibleResponse)
-delegateDeclaration(ROIVolumeSetVisible, ROIVolumeSetVisibleRequest, Response)
 delegateDeclaration(ROIVolumeName, ROIVolume, ROIVolumeNameResponse)
 
 @end

@@ -198,26 +198,6 @@
     
 }
 
-+ (void) ROIVolumeSetVisible:(const osirixgrpc::ROIVolumeSetVisibleRequest *) request :(osirixgrpc::Response *) response :(gRPCCache *) cache
-{
-    NSString *uid = stringFromGRPCString(request->roi().osirixrpc_uid());
-    
-    ROIVolume *rv = [cache objectForUID:uid];
-    
-    if (rv)
-    {
-        BOOL visible = request->visible();
-        [rv setVisible:visible];
-        response->mutable_status()->set_status(1);
-    }
-    else
-    {
-        response->mutable_status()->set_status(0);
-        response->mutable_status()->set_message("No ROIVolume cached");
-    }
-    
-}
-
 + (void) ROIVolumeName:(const osirixgrpc::ROIVolume *) request :(osirixgrpc::ROIVolumeNameResponse *) response :(gRPCCache *) cache
 {
     NSString *uid = stringFromGRPCString(request->osirixrpc_uid());

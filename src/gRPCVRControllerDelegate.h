@@ -12,5 +12,9 @@ delegateDeclaration(VRControllerRenderingMode, VRController, VRControllerRenderi
 delegateDeclaration(VRControllerSetRenderingMode, VRControllerSetRenderingModeRequest, Response)
 delegateDeclaration(VRControllerWLWW, VRController, VRControllerWLWWResponse)
 delegateDeclaration(VRControllerSetWLWW, VRControllerSetWLWWRequest, Response)
+delegateDeclaration(VRControllerHideROIVolume, VRControllerHideROIVolumeRequest, Response)
+delegateDeclaration(VRControllerDisplayROIVolume, VRControllerDisplayROIVolumeRequest, Response)
+delegateDeclaration(VRControllerNeedsDisplayUpdate, VRController, Response)
+
 
 @end

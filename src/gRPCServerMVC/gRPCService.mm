@@ -16,14 +16,14 @@ gRPCService::gRPCService(gRPCCache *cache)
     _cache = cache;
 }
 
-// Osirix messages
+# pragma mark Osirix messages
 gRPCServiceMessageImplementation(OsirixCurrentBrowser, Empty, OsirixCurrentBrowserResponse, gRPCOsirixDelegate)
 gRPCServiceMessageImplementation(OsirixFrontmostViewer, Empty, OsirixFrontmostViewerResponse, gRPCOsirixDelegate)
 gRPCServiceMessageImplementation(OsirixDisplayed2DViewers, Empty, OsirixDisplayed2DViewersResponse, gRPCOsirixDelegate)
 gRPCServiceMessageImplementation(OsirixFrontmostVRController, Empty, OsirixFrontmostVRControllerResponse, gRPCOsirixDelegate)
 gRPCServiceMessageImplementation(OsirixDisplayedVRControllers, Empty, OsirixDisplayedVRControllersResponse, gRPCOsirixDelegate)
 
-// ViewerController messages
+# pragma mark ViewerController messages
 gRPCServiceMessageImplementation(ViewerControllerCloseViewer, ViewerController, Response, gRPCViewerControllerDelegate)
 gRPCServiceMessageImplementation(ViewerControllerPixList, ViewerControllerPixListRequest, ViewerControllerPixListResponse, gRPCViewerControllerDelegate)
 gRPCServiceMessageImplementation(ViewerControllerNeedsDisplayUpdate, ViewerController, Response, gRPCViewerControllerDelegate)
@@ -48,7 +48,7 @@ gRPCServiceMessageImplementation(ViewerControllerWLWW, ViewerController, ViewerC
 gRPCServiceMessageImplementation(ViewerControllerSetWLWW, ViewerControllerSetWLWWRequest, Response, gRPCViewerControllerDelegate)
 gRPCServiceMessageImplementation(ViewerControllerOpenVRViewerForMode, ViewerControllerOpenVRViewerForModeRequest, ViewerControllerOpenVRViewerForModeResponse, gRPCViewerControllerDelegate)
 
-// DCMPix messages
+# pragma mark DCMPix messages
 gRPCServiceMessageImplementation(DCMPixConvertToRGB, DCMPixConvertToRGBRequest, Response, gRPCDCMPixDelegate)
 gRPCServiceMessageImplementation(DCMPixConvertToBW, DCMPixConvertToBWRequest, Response, gRPCDCMPixDelegate)
 gRPCServiceMessageImplementation(DCMPixIsRGB, DCMPix, DCMPixIsRGBResponse, gRPCDCMPixDelegate)
@@ -67,7 +67,7 @@ gRPCServiceMessageImplementation(DCMPixDicomImage, DCMPix, DCMPixDicomImageRespo
 gRPCServiceMessageImplementation(DCMPixDicomSeries, DCMPix, DCMPixDicomSeriesResponse, gRPCDCMPixDelegate)
 gRPCServiceMessageImplementation(DCMPixDicomStudy, DCMPix, DCMPixDicomStudyResponse, gRPCDCMPixDelegate)
 
-// ROI messages
+# pragma mark ROI messages
 gRPCServiceMessageImplementation(ROIFlipHorizontally, ROI, Response, gRPCROIDelegate)
 gRPCServiceMessageImplementation(ROIFlipVertically, ROI, Response, gRPCROIDelegate)
 gRPCServiceMessageImplementation(ROIArea, ROI, ROIAreaResponse, gRPCROIDelegate)
@@ -87,7 +87,7 @@ gRPCServiceMessageImplementation(ROISetThickness, ROISetThicknessRequest, Respon
 gRPCServiceMessageImplementation(ROIPoints, ROI, ROIPointsResponse, gRPCROIDelegate)
 gRPCServiceMessageImplementation(ROISetPoints, ROISetPointsRequest, Response, gRPCROIDelegate)
 
-//VRController messages
+# pragma mark VRController messages
 gRPCServiceMessageImplementation(VRControllerViewer2D, VRController, VRControllerViewer2DResponse, gRPCVRControllerDelegate)
 gRPCServiceMessageImplementation(VRControllerBlendingController, VRController, VRControllerBlendingControllerResponse, gRPCVRControllerDelegate)
 gRPCServiceMessageImplementation(VRControllerStyle, VRController, VRControllerStyleResponse, gRPCVRControllerDelegate)
@@ -97,8 +97,11 @@ gRPCServiceMessageImplementation(VRControllerRenderingMode, VRController, VRCont
 gRPCServiceMessageImplementation(VRControllerSetRenderingMode, VRControllerSetRenderingModeRequest, Response, gRPCVRControllerDelegate)
 gRPCServiceMessageImplementation(VRControllerWLWW, VRController, VRControllerWLWWResponse, gRPCVRControllerDelegate)
 gRPCServiceMessageImplementation(VRControllerSetWLWW, VRControllerSetWLWWRequest, Response, gRPCVRControllerDelegate)
+gRPCServiceMessageImplementation(VRControllerHideROIVolume, VRControllerHideROIVolumeRequest, Response, gRPCVRControllerDelegate)
+gRPCServiceMessageImplementation(VRControllerDisplayROIVolume, VRControllerDisplayROIVolumeRequest, Response, gRPCVRControllerDelegate)
+gRPCServiceMessageImplementation(VRControllerNeedsDisplayUpdate, VRController, Response, gRPCVRControllerDelegate)
 
-//ROIVolume messages
+# pragma mark ROIVolume messages
 gRPCServiceMessageImplementation(ROIVolumeTexture, ROIVolume, ROIVolumeTextureResponse, gRPCROIVolumeDelegate)
 gRPCServiceMessageImplementation(ROIVolumeSetTexture, ROIVolumeSetTextureRequest, Response, gRPCROIVolumeDelegate)
 gRPCServiceMessageImplementation(ROIVolumeVolume, ROIVolume, ROIVolumeVolumeResponse, gRPCROIVolumeDelegate)
@@ -109,14 +112,13 @@ gRPCServiceMessageImplementation(ROIVolumeSetOpacity, ROIVolumeSetOpacityRequest
 gRPCServiceMessageImplementation(ROIVolumeFactor, ROIVolume, ROIVolumeFactorResponse, gRPCROIVolumeDelegate)
 gRPCServiceMessageImplementation(ROIVolumeSetFactor, ROIVolumeSetFactorRequest, Response, gRPCROIVolumeDelegate)
 gRPCServiceMessageImplementation(ROIVolumeVisible, ROIVolume, ROIVolumeVisibleResponse, gRPCROIVolumeDelegate)
-gRPCServiceMessageImplementation(ROIVolumeSetVisible, ROIVolumeSetVisibleRequest, Response, gRPCROIVolumeDelegate)
 gRPCServiceMessageImplementation(ROIVolumeName, ROIVolume, ROIVolumeNameResponse, gRPCROIVolumeDelegate)
 
-// BrowserController messages
+# pragma mark BrowserController messages
 gRPCServiceMessageImplementation(BrowserControllerDatabaseSelection, BrowserController, BrowserControllerDatabaseSelectionResponse, gRPCBrowserControllerDelegate)
 gRPCServiceMessageImplementation(BrowserControllerCopyFilesIfNeeded, BrowserControllerCopyFilesIfNeededRequest, Response, gRPCBrowserControllerDelegate)
 
-// DicomImage messages
+# pragma mark DicomImage messages
 gRPCServiceMessageImplementation(DicomImageWidth, DicomImage, DicomImageWidthResponse, gRPCDicomImageDelegate)
 gRPCServiceMessageImplementation(DicomImageHeight, DicomImage, DicomImageHeightResponse, gRPCDicomImageDelegate)
 gRPCServiceMessageImplementation(DicomImageSOPInstanceUID, DicomImage, DicomImageSOPInstanceUIDResponse, gRPCDicomImageDelegate)
@@ -128,7 +130,7 @@ gRPCServiceMessageImplementation(DicomImageSeries, DicomImage, DicomImageSeriesR
 gRPCServiceMessageImplementation(DicomImageSliceLocation, DicomImage, DicomImageSliceLocationResponse, gRPCDicomImageDelegate)
 gRPCServiceMessageImplementation(DicomImageInstanceNumber, DicomImage, DicomImageInstanceNumberResponse, gRPCDicomImageDelegate)
 
-// DicomSeries messages
+# pragma mark DicomSeries messages
 gRPCServiceMessageImplementation(DicomSeriesPaths, DicomSeries, DicomSeriesPathsResponse, gRPCDicomSeriesDelegate)
 gRPCServiceMessageImplementation(DicomSeriesPreviousSeries, DicomSeries, DicomSeriesPreviousSeriesResponse, gRPCDicomSeriesDelegate)
 gRPCServiceMessageImplementation(DicomSeriesNextSeries, DicomSeries, DicomSeriesNextSeriesResponse, gRPCDicomSeriesDelegate)
@@ -143,7 +145,7 @@ gRPCServiceMessageImplementation(DicomSeriesName, DicomSeries, DicomSeriesNameRe
 gRPCServiceMessageImplementation(DicomSeriesDate, DicomSeries, DicomSeriesDateResponse, gRPCDicomSeriesDelegate)
 gRPCServiceMessageImplementation(DicomSeriesNumberOfImages, DicomSeries, DicomSeriesNumberOfImagesResponse, gRPCDicomSeriesDelegate)
 
-// DicomStudy messages
+# pragma mark DicomStudy messages
 gRPCServiceMessageImplementation(DicomStudyPaths, DicomStudy, DicomStudyPathsResponse, gRPCDicomStudyDelegate)
 gRPCServiceMessageImplementation(DicomStudyImages, DicomStudy, DicomStudyImagesResponse, gRPCDicomStudyDelegate)
 gRPCServiceMessageImplementation(DicomStudyModalities, DicomStudy, DicomStudyModalitiesResponse, gRPCDicomStudyDelegate)
