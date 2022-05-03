@@ -12,7 +12,7 @@ __all__ = ["browsercontroller_pb2",
            "viewercontroller_pb2",
            "vrcontroller_pb2"]
 
-0.2.0-dev0"
+0.2.1-dev0"
 
 __author__ = "Timothy Sum Hon Mun & Matthew D Blackledge"
 
