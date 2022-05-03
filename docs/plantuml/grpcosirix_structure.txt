@@ -1,9 +1,0 @@
-@startuml
-
-Class gRPCFilter{
-  filterImage:(NSString*)menuName
-}
-
-gRPCFilter..test
-
-@enduml
