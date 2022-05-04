@@ -15,7 +15,7 @@ To install the plugin please download the [latest release](releaseurl.com) of th
 ### Server management
  - Open the server window by selecting "Plugins" &rarr; "Database" &rarr; "osirixgrpc" &rarr; "Server Configuration" from the OsiriX menubar.
  
- <p style="text-align:center;">
+ <p align="center">
 <figure>
 <img src="docs/figures/server_config_list.jpg" alt="Server Window" style="width:50%" class="center">
 </figure>
