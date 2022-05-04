@@ -1,14 +1,8 @@
 # Folder attributes
 .DS_Store
 
-# Any figure files that could clog up the repository
-*.png
-*.jpg
-*.jpeg
-*.bmp
-*.tif
-*.tiff
-*.git status
+# Temp MS files
+~$*
 
 # The grpc build
 grpc/
