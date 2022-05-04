@@ -17,7 +17,7 @@ To install the plugin please download the [latest release](releaseurl.com) of th
  
  <p align="center">
 <figure>
-<img src="docs/figures/server_config_list.jpg" alt="Server Window" style="width:50%" class="center">
+<img src="docs/figures/server_config_list.jpg" alt="Server Window" style="width:70%">
 </figure>
 </p>
 
