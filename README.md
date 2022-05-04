@@ -15,11 +15,7 @@ To install the plugin please download the [latest release](releaseurl.com) of th
 ### Server management
  - Open the server window by selecting "Plugins" &rarr; "Database" &rarr; "osirixgrpc" &rarr; "Server Configuration" from the OsiriX menubar.
  
- <p align="center">
-<figure>
-<img src="docs/figures/server_config_list.jpg" alt="Server Window" style="width:70%">
-</figure>
-</p>
+<img src="docs/figures/server_config_list.jpg" alt="Server Window" style="width:70%" align="center">
 
  - To add a server, click on the "+" symbol and add a port in the opening splash screen. _The port should be an integer number swithin the range 1024 to 65535 inclusive_
  - A server can be started by selecting the relevant line and pressing the "▸" symbol. _If the port is already in use, this will be stated on the server window and you will not be able to activate this port_. Likewise, a server can be stopped at any time.
