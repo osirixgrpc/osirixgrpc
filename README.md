@@ -25,6 +25,8 @@ To install the plugin please download the [latest release](releaseurl.com) of th
  - All server settings are automatically saved and loaded when OsiriX is relaunched.    
 
 ### Registering a script
+It is possible to register a client script  
+- Open the script window by selecting "Plugins" &rarr; "Database" &rarr; "osirixgrpc" &rarr; "Server Configuration" from the OsiriX menubar.
 
 ## Any suggestions?
 We are always happy to recieve suggestions for future versions of the plugin, or just to hear about what is or isn't working. We would appreciate if this is done by raising an [issue](https://github.com/osirixgrpc/osirixgrpc/issues). 
