@@ -1,12 +1,10 @@
 # osirixgrpc
 
-Have you ever wanted to rapidly develop tools for medical imaging? Do you wish you could focus on the development of great imaging analysis ideas without the overhead of needing to write complex UIs that in the end no clinician wants to use? Perhaps with the ability to incorporate state-of-the-art libraries including AI?  Fear not, __osirixgrpc__ is here!      
+__osirixgrpc__ is a research plugin for the popular [OsiriX](https://www.osirix-viewer.com) medical image viewing platform for Mac OS. It leverages the [gRPC](https://grpc.io) architecture to provide fast communication between OsiriX (the "server") and custom-built software or script running on a different local process (the "client").  This enables fast development of additional OsiriX functionality, including the adoption of state-of-the-art libraries for image processing and artificial intelligence.  Currently, Python is the only in-built supported language, though adoption of [other languages](https://grpc.io/docs/languages) can be easily achieved.  
 
-__osirixgrpc__ is a research plugin for the popular [OsiriX](https://www.osirix-viewer.com) medical image viewing platform for Mac OS. It leverages the [gRPC](https://grpc.io) architecture to provide fast communication between the functionality exposed within OsiriX and  custom-built software or script running on a different process. This inter-operability is achieved by running a gRPC server from within the OsiriX run-time within the localhost of the machine on which it is deployed.  More information about inter-process communication can be found on the [gRPC website](https://grpc.io).
+gRPC relies on a paradigm of message passing through 'requests' and 'responses'.  We also suggest the use our supporting library [pyOsiriX](https://pyosirix.com) for script development, which is aimed at converting these conventions to an object-oriented paradigm, that may be more familiar to users. 
 
-Whilst gRPC is a very well-built standard for inter-process communication in numerous [languages](https://grpc.io/docs/languages) (including C++, Java, Ruby, Python and Go), the in-built message passing syntax through 'requests' and subsequent 'responses' can be a little daunting for the uninitiated.  We therefore suggest using our supporting library [pyOsiriX](https://pyosirix.com) for script development.
-
-Currently, Python is the only supported language, though [contributions](docs/CONTRIBUTING.md) are welcome in future versions.
+[Contributions](docs/CONTRIBUTING.md) are highly welcomed to support welcome in future versions. 
 
 ## Installation
 To install the plugin please download the [latest release](releaseurl.com) of the plugin. Once unzipped, open the _osirixgrpc.osirixplugin_ file and you will be directed through the rest of the installation process.
@@ -16,16 +14,17 @@ To install the plugin please download the [latest release](releaseurl.com) of th
  - Open the server window by selecting "Plugins" &rarr; "Database" &rarr; "osirixgrpc" &rarr; "Server Configuration" from the OsiriX menubar.
  
  <p align="center">
-<img src="docs/figures/server_config_list.jpg" alt="Server Window" style="width:70%" align="center">
+<img src="docs/figures/server_config_list.jpg" alt="Server Window" style="width:60%" align="center">
 </p>
 
- - To add a server, click on the "+" symbol and add a port in the opening splash screen. _The port should be an integer number swithin the range 1024 to 65535 inclusive_
- - A server can be started by selecting the relevant line and pressing the "▸" symbol. _If the port is already in use, this will be stated on the server window and you will not be able to activate this port_. Likewise, a server can be stopped at any time.
- - The order of servers can be modified using the "⌃" and "⌄" buttons. The order may be used by clients (including pyosirix) to determine user preference when automatically determining which port to attempt connection with.
+ - Servers can be added/removed using the "+" and "-" respectively.  In the resulting dialog, a port number should be specified. The port should be an integer number swithin the range 1024 to 65535 inclusive.
+ - A server can be started by selecting the relevant line and pressing the "$\blacktriangleright$" button. If the port is already in use, this will be stated on the server window and you will not be able to activate this port. Likewise, a server can be stopped at any time using the "$\blacksquare$" button.
+ - The order of servers can be modified using the "$\wedge$" and "$\vee$" buttons. The order may be used by clients (including pyosirix) to determine user preference when automatically determining which port to attempt connection with.
  - All server settings are automatically saved and loaded when OsiriX is relaunched.    
 
 ### Registering a script
-It is possible to register a client script  
+It is possible to register a client script within the osirixgrpc plugin. By doing so, it enables users to run a script through a button click within OsiriX through an additional menu. 
+
 - Open the script window by selecting "Plugins" &rarr; "Database" &rarr; "osirixgrpc" &rarr; "Server Configuration" from the OsiriX menubar.
 
 ## Any suggestions?
