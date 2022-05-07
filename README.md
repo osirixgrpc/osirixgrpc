@@ -17,10 +17,10 @@ To install the plugin please download the [latest release](releaseurl.com) of th
 <img src="docs/figures/server_config_list.jpg" alt="Server Window" style="width:60%" align="center">
 </p>
 
- - Servers can be added/removed using the "+" and "-" respectively.  In the resulting dialog, a port number should be specified. The port should be an integer number swithin the range 1024 to 65535 inclusive.
- - A server can be started by selecting the relevant line and pressing the "$\blacktriangleright$" button. If the port is already in use, this will be stated on the server window and you will not be able to activate this port. Likewise, a server can be stopped at any time using the "$\blacksquare$" button.
- - The order of servers can be modified using the "$\wedge$" and "$\vee$" buttons. The order may be used by clients (including pyosirix) to determine user preference when automatically determining which port to attempt connection with.
- - All server settings are automatically saved and loaded when OsiriX is relaunched.    
+ - Servers can be added/removed using the "+" and "-" buttons respectively.  In the resulting dialog, a port number should be specified. The port should be an integer number swithin the range 1024 to 65535 inclusive.
+ - A server can be started by selecting the relevant line and pressing the play button. If the port is already in use, this will be stated on the server window and you will not be able to activate this port. Likewise, a server can be stopped at any time using the stop button.
+ - The order of server addresses can be modified using the up- and down-arrow buttons. The order may be used by clients (including pyosirix) to determine user preference when automatically establishing a connection.
+ - All server settings are automatically saved, and then loaded when OsiriX is launched.  
 
 ### Registering a script
 It is possible to register a client script within the osirixgrpc plugin. By doing so, it enables users to run a script through a button click within OsiriX through an additional menu. 
