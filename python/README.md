@@ -36,7 +36,7 @@ studies = response.studies
 ```
 ### Obtain the names of the selected studies
 ```
-import import dicomstudy_pb2
+import dicomstudy_pb2
 
 for dicom_study in studies:
     response = stub.DicomStudyName(dicom_study)
