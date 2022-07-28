@@ -1,33 +1,21 @@
 /*
  *
- *  Copyright (C) 1994-2005, OFFIS
+ *  Copyright (C) 1994-2015, OFFIS e.V.
+ *  All rights reserved.  See COPYRIGHT file for details.
  *
  *  This software and supporting documentation were developed by
  *
- *    Kuratorium OFFIS e.V.
- *    Healthcare Information and Communication Systems
+ *    OFFIS e.V.
+ *    R&D Division Health
  *    Escherweg 2
  *    D-26121 Oldenburg, Germany
  *
- *  THIS SOFTWARE IS MADE AVAILABLE,  AS IS,  AND OFFIS MAKES NO  WARRANTY
- *  REGARDING  THE  SOFTWARE,  ITS  PERFORMANCE,  ITS  MERCHANTABILITY  OR
- *  FITNESS FOR ANY PARTICULAR USE, FREEDOM FROM ANY COMPUTER DISEASES  OR
- *  ITS CONFORMITY TO ANY SPECIFICATION. THE ENTIRE RISK AS TO QUALITY AND
- *  PERFORMANCE OF THE SOFTWARE IS WITH THE USER.
  *
  *  Module:  dcmdata
  *
  *  Author:  Andreas Barth
  *
  *  Purpose: Interface of class DcmCharString
- *
- *  Last Update:      $Author: lpysher $
- *  Update Date:      $Date: 2006/03/01 20:15:19 $
- *  Source File:      $Source: /cvsroot/osirix/osirix/Binaries/dcmtk-source/dcmdata/dcchrstr.h,v $
- *  CVS/RCS Revision: $Revision: 1.1 $
- *  Status:           $State: Exp $
- *
- *  CVS/RCS Log at end of file
  *
  */
 
@@ -42,20 +30,20 @@
 // character sets are supported by the class DcmByteString the class
 // DcmCharString is derived from DcmByteString without any extensions.
 //
-// If the extension for 16 bit character sets will be implemented this class
+// If the extension for 16 bit character sets will be implemented, this class
 // must be derived directly from DcmElement. This class is designed to support
-// the value representations (LO, LT, PN, SH, ST, UT). They are a problem because
-// their value width (1, 2, .. Bytes) is specified by the element
-// SpecificCharacterSet (0008, 0005) and an implementation must support
+// the value representations (LO, LT, PN, SH, ST, UC and UT). They are a problem
+// because their value width (1, 2, ... bytes) is specified by the element
+// SpecificCharacterSet (0008,0005) and an implementation must support
 // different value widths that cannot be derived from the value representation.
 //
 
 #include "dcbytstr.h"
 
 
-/** base class for DICOM elements with value representation LO, LT, PN, SH, ST, UT
+/** base class for DICOM elements with value representation LO, LT, PN, SH, ST, UC and UT
  */
-class DcmCharString
+class DCMTK_DCMDATA_EXPORT DcmCharString
   : public DcmByteString
 {
 
@@ -91,39 +79,79 @@ class DcmCharString
     {
       return new DcmCharString(*this);
     }
-    
+
+    /** Virtual object copying. This method can be used for DcmObject
+     *  and derived classes to get a deep copy of an object. Internally
+     *  the assignment operator is called if the given DcmObject parameter
+     *  is of the same type as "this" object instance. If not, an error
+     *  is returned. This function permits copying an object by value
+     *  in a virtual way which therefore is different to just calling the
+     *  assignment operator of DcmElement which could result in slicing
+     *  the object.
+     *  @param rhs - [in] The instance to copy from. Has to be of the same
+     *                class type as "this" object
+     *  @return EC_Normal if copying was successful, error otherwise
+     */
+    virtual OFCondition copyFrom(const DcmObject& rhs);
+
+    /** check the currently stored string value.
+     *  Checks every string component for the maximum length specified for the particular
+     *  value representation.
+     *  @param autocorrect correct value and value component length if OFTrue.
+     *    NB: This parameter does currently nothing since it is unknown to this class
+     *        whether a character consists of one or more bytes.  To be fixed in a future
+     *        version when multi-byte character sets are (hopefully) supported.
+     *  @return status, EC_Normal if value length is correct, an error code otherwise
+     */
+    virtual OFCondition verify(const OFBool autocorrect = OFFalse);
+
+    /** check if this element contains non-ASCII characters. Please note that this check
+     *  is pretty simple and only works for single-byte character sets that do include
+     *  the 7-bit ASCII codes, e.g. for the ISO 8859 family. In other words: All character
+     *  codes below 128 are considered to be ASCII codes and all others are considered to
+     *  be non-ASCII.
+     *  @param checkAllStrings not used in this class
+     *  @return true if element contains non-ASCII characters, false otherwise
+     */
+    virtual OFBool containsExtendedCharacters(const OFBool checkAllStrings = OFFalse);
+
+    /** check if this element is affected by SpecificCharacterSet
+     *  @return always returns true since all derived VR classes are affected by the
+     *    SpecificCharacterSet (0008,0005) element
+     */
+    virtual OFBool isAffectedBySpecificCharacterSet() const;
+
+    /** convert this element value from the currently selected source character set to
+     *  the currently selected destination character set
+     *  @param converter character set converter to be used to convert the element value
+     *  @return always returns EC_Normal, since nothing to do in this base class
+     */
+    virtual OFCondition convertCharacterSet(DcmSpecificCharacterSet &converter);
+
+  protected:
+
+    /** delimiter characters specifying when to switch back to the default character set
+     *  (in case code extension techniques like ISO 2022 are used)
+     *  @param characters delimiter characters to be used for character set conversion
+     */
+    void setDelimiterChars(const OFString &characters) { delimiterChars = characters; }
+
+    /** get value of the SpecificCharacterSet element of the surrounding dataset/item
+     *  @param charset reference to variable that will store the result value. The
+     *    variable is not cleared in case of error!
+     *  @return status, EC_Normal if successful (i.e. the element could be found),
+     *    an error code otherwise. Typical error codes are:
+     *    - EC_TagNotFound if the SpecificCharacterSet element could not be found
+     *    - EC_CorruptedData if this object is not contained in a dataset/item
+     */
+    OFCondition getSpecificCharacterSet(OFString &charset);
+
+  private:
+
+    /// delimiter characters specifying when to switch back to the default character set
+    /// (in case code extension techniques like ISO 2022 are used)
+    OFString delimiterChars;
 };
 
 
 #endif // DCCHRSTR_H
-
-
-/*
- * CVS/RCS Log:
- * $Log: dcchrstr.h,v $
- * Revision 1.1  2006/03/01 20:15:19  lpysher
- * Added dcmtkt ocvs not in xcode  and fixed bug with multiple monitors
- *
- * Revision 1.10  2005/12/08 16:28:00  meichel
- * Changed include path schema for all DCMTK header files
- *
- * Revision 1.9  2004/07/01 12:28:25  meichel
- * Introduced virtual clone method for DcmObject and derived classes.
- *
- * Revision 1.8  2002/12/06 12:49:08  joergr
- * Enhanced "print()" function by re-working the implementation and replacing
- * the boolean "showFullData" parameter by a more general integer flag.
- * Added doc++ documentation.
- * Made source code formatting more consistent with other modules/files.
- *
- * Revision 1.7  2001/06/01 15:48:33  meichel
- * Updated copyright header
- *
- * Revision 1.6  2000/03/08 16:26:11  meichel
- * Updated copyright header.
- *
- * Revision 1.5  1999/03/31 09:24:30  meichel
- * Updated copyright header in module dcmdata
- *
- *
- */

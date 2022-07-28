@@ -1,33 +1,21 @@
 /*
  *
- *  Copyright (C) 1994-2005, OFFIS
+ *  Copyright (C) 1994-2014, OFFIS e.V.
+ *  All rights reserved.  See COPYRIGHT file for details.
  *
  *  This software and supporting documentation were developed by
  *
- *    Kuratorium OFFIS e.V.
- *    Healthcare Information and Communication Systems
+ *    OFFIS e.V.
+ *    R&D Division Health
  *    Escherweg 2
  *    D-26121 Oldenburg, Germany
  *
- *  THIS SOFTWARE IS MADE AVAILABLE,  AS IS,  AND OFFIS MAKES NO  WARRANTY
- *  REGARDING  THE  SOFTWARE,  ITS  PERFORMANCE,  ITS  MERCHANTABILITY  OR
- *  FITNESS FOR ANY PARTICULAR USE, FREEDOM FROM ANY COMPUTER DISEASES  OR
- *  ITS CONFORMITY TO ANY SPECIFICATION. THE ENTIRE RISK AS TO QUALITY AND
- *  PERFORMANCE OF THE SOFTWARE IS WITH THE USER.
  *
  *  Module:  dcmdata
  *
  *  Author:  Gerd Ehlers, Andreas Barth
  *
  *  Purpose: Interface of class DcmSignedShort
- *
- *  Last Update:      $Author: lpysher $
- *  Update Date:      $Date: 2006/03/01 20:15:22 $
- *  Source File:      $Source: /cvsroot/osirix/osirix/Binaries/dcmtk-source/dcmdata/dcvrss.h,v $
- *  CVS/RCS Revision: $Revision: 1.1 $
- *  Status:           $State: Exp $
- *
- *  CVS/RCS Log at end of file
  *
  */
 
@@ -42,7 +30,7 @@
 
 /** a class representing the DICOM value representation 'Signed Short' (SS)
  */
-class DcmSignedShort
+class DCMTK_DCMDATA_EXPORT DcmSignedShort
   : public DcmElement
 {
 
@@ -65,6 +53,24 @@ class DcmSignedShort
      */
     virtual ~DcmSignedShort();
 
+    /** comparison operator that compares the normalized value of this object
+     *  with a given object of the same type. The tag of the element is also
+     *  considered as the first component that is compared, followed by the
+     *  object types (VR, i.e. DCMTK'S EVR) and the comparison of all value
+     *  components of the object, preferrably in the order declared in the
+     *  object (if applicable).
+     *  @param  rhs the right hand side of the comparison
+     *  @return 0 if the object values are equal.
+     *          -1 if either the value of the  first component that does not match
+     *          is lower in this object than in rhs, or all compared components match
+     *          but this object has fewer components than rhs. Also returned if rhs
+     *          cannot be casted to this object type.
+     *          1 if either the value of the first component that does not match
+     *          is greater in this object than in rhs object, or all compared
+     *          components match but the this component is longer.
+     */
+    virtual int compare(const DcmElement& rhs) const;
+
     /** assignment operator
      *  @param obj element to be assigned/copied
      *  @return reference to this object
@@ -79,16 +85,39 @@ class DcmSignedShort
       return new DcmSignedShort(*this);
     }
 
+    /** Virtual object copying. This method can be used for DcmObject
+     *  and derived classes to get a deep copy of an object. Internally
+     *  the assignment operator is called if the given DcmObject parameter
+     *  is of the same type as "this" object instance. If not, an error
+     *  is returned. This function permits copying an object by value
+     *  in a virtual way which therefore is different to just calling the
+     *  assignment operator of DcmElement which could result in slicing
+     *  the object.
+     *  @param rhs - [in] The instance to copy from. Has to be of the same
+     *                class type as "this" object
+     *  @return EC_Normal if copying was successful, error otherwise
+     */
+    virtual OFCondition copyFrom(const DcmObject& rhs);
+
     /** get element type identifier
      *  @return type identifier of this class (EVR_SS)
      */
     virtual DcmEVR ident() const;
 
+    /** check whether stored value conforms to the VR and to the specified VM
+     *  @param vm value multiplicity (according to the data dictionary) to be checked for.
+     *    (See DcmElement::checkVM() for a list of valid values.)
+     *  @param oldFormat parameter not used for this VR (only for DA, TM)
+     *  @return status of the check, EC_Normal if value is correct, an error code otherwise
+     */
+    virtual OFCondition checkValue(const OFString &vm = "1-n",
+                                   const OFBool oldFormat = OFFalse);
+
     /** get value multiplicity.
      *  The number of entries can be determined by "getVM()".
      *  @return number of currently stored values
      */
-    virtual unsigned int getVM();
+    virtual unsigned long getVM();
 
     /** print element to a stream.
      *  The output format of the value is a backslash separated sequence of numbers.
@@ -98,7 +127,7 @@ class DcmSignedShort
      *  @param pixelFileName not used
      *  @param pixelCounter not used
      */
-    virtual void print(ostream &out,
+    virtual void print(STD_NAMESPACE ostream&out,
                        const size_t flags = 0,
                        const int level = 0,
                        const char *pixelFileName = NULL,
@@ -110,7 +139,7 @@ class DcmSignedShort
      *  @return status status, EC_Normal if successful, an error code otherwise
      */
     virtual OFCondition getSint16(Sint16 &sintVal,
-                                  const unsigned int pos = 0);
+                                  const unsigned long pos = 0);
 
     /** get reference to stored integer data
      *  @param sintVals reference to result variable
@@ -125,7 +154,7 @@ class DcmSignedShort
      *  @return status, EC_Normal if successful, an error code otherwise
      */
     virtual OFCondition getOFString(OFString &stringVal,
-                                    const unsigned int pos,
+                                    const unsigned long pos,
                                     OFBool normalize = OFTrue);
 
     /** set particular element value to given integer
@@ -134,7 +163,7 @@ class DcmSignedShort
      *  @return status, EC_Normal if successful, an error code otherwise
      */
     virtual OFCondition putSint16(const Sint16 sintVal,
-                                  const unsigned int pos = 0);
+                                  const unsigned long pos = 0);
 
     /** set element value to given integer array data
      *  @param sintVals signed integer data to be set
@@ -142,7 +171,7 @@ class DcmSignedShort
      *  @return status, EC_Normal if successful, an error code otherwise
      */
     virtual OFCondition putSint16Array(const Sint16 *sintVals,
-                                       const unsigned int numSints);
+                                       const unsigned long numSints);
 
     /** set element value from the given character string.
      *  The input string is expected to be a backslash separated sequence of
@@ -151,6 +180,19 @@ class DcmSignedShort
      *  @return status, EC_Normal if successful, an error code otherwise
      */
     virtual OFCondition putString(const char *stringVal);
+
+    /** set element value from the given character string.
+     *  The input string is expected to be a backslash separated sequence of
+     *  numeric characters, e.g. "-333\-22\-1\0\1\22\333".
+     *  The length of the string has to be specified explicitly. The string can, therefore,
+     *  also contain more than one NULL byte.
+     *  @param stringVal input character string
+     *  @param stringLen length of the string (number of characters without the trailing
+     *    NULL byte)
+     *  @return status, EC_Normal if successful, an error code otherwise
+     */
+    virtual OFCondition putString(const char *stringVal,
+                                  const Uint32 stringLen);
 
     /** check the currently stored element value
      *  @param autocorrect correct value length if OFTrue
@@ -161,87 +203,3 @@ class DcmSignedShort
 
 
 #endif // DCVRSS_H
-
-
-/*
-** CVS/RCS Log:
-** $Log: dcvrss.h,v $
-** Revision 1.1  2006/03/01 20:15:22  lpysher
-** Added dcmtkt ocvs not in xcode  and fixed bug with multiple monitors
-**
-** Revision 1.19  2005/12/08 16:29:09  meichel
-** Changed include path schema for all DCMTK header files
-**
-** Revision 1.18  2004/07/01 12:28:25  meichel
-** Introduced virtual clone method for DcmObject and derived classes.
-**
-** Revision 1.17  2002/12/06 12:49:18  joergr
-** Enhanced "print()" function by re-working the implementation and replacing
-** the boolean "showFullData" parameter by a more general integer flag.
-** Added doc++ documentation.
-** Made source code formatting more consistent with other modules/files.
-**
-** Revision 1.16  2002/04/25 09:57:46  joergr
-** Added getOFString() implementation.
-**
-** Revision 1.15  2001/09/25 17:19:34  meichel
-** Adapted dcmdata to class OFCondition
-**
-** Revision 1.14  2001/06/01 15:48:53  meichel
-** Updated copyright header
-**
-** Revision 1.13  2000/04/14 15:31:35  meichel
-** Removed default value from output stream passed to print() method.
-**   Required for use in multi-thread environments.
-**
-** Revision 1.12  2000/03/08 16:26:26  meichel
-** Updated copyright header.
-**
-** Revision 1.11  2000/03/03 14:05:28  meichel
-** Implemented library support for redirecting error messages into memory
-**   instead of printing them to stdout/stderr for GUI applications.
-**
-** Revision 1.10  2000/02/10 10:50:55  joergr
-** Added new feature to dcmdump (enhanced print method of dcmdata): write
-** pixel data/item value fields to raw files.
-**
-** Revision 1.9  1999/03/31 09:25:07  meichel
-** Updated copyright header in module dcmdata
-**
-** Revision 1.8  1998/11/12 16:47:55  meichel
-** Implemented operator= for all classes derived from DcmObject.
-**
-** Revision 1.7  1997/07/21 08:25:16  andreas
-** - Replace all boolean types (BOOLEAN, CTNBOOLEAN, DICOM_BOOL, BOOL)
-**   with one unique boolean type OFBool.
-**
-** Revision 1.6  1997/04/18 08:13:32  andreas
-** - The put/get-methods for all VRs did not conform to the C++-Standard
-**   draft. Some Compilers (e.g. SUN-C++ Compiler, Metroworks
-**   CodeWarrier, etc.) create many warnings concerning the hiding of
-**   overloaded get methods in all derived classes of DcmElement.
-**   So the interface of all value representation classes in the
-**   library are changed rapidly, e.g.
-**   OFCondition get(Uint16 & value, const unsigned int pos);
-**   becomes
-**   OFCondition getUint16(Uint16 & value, const unsigned int pos);
-**   All (retired) "returntype get(...)" methods are deleted.
-**   For more information see dcmdata/include/dcelem.h
-**
-** Revision 1.5  1996/08/05 08:45:36  andreas
-** new print routine with additional parameters:
-**         - print into files
-**         - fix output length for elements
-** corrected error in search routine with parameter ESM_fromStackTop
-**
-** Revision 1.4  1996/01/29 13:38:18  andreas
-** - new put method for every VR to put value as a string
-** - better and unique print methods
-**
-** Revision 1.3  1996/01/05 13:23:09  andreas
-** - changed to support new streaming facilities
-** - more cleanups
-** - merged read / write methods for block and file transfer
-**
-*/
-

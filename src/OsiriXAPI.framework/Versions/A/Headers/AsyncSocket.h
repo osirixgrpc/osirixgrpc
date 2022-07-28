@@ -10,6 +10,10 @@
 
 #import <Foundation/Foundation.h>
 
+#define kWebPortalPrivateRunLoop NSDefaultRunLoopMode
+// NSDefaultRunLoopMode
+// @"WebPortalRunLoop"
+
 @class AsyncSocket;
 @class AsyncReadPacket;
 @class AsyncWritePacket;
@@ -178,12 +182,25 @@ typedef enum AsyncSocketError AsyncSocketError;
 	NSMutableArray *theWriteQueue;
 	AsyncWritePacket *theCurrentWrite;
 	NSTimer *theWriteTimer;
+    
+    NSTimer *noActivityTimer;
+    BOOL activity;
 
 	id theDelegate;
 	UInt16 theFlags;
 	
 	long theUserData;
+    
+    NSTimeInterval socketCreationDate;
+    
+    NSRunLoop *theAssignedRunLoop;
+    BOOL attachedToRunLoop;
 }
+@property(retain) NSRunLoop *theAssignedRunLoop;
+@property(retain) NSTimer *noActivityTimer;
+
++ (unsigned long) asyncSocketCounter;
++ (unsigned long) asyncSocketWithRunLoopCounter;
 
 - (id)init;
 - (id)initWithDelegate:(id)delegate;

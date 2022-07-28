@@ -1,19 +1,15 @@
 /*
  *
- *  Copyright (C) 2000-2005, OFFIS
+ *  Copyright (C) 2000-2015, OFFIS e.V.
+ *  All rights reserved.  See COPYRIGHT file for details.
  *
  *  This software and supporting documentation were developed by
  *
- *    Kuratorium OFFIS e.V.
- *    Healthcare Information and Communication Systems
+ *    OFFIS e.V.
+ *    R&D Division Health
  *    Escherweg 2
  *    D-26121 Oldenburg, Germany
  *
- *  THIS SOFTWARE IS MADE AVAILABLE,  AS IS,  AND OFFIS MAKES NO  WARRANTY
- *  REGARDING  THE  SOFTWARE,  ITS  PERFORMANCE,  ITS  MERCHANTABILITY  OR
- *  FITNESS FOR ANY PARTICULAR USE, FREEDOM FROM ANY COMPUTER DISEASES  OR
- *  ITS CONFORMITY TO ANY SPECIFICATION. THE ENTIRE RISK AS TO QUALITY AND
- *  PERFORMANCE OF THE SOFTWARE IS WITH THE USER.
  *
  *  Module: dcmsr
  *
@@ -21,13 +17,6 @@
  *
  *  Purpose:
  *    classes: DSRGraphicDataItem, DSRGraphicDataList
- *
- *  Last Update:      $Author: lpysher $
- *  Update Date:      $Date: 2006/03/01 20:16:11 $
- *  CVS/RCS Revision: $Revision: 1.1 $
- *  Status:           $State: Exp $
- *
- *  CVS/RCS Log at end of file
  *
  */
 
@@ -47,7 +36,7 @@
 
 /** Class for graphic data items
  */
-class DSRGraphicDataItem
+class DCMTK_DCMSR_EXPORT DSRGraphicDataItem
 {
   public:
 
@@ -109,7 +98,7 @@ class DSRGraphicDataItem
 
 /** Class for graphic data lists
  */
-class DSRGraphicDataList
+class DCMTK_DCMSR_EXPORT DSRGraphicDataList
   : public DSRListOfItems<DSRGraphicDataItem>
 {
 
@@ -142,26 +131,24 @@ class DSRGraphicDataList
      *  @param  itemSeparator  character specifying the separator between the list items
      ** @return status, EC_Normal if successful, an error code otherwise
      */
-    OFCondition print(ostream &stream,
+    OFCondition print(STD_NAMESPACE ostream &stream,
                       const size_t flags = 0,
                       const char pairSeparator = '/',
                       const char itemSeparator = ',') const;
 
     /** read list of graphic data
-     ** @param  dataset    DICOM dataset from which the list should be read
-     *  @param  logStream  pointer to error/warning output stream (output disabled if NULL)
+     ** @param  dataset  DICOM dataset from which the list should be read
+     *  @param  flags    flag used to customize the reading process (see DSRTypes::RF_xxx)
      ** @return status, EC_Normal if successful, an error code otherwise
      */
     OFCondition read(DcmItem &dataset,
-                     OFConsole *logStream);
+                     const size_t flags);
 
     /** write list of graphic data
-     ** @param  dataset    DICOM dataset to which the list should be written
-     *  @param  logStream  pointer to error/warning output stream (output disabled if NULL)
+     ** @param  dataset  DICOM dataset to which the list should be written
      ** @return status, EC_Normal if successful, an error code otherwise
      */
-    OFCondition write(DcmItem &dataset,
-                      OFConsole *logStream) const;
+    OFCondition write(DcmItem &dataset) const;
 
     /** get reference to the specified item
      ** @param  idx  index of the item to be returned (starting from 1)
@@ -197,47 +184,3 @@ class DSRGraphicDataList
 
 
 #endif
-
-
-/*
- *  CVS/RCS Log:
- *  $Log: dsrscogr.h,v $
- *  Revision 1.1  2006/03/01 20:16:11  lpysher
- *  Added dcmtkt ocvs not in xcode  and fixed bug with multiple monitors
- *
- *  Revision 1.11  2005/12/08 16:05:15  meichel
- *  Changed include path schema for all DCMTK header files
- *
- *  Revision 1.10  2003/08/07 12:45:38  joergr
- *  Added new putString() method.
- *
- *  Revision 1.9  2003/06/04 12:33:13  meichel
- *  Added comparison operators, needed by MSVC5 with STL
- *
- *  Revision 1.8  2003/06/03 10:16:44  meichel
- *  Renamed local variables to avoid name clashes with STL
- *
- *  Revision 1.7  2001/09/26 13:04:10  meichel
- *  Adapted dcmsr to class OFCondition
- *
- *  Revision 1.6  2001/05/07 16:13:24  joergr
- *  Updated CVS header.
- *
- *  Revision 1.5  2001/01/25 11:48:44  joergr
- *  Corrected typos / enhanced comments.
- *
- *  Revision 1.4  2000/11/06 11:31:04  joergr
- *  Added parameter to print() method specifying the item separator character.
- *
- *  Revision 1.3  2000/11/01 16:21:16  joergr
- *  Updated comments/formatting.
- *
- *  Revision 1.2  2000/10/18 17:06:51  joergr
- *  Added doc++ comments.
- *
- *  Revision 1.1  2000/10/13 07:49:31  joergr
- *  Added new module 'dcmsr' providing access to DICOM structured reporting
- *  documents (supplement 23).  Doc++ documentation not yet completed.
- *
- *
- */

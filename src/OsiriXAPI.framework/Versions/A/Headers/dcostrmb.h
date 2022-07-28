@@ -1,19 +1,15 @@
 /*
  *
- *  Copyright (C) 1994-2005, OFFIS
+ *  Copyright (C) 1994-2011, OFFIS e.V.
+ *  All rights reserved.  See COPYRIGHT file for details.
  *
  *  This software and supporting documentation were developed by
  *
- *    Kuratorium OFFIS e.V.
- *    Healthcare Information and Communication Systems
+ *    OFFIS e.V.
+ *    R&D Division Health
  *    Escherweg 2
  *    D-26121 Oldenburg, Germany
  *
- *  THIS SOFTWARE IS MADE AVAILABLE,  AS IS,  AND OFFIS MAKES NO  WARRANTY
- *  REGARDING  THE  SOFTWARE,  ITS  PERFORMANCE,  ITS  MERCHANTABILITY  OR
- *  FITNESS FOR ANY PARTICULAR USE, FREEDOM FROM ANY COMPUTER DISEASES  OR
- *  ITS CONFORMITY TO ANY SPECIFICATION. THE ENTIRE RISK AS TO QUALITY AND
- *  PERFORMANCE OF THE SOFTWARE IS WITH THE USER.
  *
  *  Module:  dcmdata
  *
@@ -21,14 +17,6 @@
  *
  *  Purpose: DcmOutputBufferStream and related classes,
  *    implements output to blocks of memory as needed in the dcmnet module.
- *
- *  Last Update:      $Author: lpysher $
- *  Update Date:      $Date: 2006/03/01 20:15:22 $
- *  Source File:      $Source: /cvsroot/osirix/osirix/Binaries/dcmtk-source/dcmdata/dcostrmb.h,v $
- *  CVS/RCS Revision: $Revision: 1.1 $
- *  Status:           $State: Exp $
- *
- *  CVS/RCS Log at end of file
  *
  */
 
@@ -41,7 +29,7 @@
 /** consumer class that stores data in a buffer provided by the caller.
  *  Used for DICOM network communication.
  */
-class DcmBufferConsumer: public DcmConsumer
+class DCMTK_DCMDATA_EXPORT DcmBufferConsumer: public DcmConsumer
 {
 public:
 
@@ -50,7 +38,7 @@ public:
    *    by caller and remain valid during the lifetime of this object.
    *  @param bufLen buffer length, must be even number > 0.
    */
-  DcmBufferConsumer(void *buf, Uint32 bufLen);
+  DcmBufferConsumer(void *buf, offile_off_t bufLen);
 
   /// destructor
   virtual ~DcmBufferConsumer();
@@ -81,14 +69,14 @@ public:
    *  or nothing.
    *  @return minimum of space available in consumer
    */
-  virtual Uint32 avail() const;
+  virtual offile_off_t avail() const;
 
   /** processes as many bytes as possible from the given input block.
    *  @param buf pointer to memory block, must not be NULL
    *  @param buflen length of memory block
-   *  @return number of bytes actually processed. 
+   *  @return number of bytes actually processed.
    */
-  virtual Uint32 write(const void *buf, Uint32 buflen);
+  virtual offile_off_t write(const void *buf, offile_off_t buflen);
 
   /** instructs the consumer to flush its internal content until
    *  either the consumer becomes "flushed" or I/O suspension occurs.
@@ -104,7 +92,12 @@ public:
    *  @param buffer pointer to user provided buffer returned in this parameter
    *  @param length number of bytes in buffer returned in this parameter
    */
-  virtual void flushBuffer(void *& buffer, Uint32& length);
+  virtual void flushBuffer(void *& buffer, offile_off_t& length);
+
+  /** query the number of bytes in buffer without flushing it.
+   *  @return number of bytes in buffer.
+   */
+  virtual offile_off_t filled();
 
 private:
 
@@ -118,10 +111,10 @@ private:
   unsigned char *buffer_;
 
   /// size of the buffer, in bytes
-  Uint32 bufSize_;
+  offile_off_t bufSize_;
 
   /// number of bytes filled in buffer
-  Uint32 filled_;
+  offile_off_t filled_;
 
   /// status
   OFCondition status_;
@@ -131,7 +124,7 @@ private:
 /** output stream that writes into a buffer of fixed length
  *  which must be provided by the caller.
  */
-class DcmOutputBufferStream: public DcmOutputStream
+class DCMTK_DCMDATA_EXPORT DcmOutputBufferStream: public DcmOutputStream
 {
 public:
   /** constructor
@@ -139,7 +132,7 @@ public:
    *    by caller and remain valid during the lifetime of this object.
    *  @param bufLen buffer length, must be even number > 0.
    */
-  DcmOutputBufferStream(void *buf, Uint32 bufLen);
+  DcmOutputBufferStream(void *buf, offile_off_t bufLen);
 
   /// destructor
   virtual ~DcmOutputBufferStream();
@@ -151,7 +144,12 @@ public:
    *  @param buffer pointer to user provided buffer returned in this parameter
    *  @param length number of bytes in buffer returned in this parameter
    */
-  virtual void flushBuffer(void *& buffer, Uint32& length);
+  virtual void flushBuffer(void *& buffer, offile_off_t& length);
+
+  /** query the number of bytes in buffer without flushing it.
+   *  @return number of bytes in buffer.
+   */
+  virtual offile_off_t filled();
 
 private:
 
@@ -168,19 +166,3 @@ private:
 
 
 #endif
-
-/*
- * CVS/RCS Log:
- * $Log: dcostrmb.h,v $
- * Revision 1.1  2006/03/01 20:15:22  lpysher
- * Added dcmtkt ocvs not in xcode  and fixed bug with multiple monitors
- *
- * Revision 1.2  2005/12/08 16:28:25  meichel
- * Changed include path schema for all DCMTK header files
- *
- * Revision 1.1  2002/08/27 16:55:36  meichel
- * Initial release of new DICOM I/O stream classes that add support for stream
- *   compression (deflated little endian explicit VR transfer syntax)
- *
- *
- */

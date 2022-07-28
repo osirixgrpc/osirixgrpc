@@ -1,20 +1,15 @@
 /*=========================================================================
  Program:   OsiriX
- 
- Copyright (c) OsiriX Team
+ Copyright (c) 2010 - 2020 Pixmeo SARL
+ 266 rue de Bernex
+ CH-1233 Bernex
+ Switzerland
  All rights reserved.
- Distributed under GNU - LGPL
- 
- See http://www.osirix-viewer.com/copyright.html for details.
- 
- This software is distributed WITHOUT ANY WARRANTY; without even
- the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
- PURPOSE.
  =========================================================================*/
 
 #import "WebPortalConnection.h"
 
-@class DicomStudy;
+@class DicomStudy, DicomSeries;
 
 @interface WebPortalConnection (Data)
 
@@ -24,6 +19,7 @@
 -(void)getWidth:(CGFloat*)width height:(CGFloat*)height fromImagesArray:(NSArray*)imagesArray minSize:(NSSize)minSize maxSize:(NSSize)maxSize;
 
 -(void)processLoginHtml;
+-(void)processDoubleAuthenticationLoginHtml;
 -(void)processIndexHtml;
 -(void)processMainHtml;
 -(void)processStudyListHtml;
@@ -33,7 +29,11 @@
 -(void)processStudyHtml;
 -(void)processStudyHtml: (NSString*) xid;
 -(void)processPasswordForgottenHtml;
+-(void)processPasswordCreateHtml;
 -(void)processAccountHtml;
+-(void)processStatisticalInformations;
+-(void)processLogHTTPRequest;
+-(void)processDisplayMacOSLog;
 
 -(void)processAdminIndexHtml;
 -(void)processAdminUserHtml;
@@ -42,12 +42,16 @@
 -(void)processSeriesJson;
 -(void)processAlbumsJson;
 -(void)processSeriesListJson;
-
+-(void)processAuditJson;
+-(void)processAuditReport;
+-(void)processHTMLReportTemplate;
+-(void)processHTMLReport;
+-(void)processHTMLReportFrontMost2DViewerImage;
 -(BOOL)processWado;
 
 -(void)processWeasisJnlp;
 -(void)processWeasisXml;
-
+-(void) processOHIFJson;
 -(void)processThumbnail;
 -(void)processReport;
 -(void)processSeriesPdf;
@@ -56,7 +60,17 @@
 -(void)processImageAsScreenCapture: (BOOL) asDisplayed;
 -(void)processMovie;
 
-- (id)objectWithXID:(NSString*)xid;
+-(BOOL)isSeriesVisible:(DicomSeries*) s;
+-(id)objectWithXID:(NSString*)xid;
+-(id)objectWithXID:(NSString*)xid compareToDistant: (BOOL) compareToDistant checkUserAutorisation: (BOOL) checkUserAutorisation;
+-(void)receiveReportHtmlAsPOST;
 
+-(void) addDoubleAuthenticationUserEvent: (NSString*) username;
+-(NSTimeInterval) delayForDoubleAuthenticationUser: (NSString*) username;
+- (void) resetDoubleAuthenticationEventsForUser:(NSString*) username;
+
++ (NSDictionary*) processOHIFJsonWithStudies: (NSArray*) requestedStudies series:(NSArray*) requestedSeries baseURL:(NSString*) baseURL mobile:(BOOL) isMobile wadoSyntax: (NSString*) ws filesForInstanceUID: (NSDictionary*) filesDictionary;
++ (NSDictionary*) processOHIFJsonWithStudies: (NSArray*) requestedStudies series:(NSArray*) requestedSeries baseURL:(NSString*) baseURL mobile:(BOOL) isMobile wadoSyntax: (NSString*) ws filesForInstanceUID: (NSDictionary*) filesDictionary anonymized: (BOOL) anonymized;
++ (NSDictionary*) processOHIFJsonWithStudies: (NSArray*) requestedStudies series:(NSArray*) requestedSeries addCommentsAndStatus: (BOOL) addCommentsAndStatus;
 @end
 

@@ -1,26 +1,36 @@
 /*=========================================================================
-  Program:   OsiriX
-
-  Copyright (c) OsiriX Team
-  All rights reserved.
-  Distributed under GNU - LGPL
-  
-  See http://www.osirix-viewer.com/copyright.html for details.
-
-     This software is distributed WITHOUT ANY WARRANTY; without even
-     the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
-     PURPOSE.
-=========================================================================*/
+ Program:   OsiriX
+ Copyright (c) 2010 - 2020 Pixmeo SARL
+ 266 rue de Bernex
+ CH-1233 Bernex
+ Switzerland
+ All rights reserved.
+ =========================================================================*/
 
 
 #import <Cocoa/Cocoa.h>
 #import "DCMTKServiceClassUser.h"
+#import "SendController.h"
 
-@class DCMCalendarDate;
+#ifndef OSIRIX_LIGHT
+@class DCMCalendarDate, DicomDatabase;
+
+#ifdef __cplusplus
+class DcmDataset;
+#else
+#ifndef DCMDATASETDEFINED
+#define DCMDATASETDEFINED
+typedef char* DcmDataset;
+#endif
+#endif
+
 /** \brief Base class for query nodes */
-@interface DCMTKQueryNode : DCMTKServiceClassUser <NSCopying>
+@interface DCMTKQueryNode : DCMTKServiceClassUser <NSCopying, NSURLSessionDelegate>
 {
 	NSMutableArray *_children;
+    BOOL _sortChildren;
+    NSString *childrenSynchronized;
+    
 	NSString *_uid;
 	NSString *_theDescription;
 	NSString *_name, *_rawName;
@@ -32,9 +42,12 @@
     NSString *_interpretationStatusID;
     NSString *_scheduledProcedureStepStatus;
 	NSString *_accessionNumber;
+    NSString *_bodyPartExamined;
+    NSString *_manufacturerModelName;
     NSString *_patientSex;
 	DCMCalendarDate *_date;
 	DCMCalendarDate *_birthdate;
+    NSString *_birthdateString;
 	DCMCalendarDate *_time;
 	NSString *_modality;
 	NSNumber *_numberImages;
@@ -44,16 +57,38 @@
 	OFCondition globalCondition;
     NSUInteger _countOfSuboperations, _countOfSuccessfulSuboperations;
     NSMutableDictionary *miscDictionary;
+    NSMutableDictionary *logEntry;
     DcmDataset *originalDataset;
+    
+    NSMutableData *wadoRSData;
+    unsigned long wadoRSSize, wadoRSReceivedSize;
+    BOOL wadoRSConnectionActive;
+    NSString *incomingPath, *wadoRSBoundary;
+    NSThread *mainThread;
+    NSTimeInterval childrenTimeInterval;
+    DicomDatabase *db;
+    
+    NSString *localStudyName, *localSudyDescription;
 }
 
 @property( readonly) DcmDataset *originalDataset;
 @property( readonly) NSMutableDictionary *miscDictionary;
+@property( readonly) NSTimeInterval childrenTimeInterval;
 @property BOOL dontCatchExceptions;
 @property BOOL isAutoRetrieve;
 @property BOOL noSmartMode;
 @property NSUInteger countOfSuboperations, countOfSuccessfulSuboperations;
-@property (retain) NSString *abstractSyntax;
+@property (retain) NSString *abstractSyntax, *incomingPath, *wadoRSBoundary, *localStudyName, *localSudyDescription;
+@property (retain, nonatomic) DicomDatabase *db;
+@property( retain) NSMutableDictionary *logEntry;
+
++ (NSURLSession*) dicomWebURLSession;
+
++ (void) errorMessage:(NSArray*) msg;
++ (void) errorURL:(NSDictionary*) msg;
+
++ (NSString*) boundaryFromHeaders: (NSDictionary*) headers;
++ (NSString*) syntaxStringForTransferSyntaxCode: (TransferSyntaxCodes) ts;
 
 + (id)queryNodeWithDataset:(DcmDataset *)dataset
 			callingAET:(NSString *)myAET  
@@ -73,19 +108,31 @@
 			compression: (float)compression
 			extraParameters:(NSDictionary *)extraParameters;
 
+- (void) setNumberOfImages: (NSNumber*) n;
+- (void) setModality:(NSString*) m;
+- (NSString *)comment;
+- (NSString *)comments;
 - (NSNumber*)rawNoFiles;
 - (NSString*)type;
 - (NSString *)uid;
+- (NSString*) studyInstanceUID;
+- (NSString*) seriesInstanceUID;
 - (BOOL) isDistant;
 - (NSString *)theDescription;
 - (NSString *)name;
 - (NSString *)rawName;
+- (DCMCalendarDate *)birthdate;
 - (NSString *)patientID;
 - (NSString *)accessionNumber;
+- (NSString *)bodyPartExamined;
+- (NSString *)manufacturerModelName;
 - (NSString *)referringPhysician;
 - (NSString *)patientSex;
 - (NSString *)performingPhysician;
 - (NSString *)institutionName;
+- (NSDate *)firstImageDate;
+- (NSDate *)lastImageDate;
+- (NSTimeInterval) acquisitionDuration;
 - (DCMCalendarDate *)date;
 - (DCMCalendarDate *)time;
 - (NSString *)modality;
@@ -95,12 +142,15 @@
 - (void)purgeChildren;
 - (void)addChild:(DcmDataset *)dataset;
 - (DcmDataset *)queryPrototype;
+- (DcmDataset *)queryPrototypeIMAGELevel;
 - (DcmDataset *)moveDataset;
 - (BOOL) isWorkList;
+- (BOOL) deleteObjectOnServer;
 // values are a NSDictionary the key for the value is @"value" key for the name is @"name"  name is the tag descriptor from the tag dictionary
-- (void)queryWithValues:(NSArray *)values;
-- (void) queryWithValues:(NSArray *)values dataset:(DcmDataset*) dataset;
-- (void) queryWithValues:(NSArray *)values dataset:(DcmDataset*) dataset syntaxAbstract:(NSString*) syntaxAbstract;
+- (BOOL) queryAllChildren;
+- (BOOL) queryWithValues:(NSArray *)values;
+- (BOOL) queryWithValues:(NSArray *)values dataset:(DcmDataset*) dataset;
+- (BOOL) queryWithValues:(NSArray *)values dataset:(DcmDataset*) dataset syntaxAbstract:(NSString*) syntaxAbstract;
 - (void)setShowErrorMessage:(BOOL) m;
 //common network code for move and query
 - (BOOL)setupNetworkWithSyntax:(const char *)abstractSyntax dataset:(DcmDataset *)dataset;
@@ -121,8 +171,11 @@
 - (void) move:(NSDictionary*) dict retrieveMode: (int) retrieveMode;
 - (void) move:(NSDictionary*) dict;
 
+- (NSMutableURLRequest*) URLRequest;
+
 //- (void) sendMessage: (NSString*) abstractSyntax command: (int) cmd;
 
 + (dispatch_semaphore_t)semaphoreForServerHostAndPort:(NSString*)key;
-
++ (BOOL) addAuthenticationToRequest: (NSMutableURLRequest*) request fromParameters: (NSMutableDictionary*) d;
 @end
+#endif

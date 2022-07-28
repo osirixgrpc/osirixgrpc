@@ -1,19 +1,11 @@
 /*=========================================================================
-  Program:   OsiriX
-
-  Copyright (c) OsiriX Team
-  All rights reserved.
-  Distributed under GNU - LGPL
-  
-  See http://www.osirix-viewer.com/copyright.html for details.
-
-     This software is distributed WITHOUT ANY WARRANTY; without even
-     the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
-     PURPOSE.
-	 
-	 
-	ROIVolumeView creates and displays an ROI Volume created feom a stack of 2D ROIs
-=========================================================================*/
+ Program:   OsiriX
+ Copyright (c) 2010 - 2020 Pixmeo SARL
+ 266 rue de Bernex
+ CH-1233 Bernex
+ Switzerland
+ All rights reserved.
+ =========================================================================*/
 
 #import <AppKit/AppKit.h>
 #include "VTKView.h"
@@ -64,9 +56,9 @@
 #include "vtkPiecewiseFunction.h"
 #include "vtkColorTransferFunction.h"
 #include "vtkVolumeProperty.h"
-#include "vtkVolumeRayCastCompositeFunction.h"
-#include "vtkVolumeRayCastMapper.h"
-#include "vtkVolumeRayCastMIPFunction.h"
+//#include "vtkVolumeRayCastCompositeFunction.h"
+//#include "vtkVolumeRayCastMapper.h"
+//#include "vtkVolumeRayCastMIPFunction.h"
 #include "vtkCleanPolyData.h"
 #include "vtkTransform.h"
 #include "vtkSphere.h"
@@ -123,7 +115,6 @@ class vtkMyCallback;
 	vtkTexture					*texture;
 	
     vtkActor					*outlineRect;
-    vtkPolyDataMapper			*mapOutline;
     vtkOutlineFilter			*outlineData;
 	vtkOrientationMarkerWidget	*orientationWidget;
 	

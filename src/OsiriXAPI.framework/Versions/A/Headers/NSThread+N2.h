@@ -1,15 +1,10 @@
 /*=========================================================================
  Program:   OsiriX
- 
- Copyright (c) OsiriX Team
+ Copyright (c) 2010 - 2020 Pixmeo SARL
+ 266 rue de Bernex
+ CH-1233 Bernex
+ Switzerland
  All rights reserved.
- Distributed under GNU - LGPL
- 
- See http://www.osirix-viewer.com/copyright.html for details.
- 
- This software is distributed WITHOUT ANY WARRANTY; without even
- the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
- PURPOSE.
  =========================================================================*/
 
 
@@ -36,6 +31,9 @@ extern NSString* const NSThreadIsCancelledKey;
 -(void)enterSubthreadWithRange:(CGFloat)rangeLoc :(CGFloat)rangeLen __deprecated;
 -(void)exitSubthread __deprecated;
 
+-(void)enterIgnoreGUIChanges;
+-(void)exitIgnoreGUIChanges;
+
 extern NSString* const NSThreadSupportsCancelKey;
 -(BOOL)supportsCancel;
 -(void)setSupportsCancel:(BOOL)supportsCancel;
@@ -59,5 +57,6 @@ extern NSString* const NSThreadProgressDetailsKey;
 extern NSString* const NSThreadSubthreadsAwareProgressKey;
 -(CGFloat)subthreadsAwareProgress;
 
+-(NSInteger)getThreadNum;
 @end
 

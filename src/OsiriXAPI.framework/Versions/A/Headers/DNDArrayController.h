@@ -4,15 +4,21 @@
 
 
 /** \brief Network destination Array Controller for  Q/R*/
-@interface DNDArrayController : NSArrayController
+@interface DNDArrayController : NSArrayController <NSMenuDelegate>
 {
     IBOutlet NSTableView			*tableView;
 	IBOutlet SFAuthorizationView	*_authView;
 	
 	NSTableColumn *sortedColumn;
+    
+    BOOL dontAcceptFirstRowChange;
 }
 
+@property BOOL dontAcceptFirstRowChange;
+
 // table view drag and drop support
+
+- (void) setAuthView:( SFAuthorizationView*) v;
 
 - (BOOL)tableView:(NSTableView *)tv writeRows:(NSArray*)rows toPasteboard:(NSPasteboard*)pboard;
     
@@ -23,9 +29,8 @@
 
 // utility methods
 
--(void)moveObjectsInArrangedObjectsFromIndexes:(NSIndexSet *)indexSet 
-				    toIndex:(unsigned)index;
-
+-(void)moveObjectsInArrangedObjectsFromIndexes:(NSIndexSet *)indexSet toIndex:(unsigned)index;
+- (void) setContextualMenuForPreferencePanel;
 - (NSIndexSet *)indexSetFromRows:(NSArray *)rows;
 - (int)rowsAboveRow:(int)row inIndexSet:(NSIndexSet *)indexSet;
 - (void) deleteSelectedRow:(id)sender;

@@ -42,8 +42,7 @@
       allowLocationSimulation = "YES">
       <PathRunnable
          runnableDebuggingMode = "0"
-         BundleIdentifier = "org.horosproject.horos"
-         FilePath = "/Applications/Horos.app">
+         FilePath = "/Applications/OsiriX Lite.app">
       </PathRunnable>
       <EnvironmentVariables>
          <EnvironmentVariable

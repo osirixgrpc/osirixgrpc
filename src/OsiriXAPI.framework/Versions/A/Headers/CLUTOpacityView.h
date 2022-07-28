@@ -1,16 +1,11 @@
 /*=========================================================================
-  Program:   OsiriX
-
-  Copyright (c) OsiriX Team
-  All rights reserved.
-  Distributed under GNU - LGPL
-  
-  See http://www.osirix-viewer.com/copyright.html for details.
-
-     This software is distributed WITHOUT ANY WARRANTY; without even
-     the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
-     PURPOSE.
-=========================================================================*/
+ Program:   OsiriX
+ Copyright (c) 2010 - 2020 Pixmeo SARL
+ 266 rue de Bernex
+ CH-1233 Bernex
+ Switzerland
+ All rights reserved.
+ =========================================================================*/
 
 
 #import <Cocoa/Cocoa.h>
@@ -24,7 +19,9 @@
 	NSColor *backgroundColor, *histogramColor, *pointsColor, *pointsBorderColor, *curveColor, *selectedPointColor, *textLabelColor;
 	float histogramOpacity;
 	float *volumePointer;
-	int voxelCount;
+	unsigned long voxelHeight;
+    unsigned long voxelWidth;
+    unsigned long voxelDepth;
 	int protectionAgainstReentry;
 	vImagePixelCount *histogram;
 	int histogramSize;
@@ -47,7 +44,6 @@
 	IBOutlet NSWindow *chooseNameAndSaveWindow;
 	IBOutlet NSTextField *clutSavedName;
 	
-    NSWindow *vrViewWindow;
 	IBOutlet VRView *vrView;
 	BOOL vrViewLowResolution;
 	BOOL didResizeVRVIew;
@@ -62,12 +58,14 @@
 	BOOL updateView, setCLUTtoVRView, windowWillClose;
 }
 
+@property (nonatomic) BOOL windowWillClose;
+
 - (void)cleanup;
 - (void)createContextualMenu;
 
 #pragma mark -
 #pragma mark Histogram
-- (void)setVolumePointer:(float*)ptr width:(int)width height:(int)height numberOfSlices:(int)n;
+- (void)setVolumePointer:(float*)ptr width:(unsigned long)width height:(unsigned long)height numberOfSlices:(unsigned long)n;
 - (void)setHUmin:(float)min HUmax:(float)max;
 - (void)computeHistogram;
 - (void)callComputeHistogram;

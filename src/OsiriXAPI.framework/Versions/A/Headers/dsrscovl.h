@@ -1,19 +1,15 @@
 /*
  *
- *  Copyright (C) 2000-2005, OFFIS
+ *  Copyright (C) 2000-2016, OFFIS e.V.
+ *  All rights reserved.  See COPYRIGHT file for details.
  *
  *  This software and supporting documentation were developed by
  *
- *    Kuratorium OFFIS e.V.
- *    Healthcare Information and Communication Systems
+ *    OFFIS e.V.
+ *    R&D Division Health
  *    Escherweg 2
  *    D-26121 Oldenburg, Germany
  *
- *  THIS SOFTWARE IS MADE AVAILABLE,  AS IS,  AND OFFIS MAKES NO  WARRANTY
- *  REGARDING  THE  SOFTWARE,  ITS  PERFORMANCE,  ITS  MERCHANTABILITY  OR
- *  FITNESS FOR ANY PARTICULAR USE, FREEDOM FROM ANY COMPUTER DISEASES  OR
- *  ITS CONFORMITY TO ANY SPECIFICATION. THE ENTIRE RISK AS TO QUALITY AND
- *  PERFORMANCE OF THE SOFTWARE IS WITH THE USER.
  *
  *  Module: dcmsr
  *
@@ -21,13 +17,6 @@
  *
  *  Purpose:
  *    classes: DSRSpatialCoordinatesValue
- *
- *  Last Update:      $Author: lpysher $
- *  Update Date:      $Date: 2006/03/01 20:16:11 $
- *  CVS/RCS Revision: $Revision: 1.1 $
- *  Status:           $State: Exp $
- *
- *  CVS/RCS Log at end of file
  *
  */
 
@@ -47,14 +36,14 @@
 
 /** Class for spatial coordinate values
  */
-class DSRSpatialCoordinatesValue
+class DCMTK_DCMSR_EXPORT DSRSpatialCoordinatesValue
 {
     // allow access to getValuePtr()
     friend class DSRContentItem;
 
   public:
 
-    /** default contructor
+    /** default constructor
      */
     DSRSpatialCoordinatesValue();
 
@@ -80,14 +69,14 @@ class DSRSpatialCoordinatesValue
     DSRSpatialCoordinatesValue &operator=(const DSRSpatialCoordinatesValue &coordinatesValue);
 
     /** clear all internal variables.
-     *  Graphic type is set to GT_invalid.  Since an empty list of graphic data is invalid
-     *  the spatial coordinates value becomes invalid afterwards.
+     *  Graphic type is set to DSRTypes::GT_invalid.  Since an empty list of graphic data is
+     *  invalid the spatial coordinates value becomes invalid afterwards.
      */
     virtual void clear();
 
     /** check whether the current spatial coordinates value is valid.
-     *  The value is valid if the graphic type is not GT_invalid and the graphic data is
-     *  valid (see checkData() for details).
+     *  The value is valid if the graphic type is not DSRTypes::GT_invalid and the graphic data
+     *  is valid.  See checkGraphicData() method for details.
      ** @return OFTrue if reference value is valid, OFFalse otherwise
      */
     virtual OFBool isValid() const;
@@ -106,57 +95,60 @@ class DSRSpatialCoordinatesValue
      *  @param  flags   flag used to customize the output (see DSRTypes::PF_xxx)
      ** @return status, EC_Normal if successful, an error code otherwise
      */
-    virtual OFCondition print(ostream &stream,
+    virtual OFCondition print(STD_NAMESPACE ostream &stream,
                               const size_t flags) const;
 
     /** read spatial coordinates value from dataset
-     ** @param  dataset    DICOM dataset from which the value should be read
-     *  @param  logStream  pointer to error/warning output stream (output disabled if NULL)
+     ** @param  dataset  DICOM dataset from which the value should be read
+     *  @param  flags    flag used to customize the reading process (see DSRTypes::RF_xxx)
      ** @return status, EC_Normal if successful, an error code otherwise
      */
     virtual OFCondition read(DcmItem &dataset,
-                             OFConsole *logStream);
+                             const size_t flags);
 
     /** write spatial coordinates reference value to dataset
-     ** @param  dataset    DICOM dataset to which the value should be written
-     *  @param  logStream  pointer to error/warning output stream (output disabled if NULL)
+     ** @param  dataset  DICOM dataset to which the value should be written
      ** @return status, EC_Normal if successful, an error code otherwise
      */
-    virtual OFCondition write(DcmItem &dataset,
-                              OFConsole *logStream) const;
+    virtual OFCondition write(DcmItem &dataset) const;
 
     /** read spatial coordinates value from XML document
      ** @param  doc     document containing the XML file content
      *  @param  cursor  cursor pointing to the starting node
+     *  @param  flags   flag used to customize the reading process (see DSRTypes::XF_xxx)
      ** @return status, EC_Normal if successful, an error code otherwise
      */
     virtual OFCondition readXML(const DSRXMLDocument &doc,
-                                DSRXMLCursor cursor);
+                                DSRXMLCursor cursor,
+                                const size_t flags);
 
     /** write spatial coordinates value in XML format
-     ** @param  stream     output stream to which the XML document is written
-     *  @param  flags      flag used to customize the output (see DSRTypes::XF_xxx)
-     *  @param  logStream  pointer to error/warning output stream (output disabled if NULL)
+     ** @param  stream  output stream to which the XML document is written
+     *  @param  flags   flag used to customize the output (see DSRTypes::XF_xxx)
      ** @return status, EC_Normal if successful, an error code otherwise
      */
-    virtual OFCondition writeXML(ostream &stream,
-                                 const size_t flags,
-                                 OFConsole *logStream) const;
+    virtual OFCondition writeXML(STD_NAMESPACE ostream &stream,
+                                 const size_t flags) const;
 
-    /** render spatial coordinates value in HTML format
-     ** @param  docStream    output stream to which the main HTML document is written
-     *  @param  annexStream  output stream to which the HTML document annex is written
-     *  @param  annexNumber  reference to the variable where the current annex number is stored.
-     *                       Value is increased automatically by 1 after a new entry has been added.
+    /** render spatial coordinates value in HTML/XHTML format
+     ** @param  docStream    output stream to which the main HTML/XHTML document is written
+     *  @param  annexStream  output stream to which the HTML/XHTML document annex is written
+     *  @param  annexNumber  reference to the variable where the current annex number is
+     *                       stored.  Value is increased automatically by 1 after a new entry
+     *                       has been added.
      *  @param  flags        flag used to customize the output (see DSRTypes::HF_xxx)
-     *  @param  logStream    pointer to error/warning output stream (output disabled if NULL)
      ** @return status, EC_Normal if successful, an error code otherwise
      */
-    virtual OFCondition renderHTML(ostream &docStream,
-                                   ostream &annexStream,
+    virtual OFCondition renderHTML(STD_NAMESPACE ostream &docStream,
+                                   STD_NAMESPACE ostream &annexStream,
                                    size_t &annexNumber,
-                                   const size_t flags,
-                                   OFConsole *logStream) const;
+                                   const size_t flags) const;
+
+    /** get copy of spatial coordinates value
+     ** @param  coordinatesValue  reference to variable in which the value should be stored
+     ** @return status, EC_Normal if successful, an error code otherwise
+     */
+    OFCondition getValue(DSRSpatialCoordinatesValue &coordinatesValue) const;
 
     /** get reference to spatial coordinates value
      ** @return reference to spatial coordinates value
@@ -169,44 +161,65 @@ class DSRSpatialCoordinatesValue
     /** get current graphic type.
      *  The graphic type specifies the geometry of the coordinates stored in the graphic data
      *  list.
-     ** @return graphic type (might be GT_invalid)
+     ** @return graphic type (might be DSRTypes::GT_invalid)
      */
     inline DSRTypes::E_GraphicType getGraphicType() const
     {
         return GraphicType;
     }
 
-    /** set current graphic type.
-     *  The graphic type specifies the geometry of the coordinates stored in the graphic data
-     *  list.
-     ** @param  graphicType  graphic type to be set (GT_invalid is not allowed)
-     ** @return status, EC_Normal if successful, an error code otherwise
-     */
-    OFCondition setGraphicType(const DSRTypes::E_GraphicType graphicType);
-
-    /** get copy of spatial coordinates value
-     ** @param  coordinatesValue  reference to variable in which the value should be stored
-     ** @return status, EC_Normal if successful, an error code otherwise
-     */
-    OFCondition getValue(DSRSpatialCoordinatesValue &coordinatesValue) const;
-
-    /** set spatial coordinates value.
-     *  Before setting the value the graphic type and data are checked (see checkData()).
-     *  If the value is invalid the current value is not replaced and remains unchanged.
-     ** @param  coordinatesValue  value to be set
-     ** @return status, EC_Normal if successful, an error code otherwise
-     */
-    OFCondition setValue(const DSRSpatialCoordinatesValue &coordinatesValue);
-
     /** get reference to graphic data list.
-     *  This list contains an ordered set of (columns,rows) pairs that denote positions in
-     *  an image.  The allowed number of pairs is depending on the graphic type.
+     *  This list contains an ordered set of (columns,rows) pairs that denote positions in an
+     *  image.  The allowed number of pairs is depending on the graphic type.
      ** @return reference to graphic data list
      */
     inline DSRGraphicDataList &getGraphicDataList()
     {
         return GraphicDataList;
     }
+
+    /** get fiducial UID.
+     *  Optional - This is the globally unique identifier for this fiducial item.  It can be
+     *  used to associate these spatial coordinates with other content items.
+     ** @return fiducial UID (might be invalid or an empty string)
+     */
+    inline const OFString &getFiducialUID() const
+    {
+        return FiducialUID;
+    }
+
+    /** set spatial coordinates value.
+     *  Before setting the value, the graphic type and data are usually checked.  If the value
+     *  is invalid, the current value is not replaced and remains unchanged.
+     ** @param  coordinatesValue  value to be set
+     *  @param  check             if enabled, check values for validity before setting them.
+     *                            See checkXXX() methods for details.  Empty values are only
+     *                            accepted for non-mandatory attributes.
+     ** @return status, EC_Normal if successful, an error code otherwise
+     */
+    OFCondition setValue(const DSRSpatialCoordinatesValue &coordinatesValue,
+                         const OFBool check = OFTrue);
+
+    /** set current graphic type.
+     *  The graphic type specifies the geometry of the coordinates stored in the graphic data
+     *  list.
+     ** @param  graphicType  graphic type to be set (DSRTypes::GT_invalid is not allowed)
+     *  @param  check        dummy parameter (currently not used)
+     ** @return status, EC_Normal if successful, an error code otherwise
+     */
+    OFCondition setGraphicType(const DSRTypes::E_GraphicType graphicType,
+                               const OFBool check = OFTrue);
+
+    /** set current fiducial UID.
+     *  Globally unique identifier that can be used to associate these spatial coordinates
+     *  with other content items.
+     ** @param  fiducialUID  value to be set (VR=UI, optional)
+     *  @param  check        if enabled, check value for validity before setting it.  See
+     *                       checkFiducialUID() method for details.
+     ** @return status, EC_Normal if successful, an error code otherwise
+     */
+    OFCondition setFiducialUID(const OFString &fiducialUID,
+                               const OFBool check = OFTrue);
 
 
   protected:
@@ -219,71 +232,38 @@ class DSRSpatialCoordinatesValue
         return this;
     }
 
-    /** check the graphic type and data for validity.
-     *  If 'graphicType' is valid the number of entries in the 'graphicDatalist' are checked.
-     *  A POINT needs exactly 1 value pair (column,row), a MULTIPOINT at least 1?, a closed
-     *  POLYLINE at least 1? where the first and last pair are equal, a CIRCLE exactly 2 and an
-     *  ELLIPSE exactly 4.
+    /** check the specified graphic type and data for validity.
+     *  If 'graphicType' is valid, the number of entries in the 'graphicDatalist' are checked.
+     *  A POINT needs exactly 1 value pair (column,row), a MULTIPOINT at least 1?, a POLYLINE
+     *  at least 1?, a CIRCLE exactly 2 and an ELLIPSE exactly 4.
      ** @param  graphicType      graphic type to be checked
      *  @param  graphicDataList  list of graphic data to be checked
-     *  @param  logStream        pointer to error/warning output stream (output disabled if NULL)
-     ** @return OFTrue if graphic type and data are valid, OFFalse otherwise
+     *  @param  reportWarnings   if enabled, report a warning message on each deviation from
+     *                           an expected value to the logger
+     ** @return status, EC_Normal if graphic type and data are valid, an error code otherwise
      */
-    OFBool checkData(const DSRTypes::E_GraphicType graphicType,
-                     const DSRGraphicDataList &graphicDataList,
-                     OFConsole *logStream = NULL) const;
+    OFCondition checkGraphicData(const DSRTypes::E_GraphicType graphicType,
+                                 const DSRGraphicDataList &graphicDataList,
+                                 const OFBool reportWarnings = OFFalse) const;
+
+    /** check the specified fiducial UID for validity
+     ** @param  fiducialUID  fiducial UID to be checked
+     ** @return status, EC_Normal if fiducial UID is valid, an error code otherwise
+     */
+    OFCondition checkFiducialUID(const OFString &fiducialUID) const;
 
 
   private:
 
-    /// graphic type (associated DICOM VR=CS, type 1)
+    /// Graphic Type (associated DICOM VR=CS, type 1)
     DSRTypes::E_GraphicType GraphicType;
-    /// graphic data (associated DICOM VR=FL, VM=2-n, type 1)
+    /// Graphic Data (associated DICOM VR=FL, VM=2-n, type 1)
     DSRGraphicDataList      GraphicDataList;
+    /// Fiducial UID (VR=UI, VM=1, type 3)
+    OFString                FiducialUID;
+    /// Pixel Origin Interpretation (VR=CS, VM=1, type 1C)
+     // - tbd: conditional attribute not yet supported
 };
 
 
 #endif
-
-
-/*
- *  CVS/RCS Log:
- *  $Log: dsrscovl.h,v $
- *  Revision 1.1  2006/03/01 20:16:11  lpysher
- *  Added dcmtkt ocvs not in xcode  and fixed bug with multiple monitors
- *
- *  Revision 1.10  2005/12/08 16:05:17  meichel
- *  Changed include path schema for all DCMTK header files
- *
- *  Revision 1.9  2003/08/07 18:01:42  joergr
- *  Removed libxml dependency from header files.
- *
- *  Revision 1.8  2003/08/07 12:47:10  joergr
- *  Added readXML functionality.
- *
- *  Revision 1.7  2001/09/26 13:04:11  meichel
- *  Adapted dcmsr to class OFCondition
- *
- *  Revision 1.6  2001/06/01 15:51:03  meichel
- *  Updated copyright header
- *
- *  Revision 1.5  2000/11/06 11:18:09  joergr
- *  Moved some protected methods to public part.
- *
- *  Revision 1.4  2000/11/01 16:23:24  joergr
- *  Added support for conversion to XML.
- *
- *  Revision 1.3  2000/10/18 17:07:30  joergr
- *  Added methods allowing direct access to certain content item values.
- *  Added doc++ comments.
- *  Made some functions inline.
- *
- *  Revision 1.2  2000/10/16 11:57:23  joergr
- *  Added methods allowing direct access to certain content item values.
- *
- *  Revision 1.1  2000/10/13 07:49:32  joergr
- *  Added new module 'dcmsr' providing access to DICOM structured reporting
- *  documents (supplement 23).  Doc++ documentation not yet completed.
- *
- *
- */

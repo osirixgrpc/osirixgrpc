@@ -1,19 +1,11 @@
 /*=========================================================================
-  Program:   OsiriX
-
-  Copyright (c) OsiriX Team
-  All rights reserved.
-  Distributed under GNU - LGPL
-  
-  See http://www.osirix-viewer.com/copyright.html for details.
-
-     This software is distributed WITHOUT ANY WARRANTY; without even
-     the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
-     PURPOSE.
-=========================================================================*/
-
-
-
+ Program:   OsiriX
+ Copyright (c) 2010 - 2020 Pixmeo SARL
+ 266 rue de Bernex
+ CH-1233 Bernex
+ Switzerland
+ All rights reserved.
+ =========================================================================*/
 
 #import <Foundation/Foundation.h>
 
@@ -24,15 +16,21 @@
 }
 
 @property(assign) NSPoint point;
-@property(readonly) float x, y;
+@property(readonly) double x, y;
 
-+ (MyPoint*)point:(NSPoint)a;
++(MyPoint*)point:(NSPoint)a;
++(MyPoint*)pointWithFloatArray:(float*)a;
++(MyPoint*)pointWithDoubleArray:(float*)a;
+
 - (id)initWithPoint:(NSPoint)a;
-
+- (CGPoint) CGPoint;
 - (void)setPoint:(NSPoint)a;
-- (void)move:(float)x :(float)y;
-
+- (void)move:(double)x :(double)y;
+- (double) distanceWithPoint: (MyPoint*) p;
+- (double) squareDistanceWithPoint: (MyPoint*) p;
+- (double) squareDistanceWithNSPoint: (NSPoint) p;
+- (BOOL)isEqualToMyPoint:(MyPoint*)a;
 - (BOOL)isEqualToPoint:(NSPoint)a;
-- (BOOL)isNearToPoint:(NSPoint)a :(float)scale :(float)ratio;
+- (BOOL)isNearToPoint:(NSPoint)a :(double)scale :(double)ratio;
 
 @end

@@ -1,19 +1,15 @@
 /*
  *
- *  Copyright (C) 2000-2005, OFFIS
+ *  Copyright (C) 2000-2016, OFFIS e.V.
+ *  All rights reserved.  See COPYRIGHT file for details.
  *
  *  This software and supporting documentation were developed by
  *
- *    Kuratorium OFFIS e.V.
- *    Healthcare Information and Communication Systems
+ *    OFFIS e.V.
+ *    R&D Division Health
  *    Escherweg 2
  *    D-26121 Oldenburg, Germany
  *
- *  THIS SOFTWARE IS MADE AVAILABLE,  AS IS,  AND OFFIS MAKES NO  WARRANTY
- *  REGARDING  THE  SOFTWARE,  ITS  PERFORMANCE,  ITS  MERCHANTABILITY  OR
- *  FITNESS FOR ANY PARTICULAR USE, FREEDOM FROM ANY COMPUTER DISEASES  OR
- *  ITS CONFORMITY TO ANY SPECIFICATION. THE ENTIRE RISK AS TO QUALITY AND
- *  PERFORMANCE OF THE SOFTWARE IS WITH THE USER.
  *
  *  Module: dcmsr
  *
@@ -21,13 +17,6 @@
  *
  *  Purpose:
  *    classes: DSRNumericMeasurementValue
- *
- *  Last Update:      $Author: lpysher $
- *  Update Date:      $Date: 2006/03/01 20:16:11 $
- *  CVS/RCS Revision: $Revision: 1.1 $
- *  Status:           $State: Exp $
- *
- *  CVS/RCS Log at end of file
  *
  */
 
@@ -39,16 +28,18 @@
 
 #include "dsrcodvl.h"
 
-#include "ofstring.h"
+#include "dcvrfd.h"
+#include "dcvrsl.h"
+#include "dcvrul.h"
 
 
 /*---------------------*
  *  class declaration  *
  *---------------------*/
 
-/** Class for numeric measurement values
+/** Class for numeric values and measurements
  */
-class DSRNumericMeasurementValue
+class DCMTK_DCMSR_EXPORT DSRNumericMeasurementValue
 {
     // allow access to getValuePtr()
     friend class DSRContentItem;
@@ -59,25 +50,42 @@ class DSRNumericMeasurementValue
      */
     DSRNumericMeasurementValue();
 
-    /** constructor.
-     *  The code triple is only set if it passed the validity check (see setValue()).
-     ** @param  numericValue     numeric measurement value. (VR=DS, type 1)
-     *  @param  measurementUnit  code representing the measurement name (code meaning)
-     *                           and unit (code value). (type 2)
-     */
-    DSRNumericMeasurementValue(const OFString &numericValue,
-                               const DSRCodedEntryValue &measurementUnit);
-
-    /** constructor.
-     *  The two codes are only set if they passed the validity check (see setValue()).
-     ** @param  numericValue     numeric measurement value. (VR=DS, type 1)
-     *  @param  measurementUnit  code representing the measurement name (code meaning)
-     *                           and unit (code value). (type 2)
-     *  @param  valueQualifier   code representing the numeric value qualifier. (type 3)
+    /** constructor
+     ** @param  numericValue     numeric value (VR=DS, mandatory)
+     *  @param  measurementUnit  code representing the units of measurement (mandatory)
+     *  @param  check            if enabled, check 'numericValue' and 'measurementUnit' for
+     *                           validity before setting them.  See corresponding setValue()
+     *                           method for details.
      */
     DSRNumericMeasurementValue(const OFString &numericValue,
                                const DSRCodedEntryValue &measurementUnit,
-                               const DSRCodedEntryValue &valueQualifier);
+                               const OFBool check = OFTrue);
+
+    /** constructor
+     ** @param  valueQualifier  code representing the numeric value qualifier.  Used to
+     *                          specify the reason for the absence of the measured value
+     *                          sequence, i.e. why the numeric value and measurement unit
+     *                          are empty.
+     *  @param  check           if enabled, check value for validity before setting it.
+     *                          See corresponding setValue() method for details.
+     */
+    DSRNumericMeasurementValue(const DSRCodedEntryValue &valueQualifier,
+                               const OFBool check = OFTrue);
+
+    /** constructor
+     ** @param  numericValue     numeric value (VR=DS, mandatory)
+     *  @param  measurementUnit  code representing the units of measurement (mandatory)
+     *  @param  valueQualifier   code representing the numeric value qualifier (optional).
+     *                           Can also be used to specify the reason for the absence of
+     *                           the measured value sequence (where 'numericValue' and
+     *                           'measurementUnit' are stored).
+     *  @param  check            if enabled, check values for validity before setting them.
+     *                           See corresponding setValue() method for details.
+     */
+    DSRNumericMeasurementValue(const OFString &numericValue,
+                               const DSRCodedEntryValue &measurementUnit,
+                               const DSRCodedEntryValue &valueQualifier,
+                               const OFBool check = OFTrue);
 
     /** copy constructor
      ** @param  numericMeasurement  numeric measurement value to be copied (not checked !)
@@ -100,82 +108,93 @@ class DSRNumericMeasurementValue
     virtual void clear();
 
     /** check whether the current numeric measurement value is valid.
-     *  The value is valid if isEmpty() is true or all three values (numeric value, measurement
-     *  unit and value qualifier) do contain valid values (see checkXXX() methods).
+     *  The value is valid if isEmpty() is true or both the numeric value and the measurement
+     *  unit contain a valid value, and the value qualifier is valid (see checkXXX() methods).
+     *  The possibly available additional representations of the numeric value are never
+     *  checked.
      ** @return OFTrue if value is valid, OFFalse otherwise
      */
     virtual OFBool isValid() const;
 
     /** check whether the current numeric measurement value is empty.
-     *  Checks whether both the numeric value and the measurement unit are empty.
+     *  Checks whether both the numeric value and the measurement are empty.  The optional
+     *  value qualifier is not checked since it might contain the reason for the absence of
+     *  the measured value sequence.
      ** @return OFTrue if value is empty, OFFalse otherwise
      */
     virtual OFBool isEmpty() const;
 
+    /** check whether the current numeric measurement value is complete, i.e.\ whether the
+     *  numeric value is non-empty and the measurement unit is complete, or whether the
+     *  value qualifier is complete.  This is just a basic check that might be useful for
+     *  "validating" input data.  See isValid() for a more sophisticated way of checking
+     *  the current numeric measurement value.
+     ** @return OFTrue if value is complete, OFFalse otherwise
+     */
+    virtual OFBool isComplete() const;
+
     /** print numeric measurement value.
      *  The output of a typical numeric measurement value looks like this:
-     *  "3" (cm,99_OFFIS_DCMTK,"Length Unit").  If the value is empty the text "empty" is
-     *  printed instead.  The numeric value qualifier is never printed.
+     *  "3.5" (cm,UCUM[1.4],"centimeter").  If the value is empty, the text "empty" is printed
+     *  instead, followed by the numeric value qualifier (if present).  The possibly available
+     *  additional floating point and rational representations of the numeric value are never
+     *  printed.
      ** @param  stream  output stream to which the numeric measurement value should be printed
      *  @param  flags   flag used to customize the output (not used)
      ** @return status, EC_Normal if successful, an error code otherwise
      */
-    virtual OFCondition print(ostream &stream,
+    virtual OFCondition print(STD_NAMESPACE ostream &stream,
                               const size_t flags) const;
 
     /** read numeric measurement value from XML document
      ** @param  doc     document containing the XML file content
      *  @param  cursor  cursor pointing to the starting node
+     *  @param  flags   flag used to customize the reading process (see DSRTypes::XF_xxx)
      ** @return status, EC_Normal if successful, an error code otherwise
      */
     virtual OFCondition readXML(const DSRXMLDocument &doc,
-                                DSRXMLCursor cursor);
+                                DSRXMLCursor cursor,
+                                const size_t flags);
 
     /** write numeric measurement value in XML format
-     ** @param  stream     output stream to which the XML document is written
-     *  @param  flags      flag used to customize the output (see DSRTypes::XF_xxx)
-     *  @param  logStream  pointer to error/warning output stream (output disabled if NULL)
+     ** @param  stream  output stream to which the XML document is written
+     *  @param  flags   flag used to customize the output (see DSRTypes::XF_xxx)
      ** @return status, EC_Normal if successful, an error code otherwise
      */
-    virtual OFCondition writeXML(ostream &stream,
-                                 const size_t flags,
-                                 OFConsole *logStream) const;
+    virtual OFCondition writeXML(STD_NAMESPACE ostream &stream,
+                                 const size_t flags) const;
 
     /** read measured value sequence and numeric value qualifier code sequence from dataset.
      *  The number of items within the sequences is checked.  If error/warning output are
-     *  enabled a warning message is printed if a sequence is absent or contains more than
+     *  enabled, a warning message is printed if a sequence is absent or contains more than
      *  one item.
-     ** @param  dataset    DICOM dataset from which the sequences should be read
-     *  @param  logStream  pointer to error/warning output stream (output disabled if NULL)
+     ** @param  dataset  DICOM dataset from which the sequences should be read
+     *  @param  flags    flag used to customize the reading process (see DSRTypes::RF_xxx)
      ** @return status, EC_Normal if successful, an error code otherwise
      */
     virtual OFCondition readSequence(DcmItem &dataset,
-                                     OFConsole *logStream);
+                                     const size_t flags);
 
     /** write measured value sequence and numeric value qualifier code sequence to dataset.
      *  The measured value sequence is always written (might be empty, though).  The numeric
      *  value qualifier code sequence is optional and, therefore, only written if non-empty.
-     ** @param  dataset    DICOM dataset to which the sequences should be written
-     *  @param  logStream  pointer to error/warning output stream (output disabled if NULL)
+     ** @param  dataset  DICOM dataset to which the sequences should be written
      ** @return status, EC_Normal if successful, an error code otherwise
      */
-    virtual OFCondition writeSequence(DcmItem &dataset,
-                                      OFConsole *logStream) const;
+    virtual OFCondition writeSequence(DcmItem &dataset) const;
 
-    /** render numeric measurement value in HTML format
-     ** @param  docStream    output stream to which the main HTML document is written
-     *  @param  annexStream  output stream to which the HTML document annex is written
+    /** render numeric measurement value in HTML/XHTML format
+     ** @param  docStream    output stream to which the main HTML/XHTML document is written
+     *  @param  annexStream  output stream to which the HTML/XHTML document annex is written
      *  @param  annexNumber  reference to the variable where the current annex number is stored.
      *                       Value is increased automatically by 1 after a new entry has been added.
      *  @param  flags        flag used to customize the output (see DSRTypes::HF_xxx)
-     *  @param  logStream    pointer to error/warning output stream (output disabled if NULL)
      ** @return status, EC_Normal if successful, an error code otherwise
      */
-    virtual OFCondition renderHTML(ostream &docStream,
-                                   ostream &annexStream,
+    virtual OFCondition renderHTML(STD_NAMESPACE ostream &docStream,
+                                   STD_NAMESPACE ostream &annexStream,
                                    size_t &annexNumber,
-                                   const size_t flags,
-                                   OFConsole *logStream) const;
+                                   const size_t flags) const;
 
     /** get reference to numeric measurement value
      ** @return reference to numeric measurement value
@@ -187,7 +206,7 @@ class DSRNumericMeasurementValue
 
     /** get copy of numeric measurement value
      ** @param  numericMeasurement  reference to variable in which the value should be stored
-     ** @return status, EC_Normal if successful, an error code otherwise
+     ** @return always returns EC_Normal
      */
     OFCondition getValue(DSRNumericMeasurementValue &numericMeasurement) const;
 
@@ -217,71 +236,213 @@ class DSRNumericMeasurementValue
 
     /** get copy of measurement unit
      ** @param  measurementUnit  reference to variable in which the code should be stored
-     ** @return status, EC_Normal if successful, an error code otherwise
+     ** @return always returns EC_Normal
      */
     OFCondition getMeasurementUnit(DSRCodedEntryValue &measurementUnit) const;
 
+    /** get copy of numeric value qualifier (optional).
+     *  Can be used to specify the reason for the absence of the measured value sequence.
+     ** @param  valueQualifier  reference to variable in which the code should be stored
+     ** @return always returns EC_Normal
+     */
+    OFCondition getNumericValueQualifier(DSRCodedEntryValue &valueQualifier) const;
+
+    /** get floating point representation of the numeric value (optional)
+     ** @param  floatingPoint  reference to variable in which the floating point representation
+     *                         should be stored
+     ** @return status, EC_Normal if successful, an error code otherwise.  Returns
+     *    SR_EC_RepresentationNotAvailable if floating point representation is not available.
+     */
+    OFCondition getFloatingPointRepresentation(Float64 &floatingPoint) const;
+
+    /** get rational representation of the numeric value (optional)
+     ** @param  rationalNumerator    reference to variable in which the integer numerator of
+     *                               the rational representation should be stored
+     ** @param  rationalDenominator  reference to variable in which the integer denominator of
+     *                               the rational representation should be stored
+     ** @return status, EC_Normal if successful, an error code otherwise.  Returns
+     *    SR_EC_RepresentationNotAvailable if rational representation is not available.
+     */
+    OFCondition getRationalRepresentation(Sint32 &rationalNumerator,
+                                          Uint32 &rationalDenominator) const;
+
     /** set numeric measurement value.
-     *  Before setting the value it is checked (see checkXXX()).  If the value is invalid
-     *  the current value is not replaced and remains unchanged.
+     *  Before setting the value, it is usually checked.  If the value is invalid, the current
+     *  value is not replaced and remains unchanged.
      ** @param  numericMeasurement  value to be set
+     *  @param  check               if enabled, check value for validity before setting it.
+     *                              See checkXXX() methods for details.  Empty values are only
+     *                              accepted for non-mandatory attributes.
      ** @return status, EC_Normal if successful, an error code otherwise
      */
-    OFCondition setValue(const DSRNumericMeasurementValue &numericMeasurement);
+    OFCondition setValue(const DSRNumericMeasurementValue &numericMeasurement,
+                         const OFBool check = OFTrue);
 
     /** set numeric value and measurement unit.
-     *  Before setting the values they are checked (see checkXXX()).  If the value pair is
-     *  invalid the current value pair is not replaced and remains unchanged.
-     ** @param  numericValue     numeric value to be set
-     *  @param  measurementUnit  measurement unit to be set
-     ** @return status, EC_Normal if successful, an error code otherwise
-     */
-    OFCondition setValue(const OFString &numericValue,
-                         const DSRCodedEntryValue &measurementUnit);
-
-    /** set numeric value, measurement unit and numeric value qualifier.
-     *  Before setting the values they are checked (see checkXXX()).  If one of the three
-     *  values is invalid the current numeric measurement value is not replaced and remains
-     *  unchanged.
-     ** @param  numericValue     numeric value to be set
-     *  @param  measurementUnit  measurement unit to be set
-     *  @param  valueQualifier   numeric value qualifier to be set
+     *  Before setting the values, they are usually checked.  Please note that both values
+     *  (i.e. 'numericValue' and 'measurementUnit') either have to be empty or non-empty.
+     *  If the value pair is invalid, the current value pair is not replaced and remains
+     *  unchanged.  If the value pair is replaced, the optional floating point and rational
+     *  representations are cleared, i.e. they have to be set manually if needed.
+     ** @param  numericValue     numeric value to be set (VR=DS, mandatory)
+     *  @param  measurementUnit  measurement unit to be set (mandatory)
+     *  @param  check            if enabled, check values for validity before setting them.
+     *                           See checkXXX() methods for details.
      ** @return status, EC_Normal if successful, an error code otherwise
      */
     OFCondition setValue(const OFString &numericValue,
                          const DSRCodedEntryValue &measurementUnit,
-                         const DSRCodedEntryValue &valueQualifier);
+                         const OFBool check = OFTrue);
+
+    /** set empty numeric value and measurement unit with a numeric value qualifier.
+     *  Before setting the value, it is usually checked.  If the value is invalid, the
+     *  current numeric measurement value is not replaced and remains unchanged.
+     ** @param  valueQualifier  numeric value qualifier to be set.  Used to specify the
+     *                          reason for the absence of the measured value sequence,
+     *                          i.e. why the numeric value and measurement unit are empty.
+     *  @param  check           if enabled, check value for validity before setting it.
+     *                          See checkNumericValueQualifier() method for details.
+     ** @return status, EC_Normal if successful, an error code otherwise
+     */
+    OFCondition setValue(const DSRCodedEntryValue &valueQualifier,
+                         const OFBool check = OFTrue);
+
+    /** set numeric value, measurement unit and numeric value qualifier.
+     *  Before setting the values, they are usually checked.  Please note that both
+     *  'numericValue' and 'measurementUnit' either have to be empty or non-empty.
+     *  If one of the three values is invalid, the current numeric measurement value is not
+     *  replaced and remains unchanged.  If the values are replaced, the optional floating
+     *  point and rational representations are cleared, i.e. they have to be set manually if
+     *  needed.
+     ** @param  numericValue     numeric value to be set (VR=DS, mandatory)
+     *  @param  measurementUnit  measurement unit to be set (mandatory)
+     *  @param  valueQualifier   numeric value qualifier to be set (optional).  Can also be
+     *                           used to specify the reason for the absence of the measured
+     *                           value sequence (where 'numericValue' and 'measurementUnit'
+     *                           are stored).  Use an empty code to remove the current value.
+     *  @param  check            if enabled, check values for validity before setting them.
+     *                           See checkXXX() methods for details.
+     ** @return status, EC_Normal if successful, an error code otherwise
+     */
+    OFCondition setValue(const OFString &numericValue,
+                         const DSRCodedEntryValue &measurementUnit,
+                         const DSRCodedEntryValue &valueQualifier,
+                         const OFBool check = OFTrue);
 
     /** set numeric value.
-     *  Before setting the value it is checked (see checkNumericValue()).  If the value is
-     *  invalid the current value is not replaced and remains unchanged.
-     ** @param  numericValue     numeric value to be set (VR=DS)
+     *  Before setting the value, it is usually checked.  If the value is invalid, the current
+     *  value is not replaced and remains unchanged.  If the value is replaced, the optional
+     *  floating point and rational representations are cleared, i.e. they have to be set
+     *  manually if needed.
+     ** @param  numericValue  numeric value to be set (VR=DS, mandatory)
+     *  @param  check         if enabled, check value for validity before setting it.
+     *                        See checkNumericValue() method for details.  An empty value is
+     *                        never accepted, use the clear() method instead.
      ** @return status, EC_Normal if successful, an error code otherwise
      */
-    OFCondition setNumericValue(const OFString &numericValue);
+    OFCondition setNumericValue(const OFString &numericValue,
+                                const OFBool check = OFTrue);
+
+    /** set numeric value from element.
+     *  Before setting the value, it is usually checked.  If the value is invalid, the current
+     *  value is not replaced and remains unchanged.  If the value is replaced, the optional
+     *  floating point and rational representations are cleared, i.e. they have to be set
+     *  manually if needed.
+     ** @param  delem  DICOM element from which the numeric value should be retrieved
+     *  @param  pos    index of the value in case of multi-valued elements (0..vm-1)
+     *  @param  check  if enabled, check numeric value for validity before setting it.  See
+     *                 checkNumericValue() method for details.  An empty value is never
+     *                 accepted.
+     ** @return status, EC_Normal if successful, an error code otherwise
+     */
+    OFCondition setNumericValue(const DcmElement &delem,
+                                const unsigned long pos = 0,
+                                const OFBool check = OFTrue);
+
+    /** set numeric value from dataset.
+     *  Before setting the value, it is usually checked.  If the value is invalid, the current
+     *  value is not replaced and remains unchanged.  If the value is replaced, the optional
+     *  floating point and rational representations are cleared, i.e. they have to be set
+     *  manually if needed.
+     ** @param  dataset  DICOM dataset from which the numeric value should be retrieved
+     *  @param  tagKey   DICOM tag specifying the attribute from which the value should be
+     *                   retrieved.  The search is limited to the top-level of the dataset.
+     *  @param  pos      index of the value in case of multi-valued elements (0..vm-1)
+     *  @param  check    if enabled, check numeric value for validity before setting it.
+     *                   See checkNumericValue() method for details.  An empty value is
+     *                   never accepted.
+     ** @return status, EC_Normal if successful, an error code otherwise
+     */
+    OFCondition setNumericValue(DcmItem &dataset,
+                                const DcmTagKey &tagKey,
+                                const unsigned long pos = 0,
+                                const OFBool check = OFTrue);
 
     /** set measurement unit.
-     *  Before setting the code it is checked (see checkMeasurementUnit()).  If the code is
-     *  invalid the current code is not replaced and remains unchanged.
-     ** @param  measurementUnit  measurement unit to be set
+     *  Before setting the code, it is usually checked.  If the code is invalid the current
+     *  code is not replaced and remains unchanged.
+     ** @param  measurementUnit  measurement unit to be set (mandatory)
+     *  @param  check            if enabled, check value for validity before setting it.
+     *                           See checkMeasurementUnit() method for details.  An empty
+     *                           value is never accepted, use the clear() method instead.
      ** @return status, EC_Normal if successful, an error code otherwise
      */
-    OFCondition setMeasurementUnit(const DSRCodedEntryValue &measurementUnit);
+    OFCondition setMeasurementUnit(const DSRCodedEntryValue &measurementUnit,
+                                   const OFBool check = OFTrue);
 
     /** set numeric value qualifier.
      *  This optional code specifies the qualification of the Numeric Value in the Measured
      *  Value Sequence, or the reason for the absence of the Measured Value Sequence Item.
-     *  Before setting the code it is checked (see checkNumericValueQualifier()).  If the
-     *  code is invalid the current code is not replaced and remains unchanged.
-     ** @param  valueQualifier  numeric value qualifier to be set
+     *  Before setting the code, it is usually checked.  If the code is invalid the current
+     *  code is not replaced and remains unchanged.
+     ** @param  valueQualifier  numeric value qualifier to be set (optional).  Use an empty
+     *                          code to remove the current value.
+     *  @param  check           if enabled, check value for validity before setting it.
+     *                          See checkNumericValueQualifier() method for details.
      ** @return status, EC_Normal if successful, an error code otherwise
      */
-    OFCondition setNumericValueQualifier(const DSRCodedEntryValue &valueQualifier);
+    OFCondition setNumericValueQualifier(const DSRCodedEntryValue &valueQualifier,
+                                         const OFBool check = OFTrue);
 
-    /** check if this value contains non-ASCII characters.
-     *  @return true if value contains non-ASCII characters, false otherwise
+    /** set floating point representation of the numeric value.
+     *  According to the DICOM standard, this value is "required if the numeric value has
+     *  insufficient precision to represent the value as a string.  May be present otherwise."
+     *  Please note that it is not checked whether this representation is consistent with the
+     *  numeric value stored as a string.
+     ** @param  floatingPoint  floating point representation of the numeric value
+     *  @param  check          dummy parameter (currently not used)
+     ** @return status, EC_Normal if successful, an error code otherwise
      */
-    OFBool valueContainsExtendedCharacters() const;
+    OFCondition setFloatingPointRepresentation(const Float64 floatingPoint,
+                                               const OFBool check = OFTrue);
+
+    /** set rational representation of the numeric value.
+     *  According to the DICOM standard, this value is "required if the numeric value has
+     *  insufficient precision to represent a rational value as a string.  May be present
+     *  otherwise."  Please note that it is not checked whether this representation is
+     *  consistent with the numeric value stored as a string.
+     ** @param  rationalNumerator    integer numerator of a rational representation of the
+     *                               numeric value (encoded as a signed integer value)
+     *  @param  rationalDenominator  integer denominator of a rational representation of the
+     *                               numeric value (encoded as a non-zero unsigned integer
+     *                               value)
+     *  @param  check                if enabled, check values for validity before setting them.
+     *                               See checkRationalRepresentation() method for details.
+     ** @return status, EC_Normal if successful, an error code otherwise
+     */
+    OFCondition setRationalRepresentation(const Sint32 rationalNumerator,
+                                          const Uint32 rationalDenominator,
+                                          const OFBool check = OFTrue);
+
+    /** remove floating point representation of the numeric value (if any).
+     *  Internally, all elements that belong to this representation are cleared.
+     */
+    void removeFloatingPointRepresentation();
+
+    /** remove rational representation of the numeric value (if any).
+     *  Internally, all elements that belong to this representation are cleared.
+     */
+    void removeRationalRepresentation();
 
 
   protected:
@@ -295,100 +456,91 @@ class DSRNumericMeasurementValue
     }
 
     /** read numeric measurement value from dataset
-     ** @param  dataset    DICOM dataset from which the value should be read
-     *  @param  logStream  pointer to error/warning output stream (output disabled if NULL)
+     ** @param  dataset  DICOM dataset from which the value should be read
+     *  @param  flags    flag used to customize the reading process (see DSRTypes::RF_xxx)
      ** @return status, EC_Normal if successful, an error code otherwise
      */
     virtual OFCondition readItem(DcmItem &dataset,
-                                 OFConsole *logStream);
+                                 const size_t flags);
 
     /** write numeric measurement value to dataset
-     ** @param  dataset    DICOM dataset to which the value should be written
-     *  @param  logStream  pointer to error/warning output stream (output disabled if NULL)
+     ** @param  dataset  DICOM dataset to which the value should be written
      ** @return status, EC_Normal if successful, an error code otherwise
      */
-    virtual OFCondition writeItem(DcmItem &dataset,
-                                  OFConsole *logStream) const;
+    virtual OFCondition writeItem(DcmItem &dataset) const;
 
     /** check the specified numeric value for validity.
-     *  Currently the only check that is performed is that the string is not empty.  Later
-     *  on it might be checked whether the format conforms to the definition of DS.
+     *  Currently, the only checks performed are that the string is non-empty and that the
+     *  given value conforms to the corresponding VR (DS) and VM (1).
      ** @param  numericValue  numeric value to be checked
-     ** @return OFTrue if numeric value is valid, OFFalse otherwise
+     ** @return status, EC_Normal if numeric value is valid, an error code otherwise
      */
-    virtual OFBool checkNumericValue(const OFString &numericValue) const;
+    virtual OFCondition checkNumericValue(const OFString &numericValue) const;
 
     /** check the specified measurement unit for validity.
-     *  The isValid() method in class DSRCodedEntryValue is used for this purpose.
+     *  Internally, the methods DSRCodedEntryValue::isEmpty() and
+     *  DSRCodedEntryValue::checkCurrentValue() are used for this purpose.  Conformance
+     *  with the Context Group 82 (as defined in the DICOM standard) is not yet checked.
      ** @param  measurementUnit  measurement unit to be checked
-     ** @return OFTrue if measurement unit is valid, OFFalse otherwise
+     ** @return status, EC_Normal if measurement unit is valid, an error code otherwise
      */
-    virtual OFBool checkMeasurementUnit(const DSRCodedEntryValue &measurementUnit) const;
+    virtual OFCondition checkMeasurementUnit(const DSRCodedEntryValue &measurementUnit) const;
 
     /** check the specified numeric value qualifier for validity.
-     *  The isEmpty() and isValid() methods in class DSRCodedEntryValue are used for this
-     *  purpose.  The conformance with the Context Group 42 (as defined in the DICOM
-     *  standard) is not yet checked.
+     *  Internally, DSRCodedEntryValue::isEmpty() and DSRCodedEntryValue::checkCurrentValue()
+     *  are used for this purpose.  Conformance with the Context Group 42 (as defined in the
+     *  DICOM standard) is not checked; see class CMR_SRNumericMeasurementValue if needed,
+     *  which supports such additional checks.
      ** @param  valueQualifier  numeric value qualifier to be checked
-     ** @return OFTrue if value qualifier is valid, OFFalse otherwise
+     ** @return status, EC_Normal if value qualifier is valid, an error code otherwise
      */
-    virtual OFBool checkNumericValueQualifier(const DSRCodedEntryValue &valueQualifier) const;
+    virtual OFCondition checkNumericValueQualifier(const DSRCodedEntryValue &valueQualifier) const;
+
+    /** check the specified rational representation for validity.
+     *  The only check that is performed is that the 'rationalDenominator' is not zero, i.e.
+     *  it is not checked whether this representation is consistent with the numeric value
+     *  stored as a string.
+     ** @param  rationalNumerator    numerator of the rational representation to be checked
+     *  @param  rationalDenominator  denominator of a rational representation to be checked
+     ** @return status, EC_Normal if rational representation is valid, an error code otherwise
+     */
+    virtual OFCondition checkRationalRepresentation(const Sint32 rationalNumerator,
+                                                    const Uint32 rationalDenominator) const;
+
+    /** check the currently stored numeric measurement value for validity.
+     *  See above checkXXX() methods for details.
+     ** @return status, EC_Normal if current value is valid, an error code otherwise
+     */
+    virtual OFCondition checkCurrentValue() const;
 
 
   private:
 
-    /// numeric value (VR=DS, type 1)
-    OFString           NumericValue;
-    /// measurement unit (type 2)
-    DSRCodedEntryValue MeasurementUnit;
-    /// numeric value qualifier (type 3)
-    DSRCodedEntryValue ValueQualifier;
+    /// Numeric Value (VR=DS, type 1 within a type 2 sequence)
+    OFString               NumericValue;
+    /// Measurement Unit (type 1 within a type 2 sequence)
+    DSRCodedEntryValue     MeasurementUnit;
+    /// Numeric Value Qualifier (type 3)
+    DSRCodedEntryValue     ValueQualifier;
+    /// Floating Point Value (VR=FD, type 1C)
+    DcmFloatingPointDouble FloatingPointValue;
+    /// Rational Numerator Value (VR=SL, type 1C)
+    DcmSignedLong          RationalNumeratorValue;
+    /// Rational Denominator Value (VR=UL, type 1C)
+    DcmUnsignedLong        RationalDenominatorValue;
 };
 
 
-#endif
-
-
-/*
- *  CVS/RCS Log:
- *  $Log: dsrnumvl.h,v $
- *  Revision 1.1  2006/03/01 20:16:11  lpysher
- *  Added dcmtkt ocvs not in xcode  and fixed bug with multiple monitors
- *
- *  Revision 1.10  2005/12/08 16:05:11  meichel
- *  Changed include path schema for all DCMTK header files
- *
- *  Revision 1.9  2004/11/22 16:39:09  meichel
- *  Added method that checks if the SR document contains non-ASCII characters
- *    in any of the strings affected by SpecificCharacterSet.
- *
- *  Revision 1.8  2003/08/07 12:43:44  joergr
- *  Added readXML functionality.
- *
- *  Revision 1.7  2002/12/10 13:20:07  joergr
- *  Added support for the Numeric Value Qualifier Code Sequence (introduced with
- *  CP 260).
- *
- *  Revision 1.6  2001/09/26 13:04:09  meichel
- *  Adapted dcmsr to class OFCondition
- *
- *  Revision 1.5  2001/06/01 15:51:02  meichel
- *  Updated copyright header
- *
- *  Revision 1.4  2000/11/06 11:17:40  joergr
- *  Moved some protected methods to public part.
- *
- *  Revision 1.3  2000/11/01 16:23:22  joergr
- *  Added support for conversion to XML.
- *
- *  Revision 1.2  2000/10/18 17:05:12  joergr
- *  Added methods allowing direct access to certain content item values.
- *  Added doc++ comments.
- *  Made some functions inline.
- *
- *  Revision 1.1  2000/10/13 07:49:29  joergr
- *  Added new module 'dcmsr' providing access to DICOM structured reporting
- *  documents (supplement 23).  Doc++ documentation not yet completed.
- *
- *
+/** output stream operator for numeric measurement values.
+ *  Internally, the DSRNumericMeasurementValue::print() method is used, i.e. the output
+ *  looks like this: "3.5" (cm,UCUM[1.4],"centimeter") or "empty" (if the value is empty)
+ *  @param  stream              output stream to which the numeric measurement value is
+ *                              printed
+ *  @param  numericMeasurement  numeric measurement value to be printed
+ *  @return reference to output stream
  */
+DCMTK_DCMSR_EXPORT STD_NAMESPACE ostream &operator<<(STD_NAMESPACE ostream &stream,
+                                                     const DSRNumericMeasurementValue &numericMeasurement);
+
+
+#endif

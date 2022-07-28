@@ -154,8 +154,8 @@ typedef struct {
     unsigned short result;
     unsigned short resultSource;
     unsigned short diagnostic;
-    char callingPresentationAddress[64];
-    char calledPresentationAddress[64];
+    char callingPresentationAddress[256];
+    char calledPresentationAddress[256];
     LST_HEAD *requestedPresentationContext;
     LST_HEAD *acceptedPresentationContext;
     unsigned short maximumOperationsInvoked;
@@ -406,7 +406,7 @@ DUL_MakePresentationCtx(DUL_PRESENTATIONCONTEXT ** ctx,
 DUL_PRESENTATIONCONTEXTID ctxID, unsigned char reason, const char *abstractSyntax,
 			const char *transferSyntax,...);
 void DUL_DumpParams(DUL_ASSOCIATESERVICEPARAMETERS * params);
-void DUL_DumpConnectionParameters(DUL_ASSOCIATIONKEY *association, ostream& outstream);
+void DUL_DumpConnectionParameters(DUL_ASSOCIATIONKEY *association, std::ostream& outstream);
 
 OFCondition DUL_ClearServiceParameters(DUL_ASSOCIATESERVICEPARAMETERS * params);
 void DUL_DefaultServiceParameters(DUL_ASSOCIATESERVICEPARAMETERS * params);

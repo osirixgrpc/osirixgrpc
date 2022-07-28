@@ -1,19 +1,15 @@
 /*
  *
- *  Copyright (C) 1994-2005, OFFIS
+ *  Copyright (C) 1994-2016, OFFIS e.V.
+ *  All rights reserved.  See COPYRIGHT file for details.
  *
  *  This software and supporting documentation were developed by
  *
- *    Kuratorium OFFIS e.V.
- *    Healthcare Information and Communication Systems
+ *    OFFIS e.V.
+ *    R&D Division Health
  *    Escherweg 2
  *    D-26121 Oldenburg, Germany
  *
- *  THIS SOFTWARE IS MADE AVAILABLE,  AS IS,  AND OFFIS MAKES NO  WARRANTY
- *  REGARDING  THE  SOFTWARE,  ITS  PERFORMANCE,  ITS  MERCHANTABILITY  OR
- *  FITNESS FOR ANY PARTICULAR USE, FREEDOM FROM ANY COMPUTER DISEASES  OR
- *  ITS CONFORMITY TO ANY SPECIFICATION. THE ENTIRE RISK AS TO QUALITY AND
- *  PERFORMANCE OF THE SOFTWARE IS WITH THE USER.
  *
  *  Module:  dcmdata
  *
@@ -21,29 +17,29 @@
  *
  *  Purpose: Error handling, codes and strings
  *
- *  Last Update:      $Author: lpysher $
- *  Update Date:      $Date: 2006/03/01 20:15:21 $
- *  Source File:      $Source: /cvsroot/osirix/osirix/Binaries/dcmtk-source/dcmdata/dcerror.h,v $
- *  CVS/RCS Revision: $Revision: 1.1 $
- *  Status:           $State: Exp $
- *
- *  CVS/RCS Log at end of file
- *
  */
+
 
 #ifndef DCERROR_H
 #define DCERROR_H
 
 #include "osconfig.h"    /* make sure OS specific configuration is included first */
-#include "ofcond.h"      /* for OFCondition */
+#include "ofcond.h"       /* for OFCondition */
+#include "dcdefine.h"
+
+// include this file in doxygen documentation
+
+/** @file dcerror.h
+ *  @brief error handling, codes and strings for the dcmdata module
+ */
 
 /*
- *  dcmtk module numbers for modules which create their own error codes.
+ *  DCMTK module numbers for modules which create their own error codes.
  *  Module numbers > 1023 are reserved for user code.
  */
 
 const unsigned short OFM_dcmdata  =  1;
-const unsigned short OFM_ctndisp  =  2;
+const unsigned short OFM_ctndisp  =  2;   /* retired */
 const unsigned short OFM_dcmimgle =  3;
 const unsigned short OFM_dcmimage =  4;
 const unsigned short OFM_dcmjpeg  =  5;
@@ -53,8 +49,8 @@ const unsigned short OFM_dcmpstat =  8;
 const unsigned short OFM_dcmsign  =  9;
 const unsigned short OFM_dcmsr    = 10;
 const unsigned short OFM_dcmtls   = 11;
-const unsigned short OFM_imagectn = 12;
-const unsigned short OFM_wlistctn = 13;
+const unsigned short OFM_dcmqrdb  = 12;
+const unsigned short OFM_wlistctn = 13;   /* retired */
 const unsigned short OFM_dcmwlm   = 14;
 const unsigned short OFM_dcmpps   = 15;
 const unsigned short OFM_dcmdbsup = 16;
@@ -68,121 +64,118 @@ const unsigned short OFM_dcmstcom = 23;
 const unsigned short OFM_dcmppscu = 24;
 const unsigned short OFM_dcmstscp = 25;
 const unsigned short OFM_dcmqrdbx = 26;
-
+const unsigned short OFM_dcmkosel = 27;
+const unsigned short OFM_dcmenc   = 28;
+const unsigned short OFM_dcmiod   = 29;
+const unsigned short OFM_dcmseg   = 30;
+const unsigned short OFM_dcmfg    = 31;
+const unsigned short OFM_dcmtract = 32;
+const unsigned short OFM_dcmpmap  = 33;
 
 // condition constants
-extern const OFCondition EC_InvalidTag;
-extern const OFCondition EC_TagNotFound;
-extern const OFCondition EC_InvalidVR;
-extern const OFCondition EC_InvalidStream;
-extern const OFCondition EC_EndOfStream;
-extern const OFCondition EC_CorruptedData;
-extern const OFCondition EC_IllegalCall;
-extern const OFCondition EC_SequEnd;
-extern const OFCondition EC_DoubledTag;
-extern const OFCondition EC_StreamNotifyClient;
-extern const OFCondition EC_WrongStreamMode;
-extern const OFCondition EC_ItemEnd;
-extern const OFCondition EC_RepresentationNotFound;
-extern const OFCondition EC_CannotChangeRepresentation;
-extern const OFCondition EC_UnsupportedEncoding;
-extern const OFCondition EC_PutbackFailed;
-extern const OFCondition EC_DoubleCompressionFilters;
-extern const OFCondition EC_ApplicationProfileViolated;
 
-
-#ifndef OFCONDITION_STRICT_MODE
-
-// for backward compatibility with existing software
-typedef OFCondition E_Condition;
-
-/** Return a pointer to a char array describing the error condition.
- *  For backward compatibility with old software; deprecated.
+/** @name condition constants for module dcmdata.
+ *  These constants can be used in addition to the general purpose ones
+ *  defined in module ofstd.
  */
-extern const char *dcmErrorConditionToString(OFCondition cond);
+//@{
+/// Invalid tag
+extern DCMTK_DCMDATA_EXPORT const OFConditionConst EC_InvalidTag;
+/// Tag not found
+extern DCMTK_DCMDATA_EXPORT const OFConditionConst EC_TagNotFound;
+/// Invalid VR
+extern DCMTK_DCMDATA_EXPORT const OFConditionConst EC_InvalidVR;
+/// Invalid stream
+extern DCMTK_DCMDATA_EXPORT const OFConditionConst EC_InvalidStream;
+/// End of stream
+extern DCMTK_DCMDATA_EXPORT const OFConditionConst EC_EndOfStream;
+/// Corrupted data
+extern DCMTK_DCMDATA_EXPORT const OFConditionConst EC_CorruptedData;
+/// Illegal call, perhaps wrong parameters
+extern DCMTK_DCMDATA_EXPORT const OFConditionConst EC_IllegalCall;
+/// Sequence end
+extern DCMTK_DCMDATA_EXPORT const OFConditionConst EC_SequEnd;
+/// Doubled tag
+extern DCMTK_DCMDATA_EXPORT const OFConditionConst EC_DoubledTag;
+/// I/O suspension or premature end of stream
+extern DCMTK_DCMDATA_EXPORT const OFConditionConst EC_StreamNotifyClient;
+/// Stream mode (R/W, random/sequence) is wrong
+extern DCMTK_DCMDATA_EXPORT const OFConditionConst EC_WrongStreamMode;
+/// Item end
+extern DCMTK_DCMDATA_EXPORT const OFConditionConst EC_ItemEnd;
+/// Compressed/uncompressed pixel representation not found
+extern DCMTK_DCMDATA_EXPORT const OFConditionConst EC_RepresentationNotFound;
+/// Pixel representation cannot be changed to requested transfer syntax
+extern DCMTK_DCMDATA_EXPORT const OFConditionConst EC_CannotChangeRepresentation;
+/// Unsupported compression or encryption
+extern DCMTK_DCMDATA_EXPORT const OFConditionConst EC_UnsupportedEncoding;
+/// Parser failure: Putback operation failed
+extern DCMTK_DCMDATA_EXPORT const OFConditionConst EC_PutbackFailed;
+/// Too many compression filters
+extern DCMTK_DCMDATA_EXPORT const OFConditionConst EC_DoubleCompressionFilters;
+/// Storage media application profile violated
+extern DCMTK_DCMDATA_EXPORT const OFConditionConst EC_ApplicationProfileViolated;
+/// Invalid offset
+extern DCMTK_DCMDATA_EXPORT const OFConditionConst EC_InvalidOffset;
+/// Too many bytes requested
+extern DCMTK_DCMDATA_EXPORT const OFConditionConst EC_TooManyBytesRequested;
+/// Invalid basic offset table
+extern DCMTK_DCMDATA_EXPORT const OFConditionConst EC_InvalidBasicOffsetTable;
+/// Element length is larger than (explicit) length of surrounding item
+extern DCMTK_DCMDATA_EXPORT const OFConditionConst EC_ElemLengthLargerThanItem;
+/// File meta information header missing
+extern DCMTK_DCMDATA_EXPORT const OFConditionConst EC_FileMetaInfoHeaderMissing;
+/// Item or sequence content larger than explicit 32-bit length field permits
+extern DCMTK_DCMDATA_EXPORT const OFConditionConst EC_SeqOrItemContentOverflow;
+/// Value Representation (VR) violated
+extern DCMTK_DCMDATA_EXPORT const OFConditionConst EC_ValueRepresentationViolated;
+/// Value Multiplicity (VM) violated
+extern DCMTK_DCMDATA_EXPORT const OFConditionConst EC_ValueMultiplicityViolated;
+/// Maximum VR length violated
+extern DCMTK_DCMDATA_EXPORT const OFConditionConst EC_MaximumLengthViolated;
+/// Element length is larger than 16-bit length field permits
+extern DCMTK_DCMDATA_EXPORT const OFConditionConst EC_ElemLengthExceeds16BitField;
+/// Missing Sequence Delimitation Item while reading a sequence
+extern DCMTK_DCMDATA_EXPORT const OFConditionConst EC_SequDelimitationItemMissing;
+/// Missing Item Delimitation Item while reading an item
+extern DCMTK_DCMDATA_EXPORT const OFConditionConst EC_ItemDelimitationItemMissing;
+/// Sequence delimiter occurs before explicit item length is completely read
+extern DCMTK_DCMDATA_EXPORT const OFConditionConst EC_PrematureSequDelimitationItem;
+/// Invalid DICOMDIR, e.g. corrupted data structures
+extern DCMTK_DCMDATA_EXPORT const OFConditionConst EC_InvalidDICOMDIR;
+/// Unknown VR, e.g. tag not found in data dictionary
+extern DCMTK_DCMDATA_EXPORT const OFConditionConst EC_UnknownVR;
+/// Invalid value, e.g. element value has been provided that does not match the VR
+extern DCMTK_DCMDATA_EXPORT const OFConditionConst EC_InvalidValue;
+/// An expected Item was not found
+extern DCMTK_DCMDATA_EXPORT const OFConditionConst EC_ItemNotFound;
+/// Given transfer syntax is unknown
+extern DCMTK_DCMDATA_EXPORT const OFConditionConst EC_UnknownTransferSyntax;
+/// Cannot check
+extern DCMTK_DCMDATA_EXPORT const OFConditionConst EC_CannotCheck;
+/// Missing value, e.g. element must contain a value but is empty
+extern DCMTK_DCMDATA_EXPORT const OFConditionConst EC_MissingValue;
+/// Missing attribute
+extern DCMTK_DCMDATA_EXPORT const OFConditionConst EC_MissingAttribute;
+/// Internal error
+extern DCMTK_DCMDATA_EXPORT const OFConditionConst EC_InternalError;
+/// Invalid character, e.g. non-ASCII character used but no Specific Character Set defined
+extern DCMTK_DCMDATA_EXPORT const OFConditionConst EC_InvalidCharacter;
+/// Illegal element with OB or OW Value Representation and undefined length encountered
+extern DCMTK_DCMDATA_EXPORT const OFConditionConst EC_UndefinedLengthOBOW;
+/// Illegal VOI LUT Sequence element with OB or OW Value Representation and explicit length encountered
+extern DCMTK_DCMDATA_EXPORT const OFConditionConst EC_VOI_LUT_OBOW;
+//@}
 
-#endif
+// status code constants
 
+/// error, cannot select specific character set
+extern DCMTK_DCMDATA_EXPORT const unsigned short EC_CODE_CannotSelectCharacterSet;
+/// error, cannot convert specific character set
+extern DCMTK_DCMDATA_EXPORT const unsigned short EC_CODE_CannotConvertCharacterSet;
+/// error, cannot convert to XML
+extern DCMTK_DCMDATA_EXPORT const unsigned short EC_CODE_CannotConvertToXML;
+/// error, cannot determine start fragment (of compressed pixel data)
+extern DCMTK_DCMDATA_EXPORT const unsigned short EC_CODE_CannotDetermineStartFragment;
 
 #endif /* !DCERROR_H */
-
-/*
-** CVS/RCS Log:
-** $Log: dcerror.h,v $
-** Revision 1.1  2006/03/01 20:15:21  lpysher
-** Added dcmtkt ocvs not in xcode  and fixed bug with multiple monitors
-**
-** Revision 1.20  2005/12/08 16:28:12  meichel
-** Changed include path schema for all DCMTK header files
-**
-** Revision 1.19  2004/08/24 14:53:15  meichel
-** Added module number for future dcmjp2k module
-**
-** Revision 1.18  2002/12/06 12:18:27  joergr
-** Added new error status "EC_ApplicationProfileViolated".
-**
-** Revision 1.17  2002/08/27 16:55:32  meichel
-** Initial release of new DICOM I/O stream classes that add support for stream
-**   compression (deflated little endian explicit VR transfer syntax)
-**
-** Revision 1.16  2002/08/12 09:56:59  wilkens
-** Added module number (for error codes) for new module dcmppswm.
-**
-** Revision 1.15  2002/05/28 08:44:21  wilkens
-** Added module number for new module dcmdbsup.
-**
-** Revision 1.14  2002/04/18 14:47:22  wilkens
-** Inserted a new dcmtk module number for module mpps.
-**
-** Revision 1.13  2002/01/08 17:53:30  joergr
-** Added new module "dcmwlm".
-**
-** Revision 1.12  2001/11/19 12:44:50  joergr
-** Added dcmimage to list of modules.
-**
-** Revision 1.11  2001/10/12 10:42:28  meichel
-** Introduced conditional define OFCONDITION_STRICT_MODE in which the
-**   compatibility options related to the transition to OFCondition are disabled:
-**   No OFCondition default constructor, no typedefs for E_Condition, CONDITION,
-**   no macros for SUCCESS and condition aliases.
-**
-** Revision 1.10  2001/09/25 17:22:22  meichel
-** Enabled E_Condition and dcmErrorConditionToString() for backward
-**   compatibility with existing code.
-**
-** Revision 1.9  2001/09/25 17:19:26  meichel
-** Adapted dcmdata to class OFCondition
-**
-** Revision 1.8  2001/06/01 15:48:39  meichel
-** Updated copyright header
-**
-** Revision 1.7  2000/03/08 16:26:14  meichel
-** Updated copyright header.
-**
-** Revision 1.6  1999/03/31 09:24:38  meichel
-** Updated copyright header in module dcmdata
-**
-** Revision 1.5  1997/07/21 08:15:10  andreas
-** - New environment for encapsulated pixel representations. DcmPixelData
-**   can contain different representations and uses codecs to convert
-**   between them. Codecs are derived from the DcmCodec class. New error
-**   codes are introduced for handling of representations. New internal
-**   value representation (only for ident()) for PixelData
-**
-** Revision 1.4  1997/05/22 16:55:02  andreas
-** - Added new error code EC_NotImplemented
-**
-** Revision 1.3  1996/01/29 13:38:12  andreas
-** - new put method for every VR to put value as a string
-** - better and unique print methods
-**
-** Revision 1.2  1996/01/05 13:22:55  andreas
-** - changed to support new streaming facilities
-** - more cleanups
-** - merged read / write methods for block and file transfer
-**
-** Revision 1.1  1995/11/23 16:37:54  hewett
-** Updated for loadable data dictionary + some cleanup (more to do).
-**
-*/
-

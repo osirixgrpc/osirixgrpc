@@ -1,15 +1,10 @@
 /*=========================================================================
  Program:   OsiriX
- 
- Copyright (c) OsiriX Team
+ Copyright (c) 2010 - 2020 Pixmeo SARL
+ 266 rue de Bernex
+ CH-1233 Bernex
+ Switzerland
  All rights reserved.
- Distributed under GNU - LGPL
- 
- See http://www.osirix-viewer.com/copyright.html for details.
- 
- This software is distributed WITHOUT ANY WARRANTY; without even
- the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
- PURPOSE.
  =========================================================================*/
 
 #import <Cocoa/Cocoa.h>
@@ -58,15 +53,20 @@ typedef NSInteger DataNodeIdentifierType;*/
 -(NSComparisonResult)compare:(DataNodeIdentifier*)other;
 
 -(DicomDatabase*)database;
-
+-(float)freeSpacePercentage;
 -(BOOL)isReadOnly;
 -(NSString*)toolTip;
-
+-(void)willBeRemoved;
 -(void)willDisplayCell:(PrettyCell*)cell;
 
 @end
 
 @interface LocalDatabaseNodeIdentifier : DataNodeIdentifier
+{
+    NSTimeInterval _lastFreePercentageTime;
+    NSImageView *_lastFreePercentageView;
+}
+@property(retain) NSImageView *lastFreePercentageView;
 
 +(id)localDatabaseNodeIdentifierWithPath:(NSString*)path;
 +(id)localDatabaseNodeIdentifierWithPath:(NSString*)path description:(NSString*)description dictionary:(NSDictionary*)dictionary;

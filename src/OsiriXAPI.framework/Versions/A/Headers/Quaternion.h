@@ -1,10 +1,11 @@
-//
-//  Quaternion.h
-//  OsiriX_Lion
-//
-//  Created by Benoit Deville on 04.06.12.
-//  Copyright (c) 2012 OsiriX Team. All rights reserved.
-//
+/*=========================================================================
+ Program:   OsiriX
+ Copyright (c) 2010 - 2018 Pixmeo SARL
+ 266 rue de Bernex
+ CH-1233 Bernex
+ Switzerland
+ All rights reserved.
+ =========================================================================*/
 
 #ifndef OsiriX_Lion_Quaternion_h
 #define OsiriX_Lion_Quaternion_h

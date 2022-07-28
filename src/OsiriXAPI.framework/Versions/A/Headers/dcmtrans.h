@@ -21,14 +21,6 @@
  *
  *  Purpose:
  *    classes: DcmTransportConnection, DcmTCPConnection
- *
- *  Last Update:      $Author: lpysher $
- *  Update Date:      $Date: 2006/03/01 20:15:49 $
- *  CVS/RCS Revision: $Revision: 1.1 $
- *  Status:           $State: Exp $
- *
- *  CVS/RCS Log at end of file
- *
  */
 
 #ifndef DCMTRANS_H
@@ -137,7 +129,7 @@ public:
    *  on the given output stream.
    *  @param out output stream
    */
-  virtual void dumpConnectionParameters(ostream &out) = 0;
+  virtual void dumpConnectionParameters(std::ostream &out) = 0;
 
   /** returns an error string for a given error code.
    *  @param code error code
@@ -309,7 +301,7 @@ public:
    *  on the given output stream.
    *  @param out output stream
    */
-  virtual void dumpConnectionParameters(ostream &out);
+  virtual void dumpConnectionParameters(std::ostream &out);
 
   /** returns an error string for a given error code.
    *  @param code error code

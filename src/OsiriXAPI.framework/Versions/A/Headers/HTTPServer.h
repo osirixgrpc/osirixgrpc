@@ -24,7 +24,11 @@
 	NSDictionary *txtRecordDictionary;
 	
 	NSMutableArray *connections;
+    
+    BOOL isAcceptingConnections;
 }
+
+@property BOOL isAcceptingConnections;
 
 - (id)delegate;
 - (void)setDelegate:(id)newDelegate;

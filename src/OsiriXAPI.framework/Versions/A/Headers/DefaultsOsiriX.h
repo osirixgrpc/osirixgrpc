@@ -1,15 +1,10 @@
 /*=========================================================================
  Program:   OsiriX
- 
- Copyright (c) OsiriX Team
+ Copyright (c) 2010 - 2020 Pixmeo SARL
+ 266 rue de Bernex
+ CH-1233 Bernex
+ Switzerland
  All rights reserved.
- Distributed under GNU - LGPL
- 
- See http://www.osirix-viewer.com/copyright.html for details.
- 
- This software is distributed WITHOUT ANY WARRANTY; without even
- the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
- PURPOSE.
  =========================================================================*/
 
 #import <Cocoa/Cocoa.h>
@@ -25,9 +20,40 @@ typedef enum HotKeyActions {DefaultWWWLHotKeyAction = 0, FullDynamicWWWLHotKeyAc
 	ScrollHotKeyAction, LengthHotKeyAction, AngleHotKeyAction, RectangleHotKeyAction,
 	OvalHotKeyAction, TextHotKeyAction, ArrowHotKeyAction, OpenPolygonHotKeyAction,
 	ClosedPolygonHotKeyAction, PencilHotKeyAction, ThreeDPointHotKeyAction, PlainToolHotKeyAction,
-    BoneRemovalHotKeyAction, Rotate3DHotKeyAction, Camera3DotKeyAction, scissors3DHotKeyAction, RepulsorHotKeyAction, SelectorHotKeyAction, EmptyHotKeyAction, UnreadHotKeyAction, ReviewedHotKeyAction, DictatedHotKeyAction, ValidatedHotKeyAction, OrthoMPRCrossHotKeyAction, Preset1OpacityHotKeyAction, Preset2OpacityHotKeyAction, Preset3OpacityHotKeyAction, Preset4OpacityHotKeyAction, Preset5OpacityHotKeyAction, Preset6OpacityHotKeyAction, Preset7OpacityHotKeyAction, Preset8OpacityHotKeyAction, Preset9OpacityHotKeyAction, FullScreenAction, Sync3DAction, SetKeyImageAction, ThreeDBallHotKeyAction, OvalAngleHotKeyAction, PreviousROIsOrKeyImageAction, NextROIsOrKeyImageAction, FuseDeFusePETSPECTCTAction, AxialResliceAction, CoronalResliceAction,SagittalResliceAction,ActivateInactivateThickSlabAction,
+    BoneRemovalHotKeyAction, Rotate3DHotKeyAction, Camera3DotKeyAction, scissors3DHotKeyAction, RepulsorHotKeyAction, SelectorHotKeyAction, EmptyHotKeyAction, UnreadHotKeyAction, ReviewedHotKeyAction, DictatedHotKeyAction, ValidatedHotKeyAction, OrthoMPRCrossHotKeyAction, Preset1OpacityHotKeyAction, Preset2OpacityHotKeyAction, Preset3OpacityHotKeyAction, Preset4OpacityHotKeyAction, Preset5OpacityHotKeyAction, Preset6OpacityHotKeyAction, Preset7OpacityHotKeyAction, Preset8OpacityHotKeyAction, Preset9OpacityHotKeyAction, FullScreenAction, Sync3DAction, SetKeyImageAction, ThreeDBallHotKeyAction, OvalAngleHotKeyAction, PreviousROIsOrKeyImageAction, NextROIsOrKeyImageAction, FuseDeFusePETSPECTCTAction, AxialResliceAction, CoronalResliceAction,SagittalResliceAction, ActivateInactivateThickSlabAction, MagicFillHotKeyAction,
     
-    Preset1CLUTHotKeyAction, Preset2CLUTHotKeyAction, Preset3CLUTHotKeyAction, Preset4CLUTHotKeyAction, Preset5CLUTHotKeyAction, Preset6CLUTHotKeyAction, Preset7CLUTHotKeyAction, Preset8CLUTHotKeyAction, Preset9CLUTHotKeyAction,
+    Preset1CLUTHotKeyAction, Preset2CLUTHotKeyAction, Preset3CLUTHotKeyAction, Preset4CLUTHotKeyAction, Preset5CLUTHotKeyAction, Preset6CLUTHotKeyAction, Preset7CLUTHotKeyAction, Preset8CLUTHotKeyAction, Preset9CLUTHotKeyAction, Preset3DPositionHotKeyAction,
+    
+    FirstImageHotKeyAction, LastImageHotKeyAction,
+    
+    ActivateInactivateThickSlabActionInMIP, ActivateInactivateThickSlabActionInMean, ActivateInactivateThickSlabActionInMinIP,
+    
+    ActivateInactivatePropagateAction, ActivateInactivateSyncSlabAction,ShowHideReferenceLinesAction,
+    
+    Fuse100PercentPETSPECTCTAction,
+    Fuse0PercentPETSPECTCTAction,
+    
+    PresetConvolutionBlur3x3HotKeyAction,
+    PresetConvolutionBlur5x5HotKeyAction,
+    PresetConvolutionSharpen3x3HotKeyAction,
+    PresetConvolutionSharpen5x5HotKeyAction,
+    
+    Copy3DCoordinatesToClipboardAction,
+    ShowCurrentSeriesInThumbnailsList,
+    
+    TileWindows1x1,
+    TileWindows1x2,
+    TileWindows2x1,
+    TileWindows2x2,
+    TileWindows1x3,
+    TileWindows2x3,
+    TileWindows3x3,
+    TileWindows3x1,
+    TileWindows3x2,
+    TileWindows1x4,
+    TileWindows2x4,
+    TileWindows2x5,
+    TileWindows5x2,
     
     LastAction // Key this enum ALWAYS as last enum !
 } HotKeyActions;
@@ -37,13 +63,7 @@ typedef enum HotKeyActions {DefaultWWWLHotKeyAction = 0, FullDynamicWWWLHotKeyAc
 
 }
 
-//+ (BOOL) isHUG;
-//+ (BOOL) isUniGE;
-//+ (BOOL) isLAVIM;
 + (NSMutableDictionary*) getDefaults;
-//+ (NSString*) hostName;
-+ (NSHost*) currentHost;
-+ (void) DNSResolve:(id) o;
-+ (NSArray*) currentHostNames;
-+ (NSArray*) currentHostAddresses;
++ (void) addCLUT: (NSString*) filename dictionary: (NSMutableDictionary*) clutValues;
++ (long) vramSize;
 @end

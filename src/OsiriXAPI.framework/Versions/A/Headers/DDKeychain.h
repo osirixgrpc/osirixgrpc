@@ -11,6 +11,7 @@
 + (BOOL)setPasswordForHTTPServer:(NSString *)password;
 
 + (void)createNewIdentity;
++ (void)createNewIdentityFor: (NSString*) identityName;
 + (NSArray *)SSLIdentityAndCertificates;
 
 + (NSString *)applicationTemporaryDirectory;

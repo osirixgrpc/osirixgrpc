@@ -56,14 +56,6 @@
 **
 **	Module Prefix: DIMSE_
 **
-** Last Update:		$Author: lpysher $
-** Update Date:		$Date: 2006/03/01 20:15:50 $
-** Source File:		$Source: /cvsroot/osirix/osirix/Binaries/dcmtk-source/dcmnet/dimse.h,v $
-** CVS/RCS Revision:	$Revision: 1.1 $
-** Status:		$State: Exp $
-**
-** CVS/RCS Log at end of file
-**
 */
 
 
@@ -1028,7 +1020,7 @@ void DIMSE_printNCreateRSP(FILE * f, T_DIMSE_N_CreateRSP * rsp);
 void DIMSE_printNDeleteRQ(FILE * f, T_DIMSE_N_DeleteRQ * req);
 void DIMSE_printNDeleteRSP(FILE * f, T_DIMSE_N_DeleteRSP * rsp);
 
-void DIMSE_printMessage(ostream& outstream, T_DIMSE_Message &msg, DcmItem *dataset=NULL);
+void DIMSE_printMessage(std::ostream& outstream, T_DIMSE_Message &msg, DcmItem *dataset=NULL);
 
 
 #endif

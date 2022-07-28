@@ -826,6 +826,7 @@
 					"$(PROJECT_DIR)/OsiriXAPI.framework/Headers",
 					"$(PROJECT_DIR)/../grpc/install/include",
 					"$(PROJECT_DIR)",
+					"/opt/homebrew/Cellar/vtk/9.1.0_4/include/vtk-9.1",
 				);
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "@executable_path/../Plug-ins";
@@ -834,7 +835,7 @@
 					"$(PROJECT_DIR)",
 				);
 				LIBRARY_STYLE = Bundle;
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 0.1.2;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = (
@@ -883,6 +884,7 @@
 					"$(PROJECT_DIR)/OsiriXAPI.framework/Headers",
 					"$(PROJECT_DIR)/../grpc/install/include",
 					"$(PROJECT_DIR)",
+					"/opt/homebrew/Cellar/vtk/9.1.0_4/include/vtk-9.1",
 				);
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "@executable_path/../Plug-ins";
@@ -891,7 +893,7 @@
 					"$(PROJECT_DIR)",
 				);
 				LIBRARY_STYLE = Bundle;
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 0.1.2;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = (

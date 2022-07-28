@@ -1,19 +1,15 @@
 /*
  *
- *  Copyright (C) 2003-2005, OFFIS
+ *  Copyright (C) 2003-2015, OFFIS e.V.
+ *  All rights reserved.  See COPYRIGHT file for details.
  *
  *  This software and supporting documentation were developed by
  *
- *    Kuratorium OFFIS e.V.
- *    Healthcare Information and Communication Systems
+ *    OFFIS e.V.
+ *    R&D Division Health
  *    Escherweg 2
  *    D-26121 Oldenburg, Germany
  *
- *  THIS SOFTWARE IS MADE AVAILABLE,  AS IS,  AND OFFIS MAKES NO  WARRANTY
- *  REGARDING  THE  SOFTWARE,  ITS  PERFORMANCE,  ITS  MERCHANTABILITY  OR
- *  FITNESS FOR ANY PARTICULAR USE, FREEDOM FROM ANY COMPUTER DISEASES  OR
- *  ITS CONFORMITY TO ANY SPECIFICATION. THE ENTIRE RISK AS TO QUALITY AND
- *  PERFORMANCE OF THE SOFTWARE IS WITH THE USER.
  *
  *  Module: dcmsr
  *
@@ -21,13 +17,6 @@
  *
  *  Purpose:
  *    classes: DSRProcedureLogConstraintChecker
- *
- *  Last Update:      $Author: lpysher $
- *  Update Date:      $Date: 2006/03/01 20:16:11 $
- *  CVS/RCS Revision: $Revision: 1.1 $
- *  Status:           $State: Exp $
- *
- *  CVS/RCS Log at end of file
  *
  */
 
@@ -44,9 +33,11 @@
  *  class declaration  *
  *---------------------*/
 
-/** Class for checking the content relationship constraints of the Procedure Log IOD
+/** Class for checking the relationship content constraints of the Procedure Log IOD.
+ *  According to DICOM PS 3.3: "The document may be constructed from Baseline TID 3001
+ *  (Procedure Log) invoked at the root node."
  */
-class DSRProcedureLogConstraintChecker
+class DCMTK_DCMSR_EXPORT DSRProcedureLogConstraintChecker
   : public DSRIODConstraintChecker
 {
 
@@ -66,14 +57,18 @@ class DSRProcedureLogConstraintChecker
     virtual OFBool isByReferenceAllowed() const;
 
     /** check whether this SR IOD requires template support
-     ** @return always returns OFTrue, i.e. template support is required
+     ** @return always returns OFFalse, i.e. template support is not required
      */
     virtual OFBool isTemplateSupportRequired() const;
 
-    /** get identifier of the root template
-     ** @return root template identifier (TID) "3001"
+    /** get identifier and mapping resource of the root template (if any)
+     ** @param  templateIdentifier  identifier of the root template (might be empty)
+     *  @param  mappingResource     mapping resource that defines the root template
+     *                              (might be empty)
+     ** @return status, EC_Normal if successful, an error code otherwise
      */
-    virtual const char *getRootTemplateIdentifier() const;
+    virtual OFCondition getRootTemplateIdentification(OFString &templateIdentifier,
+                                                      OFString &mappingResource) const;
 
     /** get the associated document type of the SR IOD
      ** @return document type (DSRTypes::DT_ProcedureLog)
@@ -96,20 +91,3 @@ class DSRProcedureLogConstraintChecker
 
 
 #endif
-
-
-/*
- *  CVS/RCS Log:
- *  $Log: dsrprocc.h,v $
- *  Revision 1.1  2006/03/01 20:16:11  lpysher
- *  Added dcmtkt ocvs not in xcode  and fixed bug with multiple monitors
- *
- *  Revision 1.2  2005/12/08 16:05:13  meichel
- *  Changed include path schema for all DCMTK header files
- *
- *  Revision 1.1  2003/10/09 12:53:12  joergr
- *  Added support for Procedure Log.
- *
- *
- *
- */

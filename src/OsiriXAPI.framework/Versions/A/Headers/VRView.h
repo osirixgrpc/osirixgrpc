@@ -1,18 +1,15 @@
 /*=========================================================================
-  Program:   OsiriX
+ Program:   OsiriX
+ Copyright (c) 2010 - 2020 Pixmeo SARL
+ 266 rue de Bernex
+ CH-1233 Bernex
+ Switzerland
+ All rights reserved.
+ =========================================================================*/
 
-  Copyright (c) OsiriX Team
-  All rights reserved.
-  Distributed under GNU - LGPL
-  
-  See http://www.osirix-viewer.com/copyright.html for details.
-
-     This software is distributed WITHOUT ANY WARRANTY; without even
-     the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
-     PURPOSE.
-=========================================================================*/
-
-
+#if defined( __x86_64__)
+#define USE_OSPRAY
+#endif
 
 #import <AppKit/AppKit.h>
 #import "DCMPix.h"
@@ -52,9 +49,14 @@
 #include "vtkPiecewiseFunction.h"
 #include "vtkColorTransferFunction.h"
 #include "vtkVolumeProperty.h"
-#include "vtkVolumeRayCastCompositeFunction.h"
-#include "vtkVolumeRayCastMapper.h"
-#include "vtkVolumeRayCastMIPFunction.h"
+//#include "vtkVolumeRayCastCompositeFunction.h"
+//#include "vtkVolumeRayCastMapper.h"
+//#include "vtkVolumeRayCastMIPFunction.h"
+
+#ifdef USE_OSPRAY
+#include "vtkOSPRayVolumeMapper.h"
+#endif
+
 #include "vtkFixedPointVolumeRayCastMapper.h"
 #include "vtkTransform.h"
 #include "vtkSphere.h"
@@ -75,19 +77,23 @@
 #include "vtkClipPolyData.h"
 #include "vtkBox.h"
 #include "vtkCallbackCommand.h"
+#include "vtkLightKit.h"
 #include "vtkTextActor.h"
+#include "vtkCornerAnnotation.h"
 #include "vtkTextProperty.h"
 #include "vtkImageFlip.h"
 #include "vtkAnnotatedCubeActor.h"
 #include "vtkOrientationMarkerWidget.h"
-#include "vtkVolumeTextureMapper2D.h"
+//#include "vtkVolumeTextureMapper2D.h"
 #include "vtkSmartVolumeMapper.h"
 #include "vtkGPUVolumeRayCastMapper.h"
-#include "OsiriXFixedPointVolumeRayCastMapper.h"
+#include "vtkOsiriXFixedPointVolumeRayCastMapper.h"
 
 #include "vtkCellArray.h"
 #include "vtkProperty2D.h"
 #include "vtkRegularPolygonSource.h"
+#include "vtkInformation.h"
+#include "vtkLightCollection.h"
 
 #ifdef _STEREO_VISION_
 // Added SilvanWidmer 10-08-09
@@ -121,16 +127,21 @@ typedef char* vtkOutlineFilter;
 typedef char* vtkLineWidget;
 
 typedef char* vtkTextActor;
+typedef char* vtkCornerAnnotation;
 typedef char* vtkVolumeMapper;
-typedef char* vtkVolumeRayCastMapper;
+
+#ifdef USE_OSPRAY
+typedef char* vtkOSPRayVolumeMapper;
+#endif
+
 typedef char* vtkFixedPointVolumeRayCastMapper;
-typedef char* OsiriXFixedPointVolumeRayCastMapper;
-typedef char* vtkVolumeRayCastMIPFunction;
+typedef char* vtkOsiriXFixedPointVolumeRayCastMapper;
+//typedef char* vtkVolumeRayCastMIPFunction;
 typedef char* vtkVolume;
 
 
 typedef char* vtkPiecewiseFunction;
-typedef char* vtkVolumeTextureMapper2D;
+//typedef char* vtkVolumeTextureMapper2D;
 typedef char* vtkPolyData;
 typedef char* vtkVolumeProperty;
 typedef char* vtkPolyDataMapper2D;
@@ -139,7 +150,7 @@ typedef char* vtkColorTransferFunction;
 typedef char* vtkActor2D;
 typedef char* vtkMyCallback;
 typedef char* vtkBoxWidget;
-typedef char* vtkVolumeRayCastCompositeFunction;
+//typedef char* vtkVolumeRayCastCompositeFunction;
 
 typedef char* vtkRenderer;
 typedef char* vtkVolumeTextureMapper3D;
@@ -149,6 +160,9 @@ typedef char* vtkOrientationMarkerWidget;
 typedef char* vtkRegularPolygonSource;
 
 typedef char* vtkMyCallbackVR;
+typedef char* vtkInformation;
+typedef char* vtkLightCollection;
+typedef char* vtkLightKit;
 
 #ifdef _STEREO_VISION_
 // ****************************
@@ -205,17 +219,17 @@ typedef char* VTKStereoVRView;
 	float						blendingWl, blendingWw, measureLength;
 	vtkImageImport				*blendingReader;
 	
-	OsiriXFixedPointVolumeRayCastMapper *blendingVolumeMapper;
+	vtkOsiriXFixedPointVolumeRayCastMapper *blendingVolumeMapper;
 	vtkGPUVolumeRayCastMapper	*blendingTextureMapper;
 	
 	vtkVolume					*blendingVolume;
 	vtkVolumeProperty			*blendingVolumeProperty;
 	vtkColorTransferFunction	*blendingColorTransferFunction;
-	vtkVolumeRayCastCompositeFunction *blendingCompositeFunction;
+//	vtkVolumeRayCastCompositeFunction *blendingCompositeFunction;
 	vtkPiecewiseFunction		*blendingOpacityTransferFunction;
 	double						blendingtable[257][3];
 	
-	BOOL						needToFlip, blendingNeedToFlip, firstTime, alertDisplayed;
+	BOOL						needToFlip, blendingNeedToFlip, firstTime, firstTimeCroppingBox, firstTimeCroppingBoxBlending, alertDisplayed;
 	
 	IBOutlet NSWindow			*export3DWindow;
 	IBOutlet NSSlider			*framesSlider;
@@ -235,6 +249,7 @@ typedef char* VTKStereoVRView;
 	IBOutlet NSMatrix		*VRquality;
 	
 	IBOutlet NSMatrix		*scissorStateMatrix;
+    IBOutlet NSColorWell    *backgroundColorWell;
     NSColor *backgroundColor;
 	
 	IBOutlet NSObjectController	*shadingController;
@@ -253,6 +268,7 @@ typedef char* VTKStereoVRView;
 	float					OFFSET16, blendingOFFSET16;
 	
 	unsigned char			*dataFRGB;
+    BOOL                    ownData8;
 	char					*data8;
 	vImage_Buffer			srcf, dst8;
 
@@ -287,18 +303,20 @@ typedef char* VTKStereoVRView;
 	
 	
 	// MAPPERS
-	
-	OsiriXFixedPointVolumeRayCastMapper *volumeMapper;
+#ifdef USE_OSPRAY
+    vtkOSPRayVolumeMapper       *osprayMapper;
+#endif
+    
+	vtkOsiriXFixedPointVolumeRayCastMapper *volumeMapper;
 	vtkGPUVolumeRayCastMapper		*textureMapper;
 	
 	vtkVolume					*volume;
 	vtkVolumeProperty			*volumeProperty;
 	vtkColorTransferFunction	*colorTransferFunction;
-	vtkTextActor				*textWLWW, *textX;
+	vtkCornerAnnotation			*cornerText;
 	BOOL						isViewportResizable;
-	vtkTextActor				*oText[ 5];
 	vtkImageImport				*reader;
-	vtkVolumeRayCastCompositeFunction  *compositeFunction;
+//	vtkVolumeRayCastCompositeFunction  *compositeFunction;
 	vtkPiecewiseFunction		*opacityTransferFunction;
 	
 	vtkColorTransferFunction	*red, *green, *blue;
@@ -313,8 +331,7 @@ typedef char* VTKStereoVRView;
 	vtkPolyDataMapper2D			*ROI3D;
 	vtkActor2D					*ROI3DActor;
 	
-	vtkPolyData					*Line2DData;
-	vtkPolyDataMapper2D			*Line2D;
+    double                      Line3DPt1[4], Line3DPt2[4];
 	vtkActor2D					*Line2DActor;
 	vtkTextActor				*Line2DText;
 	
@@ -405,6 +422,28 @@ typedef char* VTKStereoVRView;
 	NSSize							rootBorder;
 	vtkCallbackCommand				*rightResponder;
 #endif
+    
+    
+    IBOutlet NSPanel *ospraySettingsPanel;
+    
+    int ospraySPP, osprayAmbientSamples;
+    BOOL osprayComposite, willHaveToReActivateOSPRay, denoise;
+    float scalarOpacityUnitDistance, osprayLightScale, viewAngle, focalDistancePoint[ 3];
+    double focalDistance, focalDisk;
+    
+    BOOL maintainLuminace;
+    double keyWarm, keyInt, keyEle, keyAzi;
+    double backWarm, backKB, backEle, backAzi;
+    double fillWarm, fillKF, fillEle, fillAzi;
+    double headWarm, headKH;
+    
+    vtkLightKit *lightKit;
+    
+    NSColor *keyLightColor, *fillLightColor, *headLightColor, *backLightColor;
+    
+    IBOutlet NSPopUpButton *presetsPopup;
+    IBOutlet NSWindow *presetWindow;
+    IBOutlet NSTextField *presetName;
 }
 
 #ifdef _STEREO_VISION_
@@ -412,19 +451,29 @@ typedef char* VTKStereoVRView;
 //@property(readonly) short currentTool;
 #endif
 
-@property (nonatomic) BOOL clipRangeActivated, keep3DRotateCentered, dontResetImage, bestRenderingMode;
-@property (nonatomic) int projectionMode;
-@property (nonatomic) double clippingRangeThickness;
-@property (nonatomic) float lowResLODFactor, lodDisplayed;
+@property (nonatomic) BOOL clipRangeActivated, keep3DRotateCentered, dontResetImage, bestRenderingMode, osprayComposite, denoise;
+@property (nonatomic) int projectionMode, ospraySPP, osprayAmbientSamples;
+@property (nonatomic) double clippingRangeThickness, focalDistance, focalDisk;
+@property (nonatomic) float lowResLODFactor, lodDisplayed, scalarOpacityUnitDistance, osprayLightScale, viewAngle;
 @property long renderingMode;
 @property (nonatomic) int engine;
 @property (readonly) NSArray* currentOpacityArray;
 @property (retain) DICOMExport *exportDCM;
 @property (retain) NSString *dcmSeriesString;
+@property (retain) VRController *controller;
+@property (retain) ViewerController *blendingController;
 @property (retain, nonatomic) NSColor *backgroundColor;
+@property (retain, nonatomic) NSColor *keyLightColor, *fillLightColor, *headLightColor, *backLightColor;
 
+@property (nonatomic) BOOL maintainLuminace;
+@property (nonatomic) double keyWarm, keyInt, keyEle, keyAzi;
+@property (nonatomic) double backWarm, backKB, backEle, backAzi;
+@property (nonatomic) double fillWarm, fillKF, fillEle, fillAzi;
+@property (nonatomic) double headWarm, headKH;
+
++ (void) addLogo: (unsigned char*) buf rowBytes: (unsigned int) rowBytes height: (unsigned int) height;
 + (void) testGraphicBoard;
-//+ (BOOL) getCroppingBox:(double*) a :(vtkVolume *) volume :(vtkBoxWidget*) croppingBox;
++ (BOOL) getCroppingBox:(double*) a :(vtkVolume *) volume :(vtkBoxWidget*) croppingBox;
 //+ (void) setCroppingBox:(double*) a :(vtkVolume *) volume;
 //- (void) setBlendingCroppingBox:(double*) a;
 //- (void) setCroppingBox:(double*) a;
@@ -436,12 +485,14 @@ typedef char* VTKStereoVRView;
 - (float*) imageInFullDepthWidth: (long*) w height:(long*) h isRGB:(BOOL*) rgb blendingView:(BOOL) blendingView;
 - (NSDictionary*) exportDCMCurrentImage;
 - (NSDictionary*) exportDCMCurrentImageIn16bit: (BOOL) fullDepth;
+- (NSDictionary*) exportDCMCurrentImageIn16bit: (BOOL) fullDepth display: (BOOL) display;
 - (void) renderImageWithBestQuality: (BOOL) best waitDialog: (BOOL) wait;
 - (void) renderImageWithBestQuality: (BOOL) best waitDialog: (BOOL) wait display: (BOOL) display;
 - (void) endRenderImageWithBestQuality;
 - (void) resetAutorotate:(id) sender;
 - (void) setEngine: (long) engineID showWait:(BOOL) showWait;
 - (IBAction)changeColorWith:(NSColor*) color;
+- (void)changeColorWith:(NSColor*) color setNeedsDisplay: (BOOL) setNeedsDisplay;
 - (IBAction)changeColor:(id)sender;
 - (void) exportDICOM;
 -(unsigned char*) getRawPixels:(long*) width :(long*) height :(long*) spp :(long*) bpp :(BOOL) screenCapture :(BOOL) force8bits;
@@ -474,7 +525,10 @@ typedef char* VTKStereoVRView;
 - (ToolMode) _tool;
 //- (void) resetCroppingBox;
 -(id)initWithFrame:(NSRect)frame;
--(short)setPixSource:(NSMutableArray*)pix :(float*) volumeData;
+-(short) setPixSource:(NSMutableArray*)pix :(float*) volumeData;
+-(void) setCornerAnnotationsVisible: (BOOL) v;
+- (void) setVolumeVisible: (BOOL) v;
+-(short) setPixSource:(NSMutableArray*)pix volumeData:(float*) volumeData volumeData8: (char*) volumeData8 offset: (float) offset valueFactor: (float) vf;
 -(void)dealloc;
 //Fly to point in world coordinates;
 - (void) flyTo:(float) x :(float) y :(float) z;
@@ -501,6 +555,7 @@ typedef char* VTKStereoVRView;
 - (void)activateShading:(BOOL)on;
 - (IBAction) switchShading:(id) sender;
 - (long) shading;
+- (BOOL) isOSPRayEnabled;
 - (void) setEngine: (int) engineID;
 - (void) setProjectionMode: (int) mode;
 - (IBAction) resetImage:(id) sender;
@@ -518,6 +573,7 @@ typedef char* VTKStereoVRView;
 - (IBAction) scissorStateButtons:(id) sender;
 - (void) updateScissorStateButtons;
 - (void) switchOrientationWidget:(id) sender;
+-(void) setOrientationWidgetVisible: (BOOL) v;
 - (void) computeOrientationText;
 - (void) getOrientation: (float*) o;
 - (void) bestRendering:(id) sender;
@@ -580,6 +636,7 @@ typedef char* VTKStereoVRView;
 - (void) computeValueFactor;
 - (void) setRotate: (BOOL) r;
 - (float) factor;
+- (float) OpenGlBackingScaleFactor;
 - (float) imageSampleDistance;
 - (float) blendingImageSampleDistance;
 - (void) setViewSizeToMatrix3DExport;
@@ -620,8 +677,6 @@ typedef char* VTKStereoVRView;
 - (void)setAdvancedCLUT:(NSMutableDictionary*)clut lowResolution:(BOOL)lowRes;
 - (void)setAdvancedCLUTWithName:(NSString*)name;
 - (BOOL)advancedCLUT;
-- (VRController*)controller;
-- (void)setController:(VRController*)aController;
 - (BOOL)isRGB;
 
 - (vtkVolumeMapper*) mapper;

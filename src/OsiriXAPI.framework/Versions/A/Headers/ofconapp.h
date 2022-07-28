@@ -1,32 +1,21 @@
 /*
  *
- *  Copyright (C) 1997-2005, OFFIS
+ *  Copyright (C) 1999-2012, OFFIS e.V.
+ *  All rights reserved.  See COPYRIGHT file for details.
  *
  *  This software and supporting documentation were developed by
  *
- *    Kuratorium OFFIS e.V.
- *    Healthcare Information and Communication Systems
+ *    OFFIS e.V.
+ *    R&D Division Health
  *    Escherweg 2
  *    D-26121 Oldenburg, Germany
  *
- *  THIS SOFTWARE IS MADE AVAILABLE,  AS IS,  AND OFFIS MAKES NO  WARRANTY
- *  REGARDING  THE  SOFTWARE,  ITS  PERFORMANCE,  ITS  MERCHANTABILITY  OR
- *  FITNESS FOR ANY PARTICULAR USE, FREEDOM FROM ANY COMPUTER DISEASES  OR
- *  ITS CONFORMITY TO ANY SPECIFICATION. THE ENTIRE RISK AS TO QUALITY AND
- *  PERFORMANCE OF THE SOFTWARE IS WITH THE USER.
  *
  *  Module:  ofstd
  *
  *  Author:  Joerg Riesmeier
  *
  *  Purpose: Handle console applications (Header)
- *
- *  Last Update:      $Author: lpysher $
- *  Update Date:      $Date: 2006/03/01 20:17:55 $
- *  CVS/RCS Revision: $Revision: 1.1 $
- *  Status:           $State: Exp $
- *
- *  CVS/RCS Log at end of file
  *
  */
 
@@ -50,7 +39,7 @@
  *  behaviour for all DCMTK console applications.
  *  Performs console output operations and error checking.
  */
-class OFConsoleApplication
+class DCMTK_OFSTD_EXPORT OFConsoleApplication
 {
 
  public:
@@ -74,10 +63,11 @@ class OFConsoleApplication
      *  if the command line has only one argument, namely "--help" or the specified shortcut,
      *  (in all cases) the usage is printed (see printUsage).
      *
-     ** @param  cmd       reference to the OFCommandLine object
+     ** @param  cmd       reference to the OFCommandLine object.  Should be valid at least as
+     *                    long as this object exists.
      *  @param  argCount  number of arguments (argc)
      *  @param  argValue  pointer to argument array (argv[])
-     *  @param  flags     flags to be used for parsing (e.g. OFCommandLine::ExpandWildcards)
+     *  @param  flags     flags to be used for parsing (e.g. OFCommandLine::PF_NoCommandFiles)
      *  @param  startPos  first argument to be parsed (default: 1, i.e. omit program name)
      *
      ** @return status of parsing process, true if successful, false otherwise
@@ -88,9 +78,39 @@ class OFConsoleApplication
                             const int flags = 0,
                             const int startPos = 1);
 
+#ifdef DCMTK_USE_WCHAR_T
+
+    /** parse command line.
+     *  This is a Windows-specific version supporting the wide character encoding (UTF-16).
+     *  If the command line has no argument (in case at least one argument is required) and
+     *  if the command line has only one argument, namely "--help" or the specified shortcut,
+     *  (in all cases) the usage is printed (see printUsage).
+     *
+     ** @param  cmd       reference to the OFCommandLine object.  Should be valid at least as
+     *                    long as this object exists.
+     *  @param  argCount  number of arguments (argc)
+     *  @param  argValue  pointer to argument array (argv[])
+     *  @param  flags     flags to be used for parsing (e.g. OFCommandLine::PF_NoCommandFiles)
+     *  @param  startPos  first argument to be parsed (default: 1, i.e. omit program name)
+     *
+     ** @return status of parsing process, true if successful, false otherwise
+     */
+    OFBool parseCommandLine(OFCommandLine &cmd,
+                            int argCount,
+                            wchar_t *argValue[],
+                            const int flags = 0,
+                            const int startPos = 1);
+
+#endif  // HAVE_WINDOWS_H ...
+
     /** print header of console application (consisting of identifier, name and description)
      *
-     ** @param  hostInfo  print host information as reported by 'config.guess' if OFTrue
+     ** @param  hostInfo  print host information as reported by 'config.guess' if OFTrue.
+     *                    If compiled with 'libiconv' support, the current locale's character
+     *                    encoding is also shown.  On Windows systems, either the current OEM
+     *                    and ANSI code page identifiers are printed or "Unicode (UTF-16)" if
+     *                    support is enabled.  Finally, if the DEBUG macro is defined, a note
+     *                    on the presence of debug code is given.
      *  @param  stdError  print to standard error stream if OFTrue (default: standard output)
      */
     void printHeader(const OFBool hostInfo = OFFalse,
@@ -101,6 +121,16 @@ class OFConsoleApplication
      ** @param  cmd   reference to command line class (default: object used for parsing)
      */
     void printUsage(const OFCommandLine *cmd = NULL);
+
+    /** print expanded command line arguments to standard error stream
+     *
+     ** @param  cmd   reference to command line class (default: object used for parsing)
+     */
+    void printArguments(OFCommandLine *cmd = NULL);
+
+    /** print resource identifier to standard error stream
+     */
+    void printIdentifier();
 
     /** print error message (incl. header) to standard error stream and exit with error code
      *
@@ -175,6 +205,13 @@ class OFConsoleApplication
                        OFBool condition);
 
 
+ protected:
+
+    /** check parse status of previously parsed command line
+     */
+    OFBool checkParseStatus(const OFCommandLine::E_ParseStatus status);
+
+
  private:
 
     /// Name of the application (short form)
@@ -199,84 +236,3 @@ class OFConsoleApplication
 
 
 #endif
-
-
-/*
- *
- * CVS/RCS Log:
- * $Log: ofconapp.h,v $
- * Revision 1.1  2006/03/01 20:17:55  lpysher
- * Added dcmtkt ocvs not in xcode  and fixed bug with multiple monitors
- *
- * Revision 1.20  2005/12/08 16:05:49  meichel
- * Changed include path schema for all DCMTK header files
- *
- * Revision 1.19  2004/01/16 10:30:12  joergr
- * Removed acknowledgements with e-mail addresses from CVS log.
- *
- * Revision 1.18  2003/12/05 10:37:41  joergr
- * Removed leading underscore characters from preprocessor symbols (reserved
- * symbols). Updated copyright date where appropriate.
- *
- * Revision 1.17  2003/07/04 13:29:51  meichel
- * Replaced forward declarations for OFString with explicit includes,
- *   needed when compiling with HAVE_STD_STRING
- *
- * Revision 1.16  2003/06/12 13:17:51  joergr
- * Enhanced method printWarning(). Added method quietMode().
- *
- * Revision 1.15  2002/11/26 12:55:02  joergr
- * Changed syntax usage output for command line applications from stderr to
- * stdout.
- *
- * Revision 1.14  2002/09/23 14:56:55  joergr
- * Prepared code for future support of 'config.guess' host identifiers.
- *
- * Revision 1.13  2002/04/16 13:36:02  joergr
- * Added configurable support for C++ ANSI standard includes (e.g. streams).
- *
- * Revision 1.12  2001/06/01 15:51:33  meichel
- * Updated copyright header
- *
- * Revision 1.11  2000/10/10 12:01:20  meichel
- * Created/updated doc++ comments
- *
- * Revision 1.10  2000/04/14 15:17:12  meichel
- * Adapted all ofstd library classes to consistently use ofConsole for output.
- *
- * Revision 1.9  2000/03/08 16:36:01  meichel
- * Updated copyright header.
- *
- * Revision 1.8  2000/03/07 15:38:50  joergr
- * Changed behaviour of class OFConsoleApplication to support automatic
- * evaluation of "--help" option for command line application with no
- * mandatory parameter.
- *
- * Revision 1.7  1999/09/13 16:37:15  joergr
- * Added methods for output of warning and other messages.
- * Added method to switch on/off all output messages (quiet mode).
- *
- * Revision 1.6  1999/08/17 10:23:10  joergr
- * Corrected Doc++ comment.
- *
- * Revision 1.5  1999/04/27 16:24:53  joergr
- * Introduced list of valid parameters used for syntax output and error
- * checking.
- * Added method to check conflicts between two options (incl. error output).
- *
- * Revision 1.4  1999/04/26 16:34:34  joergr
- * Added support to check dependences between different options and report
- * error messages if necessary.
- *
- * Revision 1.3  1999/04/21 12:41:03  meichel
- * Added method OFConsoleApplication::checkParam()
- *
- * Revision 1.2  1999/03/22 09:00:49  joergr
- * Added/Changed comments.
- *
- * Revision 1.1  1999/02/08 12:00:41  joergr
- * Added class to handle console applications (with or w/o command line
- * arguments).
- *
- *
- */

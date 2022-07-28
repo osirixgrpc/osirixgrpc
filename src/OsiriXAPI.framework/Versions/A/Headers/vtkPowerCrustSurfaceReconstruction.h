@@ -6,12 +6,12 @@
   Date:      $Date: 2002/07/11 10:36:50 $
   Version:   $Revision: 1.1 $
 
-  Copyright (c) 1993-2002 Ken Martin, Will Schroeder, Bill Lorensen 
+  Copyright (c) 1993-2002 Ken Martin, Will Schroeder, Bill Lorensen
   All rights reserved.
   See Copyright.txt or http://www.kitware.com/Copyright.htm for details.
 
-     This software is distributed WITHOUT ANY WARRANTY; without even 
-     the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR 
+     This software is distributed WITHOUT ANY WARRANTY; without even
+     the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
      PURPOSE.  See the above copyright notice for more information.
 
 =========================================================================*/
@@ -29,25 +29,25 @@
 //
 // http://www.gnu.org/copyleft/gpl.html
 //
-// -- The restriction applies only to this class. -- 
+// -- The restriction applies only to this class. --
 //
 // The medial surface can be accessed using GetMedialSurface() - remember to call Update() on the
 // filter before accessing this, it is not part of the normal VTK pipeline.
 //
-// This filter is a big improvement on vtkSurfaceReconstructionFilter in almost all cases but it is 
+// This filter is a big improvement on vtkSurfaceReconstructionFilter in almost all cases but it is
 // not as fast.
 //
 // .SECTION Thanks
 // This VTK port was created by: Tim Hutton, Bruce Lamond, Dieter Pfeffer, Oliver Moss.
 //
-// .SECTION Caveats 
+// .SECTION Caveats
 // The algorithm may fail to give a correct reconstruction on surfaces that are not densely
 // sampled. In practice it does very well.
 //
 // The exact arithmetic routines are thought to have problems on some platforms, please report any
 // problems you encounter.
 //
-// The orientation of the polygons is not consistent! This can be corrected by 
+// The orientation of the polygons is not consistent! This can be corrected by
 // vtkPolyDataNormals (ConsistencyOn) but you should be aware of it.
 //
 // The surface has not been simplified using the routines provided with the distribution, this will
@@ -59,30 +59,41 @@
 #ifndef __vtkPowerCrustSurfaceReconstruction_h
 #define __vtkPowerCrustSurfaceReconstruction_h
 
-#include "vtkDataSetToPolyDataFilter.h"
+#include "vtkPolyDataAlgorithm.h"
 #include "vtkPolyData.h"
 #include "vtkCellArray.h"
 #include "vtkPointData.h"
 
-class VTK_GRAPHICS_EXPORT vtkPowerCrustSurfaceReconstruction : public vtkDataSetToPolyDataFilter
+class vtkPowerCrustSurfaceReconstruction : public vtkPolyDataAlgorithm
 {
 public:
+  vtkTypeMacro(vtkPowerCrustSurfaceReconstruction, vtkPolyDataAlgorithm);
+  void PrintSelf(ostream& os, vtkIndent indent) final;
+
   static vtkPowerCrustSurfaceReconstruction *New();
-  vtkTypeRevisionMacro(vtkPowerCrustSurfaceReconstruction,vtkDataSetToPolyDataFilter);
-  void PrintSelf(ostream& os, vtkIndent indent);
 
   // Description:
   // Returns the medial surface of the reconstructed surface.
-  vtkPolyData* GetMedialSurface() { return this->medial_surface; }
+  vtkPolyData* GetMedialSurface()
+  {
+    return this->medial_surface;
+  }
 
   // Description:
   // This error function allows our ported code to report error messages neatly.
-  // This is not for external use. 
+  // This is not for external use.
   void Error(const char *message);
 
-  
-  double GetEstimate_r (){return m_estimate_r;}	//EPRO added
-  void SetEstimate_r(double val) {m_estimate_r = val;}	//EPRO added
+
+  double GetEstimate_r () //EPRO added
+  {
+    return m_estimate_r;
+  }
+
+  void SetEstimate_r(double val) //EPRO added
+  {
+    m_estimate_r = val;
+  }
 
 protected:
   vtkPowerCrustSurfaceReconstruction();
@@ -90,21 +101,23 @@ protected:
 
   // Description:
   // the main function that does the work
-  void Execute();
+  int RequestData(vtkInformation *, vtkInformationVector **, vtkInformationVector *) final;
 
-  void ComputeInputUpdateExtents(vtkDataObject *output);
+  int RequestUpdateExtent(vtkInformation*,
+                          vtkInformationVector**,
+                          vtkInformationVector*) final;
   void ExecuteInformation();
 
   vtkPolyData *medial_surface;
-  // EPRO added 
-  double m_estimate_r;		
-  
-  
+
+  // EPRO added
+  double m_estimate_r;
+
+
 private:
   vtkPowerCrustSurfaceReconstruction(const vtkPowerCrustSurfaceReconstruction&);  // Not implemented.
   void operator=(const vtkPowerCrustSurfaceReconstruction&);  // Not implemented.
 };
 
 #endif
-
 

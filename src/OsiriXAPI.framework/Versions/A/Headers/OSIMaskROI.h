@@ -1,10 +1,11 @@
-//
-//  OSIMaskROI.h
-//  OsiriX_Lion
-//
-//  Created by Joël Spaltenstein on 9/26/12.
-//  Copyright (c) 2012 OsiriX Team. All rights reserved.
-//
+/*=========================================================================
+ Program:   OsiriX
+ Copyright (c) 2010 - 2020 Pixmeo SARL
+ 266 rue de Bernex
+ CH-1233 Bernex
+ Switzerland
+ All rights reserved.
+ =========================================================================*/
 
 #import "OSIROI.h"
 #import "OSIROIMask.h"

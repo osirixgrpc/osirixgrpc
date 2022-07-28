@@ -1,16 +1,11 @@
 /*=========================================================================
-  Program:   OsiriX
-
-  Copyright (c) OsiriX Team
-  All rights reserved.
-  Distributed under GNU - LGPL
-  
-  See http://www.osirix-viewer.com/copyright.html for details.
-
-     This software is distributed WITHOUT ANY WARRANTY; without even
-     the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
-     PURPOSE.
-=========================================================================*/
+ Program:   OsiriX
+ Copyright (c) 2010 - 2020 Pixmeo SARL
+ 266 rue de Bernex
+ CH-1233 Bernex
+ Switzerland
+ All rights reserved.
+ =========================================================================*/
 
 #import <Cocoa/Cocoa.h>
 
@@ -42,6 +37,8 @@ enum N2ConnectionStatus {
     NSTimeInterval lastEventTimeInterval;
 }
 
+@property(readonly) NSInputStream *inputStream;
+@property(readonly) NSOutputStream *outputStream;
 @property(readonly) NSString* address;
 @property(readonly) NSTimeInterval lastEventTimeInterval;
 @property(nonatomic) NSInteger status;
@@ -50,6 +47,8 @@ enum N2ConnectionStatus {
 @property BOOL closeWhenDoneSending;
 @property BOOL closeOnNextSpaceAvailable;
 @property(readonly,retain) NSError* error;
+
++(NSString*) runLoopMode;
 
 // non-tls
 +(NSData*)sendSynchronousRequest:(NSData*)request toAddress:(id)address port:(NSInteger)port;

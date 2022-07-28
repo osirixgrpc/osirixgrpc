@@ -1,19 +1,14 @@
 /*=========================================================================
-  Program:   OsiriX
-
-  Copyright (c) OsiriX Team
-  All rights reserved.
-  Distributed under GNU - LGPL
-  
-  See http://www.osirix-viewer.com/copyright.html for details.
-
-     This software is distributed WITHOUT ANY WARRANTY; without even
-     the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
-     PURPOSE.
-=========================================================================*/
+ Program:   OsiriX
+ Copyright (c) 2010 - 2020 Pixmeo SARL
+ 266 rue de Bernex
+ CH-1233 Bernex
+ Switzerland
+ All rights reserved.
+ =========================================================================*/
 
 #import <Cocoa/Cocoa.h>
-#import <OsiriX/DCM.h>
+#import <OsiriX/DCMFramework.h>
 
 #undef verify
 #include "dcdatset.h"
@@ -28,7 +23,7 @@
 * Interface between server and database 
 */
 
-@class DicomDatabase;
+@class DicomDatabase, WebPortalUser;
 
 @interface OsiriXSCPDataHandler : NSObject
 {
@@ -49,9 +44,13 @@
     int prepareMoveForDataSetLevel;
 }
 
-@property (retain) NSString *callingAET;
+@property(retain) NSString *callingAET;
+@property(readonly) NSArray *findArray;
+@property(readonly) NSEnumerator *findEnumerator;
+@property(retain, nonatomic) NSString *specificCharacterSet;
 
 + (id)allocRequestDataHandler;
++ (NSArray*) databases;
 
 -(NSTimeInterval)endOfDay:(NSCalendarDate *)day;
 -(NSTimeInterval)startOfDay:(NSCalendarDate *)day;
@@ -62,6 +61,7 @@
 - (void)imageDatasetForFetchedObject:(id)fetchedObject dataset:(DcmDataset *)dataset;
 
 - (OFCondition)prepareFindForDataSet:( DcmDataset *)dataset;
+- (OFCondition)prepareFindForDataSet: (DcmDataset *) dataset forUser:(WebPortalUser*) user;
 - (OFCondition)prepareMoveForDataSet:( DcmDataset *)dataset;
 
 - (BOOL)findMatchFound;

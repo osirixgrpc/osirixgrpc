@@ -1,16 +1,11 @@
 /*=========================================================================
-  Program:   OsiriX
-
-  Copyright (c) OsiriX Team
-  All rights reserved.
-  Distributed under GNU - LGPL
-  
-  See http://www.osirix-viewer.com/copyright.html for details.
-
-     This software is distributed WITHOUT ANY WARRANTY; without even
-     the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
-     PURPOSE.
-=========================================================================*/
+ Program:   OsiriX
+ Copyright (c) 2010 - 2020 Pixmeo SARL
+ 266 rue de Bernex
+ CH-1233 Bernex
+ Switzerland
+ All rights reserved.
+ =========================================================================*/
 
 
 
@@ -62,6 +57,7 @@ typedef char* DcmFileFormat;
     BOOL				freeImageData;
     
     BOOL                removeDICOMOverlays;
+    BOOL                convertRGBtoBW, convertBWtoRGB;
 		
     int					exportInstanceNumber, exportSeriesNumber;
     NSString			*exportSeriesUID;
@@ -78,9 +74,10 @@ typedef char* DcmFileFormat;
     NSMutableDictionary *metaDataDict;
 }
 @property( readonly) NSMutableDictionary *metaDataDict;
-@property BOOL rotateRawDataBy90degrees, removeDICOMOverlays;
+@property BOOL rotateRawDataBy90degrees, removeDICOMOverlays, convertRGBtoBW, convertBWtoRGB;
 
 + (DICOMExport*) exporter;
++ (DICOMExport*) exporterWithSeriesNumber: (long) no;
 
 // Is this DCM file based on another DCM file?
 - (void) setSourceFile:(NSString*) isource __deprecated;
@@ -92,6 +89,9 @@ typedef char* DcmFileFormat;
 		bitsPerSample:		(int) ibps
 		width:				(long) iwidth
 		height:				(long) iheight;
+
+- (long) setPixelData: (unsigned char*) idata samplesPerPixel: (int) ispp bitsPerSample: (int) ibps width: (long) iwidth height: (long) iheight alphaLast: (BOOL) alphaLast;
+- (long) setBitmapImageRep: (NSBitmapImageRep*) rep;
 
 - (long) setPixelData:		(unsigned char*) deprecated
 		samplePerPixel:		(long) deprecated

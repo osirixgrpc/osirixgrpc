@@ -1,32 +1,21 @@
 /*
  *
- *  Copyright (C) 2002-2005, OFFIS
+ *  Copyright (C) 2002-2011, OFFIS e.V.
+ *  All rights reserved.  See COPYRIGHT file for details.
  *
  *  This software and supporting documentation were developed by
  *
- *    Kuratorium OFFIS e.V.
- *    Healthcare Information and Communication Systems
+ *    OFFIS e.V.
+ *    R&D Division Health
  *    Escherweg 2
  *    D-26121 Oldenburg, Germany
  *
- *  THIS SOFTWARE IS MADE AVAILABLE,  AS IS,  AND OFFIS MAKES NO  WARRANTY
- *  REGARDING  THE  SOFTWARE,  ITS  PERFORMANCE,  ITS  MERCHANTABILITY  OR
- *  FITNESS FOR ANY PARTICULAR USE, FREEDOM FROM ANY COMPUTER DISEASES  OR
- *  ITS CONFORMITY TO ANY SPECIFICATION. THE ENTIRE RISK AS TO QUALITY AND
- *  PERFORMANCE OF THE SOFTWARE IS WITH THE USER.
  *
  *  Module:  ofstd
  *
  *  Author:  Joerg Riesmeier
  *
  *  Purpose: Combined class for date and time functions
- *
- *  Last Update:      $Author: lpysher $
- *  Update Date:      $Date: 2006/03/01 20:17:56 $
- *  CVS/RCS Revision: $Revision: 1.1 $
- *  Status:           $State: Exp $
- *
- *  CVS/RCS Log at end of file
  *
  */
 
@@ -47,7 +36,7 @@
 
 /** This class is a combination of OFDate and OFTime
  */
-class OFDateTime
+class DCMTK_OFSTD_EXPORT OFDateTime
 {
 
  public:
@@ -68,6 +57,23 @@ class OFDateTime
      */
     OFDateTime(const OFDate &dateVal,
                const OFTime &timeVal);
+
+    /** constructor
+     *  @param year year value to be set
+     *  @param month month value to be set
+     *  @param day new value to be set
+     *  @param hour hour value to be set
+     *  @param minute minute value to be set
+     *  @param second second value to be set (incl. fraction of seconds)
+     *  @param timeZone optional offset to Coordinated Universal Time (UTC) in hours
+     */
+    OFDateTime(const unsigned int year,
+               const unsigned int month,
+               const unsigned int day,
+               const unsigned int hour,
+               const unsigned int minute,
+               const double second,
+               const double timeZone = 0);
 
     /** destructor
      */
@@ -141,6 +147,15 @@ class OFDateTime
      */
     OFBool setTime(const OFTime &timeVal);
 
+    /** set the date and time component to the specified date/time.
+     *  Before the new value is set it is checked using the "isValid()" routine.
+     *  @param dateVal new date value to be set
+     *  @param timeVal new time value to be set
+     *  @return OFTrue if the new value is valid and has been set, OFFalse otherwise
+     */
+    OFBool setDateTime(const OFDate &dateVal,
+                       const OFTime &timeVal);
+
     /** set the date and time value to the current system date and time.
      *  This function uses operating system dependent routines. If the date or time function
      *  (or both) are unavailable for some reason the corresponding value is not modified.
@@ -150,9 +165,10 @@ class OFDateTime
 
     /** set the date/time value to the given ISO formatted date/time string.
      *  The two ISO date/time formats supported by this function are
-     *  - "YYYY-MM-DD HH:MM[:SS]" (with arbitrary delimiters) and
-     *  - "YYYYMMDDHHMM[SS]" (without delimiters, useful for DICOM datetime type).
-     *  where the brackets enclose optional parts.
+     *  - "YYYY-MM-DD HH:MM[:SS [&ZZ:ZZ]]" (with arbitrary delimiters) and
+     *  - "YYYYMMDDHHMM[SS[&ZZZZ]]" (without delimiters, useful for DICOM datetime type)
+     *  where the brackets enclose optional parts. Please note that the optional fractional
+     *  part of a second ".FFFFFF" (see getISOFormattedDateTime()) is not yet supported.
      *  @param formattedDateTime ISO formatted date/time value to be set
      *  @return OFTrue if input is valid and result variable has been set, OFFalse otherwise
      */
@@ -170,7 +186,7 @@ class OFDateTime
 
     /** get the current date/time value in ISO format.
      *  The two ISO time formats supported by this function are
-     *  - "YYYY-MM-DD HH:MM[:SS[.FFFFFF]][&ZZ:ZZ]" (with delimiters) and
+     *  - "YYYY-MM-DD HH:MM[:SS[.FFFFFF]] [&ZZ:ZZ]" (with delimiters) and
      *  - "YYYYMMDDHHMM[SS[.FFFFFF]][&ZZZZ]" (without delimiters, useful for DICOM datetime type)
      *  where the brackets enclose optional parts.
      *  @param formattedDateTime reference to string variable where the result is stored
@@ -181,36 +197,19 @@ class OFDateTime
      *    if OFTrue. The time zone indicates the offset from the Coordinated Universal Time (UTC)
      *    in hours and minutes. The "&" is a placeholder for the sign symbol ("+" or "-").
      *  @param showDelimiter flag, indicating whether to use delimiters ("-", ":" and " ") or not
+     *  @param dateTimeSeparator separator between ISO date and time value. Only used if
+     *    'showDelimiter' is true.
+     *  @param timeZoneSeparator separator between ISO time value and time zone. Only used if
+     *    'showDelimiter' is true.
      *  @return OFTrue if result variable has been set, OFFalse otherwise
      */
     OFBool getISOFormattedDateTime(OFString &formattedDateTime,
                                    const OFBool showSeconds = OFTrue,
                                    const OFBool showFraction = OFFalse,
                                    const OFBool showTimeZone = OFFalse,
-                                   const OFBool showDelimiter = OFTrue) const;
-
-    /** get the current date/time value in ISO format.
-     *  Same as above but allows to specify the separator between date and time value.
-     *  Only required since Sun CC 2.0.1 compiler does not support default parameter values for
-     *  "complex types" like OFString.  Reports the error message: "Sorry not implemented" :-/
-     *  @param formattedDateTime reference to string variable where the result is stored
-     *  @param showSeconds add optional seconds (":SS" or "SS") to the resulting string if OFTrue
-     *  @param showFraction add optional fractional part of a second (".FFFFFF") if OFTrue.
-     *    Requires parameter 'seconds' to be also OFTrue.
-     *  @param showTimeZone add optional time zone ("&ZZ:ZZ" or "&ZZZZ") to the resulting string
-     *    if OFTrue. The time zone indicates the offset from the Coordinated Universal Time (UTC)
-     *    in hours and minutes. The "&" is a placeholder for the sign symbol ("+" or "-").
-     *  @param showDelimiter flag, indicating whether to use delimiters ("-", ":" and " ") or not
-     *  @param dateTimeSeparator separator between ISO date and time value (default: " "). Only
-     *    used if 'showDelimiter' is true.
-     *  @return OFTrue if result variable has been set, OFFalse otherwise
-     */    
-    OFBool getISOFormattedDateTime(OFString &formattedDateTime,
-                                   const OFBool showSeconds /*= OFTrue*/,
-                                   const OFBool showFraction /*= OFFalse*/,
-                                   const OFBool showTimeZone /*= OFFalse*/,
-                                   const OFBool showDelimiter /*= OFTrue*/,
-                                   const OFString &dateTimeSeparator /*= " "*/) const;
+                                   const OFBool showDelimiter = OFTrue,
+                                   const OFString &dateTimeSeparator = " ",
+                                   const OFString &timeZoneSeparator = " ") const;
 
     /* --- static helper functions --- */
 
@@ -236,42 +235,7 @@ class OFDateTime
  *  @param time OFDateTime object to print
  *  @return reference to the output stream
  */
-ostream& operator<<(ostream& stream, const OFDateTime &dateTime);
+DCMTK_OFSTD_EXPORT STD_NAMESPACE ostream& operator<<(STD_NAMESPACE ostream& stream, const OFDateTime &dateTime);
 
 
 #endif
-
-
-/*
- *
- * CVS/RCS Log:
- * $Log: ofdatime.h,v $
- * Revision 1.1  2006/03/01 20:17:56  lpysher
- * Added dcmtkt ocvs not in xcode  and fixed bug with multiple monitors
- *
- * Revision 1.7  2005/12/08 16:05:55  meichel
- * Changed include path schema for all DCMTK header files
- *
- * Revision 1.6  2004/04/16 12:43:26  joergr
- * Restructured code to avoid default parameter values for "complex types" like
- * OFString. Required for Sun CC 2.0.1.
- *
- * Revision 1.5  2004/01/16 10:30:39  joergr
- * Added setISOFormattedXXX() methods for Date, Time and DateTime.
- *
- * Revision 1.4  2003/12/17 15:16:20  joergr
- * Added note to the comparison operators that the "day overflow" is not yet
- * handled correctly.
- *
- * Revision 1.3  2003/09/15 12:12:56  joergr
- * Fixed incorrect/improper comments of the comparision operators. Enhanced
- * comment of the default constructor. Made comparison operators const.
- *
- * Revision 1.2  2002/05/24 09:43:04  joergr
- * Renamed some parameters/variables to avoid ambiguities.
- *
- * Revision 1.1  2002/04/11 12:12:23  joergr
- * Introduced new standard classes providing date and time functions.
- *
- *
- */

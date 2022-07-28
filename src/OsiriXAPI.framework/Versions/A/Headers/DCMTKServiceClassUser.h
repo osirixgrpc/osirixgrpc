@@ -1,16 +1,11 @@
 /*=========================================================================
-  Program:   OsiriX
-
-  Copyright (c) OsiriX Team
-  All rights reserved.
-  Distributed under GNU - LGPL
-  
-  See http://www.osirix-viewer.com/copyright.html for details.
-
-     This software is distributed WITHOUT ANY WARRANTY; without even
-     the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
-     PURPOSE.
-=========================================================================*/
+ Program:   OsiriX
+ Copyright (c) 2010 - 2020 Pixmeo SARL
+ 266 rue de Bernex
+ CH-1233 Bernex
+ Switzerland
+ All rights reserved.
+ =========================================================================*/
 
 
 
@@ -33,7 +28,6 @@ typedef int E_TransferSyntax;
 typedef int T_DIMSE_BlockingMode;
 typedef char* OFCondition;
 typedef char* T_ASC_Parameters;
-typedef char* DcmDataset;
 typedef char* T_ASC_Association;
 typedef char* T_ASC_Network;
 
@@ -76,16 +70,17 @@ typedef char* T_ASC_Network;
 	BOOL _doAuthenticate;
 	int  _keyFileFormat;
 	NSArray *_cipherSuites;
-	const char *_readSeedFile;
-	const char *_writeSeedFile;
+	NSString *_readSeedFile;
+	NSString *_writeSeedFile;
 	TLSCertificateVerificationType certVerification;
-	const char *_dhparam;
+	NSString *_dhparam;
 }
 
 @property BOOL abortAssociation;
 @property (retain) NSString *hostname, *callingAET, *calledAET;
 @property (readonly) NSMutableDictionary *extraParameters;
-@property int port, transferSyntax;
+@property int port, transferSyntax, dimse_timeout, acse_timeout;
+@property (retain) NSString *writeSeedFile, *readSeedFile, *dhparam;
 
 - (id) initWithCallingAET:(NSString *)myAET  
 			calledAET:(NSString *)theirAET  

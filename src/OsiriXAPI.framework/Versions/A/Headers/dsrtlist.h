@@ -1,19 +1,15 @@
 /*
  *
- *  Copyright (C) 2000-2005, OFFIS
+ *  Copyright (C) 2000-2016, OFFIS e.V.
+ *  All rights reserved.  See COPYRIGHT file for details.
  *
  *  This software and supporting documentation were developed by
  *
- *    Kuratorium OFFIS e.V.
- *    Healthcare Information and Communication Systems
+ *    OFFIS e.V.
+ *    R&D Division Health
  *    Escherweg 2
  *    D-26121 Oldenburg, Germany
  *
- *  THIS SOFTWARE IS MADE AVAILABLE,  AS IS,  AND OFFIS MAKES NO  WARRANTY
- *  REGARDING  THE  SOFTWARE,  ITS  PERFORMANCE,  ITS  MERCHANTABILITY  OR
- *  FITNESS FOR ANY PARTICULAR USE, FREEDOM FROM ANY COMPUTER DISEASES  OR
- *  ITS CONFORMITY TO ANY SPECIFICATION. THE ENTIRE RISK AS TO QUALITY AND
- *  PERFORMANCE OF THE SOFTWARE IS WITH THE USER.
  *
  *  Module: dcmsr
  *
@@ -21,13 +17,6 @@
  *
  *  Purpose:
  *    classes: DSRListOfItems
- *
- *  Last Update:      $Author: lpysher $
- *  Update Date:      $Date: 2006/03/01 20:16:11 $
- *  CVS/RCS Revision: $Revision: 1.1 $
- *  Status:           $State: Exp $
- *
- *  CVS/RCS Log at end of file
  *
  */
 
@@ -37,9 +26,10 @@
 
 #include "osconfig.h"   /* make sure OS specific configuration is included first */
 
-#include "oflist.h"
-
 #include "dcerror.h"
+
+#include "oflist.h"
+#include "ofvector.h"
 
 
 /*---------------------*
@@ -159,6 +149,32 @@ template<class T> class DSRListOfItems
         return result;
     }
 
+    /** get copy of all items (as a vector)
+     ** @param  items  reference to a variable where the result should be stored.
+     *                 (always cleared before items are added)
+     ** @return status, EC_Normal if successful, an error code otherwise
+     */
+    OFCondition getItems(OFVector<T> &items) const
+    {
+        items.clear();
+        if (!ItemList.empty())
+        {
+            /* avoid re-allocations */
+            items.reserve(ItemList.size());
+            /* iterate over all list items */
+            const OFLIST_TYPENAME OFListConstIterator(T) endPos = ItemList.end();
+            OFLIST_TYPENAME OFListConstIterator(T) iterator = ItemList.begin();
+            while (iterator != endPos)
+            {
+                /* and copy them to the passed vector */
+                items.push_back(*iterator);
+                iterator++;
+            }
+        }
+        /* always return OK */
+        return EC_Normal;
+    }
+
     /** add item to the list
      ** @param  item  item to be added
      */
@@ -174,6 +190,20 @@ template<class T> class DSRListOfItems
     {
         if (!isElement(item))
             ItemList.push_back(item);
+    }
+
+    /** add items to the list
+     ** @param  items  items to be added (stored as a vector)
+     */
+    inline void addItems(const OFVector<T> &items)
+    {
+        const OFTypename OFVector<T>::const_iterator endPos = items.end();
+        OFTypename OFVector<T>::const_iterator iterator = items.begin();
+        while (iterator != endPos)
+        {
+            ItemList.push_back(*iterator);
+            iterator++;
+        }
     }
 
     /** insert item at specified position to the list
@@ -227,7 +257,7 @@ template<class T> class DSRListOfItems
 
     /** goto specified item position
      ** @param  idx       index of the item to go to (starting from 1)
-     *  @param  iterator  list iterator storing the positition of the item
+     *  @param  iterator  list iterator storing the position of the item
      ** @return OFTrue if specified item was found, OFFalse otherwise
      */
     OFBool gotoItemPos(size_t idx,
@@ -247,7 +277,7 @@ template<class T> class DSRListOfItems
 
     /** goto specified item
      ** @param  item      value of the item to go to (starting from 1)
-     *  @param  iterator  list iterator storing the positition of the item
+     *  @param  iterator  list iterator storing the position of the item
      ** @return OFTrue if specified item was found, OFFalse otherwise
      */
     OFBool gotoItem(const T &item,
@@ -268,54 +298,3 @@ template<class T> class DSRListOfItems
 
 
 #endif
-
-
-/*
- *  CVS/RCS Log:
- *  $Log: dsrtlist.h,v $
- *  Revision 1.1  2006/03/01 20:16:11  lpysher
- *  Added dcmtkt ocvs not in xcode  and fixed bug with multiple monitors
- *
- *  Revision 1.13  2005/12/08 16:05:27  meichel
- *  Changed include path schema for all DCMTK header files
- *
- *  Revision 1.12  2003/08/07 12:55:13  joergr
- *  Updated documentation to get rid of doxygen warnings.
- *
- *  Revision 1.11  2003/07/11 13:44:00  joergr
- *  Added workaround to get rid of "implicit typename" warnings on gcc 3.x
- *  (introduced macro OFLIST_TYPENAME).
- *
- *  Revision 1.10  2003/06/04 12:40:01  meichel
- *  Replaced protected inheritance from OFList with protected aggregation
- *
- *  Revision 1.9  2003/06/03 10:16:44  meichel
- *  Renamed local variables to avoid name clashes with STL
- *
- *  Revision 1.8  2001/10/10 15:27:41  joergr
- *  Additonal adjustments for new OFCondition class.
- *
- *  Revision 1.7  2001/09/26 13:04:13  meichel
- *  Adapted dcmsr to class OFCondition
- *
- *  Revision 1.6  2001/05/07 16:13:24  joergr
- *  Updated CVS header.
- *
- *  Revision 1.5  2001/01/25 11:48:11  joergr
- *  Added method to insert item into a list.
- *
- *  Revision 1.4  2000/12/12 14:17:13  joergr
- *  Renamed method to avoid ambiguity reported by gcc 2.7.
- *
- *  Revision 1.3  2000/10/26 14:19:38  joergr
- *  Fixed bug: index in search routine was starting from 0 not 1.
- *
- *  Revision 1.2  2000/10/18 17:08:44  joergr
- *  Added doc++ comments.
- *
- *  Revision 1.1  2000/10/13 07:49:34  joergr
- *  Added new module 'dcmsr' providing access to DICOM structured reporting
- *  documents (supplement 23).  Doc++ documentation not yet completed.
- *
- *
- */

@@ -1,19 +1,15 @@
 /*
  *
- *  Copyright (C) 1997-2005, OFFIS
+ *  Copyright (C) 1997-2010, OFFIS e.V.
+ *  All rights reserved.  See COPYRIGHT file for details.
  *
  *  This software and supporting documentation were developed by
  *
- *    Kuratorium OFFIS e.V.
- *    Healthcare Information and Communication Systems
+ *    OFFIS e.V.
+ *    R&D Division Health
  *    Escherweg 2
  *    D-26121 Oldenburg, Germany
  *
- *  THIS SOFTWARE IS MADE AVAILABLE,  AS IS,  AND OFFIS MAKES NO  WARRANTY
- *  REGARDING  THE  SOFTWARE,  ITS  PERFORMANCE,  ITS  MERCHANTABILITY  OR
- *  FITNESS FOR ANY PARTICULAR USE, FREEDOM FROM ANY COMPUTER DISEASES  OR
- *  ITS CONFORMITY TO ANY SPECIFICATION. THE ENTIRE RISK AS TO QUALITY AND
- *  PERFORMANCE OF THE SOFTWARE IS WITH THE USER.
  *
  *  Module:  ofstd
  *
@@ -24,13 +20,6 @@
  *           for multi-thread applications.
  *           class T must have copy constructor and assignment operator.
  *
- *
- *  Last Update:      $Author: lpysher $
- *  Update Date:      $Date: 2006/03/01 20:17:56 $
- *  CVS/RCS Revision: $Revision: 1.1 $
- *  Status:           $State: Exp $
- *
- *  CVS/RCS Log at end of file
  *
  */
 
@@ -43,7 +32,7 @@
 
 /** Template class which allows to declare global objects that are
  *  protected by a Mutex if used in multi-thread applications.
- *  Must be compiled with -D_REENTRANT for multi-thread-operation.
+ *  Must be compiled with -DWITH_THREADS for multi-thread-operation.
  *  Template class T must have copy constructor and assignment operator.
  */
 template <class T> class OFGlobal
@@ -55,7 +44,7 @@ public:
    */
   OFGlobal(const T &arg)
   : val(arg)
-#ifdef _REENTRANT
+#ifdef WITH_THREADS
   , theMutex()
 #endif
   {
@@ -71,11 +60,11 @@ public:
    */
   void set(const T& arg)
   {
-#ifdef _REENTRANT
+#ifdef WITH_THREADS
     theMutex.lock();
 #endif
     val = arg;
-#ifdef _REENTRANT
+#ifdef WITH_THREADS
     theMutex.unlock();
 #endif
   }
@@ -86,11 +75,11 @@ public:
    */
   void xget(T& arg)
   {
-#ifdef _REENTRANT
+#ifdef WITH_THREADS
     theMutex.lock();
 #endif
     arg = val;
-#ifdef _REENTRANT
+#ifdef WITH_THREADS
     theMutex.unlock();
 #endif
   }
@@ -102,11 +91,11 @@ public:
    */
   T get()
   {
-#ifdef _REENTRANT
+#ifdef WITH_THREADS
     theMutex.lock();
 #endif
     T result(val);
-#ifdef _REENTRANT
+#ifdef WITH_THREADS
     theMutex.unlock();
 #endif
     return result;
@@ -118,7 +107,7 @@ private:
    */
   T val;
 
-#ifdef _REENTRANT
+#ifdef WITH_THREADS
   /** if compiled for multi-thread operation, the Mutex protecting
    *  access to the value of this object.
    */
@@ -138,33 +127,3 @@ private:
 
 
 #endif
-
-/*
- *
- * CVS/RCS Log:
- * $Log: ofglobal.h,v $
- * Revision 1.1  2006/03/01 20:17:56  lpysher
- * Added dcmtkt ocvs not in xcode  and fixed bug with multiple monitors
- *
- * Revision 1.6  2005/12/08 16:05:57  meichel
- * Changed include path schema for all DCMTK header files
- *
- * Revision 1.5  2003/12/05 10:37:41  joergr
- * Removed leading underscore characters from preprocessor symbols (reserved
- * symbols). Updated copyright date where appropriate.
- *
- * Revision 1.4  2001/06/01 15:51:34  meichel
- * Updated copyright header
- *
- * Revision 1.3  2000/10/10 12:01:21  meichel
- * Created/updated doc++ comments
- *
- * Revision 1.2  2000/05/30 17:03:38  meichel
- * Added default constructor for Mutex to initializer list in OFGlobal.
- *
- * Revision 1.1  2000/04/14 15:17:48  meichel
- * Created new templace class OFGlobal which allows to easily implement
- *   mutex protected global flags.
- *
- *
- */

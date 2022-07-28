@@ -1,19 +1,15 @@
 /*
  *
- *  Copyright (C) 1994-2005, OFFIS
+ *  Copyright (C) 1994-2011, OFFIS e.V.
+ *  All rights reserved.  See COPYRIGHT file for details.
  *
  *  This software and supporting documentation were developed by
  *
- *    Kuratorium OFFIS e.V.
- *    Healthcare Information and Communication Systems
+ *    OFFIS e.V.
+ *    R&D Division Health
  *    Escherweg 2
  *    D-26121 Oldenburg, Germany
  *
- *  THIS SOFTWARE IS MADE AVAILABLE,  AS IS,  AND OFFIS MAKES NO  WARRANTY
- *  REGARDING  THE  SOFTWARE,  ITS  PERFORMANCE,  ITS  MERCHANTABILITY  OR
- *  FITNESS FOR ANY PARTICULAR USE, FREEDOM FROM ANY COMPUTER DISEASES  OR
- *  ITS CONFORMITY TO ANY SPECIFICATION. THE ENTIRE RISK AS TO QUALITY AND
- *  PERFORMANCE OF THE SOFTWARE IS WITH THE USER.
  *
  *  Module:  dcmdata
  *
@@ -21,27 +17,21 @@
  *
  *  Purpose: stack class
  *
- *  Last Update:      $Author: lpysher $
- *  Update Date:      $Date: 2006/03/01 20:15:22 $
- *  CVS/RCS Revision: $Revision: 1.1 $
- *  Status:           $State: Exp $
- *
- *  CVS/RCS Log at end of file
- *
  */
 
 #ifndef DCSTACK_H
 #define DCSTACK_H
 
 #include "osconfig.h"    /* make sure OS specific configuration is included first */
-#include "dctypes.h"
+#include "oftypes.h"
+#include "dcdefine.h"
 
 class DcmObject;    // forward declaration
 
 
 /** helper class used by DcmStack.  Maintains a single stack entry.
  */
-class DcmStackNode
+class DCMTK_DCMDATA_EXPORT DcmStackNode
 {
 public:
     /** constructor.
@@ -78,7 +68,7 @@ private:
 /** this class manages a stack of pointers to DcmObject instances.
  *  The objects pointed to are never touched, e.g. deleted.
  */
-class DcmStack
+class DCMTK_DCMDATA_EXPORT DcmStack
 {
 public:
     /// default constructor, creates empty stack
@@ -134,7 +124,7 @@ public:
     /** returns n-th element from stack without removing it.
      *  @return n-th element from stack
      */
-    DcmObject* elem(const unsigned int number) const;
+    DcmObject* elem(const unsigned long number) const;
 
     /** checks if the stack is empty
      *  @return true if stack is empty, false otherwise
@@ -144,7 +134,7 @@ public:
     /** returns cardinality (number of entries) of the stack
      *  @return cardinality of stack
      */
-    unsigned int card() const;
+    unsigned long card() const;
 
     /** returns the stack to default-constructed state, i.e. empty state.
      */
@@ -155,36 +145,8 @@ private:
     DcmStackNode *topNode_;
 
     /// current cardinality of the stack
-    unsigned int cardinality_;
+    unsigned long cardinality_;
 };
 
 
 #endif  // DCSTACK_H
-
-
-/*
- * CVS/RCS Log:
- * $Log: dcstack.h,v $
- * Revision 1.1  2006/03/01 20:15:22  lpysher
- * Added dcmtkt ocvs not in xcode  and fixed bug with multiple monitors
- *
- * Revision 1.12  2005/12/08 16:28:42  meichel
- * Changed include path schema for all DCMTK header files
- *
- * Revision 1.11  2004/04/14 11:50:21  joergr
- * Added const qualifier to parameter to keep Sun CC 2.0.1 quiet.
- *
- * Revision 1.10  2003/06/02 16:52:20  meichel
- * Cleaned up implementation of DcmStack, added doc++ comments
- *
- * Revision 1.9  2001/06/01 15:48:44  meichel
- * Updated copyright header
- *
- * Revision 1.8  2000/03/08 16:26:18  meichel
- * Updated copyright header.
- *
- * Revision 1.7  1999/03/31 09:24:47  meichel
- * Updated copyright header in module dcmdata
- *
- *
- */

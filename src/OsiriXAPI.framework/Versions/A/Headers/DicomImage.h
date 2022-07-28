@@ -1,16 +1,11 @@
 /*=========================================================================
-  Program:   OsiriX
-
-  Copyright (c) OsiriX Team
-  All rights reserved.
-  Distributed under GNU - LGPL
-  
-  See http://www.osirix-viewer.com/copyright.html for details.
-
-     This software is distributed WITHOUT ANY WARRANTY; without even
-     the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
-     PURPOSE.
-=========================================================================*/
+ Program:   OsiriX
+ Copyright (c) 2010 - 2020 Pixmeo SARL
+ 266 rue de Bernex
+ CH-1233 Bernex
+ Switzerland
+ All rights reserved.
+ =========================================================================*/
 
 #import <Cocoa/Cocoa.h>
 #import "DCMView.h"
@@ -42,12 +37,17 @@ void* sopInstanceUIDEncode( NSString *sopuid);
 	NSString	*extension;
 	NSString	*modality;
 	NSString	*fileType;
+    NSString    *cachedSRPath;
+    NSString    *cachedSeriesInstanceUID;
     
-    NSImage*    _thumbnail;
+    NSImage     *_thumbnail;
+    
+    NSArray     *rois; // temporary && cache : used in [DicomSeries imagesWithROIsDisplayedInKeyImagesWindow];
     
     id sortingValue;
 }
 
+@property(retain) NSArray *rois;
 @property(retain) NSNumber* numberOfFrames;
 @property(retain) id sortingValue;
 
@@ -78,17 +78,26 @@ void* sopInstanceUIDEncode( NSString *sopuid);
 @property(nonatomic, retain) NSNumber* storedWidth;
 @property(nonatomic, retain) NSNumber* windowLevel;
 @property(nonatomic, retain) NSNumber* windowWidth;
+@property(nonatomic, retain) NSNumber* generatedByOsiriX;
 @property(nonatomic, retain) NSNumber* xFlipped;
 @property(nonatomic, retain) NSNumber* xOffset;
 @property(nonatomic, retain) NSNumber* yFlipped;
 @property(nonatomic, retain) NSNumber* yOffset;
 @property(nonatomic, retain) NSNumber* zoom;
 @property(nonatomic, retain) DicomSeries* series;
+@property(nonatomic, retain) NSNumber *cloudDownloaded, *cloudUploaded;
+@property(nonatomic, retain) NSNumber *viewedImage;
 
++ (void) initCaptureScreenWindow;
++ (NSArray*) uniquePathsForDicomImageArray: (NSArray*) images;
 - (NSNumber*) isImageStorage;
+- (NSNumber*) isPDFStorage;
+- (BOOL) isPDFRenderableDocument;
 + (NSData*) sopInstanceUIDEncodeString:(NSString*) s;
 - (NSString*) uniqueFilename;
+- (NSString*) seriesInstanceUID;
 - (NSNumber*) numberOfSeries;
+- (void) setNumberOfSeries:(NSNumber*) f;
 - (NSSet*) paths;
 - (NSString*) completePath;
 - (NSString*) completePathResolved;
@@ -102,6 +111,7 @@ void* sopInstanceUIDEncode( NSString *sopuid);
 - (void) setInDatabaseFolder:(NSNumber*) f;
 - (NSString*) path;
 - (void) setPath:(NSString*) p;
+- (NSImage*) imageAsScreenCapture:(NSRect)frame annotationsLevel: (annotationsLevel) annotationsLevel useROIWLWW: (BOOL) useROIWLWW;
 - (NSImage*) imageAsScreenCapture:(NSRect)frame annotationsLevel: (annotationsLevel) annotationsLevel;
 - (NSImage*) imageAsScreenCapture:(NSRect)frame;
 - (NSImage*) imageAsScreenCapture;
@@ -121,9 +131,13 @@ void* sopInstanceUIDEncode( NSString *sopuid);
 @property(nonatomic, retain) NSString* modality;
 
 - (NSString*) extension;
+- (void) setExtension:(NSString*) f;
 - (NSNumber*) height;
 - (NSNumber*) width;
+- (void) setHeight:(NSNumber*) f;
+- (void) setWidth:(NSNumber*) f;
 - (NSString*) fileType;
+- (void) setFileType:(NSString*) f;
 - (NSNumber*) isKeyImage;
 - (void) setIsKeyImage:(NSNumber*) f;
 - (void) setIsKeyImage:(NSNumber*) f archiveAnnotationsAsDICOMSR: (BOOL) archiveAnnotationsAsDICOMSR;

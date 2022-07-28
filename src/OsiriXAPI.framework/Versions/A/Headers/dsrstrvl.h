@@ -1,19 +1,15 @@
 /*
  *
- *  Copyright (C) 2000-2005, OFFIS
+ *  Copyright (C) 2000-2015, OFFIS e.V.
+ *  All rights reserved.  See COPYRIGHT file for details.
  *
  *  This software and supporting documentation were developed by
  *
- *    Kuratorium OFFIS e.V.
- *    Healthcare Information and Communication Systems
+ *    OFFIS e.V.
+ *    R&D Division Health
  *    Escherweg 2
  *    D-26121 Oldenburg, Germany
  *
- *  THIS SOFTWARE IS MADE AVAILABLE,  AS IS,  AND OFFIS MAKES NO  WARRANTY
- *  REGARDING  THE  SOFTWARE,  ITS  PERFORMANCE,  ITS  MERCHANTABILITY  OR
- *  FITNESS FOR ANY PARTICULAR USE, FREEDOM FROM ANY COMPUTER DISEASES  OR
- *  ITS CONFORMITY TO ANY SPECIFICATION. THE ENTIRE RISK AS TO QUALITY AND
- *  PERFORMANCE OF THE SOFTWARE IS WITH THE USER.
  *
  *  Module: dcmsr
  *
@@ -21,13 +17,6 @@
  *
  *  Purpose:
  *    classes: DSRStringValue
- *
- *  Last Update:      $Author: lpysher $
- *  Update Date:      $Date: 2006/03/01 20:16:11 $
- *  CVS/RCS Revision: $Revision: 1.1 $
- *  Status:           $State: Exp $
- *
- *  CVS/RCS Log at end of file
  *
  */
 
@@ -39,8 +28,6 @@
 
 #include "dsrtypes.h"
 
-#include "ofstring.h"
-
 
 /*---------------------*
  *  class declaration  *
@@ -48,20 +35,22 @@
 
 /** Class for string values
  */
-class DSRStringValue
+class DCMTK_DCMSR_EXPORT DSRStringValue
 {
 
   public:
 
-    /** default contructor
+    /** default constructor
      */
     DSRStringValue();
 
     /** constructor
-     *  The string value is only set if it passed the validity check (see setValue()).
-     ** @param  stringValue  string value to be set
+     ** @param  stringValue  initial value to be set
+     *  @param  check        if enabled, check 'stringValue' for validity before setting it.
+     *                       See checkValue() for details.  An empty value is never accepted.
      */
-    DSRStringValue(const OFString &stringValue);
+    DSRStringValue(const OFString &stringValue,
+                   const OFBool check = OFTrue);
 
     /** copy constructor
      ** @param  stringValue  string value to be copied (not checked !)
@@ -96,53 +85,51 @@ class DSRStringValue
      *  @param  maxLength  maximum number of characters to be printed.  If the string value is
      *                     longer the output is shortened automatically and three dots "..." are
      *                     added.  The value of 'maxLength' includes these three trailing char's.
-     *                     A value of 0 turns this meachanism off (default), i.e. the full string
+     *                     A value of 0 turns this mechanism off (default), i.e. the full string
      *                     value is printed.
      */
-    void print(ostream &stream,
+    void print(STD_NAMESPACE ostream &stream,
                const size_t maxLength = 0) const;
 
     /** read string value from dataset.
-     *  If error/warning output is enabled a warning message is printed if the string value does
-     *  not conform with the type (= 1) and value multiplicity (= 1).
-     ** @param  dataset    DICOM dataset from which the string value should be read
-     *  @param  tagKey     DICOM tag specifying the attribute which should be read
-     *  @param  logStream  pointer to error/warning output stream (output disabled if NULL)
+     *  If error/warning output is enabled, a warning message is printed if the string value
+     *  does not conform with the type (1), value multiplicity (1) and/or value representation.
+     ** @param  dataset  DICOM dataset from which the string value should be read
+     *  @param  tagKey   DICOM tag specifying the attribute which should be read
+     *  @param  flags    flag used to customize the reading process (see DSRTypes::RF_xxx)
      ** @return status, EC_Normal if successful, an error code otherwise
      */
     OFCondition read(DcmItem &dataset,
                      const DcmTagKey &tagKey,
-                     OFConsole *logStream);
+                     const size_t flags);
 
     /** write string value to dataset
-     ** @param  dataset    DICOM dataset to which the string value should be written
-     *  @param  tagKey     DICOM tag specifying the attribute which should be written
-     *  @param  logStream  pointer to error/warning output stream (output disabled if NULL)
+     ** @param  dataset  DICOM dataset to which the string value should be written
+     *  @param  tagKey   DICOM tag specifying the attribute which should be written
      ** @return status, EC_Normal if successful, an error code otherwise
      */
     OFCondition write(DcmItem &dataset,
-                      const DcmTagKey &tagKey,
-                      OFConsole *logStream) const;
+                      const DcmTagKey &tagKey) const;
 
     /** read string value from XML document
      ** @param  doc       document containing the XML file content
      *  @param  cursor    cursor pointing to the starting node
+     *  @param  flags     flag used to customize the reading process (see DSRTypes::XF_xxx)
      *  @param  encoding  use encoding handler if OFTrue, ignore character set otherwise
      ** @return status, EC_Normal if successful, an error code otherwise
      */
     OFCondition readXML(const DSRXMLDocument &doc,
                         DSRXMLCursor cursor,
+                        const size_t flags,
                         const OFBool encoding = OFFalse);
 
-    /** render string value in HTML format
-     ** @param  docStream  output stream to which the main HTML document is written
+    /** render string value in HTML/XHTML format
+     ** @param  docStream  output stream to which the main HTML/XHTML document is written
      *  @param  flags      flag used to customize the output (see DSRTypes::HF_xxx)
-     *  @param  logStream  pointer to error/warning output stream (output disabled if NULL)
      ** @return status, EC_Normal if successful, an error code otherwise
      */
-    OFCondition renderHTML(ostream &docStream,
-                           const size_t flags,
-                           OFConsole *logStream) const;
+    OFCondition renderHTML(STD_NAMESPACE ostream &docStream,
+                           const size_t flags) const;
 
     /** get string value
      ** @return reference to string value
@@ -153,81 +140,70 @@ class DSRStringValue
     }
 
     /** set string value.
-     *  Before setting the string value it is checked (see checkValue()).  If the value is
-     *  invalid the current value is not replaced and remains unchanged.  Use clear() to
-     *  empty the string value (which becomes invalid afterwards).
-     ** @param  stringValue  value to be set
+     *  Before setting the string value, it is usually checked.  If the value is invalid, the
+     *  current value is not replaced and remains unchanged.  Use the clear() method to empty
+     *  the string value (which becomes invalid afterwards).
+     ** @param  stringValue  value to be set (various VRs, mandatory)
+     *  @param  check        if enabled, check value for validity before setting it.  See
+     *                       checkValue() method for details.  An empty value is never accepted.
      ** @return status, EC_Normal if successful, an error code otherwise
      */
-    OFCondition setValue(const OFString &stringValue);
+    OFCondition setValue(const OFString &stringValue,
+                         const OFBool check = OFTrue);
 
-    /** check if this value contains non-ASCII characters.
-     *  @return true if value contains non-ASCII characters, false otherwise
+    /** set string value from element.
+     *  Before setting the string value, it is usually checked.  If the value is invalid, the
+     *  current value is not replaced and remains unchanged.
+     ** @param  delem  DICOM element from which the string value should be retrieved
+     *  @param  pos    index of the value in case of multi-valued elements (0..vm-1)
+     *  @param  check  if enabled, check string value for validity before setting it.  See
+     *                 checkValue() method for details.  An empty value is never accepted.
+     ** @return status, EC_Normal if successful, an error code otherwise
      */
-    OFBool valueContainsExtendedCharacters() const;
+    OFCondition setValue(const DcmElement &delem,
+                         const unsigned long pos = 0,
+                         const OFBool check = OFTrue);
+
+    /** set string value from dataset.
+     *  Before setting the string value, it is usually checked.  If the value is invalid, the
+     *  current value is not replaced and remains unchanged.
+     ** @param  dataset  DICOM dataset from which the string value should be retrieved
+     *  @param  tagKey   DICOM tag specifying the attribute from which the value should be
+     *                   retrieved.  The search is limited to the top-level of the dataset.
+     *  @param  pos      index of the value in case of multi-valued elements (0..vm-1)
+     *  @param  check    if enabled, check string value for validity before setting it.  See
+     *                   checkValue() method for details.  An empty value is never accepted.
+     ** @return status, EC_Normal if successful, an error code otherwise
+     */
+    OFCondition setValue(DcmItem &dataset,
+                         const DcmTagKey &tagKey,
+                         const unsigned long pos = 0,
+                         const OFBool check = OFTrue);
+
 
   protected:
 
     /** check the specified string value for validity.
      *  This base class just checks that the string value is not empty (since all corresponding
-     *  DICOM attributes are type 1).  Derived classes might overwrite this method to perform
+     *  DICOM attributes are type 1).  Derived classes should overwrite this method to perform
      *  more sophisticated tests.
-     ** @param  stringValue  string value to be checked
-     ** @return OFTrue if code is valid, OFFalse otherwise
+     ** @param  stringValue  value to be checked
+     ** @return status, EC_Normal if current value is valid, an error code otherwise
      */
-    virtual OFBool checkValue(const OFString &stringValue) const;
+    virtual OFCondition checkValue(const OFString &stringValue) const;
+
+    /** check the currently stored string value for validity.
+     *  See above checkValue() method for details.
+     ** @return status, EC_Normal if value is valid, an error code otherwise
+     */
+    OFCondition checkCurrentValue() const;
 
 
   private:
 
-    /// string value (various VRs, mandatory)
+    /// string value (various VRs, type 1)
     OFString Value;
 };
 
 
 #endif
-
-
-/*
- *  CVS/RCS Log:
- *  $Log: dsrstrvl.h,v $
- *  Revision 1.1  2006/03/01 20:16:11  lpysher
- *  Added dcmtkt ocvs not in xcode  and fixed bug with multiple monitors
- *
- *  Revision 1.11  2005/12/08 16:05:19  meichel
- *  Changed include path schema for all DCMTK header files
- *
- *  Revision 1.10  2004/11/22 16:39:09  meichel
- *  Added method that checks if the SR document contains non-ASCII characters
- *    in any of the strings affected by SpecificCharacterSet.
- *
- *  Revision 1.9  2003/08/07 18:01:42  joergr
- *  Removed libxml dependency from header files.
- *
- *  Revision 1.8  2003/08/07 12:50:44  joergr
- *  Added readXML functionality.
- *
- *  Revision 1.7  2001/09/26 13:04:11  meichel
- *  Adapted dcmsr to class OFCondition
- *
- *  Revision 1.6  2001/06/01 15:51:03  meichel
- *  Updated copyright header
- *
- *  Revision 1.5  2000/11/06 11:18:48  joergr
- *  Moved some protected methods to public part.
- *
- *  Revision 1.4  2000/11/01 16:23:25  joergr
- *  Added support for conversion to XML.
- *
- *  Revision 1.3  2000/10/23 15:12:55  joergr
- *  Added/updated doc++ comments.
- *
- *  Revision 1.2  2000/10/18 17:08:11  joergr
- *  Added read and write methods.
- *
- *  Revision 1.1  2000/10/13 07:49:32  joergr
- *  Added new module 'dcmsr' providing access to DICOM structured reporting
- *  documents (supplement 23).  Doc++ documentation not yet completed.
- *
- *
- */

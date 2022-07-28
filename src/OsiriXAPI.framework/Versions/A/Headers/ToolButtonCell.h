@@ -1,10 +1,11 @@
-//
-//  ToolButtonCell.h
-//  OsiriX_Lion
-//
-//  Created by antoinerosset on 09/03/16.
-//  Copyright © 2016 OsiriX Team. All rights reserved.
-//
+/*=========================================================================
+ Program:   OsiriX
+ Copyright (c) 2010 - 2020 Pixmeo SARL
+ 266 rue de Bernex
+ CH-1233 Bernex
+ Switzerland
+ All rights reserved.
+ =========================================================================*/
 
 #import <Cocoa/Cocoa.h>
 

@@ -1,32 +1,21 @@
 /*
  *
- *  Copyright (C) 2002-2005, OFFIS
+ *  Copyright (C) 2002-2011, OFFIS e.V.
+ *  All rights reserved.  See COPYRIGHT file for details.
  *
  *  This software and supporting documentation were developed by
  *
- *    Kuratorium OFFIS e.V.
- *    Healthcare Information and Communication Systems
+ *    OFFIS e.V.
+ *    R&D Division Health
  *    Escherweg 2
  *    D-26121 Oldenburg, Germany
  *
- *  THIS SOFTWARE IS MADE AVAILABLE,  AS IS,  AND OFFIS MAKES NO  WARRANTY
- *  REGARDING  THE  SOFTWARE,  ITS  PERFORMANCE,  ITS  MERCHANTABILITY  OR
- *  FITNESS FOR ANY PARTICULAR USE, FREEDOM FROM ANY COMPUTER DISEASES  OR
- *  ITS CONFORMITY TO ANY SPECIFICATION. THE ENTIRE RISK AS TO QUALITY AND
- *  PERFORMANCE OF THE SOFTWARE IS WITH THE USER.
  *
  *  Module:  dcmdata
  *
  *  Author:  Marco Eichelberg
  *
  *  Purpose: RLE compressor
- *
- *  Last Update:      $Author: lpysher $
- *  Update Date:      $Date: 2006/03/01 20:15:22 $
- *  CVS/RCS Revision: $Revision: 1.1 $
- *  Status:           $State: Exp $
- *
- *  CVS/RCS Log at end of file
  *
  */
 
@@ -39,6 +28,8 @@
 #define INCLUDE_CSTRING
 #include "ofstdinc.h"
 
+#include "dcdefine.h"
+
 #define DcmRLEEncoder_BLOCKSIZE 16384
 
 
@@ -46,7 +37,7 @@
  *  encoder classes (such as DcmRLEEncoder) may export their
  *  encoded data
  */
-class DcmEncoderOutputStream
+class DCMTK_DCMDATA_EXPORT DcmEncoderOutputStream
 {
 public:
   /** write the given buffer into the output stream
@@ -65,7 +56,7 @@ public:
 /** this class implements an RLE compressor conforming to the DICOM standard.
  *  The class is loosely based on an implementation by Phil Norman.
  */
-class DcmRLEEncoder
+class DCMTK_DCMDATA_EXPORT DcmRLEEncoder
 {
 public:
 
@@ -423,52 +414,3 @@ private:
 };
 
 #endif
-
-
-/*
- * CVS/RCS Log
- * $Log: dcrleenc.h,v $
- * Revision 1.1  2006/03/01 20:15:22  lpysher
- * Added dcmtkt ocvs not in xcode  and fixed bug with multiple monitors
- *
- * Revision 1.12  2005/12/16 09:04:47  onken
- * - Added virtual (dummy) destructor to avoid compiler warnings
- *
- * Revision 1.11  2005/12/08 16:28:38  meichel
- * Changed include path schema for all DCMTK header files
- *
- * Revision 1.10  2004/01/16 14:06:20  joergr
- * Removed acknowledgements with e-mail addresses from CVS log.
- *
- * Revision 1.9  2003/08/14 09:00:56  meichel
- * Adapted type casts to new-style typecast operators defined in ofcast.h
- *
- * Revision 1.8  2003/06/12 18:21:24  joergr
- * Modified code to use const_iterators where appropriate (required for STL).
- *
- * Revision 1.7  2003/06/12 13:32:59  joergr
- * Fixed inconsistent API documentation reported by Doxygen.
- *
- * Revision 1.6  2003/03/21 13:06:46  meichel
- * Minor code purifications for warnings reported by MSVC in Level 4
- *
- * Revision 1.5  2002/11/27 12:07:22  meichel
- * Adapted module dcmdata to use of new header file ofstdinc.h
- *
- * Revision 1.4  2002/07/18 12:16:52  joergr
- * Replaced return statement by break in a while loop of an inline function (not
- * supported by Sun CC 2.0.1).
- *
- * Revision 1.3  2002/07/08 07:02:50  meichel
- * RLE codec now includes <string.h>, needed for memcpy on Win32
- *
- * Revision 1.2  2002/06/27 15:15:42  meichel
- * Modified RLE encoder to make it usable for other purposes than
- *   DICOM encoding as well (e.g. PostScript, TIFF)
- *
- * Revision 1.1  2002/06/06 14:52:37  meichel
- * Initial release of the new RLE codec classes
- *   and the dcmcrle/dcmdrle tools in module dcmdata
- *
- *
- */

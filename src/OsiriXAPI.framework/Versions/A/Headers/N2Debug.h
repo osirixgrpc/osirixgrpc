@@ -1,18 +1,14 @@
 /*=========================================================================
  Program:   OsiriX
- 
- Copyright (c) OsiriX Team
+ Copyright (c) 2010 - 2020 Pixmeo SARL
+ 266 rue de Bernex
+ CH-1233 Bernex
+ Switzerland
  All rights reserved.
- Distributed under GNU - LGPL
- 
- See http://www.osirix-viewer.com/copyright.html for details.
- 
- This software is distributed WITHOUT ANY WARRANTY; without even
- the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
- PURPOSE.
  =========================================================================*/
 
 #import <Cocoa/Cocoa.h>
+#import "NSObject+N2.h"
 
 @interface N2Debug : NSObject {
 }
@@ -44,7 +40,8 @@ extern void _N2LogExceptionImpl(NSException* e, BOOL logStack, const char* pf);
 #define N2LogExceptionWithStackTrace(e, ...) _N2LogExceptionImpl(e, YES, __PRETTY_FUNCTION__, ## __VA_ARGS__)
 
 extern void N2LogStackTrace(NSString* format, ...);
-
+extern NSString* N2StackTraceString();
+    
 #ifdef __cplusplus
 }
 #endif
