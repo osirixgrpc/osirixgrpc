@@ -1,33 +1,21 @@
 /*
  *
- *  Copyright (C) 1994-2005, OFFIS
+ *  Copyright (C) 1994-2016, OFFIS e.V.
+ *  All rights reserved.  See COPYRIGHT file for details.
  *
  *  This software and supporting documentation were developed by
  *
- *    Kuratorium OFFIS e.V.
- *    Healthcare Information and Communication Systems
+ *    OFFIS e.V.
+ *    R&D Division Health
  *    Escherweg 2
  *    D-26121 Oldenburg, Germany
  *
- *  THIS SOFTWARE IS MADE AVAILABLE,  AS IS,  AND OFFIS MAKES NO  WARRANTY
- *  REGARDING  THE  SOFTWARE,  ITS  PERFORMANCE,  ITS  MERCHANTABILITY  OR
- *  FITNESS FOR ANY PARTICULAR USE, FREEDOM FROM ANY COMPUTER DISEASES  OR
- *  ITS CONFORMITY TO ANY SPECIFICATION. THE ENTIRE RISK AS TO QUALITY AND
- *  PERFORMANCE OF THE SOFTWARE IS WITH THE USER.
  *
  *  Module:  dcmdata
  *
- *  Author:  Gerd Ehlers
+ *  Author:  Gerd Ehlers, Joerg Riesmeier
  *
  *  Purpose: Interface of class DcmPersonName
- *
- *  Last Update:      $Author: lpysher $
- *  Update Date:      $Date: 2006/03/01 20:15:22 $
- *  Source File:      $Source: /cvsroot/osirix/osirix/Binaries/dcmtk-source/dcmdata/dcvrpn.h,v $
- *  CVS/RCS Revision: $Revision: 1.1 $
- *  Status:           $State: Exp $
- *
- *  CVS/RCS Log at end of file
  *
  */
 
@@ -42,7 +30,7 @@
 
 /** a class representing the DICOM value representation 'Person Name' (PN)
  */
-class DcmPersonName
+class DCMTK_DCMDATA_EXPORT DcmPersonName
   : public DcmCharString
 {
 
@@ -79,10 +67,33 @@ class DcmPersonName
       return new DcmPersonName(*this);
     }
 
+    /** Virtual object copying. This method can be used for DcmObject
+     *  and derived classes to get a deep copy of an object. Internally
+     *  the assignment operator is called if the given DcmObject parameter
+     *  is of the same type as "this" object instance. If not, an error
+     *  is returned. This function permits copying an object by value
+     *  in a virtual way which therefore is different to just calling the
+     *  assignment operator of DcmElement which could result in slicing
+     *  the object.
+     *  @param rhs - [in] The instance to copy from. Has to be of the same
+     *                class type as "this" object
+     *  @return EC_Normal if copying was successful, error otherwise
+     */
+    virtual OFCondition copyFrom(const DcmObject& rhs);
+
     /** get element type identifier
      *  @return type identifier of this class (EVR_PN)
      */
     virtual DcmEVR ident() const;
+
+    /** check whether stored value conforms to the VR and to the specified VM
+     *  @param vm value multiplicity (according to the data dictionary) to be checked for.
+     *    (See DcmElement::checkVM() for a list of valid values.)
+     *  @param oldFormat parameter not used for this VR (only for DA, TM)
+     *  @return status of the check, EC_Normal if value is correct, an error code otherwise
+     */
+    virtual OFCondition checkValue(const OFString &vm = "1-n",
+                                   const OFBool oldFormat = OFFalse);
 
     /** get a copy of a particular string component
      *  @param stringVal variable in which the result value is stored
@@ -91,17 +102,17 @@ class DcmPersonName
      *  @return status, EC_Normal if successful, an error code otherwise
      */
     virtual OFCondition getOFString(OFString &stringVal,
-                                    const unsigned int pos,
+                                    const unsigned long pos,
                                     OFBool normalize = OFTrue);
 
     /** get name components from the element value.
      *  The DICOM PN consists of up to three component groups separated by a "=". The
-     *  supported format is "[CG0][=CG1][=CG2]" where the brackets enclose optional
-     *  parts and CG0 is a single-byte character representation, CG1 an ideographic
-     *  representation, and CG2 a phonetic representation of the name.
+     *  supported format is "[CG0[=CG1[=CG2]]]" where the brackets enclose optional
+     *  parts and CG0 is an alphabetic representation, CG1 an ideographic representation,
+     *  and CG2 a phonetic representation of the name.
      *  Each component group may consist of up to five components separated by a "^".
      *  The format is "[lastName[^firstName[^middleName[^namePrefix[^nameSuffix]]]]";
-     *  each component might be empty.
+     *  each component group and each component might be empty.
      *  If this function fails the result variables are cleared automatically. If the
      *  format is valid but does not comply with the above described scheme ("=" and "^")
      *  the full person name is returned in the 'lastName' variable.
@@ -119,7 +130,7 @@ class DcmPersonName
                                   OFString &middleName,
                                   OFString &namePrefix,
                                   OFString &nameSuffix,
-                                  const unsigned int pos = 0,
+                                  const unsigned long pos = 0,
                                   const unsigned int componentGroup = 0);
 
     /** get current element value as a formatted/readable name.
@@ -133,7 +144,7 @@ class DcmPersonName
      *  @return EC_Normal upon success, an error code otherwise
      */
     OFCondition getFormattedName(OFString &formattedName,
-                                 const unsigned int pos = 0,
+                                 const unsigned long pos = 0,
                                  const unsigned int componentGroup = 0);
 
 
@@ -154,16 +165,24 @@ class DcmPersonName
                                   const OFString &namePrefix,
                                   const OFString &nameSuffix);
 
+    /** write object in XML format
+     *  @param out output stream to which the XML document is written
+     *  @param flags optional flag used to customize the output (see DCMTypes::XF_xxx)
+     *  @return status, EC_Normal if successful, an error code otherwise
+     */
+    OFCondition writeXML(STD_NAMESPACE ostream &out,
+                         const size_t flags = 0);
+
     /* --- static helper functions --- */
 
     /** get name components from specified DICOM person name.
      *  The DICOM PN consists of up to three component groups separated by a "=". The
-     *  supported format is "[CG0][=CG1][=CG2]" where the brackets enclose optional
-     *  parts and CG0 is a single-byte character representation, CG1 an ideographic
-     *  representation, and CG2 a phonetic representation of the name.
+     *  supported format is "[CG0[=CG1[=CG2]]]" where the brackets enclose optional
+     *  parts and CG0 is an alphabetic representation, CG1 an ideographic representation,
+     *  and CG2 a phonetic representation of the name.
      *  Each component group may consist of up to five components separated by a "^".
      *  The format is "[lastName[^firstName[^middleName[^namePrefix[^nameSuffix]]]]";
-     *  each component might be empty.
+     *  each component group and each component might be empty.
      *  If this function fails the result variables are cleared automatically. If the
      *  format is valid but does not comply with the above described scheme ("=" and "^")
      *  the full person name is returned in the 'lastName' variable.
@@ -183,6 +202,26 @@ class DcmPersonName
                                                    OFString &namePrefix,
                                                    OFString &nameSuffix,
                                                    const unsigned int componentGroup = 0);
+
+    /** get single component group from specified DICOM person name.
+     *  The DICOM PN consists of up to three component groups separated by a "=". The
+     *  supported format is "[CG0[=CG1[=CG2]]]" where the brackets enclose optional
+     *  parts and CG0 is an alphabetic representation, CG1 an ideographic representation,
+     *  and CG2 a phonetic representation of the name. Each component group might be empty.
+     *  The returned component group will contain component delimiters ("^") as they are
+     *  stored within the very component group, i.e. superfluous component delimiters are
+     *  not removed.
+     *  @param allCmpGroups string value in DICOM PN format to component group from
+     *  @param groupNo index of the component group (0..2) to be extracted
+     *  @param cmpGroup reference to string variable where selected component group shall be
+     *    stored
+     *  @return EC_Normal upon success, an error code otherwise. Especially, if a component
+     *    group exists (always for group 0, for group 1 and 2 depending on whether
+     *    corresponding "=" is present) and is empty, EC_Normal is returned.
+     */
+    static OFCondition getComponentGroup(const OFString &allCmpGroups,
+                                         const unsigned int groupNo,
+                                         OFString &cmpGroup);
 
     /** get specified DICOM person name as a formatted/readable name.
      *  The specified 'dicomName' is expected to be in DICOM PN format as described above.
@@ -235,86 +274,22 @@ class DcmPersonName
                                                    const OFString &namePrefix,
                                                    const OFString &nameSuffix,
                                                    OFString &dicomName);
+
+    /** check whether given string value conforms to the VR "PN" (Person Name)
+     *  and to the specified VM.
+     *  @param value string value to be checked (possibly multi-valued)
+     *  @param vm value multiplicity (according to the data dictionary) to be checked for.
+     *    (See DcmElement::checkVM() for a list of valid values.)
+     *  @param charset character set (according to the value of the SpecificCharacterSet
+     *    element) to be used for checking the string value. The default is ASCII (7-bit).
+     *    Currently, the VR checker only supports ASCII (ISO_IR 6) and Latin-1 (ISO_IR 100).
+     *    All other values disable the check of the value representation, e.g. "UNKNOWN".
+     *  @return status of the check, EC_Normal if value is correct, an error code otherwise
+     */
+    static OFCondition checkStringValue(const OFString &value,
+                                        const OFString &vm = "1-n",
+                                        const OFString &charset = "");
 };
 
 
 #endif // DCVRPN_H
-
-
-/*
-** CVS/RCS Log:
-** $Log: dcvrpn.h,v $
-** Revision 1.1  2006/03/01 20:15:22  lpysher
-** Added dcmtkt ocvs not in xcode  and fixed bug with multiple monitors
-**
-** Revision 1.17  2005/12/08 16:29:05  meichel
-** Changed include path schema for all DCMTK header files
-**
-** Revision 1.16  2004/07/01 12:28:25  meichel
-** Introduced virtual clone method for DcmObject and derived classes.
-**
-** Revision 1.15  2003/05/20 08:56:20  joergr
-** Added methods and static functions to compose a DICOM Person Name from five
-** name components.
-**
-** Revision 1.14  2002/12/06 12:49:17  joergr
-** Enhanced "print()" function by re-working the implementation and replacing
-** the boolean "showFullData" parameter by a more general integer flag.
-** Added doc++ documentation.
-** Made source code formatting more consistent with other modules/files.
-**
-** Revision 1.13  2002/04/25 09:56:19  joergr
-** Removed getOFStringArray() implementation.
-**
-** Revision 1.12  2001/10/10 15:17:38  joergr
-** Updated comments.
-**
-** Revision 1.11  2001/10/01 15:01:39  joergr
-** Introduced new general purpose functions to get/set person names, date, time
-** and date/time.
-**
-** Revision 1.10  2001/09/25 17:19:33  meichel
-** Adapted dcmdata to class OFCondition
-**
-** Revision 1.9  2001/06/01 15:48:51  meichel
-** Updated copyright header
-**
-** Revision 1.8  2000/03/08 16:26:25  meichel
-** Updated copyright header.
-**
-** Revision 1.7  1999/03/31 09:25:04  meichel
-** Updated copyright header in module dcmdata
-**
-** Revision 1.6  1998/11/12 16:47:52  meichel
-** Implemented operator= for all classes derived from DcmObject.
-**
-** Revision 1.5  1997/09/11 15:13:16  hewett
-** Modified getOFString method arguments by removing a default value
-** for the pos argument.  By requiring the pos argument to be provided
-** ensures that callers realise getOFString only gets one component of
-** a multi-valued string.
-**
-** Revision 1.4  1997/08/29 08:32:43  andreas
-** - Added methods getOFString and getOFStringArray for all
-**   string VRs. These methods are able to normalise the value, i. e.
-**   to remove leading and trailing spaces. This will be done only if
-**   it is described in the standard that these spaces are not relevant.
-**   These methods do not test the strings for conformance, this means
-**   especially that they do not delete spaces where they are not allowed!
-**   getOFStringArray returns the string with all its parts separated by \
-**   and getOFString returns only one value of the string.
-**   CAUTION: Currently getString returns a string with trailing
-**   spaces removed (if dcmEnableAutomaticInputDataCorrection == OFTrue) and
-**   truncates the original string (since it is not copied!). If you rely on this
-**   behaviour please change your application now.
-**   Future changes will ensure that getString returns the original
-**   string from the DICOM object (NULL terminated) inclusive padding.
-**   Currently, if you call getOF... before calling getString without
-**   normalisation, you can get the original string read from the DICOM object.
-**
-** Revision 1.3  1996/01/05 13:23:08  andreas
-** - changed to support new streaming facilities
-** - more cleanups
-** - merged read / write methods for block and file transfer
-**
-*/

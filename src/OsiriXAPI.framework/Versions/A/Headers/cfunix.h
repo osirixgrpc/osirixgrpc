@@ -15,7 +15,7 @@
 #endif
 
 /* Define the canonical host system type as a string constant */
-#define CANONICAL_HOST_TYPE "powerpc-apple-darwin8.2.2"
+//#define CANONICAL_HOST_TYPE "powerpc-apple-darwin8.2.2"
 
 /* Define if char is unsigned on the C compiler */
 /* #undef C_CHAR_UNSIGNED */
@@ -28,10 +28,10 @@
 /* #undef C_RIGHTSHIFT_UNSIGNED */
 
 /* Define the DCMTK default path */
-#define DCMTK_PREFIX "/usr/local/dicom"
+//#define DCMTK_PREFIX "/usr/local/dicom"
 
 /* Define the default data dictionary path for the dcmdata library package */
-#define DCM_DICT_DEFAULT_PATH "/usr/local/dicom/lib/dicom.dic"
+//#define DCM_DICT_DEFAULT_PATH "/usr/local/dicom/lib/dicom.dic"
 
 /* Define the environment variable path separator */
 #ifndef ENVIRONMENT_PATH_SEPARATOR
@@ -705,19 +705,19 @@ typedef unsigned short ushort;
 /* #undef INCLUDE_MATH_H_AS_CXX */
 
 /* Define to the address where bug reports for this package should be sent. */
-#define PACKAGE_BUGREPORT "dicom-bugs@offis.de"
+//#define PACKAGE_BUGREPORT "dicom-bugs@offis.de"
 
 /* Define to the full name of this package. */
-#define PACKAGE_NAME "DCMTK"
+//#define PACKAGE_NAME "DCMTK"
 
 /* Define to the full name and version of this package. */
-#define PACKAGE_STRING "DCMTK 3.5.3"
+//#define PACKAGE_STRING "DCMTK 3.5.3"
 
 /* Define to the one symbol short name of this package. */
-#define PACKAGE_TARNAME "dcmtk-3.5.3"
+//#define PACKAGE_TARNAME "dcmtk-3.5.3"
 
 /* Define to the version of this package. */
-#define PACKAGE_VERSION "3.5.3"
+//#define PACKAGE_VERSION "3.5.3"
 
 /* Define path separator */
 #define PATH_SEPARATOR '/'

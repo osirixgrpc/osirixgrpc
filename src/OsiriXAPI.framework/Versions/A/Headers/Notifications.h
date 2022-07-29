@@ -1,22 +1,33 @@
 /*=========================================================================
-  Program:   OsiriX
-
-  Copyright (c) OsiriX Team
-  All rights reserved.
-  Distributed under GNU - LGPL
-  
-  See http://www.osirix-viewer.com/copyright.html for details.
-
-     This software is distributed WITHOUT ANY WARRANTY; without even
-     the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
-     PURPOSE.
-=========================================================================*/
+ Program:   OsiriX
+ Copyright (c) 2010 - 2020 Pixmeo SARL
+ 266 rue de Bernex
+ CH-1233 Bernex
+ Switzerland
+ All rights reserved.
+ =========================================================================*/
 
 #import <Cocoa/Cocoa.h>
+
+extern NSString* const OsiriXROISRName;
+extern NSUInteger const OsiriXROISRID;
+
+extern NSString* const OsiriXAnnotationSRName;
+extern NSUInteger const OsiriXAnnotationSRID;
+
+extern NSString* const OsiriXReportSRName;
+extern NSUInteger const OsiriXReportSRID;
+
+extern NSString* const OsiriXNoDeletionSRName;
+extern NSUInteger const OsiriXNoDeletionSRID;
+
+extern NSString* const OsiriXWindowsStateSRName;
+extern NSUInteger const OsiriXWindowsStateSRID;
 
 extern NSString* const OsirixViewerControllerPreviewMatrixRebuild;
 extern NSString* const OsirixUpdateWLWWMenuNotification;
 extern NSString* const OsirixChangeWLWWNotification;
+extern NSString* const OsirixSync3DMPR;
 extern NSString* const OsirixROICreateNotification;
 extern NSString* const OsirixROIChangeNotification;
 extern NSString* const OsirixCloseViewerNotification;
@@ -43,19 +54,12 @@ extern NSString* const OsirixReportModeChangedNotification;
 extern NSString* const OsirixDeletedReportNotification;
 extern NSString* const OsirixStudyAnnotationsChangedNotification;
 extern NSString* const OsirixGLFontChangeNotification;
+extern NSString* const OsirixDBHasBeenModifiedNotification;
 extern NSString* const OsirixAddToDBNotification;
-extern NSString* const OsirixAddNewStudiesDBNotification;
-extern NSString* const OsirixAddToDBNotificationImagesArray;
-extern NSString* const OsirixAddToDBNotificationImagesPerAETDictionary;
-extern NSString* const OsirixAddToDBCompleteNotification;
 extern NSString* const OsirixAddToDBNotificationImagesIDsArray;
-extern NSString* const OsirixAddToDBNotificationImagesIDsPerAETDictionary;
-extern NSString* const OsirixAddToDBCompleteIDsNotification;
-extern NSString* const OsirixAddToDBCompleteNotificationImagesArray __deprecated; // use OsirixAddToDBNotificationImagesArray
-extern NSString* const OsirixDicomDatabaseDidChangeContextNotification;
-extern NSString* const _O2AddToDBAnywayNotification;
-extern NSString* const _O2AddToDBAnywayCompleteNotification;
-extern NSString* const O2DatabaseInvalidateAlbumsCacheNotification;
+extern NSString* const OsirixAddToDBNotificationDICOMSRIDsArray;
+extern NSString* const OsirixAddToDBNotificationNewStudiesIDsArray;
+extern NSString* const OsirixAddToDBNotificationChangedSeriesIDsArray;
 extern NSString* const OsirixDatabaseObjectsMayBecomeUnavailableNotification; // database objects may soon become invalid
 extern NSString* const OsirixNewStudySelectedNotification;
 extern NSString* const OsirixDidLoadNewObjectNotification;
@@ -64,6 +68,8 @@ extern NSString* const OsirixAlternateButtonPressedNotification;
 extern NSString* const OsirixROISelectedNotification;
 extern NSString* const OsirixRemoveROINotification;
 extern NSString* const OsirixROIRemovedFromArrayNotification;
+extern NSString* const OsirixViewOriginChanged;
+extern NSString* const OsirixViewScaleChanged;
 extern NSString* const OsirixChangeFocalPointNotification;
 extern NSString* const OsirixWindow3dCloseNotification;
 extern NSString* const OsirixDisplay3dPointNotification;
@@ -95,8 +101,6 @@ extern NSString* const OsirixUpdateViewNotification;
 extern NSString* const OsirixViewerControllerDidLoadImagesNotification;
 extern NSString* const OsirixViewerControllerWillFreeVolumeDataNotification; // userinfo dict will contain an NSData with @"volumeData" key and a NSNumber with @"movieIndex" key
 extern NSString* const OsirixViewerControllerDidAllocateVolumeDataNotification; // userinfo dict will contain an NSData with @"volumeData" key and a NSNumber with @"movieIndex" key
-extern NSString* const BLAuthenticatedNotification;
-extern NSString* const BLDeauthenticatedNotification;
 extern NSString* const OsiriXLogEvent;
 
 extern NSString* const OsirixActiveLocalDatabaseDidChangeNotification;

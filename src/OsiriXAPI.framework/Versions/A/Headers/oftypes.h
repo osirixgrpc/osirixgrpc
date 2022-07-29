@@ -1,35 +1,23 @@
 /*
  *
- *  Copyright (C) 1997-2005, OFFIS
+ *  Copyright (C) 1997-2014, OFFIS e.V.
+ *  All rights reserved.  See COPYRIGHT file for details.
  *
  *  This software and supporting documentation were developed by
  *
- *    Kuratorium OFFIS e.V.
- *    Healthcare Information and Communication Systems
+ *    OFFIS e.V.
+ *    R&D Division Health
  *    Escherweg 2
  *    D-26121 Oldenburg, Germany
  *
- *  THIS SOFTWARE IS MADE AVAILABLE,  AS IS,  AND OFFIS MAKES NO  WARRANTY
- *  REGARDING  THE  SOFTWARE,  ITS  PERFORMANCE,  ITS  MERCHANTABILITY  OR
- *  FITNESS FOR ANY PARTICULAR USE, FREEDOM FROM ANY COMPUTER DISEASES  OR
- *  ITS CONFORMITY TO ANY SPECIFICATION. THE ENTIRE RISK AS TO QUALITY AND
- *  PERFORMANCE OF THE SOFTWARE IS WITH THE USER.
  *
  *  Module:  ofstd
  *
  *  Author:  Andreas Barth
  *
  *  Purpose:
- *      Defines some C++ standard types that are not consistently 
+ *      Defines some C++ standard types that are not consistently
  *      supported by all C++ Compilers
- *
- *  Last Update:      $Author: lpysher $
- *  Update Date:      $Date: 2006/03/01 20:17:56 $
- *  Source File:      $Source: /cvsroot/osirix/osirix/Binaries/dcmtk-source/ofstd/oftypes.h,v $
- *  CVS/RCS Revision: $Revision: 1.1 $
- *  Status:           $State: Exp $
- *
- *  CVS/RCS Log at end of file
  *
  */
 
@@ -37,14 +25,55 @@
 #define OFTYPES_H
 
 #include "osconfig.h"    /* make sure OS specific configuration is included first */
+#include "ofdefine.h"
 
+// include this file in doxygen documentation
 
-#ifdef __CHAR_UNSIGNED__
+/** @file oftypes.h
+ *  @brief Definition of standard types used throughout the toolkit
+ */
+
+// use native types if C++11 is supported
+#ifdef DCMTK_USE_CXX11_STL
+#include <cstdint>
+#include <cstddef>
+#include <ostream>
+
+#define OFTypename typename
+#define OFlonglong long long
+#define OFulonglong unsigned long long
+
+using Sint8 = std::int8_t;
+using Uint8 = std::uint8_t;
+using Sint16 = std::int16_t;
+using Uint16 = std::uint16_t;
+using Sint32 = std::int32_t;
+using Uint32 = std::uint32_t;
+using Sint64 = std::int64_t;
+using Uint64 = std::uint64_t;
+using Float32 = float; // single precision floating point type. Usually IEEE-754 32 bit floating point type
+using Float64 = double; // double precision floating point type. Usually IEEE-754 64 bit floating point type
+using OFintptr_t = std::intptr_t;
+using OFuintptr_t = std::uintptr_t;
+using OFnullptr_t = std::nullptr_t;
+using OFBool = bool;
+constexpr OFnullptr_t OFnullptr = nullptr;
+constexpr const OFBool OFTrue = true;
+constexpr const OFBool OFFalse = false;
+
+inline std::ostream& operator<<( std::ostream& o, OFnullptr_t /* unused */ )
+{
+    return o << "nullptr";
+}
+
+#else // fallback definitions
+
+#define INCLUDE_OSTREAM
+#define INCLUDE_CSTDINT
+#define INCLUDE_CSTDDEF
+#include "ofstdinc.h"
+
 typedef signed char     Sint8;
-#else 
-typedef char            Sint8;
-#endif
-
 typedef unsigned char   Uint8;
 
 #if SIZEOF_LONG == 8
@@ -61,6 +90,70 @@ typedef unsigned short  Uint16;
 typedef float           Float32;    /* 32 Bit Floating Point Single */
 typedef double          Float64;    /* 64 Bit Floating Point Double */
 
+#ifdef HAVE_LONG_LONG
+#define OFlonglong long long
+#elif defined(_WIN32)
+#define OFlonglong __int64
+#elif defined(HAVE_LONGLONG)
+#define OFlonglong longlong
+#endif
+
+#ifdef HAVE_UNSIGNED_LONG_LONG
+#define OFulonglong unsigned long long
+#elif defined(_WIN32)
+#define OFulonglong unsigned __int64
+#elif defined(HAVE_ULONGLONG)
+#define OFulonglong ulonglong
+#endif
+
+#ifdef HAVE_INT64_T
+/* many platforms define int64_t in <cstdint> */
+typedef int64_t       Sint64;
+#elif SIZEOF_LONG == 8
+/* on some platforms, long is 64 bits */
+typedef long          Sint64;
+#elif defined(OFlonglong)
+/* assume OFlonglong is 64 bits */
+typedef OFlonglong    Sint64;
+#else
+/* we have not found any 64-bit signed integer type */
+#define OF_NO_SINT64 1
+#endif
+
+#ifdef HAVE_INT64_T
+/* many platforms define uint64_t in <cstdint> */
+typedef uint64_t      Uint64;
+#elif SIZEOF_LONG == 8
+/* on some platforms, long is 64 bits */
+typedef unsigned long Uint64;
+#elif defined(OFulonglong)
+/* assume OFulonglong is 64 bits */
+typedef OFulonglong   Uint64;
+#else
+/* we have not found any 64-bit unsigned integer type */
+#define OF_NO_UINT64 1
+#endif
+
+#if SIZEOF_VOID_P == 2
+typedef Sint16 OFintptr_t;
+typedef Uint16 OFuintptr_t;
+#elif SIZEOF_VOID_P == 4
+typedef Sint32 OFintptr_t;
+typedef Uint32 OFuintptr_t;
+#elif SIZEOF_VOID_P == 8
+#ifndef OF_NO_SINT64
+typedef Sint64 OFintptr_t;
+#else
+#error unsupported platform (64-Bit pointers but no 64-Bit signed integer type)
+#endif
+#ifndef OF_NO_UINT64
+typedef Uint64 OFuintptr_t;
+#else
+#error unsupported platform (64-Bit pointers but no 64-Bit unsigned integer type)
+#endif
+#else
+#error Unsupported platform (invalid pointer size)
+#endif
 
 // Definition of type OFBool
 
@@ -72,56 +165,55 @@ typedef double          Float64;    /* 64 Bit Floating Point Double */
 
 #else
 
-/** the boolean type used throughout the DCMTK project. Mapped to the 
- *  built-in type "bool" if the current C++ compiler supports it. Mapped 
+/** the boolean type used throughout the DCMTK project. Mapped to the
+ *  built-in type "bool" if the current C++ compiler supports it. Mapped
  *  to int for old-fashioned compilers which do not yet support bool.
  */
 typedef int OFBool;
 
-#ifndef OFTrue 
+#ifndef OFTrue
 #define OFTrue (1)
 #endif
 
-#ifndef OFFalse 
+#ifndef OFFalse
 #define OFFalse (0)
 #endif
 
 #endif
+
+#if defined(HAVE_TYPENAME)
+#define OFTypename typename
+#else
+#define OFTypename
 #endif
 
-/*
- * CVS/RCS Log:
- * $Log: oftypes.h,v $
- * Revision 1.1  2006/03/01 20:17:56  lpysher
- * Added dcmtkt ocvs not in xcode  and fixed bug with multiple monitors
- *
- * Revision 1.7  2005/12/08 16:06:11  meichel
- * Changed include path schema for all DCMTK header files
- *
- * Revision 1.6  2002/07/10 11:45:26  meichel
- * Moved definitions for Uint8, Sint8 ... Float64 from dcmdata to ofstd
- *   since these types are not DICOM specific
- *
- * Revision 1.5  2001/06/01 15:51:36  meichel
- * Updated copyright header
- *
- * Revision 1.4  2000/10/10 12:01:22  meichel
- * Created/updated doc++ comments
- *
- * Revision 1.3  2000/03/08 16:36:03  meichel
- * Updated copyright header.
- *
- * Revision 1.2  1998/11/27 12:42:53  joergr
- * Added copyright message to source files and changed CVS header.
- *
- * Revision 1.1  1997/07/02 11:51:16  andreas
- * - Preliminary release of the OFFIS Standard Library.
- *   In the future this library shall contain a subset of the
- *   ANSI C++ Library (Version 3) that works on a lot of different
- *   compilers. Additionally this library shall include classes and
- *   functions that are often used. All classes and functions begin
- *   with OF... This library is independent of the DICOM development and
- *   shall contain no DICOM specific stuff.
- *
- */
+#ifndef DOXYGEN
+struct DCMTK_OFSTD_EXPORT OFnullptr_t
+{
+    friend STD_NAMESPACE ostream& operator<<( STD_NAMESPACE ostream& o, OFnullptr_t /* unused */ )
+    {
+        return o << "nullptr";
+    }
 
+    template<typename T>
+    operator T*()
+    {
+        return NULL;
+    }
+
+    template<typename C,typename T>
+    operator T C::*()
+    {
+        return NULL;
+    }
+};
+
+DCMTK_OFSTD_EXPORT extern OFnullptr_t OFnullptr;
+#else // DOXYGEN
+/// OFnullptr_t is the type of the null pointer literal, OFnullptr.
+typedef unspecified OFnullptr_t;
+#endif // DOXYGEN
+
+#endif // C++11
+
+#endif // OFTYPES_H

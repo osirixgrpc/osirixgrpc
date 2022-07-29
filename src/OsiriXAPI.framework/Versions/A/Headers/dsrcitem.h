@@ -1,19 +1,15 @@
 /*
  *
- *  Copyright (C) 2000-2005, OFFIS
+ *  Copyright (C) 2000-2016, OFFIS e.V.
+ *  All rights reserved.  See COPYRIGHT file for details.
  *
  *  This software and supporting documentation were developed by
  *
- *    Kuratorium OFFIS e.V.
- *    Healthcare Information and Communication Systems
+ *    OFFIS e.V.
+ *    R&D Division Health
  *    Escherweg 2
  *    D-26121 Oldenburg, Germany
  *
- *  THIS SOFTWARE IS MADE AVAILABLE,  AS IS,  AND OFFIS MAKES NO  WARRANTY
- *  REGARDING  THE  SOFTWARE,  ITS  PERFORMANCE,  ITS  MERCHANTABILITY  OR
- *  FITNESS FOR ANY PARTICULAR USE, FREEDOM FROM ANY COMPUTER DISEASES  OR
- *  ITS CONFORMITY TO ANY SPECIFICATION. THE ENTIRE RISK AS TO QUALITY AND
- *  PERFORMANCE OF THE SOFTWARE IS WITH THE USER.
  *
  *  Module: dcmsr
  *
@@ -21,13 +17,6 @@
  *
  *  Purpose:
  *    classes: DSRContentItem
- *
- *  Last Update:      $Author: lpysher $
- *  Update Date:      $Date: 2006/03/01 20:16:11 $
- *  CVS/RCS Revision: $Revision: 1.1 $
- *  Status:           $State: Exp $
- *
- *  CVS/RCS Log at end of file
  *
  */
 
@@ -42,12 +31,11 @@
 #include "dsrcodvl.h"
 #include "dsrnumvl.h"
 #include "dsrscovl.h"
+#include "dsrsc3vl.h"
 #include "dsrtcovl.h"
 #include "dsrcomvl.h"
 #include "dsrimgvl.h"
 #include "dsrwavvl.h"
-
-#include "ofstring.h"
 
 
 /*---------------------*
@@ -57,13 +45,21 @@
 /** Interface class for content items.
  *  This class allows to access the document tree nodes without using any pointers.
  */
-class DSRContentItem
+class DCMTK_DCMSR_EXPORT DSRContentItem
   : protected DSRTypes
 {
-    // allow DSRDocumentTree to access protected method setTreeNode()
-    friend class DSRDocumentTree;
+    // allow DSRDocumentSubTree to access protected method setTreeNode()
+    friend class DSRDocumentSubTree;
 
   public:
+
+    /** copy constructor.
+     *  Internally, the copy constructor of the respective tree node class is used, so the
+     *  corresponding comments apply.  This also means that the copy describes a separate
+     *  content item, i.e. without relationships to other content items.
+     ** @param  item  content item to be copied
+     */
+    DSRContentItem(const DSRContentItem &item);
 
     /** destructor
      */
@@ -89,18 +85,19 @@ class DSRContentItem
 
     /** get value type.
      *  Applicable to all content items.
-     ** @return value type of current content item if valid, VT_invalid otherwise
+     ** @return value type of current content item if valid, DSRTypes::VT_invalid otherwise
      */
     E_ValueType getValueType() const;
 
     /** get relationship type.
      *  Applicable to all content items.
-     ** @return relationship type of current content item if valid, RT_invalid otherwise
+     ** @return relationship type of current content item if valid, DSRTypes::RT_invalid
+     *          otherwise
      */
     E_RelationshipType getRelationshipType() const;
 
     /** get ID of the referenced node.
-     *  Applicable to: byReference relationships
+     *  Applicable to: by-reference relationships
      ** @return ID of the referenced node if valid, 0 otherwise
      */
     size_t getReferencedNodeID() const;
@@ -111,13 +108,17 @@ class DSRContentItem
      */
     const OFString &getStringValue() const;
 
-    /** set string value.  Please use the correct format for the string value depending on
-     *  the corresponding content item (value type).
+    /** set string value.
+     *  Please use the correct format for the string value depending on the corresponding
+     *  content item (value type).
+     *
      *  Applicable to: TEXT, DATETIME, DATE, TIME, UIDREF, PNAME
      ** @param  stringValue  value to be set
+     *  @param  check        if enabled, check value for validity before setting it
      ** @return status, EC_Normal if successful, an error code otherwise
      */
-    OFCondition setStringValue(const OFString &stringValue);
+    OFCondition setStringValue(const OFString &stringValue,
+                               const OFBool check = OFTrue);
 
     /** get pointer to code value.
      *  Applicable to: CODE
@@ -141,9 +142,11 @@ class DSRContentItem
     /** set code value.
      *  Applicable to: CODE
      ** @param  codeValue  value to be set
+     *  @param  check      if enabled, check value for validity before setting it
      ** @return status, EC_Normal if successful, an error code otherwise
      */
-    OFCondition setCodeValue(const DSRCodedEntryValue &codeValue);
+    OFCondition setCodeValue(const DSRCodedEntryValue &codeValue,
+                             const OFBool check = OFTrue);
 
     /** get pointer to numeric value.
      *  Applicable to: NUM
@@ -153,13 +156,15 @@ class DSRContentItem
 
     /** get numeric value.
      *  Applicable to: NUM
-     ** @return numeric measurement value of current content item if valid, EmptyNumericMeasurement otherwise
+     ** @return numeric measurement value of current content item if valid,
+     *    EmptyNumericMeasurement otherwise
      */
     const DSRNumericMeasurementValue &getNumericValue() const;
 
     /** get copy of numeric value.
      *  Applicable to: NUM
-     ** @param  numericValue  variable where the copy should be stored (cleared if an error occurs)
+     ** @param  numericValue  variable where the copy should be stored
+     *                        (cleared if an error occurs)
      ** @return status, EC_Normal if successful, an error code otherwise
      */
     OFCondition getNumericValue(DSRNumericMeasurementValue &numericValue) const;
@@ -167,25 +172,30 @@ class DSRContentItem
     /** set numeric value.
      *  Applicable to: NUM
      ** @param  numericValue  value to be set
+     *  @param  check         if enabled, check value for validity before setting it
      ** @return status, EC_Normal if successful, an error code otherwise
      */
-    OFCondition setNumericValue(const DSRNumericMeasurementValue &numericValue);
+    OFCondition setNumericValue(const DSRNumericMeasurementValue &numericValue,
+                                const OFBool check = OFTrue);
 
     /** get pointer to spatial coordinates.
      *  Applicable to: SCOORD
-     ** @return pointer to spatial coordinates value of current content item if valid, NULL otherwise
+     ** @return pointer to spatial coordinates value of current content item if valid,
+     *          NULL otherwise
      */
     DSRSpatialCoordinatesValue *getSpatialCoordinatesPtr();
 
     /** get spatial coordinates.
      *  Applicable to: SCOORD
-     ** @return spatial coordinates value of current content item if valid, EmptySpatialCoordinates otherwise
+     ** @return spatial coordinates value of current content item if valid,
+     *          EmptySpatialCoordinates otherwise
      */
     const DSRSpatialCoordinatesValue &getSpatialCoordinates() const;
 
     /** get copy of spatial coordinates.
      *  Applicable to: SCOORD
-     ** @param  coordinatesValue  variable where the copy should be stored (cleared if an error occurs)
+     ** @param  coordinatesValue  variable where the copy should be stored
+     *                            (cleared if an error occurs)
      ** @return status, EC_Normal if successful, an error code otherwise
      */
     OFCondition getSpatialCoordinates(DSRSpatialCoordinatesValue &coordinatesValue) const;
@@ -193,25 +203,61 @@ class DSRContentItem
     /** set spatial coordinates.
      *  Applicable to: SCOORD
      ** @param  coordinatesValue  value to be set
+     *  @param  check             if enabled, check value for validity before setting it
      ** @return status, EC_Normal if successful, an error code otherwise
      */
-    OFCondition setSpatialCoordinates(const DSRSpatialCoordinatesValue &coordinatesValue);
+    OFCondition setSpatialCoordinates(const DSRSpatialCoordinatesValue &coordinatesValue,
+                                      const OFBool check = OFTrue);
+
+    /** get pointer to spatial coordinates 3D.
+     *  Applicable to: SCOORD3D
+     ** @return pointer to spatial coordinates 3D value of current content item if valid,
+     *          NULL otherwise
+     */
+    DSRSpatialCoordinates3DValue *getSpatialCoordinates3DPtr();
+
+    /** get spatial coordinates 3D.
+     *  Applicable to: SCOORD3D
+     ** @return spatial coordinates 3D value of current content item if valid,
+     *          EmptySpatialCoordinates3D otherwise
+     */
+    const DSRSpatialCoordinates3DValue &getSpatialCoordinates3D() const;
+
+    /** get copy of spatial coordinates 3D.
+     *  Applicable to: SCOORD3D
+     ** @param  coordinatesValue  variable where the copy should be stored
+     *                            (cleared if an error occurs)
+     ** @return status, EC_Normal if successful, an error code otherwise
+     */
+    OFCondition getSpatialCoordinates3D(DSRSpatialCoordinates3DValue &coordinatesValue) const;
+
+    /** set spatial coordinates 3D.
+     *  Applicable to: SCOORD3D
+     ** @param  coordinatesValue  value to be set
+     *  @param  check             if enabled, check value for validity before setting it
+     ** @return status, EC_Normal if successful, an error code otherwise
+     */
+    OFCondition setSpatialCoordinates3D(const DSRSpatialCoordinates3DValue &coordinatesValue,
+                                        const OFBool check = OFTrue);
 
     /** get pointer to temporal coordinates.
      *  Applicable to: TCOORD
-     ** @return pointer to temporal coordinates value of current content item if valid, NULL otherwise
+     ** @return pointer to temporal coordinates value of current content item if valid,
+     *          NULL otherwise
      */
     DSRTemporalCoordinatesValue *getTemporalCoordinatesPtr();
 
     /** get temporal coordinates.
      *  Applicable to: TCOORD
-     ** @return temporal coordinates value of current content item if valid, EmptyTemporalCoordinates otherwise
+     ** @return temporal coordinates value of current content item if valid,
+     *          EmptyTemporalCoordinates otherwise
      */
     const DSRTemporalCoordinatesValue &getTemporalCoordinates() const;
 
     /** get copy of temporal coordinates.
      *  Applicable to: TCOORD
-     ** @param  coordinatesValue  variable where the copy should be stored (cleared if an error occurs)
+     ** @param  coordinatesValue  variable where the copy should be stored
+     *                            (cleared if an error occurs)
      ** @return status, EC_Normal if successful, an error code otherwise
      */
     OFCondition getTemporalCoordinates(DSRTemporalCoordinatesValue &coordinatesValue) const;
@@ -219,9 +265,11 @@ class DSRContentItem
     /** set temporal coordinates.
      *  Applicable to: TCOORD
      ** @param  coordinatesValue  value to be set
+     *  @param  check             if enabled, check value for validity before setting it
      ** @return status, EC_Normal if successful, an error code otherwise
      */
-    OFCondition setTemporalCoordinates(const DSRTemporalCoordinatesValue &coordinatesValue);
+    OFCondition setTemporalCoordinates(const DSRTemporalCoordinatesValue &coordinatesValue,
+                                       const OFBool check = OFTrue);
 
     /** get pointer to composite reference.
      *  Applicable to: COMPOSITE
@@ -237,7 +285,8 @@ class DSRContentItem
 
     /** get copy of composite reference.
      *  Applicable to: COMPOSITE
-     ** @param  referenceValue  variable where the copy should be stored (cleared if an error occurs)
+     ** @param  referenceValue  variable where the copy should be stored
+     *                          (cleared if an error occurs)
      ** @return status, EC_Normal if successful, an error code otherwise
      */
     OFCondition getCompositeReference(DSRCompositeReferenceValue &referenceValue) const;
@@ -245,25 +294,30 @@ class DSRContentItem
     /** set composite reference.
      *  Applicable to: COMPOSITE
      ** @param  referenceValue  value to be set
+     *  @param  check           if enabled, check value for validity before setting it
      ** @return status, EC_Normal if successful, an error code otherwise
      */
-    OFCondition setCompositeReference(const DSRCompositeReferenceValue &referenceValue);
+    OFCondition setCompositeReference(const DSRCompositeReferenceValue &referenceValue,
+                                      const OFBool check = OFTrue);
 
     /** get pointer to image reference.
      *  Applicable to: IMAGE
-     ** @return pointer to image reference value of current content item if valid, NULL otherwise
+     ** @return pointer to image reference value of current content item if valid,
+     *          NULL otherwise
      */
     DSRImageReferenceValue *getImageReferencePtr();
 
     /** get image reference.
      *  Applicable to: IMAGE
-     ** @return image reference value of current content item if valid, EmptyImageReference otherwise
+     ** @return image reference value of current content item if valid,
+     *          EmptyImageReference otherwise
      */
     const DSRImageReferenceValue &getImageReference() const;
 
     /** get copy of image reference.
      *  Applicable to: IMAGE
-     ** @param  referenceValue  variable where the copy should be stored (cleared if an error occurs)
+     ** @param  referenceValue  variable where the copy should be stored
+     *                          (cleared if an error occurs)
      ** @return status, EC_Normal if successful, an error code otherwise
      */
     OFCondition getImageReference(DSRImageReferenceValue &referenceValue) const;
@@ -271,25 +325,30 @@ class DSRContentItem
     /** set image reference.
      *  Applicable to: IMAGE
      ** @param  referenceValue  value to be set
+     *  @param  check           if enabled, check value for validity before setting it
      ** @return status, EC_Normal if successful, an error code otherwise
      */
-    OFCondition setImageReference(const DSRImageReferenceValue &referenceValue);
+    OFCondition setImageReference(const DSRImageReferenceValue &referenceValue,
+                                  const OFBool check = OFTrue);
 
     /** get pointer to waveform reference.
      *  Applicable to: WAVEFORM
-     ** @return pointer to waveform reference value of current content item if valid, NULL otherwise
+     ** @return pointer to waveform reference value of current content item if valid,
+     *          NULL otherwise
      */
     DSRWaveformReferenceValue *getWaveformReferencePtr();
 
     /** get waveform reference.
      *  Applicable to: WAVEFORM
-     ** @return waveform reference value of current content item if valid, EmptyWaveformReference otherwise
+     ** @return waveform reference value of current content item if valid,
+     *          EmptyWaveformReference otherwise
      */
     const DSRWaveformReferenceValue &getWaveformReference() const;
 
     /** get copy of waveform reference.
      *  Applicable to: WAVEFORM
-     ** @param  referenceValue  variable where the copy should be stored (cleared if an error occurs)
+     ** @param  referenceValue  variable where the copy should be stored
+     *                          (cleared if an error occurs)
      ** @return status, EC_Normal if successful, an error code otherwise
      */
     OFCondition getWaveformReference(DSRWaveformReferenceValue &referenceValue) const;
@@ -297,38 +356,102 @@ class DSRContentItem
     /** set waveform reference.
      *  Applicable to: WAVEFORM
      ** @param  referenceValue  value to be set
+     *  @param  check           if enabled, check value for validity before setting it
      ** @return status, EC_Normal if successful, an error code otherwise
      */
-    OFCondition setWaveformReference(const DSRWaveformReferenceValue &referenceValue);
+    OFCondition setWaveformReference(const DSRWaveformReferenceValue &referenceValue,
+                                     const OFBool check = OFTrue);
 
     /** get continuity of content flag.
      *  This flag specifies whether or not its contained content items (child nodes) are
-     *  logically linked in a continuous textual flow, or are sparate items.
+     *  logically linked in a continuous textual flow, or are separate items.
+     *
      *  Applicable to: CONTAINER
-     ** @return continuity of content flag if successful, COC_invalid otherwise
+     ** @return continuity of content flag if successful, DSRTypes::COC_invalid otherwise
      */
     E_ContinuityOfContent getContinuityOfContent() const;
 
     /** set continuity of content flag.
      *  This flag specifies whether or not its contained content items (child nodes) are
-     *  logically linked in a continuous textual flow, or are sparate items.
+     *  logically linked in a continuous textual flow, or are separate items.
+     *
      *  Applicable to: CONTAINER
-     ** @param  continuityOfContent  value to be set (should be different from COC_onvalid)
+     ** @param  continuityOfContent  value to be set
+     *                               (should be different from DSRTypes::COC_invalid)
+     *  @param  check                if enabled, check value for validity before setting it
      ** @return status, EC_Normal if successful, an error code otherwise
      */
-    OFCondition setContinuityOfContent(const E_ContinuityOfContent continuityOfContent);
+    OFCondition setContinuityOfContent(const E_ContinuityOfContent continuityOfContent,
+                                       const OFBool check = OFTrue);
+
+    /** get template identifier and mapping resource.
+     *  This value pair identifies the template that was used to create this content item
+     *  (and its children).  According to the DICOM standard this is "required if a template
+     *  was used to define the content of this Item, and the template consists of a single
+     *  CONTAINER with nested content, and it is the outermost invocation of a set of
+     *  nested templates that start with the same CONTAINER."
+     *  The identification is valid if both values are either present (non-empty) or absent
+     *  (empty).
+     *
+     *  Applicable to: CONTAINER
+     ** @param  templateIdentifier  identifier of the template (might be empty)
+     *  @param  mappingResource     mapping resource that defines the template
+     *                              (might be empty)
+     ** @return status, EC_Normal if successful, an error code otherwise
+     */
+    OFCondition getTemplateIdentification(OFString &templateIdentifier,
+                                          OFString &mappingResource) const;
+
+    /** get template identifier and mapping resource and optional mapping resource UID.
+     *  This value triple identifies the template that was used to create this content item
+     *  (and its children).  According to the DICOM standard, this is "required if a template
+     *  was used to define the content of this Item, and the template consists of a single
+     *  CONTAINER with nested content, and it is the outermost invocation of a set of
+     *  nested templates that start with the same CONTAINER."
+     *  The identification is valid if the first two values are either present (non-empty) or
+     *  all three are absent (empty).
+     *
+     *  Applicable to: CONTAINER
+     ** @param  templateIdentifier  identifier of the template (might be empty)
+     *  @param  mappingResource     mapping resource that defines the template
+     *                              (might be empty)
+     *  @param  mappingResourceUID  uniquely identifies the mapping resource
+     *                              (might be empty)
+     ** @return status, EC_Normal if successful, an error code otherwise
+     */
+    OFCondition getTemplateIdentification(OFString &templateIdentifier,
+                                          OFString &mappingResource,
+                                          OFString &mappingResourceUID) const;
+
+    /** set template identifier and mapping resource.
+     *  The identification is valid if the first two values are either present (non-empty)
+     *  or all three values are absent (empty).  See getTemplateIdentification() for details.
+     *  Please use the correct DICOM format for all values (VR=CS,CS,UI).
+     *
+     *  Applicable to: CONTAINER
+     ** @param  templateIdentifier  identifier of the template to be set
+     *  @param  mappingResource     mapping resource that defines the template
+     *  @param  mappingResourceUID  uniquely identifies the mapping resource (optional)
+     *  @param  check               if enabled, check value for validity before setting it
+     ** @return status, EC_Normal if successful, an error code otherwise
+     */
+    OFCondition setTemplateIdentification(const OFString &templateIdentifier,
+                                          const OFString &mappingResource,
+                                          const OFString &mappingResourceUID = "",
+                                          const OFBool check = OFTrue);
 
     /** get pointer to concept name.
      *  Code describing the concept represented by this content item.  Also conveys the value
      *  of document title and section headings in documents.
      *  Applicable to all content items (by-value only).
-     ** @return pointer to comcept name value of current content item if valid, NULL otherwise
+     ** @return pointer to concept name value of current content item if valid, NULL otherwise
      */
     DSRCodedEntryValue *getConceptNamePtr();
 
     /** get concept name.
      *  Code describing the concept represented by this content item.  Also conveys the value
      *  of document title and section headings in documents.
+     *
      *  Applicable to all content items (by-value only).
      ** @return concept name value of current content item if valid, EmptyCodedEntry otherwise
      */
@@ -337,8 +460,10 @@ class DSRContentItem
     /** get copy of concept name.
      *  Code describing the concept represented by this content item.  Also conveys the value
      *  of document title and section headings in documents.
+     *
      *  Applicable to all content items (by-value only).
-     ** @param  conceptName  variable where the copy should be stored (cleared if an error occurs)
+     ** @param  conceptName  variable where the copy should be stored
+     *                       (cleared if an error occurs)
      ** @return status, EC_Normal if successful, an error code otherwise
      */
     OFCondition getConceptName(DSRCodedEntryValue &conceptName) const;
@@ -346,56 +471,81 @@ class DSRContentItem
     /** set concept name.
      *  Code describing the concept represented by this content item.  Also conveys the value
      *  of document title and section headings in documents.
-     *  Applicable to all content items (by-value only, optional/conditional for some value types).
+     *
+     *  Applicable to all content items (by-value only, optional/conditional for some value
+     *  types).
      ** @param  conceptName  value to be set
+     *  @param  check        if enabled, check value for validity before setting it
      ** @return status, EC_Normal if successful, an error code otherwise
      */
-    OFCondition setConceptName(const DSRCodedEntryValue &conceptName);
+    OFCondition setConceptName(const DSRCodedEntryValue &conceptName,
+                               const OFBool check = OFTrue);
 
-    /** get observation date time.
+    /** get observation date/time.
      *  This is the date and time on which this content item was completed.  Might be empty
      *  if the date and time do not differ from the content date and time, see DSRDocument.
+     *
      *  Applicable to all content items (by-value only, optional attribute).
-     ** @return observation date and time of current content item if valid, EmptyString otherwise
+     ** @return observation date/time of current content item if valid, EmptyString otherwise
      */
     const OFString &getObservationDateTime() const;
 
-    /** set observation date time.
+    /** set observation date/time.
      *  This is the date and time on which this content item was completed.  Might be empty
      *  if the date and time do not differ from the content date and time, see DSRDocument.
      *  Please use the correct DICOM format (VR=DT).
+     *
      *  Applicable to all content items (by-value only).
      ** @param  observationDateTime  value to be set (might be an empty string)
+     *  @param  check                if enabled, check value for validity before setting it
      ** @return status, EC_Normal if successful, an error code otherwise
      */
-    OFCondition setObservationDateTime(const OFString &observationDateTime);
+    OFCondition setObservationDateTime(const OFString &observationDateTime,
+                                       const OFBool check = OFTrue);
 
-    /** get template identifier and mapping resource.
-     *  This value pair identifies the template that was used to create this content item
-     *  (and its children).  According to the DICOM standard is is "required if a template
-     *  was used to define the content of this Item, and the template consists of a single
-     *  CONTAINER with nested content, and it is the outermost invocation of a set of
-     *  nested templates that start with the same CONTAINER."  However, this condition is
-     *  currently not checked.  The identification is valid if both values are either present
-     *  (non-empty) or absent (empty).
+    /** get observation unique identifier.
+     *  The UID represents the semantic content of the observation; an encoding of the same
+     *  observation with the same context into another representation may use the same UID.
+     *
      *  Applicable to all content items (by-value only, optional attribute).
-     ** @param  templateIdentifier  identifier of the template (might be empty)
-     *  @param  mappingResource     mapping resource that defines the template (might be empty)
-     ** @return status, EC_Normal if successful, an error code otherwise
+     ** @return observation unique identifier of current content item if valid,
+     *          EmptyString otherwise
      */
-    OFCondition getTemplateIdentification(OFString &templateIdentifier,
-                                          OFString &mappingResource) const;
+    const OFString &getObservationUID() const;
 
-    /** set template identifier and mapping resource.
-     *  The identification is valid if both values are either present (non-empty) or absent
-     *  (empty).  See getTemplateIdentification() for details.
+    /** set observation unique identifier.
+     *  The UID represents the semantic content of the observation; an encoding of the same
+     *  observation with the same context into another representation may use the same UID.
+     *  Please use the correct DICOM format (VR=UI).
+     *
      *  Applicable to all content items (by-value only).
-     ** @param  templateIdentifier  identifier of the template to be set (VR=CS)
-     *  @param  mappingResource     mapping resource that defines the template (VR=CS)
+     ** @param  observationUID  value to be set (might be an empty string)
+     *  @param  check           if enabled, check value for validity before setting it
      ** @return status, EC_Normal if successful, an error code otherwise
      */
-    OFCondition setTemplateIdentification(const OFString &templateIdentifier,
-                                          const OFString &mappingResource);
+    OFCondition setObservationUID(const OFString &observationUID,
+                                  const OFBool check = OFTrue);
+
+    /** get annotation text.
+     *  The optional annotation text allows for labeling a content item with an arbitrary
+     *  character string.  This might be useful to navigate more easily within the document
+     *  tree.
+     *
+     *  Applicable to all content items (optional).
+     ** @return annotation text of current content item if valid,  EmptyString otherwise
+     */
+    const OFString &getAnnotationText() const;
+
+    /** set annotation text.
+     *  The optional annotation text allows for labeling a content item with an arbitrary
+     *  character string.  This might be useful to navigate more easily within the document
+     *  tree.
+     *
+     *  Applicable to all content items (optional).
+     ** @param  annotationText  value to be set (might be an empty string)
+     ** @return status, EC_Normal if successful, an error code otherwise
+     */
+    OFCondition setAnnotationText(const OFString &annotationText) const;
 
 
   protected:
@@ -405,112 +555,63 @@ class DSRContentItem
     DSRContentItem();
 
     /** set internal tree node pointer (protected)
-     *  @param  node  pointer to the document tree node (content item)
+     ** @param  node  pointer to the document tree node (content item)
      */
     inline void setTreeNode(DSRDocumentTreeNode *node)
     {
         TreeNode = node;
     }
 
+    /** fast, non-throwing swap function.
+     *  The time complexity of this function is constant.
+     ** @param  item  content item to swap with
+     */
+    void swap(DSRContentItem &item);
+
 
   private:
 
-    /// internal tree node pointer (current conten item)
+    /// internal tree node pointer to current content item
     DSRDocumentTreeNode *TreeNode;
+    /// flag indicating whether to delete the 'TreeNode' during destruction (or not)
+    /*const*/ OFBool DeleteTreeNode;    // removed "const" to support swap() method
 
-    /// empty string value. Used as default return value for getStringValue()
-    static const OFString                    EmptyString;
-    /// empty coded entry value. Used as default return value for getCodeValue() and getConceptName()
-    static const DSRCodedEntryValue          EmptyCodedEntry;
-    /// empty numberic measurement value. Used as default return value for getNumericValue()
-    static const DSRNumericMeasurementValue  EmptyNumericMeasurement;
-    /// empty spatial coordinates value. Used as default return value for getSpatialCoordinates()
-    static const DSRSpatialCoordinatesValue  EmptySpatialCoordinates;
-    /// empty temporal coordinates value. Used as default return value for getTemporalCoordinates()
-    static const DSRTemporalCoordinatesValue EmptyTemporalCoordinates;
-    /// empty composite reference value. Used as default return value for getCompositeReference()
-    static const DSRCompositeReferenceValue  EmptyCompositeReference;
-    /// empty image reference value. Used as default return value for getImageReference()
-    static const DSRImageReferenceValue      EmptyImageReference;
-    /// empty waveform reference value. Used as default return value for getWaveformReference()
-    static const DSRWaveformReferenceValue   EmptyWaveformReference;
+    /// empty numeric measurement value. Used as default return value for getNumericValue().
+    /// A static member variable (as for the other values below) cannot be used because this
+    /// class contains members that again contain OFCondition instances that cannot be defined
+    /// before the main() function starts.
+    const DSRNumericMeasurementValue EmptyNumericMeasurement;
+
+    /// empty string value.
+    /// Used as default return value for getStringValue()
+    static const OFString                     EmptyString;
+    /// empty coded entry value.
+    /// Used as default return value for getCodeValue() and getConceptName()
+    static const DSRCodedEntryValue           EmptyCodedEntry;
+    /// empty spatial coordinates value.
+    /// Used as default return value for getSpatialCoordinates()
+    static const DSRSpatialCoordinatesValue   EmptySpatialCoordinates;
+    /// empty spatial coordinates 3D value.
+    /// Used as default return value for getSpatialCoordinates3D()
+    static const DSRSpatialCoordinates3DValue EmptySpatialCoordinates3D;
+    /// empty temporal coordinates value.
+    /// Used as default return value for getTemporalCoordinates()
+    static const DSRTemporalCoordinatesValue  EmptyTemporalCoordinates;
+    /// empty composite reference value.
+    /// Used as default return value for getCompositeReference()
+    static const DSRCompositeReferenceValue   EmptyCompositeReference;
+    /// empty image reference value.
+    /// Used as default return value for getImageReference()
+    static const DSRImageReferenceValue       EmptyImageReference;
+    /// empty waveform reference value.
+    /// Used as default return value for getWaveformReference()
+    static const DSRWaveformReferenceValue    EmptyWaveformReference;
 
 
- // --- declaration of copy constructor and assignment operator
+ // --- declaration of assignment operator
 
-    DSRContentItem(const DSRContentItem &);
     DSRContentItem &operator=(const DSRContentItem &);
 };
 
 
 #endif
-
-
-/*
- *  CVS/RCS Log:
- *  $Log: dsrcitem.h,v $
- *  Revision 1.1  2006/03/01 20:16:11  lpysher
- *  Added dcmtkt ocvs not in xcode  and fixed bug with multiple monitors
- *
- *  Revision 1.18  2005/12/08 16:04:50  meichel
- *  Changed include path schema for all DCMTK header files
- *
- *  Revision 1.17  2003/12/16 15:57:51  joergr
- *  Added note that the condition for the Content Template Sequence is currently
- *  not checked.
- *
- *  Revision 1.16  2003/10/30 17:54:09  joergr
- *  Added full support for the ContentTemplateSequence (read/write, get/set
- *  template identification). Template constraints are not checked yet.
- *
- *  Revision 1.15  2003/08/07 12:18:57  joergr
- *  Updated documentation to get rid of doxygen warnings.
- *
- *  Revision 1.14  2001/09/26 13:04:04  meichel
- *  Adapted dcmsr to class OFCondition
- *
- *  Revision 1.13  2001/05/07 16:13:23  joergr
- *  Updated CVS header.
- *
- *  Revision 1.12  2001/01/18 15:53:32  joergr
- *  Added support for digital signatures.
- *
- *  Revision 1.11  2000/11/13 14:19:05  joergr
- *  Updated comments.
- *
- *  Revision 1.10  2000/11/07 18:11:29  joergr
- *  Enhanced support for by-reference relationships.
- *
- *  Revision 1.9  2000/11/01 16:11:26  joergr
- *  Now derive "protected" from base class DSRTypes instead of "public".
- *
- *  Revision 1.8  2000/10/26 14:16:18  joergr
- *  Added support for "Comprehensive SR".
- *  Added support for TCOORD content item.
- *
- *  Revision 1.7  2000/10/23 15:06:37  joergr
- *  Added/updated doc++ comments.
- *
- *  Revision 1.6  2000/10/20 10:15:42  joergr
- *  Renamed class DSRReferenceValue to DSRCompositeReferenceValue.
- *
- *  Revision 1.5  2000/10/18 16:58:27  joergr
- *  Added methods allowing direct access to certain content item values.
- *
- *  Revision 1.4  2000/10/17 12:34:31  joergr
- *  Added method checking content item for validity/completeness.
- *  Renamed methods for composite objects.
- *
- *  Revision 1.3  2000/10/16 16:29:36  joergr
- *  Updated comments.
- *
- *  Revision 1.2  2000/10/16 11:55:40  joergr
- *  Added doc++ comments.
- *  Added methods allowing direct access to certain content item values.
- *
- *  Revision 1.1  2000/10/13 07:49:23  joergr
- *  Added new module 'dcmsr' providing access to DICOM structured reporting
- *  documents (supplement 23).  Doc++ documentation not yet completed.
- *
- *
- */

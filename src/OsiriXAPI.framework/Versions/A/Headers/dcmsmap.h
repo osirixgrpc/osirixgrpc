@@ -24,15 +24,6 @@
  *    template <class T> class DcmSimpleMap
  *    these template classes implement a simple map of key-value pairs.
  *    The template type must be copy constructable.
- *
- *  Last Update:      $Author: lpysher $
- *  Update Date:      $Date: 2006/03/01 20:15:49 $
- *  Source File:      $Source: /cvsroot/osirix/osirix/Binaries/dcmtk-source/dcmnet/dcmsmap.h,v $
- *  CVS/RCS Revision: $Revision: 1.1 $
- *  Status:           $State: Exp $
- *
- *  CVS/RCS Log at end of file
- *
  */
 
 #ifndef DCMSMAP_H

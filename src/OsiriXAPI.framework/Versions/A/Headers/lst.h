@@ -20,15 +20,6 @@
  *  Author:  Marco Eichelberg
  *
  *  Purpose: List class with procedural API compatible to MIR CTN
- *
- *  Last Update:      $Author: lpysher $
- *  Update Date:      $Date: 2006/03/01 20:15:50 $
- *  Source File:      $Source: /cvsroot/osirix/osirix/Binaries/dcmtk-source/dcmnet/lst.h,v $
- *  CVS/RCS Revision: $Revision: 1.1 $
- *  Status:           $State: Exp $
- *
- *  CVS/RCS Log at end of file
- *
  */
 
 #ifndef LST_H

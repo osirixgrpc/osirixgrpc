@@ -1,33 +1,21 @@
 /*
  *
- *  Copyright (C) 1994-2005, OFFIS
+ *  Copyright (C) 2002-2014, OFFIS e.V.
+ *  All rights reserved.  See COPYRIGHT file for details.
  *
  *  This software and supporting documentation were developed by
  *
- *    Kuratorium OFFIS e.V.
- *    Healthcare Information and Communication Systems
+ *    OFFIS e.V.
+ *    R&D Division Health
  *    Escherweg 2
  *    D-26121 Oldenburg, Germany
  *
- *  THIS SOFTWARE IS MADE AVAILABLE,  AS IS,  AND OFFIS MAKES NO  WARRANTY
- *  REGARDING  THE  SOFTWARE,  ITS  PERFORMANCE,  ITS  MERCHANTABILITY  OR
- *  FITNESS FOR ANY PARTICULAR USE, FREEDOM FROM ANY COMPUTER DISEASES  OR
- *  ITS CONFORMITY TO ANY SPECIFICATION. THE ENTIRE RISK AS TO QUALITY AND
- *  PERFORMANCE OF THE SOFTWARE IS WITH THE USER.
  *
  *  Module:  dcmdata
  *
  *  Author:  Marco Eichelberg
  *
  *  Purpose: codec parameter for RLE
- *
- *  Last Update:      $Author: lpysher $
- *  Update Date:      $Date: 2006/03/01 20:15:22 $
- *  Source File:      $Source: /cvsroot/osirix/osirix/Binaries/dcmtk-source/dcmdata/dcrlecp.h,v $
- *  CVS/RCS Revision: $Revision: 1.1 $
- *  Status:           $State: Exp $
- *
- *  CVS/RCS Log at end of file
  *
  */
 
@@ -39,24 +27,25 @@
 
 /** codec parameter for RLE codec
  */
-class DcmRLECodecParameter: public DcmCodecParameter
+class DCMTK_DCMDATA_EXPORT DcmRLECodecParameter: public DcmCodecParameter
 {
 public:
 
   /** constructor.
-   *  @param pVerbose verbose mode flag
    *  @param pCreateSOPInstanceUID true if a new SOP instance UID should be assigned
    *    upon compression/decompression
    *  @param pFragmentSize maximum fragment size (in kbytes) for compression, 0 for unlimited.
+   *    Please note that the DICOM standard does not allow for storing the pixel data with
+   *    multiple fragments per frame (when RLE compression is used). So limiting the fragment
+   *    size may result in non-standard conformant DICOM images.
    *  @param pCreateOffsetTable create offset table during image compression?
-   *  @param pConvertToSC flag indicating whether image should be converted to 
+   *  @param pConvertToSC flag indicating whether image should be converted to
    *    Secondary Capture upon compression
    *  @param pReverseDecompressionByteOrder flag indicating whether the byte order should
    *    be reversed upon decompression. Needed to correctly decode some incorrectly encoded
    *    images with more than one byte per sample.
    */
   DcmRLECodecParameter(
-    OFBool pVerbose = OFFalse,
     OFBool pCreateSOPInstanceUID = OFFalse,
     Uint32 pFragmentSize = 0,
     OFBool pCreateOffsetTable = OFTrue,
@@ -70,7 +59,7 @@ public:
   virtual ~DcmRLECodecParameter();
 
   /** this methods creates a copy of type DcmCodecParameter *
-   *  it must be overweritten in every subclass.
+   *  it must be overwritten in every subclass.
    *  @return copy of this object
    */
   virtual DcmCodecParameter *clone() const;
@@ -81,7 +70,7 @@ public:
   virtual const char *className() const;
 
   /** returns maximum fragment size (in kbytes) for compression, 0 for unlimited.
-   *  @returnmaximum fragment size for compression
+   *  @return maximum fragment size for compression
    */
   Uint32 getFragmentSize() const
   {
@@ -110,14 +99,6 @@ public:
   OFBool getUIDCreation() const
   {
     return createInstanceUID;
-  }
-
-  /** returns verbose mode flag
-   *  @return verbose mode flag
-   */
-  OFBool isVerbose() const
-  {
-    return verboseMode;
   }
 
   /** returns reverse decompression byte order mode
@@ -150,30 +131,7 @@ private:
    *  decompress certain incorrectly encoded RLE images
    */
   OFBool reverseDecompressionByteOrder;
-  
-  /// verbose mode flag. If true, warning messages are printed to console
-  OFBool verboseMode;
 };
 
 
 #endif
-
-/*
- * CVS/RCS Log
- * $Log: dcrlecp.h,v $
- * Revision 1.1  2006/03/01 20:15:22  lpysher
- * Added dcmtkt ocvs not in xcode  and fixed bug with multiple monitors
- *
- * Revision 1.3  2005/12/08 16:28:35  meichel
- * Changed include path schema for all DCMTK header files
- *
- * Revision 1.2  2005/07/26 17:08:33  meichel
- * Added option to RLE decoder that allows to correctly decode images with
- *   incorrect byte order of byte segments (LSB instead of MSB).
- *
- * Revision 1.1  2002/06/06 14:52:35  meichel
- * Initial release of the new RLE codec classes
- *   and the dcmcrle/dcmdrle tools in module dcmdata
- *
- *
- */

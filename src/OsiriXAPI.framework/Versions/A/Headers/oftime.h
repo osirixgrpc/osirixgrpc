@@ -1,32 +1,21 @@
 /*
  *
- *  Copyright (C) 2002-2005, OFFIS
+ *  Copyright (C) 2002-2011, OFFIS e.V.
+ *  All rights reserved.  See COPYRIGHT file for details.
  *
  *  This software and supporting documentation were developed by
  *
- *    Kuratorium OFFIS e.V.
- *    Healthcare Information and Communication Systems
+ *    OFFIS e.V.
+ *    R&D Division Health
  *    Escherweg 2
  *    D-26121 Oldenburg, Germany
  *
- *  THIS SOFTWARE IS MADE AVAILABLE,  AS IS,  AND OFFIS MAKES NO  WARRANTY
- *  REGARDING  THE  SOFTWARE,  ITS  PERFORMANCE,  ITS  MERCHANTABILITY  OR
- *  FITNESS FOR ANY PARTICULAR USE, FREEDOM FROM ANY COMPUTER DISEASES  OR
- *  ITS CONFORMITY TO ANY SPECIFICATION. THE ENTIRE RISK AS TO QUALITY AND
- *  PERFORMANCE OF THE SOFTWARE IS WITH THE USER.
  *
  *  Module:  ofstd
  *
  *  Author:  Joerg Riesmeier
  *
  *  Purpose: Class for time functions
- *
- *  Last Update:      $Author: lpysher $
- *  Update Date:      $Date: 2006/03/01 20:17:56 $
- *  CVS/RCS Revision: $Revision: 1.1 $
- *  Status:           $State: Exp $
- *
- *  CVS/RCS Log at end of file
  *
  */
 
@@ -35,6 +24,9 @@
 #define OFTIME_H
 
 #include "osconfig.h"
+
+#define INCLUDE_CTIME
+#include "ofstdinc.h"
 
 BEGIN_EXTERN_C
 #ifdef HAVE_SYS_TYPES_H
@@ -51,7 +43,7 @@ END_EXTERN_C
 
 /** This class provides a collection of time functions
  */
-class OFTime
+class DCMTK_OFSTD_EXPORT OFTime
 {
     // allow class OFDateTime to access protected class members
     friend class OFDateTime;
@@ -147,7 +139,7 @@ class OFTime
 
     /** check whether the currently stored time value is valid.
      *  Valid ranges: [0,24[ for 'hour', [0,60[ for 'minute', [0.0,60.0[ for 'second'
-     *  and [-12.0,+12.0] for 'timeZone'
+     *  and [-12.0,+14.0] for 'timeZone'
      *  @return OFTrue if the current value is valid, OFFalse otherwise
      */
     virtual OFBool isValid() const;
@@ -237,10 +229,11 @@ class OFTime
     OFBool setCurrentTime();
 
     /** set the time value to the given ISO formatted time string.
-     *  The two ISO time formats supported by this function are "HH:MM[:SS]" (with arbitrary
-     *  delimiters) and "HHMM[SS]" (without delimiters) where the brackets enclose optional
-     *  parts.  The optional fractional part of a second and the time zone (see getISO...)
-     *  are not yet supported.
+     *  The two ISO time formats supported by this function are
+     *  - "HH:MM[:SS [&ZZ:ZZ]]" (with arbitrary delimiters) and
+     *  - "HHMM[SS[&ZZZZ]]" (without delimiters)
+     *  where the brackets enclose optional parts. Please note that the optional fractional
+     *  part of a second ".FFFFFF" (see getISOFormattedTime()) is not yet supported.
      *  @param formattedTime ISO formatted time value to be set
      *  @return OFTrue if input is valid and result variable has been set, OFFalse otherwise
      */
@@ -316,9 +309,10 @@ class OFTime
     OFTime getLocalTime() const;
 
     /** get the current time value in ISO format.
-     *  The two ISO time formats supported by this function are "HH:MM[:SS[.FFFFFF]][&ZZ:ZZ]"
-     *  (with delimiters) and "HHMM[SS[.FFFFFF]][&ZZZZ]" (without delimiters, useful for DICOM
-     *  time type) where the brackets enclose optional parts.
+     *  The two ISO time formats supported by this function are
+     *  - "HH:MM[:SS[.FFFFFF]] [&ZZ:ZZ]" (with delimiters) and
+     *  - "HHMM[SS[.FFFFFF]][&ZZZZ]" (without delimiters, useful for DICOM time type)
+     *  where the brackets enclose optional parts.
      *  @param formattedTime reference to string variable where the result is stored
      *  @param showSeconds add optional seconds (":SS" or "SS") to the resulting string if OFTrue
      *  @param showFraction add optional fractional part of a second (".FFFFFF") if OFTrue.
@@ -327,13 +321,16 @@ class OFTime
      *    if OFTrue. The time zone indicates the offset from the Coordinated Universal Time (UTC)
      *    in hours and minutes. The "&" is a placeholder for the sign symbol ("+" or "-").
      *  @param showDelimiter flag, indicating whether to use delimiters (":") or not
+     *  @param timeZoneSeparator separator between ISO time value and time zone. Only used if
+     *    'showDelimiter' is true.
      *  @return OFTrue if result variable has been set, OFFalse otherwise
      */
     OFBool getISOFormattedTime(OFString &formattedTime,
                                const OFBool showSeconds = OFTrue,
                                const OFBool showFraction = OFFalse,
                                const OFBool showTimeZone = OFFalse,
-                               const OFBool showDelimiter = OFTrue) const;
+                               const OFBool showDelimiter = OFTrue,
+                               const OFString &timeZoneSeparator = " ") const;
 
     /* --- static helper functions --- */
 
@@ -345,6 +342,8 @@ class OFTime
     /** get the local time zone.
      *  This function uses operating system dependent routines. If they are unavailable
      *  for some reason the Coordinated Universal Time is assumed (time zone offset = 0).
+     *  Also please note that time zones in the range ]+12.0,+14.0] cannot be detected
+     *  due to the internally used algorithm.
      *  @return local time zone if available, 0 otherwise
      */
     static double getLocalTimeZone();
@@ -364,7 +363,7 @@ class OFTime
 
     /** check whether the given time is valid.
      *  Valid ranges: [0,24[ for 'hour', [0,60[ for 'minute', [0.0,60.0[ for 'second'
-     *  and [-12.0,+12.0] for 'timeZone'
+     *  and [-12.0,+14.0] for 'timeZone'
      *  @param hour hour value to be checked
      *  @param minute minute value to be checked
      *  @param second second value to be checked
@@ -429,45 +428,7 @@ class OFTime
  *  @param timeVal OFTime object to print
  *  @return reference to the output stream
  */
-ostream& operator<<(ostream& stream, const OFTime &timeVal);
+DCMTK_OFSTD_EXPORT STD_NAMESPACE ostream& operator<<(STD_NAMESPACE ostream& stream, const OFTime &timeVal);
 
 
 #endif
-
-
-/*
- *
- * CVS/RCS Log:
- * $Log: oftime.h,v $
- * Revision 1.1  2006/03/01 20:17:56  lpysher
- * Added dcmtkt ocvs not in xcode  and fixed bug with multiple monitors
- *
- * Revision 1.8  2005/12/08 16:06:09  meichel
- * Changed include path schema for all DCMTK header files
- *
- * Revision 1.7  2004/01/16 10:30:39  joergr
- * Added setISOFormattedXXX() methods for Date, Time and DateTime.
- *
- * Revision 1.6  2003/12/17 15:18:48  joergr
- * Fixed bug/inconsistency in comparison operators of class OFTime. Now the
- * "time overflow" is handled correctly.
- *
- * Revision 1.5  2003/09/15 12:12:56  joergr
- * Fixed incorrect/improper comments of the comparision operators. Enhanced
- * comment of the default constructor. Made comparison operators const.
- *
- * Revision 1.4  2002/05/24 09:43:05  joergr
- * Renamed some parameters/variables to avoid ambiguities.
- *
- * Revision 1.3  2002/04/19 10:42:51  joergr
- * Added new helper routines to get the milli and micro seconds part as well as
- * the integral value of seconds.
- *
- * Revision 1.2  2002/04/15 09:38:59  joergr
- * Added "include <sys/types.h>" for struct time_t (required for MSVC).
- *
- * Revision 1.1  2002/04/11 12:12:24  joergr
- * Introduced new standard classes providing date and time functions.
- *
- *
- */

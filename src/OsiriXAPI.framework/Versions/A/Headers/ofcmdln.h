@@ -1,32 +1,21 @@
 /*
  *
- *  Copyright (C) 1998-2005, OFFIS
+ *  Copyright (C) 1998-2016, OFFIS e.V.
+ *  All rights reserved.  See COPYRIGHT file for details.
  *
  *  This software and supporting documentation were developed by
  *
- *    Kuratorium OFFIS e.V.
- *    Healthcare Information and Communication Systems
+ *    OFFIS e.V.
+ *    R&D Division Health
  *    Escherweg 2
  *    D-26121 Oldenburg, Germany
  *
- *  THIS SOFTWARE IS MADE AVAILABLE,  AS IS,  AND OFFIS MAKES NO  WARRANTY
- *  REGARDING  THE  SOFTWARE,  ITS  PERFORMANCE,  ITS  MERCHANTABILITY  OR
- *  FITNESS FOR ANY PARTICULAR USE, FREEDOM FROM ANY COMPUTER DISEASES  OR
- *  ITS CONFORMITY TO ANY SPECIFICATION. THE ENTIRE RISK AS TO QUALITY AND
- *  PERFORMANCE OF THE SOFTWARE IS WITH THE USER.
  *
  *  Module:  ofstd
  *
  *  Author:  Joerg Riesmeier
  *
  *  Purpose: Handle command line arguments (Header)
- *
- *  Last Update:      $Author: lpysher $
- *  Update Date:      $Date: 2006/03/01 20:17:55 $
- *  CVS/RCS Revision: $Revision: 1.1 $
- *  Status:           $State: Exp $
- *
- *  CVS/RCS Log at end of file
  *
  */
 
@@ -39,9 +28,27 @@
 #include "oflist.h"
 #include "ofstring.h"
 #include "ofconsol.h"
+#include "offile.h"
 
 #define INCLUDE_CSTDIO
 #include "ofstdinc.h"
+
+
+/*--------------------*
+ *  macro definition  *
+ *--------------------*/
+
+// Only use wchar_t on windows (not mingw) and don't use it on MSC6
+#if defined(HAVE_WINDOWS_H) && !defined(__MINGW32__) && (!defined(_MSC_VER) || _MSC_VER > 1200)
+# define DCMTK_USE_WCHAR_T
+#endif
+#if defined(WIDE_CHAR_MAIN_FUNCTION) && defined(DCMTK_USE_WCHAR_T)
+// Windows-specific version supporting wide character encoding (UTF-16)
+# define DCMTK_MAIN_FUNCTION int wmain(int argc, wchar_t *argv[])
+#else
+// default version supporting various character encodings (incl. UTF-8)
+# define DCMTK_MAIN_FUNCTION int main(int argc, char *argv[])
+#endif
 
 
 /*--------------------*
@@ -49,9 +56,9 @@
  *--------------------*/
 
 /// signed integer value
-typedef signed int OFCmdSignedInt;
+typedef signed long OFCmdSignedInt;
 /// unsigned integer value
-typedef unsigned int OFCmdUnsignedInt;
+typedef unsigned long OFCmdUnsignedInt;
 /// floating point value
 typedef double OFCmdFloat;
 /// dynamic string value
@@ -76,7 +83,7 @@ struct OFCmdParamPos;
 /** Internal structure to store valid command line parameters.
  *  Parameters are all command line arguments which are no options (e.g. file names).
  */
-struct OFCmdParam
+struct DCMTK_OFSTD_EXPORT OFCmdParam
 {
 
     /** mode specifying parameter's cardinality
@@ -130,7 +137,7 @@ private:
  *  This class is the interface to this module.
  *  All methods which can be used from outside are defined here.
  */
-class OFCommandLine
+class DCMTK_OFSTD_EXPORT OFCommandLine
 {
 
  public:
@@ -145,6 +152,8 @@ class OFCommandLine
         PS_Normal,
         /// no arguments to be parsed
         PS_NoArguments,
+        /// exclusive option used
+        PS_ExclusiveOption,
         /// unknown option detected
         PS_UnknownOption,
         /// missing value(s) for an option
@@ -195,7 +204,7 @@ class OFCommandLine
         PVS_Overflow
     };
 
-    /** mode for findOption method
+    /** mode for findOption() method
      */
     enum E_FindOptionMode
     {
@@ -204,7 +213,11 @@ class OFCommandLine
         /// find first option
         FOM_First,
         /// find next option
-        FOM_Next
+        FOM_Next,
+        /// find first option (from left to right)
+        FOM_FirstFromLeft,
+        /// find next option (from left to right)
+        FOM_NextFromLeft
     };
 
 
@@ -248,36 +261,32 @@ class OFCommandLine
      *  @param  shortOpt    short option name
      *  @param  valueCount  number of additional values
      *  @param  valueDescr  description of optional values
-     *  @param  optDescr    description of command line option (use '\n' for line break)
-     *  @param  exclusive   exclusive option which cannot be combined with any other command
-     *                      line argument (if OFTrue). "--help" is always considered an
-     *                      exclusive option.
+     *  @param  optDescr    description of command line option (use '\\n' for line break)
+     *  @param  flags       optional flags (see AF_xxx below)
      *
-     ** @return OFTrue if succesfully added
+     ** @return OFTrue if successfully added
      */
     OFBool addOption(const char *longOpt,
                      const char *shortOpt,
                      const int valueCount,
                      const char *valueDescr,
                      const char *optDescr,
-                     const OFBool exclusive = OFFalse);
+                     const int flags = 0);
 
     /** adds an item to the list of valid options
      *  (without additional values)
      *
-     ** @param  longOpt     long option name
-     *  @param  shortOpt    short option name
-     *  @param  optDescr    description of command line option (use '\n' for line break)
-     *  @param  exclusive   exclusive option which cannot be combined with any other command
-     *                      line argument (if OFTrue). "--help" is always considered an
-     *                      exclusive option.
+     ** @param  longOpt   long option name
+     *  @param  shortOpt  short option name
+     *  @param  optDescr  description of command line option (use '\\n' for line break)
+     *  @param  flags     optional flags (see AF_xxx below)
      *
-     ** @return OFTrue if succesfully added
+     ** @return OFTrue if successfully added
      */
     OFBool addOption(const char *longOpt,
                      const char *shortOpt,
                      const char *optDescr,
-                     const OFBool exclusive = OFFalse);
+                     const int flags = 0);
 
     /** adds an item to the list of valid options
      *  (without short name)
@@ -285,33 +294,29 @@ class OFCommandLine
      ** @param  longOpt     long option name
      *  @param  valueCount  number of additional values
      *  @param  valueDescr  description of optional values
-     *  @param  optDescr    description of command line option (use '\n' for line break)
-     *  @param  exclusive   exclusive option which cannot be combined with any other command
-     *                      line argument (if OFTrue). "--help" is always considered an
-     *                      exclusive option.
+     *  @param  optDescr    description of command line option (use '\\n' for line break)
+     *  @param  flags       optional flags (see AF_xxx below)
      *
-     ** @return OFTrue if succesfully added
+     ** @return OFTrue if successfully added
      */
     OFBool addOption(const char *longOpt,
                      const int valueCount,
                      const char *valueDescr,
                      const char *optDescr,
-                     const OFBool exclusive = OFFalse);
+                     const int flags = 0);
 
     /** adds an item to the list of valid options
      *  (without short name and additional values)
      *
-     ** @param  longOpt    long option name
-     *  @param  optDescr   description of command line option (use '\n' for line break)
-     *  @param  exclusive   exclusive option which cannot be combined with any other command
-     *                      line argument (if OFTrue). "--help" is always considered an
-     *                      exclusive option.
+     ** @param  longOpt   long option name
+     *  @param  optDescr  description of command line option (use '\\n' for line break)
+     *  @param  flags     optional flags (see AF_xxx below)
      *
-     ** @return OFTrue if succesfully added
+     ** @return OFTrue if successfully added
      */
     OFBool addOption(const char *longOpt,
                      const char *optDescr,
-                     const OFBool exclusive = OFFalse);
+                     const int flags = 0);
 
     /** adds a new group (top-level).
      *  all following options belong to this group
@@ -339,7 +344,7 @@ class OFCommandLine
      *  (full version)
      *
      ** @param  param  parameter name
-     *  @param  descr  parameter description (use '\n' for line break)
+     *  @param  descr  parameter description (use '\\n' for line break)
      *  @param  mode   parameter's cardinality (see above)
      *
      ** @return OFTrue if successful, OFFalse otherwise
@@ -362,6 +367,15 @@ class OFCommandLine
 
  // --- get information
 
+    /** get the name of the program (i.e. the value of argv[0])
+     *
+     ** @return name of the program
+     */
+    const OFString &getProgramName() const
+    {
+        return ProgramName;
+    }
+
     /** gets number of command line arguments.
      *  (options and parameters)
      *
@@ -369,7 +383,7 @@ class OFCommandLine
      */
     int getArgCount() const
     {
-        return ArgumentList.size();
+        return OFstatic_cast(int, ArgumentList.size());
     }
 
     /** sets first command line argument as the current one.
@@ -412,7 +426,7 @@ class OFCommandLine
      */
     int getParamCount() const
     {
-        return ParamPosList.size();
+        return OFstatic_cast(int, ParamPosList.size());
     }
 
     /** gets minimum number of parameters which should be accepted.
@@ -437,15 +451,26 @@ class OFCommandLine
      *  which does not require any mandatory parameter.  Examples for typical
      *  exclusive options are "--help" and "--version".
      *
-     ** @return OFTrue if an exclusive option is used
+     ** @return OFTrue if an exclusive option is used, OFFalse otherwise
      */
     OFBool hasExclusiveOption() const
     {
         return ExclusiveOption;
     }
 
+    /** checks whether the wide character version of parseLine() has been used.
+     *  Support for wide character encoding is Windows-specific (i.e. UTF-16) because other
+     *  operating systems use UTF-8 for Unicode support.
+     *
+     ** @return OFTrue if wide char version of parseLine() has been used, OFFalse otherwise
+     */
+    OFBool getWideCharMode() const
+    {
+        return WideCharMode;
+    }
 
- // --- find/get parameter (parameter is an argument which is no option)
+
+  // --- find/get parameter (parameter is an argument which is no option)
 
     /** checks whether specified parameter exists in the command line.
      *
@@ -455,13 +480,13 @@ class OFCommandLine
      */
     OFBool findParam(const int pos);
 
-
     /** gets value of specified parameter as signed integer.
      *
      ** @param  pos    position of parameter (1..n)
      *  @param  value  reference to variable where the value should be stored
      *
-     ** @return status of get/conversion, PVS_Normal if successful (use getStatusString for error string)
+     ** @return status of get/conversion, PVS_Normal if successful
+     *          (use getStatusString() for error string)
      */
     E_ParamValueStatus getParam(const int pos,
                                 OFCmdSignedInt &value);
@@ -473,7 +498,8 @@ class OFCommandLine
      *  @param  low    minimum boundary for value (used for range check)
      *  @param  incl   if OFTrue 'low' value is valid (included), otherwise invalid
      *
-     ** @return status of get/conversion, PVS_Normal if successful (use getStatusString for error string)
+     ** @return status of get/conversion, PVS_Normal if successful
+     *          (use getStatusString() for error string)
      */
     E_ParamValueStatus getParamAndCheckMin(const int pos,
                                            OFCmdSignedInt &value,
@@ -485,9 +511,10 @@ class OFCommandLine
      ** @param  pos    position of parameter (1..n)
      *  @param  value  reference to variable where the value should be stored
      *  @param  low    minimum boundary for value (used for range check, boundary included)
-     *  @param  high   maximum boundary for value (dito)
+     *  @param  high   maximum boundary for value (ditto)
      *
-     ** @return status of get/conversion, PVS_Normal if successful (use getStatusString for error string)
+     ** @return status of get/conversion, PVS_Normal if successful
+     *          (use getStatusString() for error string)
      */
     E_ParamValueStatus getParamAndCheckMinMax(const int pos,
                                               OFCmdSignedInt &value,
@@ -501,7 +528,8 @@ class OFCommandLine
      ** @param  pos    position of parameter (1..n)
      *  @param  value  reference to variable where the value should be stored
      *
-     ** @return status of get/conversion, PVS_Normal if successful (use getStatusString for error string)
+     ** @return status of get/conversion, PVS_Normal if successful
+     *          (use getStatusString() for error string)
      */
     E_ParamValueStatus getParam(const int pos,
                                 OFCmdUnsignedInt &value);
@@ -515,7 +543,8 @@ class OFCommandLine
      *  @param  low    minimum boundary for value (used for range check)
      *  @param  incl   if OFTrue 'low' value is valid (included), otherwise invalid
      *
-     ** @return status of get/conversion, PVS_Normal if successful (use getStatusString for error string)
+     ** @return status of get/conversion, PVS_Normal if successful
+     *          (use getStatusString() for error string)
      */
     E_ParamValueStatus getParamAndCheckMin(const int pos,
                                            OFCmdUnsignedInt &value,
@@ -529,9 +558,10 @@ class OFCommandLine
      ** @param  pos    position of parameter (1..n)
      *  @param  value  reference to variable where the value should be stored
      *  @param  low    minimum boundary for value (used for range check, boundary included)
-     *  @param  high   maximum boundary for value (dito)
+     *  @param  high   maximum boundary for value (ditto)
      *
-     ** @return status of get/conversion, PVS_Normal if successful (use getStatusString for error string)
+     ** @return status of get/conversion, PVS_Normal if successful
+     *          (use getStatusString() for error string)
      */
     E_ParamValueStatus getParamAndCheckMinMax(const int pos,
                                               OFCmdUnsignedInt &value,
@@ -543,7 +573,8 @@ class OFCommandLine
      ** @param  pos    position of parameter (1..n)
      *  @param  value  reference to variable where the value should be stored
      *
-     ** @return status of get/conversion, PVS_Normal if successful (use getStatusString for error string)
+     ** @return status of get/conversion, PVS_Normal if successful
+     *          (use getStatusString() for error string)
      */
     E_ParamValueStatus getParam(const int pos,
                                 OFCmdFloat &value);
@@ -555,7 +586,8 @@ class OFCommandLine
      *  @param  low    minimum boundary for value (used for range check)
      *  @param  incl   if OFTrue 'low' value is valid (included), otherwise invalid
      *
-     ** @return status of get/conversion, PVS_Normal if successful (use getStatusString for error string)
+     ** @return status of get/conversion, PVS_Normal if successful
+     *          (use getStatusString() for error string)
      */
     E_ParamValueStatus getParamAndCheckMin(const int pos,
                                            OFCmdFloat &value,
@@ -567,9 +599,10 @@ class OFCommandLine
      ** @param  pos    position of parameter (1..n)
      *  @param  value  reference to variable where the value should be stored
      *  @param  low    minimum boundary for value (used for range check, boundary included)
-     *  @param  high   maximum boundary for value (dito)
+     *  @param  high   maximum boundary for value (ditto)
      *
-     ** @return status of get/conversion, PVS_Normal if successful (use getStatusString for error string)
+     ** @return status of get/conversion, PVS_Normal if successful
+     *          (use getStatusString() for error string)
      */
     E_ParamValueStatus getParamAndCheckMinMax(const int pos,
                                               OFCmdFloat &value,
@@ -579,22 +612,37 @@ class OFCommandLine
     /** gets value of specified parameter as C string.
      *
      ** @param  pos    position of parameter (1..n)
-     *  @param  param  reference to variable where the value should be stored
+     *  @param  value  reference to variable where the value should be stored
      *
-     ** @return status of get/conversion, PVS_Normal if successful (use getStatusString for error string)
+     ** @return status of get/conversion, PVS_Normal if successful
+     *          (use getStatusString() for error string)
      */
     E_ParamValueStatus getParam(const int pos,
-                                const char *&param);
+                                const char *&value);
 
     /** gets value of specified parameter as C++ string.
      *
      ** @param  pos    position of parameter (1..n)
-     *  @param  param  reference to variable where the value should be stored
+     *  @param  value  reference to variable where the value should be stored
      *
-     ** @return status of get/conversion, PVS_Normal if successful (use getStatusString for error string)
+     ** @return status of get/conversion, PVS_Normal if successful
+     *          (use getStatusString() for error string)
      */
     E_ParamValueStatus getParam(const int pos,
-                                OFCmdString &param);
+                                OFCmdString &value);
+
+    /** gets value of specified parameter as an instance of OFFilename.
+     *  Please note that on Windows systems the returned filename might also contain a wide
+     *  character version (UTF-16) as an alternative representation.  See getWideCharMode().
+     *
+     ** @param  pos       position of parameter (1..n)
+     *  @param  filename  reference to variable where the value should be stored
+     *
+     ** @return status of get/conversion, PVS_Normal if successful
+     *          (use getStatusString() for error string)
+     */
+    E_ParamValueStatus getParam(const int pos,
+                                OFFilename &filename);
 
 
  // --- find/get option (option is an argument which starts with an option character, see above)
@@ -606,10 +654,13 @@ class OFCommandLine
      *
      ** @param  longOpt  name of option (in long format) to be checked
      *  @param  pos      position of reference parameter
-     *                   (default: all parameters; if value is negative option must be a direct
-     *                    predecessor of the specified reference parameter '-pos', no further
-     *                    search processes will be performed)
-     *  @param  mode     find option mode (used to support option blocks)
+     *                   (default: all parameters; if value is negative option must be a
+     *                    direct predecessor of the specified reference parameter '-pos',
+     *                    no further search processes will be performed; if search direction
+     *                    is left to right this parameter is ignored, also option blocks are
+     *                    not supported in this case)
+     *  @param  mode     find option mode (used to support option blocks and reverse search
+     *                   direction)
      *
      ** @return OFTrue if option exists, OFFalse otherwise
      */
@@ -666,7 +717,8 @@ class OFCommandLine
      *
      ** @param  value  reference to signed integer variable where the value should be stored
      *
-     ** @return status of get/conversion, VS_Normal if successful (use getStatusString for error string)
+     ** @return status of get/conversion, VS_Normal if successful
+     *          (use getStatusString() for error string)
      */
     E_ValueStatus getValue(OFCmdSignedInt &value);
 
@@ -676,7 +728,8 @@ class OFCommandLine
      *  @param  low    minimum boundary for value (used for range check)
      *  @param  incl   if OFTrue 'low' value is valid (included), otherwise invalid
      *
-     ** @return status of get/conversion, VS_Normal if successful (use getStatusString for error string)
+     ** @return status of get/conversion, VS_Normal if successful
+     *          (use getStatusString() for error string)
      */
     E_ValueStatus getValueAndCheckMin(OFCmdSignedInt &value,
                                       const OFCmdSignedInt low,
@@ -686,9 +739,10 @@ class OFCommandLine
      *
      ** @param  value  reference to signed integer variable where the value should be stored
      *  @param  low    minimum boundary for value (used for range check, boundary included)
-     *  @param  high   maximum boundary for value (dito)
+     *  @param  high   maximum boundary for value (ditto)
      *
-     ** @return status of get/conversion, VS_Normal if successful (use getStatusString for error string)
+     ** @return status of get/conversion, VS_Normal if successful
+     *          (use getStatusString() for error string)
      */
     E_ValueStatus getValueAndCheckMinMax(OFCmdSignedInt &value,
                                          const OFCmdSignedInt low,
@@ -698,7 +752,8 @@ class OFCommandLine
      *
      ** @param  value  reference to unsigned integer variable where the value should be stored
      *
-     ** @return status of get/conversion, VS_Normal if successful (use getStatusString for error string)
+     ** @return status of get/conversion, VS_Normal if successful
+     *          (use getStatusString() for error string)
      */
     E_ValueStatus getValue(OFCmdUnsignedInt &value);
 
@@ -708,7 +763,8 @@ class OFCommandLine
      *  @param  low    minimum boundary for value (used for range check)
      *  @param  incl   if OFTrue 'low' value is valid (included), otherwise invalid
      *
-     ** @return status of get/conversion, VS_Normal if successful (use getStatusString for error string)
+     ** @return status of get/conversion, VS_Normal if successful
+     *          (use getStatusString() for error string)
      */
     E_ValueStatus getValueAndCheckMin(OFCmdUnsignedInt &value,
                                       const OFCmdUnsignedInt low,
@@ -718,9 +774,10 @@ class OFCommandLine
      *
      ** @param  value  reference to unsigned integer variable where the value should be stored
      *  @param  low    minimum boundary for value (used for range check, boundary included)
-     *  @param  high   maximum boundary for value (dito)
+     *  @param  high   maximum boundary for value (ditto)
      *
-     ** @return status of get/conversion, VS_Normal if successful (use getStatusString for error string)
+     ** @return status of get/conversion, VS_Normal if successful
+     *          (use getStatusString() for error string)
      */
     E_ValueStatus getValueAndCheckMinMax(OFCmdUnsignedInt &value,
                                          const OFCmdUnsignedInt low,
@@ -730,7 +787,8 @@ class OFCommandLine
      *
      ** @param  value  reference to floating point variable where the value should be stored
      *
-     ** @return status of get/conversion, VS_Normal if successful (use getStatusString for error string)
+     ** @return status of get/conversion, VS_Normal if successful
+     *          (use getStatusString() for error string)
      */
     E_ValueStatus getValue(OFCmdFloat &value);
 
@@ -740,7 +798,8 @@ class OFCommandLine
      *  @param  low    minimum boundary for value (used for range check)
      *  @param  incl   if OFTrue 'low' value is valid (included), otherwise invalid
      *
-     ** @return status of get/conversion, VS_Normal if successful (use getStatusString for error string)
+     ** @return status of get/conversion, VS_Normal if successful
+     *          (use getStatusString() for error string)
      */
     E_ValueStatus getValueAndCheckMin(OFCmdFloat &value,
                                       const OFCmdFloat low,
@@ -750,9 +809,10 @@ class OFCommandLine
      *
      ** @param  value  reference to floating point variable where the value should be stored
      *  @param  low    minimum boundary for value (used for range check, boundary included)
-     *  @param  high   maximum boundary for value (dito)
+     *  @param  high   maximum boundary for value (ditto)
      *
-     ** @return status of get/conversion, VS_Normal if successful (use getStatusString for error string)
+     ** @return status of get/conversion, VS_Normal if successful
+     *          (use getStatusString() for error string)
      */
     E_ValueStatus getValueAndCheckMinMax(OFCmdFloat &value,
                                          const OFCmdFloat low,
@@ -762,7 +822,8 @@ class OFCommandLine
      *
      ** @param  value  reference to C string variable where the value should be stored
      *
-     ** @return status of get/conversion, VS_Normal if successful (use getStatusString for error string)
+     ** @return status of get/conversion, VS_Normal if successful
+     *          (use getStatusString() for error string)
      */
     E_ValueStatus getValue(const char *&value);
 
@@ -770,43 +831,85 @@ class OFCommandLine
      *
      ** @param  value  reference to C++ string variable where the value should be stored
      *
-     ** @return status of get/conversion, VS_Normal if successful (use getStatusString for error string)
+     ** @return status of get/conversion, VS_Normal if successful
+     *          (use getStatusString() for error string)
      */
     E_ValueStatus getValue(OFCmdString &value);
+
+    /** returns next argument as an instance of OFFilename.
+     *  Please note that on Windows systems the returned filename might also contain a wide
+     *  character version (UTF-16) as an alternative representation.  See getWideCharMode().
+     *
+     ** @param  filename  reference to variable where the value should be stored
+     *
+     ** @return status of get/conversion, VS_Normal if successful
+     *          (use getStatusString() for error string)
+     */
+    E_ValueStatus getValue(OFFilename &filename);
 
 
  // --- parsing command line
 
-    /** parses specified command line arguments (argc, argv).
-     *  Additionally create internal structures for evaluation and return status indicating any errors
-     *  occuring during the parse process. If "--help" or the specified shortcut is the only command
-     *  line argument, the status code PS_NoArguments is returned.
+    /** parses specified command line arguments (argc, argv).  Sets 'WideCharMode' to OFFalse.
+     *  Additionally, create internal structures for evaluation and return status indicating
+     *  any errors that occurred during the parse process.
      *
      ** @param  argCount  number of command line arguments stored in argValue
      *  @param  argValue  array where the command line arguments are stored
-     *  @param  flags     optional flags affecting the parse process (see below)
-     *  @param  startPos  index of first argument which should be parsed (starting from 0, default: 1)
+     *  @param  flags     optional flags affecting the parse process (see PF_xxx below)
+     *  @param  startPos  index of first argument which should be parsed (starting from 0,
+     *                    default: 1)
      *
-     ** @return status of parse process, PS_Normal if successful (use getStatusString for error string)
+     ** @return status of parse process, PS_Normal if successful
+     *          (use getStatusString() for error string).  If an exclusive option is used,
+     *           the status code PS_ExclusiveOption is returned.
      */
     E_ParseStatus parseLine(int argCount,
                             char *argValue[],
                             const int flags = 0,
                             const int startPos = 1);
 
+#ifdef DCMTK_USE_WCHAR_T
+
+    /** parses specified command line arguments (argc, argv).  Sets 'WideCharMode' to OFTrue.
+     *  This is a Windows-specific version supporting the wide character encoding (UTF-16).
+     *  Internally, all character strings are stored in UTF-8, because this Unicode encoding is
+     *  supported by DICOM.  However, there are getValue() and getParam() methods that allow for
+     *  accessing filenames with wide character encoding (UTF-16).
+     *  Additionally, create internal structures for evaluation and return status indicating any
+     *  errors that occurred during the parse process.
+     *
+     ** @param  argCount  number of command line arguments stored in argValue
+     *  @param  argValue  array where the command line arguments are stored
+     *  @param  flags     optional flags affecting the parse process (see PF_xxx below)
+     *  @param  startPos  index of first argument which should be parsed (starting from 0,
+     *                    default: 1)
+     *
+     ** @return status of parse process, PS_Normal if successful
+     *          (use getStatusString() for error string).  If an exclusive option is used,
+     *           the status code PS_ExclusiveOption is returned.
+     */
+    E_ParseStatus parseLine(int argCount,
+                            wchar_t *argValue[],
+                            const int flags = 0,
+                            const int startPos = 1);
+
+#endif  // DCMTK_USE_WCHAR_T
+
 
  // --- get usage/status strings
 
     /** returns command line syntax as a C++ string (single text line).
-     *  Text consists of "[options]" (if defined by addOption) and all parameters defined by addParam.
+     *  Text consists of "[options]" (if defined by addOption()) and all parameters defined
+     *  by addParam().
      *
      ** @param  syntaxStr  reference to C++ string where the text should be stored
      */
     void getSyntaxString(OFString &syntaxStr) const;
 
     /** returns description of all options as a C++ string (multiple text lines).
-     *  Text consists of group headings, short and long option names, option descriptions and additional
-     *  option values.
+     *  Text consists of group headings, short and long option names, option descriptions and
+     *  additional option values.
      *
      ** @param  optionStr  reference to C++ string where the text should be stored
      */
@@ -819,49 +922,62 @@ class OFCommandLine
      */
     void getParamString(OFString &paramStr) const;
 
-    /** returns status of parseLine as a C++ string
+    /** returns status of parseLine() as a C++ string
      *
-     ** @param  status     value returned by method parseLine
+     ** @param  status     value returned by method parseLine()
      *  @param  statusStr  reference to C++string where the text should be stored
      */
     void getStatusString(const E_ParseStatus status,
                          OFString &statusStr);
 
-    /** returns status of getParam as a C++ string
+    /** returns status of getParam() as a C++ string
      *
-     ** @param  status     value returned by method getParam
+     ** @param  status     value returned by method getParam()
      *  @param  statusStr  reference to C++string where the text should be stored
      */
     void getStatusString(const E_ParamValueStatus status,
                          OFString &statusStr);
 
-    /** returns status of getValue as a C++ string
+    /** returns status of getValue() as a C++ string
      *
-     ** @param  status     value returned by method getValue
+     ** @param  status     value returned by method getValue()
      *  @param  statusStr  reference to C++string where the text should be stored
      */
     void getStatusString(const E_ValueStatus status,
                          OFString &statusStr);
 
 
- // --- flags (used for method parseLine)
+ // --- flags (used for method parseLine())
 
-    /// parsing flag to expand wildcard under Windows (very similar to Unix)
-    static const int ExpandWildcards;
+    /// parsing flag to expand wildcard under Windows.
+    /// (not used anymore, only available for reasons of backward compatibility;
+    ///  link 'setargv.obj' to your program if you need wildcard expansion.)
+    static const int PF_ExpandWildcards;
     /// disable support for command files ("@filename") containing additional arguments
-    static const int NoCommandFiles;
+    static const int PF_NoCommandFiles;
+
+ // --- flags (used for method addOption())
+
+    /// exclusive option that overrides any other option (e.g.\ "--help")
+    static const int AF_Exclusive;
+    /// internal option that is not shown in the syntax usage output
+    static const int AF_Internal;
+    /// do not output a warning message if option has never been checked.
+    /// (useful if option is only checked depending on another option)
+    static const int AF_NoWarning;
 
 
  protected:
 
-    /** checks whether given option is valid (starting with an option char and not followed by a number)
+    /** checks whether given option is valid (starting with an option char and not
+     *  followed by a number)
      */
     OFBool checkOption(const OFString &option,
                        const OFBool mode = OFTrue) const;
 
     /** finds specified parameter and sets given iterator to this position
      */
-    OFBool findParam(int pos,
+    OFBool findParam(const int pos,
                      OFListIterator(OFCmdParamPos *) &pos_iter);
 
     /** finds specified option and returns reference to its describing structure
@@ -873,10 +989,26 @@ class OFCommandLine
     void storeParameter(const OFString &param,
                         const int directOption = 0);
 
+    /** parse the given argument list and check it for known options/parameters
+     */
+    E_ParseStatus parseArgumentList(OFList<OFString> &argList,
+                                    const int flags);
+
     /** check whether 'argValue' points to command file and parse content if so
      */
     E_ParseStatus parseCommandFile(const char *argValue,
                                    OFList<OFString> &argList);
+
+#ifdef DCMTK_USE_WCHAR_T
+
+    /** check whether 'argValue' points to command file and parse content if so.
+     *  This is a Windows-specific version supporting wide char encoding (UTF-16).
+     */
+    E_ParseStatus parseCommandFile(const wchar_t *argValue,
+                                   const OFString &strValue,
+                                   OFList<OFString> &argList);
+
+#endif  // DCMTK_USE_WCHAR_T
 
     /** packs the two 16 bit values into one 32 bit value
      */
@@ -889,15 +1021,8 @@ class OFCommandLine
                             unsigned int &longCols,
                             unsigned int &shortCols) const;
 
-#ifdef HAVE_WINDOWS_H
-    /** expands wildcards in specified parameter.
-     *  Very similar to Unix environments, stores each resulting parameter in the argument/parameter list
-     */
-    void expandWildcards(const OFString &param,
-                         int directOption = 0);
-#endif
-
-    /** checks whether number of parameters in parsed command line is within the range of min/max (see below)
+    /** checks whether number of parameters in parsed command line is within the range
+     *  of min/max (see below)
      */
     E_ParseStatus checkParamCount();
 
@@ -905,12 +1030,16 @@ class OFCommandLine
      */
     OFBool getLastArg(OFString &arg);
 
-    /** returns name of parameter which is missed in the parsed command line (used for error output)
+    /** returns name of parameter which is missed in the parsed command line
+     *  (used for error output)
      */
     OFBool getMissingParam(OFString &param);
 
 
  private:
+
+    /// program name, i.e. the value of argv[0]
+    OFString ProgramName;
 
     /// list of valid/defined command line options
     OFList<OFCmdOption *> ValidOptionList;
@@ -924,6 +1053,10 @@ class OFCommandLine
 
     /// list of parameter positions within argument list
     OFList<OFCmdParamPos *> ParamPosList;
+    /// current position in param position list (numeric value)
+    int ParamPosNumber;
+    /// current position in param position list (iterator)
+    OFListIterator(OFCmdParamPos *) ParamPosIterator;
     /// list of option positions within argument list
     OFList<OFListIterator_OFString> OptionPosList;
     /// current position in option position list
@@ -933,11 +1066,13 @@ class OFCommandLine
 
     /// OFTrue if option block is active, OFFalse otherwise
     OFBool OptionBlockMode;
-    /// C++ string conisting of all valid characters introducing an option
+    /// C++ string consisting of all valid characters introducing an option
     OFString OptionChars;
 
     /// OFTrue if an "exclusive" option is used in the command line, OFFalse otherwise
     OFBool ExclusiveOption;
+    /// OFTrue if wide character version of parseLine() has been used, OFFalse otherwise
+    OFBool WideCharMode;
 
     /// width of column for long option names
     int LongColumn;
@@ -963,147 +1098,3 @@ class OFCommandLine
 
 
 #endif
-
-
-/*
- *
- * CVS/RCS Log:
- * $Log: ofcmdln.h,v $
- * Revision 1.1  2006/03/01 20:17:55  lpysher
- * Added dcmtkt ocvs not in xcode  and fixed bug with multiple monitors
- *
- * Revision 1.37  2005/12/08 16:05:48  meichel
- * Changed include path schema for all DCMTK header files
- *
- * Revision 1.36  2003/12/05 13:59:33  joergr
- * Fixed problem with retrieving option values using the new iteration feature.
- *
- * Revision 1.35  2003/12/05 10:36:03  joergr
- * Added support for iterating over command line arguments and options.
- * Removed leading underscore characters from preprocessor symbols (reserved
- * symbols). Updated copyright date where appropriate.
- *
- * Revision 1.34  2003/06/12 13:19:58  joergr
- * Added support for so-called command files ("@filename") which can be used to
- * summarize command line options and parameter
- *
- * Revision 1.33  2003/05/20 08:42:39  joergr
- * Renamed parameters/variables "string" to avoid name clash with STL class.
- *
- * Revision 1.32  2002/12/09 13:04:41  joergr
- * Replaced tab characters by spaces.
- *
- * Revision 1.31  2002/12/05 13:48:21  joergr
- * Make sure that no warning on "unchecked command line options" is reported in
- * debug mode when an exclusive option is used.
- *
- * Revision 1.30  2002/11/27 11:23:04  meichel
- * Adapted module ofstd to use of new header file ofstdinc.h
- *
- * Revision 1.29  2002/09/19 08:30:20  joergr
- * Added general support for "exclusive" command line options besides "--help",
- * e.g. "--version".
- *
- * Revision 1.28  2001/11/09 15:46:42  joergr
- * Renamed some of the getValue/getParam methods to avoid ambiguities reported
- * by certain compilers.
- *
- * Revision 1.27  2001/08/23 16:05:52  meichel
- * Added private undefined copy assignment operators to avoid gcc warnings
- *
- * Revision 1.26  2001/06/01 15:51:32  meichel
- * Updated copyright header
- *
- * Revision 1.25  2000/10/10 12:01:20  meichel
- * Created/updated doc++ comments
- *
- * Revision 1.24  2000/04/14 15:17:11  meichel
- * Adapted all ofstd library classes to consistently use ofConsole for output.
- *
- * Revision 1.23  2000/03/08 16:36:01  meichel
- * Updated copyright header.
- *
- * Revision 1.22  2000/03/07 15:38:49  joergr
- * Changed behaviour of class OFConsoleApplication to support automatic
- * evaluation of "--help" option for command line application with no
- * mandatory parameter.
- *
- * Revision 1.21  2000/03/03 14:02:46  meichel
- * Implemented library support for redirecting error messages into memory
- *   instead of printing them to stdout/stderr for GUI applications.
- *
- * Revision 1.20  2000/03/02 12:39:11  joergr
- * Fixed inconsistency: console applications with no or only optional
- * parameters could not be started without any command line argument
- * because this was always regarded identical with "--help" (print usage).
- *
- * Revision 1.19  1999/10/04 10:02:31  joergr
- * Fixed bug in wildcard expansion (concerning "direct option" feature).
- *
- * Revision 1.18  1999/09/13 16:36:54  joergr
- * Corrected bug in OFCommandLine::findOption() regarding the optional
- * parameter 'pos' specifying a reference command line parameter.
- *
- * Revision 1.17  1999/09/06 16:48:25  joergr
- * Added support to method 'findOption()' to detect options which are
- * 'direct' predecessors of an optionally specified reference parameter.
- *
- * Revision 1.16  1999/05/04 08:38:26  joergr
- * Added DOC++ comments to header file.
- *
- * Revision 1.15  1999/04/29 15:21:45  joergr
- * Removed debug code.
- *
- * Revision 1.13  1999/04/28 13:13:16  joergr
- * Removed some '#ifdef DEBUG' statements from header files to avoid
- * problems with inconsistent compilations.
- *
- * Revision 1.12  1999/04/27 17:46:05  joergr
- * Added some comments (DOC++ style).
- *
- * Revision 1.10  1999/04/26 16:32:47  joergr
- * Added support to define minimum width of short and long option columns.
- * Removed bug: empty parameters have always been interpreted as options.
- * Enhanced support of wildcard expansion under Windows (now very similar
- * to Unix shells).
- *
- * Revision 1.9  1999/03/24 16:59:38  joergr
- * Added optional parameters to define minimum width of columns for short and
- * long options in syntax output.
- * Changed optional integer parameter in method findOption to enum type.
- *
- * Revision 1.8  1999/02/08 11:51:38  joergr
- * Removed '#include <iostream.h>' from ofcmdln.h.
- *
- * Revision 1.7  1999/02/05 14:07:07  joergr
- * Added automatic wildcard expansion for Windows compilers.
- *
- * Revision 1.6  1998/12/02 18:44:25  joergr
- * Introduced test whether added options are correct (starting with defined
- * option character followed by a character which is no number). Changed
- * parse routine to distinguish between options (normally starting mit - or
- * +) and signed numbers which can be valid parameters.
- *
- * Revision 1.5  1998/12/02 17:38:53  joergr
- * Introduced new enum type used to indicate the status when converting
- * parameter values (similar to option values). Changed return value of
- * getParam() methods to this type. Added corresponding getStatusString()
- * method to convert status code to strings.
- *
- * Revision 1.4  1998/12/02 15:19:49  joergr
- * Added methods to convert parameters to signed/unsigned integers and
- * floats. Changed return value of existing getParam() methods.
- *
- * Revision 1.3  1998/11/30 12:30:18  joergr
- * Use lists of pointers (!) to internal data structures to avoid errors with
- * MSVC5 (operator '==' was not defined to compare structures).
- *
- * Revision 1.2  1998/11/30 12:27:02  joergr
- * Introduced additional type definition to avoid errors with MSVC5 when
- * using ListIterators of ListIterators (syntax problems?).
- *
- * Revision 1.1  1998/11/27 12:34:47  joergr
- * Added class to handle command line arguments.
- *
- *
- */

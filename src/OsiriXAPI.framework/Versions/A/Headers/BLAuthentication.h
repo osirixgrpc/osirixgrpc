@@ -17,6 +17,7 @@
 }
 // returns a shared instance of the class
 + sharedInstance;
++(void) setDontAskPrivileges: (BOOL) p;
 // checks if user is authentcated forCommands
 - (BOOL)isAuthenticated:(NSArray *)forCommands;
 // authenticates user forCommands
@@ -28,13 +29,10 @@
 // executes pathToCommand with privileges
 - (BOOL)executeCommand:(NSString *)pathToCommand withArgs:(NSArray *)arguments;
 - (BOOL)executeCommand:(NSString *)pathToCommand withArgs:(NSArray *)arguments wait: (BOOL) wait;
+- (BOOL)executeCommand:(NSString *)pathToCommand withArgs:(NSArray *)arguments wait: (BOOL) wait pipe: (FILE**) pipe;
 // kills the process specified by commandFromPS
 - (BOOL)killProcess:(NSString *)commandFromPS;
 @end
-
-// strings for notification center
-extern NSString* const BLAuthenticatedNotification;
-extern NSString* const BLDeauthenticatedNotification;
 
 
 

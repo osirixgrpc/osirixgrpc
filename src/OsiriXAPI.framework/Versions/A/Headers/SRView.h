@@ -1,16 +1,11 @@
 /*=========================================================================
-  Program:   OsiriX
-
-  Copyright (c) OsiriX Team
-  All rights reserved.
-  Distributed under GNU - LGPL
-  
-  See http://www.osirix-viewer.com/copyright.html for details.
-
-     This software is distributed WITHOUT ANY WARRANTY; without even
-     the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
-     PURPOSE.
-=========================================================================*/
+ Program:   OsiriX
+ Copyright (c) 2010 - 2020 Pixmeo SARL
+ 266 rue de Bernex
+ CH-1233 Bernex
+ Switzerland
+ All rights reserved.
+ =========================================================================*/
 
 #import <AppKit/AppKit.h>
 
@@ -44,6 +39,7 @@
 #include "vtkImageMapToColors.h"
 #include "vtkImageActor.h"
 #include "vtkLight.h"
+#include "vtkCornerAnnotation.h"
 
 #include "vtkPlane.h"
 #include "vtkPlanes.h"
@@ -54,9 +50,9 @@
 #include "vtkPiecewiseFunction.h"
 #include "vtkColorTransferFunction.h"
 #include "vtkVolumeProperty.h"
-#include "vtkVolumeRayCastCompositeFunction.h"
-#include "vtkVolumeRayCastMapper.h"
-#include "vtkVolumeRayCastMIPFunction.h"
+//#include "vtkVolumeRayCastCompositeFunction.h"
+//#include "vtkVolumeRayCastMapper.h"
+//#include "vtkVolumeRayCastMIPFunction.h"
 
 #include "vtkTransform.h"
 #include "vtkSphere.h"
@@ -82,6 +78,7 @@
 #include "vtkSmoothPolyDataFilter.h"
 #include "vtkImageFlip.h"
 #include "vtkTextActor.h"
+#include "vtkCornerAnnotation.h"
 #include "vtkAnnotatedCubeActor.h"
 #include "vtkOrientationMarkerWidget.h"
 #include "vtkTextProperty.h"
@@ -116,6 +113,7 @@ typedef char* vtkOutlineFilter;
 typedef char* vtkLineWidget;
 
 typedef char* vtkTextActor;
+typedef char* vtkCornerAnnotation;
 typedef char* vtkVolumeRayCastMapper;
 typedef char* vtkVolumeRayCastMIPFunction;
 typedef char* vtkVolume;
@@ -200,8 +198,7 @@ typedef struct renderSurface
 	vtkImageImport				*blendingReader;
 	vtkImageFlip				*flip, *blendingFlip;
 	
-	vtkTextActor				*textX;
-	vtkTextActor				*oText[ 4];
+	vtkCornerAnnotation	        *cornerText;
 	
 	NSCursor					*cursor;
 	BOOL						cursorSet;
@@ -296,7 +293,6 @@ typedef struct renderSurface
 	
 	BOOL						_dragInProgress;
 	NSTimer						*_mouseDownTimer;
-	NSImage						*destinationImage;
 	
 	NSPoint						_mouseLocStart;  // mouseDown start point
 	BOOL						_resizeFrame;
@@ -326,9 +322,11 @@ typedef struct renderSurface
 	vtkCallbackCommand				*rightResponder;
 #endif
 	
+    DicomSeries                     *seriesObj;
 }
 
 @property (retain) NSColor *backgroundColor;
+@property (retain) DicomSeries *seriesObj;
 
 #ifdef _STEREO_VISION_
 @property(readwrite) BOOL StereoVisionOn; 
@@ -364,9 +362,11 @@ typedef struct renderSurface
 -(NSImage*) nsimageQuicktime;
 -(NSImage*) nsimage:(BOOL) q;
 -(IBAction) export3DFileFormat :(id) sender;
+- (void) loadSTLFile: (NSString*) s;
 -(IBAction) SwitchStereoMode :(id) sender;
 - (void) setCamera: (Camera*) cam;
 - (Camera*) camera;
+- (IBAction) resetImage:(id) sender;
 -(void) switchOrientationWidget:(id) sender;
 - (void) computeOrientationText;
 - (void) getOrientation: (float*) o;

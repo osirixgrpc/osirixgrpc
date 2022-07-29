@@ -1,19 +1,15 @@
 /*
  *
- *  Copyright (C) 1997-2005, OFFIS
+ *  Copyright (C) 1997-2012, OFFIS e.V.
+ *  All rights reserved.  See COPYRIGHT file for details.
  *
  *  This software and supporting documentation were developed by
  *
- *    Kuratorium OFFIS e.V.
- *    Healthcare Information and Communication Systems
+ *    OFFIS e.V.
+ *    R&D Division Health
  *    Escherweg 2
  *    D-26121 Oldenburg, Germany
  *
- *  THIS SOFTWARE IS MADE AVAILABLE,  AS IS,  AND OFFIS MAKES NO  WARRANTY
- *  REGARDING  THE  SOFTWARE,  ITS  PERFORMANCE,  ITS  MERCHANTABILITY  OR
- *  FITNESS FOR ANY PARTICULAR USE, FREEDOM FROM ANY COMPUTER DISEASES  OR
- *  ITS CONFORMITY TO ANY SPECIFICATION. THE ENTIRE RISK AS TO QUALITY AND
- *  PERFORMANCE OF THE SOFTWARE IS WITH THE USER.
  *
  *  Module:  ofstd
  *
@@ -21,14 +17,6 @@
  *
  *  Purpose: Template class for administrating an unordered set of elements
  *           of an arbitrary type.
- *
- *  Last Update:      $Author: lpysher $
- *  Update Date:      $Date: 2006/03/01 20:17:56 $
- *  Source File:      $Source: /cvsroot/osirix/osirix/Binaries/dcmtk-source/ofstd/ofuoset.h,v $
- *  CVS/RCS Revision: $Revision: 1.1 $
- *  Status:           $State: Exp $
- *
- *  CVS/RCS Log at end of file
  *
  */
 
@@ -152,7 +140,7 @@ template <class T> class OFUnorderedSet : public OFSet<T>
       {
         // if size equals num, we need more space
         if( OFSet<T>::size == OFSet<T>::num )
-          Resize( OFSet<T>::size * 2 );
+          this->Resize( OFSet<T>::size * 2 );
 
         // copy item
         T *newItem = new T( item );
@@ -447,25 +435,3 @@ template <class T> class OFUnorderedSet : public OFSet<T>
 };
 
 #endif
-
-/*
-** CVS/RCS Log:
-** $Log: ofuoset.h,v $
-** Revision 1.1  2006/03/01 20:17:56  lpysher
-** Added dcmtkt ocvs not in xcode  and fixed bug with multiple monitors
-**
-** Revision 1.6  2005/12/12 09:24:27  meichel
-** Added explicit references to parent template class, needed for
-**   gcc 3.4.2 (MinGW port)
-**
-** Revision 1.5  2005/12/08 16:06:12  meichel
-** Changed include path schema for all DCMTK header files
-**
-** Revision 1.4  2002/12/16 10:40:25  wilkens
-** Removed superfluous implementation files and modified header and make files.
-**
-** Revision 1.3  2002/07/09 18:29:47  wilkens
-** Added some more functionality.
-**
-**
-*/

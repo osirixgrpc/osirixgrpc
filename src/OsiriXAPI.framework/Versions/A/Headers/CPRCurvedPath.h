@@ -1,15 +1,10 @@
 /*=========================================================================
  Program:   OsiriX
- 
- Copyright (c) OsiriX Team
+ Copyright (c) 2010 - 2018 Pixmeo SARL
+ 266 rue de Bernex
+ CH-1233 Bernex
+ Switzerland
  All rights reserved.
- Distributed under GNU - LGPL
- 
- See http://www.osirix-viewer.com/copyright.html for details.
- 
- This software is distributed WITHOUT ANY WARRANTY; without even
- the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
- PURPOSE.
  =========================================================================*/
 
 #import "N3Geometry.h"
@@ -46,10 +41,12 @@ extern const int32_t CPRCurvedPathControlTokenNone;
 + (CPRCurvedPathControlToken)controlTokenForNodeIndex:(NSInteger)nodeIndex;
 
 - (id)init;
+- (BOOL) isEqualToPath:(CPRCurvedPath*) other;
 
 - (void)addNode:(NSPoint)point transform:(N3AffineTransform)transform; // adds the point to z = 0 in the arbitrary coordinate space
 - (void)insertPatientNode:(N3Vector)node atIndex:(NSUInteger)index; // adds the point to z = 0 in the arbitrary coordinate space to a given index
 - (void)addPatientNode:(N3Vector)node;
+- (void)addPatientNodes:(NSArray*)nodes;
 - (NSInteger)insertNodeAtRelativePosition:(CGFloat)relativePosition; // returns the node index of the inserted node
 - (void)removeNodeAtIndex:(NSInteger)index;
 - (void)clearPath;
@@ -65,6 +62,7 @@ extern const int32_t CPRCurvedPathControlTokenNone;
 - (CGFloat)relativePositionForNodeAtIndex:(NSUInteger)nodeIndex;
 
 - (NSArray *)transverseSliceRequestsForSpacing:(CGFloat)spacing outputWidth:(NSUInteger)width outputHeight:(NSUInteger)height mmWide:(CGFloat)mmWide; // mmWide is the how wide in patient coordinates the transverse slice should be
+- (NSArray *)transverseSliceRequestsForSpacing:(CGFloat)spacing outputWidth:(NSUInteger)width outputHeight:(NSUInteger)height mmWide:(CGFloat)mmWide angle: (CGFloat) angle;
 
 - (BOOL)isPlaneMeasurable; // bad name, but if this is true, we will let folks make measurements on the generated plane
 

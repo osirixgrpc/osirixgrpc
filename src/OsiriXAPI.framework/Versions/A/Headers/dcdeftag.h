@@ -18,8 +18,6 @@
 #include "dctagkey.h"
 
 #define DCM_DICT_DEFTAG_BUILD_DATE "2015-11-16 19:19:09"
-
-#define DCM_OsirixROI							 DcmTagKey(0x0071, 0x0011)
 #define DCM_HologicTomosynthesisSequence         DcmTagKey(0x7e01, 0x1010)
 
 /*

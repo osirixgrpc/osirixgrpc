@@ -75,16 +75,16 @@
     if ([menuName isEqualToString:@"Server Configuration"]) {
         [serverController showWindow:self];
     }
-    
+
     if ([menuName isEqualToString:@"Script Management"]) {
         [scriptController showWindow:self];
     }
-    
+
     if ([menuName isEqualToString:@"Script Console"]) {
         [taskContoller showWindow:self];
     }
 
-    return 1;
+    return 0;
 }
 
 -(NSArray *)toolbarAllowedIdentifiersForViewer:(ViewerController *)vc

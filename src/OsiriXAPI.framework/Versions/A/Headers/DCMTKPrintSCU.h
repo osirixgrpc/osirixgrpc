@@ -1,16 +1,11 @@
 /*=========================================================================
-  Program:   OsiriX
-
-  Copyright (c) OsiriX Team
-  All rights reserved.
-  Distributed under GNU - LGPL
-  
-  See http://www.osirix-viewer.com/copyright.html for details.
-
-     This software is distributed WITHOUT ANY WARRANTY; without even
-     the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
-     PURPOSE.
-=========================================================================*/
+ Program:   OsiriX
+ Copyright (c) 2010 - 2020 Pixmeo SARL
+ 266 rue de Bernex
+ CH-1233 Bernex
+ Switzerland
+ All rights reserved.
+ =========================================================================*/
 
 #import <Cocoa/Cocoa.h>
 #import "DCMTKServiceClassUser.h"
@@ -19,17 +14,17 @@
 
 #include "osconfig.h" 
 #include "ofstdinc.h"
-#include "dviface.h"
-#include "dvpssp.h"
+//#include "dviface.h"
+//#include "dvpssp.h"
 
 /** \brief DCMTK based PrintSCU Not in use */
 @interface DCMTKPrintSCU : DCMTKServiceClassUser {
 
     const char *              _printerID;             /* printer ID */
     const char *              _cfgName;               /* config read file name */
-    DVPSFilmOrientation       _filmorientation;
-    DVPSTrimMode              _trim;
-    DVPSDecimateCropBehaviour _decimate;
+//    DVPSFilmOrientation       _filmorientation;
+//    DVPSTrimMode              _trim;
+//    DVPSDecimateCropBehaviour _decimate;
     unsigned int          _columns;
     unsigned int          _rows;
     unsigned int          _copies;
@@ -65,8 +60,8 @@
     OFBool                    _annotationIllumination;
     const char *              _annotationString;
 
-    unsigned int          _illumination;
-    unsigned int          _reflection;
+//    unsigned int          _illumination;
+//    unsigned int          _reflection;
 
 }
 
@@ -76,5 +71,7 @@
 			port:(int)port 
 			filesToSend:(NSArray *)filesToSend
 			extraParameters:(NSDictionary *)extraParameters;
+
++ (void) test;
 
 @end

@@ -1,16 +1,11 @@
 /*=========================================================================
-  Program:   OsiriX
-
-  Copyright (c) OsiriX Team
-  All rights reserved.
-  Distributed under GNU - LGPL
-  
-  See http://www.osirix-viewer.com/copyright.html for details.
-
-     This software is distributed WITHOUT ANY WARRANTY; without even
-     the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
-     PURPOSE.
-=========================================================================*/
+ Program:   OsiriX
+ Copyright (c) 2010 - 2020 Pixmeo SARL
+ 266 rue de Bernex
+ CH-1233 Bernex
+ Switzerland
+ All rights reserved.
+ =========================================================================*/
 
 #import <Accelerate/Accelerate.h>
 
@@ -30,8 +25,6 @@ extern "C"
 	extern void vmin(vector float *a, vector float *b, vector float *r, long size);
 	extern void vmin8(vector unsigned char *a, vector unsigned char *b, vector unsigned char *r, long size);
 	#else
-	extern void vmaxIntel( vFloat *a, vFloat *b, vFloat *r, long size);
-	extern void vminIntel( vFloat *a, vFloat *b, vFloat *r, long size);
 	extern void vmax8Intel( vUInt8 *a, vUInt8 *b, vUInt8 *r, long size);
 	extern void vmin8Intel( vUInt8 *a, vUInt8 *b, vUInt8 *r, long size);
 	#endif

@@ -12,7 +12,7 @@
     
     if (series)
     {
-        NSSet *paths = [series paths];
+        NSOrderedSet *paths = [series paths];
         for (NSString *path in paths)
         {
             response->mutable_paths()->Add([path UTF8String]);
@@ -155,7 +155,7 @@
     
     if (series)
     {
-        NSSet *images = [series images];
+        NSOrderedSet *images = [series images];
         for (DicomImage *image in images)
         {
             NSString *imageUID = [cache uidForObject:image];

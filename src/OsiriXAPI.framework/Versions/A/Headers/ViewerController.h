@@ -1,16 +1,11 @@
 /*=========================================================================
-  Program:   OsiriX
-
-  Copyright (c) OsiriX Team
-  All rights reserved.
-  Distributed under GNU - LGPL
-  
-  See http://www.osirix-viewer.com/copyright.html for details.
-
-     This software is distributed WITHOUT ANY WARRANTY; without even
-     the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
-     PURPOSE.
-=========================================================================*/
+ Program:   OsiriX
+ Copyright (c) 2010 - 2020 Pixmeo SARL
+ 266 rue de Bernex
+ CH-1233 Bernex
+ Switzerland
+ All rights reserved.
+ =========================================================================*/
 
 #define MAX4D 500
 
@@ -18,6 +13,7 @@
 #import <AppKit/AppKit.h>
 #import "ROI.h"
 #import "DefaultsOsiriX.h"
+#import "DicomSeries.h"
 
 @class DCMView;
 @class OpacityTransferView;
@@ -42,6 +38,7 @@
 @class ViewerController;
 @class ToolbarPanelController;
 @class KeyImagesWindowController;
+@class O2ViewerThumbnailsMatrix;
 
 #define ToolsMenuIconSize NSMakeSize(28.0, 28.0)
 
@@ -53,32 +50,51 @@
 
 extern BOOL SyncButtonBehaviorIsBetweenStudies;
 
-enum
+typedef enum _OrientationVector
 {
+    eUnknownOrientationVector = -1,
 	eSagittalPos = 0,		// 0
 	eSagittalNeg,			// 1
 	eCoronalPos,			// 2
 	eCoronalNeg,			// 3
 	eAxialPos,				// 4
 	eAxialNeg				// 5
-};
+} OrientationVector;
+
+typedef enum _Orientation
+{
+    eUnknownOrientation = -1,
+    eAxial = 0,         // 0
+    eCoronal,			// 1
+    eSagittal,			// 2
+} Orientation;
+
+typedef enum _ThickSlabMode
+{
+    thickSlabOff = 0,		// 0
+    thickSlabMean,			// 1
+    thickSlabMIP,			// 2
+    thickSlabMinIP,			// 3
+    thickSlabVRUp,			// 4
+    thickSlabVRDown			// 5
+} ThickSlabMode;
 
 /** \brief Window Controller for 2D Viewer*/
 
-@interface ViewerController : OSIWindowController  <NSWindowDelegate, NSSplitViewDelegate, NSToolbarDelegate>
+@interface ViewerController : OSIWindowController  <NSWindowDelegate, NSSplitViewDelegate, NSToolbarDelegate, NSMenuDelegate>
 {
 	NSRecursiveLock	*roiLock;
 	NSConditionLock *flipDataThread, *convThread;
 	NSThread *loadingThread;
     BOOL awakeFromNib, firstBuildMatrix;
-    NSTimeInterval windowInitTime;
+    
 	
     ToolbarPanelController *toolbarPanel;
     
 	IBOutlet StudyView		*studyView;
 			SeriesView		*seriesView;
 
-	IBOutlet NSMatrix		*previewMatrix;
+	IBOutlet O2ViewerThumbnailsMatrix		*previewMatrix;
 	IBOutlet NSScrollView	*previewMatrixScrollView;
     IBOutlet NSView         *previewRootView;
     
@@ -105,7 +121,7 @@ enum
 	
 	short					currentOrientationTool, originalOrientation;
 	
-    IBOutlet NSSlider       *slider, *speedSlider;
+    IBOutlet NSSlider       *speedSlider;
 	IBOutlet NSButton		*loopButton;
     IBOutlet NSView         *speedView;
     IBOutlet NSView         *toolsView;
@@ -173,8 +189,6 @@ enum
 	IBOutlet NSMatrix		*customVectors, *customOrigin;
 
     IBOutlet NSWindow       *setWLWWWindow;
-    IBOutlet NSTextField    *wlset, *fromset;
-    IBOutlet NSTextField    *wwset, *toset;
 			
     IBOutlet NSWindow       *addWLWWWindow;
     IBOutlet NSTextField    *newName;
@@ -221,9 +235,12 @@ enum
 	IBOutlet NSButton		*imageAllViewers;
 	
 	IBOutlet NSWindow		*displaySUVWindow;
-	IBOutlet NSForm			*suvForm;
 	IBOutlet NSMatrix		*suvConversion;
-	
+    
+    float SUV_PatientsWeight,SUV_InjectedDose, SUV_CorrectedDose, SUV_HalfLife, SUV_PatientsSize, SUV_LBM;
+    NSDate *SUV_InjectionTime, *SUV_AcquisitionTime;
+    int SUV_PatientsSex;
+    
     IBOutlet NSView         *reportPluginsView;
     IBOutlet NSImageView	*reportPluginsViewImageView;
     IBOutlet NSPopUpButton	*reportPluginsViewPopUpButton;
@@ -262,12 +279,15 @@ enum
     IBOutlet NSButton*      comparativesButton;
     NSNumber* flagListPODComparatives;
 	
-	NSMutableArray			*fileList[ MAX4D];
-    NSMutableArray          *pixList[ MAX4D], *roiList[ MAX4D], *copyRoiList[ MAX4D];
+	NSMutableArray			<DicomImage *> *fileList[ MAX4D];
+    NSMutableArray          <DCMPix *> *pixList[ MAX4D];
+    NSMutableArray          <NSMutableArray *> *roiList[ MAX4D], *copyRoiList[ MAX4D];
 	NSData					*volumeData[ MAX4D];
-	short					curMovieIndex, maxMovieIndex, orientationVector;
+	short					curMovieIndex, maxMovieIndex;
+    OrientationVector       orientationVector;
     NSToolbar               *toolbar;
-	
+    NSMutableDictionary     *toolbarItemCache;
+    
 	float					direction;
 	
 	float					factorPET2SUV;
@@ -279,9 +299,8 @@ enum
     
     NSTimer					*timer, *movieTimer;//, *timeriChat;
     NSTimeInterval			lastTime, lastTimeFrame;
+    float                   curImageRemaining;
 	NSTimeInterval			lastMovieTime;
-	
-	NSMutableArray			*ROINamesArray;
 	
 	ThickSlabController		*thickSlab;
 	
@@ -289,7 +308,8 @@ enum
 	
 	BOOL					windowWillClose;
 	BOOL					postprocessed;
-	
+    BOOL                    subtract1seriesToOther4DSeriesApplied;
+    
 	NSRect					standardRect;
 	
 	// Brush ROI Filter
@@ -360,6 +380,7 @@ enum
     long                    numberOfImagesForSeriesAtInit;
     
     BOOL                    willAdjustNSSlider;
+    NSTimeInterval          willAdjustNSSliderTimeInterval;
     BOOL                    movieViewer; // Will contain 4D dataset
     
     KeyImagesWindowController *keysCtrl;
@@ -369,10 +390,39 @@ enum
     NSTimer *autoKeyImageTimer;
     NSPoint previousMousePosition;
     NSTimeInterval autoKeyImageChangeImageDataTime;
+    
+    NSInteger firstROIorKeyImage;
+    
+    NSString *sortedByKey;
+    BOOL sortedInAscending;
+    
+    int setOrientationResliceRecursiveProtection;
+    
+    NSImage *reportIcon;
+    NSString *reportURL;
+    
+    IBOutlet NSWindow *recalibrateWindow;
+    
+    BOOL changeImageData;
+    
+    int *viewedImagesArray;
+    id annotationsObserver;
+    
+    NSImage *toolbarMenuItemImage;
+    NSArray *allStudiesMatrixModalities;
+    
+    int setOrientation;
+    
+    BOOL newViewerControllerAllocated;
 }
-@property BOOL preFlipped;
+@property BOOL preFlipped, sortedInAscending;
+@property(nonatomic) int *viewedImagesArray;
+@property(retain) id annotationsObserver;
+@property(retain) NSString *sortedByKey, *reportURL;
+@property(retain, nonatomic) NSImage *reportIcon;
 @property(retain) NSCalendarDate *injectionDateTime;
-@property(readonly) NSSlider *slider;
+//@property(readonly) NSSlider *slider;
+@property(readonly) KeyImagesWindowController *keysCtrl;
 @property(readonly) short currentOrientationTool, originalOrientation;
 @property(readonly) NSTimer	*timer;
 @property(readonly) NSButton *keyImageCheck;
@@ -389,20 +439,36 @@ enum
 @property(readonly) NSButton *blendingResample;
 @property(readonly) BOOL titledGantry;
 @property(readonly) ToolbarPanelController *toolbarPanel;
-@property(readonly) NSMatrix *previewMatrix;
+@property(readonly) O2ViewerThumbnailsMatrix *previewMatrix;
 @property(readonly) NSScrollView *previewMatrixScrollView;
-@property(readonly) NSTimeInterval windowInitTime;
+
+@property(nonatomic) float SUV_PatientsWeight,SUV_InjectedDose, SUV_CorrectedDose, SUV_HalfLife, SUV_PatientsSize, SUV_LBM;
+@property(nonatomic) int SUV_PatientsSex;
+@property(retain) NSDate *SUV_InjectionTime, *SUV_AcquisitionTime;
 
 /** Return the 'dragged' window, the destination window is contained in the 'viewerController' object of the 'PluginFilter' object */
 @property(nonatomic, retain) ViewerController *blendedWindow;
 
 @property(retain) NSNumber* flagListPODComparatives;
+@property(retain) NSThread *loadingThread;
 @property BOOL movieViewer;
+
+@property (retain) NSSliderTouchBarItem *thickSlabSliderTouchBarItem;
+@property (retain) NSScrubber *reconstructionToolsScrubber;
+@property (retain) NSScrubber *seriesThumbnailsScrubber;
+@property (retain) NSSliderTouchBarItem *ROIsThicknessSliderTouchBarItem;
+@property (retain) NSSliderTouchBarItem *ROIsOpacitySliderTouchBarItem;
+
+@property (retain) NSArray *allStudiesMatrixModalities;
 
 /** Array of all 2D Viewers */
 + (NSMutableArray*) getDisplayed2DViewers;
++ (NSCountedSet*) displayedPatientUIDs;
 + (NSMutableArray*) get2DViewers;
++ (NSArray*) get2DViewersObjectIDs;
++ (int) countOf2DViewers;
 + (NSArray*) getDisplayedSeries;
++ (NSArray*) getDisplayedStudies;
 + (BOOL) isFrontMost2DViewer: (NSWindow*) ww;
 + (ViewerController*) frontMostDisplayed2DViewer;
 + (ViewerController*) frontMostDisplayed2DViewerForScreen: (NSScreen*) screen;
@@ -411,6 +477,10 @@ enum
 + (NSMutableArray*) poolOf2DViewers;
 + (NSArray*) studyColors;
 + (void) clearFrontMost2DViewerCache;
++ (BOOL) dontUseTooltipForThumbnail;
++ (BOOL) processReslice:(long) directionm pixList:(NSArray**) pixList fileList:(NSArray**) fileList maxMovieIndex: (int) maxMovieIndex processorsLock:(NSConditionLock*) processorsLock newPixList: (NSMutableArray*) xPix newFileList: (NSMutableArray*) xFiles newData:(NSMutableArray*) xData;
++(BOOL) processReslice:(long) directionm pixList:(NSArray**) pixList fileList:(NSArray**) fileList maxMovieIndex: (int) maxMovieIndex processorsLock:(NSConditionLock*) processorsLock newPixList: (NSMutableArray*) xPix newFileList: (NSMutableArray*) xFiles newData:(NSMutableArray*) xData square: (BOOL) square;
++(NSArray*) processResliceFrom:(SliceOrientation) from to:(SliceOrientation) to pixList:(NSArray*) pixList square: (BOOL) square;
 
 /**  Create a new 2D Viewer
 * @param pixList Array of DCMPix objects
@@ -486,6 +556,7 @@ enum
 - (NSMutableArray*) roiList;
 - (NSMutableArray*) roiList: (long) i;
 - (void) setRoiList: (long) i array:(NSMutableArray*) a;
+- (void) addROI: (ROI*) r;
 
 /**  Create a new MyPoint object */
 - (MyPoint*) newPoint: (float) x :(float) y;
@@ -580,6 +651,7 @@ enum
 
 + (int) getToolEquivalentToHotKey:(HotKeyActions) h;
 + (int) getHotKeyEquivalentToTool:(ToolMode) h;
++ (void)sendImagesStoredInExportToMail;
 //- (IBAction) startMSRG:(id) sender;
 //- (IBAction) startMSRGWithAutomaticBounding:(id) sender;
 //arg: this function will automatically scan the buffer to create a textured ROI (tPlain) for all slices
@@ -600,9 +672,13 @@ enum
 - (void) brushTool:(id) sender;
 - (IBAction) setButtonTool:(id) sender;
 - (IBAction) shutterOnOff:(id) sender;
+- (IBAction)showCurrentSeriesInSeriesList:(id) sender;
 - (void) setImageIndex:(long) i;
 - (void) setImage:(DicomImage*) image;
+- (void) setImage:(DicomImage*) image andApplyROIWLWW:(BOOL) applyROIWLWW;
+- (void) setImageIndex:(long) i andApplyROIWLWW:(BOOL) applyROIWLWW;
 - (void) setPix:(DCMPix*) pix;
++ (void) preferencesUpdated;
 - (long) imageIndex;
 - (IBAction) editSUVinjectionTime:(id)sender;
 - (IBAction) ok:(id)sender;
@@ -614,6 +690,7 @@ enum
 - (void) setUpdateTilingViewsValue:(BOOL) v;
 - (IBAction) ConvertToBWMenu:(id) sender;
 - (NSScreen*) get3DViewerScreen: (ViewerController*) v;
++ (void) place3DViewerWindow:(NSWindowController*) viewer from2DViewer: (ViewerController*) viewer2D;
 - (void) place3DViewerWindow:(NSWindowController*) viewer;
 - (IBAction) export2PACS:(id) sender;
 - (void) print:(id) sender;
@@ -621,9 +698,9 @@ enum
 - (IBAction) roiIntDeleteAllROIsWithSameName :(NSString*) name;
 - (IBAction) roiDeleteAllROIsWithSameName:(id) sender;
 - (IBAction) updateZVector:(id) sender;
-- (IBAction) roiEdit3DROISettings:(id)sender;
 - (void)displayDICOMOverlays: (id)sender;
 - (IBAction)resampleDataBy2:(id)sender;
+- (BOOL) validateToolbarItemIdentifier: (NSString *) toolbarItemIdentifier;
 - (void) setStatusValue:(int) v;
 - (BOOL)resampleDataBy2;
 - (BOOL)resampleDataWithFactor:(float)factor;
@@ -640,7 +717,7 @@ enum
 - (void) roiLoadFromSeries: (NSString*) filename;
 - (void) offsetMatrixSetting: (int) twentyFiveCodes;
 - (IBAction) mergeBrushROI: (id) sender;
-- (IBAction) mergeBrushROI: (id) sender ROIs: (NSArray*) s;
+- (ROI*) mergeBrushROI: (id) sender ROIs: (NSArray*) s;
 - (IBAction) subSumSlider:(id) sender;
 - (IBAction) subSharpen:(id) sender;
 - (void) displayWarningIfGantryTitled;
@@ -660,8 +737,11 @@ enum
 - (IBAction)setKeyImage:(id)sender;
 - (IBAction) roiSelectDeselectAll:(id) sender;
 - (BOOL) FullScreenON;
++ (void) quitAllFullScreenViewers;
 - (void) setROITool:(id) sender;
 - (void) setROIToolTag:(ToolMode) roitype;
+- (void) setToolTag:(ToolMode) toolTag;
+- (ToolMode) ROIToolTag;
 - (void) changeImageData:(NSMutableArray*)f :(NSMutableArray*)d :(NSData*) v :(BOOL) applyTransition;
 - (ViewerController*) copyViewerWindow;
 - (void) copyVolumeData: (NSData**) vD andDCMPix: (NSMutableArray **) newPixList forMovieIndex: (int) v;
@@ -680,6 +760,7 @@ enum
 - (IBAction) endNameWLWW:(id) sender;
 - (IBAction) endSetWLWW:(id) sender;
 - (IBAction) updateSetWLWW:(id) sender;
+- (IBAction) setWLWW:(id) sender forDCMViews: (NSArray*) dcmViews;
 - (IBAction) endConv:(id) sender;
 - (IBAction) endCLUT:(id) sender;
 - (IBAction) endBlendingType:(id) sender;
@@ -693,19 +774,29 @@ enum
 - (void) setupToolbar;
 - (NSToolbar*) toolbar;
 - (void) PlayStop:(id) sender;
+- (BOOL) isPlaying;
++ (BOOL) isOneViewerPlaying;
 - (void) performAnimationIfPlaying;
 - (short) getNumberOfImages;
 - (float) frameRate;
 - (void) adjustSlider;
 - (void) sliderFusionAction:(id) sender;
+- (void) sliderFusionAdd:(int) value;
+- (void) sliderFusionSet:(int) value;
 - (void) popFusionAction:(id) sender;
 - (void) propagateSettings;
 - (void) setCurWLWWMenu:(NSString*)s ;
 - (float) highLighted;
 - (void) setHighLighted: (float) b;
 - (void) syncThumbnails;
+- (BOOL) syncWithViewer: (ViewerController*) v;
 - (void) checkBuiltMatrixPreview;
 - (void)comparativeRefresh:(NSString*) patientUID;
+- (void) loadViewedImagesArray;
++ (NSArray*) buildApplyProtocolMenuForModality: (NSString*) modalities;
++ (NSColor*)_selectedItemColor;
++ (NSColor*)_fusionedItemColor;
++ (NSColor*)_openItemColor;
 
 /** Used to determine in the Window Controller is a 2D Viewer.
 * Always return YES
@@ -721,6 +812,8 @@ enum
 /** String for the currently selected Opacity menu item */
 - (NSString*) curOpacityMenu;
 
+/** String for the currently selected Convolution menu item */
+- (NSString*) curConvMenu;
 
 /** Flag to indicate the the window will close */
 - (BOOL) windowWillClose;
@@ -734,7 +827,6 @@ enum
 - (void)blendWithViewer:(ViewerController *)bc blendingType:(int)blendingType;
 - (void)blendingSheetDidEnd:(NSWindow *)sheet returnCode:(int)returnCode contextInfo:(void *)contextInfo;
 - (void)computeContextualMenu;
-- (void)computeContextualMenuForROI:(ROI*)roi;
 
 /** Modality of the study */
 - (NSString*) modality;
@@ -757,6 +849,7 @@ enum
 - (IBAction) roiSetPixels:(id) sender;
 - (IBAction) roiPropagateSetup: (id) sender;
 - (IBAction) roiPropagate:(id) sender;
+- (void) roiPropagateToEntireSeries: (ROI*) roi alias: (BOOL) alias;
 - (void) loadSeriesUp;
 - (void) loadSeriesDown;
 - (void) showWindowTransition;
@@ -772,6 +865,7 @@ enum
 - (IBAction) orthogonalMPRViewer:(id) sender;
 
 - (void) showCurrentThumbnail:(id) sender;
+- (void) showCurrentThumbnail:(id) sender centered: (BOOL) centered;
 
 #ifndef OSIRIX_LIGHT
 /** ReSort the images displayed according to IMAGE Table field */
@@ -818,6 +912,7 @@ enum
 //- (IBAction) setCurvedMPRslider:(id) sender;
 //- (IBAction) endCurvedMPR:(id) sender;
 - (IBAction) resetImage:(id) sender;
++ (BOOL) isAnimatingCells;
 + (NSArray*) defaultROINames;
 + (void) setDefaultROINames: (NSArray*) names;
 #ifndef OSIRIX_LIGHT
@@ -849,6 +944,7 @@ enum
 - (IBAction) endRoiRename:(id) sender;
 - (IBAction) roiRename:(id) sender;
 - (void) SyncSeries:(id) sender;
+- (void) checkIfThumbnailsWindowIsDisplayed;
 - (DicomStudy *)currentStudy;
 - (DicomSeries *)currentSeries;
 - (DicomImage *)currentImage;
@@ -872,7 +968,7 @@ enum
 
 - (void) revertSeries:(id) sender;
 - (void) executeRevert;
-- (NSImage*) imageForROI: (int) i;
++ (NSImage*) imageForROI: (int) i;
 - (void) ActivateBlending:(ViewerController*) bC;
 - (void) setFusionMode:(long) m;
 - (short) curMovieIndex;
@@ -882,10 +978,9 @@ enum
 #endif
 - (void) convertPETtoSUV;
 - (IBAction) fullScreenMenu:(id) sender;
-- (int) imageIndexOfROI:(ROI*) c;
 - (void)exportTextFieldDidChange:(NSNotification *)note;
-- (short) orientationVector;
-- (short) orthogonalOrientation;
+- (OrientationVector) orientationVector;
+- (Orientation) orthogonalOrientation;
 // functions s that plugins can also play with globals
 + (ViewerController *) draggedController;
 + (void) setDraggedController:(ViewerController *) controller;
@@ -919,6 +1014,7 @@ enum
 - (void) setRegisteredViewer: (ViewerController*) viewer;
 - (void)setMode:(long)mode toROIGroupWithID:(NSTimeInterval)groupID;
 - (void)selectROI:(ROI*)roi deselectingOther:(BOOL)deselectOther;
+- (void)selectROI:(ROI*)roi deselectingOther:(BOOL)deselectOther bringToFront:(BOOL) bringToFront;
 - (void)deselectAllROIs;
 - (void) refreshToolbar;
 - (void) redrawToolbar;

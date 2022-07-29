@@ -1,33 +1,21 @@
 /*
  *
- *  Copyright (C) 1994-2005, OFFIS
+ *  Copyright (C) 2002-2011, OFFIS e.V.
+ *  All rights reserved.  See COPYRIGHT file for details.
  *
  *  This software and supporting documentation were developed by
  *
- *    Kuratorium OFFIS e.V.
- *    Healthcare Information and Communication Systems
+ *    OFFIS e.V.
+ *    R&D Division Health
  *    Escherweg 2
  *    D-26121 Oldenburg, Germany
  *
- *  THIS SOFTWARE IS MADE AVAILABLE,  AS IS,  AND OFFIS MAKES NO  WARRANTY
- *  REGARDING  THE  SOFTWARE,  ITS  PERFORMANCE,  ITS  MERCHANTABILITY  OR
- *  FITNESS FOR ANY PARTICULAR USE, FREEDOM FROM ANY COMPUTER DISEASES  OR
- *  ITS CONFORMITY TO ANY SPECIFICATION. THE ENTIRE RISK AS TO QUALITY AND
- *  PERFORMANCE OF THE SOFTWARE IS WITH THE USER.
  *
  *  Module:  dcmdata
  *
  *  Author:  Marco Eichelberg
  *
  *  Purpose: encoder codec class for RLE
- *
- *  Last Update:      $Author: lpysher $
- *  Update Date:      $Date: 2006/03/01 20:15:22 $
- *  Source File:      $Source: /cvsroot/osirix/osirix/Binaries/dcmtk-source/dcmdata/dcrlecce.h,v $
- *  CVS/RCS Revision: $Revision: 1.1 $
- *  Status:           $State: Exp $
- *
- *  CVS/RCS Log at end of file
  *
  */
 
@@ -43,10 +31,10 @@ class DcmItem;
  *  This class only supports compression, it neither implements
  *  decoding nor transcoding.
  */
-class DcmRLECodecEncoder: public DcmCodec
+class DCMTK_DCMDATA_EXPORT DcmRLECodecEncoder: public DcmCodec
 {
-public:  
- 
+public:
+
   /// default constructor
   DcmRLECodecEncoder();
 
@@ -70,6 +58,42 @@ public:
     const DcmCodecParameter * cp,
     const DcmStack& objStack) const;
 
+  /** decompresses a single frame from the given pixel sequence and
+   *  stores the result in the given buffer.
+   *  @param fromParam representation parameter of current compressed
+   *    representation, may be NULL.
+   *  @param fromPixSeq compressed pixel sequence
+   *  @param cp codec parameters for this codec
+   *  @param dataset pointer to dataset in which pixel data element is contained
+   *  @param frameNo number of frame, starting with 0 for the first frame
+   *  @param startFragment index of the compressed fragment that contains
+   *    all or the first part of the compressed bitstream for the given frameNo.
+   *    Upon successful return this parameter is updated to contain the index
+   *    of the first compressed fragment of the next frame.
+   *    When unknown, zero should be passed. In this case the decompression
+   *    algorithm will try to determine the index by itself, which will always
+   *    work if frames are decompressed in increasing order from first to last,
+   *    but may fail if frames are decompressed in random order, multiple fragments
+   *    per frame and multiple frames are present in the dataset, and the offset
+   *    table is empty.
+   *  @param buffer pointer to buffer where frame is to be stored
+   *  @param bufSize size of buffer in bytes
+   *  @param decompressedColorModel upon successful return, the color model
+   *    of the decompressed image (which may be different from the one used
+   *    in the compressed images) is returned in this parameter.
+   *  @return EC_Normal if successful, an error code otherwise.
+   */
+  virtual OFCondition decodeFrame(
+    const DcmRepresentationParameter * fromParam,
+    DcmPixelSequence * fromPixSeq,
+    const DcmCodecParameter * cp,
+    DcmItem *dataset,
+    Uint32 frameNo,
+    Uint32& startFragment,
+    void *buffer,
+    Uint32 bufSize,
+    OFString& decompressedColorModel) const;
+
   /** compresses the given uncompressed DICOM image and stores
    *  the result in the given pixSeq element.
    *  @param pixelData pointer to the uncompressed image data in OW format
@@ -78,7 +102,7 @@ public:
    *  @param toRepParam representation parameter describing the desired
    *    compressed representation (e.g. JPEG quality)
    *  @param pixSeq compressed pixel sequence (pointer to new DcmPixelSequence object
-   *    allocated on heap) returned in this parameter upon success.   
+   *    allocated on heap) returned in this parameter upon success.
    *  @param cp codec parameters for this codec
    *  @param objStack stack pointing to the location of the pixel data
    *    element in the current dataset.
@@ -100,7 +124,7 @@ public:
    *  @param toRepParam representation parameter describing the desired
    *    new compressed representation (e.g. JPEG quality)
    *  @param toPixSeq compressed pixel sequence (pointer to new DcmPixelSequence object
-   *    allocated on heap) returned in this parameter upon success.   
+   *    allocated on heap) returned in this parameter upon success.
    *  @param cp codec parameters for this codec
    *  @param objStack stack pointing to the location of the pixel data
    *    element in the current dataset.
@@ -126,43 +150,43 @@ public:
     const E_TransferSyntax oldRepType,
     const E_TransferSyntax newRepType) const;
 
-private: 
+  /** determine color model of the decompressed image
+   *  @param fromParam representation parameter of current compressed
+   *    representation, may be NULL
+   *  @param fromPixSeq compressed pixel sequence
+   *  @param cp codec parameters for this codec
+   *  @param dataset pointer to dataset in which pixel data element is contained
+   *  @param dataset pointer to DICOM dataset in which this pixel data object
+   *    is located. Used to access photometric interpretation.
+   *  @param decompressedColorModel upon successful return, the color model
+   *    of the decompressed image (which may be different from the one used
+   *    in the compressed images) is returned in this parameter
+   *  @return EC_Normal if successful, an error code otherwise
+   */
+  virtual OFCondition determineDecompressedColorModel(
+    const DcmRepresentationParameter *fromParam,
+    DcmPixelSequence *fromPixSeq,
+    const DcmCodecParameter *cp,
+    DcmItem *dataset,
+    OFString &decompressedColorModel) const;
+
+private:
 
   /// private undefined copy constructor
   DcmRLECodecEncoder(const DcmRLECodecEncoder&);
-  
+
   /// private undefined copy assignment operator
   DcmRLECodecEncoder& operator=(const DcmRLECodecEncoder&);
 
   /** create Derivation Description.
    *  @param dataset dataset to be modified
-   *  @param ratio image compression ratio. This is the real effective ratio 
+   *  @param ratio image compression ratio. This is the real effective ratio
    *    between compressed and uncompressed image, i. e. 2.5 means a 2.5:1 compression.
    *  @return EC_Normal if successful, an error code otherwise
    */
   static OFCondition updateDerivationDescription(
       DcmItem *dataset,
       double ratio);
-  
 };
 
 #endif
-
-/*
- * CVS/RCS Log
- * $Log: dcrlecce.h,v $
- * Revision 1.1  2006/03/01 20:15:22  lpysher
- * Added dcmtkt ocvs not in xcode  and fixed bug with multiple monitors
- *
- * Revision 1.3  2005/12/08 16:28:34  meichel
- * Changed include path schema for all DCMTK header files
- *
- * Revision 1.2  2003/03/21 13:06:46  meichel
- * Minor code purifications for warnings reported by MSVC in Level 4
- *
- * Revision 1.1  2002/06/06 14:52:35  meichel
- * Initial release of the new RLE codec classes
- *   and the dcmcrle/dcmdrle tools in module dcmdata
- *
- *
- */

@@ -1,15 +1,10 @@
 /*=========================================================================
  Program:   OsiriX
- 
- Copyright (c) OsiriX Team
+ Copyright (c) 2010 - 2018 Pixmeo SARL
+ 266 rue de Bernex
+ CH-1233 Bernex
+ Switzerland
  All rights reserved.
- Distributed under GNU - LGPL
- 
- See http://www.osirix-viewer.com/copyright.html for details.
- 
- This software is distributed WITHOUT ANY WARRANTY; without even
- the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
- PURPOSE.
  =========================================================================*/
 
 #import <Cocoa/Cocoa.h>
@@ -251,7 +246,6 @@ typedef NSInteger CPRExportRotationSpan;
 - (BOOL) getMovieDataAvailable;
 - (void)Apply3DOpacityString:(NSString*)str;
 - (void)Apply2DOpacityString:(NSString*)str;
-- (NSImage*) imageForROI: (int) i;
 - (void) setROIToolTag:(ToolMode) roitype;
 - (IBAction) roiGetInfo:(id) sender;
 - (void) delayedFullLODRendering: (id) sender;

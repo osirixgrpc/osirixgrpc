@@ -1,33 +1,21 @@
 /*
  *
- *  Copyright (C) 1994-2005, OFFIS
+ *  Copyright (C) 1994-2011, OFFIS e.V.
+ *  All rights reserved.  See COPYRIGHT file for details.
  *
  *  This software and supporting documentation were developed by
  *
- *    Kuratorium OFFIS e.V.
- *    Healthcare Information and Communication Systems
+ *    OFFIS e.V.
+ *    R&D Division Health
  *    Escherweg 2
  *    D-26121 Oldenburg, Germany
  *
- *  THIS SOFTWARE IS MADE AVAILABLE,  AS IS,  AND OFFIS MAKES NO  WARRANTY
- *  REGARDING  THE  SOFTWARE,  ITS  PERFORMANCE,  ITS  MERCHANTABILITY  OR
- *  FITNESS FOR ANY PARTICULAR USE, FREEDOM FROM ANY COMPUTER DISEASES  OR
- *  ITS CONFORMITY TO ANY SPECIFICATION. THE ENTIRE RISK AS TO QUALITY AND
- *  PERFORMANCE OF THE SOFTWARE IS WITH THE USER.
  *
  *  Module:  dcmdata
  *
  *  Author:  Andrew Hewett
  *
  *  Purpose: Interface for a dictionary entry in the loadable DICOM data dictionary
- *
- *  Last Update:      $Author: lpysher $
- *  Update Date:      $Date: 2006/03/01 20:15:19 $
- *  Source File:      $Source: /cvsroot/osirix/osirix/Binaries/dcmtk-source/dcmdata/dcdicent.h,v $
- *  CVS/RCS Revision: $Revision: 1.1 $
- *  Status:           $State: Exp $
- *
- *  CVS/RCS Log at end of file
  *
  */
 
@@ -38,7 +26,7 @@
 #include "dctagkey.h"
 #include "dcvr.h"
 
-#define INCLUDE_CSTRING
+#define INCLUDE_CSTRING               /* for strcmp() */
 #include "ofstdinc.h"
 
 /// constant describing an unlimited VM
@@ -67,7 +55,7 @@ enum DcmDictRangeRestriction
 /** each object of this class manages one entry of the
  *  global DICOM data dictionary.
  */
-class DcmDictEntry: public DcmTagKey
+class DCMTK_DCMDATA_EXPORT DcmDictEntry: public DcmTagKey
 {
 public:
 
@@ -318,9 +306,11 @@ public:
             return OFFalse;
         else
         {
-            return
-                DCM_INRANGE(key.getGroup(), getGroup(), getUpperGroup()) &&
-                DCM_INRANGE(key.getElement(), getElement(), getUpperElement());
+            const OFBool groupMatches=DCM_INRANGE(key.getGroup(), getGroup(), getUpperGroup());
+            OFBool found=groupMatches && DCM_INRANGE(key.getElement(), getElement(), getUpperElement());
+            if (!found && groupMatches && privCreator)
+                found=DCM_INRANGE(key.getElement() & 0xFF, getElement(), getUpperElement());
+            return found;
         }
     }
 
@@ -367,7 +357,7 @@ public:
     }
 
     /// friend operator<<
-    friend ostream& operator<<(ostream& s, const DcmDictEntry& e);
+    friend DCMTK_DCMDATA_EXPORT STD_NAMESPACE ostream& operator<<(STD_NAMESPACE ostream& s, const DcmDictEntry& e);
 
 private:
 
@@ -408,78 +398,3 @@ private:
 };
 
 #endif /* !DCDICENT_H */
-
-
-/*
-** CVS/RCS Log:
-** $Log: dcdicent.h,v $
-** Revision 1.1  2006/03/01 20:15:19  lpysher
-** Added dcmtkt ocvs not in xcode  and fixed bug with multiple monitors
-**
-** Revision 1.20  2005/12/08 16:28:08  meichel
-** Changed include path schema for all DCMTK header files
-**
-** Revision 1.19  2004/01/16 14:07:03  joergr
-** Removed acknowledgements with e-mail addresses from CVS log.
-**
-** Revision 1.18  2003/08/14 09:00:56  meichel
-** Adapted type casts to new-style typecast operators defined in ofcast.h
-**
-** Revision 1.17  2002/11/27 12:07:21  meichel
-** Adapted module dcmdata to use of new header file ofstdinc.h
-**
-** Revision 1.16  2002/07/23 14:21:25  meichel
-** Added support for private tag data dictionaries to dcmdata
-**
-** Revision 1.15  2002/04/16 13:41:44  joergr
-** Added configurable support for C++ ANSI standard includes (e.g. streams).
-**
-** Revision 1.14  2001/06/01 15:48:36  meichel
-** Updated copyright header
-**
-** Revision 1.13  2000/03/08 16:26:13  meichel
-** Updated copyright header.
-**
-** Revision 1.12  1999/03/31 09:24:35  meichel
-** Updated copyright header in module dcmdata
-**
-** Revision 1.11  1998/07/15 15:48:45  joergr
-** Removed several compiler warnings reported by gcc 2.8.1 with
-** additional options, e.g. missing copy constructors and assignment
-** operators, initialization of member variables in the body of a
-** constructor instead of the member initialization list, hiding of
-** methods by use of identical names, uninitialized member variables,
-** missing const declaration of char pointers. Replaced tabs by spaces.
-**
-** Revision 1.10  1997/08/26 13:44:59  hewett
-** Modified constructors to take const parameters.
-**
-** Revision 1.9  1997/07/31 14:40:35  meichel
-** Created copy constructor for class DcmDictEntry, required by dcmcheck.
-**
-** Revision 1.8  1997/07/21 08:25:07  andreas
-** - Replace all boolean types (BOOLEAN, CTNBOOLEAN, DICOM_BOOL, BOOL)
-**   with one unique boolean type OFBool.
-**
-** Revision 1.7  1997/04/18 08:04:39  andreas
-** - Minor corrections: correct some warnings of the SUN-C++ Compiler
-**   concerning the assignments of wrong types and inline compiler
-**   errors
-**
-** Revision 1.6  1997/04/15 16:25:05  hewett
-** Corrected data dictionary bug whereby the even/odd range restrictions
-** were not being taken into consideration when searching the dictionary.
-**
-** Revision 1.5  1996/09/24 16:24:58  hewett
-** Added preliminary support for the Macintosh environment (GUSI library).
-**
-** Revision 1.4  1996/09/18 16:37:09  hewett
-** Added capability to search data dictionary by tag name.
-**
-** Revision 1.3  1996/03/20 16:43:49  hewett
-** Updated for revised data dictionary.  Repeating tags are now handled better.
-** A linear list of repeating tags has been introduced with a subset ordering
-** mechanism to ensure that dictionary searches locate the most precise
-** dictionary entry.
-**
-*/

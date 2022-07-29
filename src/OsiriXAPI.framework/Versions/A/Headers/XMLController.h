@@ -1,16 +1,11 @@
 /*=========================================================================
-  Program:   OsiriX
-
-  Copyright (c) OsiriX Team
-  All rights reserved.
-  Distributed under GNU - LGPL
-  
-  See http://www.osirix-viewer.com/copyright.html for details.
-
-     This software is distributed WITHOUT ANY WARRANTY; without even
-     the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
-     PURPOSE.
-=========================================================================*/
+ Program:   OsiriX
+ Copyright (c) 2010 - 2020 Pixmeo SARL
+ 266 rue de Bernex
+ CH-1233 Bernex
+ Switzerland
+ All rights reserved.
+ =========================================================================*/
 
 
 
@@ -24,16 +19,20 @@
 
 /** \brief Window Controller for XML parsing */
 
-@interface XMLController : OSIWindowController <NSToolbarDelegate, NSWindowDelegate>
+@interface XMLController : OSIWindowController <NSToolbarDelegate, NSWindowDelegate, NSSearchFieldDelegate>
 {
     IBOutlet XMLOutlineView		*table;
 	IBOutlet NSScrollView		*tableScrollView;
     IBOutlet NSSearchField		*search;
     IBOutlet NSView				*searchView, *dicomEditingView;
+    
+    int searchCount, searchIndex;
+    id currentSearchItem;
+    int currentSearchRow;
 	
     unsigned long               srcFileSize;
 	NSStringEncoding            srcFileEncoding;
-    NSMutableArray				*xmlDcmData, *tree;
+    NSMutableArray				*xmlDcmData;
     NSData						*xmlData;    
     NSToolbar					*toolbar;	
 	NSString					*srcFile;
@@ -66,11 +65,14 @@
 
 @property (retain) NSString *addDICOMFieldTextField;
 @property (retain) DICOMFieldMenu *DICOMField;
+@property (retain) id currentSearchItem;
+@property int editingLevel, searchCount, searchIndex;
 
 - (BOOL) modificationsToApply;
 
 + (XMLController*) windowForViewer: (ViewerController*) v;
 + (NSDictionary *) DICOMDefitionsLinks;
++ (void) prepareDICOMDefitionsLinks;
 
 - (void) changeImageObject:(DicomImage*) image;
 - (id) initWithImage:(DicomImage*) image windowName:(NSString*) name viewer:(ViewerController*) v;

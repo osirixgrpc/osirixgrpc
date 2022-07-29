@@ -1,16 +1,11 @@
 /*=========================================================================
-  Program:   OsiriX
-
-  Copyright (c) OsiriX Team
-  All rights reserved.
-  Distributed under GNU - LGPL
-  
-  See http://www.osirix-viewer.com/copyright.html for details.
-
-     This software is distributed WITHOUT ANY WARRANTY; without even
-     the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
-     PURPOSE.
-=========================================================================*/
+ Program:   OsiriX
+ Copyright (c) 2010 - 2020 Pixmeo SARL
+ 266 rue de Bernex
+ CH-1233 Bernex
+ Switzerland
+ All rights reserved.
+ =========================================================================*/
 
 #import <Cocoa/Cocoa.h>
 
@@ -48,10 +43,14 @@
 	BOOL dontReenterCrossReferenceLines;
 	
 	BOOL dontCheckRoiChange;
+    
+    ROI *edited2DPointROI;
+    NSRect edited2DPointROIPosition;
 }
 
 @property (readonly) DCMPix *pix;
 @property (retain) Camera *camera;
+@property (retain) ROI *edited2DPointROI;
 @property float angleMPR, fromIntervalExport, toIntervalExport, LOD;
 @property int viewExport;
 @property (nonatomic) BOOL displayCrossLines, dontUseAutoLOD;
@@ -73,5 +72,7 @@
 - (void) removeROI: (NSNotification*) note;
 
 - (N3AffineTransform)pixToDicomTransform; // converts points in the DCMPix's coordinate space ("Slice Coordinates") into the DICOM space (patient space with mm units)
+
+- (NSColor*)borderColor;
 
 @end

@@ -1,16 +1,11 @@
 /*=========================================================================
-  Program:   OsiriX
-
-  Copyright (c) OsiriX Team
-  All rights reserved.
-  Distributed under GNU - LGPL
-  
-  See http://www.osirix-viewer.com/copyright.html for details.
-
-     This software is distributed WITHOUT ANY WARRANTY; without even
-     the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
-     PURPOSE.
-=========================================================================*/
+ Program:   OsiriX
+ Copyright (c) 2010 - 2020 Pixmeo SARL
+ 266 rue de Bernex
+ CH-1233 Bernex
+ Switzerland
+ All rights reserved.
+ =========================================================================*/
 
 /** \brief base class for Window Controllers in OsiriX
 *
@@ -19,7 +14,7 @@
 */
 
 #import <Cocoa/Cocoa.h>
-@class DicomDatabase;
+@class DicomDatabase, ROI;
 
 
 #ifdef __cplusplus
@@ -52,28 +47,39 @@ enum OsiriXBlendingTypes {BlendingPlugin = -1, BlendingFusion = 1, BlendingSubtr
 	
 	BOOL magneticWindowActivated;
 	BOOL windowIsMovedByTheUserO;
+    NSTimeInterval windowDidMoveLastTimeInterval;
 	NSRect savedWindowsFrameO;
-	
+	NSTimeInterval windowInitTime;
+    
 	DicomDatabase* _database;
 }
 
 @property(nonatomic,retain) DicomDatabase* database;
--(void)refreshDatabase:(NSArray*)newImages;
+@property NSTimeInterval windowInitTime;
+
+-(void)refreshDatabase:(NSDictionary*)dict;
 - (void) autoreleaseIfClosed;
 + (BOOL) dontWindowDidChangeScreen;
 + (void) setDontEnterWindowDidChangeScreen:(BOOL) a;
 + (void) setDontEnterMagneticFunctions:(BOOL) a;
 - (void) setMagnetic:(BOOL) a;
 - (BOOL) magnetic;
++ (NSArray*) allMagneticWindowControllers;
 
 + (void) setWindowAppearance: (NSWindow*) window;
 + (NSColor*) darkAppearanceFontColor;
++ (NSColor*) darkAppearanceFontColorWithAlpha: (float) alpha;
 + (NSColor*) darkAppearanceBackgroundColor;
++ (NSColor*) darkAppearanceBlackColor;
++ (NSColor*) darkAppearanceBlackColorWithAlpha: (float) alpha;
 + (float) darkAppearanceFontColorWhiteLevel;
 
 - (NSMutableArray*) pixList;
 - (void) addToUndoQueue:(NSString*) what;
 - (int)blendingType;
+
+- (void) addROI:(ROI*) roi;
+- (void) selectROI:(ROI*) roi deselectingOther:(BOOL)deselectOther;
 
 - (IBAction) redo:(id) sender;
 - (IBAction) undo:(id) sender;

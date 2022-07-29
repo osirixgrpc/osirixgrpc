@@ -1,25 +1,21 @@
 /*=========================================================================
-  Program:   OsiriX
+ Program:   OsiriX
+ Copyright (c) 2010 - 2020 Pixmeo SARL
+ 266 rue de Bernex
+ CH-1233 Bernex
+ Switzerland
+ All rights reserved.
+ =========================================================================*/
 
-  Copyright (c) OsiriX Team
-  All rights reserved.
-  Distributed under GNU - LGPL
-  
-  See http://www.osirix-viewer.com/copyright.html for details.
-
-     This software is distributed WITHOUT ANY WARRANTY; without even
-     the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
-     PURPOSE.
-=========================================================================*/
-
-
-#import <Cocoa/Cocoa.h>
 
 #ifdef __cplusplus
 #include "dsrdoc.h"
 #else
 typedef char DSRDocument;
 #endif
+
+#import <Cocoa/Cocoa.h>
+
 
 #import "ROI.h"
 #import "DicomImage.h"
@@ -38,13 +34,14 @@ typedef char DSRDocument;
  * @param path File path
  */
 + (NSData *) roiFromDICOM:(NSString *)path;
++ (BOOL) hasRoiFromDICOM:(NSString *)path;
 
 /** Creates a DICOM SR from an array of ROIs
  * @param rois Array of ROI to archive
  * @param path Path to file 
  * @param image the image related to the ROI array
  */
-+ (NSString*) archiveROIsAsDICOM:(NSArray *)rois toPath:(NSString *)path  forImage:(id)image;
++ (NSString*) archiveROIsAsDICOM:(NSArray *)rois toPath:(NSString *)path  forImage:(DicomImage*)image;
 
 
 + (NSString*) getImageRefSOPInstanceUID:(NSString*) path;

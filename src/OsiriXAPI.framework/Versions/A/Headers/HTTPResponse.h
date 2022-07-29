@@ -71,13 +71,20 @@
 
 @interface HTTPDataResponse : NSObject <HTTPResponse>
 {
-	unsigned offset;
+    unsigned long long offset;
 	NSData *data;
+    
+    NSArray *files;
+    NSString *boundary;
+    unsigned long long fullSize, deletedOffset;
+    BOOL readingIsDone, cancelReading;
 }
 
 - (id)initWithData:(NSData *)data;
+- (void)loadDataFromFiles:(NSArray *)f withBoundary: (NSString*) b;
 
 @end
+
 
 // Important notice to those implementing custom asynchronous and/or chunked responses:
 // 

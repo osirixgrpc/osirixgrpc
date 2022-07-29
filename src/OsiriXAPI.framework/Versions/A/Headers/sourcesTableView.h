@@ -1,9 +1,9 @@
 
 #import <Cocoa/Cocoa.h>
-
+#import "OSITableView.h"
 
 /** \brief Q/R sources TableView */
-@interface sourcesTableView : NSTableView
+@interface sourcesTableView : OSITableView
 {
 }
 

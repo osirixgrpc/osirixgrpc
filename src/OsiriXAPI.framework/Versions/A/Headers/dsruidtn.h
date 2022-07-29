@@ -1,19 +1,15 @@
 /*
  *
- *  Copyright (C) 2000-2005, OFFIS
+ *  Copyright (C) 2000-2015, OFFIS e.V.
+ *  All rights reserved.  See COPYRIGHT file for details.
  *
  *  This software and supporting documentation were developed by
  *
- *    Kuratorium OFFIS e.V.
- *    Healthcare Information and Communication Systems
+ *    OFFIS e.V.
+ *    R&D Division Health
  *    Escherweg 2
  *    D-26121 Oldenburg, Germany
  *
- *  THIS SOFTWARE IS MADE AVAILABLE,  AS IS,  AND OFFIS MAKES NO  WARRANTY
- *  REGARDING  THE  SOFTWARE,  ITS  PERFORMANCE,  ITS  MERCHANTABILITY  OR
- *  FITNESS FOR ANY PARTICULAR USE, FREEDOM FROM ANY COMPUTER DISEASES  OR
- *  ITS CONFORMITY TO ANY SPECIFICATION. THE ENTIRE RISK AS TO QUALITY AND
- *  PERFORMANCE OF THE SOFTWARE IS WITH THE USER.
  *
  *  Module: dcmsr
  *
@@ -21,13 +17,6 @@
  *
  *  Purpose:
  *    classes: DSRUIDRefTreeNode
- *
- *  Last Update:      $Author: lpysher $
- *  Update Date:      $Date: 2006/03/01 20:16:11 $
- *  CVS/RCS Revision: $Revision: 1.1 $
- *  Status:           $State: Exp $
- *
- *  CVS/RCS Log at end of file
  *
  */
 
@@ -47,7 +36,7 @@
 
 /** Class for content item UIDREF
  */
-class DSRUIDRefTreeNode
+class DCMTK_DCMSR_EXPORT DSRUIDRefTreeNode
   : public DSRDocumentTreeNode,
     public DSRStringValue
 {
@@ -55,22 +44,39 @@ class DSRUIDRefTreeNode
   public:
 
     /** constructor
-     ** @param  relationshipType  type of relationship to the parent tree node.
-     *                            Should not be RT_invalid or RT_isRoot.
+     ** @param  relationshipType  type of relationship to the parent tree node.  Should
+     *                            not be DSRTypes::RT_invalid or DSRTypes::RT_isRoot.
      */
     DSRUIDRefTreeNode(const E_RelationshipType relationshipType);
 
     /** constructor.
      ** @param  relationshipType  type of relationship to the parent tree node.
-     *                            Should not be RT_invalid or RT_isRoot.
-     *  @param  stringValue       initial string value to be set
+     *                            Should not be DSRTypes::RT_invalid or DSRTypes::RT_isRoot.
+     *  @param  uidValue          initial value to be set (VR=UI, mandatory)
+     *  @param  check             if enabled, check 'uidValue' for validity before setting
+     *                            it.  See checkValue() for details.  An empty value is never
+     *                            accepted.
      */
     DSRUIDRefTreeNode(const E_RelationshipType relationshipType,
-                      const OFString &stringValue);
+                      const OFString &uidValue,
+                      const OFBool check = OFTrue);
+
+    /** copy constructor.
+     *  Please note that the comments on the copy constructor of the base class
+     *  DSRDocumentTreeNode apply.
+     ** @param  node  tree node to be copied
+     */
+    DSRUIDRefTreeNode(const DSRUIDRefTreeNode &node);
 
     /** destructor
      */
     virtual ~DSRUIDRefTreeNode();
+
+    /** clone this tree node.
+     *  Internally, the copy constructor is used, so the corresponding comments apply.
+     ** @return copy of this tree node
+     */
+    virtual DSRUIDRefTreeNode *clone() const;
 
     /** clear all member variables.
      *  Please note that the content item might become invalid afterwards.
@@ -78,10 +84,16 @@ class DSRUIDRefTreeNode
     virtual void clear();
 
     /** check whether the content item is valid.
-     *  The content item is valid if the two base classes and the concept name are valid.
+     *  The content item is valid if the base classes, the concept name and the currently stored
+     *  value (see hasValidValue()) are valid.
      ** @return OFTrue if tree node is valid, OFFalse otherwise
      */
     virtual OFBool isValid() const;
+
+    /** check whether the value of the content item, i.e.\ the stored UID reference, is valid
+     ** @return OFTrue if the value is valid, OFFalse otherwise
+     */
+    virtual OFBool hasValidValue() const;
 
     /** print content item.
      *  A typical output looks like this:  contains UIDREF:(,,"Code")="1.2.3.4.5"
@@ -89,115 +101,75 @@ class DSRUIDRefTreeNode
      *  @param  flags   flag used to customize the output (see DSRTypes::PF_xxx)
      ** @return status, EC_Normal if successful, an error code otherwise
      */
-    virtual OFCondition print(ostream &stream,
+    virtual OFCondition print(STD_NAMESPACE ostream &stream,
                               const size_t flags) const;
 
     /** write content item in XML format
-     ** @param  stream     output stream to which the XML document is written
-     *  @param  flags      flag used to customize the output (see DSRTypes::XF_xxx)
-     *  @param  logStream  pointer to error/warning output stream (output disabled if NULL)
+     ** @param  stream  output stream to which the XML document is written
+     *  @param  flags   flag used to customize the output (see DSRTypes::XF_xxx)
      ** @return status, EC_Normal if successful, an error code otherwise
      */
-    virtual OFCondition writeXML(ostream &stream,
-                                 const size_t flags,
-                                 OFConsole *logStream) const;
+    virtual OFCondition writeXML(STD_NAMESPACE ostream &stream,
+                                 const size_t flags) const;
 
 
   protected:
 
     /** read content item (value) from dataset
-     ** @param  dataset    DICOM dataset from which the content item should be read
-     *  @param  logStream  pointer to error/warning output stream (output disabled if NULL)
+     ** @param  dataset  DICOM dataset from which the content item should be read
+     *  @param  flags    flag used to customize the reading process (see DSRTypes::RF_xxx)
      ** @return status, EC_Normal if successful, an error code otherwise
      */
     virtual OFCondition readContentItem(DcmItem &dataset,
-                                        OFConsole *logStream);
+                                        const size_t flags);
 
     /** write content item (value) to dataset
-     ** @param  dataset    DICOM dataset to which the content item should be written
-     *  @param  logStream  pointer to error/warning output stream (output disabled if NULL)
+     ** @param  dataset  DICOM dataset to which the content item should be written
      ** @return status, EC_Normal if successful, an error code otherwise
      */
-    virtual OFCondition writeContentItem(DcmItem &dataset,
-                                         OFConsole *logStream) const;
+    virtual OFCondition writeContentItem(DcmItem &dataset) const;
 
     /** read content item specific XML data
      ** @param  doc     document containing the XML file content
      *  @param  cursor  cursor pointing to the starting node
+     *  @param  flags   flag used to customize the reading process (see DSRTypes::XF_xxx)
      ** @return status, EC_Normal if successful, an error code otherwise
      */
     virtual OFCondition readXMLContentItem(const DSRXMLDocument &doc,
-                                           DSRXMLCursor cursor);
+                                           DSRXMLCursor cursor,
+                                           const size_t flags);
 
-    /** render content item (value) in HTML format
-     ** @param  docStream     output stream to which the main HTML document is written
-     *  @param  annexStream   output stream to which the HTML document annex is written
+    /** render content item (value) in HTML/XHTML format
+     ** @param  docStream     output stream to which the main HTML/XHTML document is written
+     *  @param  annexStream   output stream to which the HTML/XHTML document annex is written
      *  @param  nestingLevel  current nesting level.  Used to render section headings.
      *  @param  annexNumber   reference to the variable where the current annex number is stored.
      *                        Value is increased automatically by 1 after a new entry has been added.
      *  @param  flags         flag used to customize the output (see DSRTypes::HF_xxx)
-     *  @param  logStream     pointer to error/warning output stream (output disabled if NULL)
      ** @return status, EC_Normal if successful, an error code otherwise
      */
-    virtual OFCondition renderHTMLContentItem(ostream &docStream,
-                                              ostream &annexStream,
+    virtual OFCondition renderHTMLContentItem(STD_NAMESPACE ostream &docStream,
+                                              STD_NAMESPACE ostream &annexStream,
                                               const size_t nestingLevel,
                                               size_t &annexNumber,
-                                              const size_t flags,
-                                              OFConsole *logStream) const;
+                                              const size_t flags) const;
+
+    /** check the specified UID value for validity.
+     *  In addition to the base class check for a non-empty value, this method also checks
+     *  whether the given value conforms to the corresponding VR (UI) and VM (1).
+     ** @param  uidValue  value to be checked
+     ** @return status, EC_Normal if value is valid, an error code otherwise
+     */
+    virtual OFCondition checkValue(const OFString &uidValue) const;
 
 
   private:
 
- // --- declaration of default/copy constructor and assignment operator
+ // --- declaration of default constructor and assignment operator
 
     DSRUIDRefTreeNode();
-    DSRUIDRefTreeNode(const DSRUIDRefTreeNode &);
     DSRUIDRefTreeNode &operator=(const DSRUIDRefTreeNode &);
 };
 
 
 #endif
-
-
-/*
- *  CVS/RCS Log:
- *  $Log: dsruidtn.h,v $
- *  Revision 1.1  2006/03/01 20:16:11  lpysher
- *  Added dcmtkt ocvs not in xcode  and fixed bug with multiple monitors
- *
- *  Revision 1.10  2005/12/08 16:05:31  meichel
- *  Changed include path schema for all DCMTK header files
- *
- *  Revision 1.9  2003/09/15 14:18:54  joergr
- *  Introduced new class to facilitate checking of SR IOD relationship content
- *  constraints. Replaced old implementation distributed over numerous classes.
- *
- *  Revision 1.8  2003/08/07 13:06:06  joergr
- *  Added readXML functionality. Added support for Chest CAD SR.
- *
- *  Revision 1.7  2001/11/09 16:10:55  joergr
- *  Added preliminary support for Mammography CAD SR.
- *
- *  Revision 1.6  2001/09/26 13:04:14  meichel
- *  Adapted dcmsr to class OFCondition
- *
- *  Revision 1.5  2001/06/01 15:51:06  meichel
- *  Updated copyright header
- *
- *  Revision 1.4  2000/11/07 18:14:32  joergr
- *  Enhanced support for by-reference relationships.
- *
- *  Revision 1.3  2000/11/01 16:23:28  joergr
- *  Added support for conversion to XML.
- *
- *  Revision 1.2  2000/10/23 15:14:13  joergr
- *  Added clear() method.
- *  Added/updated doc++ comments.
- *
- *  Revision 1.1  2000/10/13 07:49:36  joergr
- *  Added new module 'dcmsr' providing access to DICOM structured reporting
- *  documents (supplement 23).  Doc++ documentation not yet completed.
- *
- *
- */

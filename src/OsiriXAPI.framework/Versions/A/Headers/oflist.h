@@ -1,19 +1,15 @@
 /*
  *
- *  Copyright (C) 1997-2005, OFFIS
+ *  Copyright (C) 1997-2011, OFFIS e.V.
+ *  All rights reserved.  See COPYRIGHT file for details.
  *
  *  This software and supporting documentation were developed by
  *
- *    Kuratorium OFFIS e.V.
- *    Healthcare Information and Communication Systems
+ *    OFFIS e.V.
+ *    R&D Division Health
  *    Escherweg 2
  *    D-26121 Oldenburg, Germany
  *
- *  THIS SOFTWARE IS MADE AVAILABLE,  AS IS,  AND OFFIS MAKES NO  WARRANTY
- *  REGARDING  THE  SOFTWARE,  ITS  PERFORMANCE,  ITS  MERCHANTABILITY  OR
- *  FITNESS FOR ANY PARTICULAR USE, FREEDOM FROM ANY COMPUTER DISEASES  OR
- *  ITS CONFORMITY TO ANY SPECIFICATION. THE ENTIRE RISK AS TO QUALITY AND
- *  PERFORMANCE OF THE SOFTWARE IS WITH THE USER.
  *
  *  Module:  ofstd
  *
@@ -21,14 +17,6 @@
  *
  *  Purpose:
  *          Defines a template list class with interfaces similar to the C++ Standard
- *
- *  Last Update:      $Author: lpysher $
- *  Update Date:      $Date: 2006/03/01 20:17:56 $
- *  Source File:      $Source: /cvsroot/osirix/osirix/Binaries/dcmtk-source/ofstd/oflist.h,v $
- *  CVS/RCS Revision: $Revision: 1.1 $
- *  Status:           $State: Exp $
- *
- *  CVS/RCS Log at end of file
  *
  */
 
@@ -53,6 +41,7 @@
 #include "osconfig.h"    /* make sure OS specific configuration is included first */
 #include "oftypes.h"
 #include "ofcast.h"
+#include "ofdefine.h"
 
 #ifndef HAVE_CLASS_TEMPLATE
 #error Your C++ compiler cannot handle class templates:
@@ -80,11 +69,7 @@
 #define OFListRemoveIf(Predicate, T, c, pred) (c).remove_if((pred))
 
 // workaround for "implicit typename" warning on gcc 3.x
-#if defined(HAVE_TYPENAME)
-#define OFLIST_TYPENAME typename
-#else
-#define OFLIST_TYPENAME
-#endif
+#define OFLIST_TYPENAME OFTypename
 
 #else
 
@@ -94,6 +79,12 @@
 
 #define OFLIST_TYPENAME
 
+BEGIN_EXTERN_C
+#ifdef HAVE_SYS_TYPES_H
+/* needed e.g. on Solaris for definition of size_t */
+#include <sys/types.h>
+#endif
+END_EXTERN_C
 
 // OFListLinkBase, OFListLink and OFListBase are classes for internal
 // use only and shall not be used.
@@ -118,7 +109,7 @@ struct OFListLinkBase
 /* non-template list. Base class fo OFList.
  * Implicitly used by OFList, should not be called by users.
  */
-class OFListBase
+class DCMTK_OFSTD_EXPORT OFListBase
 {
 protected:
     OFListLinkBase * afterLast;
@@ -225,6 +216,15 @@ public:
     {
         assert(!node->dummy);
         return (OFstatic_cast(OFListLink<T> *,node))->info;
+    }
+
+    /** dereferences the iterator. May only be called if iterator references
+     *  a valid element of a list.
+     *  @return reference to the element "pointed to" by the iterator.
+     */
+    T* operator->() const
+    {
+        return &(**this);
     }
 
     /** moves the iterator to the next element of the list.
@@ -357,11 +357,23 @@ public:
      */
     T& front() { return *begin(); }
 
+    /** returns a constant reference to the first element in the list.
+     *  May only be called if list is non-empty.
+     *  @return first element in list, by constant reference
+     */
+    const T& front() const { return *begin(); }
+
     /** returns a reference to the last element in the list.
      *  May only be called if list is non-empty.
      *  @return last element in list, by reference
      */
     T& back() { return *(--end()); }
+
+    /** returns a constant reference to the last element in the list.
+     *  May only be called if list is non-empty.
+     *  @return last element in list, by constant reference
+     */
+    const T& back() const { return *(--end()); }
 
     /** inserts before the first element of the list.
      *  @param x value from which the new list entry is copy constructed
@@ -474,11 +486,16 @@ public:
       }
     }
 
-private:
-
-	/** private undefined copy assignment operator
-	 */
-	OFList<T>& operator=(const OFList<T>& arg);
+    /** copy assignment operator
+     * @param arg the list to copy from
+     * @return *this
+     */
+    OFList<T>& operator=(const OFList<T>& arg)
+    {
+        clear();
+        copy(arg);
+        return *this;
+    }
 };
 
 
@@ -551,94 +568,3 @@ void OF_ListRemoveIf(OFList<T>& c, Predicate pred)
 #endif
 
 #endif
-
-/*
-** CVS/RCS Log:
-** $Log: oflist.h,v $
-** Revision 1.1  2006/03/01 20:17:56  lpysher
-** Added dcmtkt ocvs not in xcode  and fixed bug with multiple monitors
-**
-** Revision 1.22  2005/12/08 16:05:58  meichel
-** Changed include path schema for all DCMTK header files
-**
-** Revision 1.21  2004/04/14 11:44:48  joergr
-** Replaced non-Unix newline characters.
-**
-** Revision 1.20  2003/08/07 11:44:55  joergr
-** Slightly modified header comments to conform to doxygen syntax.
-**
-** Revision 1.19  2003/07/11 13:46:14  joergr
-** Added workaround to get rid of "implicit typename" warnings on gcc 3.x
-** (introduced macro OFLIST_TYPENAME).
-**
-** Revision 1.18  2003/07/09 13:57:43  meichel
-** Adapted type casts to new-style typecast operators defined in ofcast.h
-**
-** Revision 1.17  2003/06/12 15:20:30  joergr
-** Slightly modified macro definitions to avoid potential parser errors (added
-** space character after '<' and before '>').
-**
-** Revision 1.16  2003/06/12 13:21:54  joergr
-** Introduced macro OFListConstIterator() to support STL const_iterators.
-**
-** Revision 1.15  2003/06/03 10:20:00  meichel
-** OFList now explicitly defined as std::list if std namespace present
-**
-** Revision 1.14  2002/11/27 11:23:05  meichel
-** Adapted module ofstd to use of new header file ofstdinc.h
-**
-** Revision 1.13  2001/08/23 16:05:52  meichel
-** Added private undefined copy assignment operators to avoid gcc warnings
-**
-** Revision 1.12  2001/06/01 15:51:34  meichel
-** Updated copyright header
-**
-** Revision 1.11  2000/10/10 12:01:21  meichel
-** Created/updated doc++ comments
-**
-** Revision 1.10  2000/03/08 16:36:02  meichel
-** Updated copyright header.
-**
-** Revision 1.9  1998/11/27 12:42:51  joergr
-** Added copyright message to source files and changed CVS header.
-**
-** Revision 1.8  1998/07/02 07:47:02  meichel
-** Some code purifications to avoid gcc 2.8.1 -Weffc++ warnings.
-**
-** Revision 1.7  1998/06/29 12:09:23  meichel
-** Removed some name clashes (e.g. local variable with same
-**   name as class member) to improve maintainability.
-**   Applied some code purifications proposed by the gcc 2.8.1 -Weffc++ option.
-**
-** Revision 1.6  1998/02/06 15:07:38  meichel
-** Removed many minor problems (name clashes, unreached code)
-**   reported by Sun CC4 with "+w" or Sun CC2.
-**
-** Revision 1.5  1997/11/10 16:31:19  meichel
-** Corrected bug possibly causing a memory leak in OFList.
-**   Added virtual destructors to classes OFListLinkBase and OFListLink.
-**
-** Revision 1.4  1997/09/11 15:43:15  hewett
-** Minor changes to eliminate warnings when compiled under the
-** Signus GnuWin32 envionment.  Changed order of initialisers
-** for OFListLink and OFStackLink.  Make ~OFLisBase and ~OFStackBase
-** virtual destructors.
-**
-** Revision 1.3  1997/07/24 13:11:00  andreas
-** - Removed Warnings from SUN CC 2.0.1
-**
-** Revision 1.2  1997/07/07 07:34:18  andreas
-** - Corrected destructor for OFListBase, now the dummy element is
-**   deleted.
-**
-** Revision 1.1  1997/07/02 11:51:14  andreas
-** - Preliminary release of the OFFIS Standard Library.
-**   In the future this library shall contain a subset of the
-**   ANSI C++ Library (Version 3) that works on a lot of different
-**   compilers. Additionally this library shall include classes and
-**   functions that are often used. All classes and functions begin
-**   with OF... This library is independent of the DICOM development and
-**   shall contain no DICOM specific stuff.
-**
-**
-*/

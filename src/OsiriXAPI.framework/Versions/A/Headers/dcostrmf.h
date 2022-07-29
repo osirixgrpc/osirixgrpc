@@ -1,19 +1,15 @@
 /*
  *
- *  Copyright (C) 1994-2005, OFFIS
+ *  Copyright (C) 1994-2012, OFFIS e.V.
+ *  All rights reserved.  See COPYRIGHT file for details.
  *
  *  This software and supporting documentation were developed by
  *
- *    Kuratorium OFFIS e.V.
- *    Healthcare Information and Communication Systems
+ *    OFFIS e.V.
+ *    R&D Division Health
  *    Escherweg 2
  *    D-26121 Oldenburg, Germany
  *
- *  THIS SOFTWARE IS MADE AVAILABLE,  AS IS,  AND OFFIS MAKES NO  WARRANTY
- *  REGARDING  THE  SOFTWARE,  ITS  PERFORMANCE,  ITS  MERCHANTABILITY  OR
- *  FITNESS FOR ANY PARTICULAR USE, FREEDOM FROM ANY COMPUTER DISEASES  OR
- *  ITS CONFORMITY TO ANY SPECIFICATION. THE ENTIRE RISK AS TO QUALITY AND
- *  PERFORMANCE OF THE SOFTWARE IS WITH THE USER.
  *
  *  Module:  dcmdata
  *
@@ -21,14 +17,6 @@
  *
  *  Purpose: DcmOutputFileStream and related classes,
  *    implements streamed output to files.
- *
- *  Last Update:      $Author: lpysher $
- *  Update Date:      $Date: 2006/03/01 20:15:22 $
- *  Source File:      $Source: /cvsroot/osirix/osirix/Binaries/dcmtk-source/dcmdata/dcostrmf.h,v $
- *  CVS/RCS Revision: $Revision: 1.1 $
- *  Status:           $State: Exp $
- *
- *  CVS/RCS Log at end of file
  *
  */
 
@@ -44,13 +32,14 @@
 
 /** consumer class that stores data in a plain file.
  */
-class DcmFileConsumer: public DcmConsumer
+class DCMTK_DCMDATA_EXPORT DcmFileConsumer: public DcmConsumer
 {
 public:
   /** constructor
-   *  @param filename name of file to be created, must not be NULL or empty
+   *  @param filename name of file to be created (may contain wide chars
+   *    if support enabled)
    */
-  DcmFileConsumer(const char *filename);
+  DcmFileConsumer(const OFFilename &filename);
 
   /** constructor
    *  @param file structure, file must already be open for writing
@@ -86,14 +75,14 @@ public:
    *  or nothing.
    *  @return minimum of space available in consumer
    */
-  virtual Uint32 avail() const;
+  virtual offile_off_t avail() const;
 
   /** processes as many bytes as possible from the given input block.
    *  @param buf pointer to memory block, must not be NULL
    *  @param buflen length of memory block
-   *  @return number of bytes actually processed. 
+   *  @return number of bytes actually processed.
    */
-  virtual Uint32 write(const void *buf, Uint32 buflen);
+  virtual offile_off_t write(const void *buf, offile_off_t buflen);
 
   /** instructs the consumer to flush its internal content until
    *  either the consumer becomes "flushed" or I/O suspension occurs.
@@ -111,7 +100,7 @@ private:
   DcmFileConsumer& operator=(const DcmFileConsumer&);
 
   /// the file we're actually writing to
-  FILE *file_;
+  OFFile file_;
 
   /// status
   OFCondition status_;
@@ -120,13 +109,14 @@ private:
 
 /** output stream that writes into a plain file
  */
-class DcmOutputFileStream: public DcmOutputStream
+class DCMTK_DCMDATA_EXPORT DcmOutputFileStream: public DcmOutputStream
 {
 public:
   /** constructor
-   *  @param filename name of file to be created, must not be NULL or empty
+   *  @param filename name of file to be created (may contain wide chars
+   *    if support enabled)
    */
-  DcmOutputFileStream(const char *filename);
+  DcmOutputFileStream(const OFFilename &filename);
 
   /** constructor
    *  @param file structure, file must already be open for writing
@@ -146,30 +136,7 @@ private:
 
   /// the final consumer of the filter chain
   DcmFileConsumer consumer_;
-
 };
 
 
 #endif
-
-/*
- * CVS/RCS Log:
- * $Log: dcostrmf.h,v $
- * Revision 1.1  2006/03/01 20:15:22  lpysher
- * Added dcmtkt ocvs not in xcode  and fixed bug with multiple monitors
- *
- * Revision 1.4  2005/12/08 16:28:26  meichel
- * Changed include path schema for all DCMTK header files
- *
- * Revision 1.3  2003/11/07 13:49:08  meichel
- * Added constructor taking an open FILE* instead of a file name string
- *
- * Revision 1.2  2002/11/27 12:07:22  meichel
- * Adapted module dcmdata to use of new header file ofstdinc.h
- *
- * Revision 1.1  2002/08/27 16:55:37  meichel
- * Initial release of new DICOM I/O stream classes that add support for stream
- *   compression (deflated little endian explicit VR transfer syntax)
- *
- *
- */

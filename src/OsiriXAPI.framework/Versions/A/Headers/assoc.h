@@ -65,15 +65,6 @@
 **	structure which contains all relevant information.
 **
 **	Module Prefix: ASC_
-**
-**
-** Last Update:		$Author: lpysher $
-** Update Date:		$Date: 2006/03/01 20:15:49 $
-** Source File:		$Source: /cvsroot/osirix/osirix/Binaries/dcmtk-source/dcmnet/assoc.h,v $
-** CVS/RCS Revision:	$Revision: 1.1 $
-** Status:		$State: Exp $
-**
-** CVS/RCS Log at end of file
 */
 
 
@@ -295,15 +286,19 @@ ASC_setAPTitles(
 
 OFCondition 
 ASC_getAPTitles(
-    T_ASC_Parameters * params,
-    char* callingAPTitle,
-    char* calledAPTitle,
-    char* respondingAPTitle);
+                T_ASC_Parameters * params,
+                char* callingAPTitle,
+                size_t callingAPTitleSize,
+                char* calledAPTitle,
+                size_t calledAPTitleSize,
+                char* respondingAPTitle,
+                size_t respondingAPTitleSize);
 
 OFCondition 
 ASC_getApplicationContextName(
-    T_ASC_Parameters * params,
-    char* applicationContextName);
+                              T_ASC_Parameters * params,
+                              char* applicationContextName,
+                              size_t applicationContextNameSize);
 
 OFCondition 
 ASC_setPresentationAddresses(
@@ -313,9 +308,11 @@ ASC_setPresentationAddresses(
 
 OFCondition 
 ASC_getPresentationAddresses(
-    T_ASC_Parameters * params,
-    char* callingPresentationAddress,
-    char* calledPresentationAddress);
+                             T_ASC_Parameters * params,
+                             char* callingPresentationAddress,
+                             size_t callingPresentationAddressSize,
+                             char* calledPresentationAddress,
+                             size_t calledPresentationAddressSize);
 
 OFCondition 
 ASC_getRejectParameters(
@@ -329,7 +326,7 @@ ASC_printRejectParameters(
 
 void 
 ASC_printRejectParameters(
-    ostream &out, 
+    std::ostream &out, 
     T_ASC_RejectParameters *rej);
 
 OFCondition 
@@ -414,13 +411,13 @@ OFCondition
 ASC_setTransportLayer(T_ASC_Network *network, DcmTransportLayer *newLayer, int takeoverOwnership);
 
 void 
-ASC_dumpParameters(T_ASC_Parameters * params, ostream& outstream);
+ASC_dumpParameters(T_ASC_Parameters * params, std::ostream& outstream);
 
 void 
-ASC_dumpPresentationContext(T_ASC_PresentationContext * presentationContext, ostream& outstream);
+ASC_dumpPresentationContext(T_ASC_PresentationContext * presentationContext, std::ostream& outstream);
 
 void
-ASC_dumpConnectionParameters(T_ASC_Association *association, ostream& outstream);
+ASC_dumpConnectionParameters(T_ASC_Association *association, std::ostream& outstream);
 
 void ASC_activateCallback(T_ASC_Parameters *params, DUL_ModeCallback *cb);
 

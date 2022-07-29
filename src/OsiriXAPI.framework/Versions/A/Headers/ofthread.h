@@ -1,19 +1,15 @@
 /*
  *
- *  Copyright (C) 1997-2005, OFFIS
+ *  Copyright (C) 1997-2014, OFFIS e.V.
+ *  All rights reserved.  See COPYRIGHT file for details.
  *
  *  This software and supporting documentation were developed by
  *
- *    Kuratorium OFFIS e.V.
- *    Healthcare Information and Communication Systems
+ *    OFFIS e.V.
+ *    R&D Division Health
  *    Escherweg 2
  *    D-26121 Oldenburg, Germany
  *
- *  THIS SOFTWARE IS MADE AVAILABLE,  AS IS,  AND OFFIS MAKES NO  WARRANTY
- *  REGARDING  THE  SOFTWARE,  ITS  PERFORMANCE,  ITS  MERCHANTABILITY  OR
- *  FITNESS FOR ANY PARTICULAR USE, FREEDOM FROM ANY COMPUTER DISEASES  OR
- *  ITS CONFORMITY TO ANY SPECIFICATION. THE ENTIRE RISK AS TO QUALITY AND
- *  PERFORMANCE OF THE SOFTWARE IS WITH THE USER.
  *
  *  Module:  ofstd
  *
@@ -24,13 +20,6 @@
  *           semaphores, mutexes and read/write locks. The implementation
  *           of these classes supports the Solaris, POSIX and Win32
  *           multi-thread APIs.
- *
- *  Last Update:      $Author: lpysher $
- *  Update Date:      $Date: 2006/03/01 20:17:56 $
- *  CVS/RCS Revision: $Revision: 1.1 $
- *  Status:           $State: Exp $
- *
- *  CVS/RCS Log at end of file
  *
  */
 
@@ -63,7 +52,7 @@ extern "C"
  *  This class is abstract. Deriving classes must implement the run()
  *  method which contains the code executed by the thread.
  */
-class OFThread
+class DCMTK_OFSTD_EXPORT OFThread
 {
 public:
 
@@ -118,14 +107,14 @@ public:
    *  provided in this class.
    *  @return thread ID of target thread if started, 0 otherwise.
    */
-  unsigned int threadID();
+  unsigned long threadID();
 
   /** checks if the given thread ID matches the thread ID of the thread
    *  referenced by this object.
    *  @param tID thread ID to be compared
    *  @return OFTrue if equal, OFFalse otherwise.
    */
-  OFBool equal(unsigned int tID);
+  OFBool equal(unsigned long tID);
 
   /** converts any of the error codes returned by the methods of this class
    *  into a textual description, which is written into the string object.
@@ -158,7 +147,7 @@ protected:
    *  provided in this class.
    *  @return thread ID of the calling thread.
    */
-  static unsigned int self();
+  static unsigned long self();
 
 private:
 
@@ -173,14 +162,14 @@ private:
 
 #ifdef HAVE_WINDOWS_H
   /** thread handle (Win32 only) */
-  unsigned int theThreadHandle;
+  OFuintptr_t theThreadHandle;
 #endif
 
   /** thread identifier */
 #ifdef HAVE_POINTER_TYPE_PTHREAD_T
   void *theThread;
 #else
-  unsigned int theThread;
+  unsigned long theThread;
 #endif
 
   /** unimplemented private copy constructor */
@@ -193,7 +182,7 @@ private:
 #ifdef HAVE_WINDOWS_H
   friend unsigned int __stdcall thread_stub(void *arg);
 #else
-  friend void *thread_stub(void *arg);
+  friend DCMTK_OFSTD_EXPORT void *thread_stub(void *arg);
 #endif
 };
 
@@ -207,7 +196,7 @@ private:
   * Threads must ensure on their own that the data pointed to by the thread
   * specific data key is freed upon termination of the thread.
   */
-class OFThreadSpecificData
+class DCMTK_OFSTD_EXPORT OFThreadSpecificData
 {
 public:
 
@@ -262,7 +251,6 @@ private:
   OFThreadSpecificData& operator=(const OFThreadSpecificData& arg);
 };
 
-
 /** provides an operating system independent abstraction for semaphores.
  *  A semaphore is a non-negative integer counter that is used
  *  to coordinate access to resources. The initial and maximum value of the counter
@@ -271,7 +259,7 @@ private:
  *  If a thread calls wait() while the counter is zero, the thread
  *  is blocked until another thread has increased the counter using post().
  */
-class OFSemaphore
+class DCMTK_OFSTD_EXPORT OFSemaphore
 {
 public:
 
@@ -335,7 +323,6 @@ private:
   OFSemaphore& operator=(const OFSemaphore& arg);
 };
 
-
 /** provides an operating system independent abstraction for mutexes
  *  (mutual exclusion locks).
  *  Mutexes prevent multiple threads from simultaneously executing critical
@@ -344,7 +331,7 @@ private:
  *  trying to lock the same mutex to block until the owner thread unlocks
  *  it by way of unlock().
  */
-class OFMutex
+class DCMTK_OFSTD_EXPORT OFMutex
 {
 public:
 
@@ -419,7 +406,7 @@ private:
  *  read/write locks, which are generally used to protect data that is
  *  frequently searched.
  */
-class OFReadWriteLock
+class DCMTK_OFSTD_EXPORT OFReadWriteLock
 {
 public:
 
@@ -501,46 +488,65 @@ private:
   OFReadWriteLock& operator=(const OFReadWriteLock& arg);
 };
 
-#endif
-
-/*
- *
- * CVS/RCS Log:
- * $Log: ofthread.h,v $
- * Revision 1.1  2006/03/01 20:17:56  lpysher
- * Added dcmtkt ocvs not in xcode  and fixed bug with multiple monitors
- *
- * Revision 1.9  2005/12/08 16:06:08  meichel
- * Changed include path schema for all DCMTK header files
- *
- * Revision 1.8  2004/08/03 16:44:16  meichel
- * Updated code to correctly handle pthread_t both as an integral integer type
- *   (e.g. Linux, Solaris) and as a pointer type (e.g. BSD, OSF/1).
- *
- * Revision 1.7  2003/12/05 10:37:41  joergr
- * Removed leading underscore characters from preprocessor symbols (reserved
- * symbols). Updated copyright date where appropriate.
- *
- * Revision 1.6  2003/07/04 13:29:51  meichel
- * Replaced forward declarations for OFString with explicit includes,
- *   needed when compiling with HAVE_STD_STRING
- *
- * Revision 1.5  2003/06/06 10:31:04  meichel
- * Added volatile keyword to data pointers in multi-thread wrapper classes
- *
- * Revision 1.4  2002/02/27 14:13:19  meichel
- * Changed initialized() methods to const. Fixed some return values when
- *   compiled without thread support.
- *
- * Revision 1.3  2001/06/01 15:51:36  meichel
- * Updated copyright header
- *
- * Revision 1.2  2000/06/26 09:27:26  joergr
- * Replaced _WIN32 by HAVE_WINDOWS_H to avoid compiler errors using CygWin-32.
- *
- * Revision 1.1  2000/03/29 16:41:23  meichel
- * Added new classes providing an operating system independent abstraction
- *   for threads, thread specific data, semaphores, mutexes and read/write locks.
- *
- *
+/** This class aims to provide an easy way for making sure OFReadWriteLocks
+ *  are unlocked in an exception safe way. You can just create a local
+ *  instance of this class and lock the OFReadWriteLock through it. When it
+ *  is destructed it will make sure that the lock is unlocked if necessary.
  */
+class DCMTK_OFSTD_EXPORT OFReadWriteLocker {
+public:
+  /** constructor
+   *  @param lock the lock to associate this instance with
+   */
+  OFReadWriteLocker(OFReadWriteLock& lock);
+
+  /** destructor, unlocks the mutex if necessary */
+  ~OFReadWriteLocker();
+
+  /** lock the lock for reading
+   *  @return 0 upon success, an error code otherwise
+   *  @see OFReadWriteLock::rdlock
+   */
+  int rdlock();
+
+  /** lock the lock for writing
+   *  @return 0 upon success, an error code otherwise
+   *  @see OFReadWriteLock::wrlock
+   */
+  int wrlock();
+
+  /** try to lock the lock for reading
+   *  @return 0 upon success, OFReadWriteLock::busy if the read/write lock
+   *    is already locked, an error code otherwise
+   *  @see OFReadWriteLock::tryrdlock
+   */
+  int tryrdlock();
+
+  /** try to lock the lock for writing
+   *  @return 0 upon success, OFReadWriteLock::busy if the read/write lock
+   *    is already locked, an error code otherwise
+   *  @see OFReadWriteLock::trywrlock
+   */
+  int trywrlock();
+
+  /** unlock the lock
+   *  @return 0 upon success, an error code otherwise
+   *  @see OFReadWriteLock::unlock
+   */
+  int unlock();
+
+private:
+  /** the lock on which we are operating */
+  OFReadWriteLock& theLock;
+
+  /** did we successfully lock the lock? */
+  OFBool locked;
+
+  /** unimplemented private copy constructor */
+  OFReadWriteLocker(const OFReadWriteLocker& arg);
+
+  /** unimplemented private assignment operator */
+  OFReadWriteLocker& operator=(const OFReadWriteLocker& arg);
+};
+
+#endif

@@ -20,14 +20,6 @@
  *  Author:  Gerd Ehlers
  *
  *  Purpose: Print debug information
- *
- *  Last Update:      $Author: lpysher $
- *  Update Date:      $Date: 2006/03/01 20:15:19 $
- *  CVS/RCS Revision: $Revision: 1.1 $
- *  Status:           $State: Exp $
- *
- *  CVS/RCS Log at end of file
- *
  */
 
 #ifndef DCDEBUG_H

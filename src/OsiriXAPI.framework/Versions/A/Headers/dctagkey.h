@@ -1,19 +1,15 @@
 /*
  *
- *  Copyright (C) 1994-2005, OFFIS
+ *  Copyright (C) 1994-2014, OFFIS e.V.
+ *  All rights reserved.  See COPYRIGHT file for details.
  *
  *  This software and supporting documentation were developed by
  *
- *    Kuratorium OFFIS e.V.
- *    Healthcare Information and Communication Systems
+ *    OFFIS e.V.
+ *    R&D Division Health
  *    Escherweg 2
  *    D-26121 Oldenburg, Germany
  *
- *  THIS SOFTWARE IS MADE AVAILABLE,  AS IS,  AND OFFIS MAKES NO  WARRANTY
- *  REGARDING  THE  SOFTWARE,  ITS  PERFORMANCE,  ITS  MERCHANTABILITY  OR
- *  FITNESS FOR ANY PARTICULAR USE, FREEDOM FROM ANY COMPUTER DISEASES  OR
- *  ITS CONFORMITY TO ANY SPECIFICATION. THE ENTIRE RISK AS TO QUALITY AND
- *  PERFORMANCE OF THE SOFTWARE IS WITH THE USER.
  *
  *  Module:  dcmdata
  *
@@ -21,72 +17,170 @@
  *
  *  Purpose: Basis class for dicom tags.
  *
- *  Last Update:      $Author: lpysher $
- *  Update Date:      $Date: 2006/03/01 20:15:22 $
- *  CVS/RCS Revision: $Revision: 1.1 $
- *  Status:           $State: Exp $
- *
- *  CVS/RCS Log at end of file
- *
  */
 
-#ifndef DCMTAGKEY_H
-#define DCMTAGKEY_H 1
+#ifndef DCTAGKEY_H
+#define DCTAGKEY_H
 
 #include "osconfig.h"    /* make sure OS specific configuration is included first */
 
 #include "ofstream.h"
-#include "dctypes.h"
 #include "ofstring.h"
+#include "dcdefine.h"
 
 /*
 ** Defines
 */
 
+/// macro for an "undefined" attribute tag that is never used in DICOM
 #define DCM_UndefinedTagKey     DcmTagKey(0xffff, 0xffff)
 
-
-/*
- * Unique key generation for DICOM tags
+/** class maintaining a attribute tag (group and element number)
  */
-
-class DcmTagKey {
-private:
-    Uint16 group;
-    Uint16 element;
-
-protected:
-    int groupLT(const DcmTagKey& key) const;
-    int groupGT(const DcmTagKey& key) const;
-    int groupEQ(const DcmTagKey& key) const;
-    int elementLT(const DcmTagKey& key) const;
-    int elementGT(const DcmTagKey& key) const;
-    int elementEQ(const DcmTagKey& key) const;
-
+class DCMTK_DCMDATA_EXPORT DcmTagKey
+{
 public:
-    DcmTagKey();
-    DcmTagKey(const DcmTagKey& key);
-    DcmTagKey(Uint16 g, Uint16 e);
 
-    void set(const DcmTagKey& key);
-    void set(Uint16 g, Uint16 e);
-    void setGroup(Uint16 g);
-    void setElement(Uint16 e);
-    Uint16 getGroup() const;
-    Uint16 getElement() const;
+    /** default constructor
+     */
+    inline DcmTagKey();
 
-    Uint32 hash() const; // generate simple hash code
+    /** copy constructor
+     *  @param key [in] The tag key to initialize from
+     */
+    inline DcmTagKey(const DcmTagKey& key);
 
-    DcmTagKey& operator = (const DcmTagKey& key);
-    int operator == (const DcmTagKey& key) const;
-    int operator != (const DcmTagKey& key) const;
-    int operator < (const DcmTagKey& key) const;
-    int operator > (const DcmTagKey& key) const;
-    int operator <= (const DcmTagKey& key) const;
-    int operator >= (const DcmTagKey& key) const;
+    /** constructor
+     *  @param g group
+     *  @param e element
+     */
+    inline DcmTagKey(Uint16 g, Uint16 e);
 
-    friend ostream& operator<<(ostream& s, const DcmTagKey& k);
+    /** destructor
+     */
+    virtual inline ~DcmTagKey();
 
+    /** set value to given tag key
+     *  @param key attribute tag to copy
+     */
+    inline void set(const DcmTagKey& key);
+
+    /** set value to given group and element
+     *  @param g group
+     *  @param e element
+     */
+    inline void set(Uint16 g, Uint16 e);
+
+    /** set group to given number
+     *  @param g group
+     */
+    inline void setGroup(Uint16 g);
+
+    /** set element to given number
+     *  @param e element
+     */
+    inline void setElement(Uint16 e);
+
+    /** returns group number
+     *  @return returns the group number of the tag key
+     */
+    inline Uint16 getGroup() const;
+
+    /** returns element number
+     *  @return returns the element number of the tag key
+     */
+    inline Uint16 getElement() const;
+
+    /** returns base tag, i.e. in case of a repeating group tag always the base
+     *  group number 0x5000 (curve) or 0x6000 (overlay) is used. For non-repeating
+     *  group tags "this" tag key is returned.
+     *  @return returns the base tag of the tag key
+     */
+    DcmTagKey getBaseTag() const;
+
+    /** checks whether the tag key is a valid group length element.
+     *  Also calls hasValidGroup().
+     *  @return returns OFTrue if tag key is a valid group length element
+     */
+    inline OFBool isGroupLength() const;
+
+    /** returns true if the tag key is private, i.e. whether it has an odd group
+     *  number. Also hasValidGroup() is called.
+     *  @return returns OFTrue if group is private and valid.
+     */
+    inline OFBool isPrivate() const;
+
+    /** returns true, if tag is a private reservation tag of the form (gggg,00xx)
+     *  with "gggg" being odd and "xx" in the range of 10 and FF.
+     *  @return returns OFTrue if tag key is a private reservation key
+     */
+    inline OFBool isPrivateReservation() const;
+
+    /** returns true, if group is valid (permitted in DICOM command or data sets).
+     *  Referring to the standard, groups 1, 3, 5, 7 and 0xFFFF are illegal.
+     *  @return returns OFTrue if tag key has a valid group number.
+     */
+    inline OFBool hasValidGroup() const;
+
+    /** generate a simple hash code for this attribute tag.
+     *  Used for fast look-up in the DICOM dictionary.
+     *  @return hash code for this tag
+     */
+    inline Uint32 hash() const;
+
+    /** assignment operator for initializing this tag key from an existing one
+     *  @param key [in] The key to copy from
+     *  @return "this" initialization
+     */
+    inline DcmTagKey& operator = (const DcmTagKey& key);
+
+    /** Comparison operator. Returns true if both group and element number
+     *  are the same.
+     *  @param key key to compare with
+     *  @return true if tag keys are the same
+     */
+    inline int operator == (const DcmTagKey& key) const;
+
+    /** negation operator. Returns true if either group or element number
+     *  are not the same.
+     *  @param key key to compare with
+     *  @return true if tag keys are not the same
+     */
+    inline int operator != (const DcmTagKey& key) const;
+
+    /** 'less than' operator. Returns true if the given tag key is greater
+     *  than "this".
+     *  @param key key to compare with
+     *  @return true if given key is greater than "this"
+     */
+    inline int operator < (const DcmTagKey& key) const;
+
+    /** 'greater than' operator. Returns true if the given tag key is smaller
+     *  than "this".
+     *  @param key key to compare with
+     *  @return true if "this" key is smaller than given one.
+     */
+    inline int operator > (const DcmTagKey& key) const;
+
+    /** 'less or equal' operator. Returns true if the given tag key is greater
+     *  or the same as "this".
+     *  @param key key to compare with
+     *  @return true if given key is greater or the same as "this"
+     */
+    inline int operator <= (const DcmTagKey& key) const;
+
+    /** 'greater or equal' operator. Returns true if the given tag key is
+     *  smaller or equal as "this".
+     *  @param key key to compare with
+     *  @return true if "this" key is smaller or equal to given one.
+     */
+    inline int operator >= (const DcmTagKey& key) const;
+
+    friend DCMTK_DCMDATA_EXPORT STD_NAMESPACE ostream& operator<<(STD_NAMESPACE ostream& s, const DcmTagKey& k);
+
+    /** convert tag key to string having the form "(gggg,eeee)".
+     *  @return the string representation of this tag key
+     */
     OFString toString() const;
 
     /** returns true if a data element with the given tag key can
@@ -94,6 +188,34 @@ public:
      *  @return true if signable, false otherwise
      */
     OFBool isSignableTag() const;
+
+protected:
+
+    /// less-than operation comparing only group numbers
+    int groupLT(const DcmTagKey& key) const;
+
+    /// greater-than operation comparing only group numbers
+    int groupGT(const DcmTagKey& key) const;
+
+    /// comparison operation comparing only group numbers
+    int groupEQ(const DcmTagKey& key) const;
+
+    /// less-than operation comparing only element numbers
+    int elementLT(const DcmTagKey& key) const;
+
+    /// greater-than operation comparing only element numbers
+    int elementGT(const DcmTagKey& key) const;
+
+    /// comparison operation comparing only element numbers
+    int elementEQ(const DcmTagKey& key) const;
+
+private:
+
+    /// tag group number
+    Uint16 group;
+    /// tag element number
+    Uint16 element;
+
 };
 
 /** stream output operator for tag keys
@@ -101,13 +223,13 @@ public:
  *  @param k tag key
  *  @return reference to output stream
  */
-ostream& operator<<(ostream& s, const DcmTagKey& k);
+DCMTK_DCMDATA_EXPORT STD_NAMESPACE ostream& operator<<(STD_NAMESPACE ostream& s, const DcmTagKey& k);
 
 /*
 ** inline versions of functions
 */
 
-/* Constructors */
+/* constructors and destructor */
 
 inline
 DcmTagKey::DcmTagKey()
@@ -127,6 +249,11 @@ inline
 DcmTagKey::DcmTagKey(Uint16 g, Uint16 e)
   : group(g),
     element(e)
+{
+}
+
+inline
+DcmTagKey::~DcmTagKey()
 {
 }
 
@@ -168,6 +295,35 @@ inline Uint16
 DcmTagKey::getElement() const
 {
     return element;
+}
+
+inline OFBool
+DcmTagKey::isGroupLength() const
+{
+    return (element == 0) && hasValidGroup();
+}
+
+inline OFBool
+DcmTagKey::isPrivate() const
+{
+    return ((group & 1) != 0 ) && hasValidGroup();
+}
+
+inline OFBool
+DcmTagKey::isPrivateReservation() const
+{
+    // private reservation has element number ranging from 0x0010 to 0x00FF
+    return isPrivate() && (element >= 0x10) && (element <= 0xFF);
+}
+
+inline OFBool
+DcmTagKey::hasValidGroup() const
+{
+    // group numbers 1, 3, 5, 7 and 0xFFFF are illegal in DICOM
+    if (((group & 1) != 0) && ((group <= 7) || (group == 0xFFFF)))
+        return OFFalse;
+    else
+        return OFTrue;
 }
 
 inline DcmTagKey&
@@ -261,66 +417,3 @@ DcmTagKey::operator >= (const DcmTagKey& key) const
 }
 
 #endif
-
-
-/*
-** CVS/RCS Log:
-** $Log: dctagkey.h,v $
-** Revision 1.1  2006/03/01 20:15:22  lpysher
-** Added dcmtkt ocvs not in xcode  and fixed bug with multiple monitors
-**
-** Revision 1.16  2005/12/08 16:28:45  meichel
-** Changed include path schema for all DCMTK header files
-**
-** Revision 1.15  2004/01/16 14:08:00  joergr
-** Removed acknowledgements with e-mail addresses from CVS log.
-**
-** Revision 1.14  2003/11/13 14:06:36  meichel
-** Fixed definition of DCM_UndefinedTagKey
-**
-** Revision 1.13  2003/11/05 15:56:31  meichel
-** Added declaration of operator<< for DcmTagKeys.
-**   Fixes compilation issue on Visual C++ 6.0 SP 0.
-**
-** Revision 1.12  2002/04/16 13:41:44  joergr
-** Added configurable support for C++ ANSI standard includes (e.g. streams).
-**
-** Revision 1.11  2001/11/19 15:23:11  meichel
-** Cleaned up signature code to avoid some gcc warnings.
-**
-** Revision 1.10  2001/11/16 15:54:40  meichel
-** Adapted digital signature code to final text of supplement 41.
-**
-** Revision 1.9  2001/06/01 15:48:45  meichel
-** Updated copyright header
-**
-** Revision 1.8  2000/11/07 16:56:10  meichel
-** Initial release of dcmsign module for DICOM Digital Signatures
-**
-** Revision 1.7  2000/03/08 16:26:19  meichel
-** Updated copyright header.
-**
-** Revision 1.6  2000/02/07 14:45:16  meichel
-** Removed const qualifier from DcmTagKey::toString(), avoids warning on Irix.
-**
-** Revision 1.5  1999/03/31 09:24:49  meichel
-** Updated copyright header in module dcmdata
-**
-** Revision 1.4  1999/03/17 11:08:54  meichel
-** added method DcmTagKey::toString()
-**
-** Revision 1.3  1998/07/15 15:48:54  joergr
-** Removed several compiler warnings reported by gcc 2.8.1 with
-** additional options, e.g. missing copy constructors and assignment
-** operators, initialization of member variables in the body of a
-** constructor instead of the member initialization list, hiding of
-** methods by use of identical names, uninitialized member variables,
-** missing const declaration of char pointers. Replaced tabs by spaces.
-**
-** Revision 1.2  1997/08/26 13:45:54  hewett
-** Added simple hash function method.
-**
-** Revision 1.1  1995/11/23 16:38:04  hewett
-** Updated for loadable data dictionary + some cleanup (more to do).
-**
-*/

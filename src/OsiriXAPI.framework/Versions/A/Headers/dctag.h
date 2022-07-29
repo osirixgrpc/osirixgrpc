@@ -1,33 +1,21 @@
 /*
  *
- *  Copyright (C) 1994-2005, OFFIS
+ *  Copyright (C) 1994-2015, OFFIS e.V.
+ *  All rights reserved.  See COPYRIGHT file for details.
  *
  *  This software and supporting documentation were developed by
  *
- *    Kuratorium OFFIS e.V.
- *    Healthcare Information and Communication Systems
+ *    OFFIS e.V.
+ *    R&D Division Health
  *    Escherweg 2
  *    D-26121 Oldenburg, Germany
  *
- *  THIS SOFTWARE IS MADE AVAILABLE,  AS IS,  AND OFFIS MAKES NO  WARRANTY
- *  REGARDING  THE  SOFTWARE,  ITS  PERFORMANCE,  ITS  MERCHANTABILITY  OR
- *  FITNESS FOR ANY PARTICULAR USE, FREEDOM FROM ANY COMPUTER DISEASES  OR
- *  ITS CONFORMITY TO ANY SPECIFICATION. THE ENTIRE RISK AS TO QUALITY AND
- *  PERFORMANCE OF THE SOFTWARE IS WITH THE USER.
  *
  *  Module:  dcmdata
  *
  *  Author:  Gerd Ehlers, Andrew Hewett
  *
  *  Purpose: Definition of the class DcmTag
- *
- *  Last Update:      $Author: lpysher $
- *  Update Date:      $Date: 2006/03/01 20:15:22 $
- *  Source File:      $Source: /cvsroot/osirix/osirix/Binaries/dcmtk-source/dcmdata/dctag.h,v $
- *  CVS/RCS Revision: $Revision: 1.1 $
- *  Status:           $State: Exp $
- *
- *  CVS/RCS Log at end of file
  *
  */
 
@@ -39,8 +27,21 @@
 #include "dctagkey.h"
 #include "dcvr.h"
 
+/*
+** Defines
+*/
+
 /// default attribute name for unknown attributes
 #define DcmTag_ERROR_TagName    "Unknown Tag & Data"
+
+/// macro for the "item" tag (avoid VR lookup)
+#define DCM_ItemTag (DcmTag(DCM_Item, EVR_na))
+/// macro for the "item delimitation item" tag (avoid VR lookup)
+#define DCM_ItemDelimitationItemTag (DcmTag(DCM_ItemDelimitationItem, EVR_na))
+/// macro for the "sequence delimitation item" tag (avoid VR lookup)
+#define DCM_SequenceDelimitationItemTag (DcmTag(DCM_SequenceDelimitationItem, EVR_na))
+/// macro for the "internal use" tag (an attribute that is never used in DICOM)
+#define DCM_InternalUseTag (DcmTag(DcmTagKey(0xfffe, 0xfffe), EVR_UNKNOWN))
 
 
 /** this class encapsulates an attribute tag (group, element) and a VR.
@@ -52,7 +53,7 @@
  *  than creation of simple DcmTagKey objects unless the VR is passed
  *  in the constructor.
  */
-class DcmTag: public DcmTagKey
+class DCMTK_DCMDATA_EXPORT DcmTag: public DcmTagKey
 {
 public:
     /// default constructor
@@ -60,20 +61,22 @@ public:
 
     /** constructor.
      *  Initializes group/element from given tag key and performs
-     *  a dictionary lookup for the VR.  The lookup only considers
-     *  standard tags, tags with private creator are ignored.
+     *  a dictionary lookup for the VR.  The lookup also considers
+     *  private tags if the private creator is defined (not NULL).
      *  @param akey tag key
+     *  @param privCreator private creator code (optional)
      */
-    DcmTag(const DcmTagKey& akey);
+    DcmTag(const DcmTagKey& akey, const char *privCreator = NULL);
 
     /** constructor.
      *  Initializes group/element from given parameters and performs
-     *  a dictionary lookup for the VR.  The lookup only considers
-     *  standard tags, tags with private creator are ignored.
+     *  a dictionary lookup for the VR.  The lookup also considers
+     *  private tags if the private creator is defined (not NULL).
      *  @param g tag group
      *  @param e tag element
+     *  @param privCreator private creator code (optional)
      */
-    DcmTag(Uint16 g, Uint16 e);
+    DcmTag(Uint16 g, Uint16 e, const char *privCreator = NULL);
 
     /** constructor.
      *  Initializes group/element and VR from given parameters.
@@ -127,10 +130,10 @@ public:
      *  @return copy of tag key, by value
      */
     DcmTagKey getXTag() const
-    { 
+    {
       return * OFstatic_cast(const DcmTagKey *, this);
     }
-    
+
     /** returns name of attribute tag.
      *  If name has not been accessed before, a dictionary lookup
      *  under consideration of the current private creator code
@@ -178,7 +181,7 @@ public:
     /** convert the given string to a DICOM tag value
      *  @param name name or tag of the attribute to be searched for.
      *    If the name of the attribute is given the spelling has to be consistent
-     *    with the spelling used in the data dictionary (e.g. "PatientsName").
+     *    with the spelling used in the data dictionary (e.g. "PatientName").
      *    If the tag values are used the format is "gggg,eeee" (i.e. two hexa-
      *    decimal numbers separated by a comma).
      *  @param value variable in which the resulting tag value is stored.
@@ -214,92 +217,4 @@ private:
 
 };
 
-
-// *** global constants ********************************
-
-
-#define ItemTag (DcmTag(DCM_Item))
-#define InternalUseTag (DcmTag(DcmTagKey(0xfffe, 0xfffe)))
-
-
 #endif /* !DCTAG_H */
-
-/*
-** CVS/RCS Log:
-** $Log: dctag.h,v $
-** Revision 1.1  2006/03/01 20:15:22  lpysher
-** Added dcmtkt ocvs not in xcode  and fixed bug with multiple monitors
-**
-** Revision 1.21  2005/12/08 16:28:44  meichel
-** Changed include path schema for all DCMTK header files
-**
-** Revision 1.20  2003/08/14 09:00:56  meichel
-** Adapted type casts to new-style typecast operators defined in ofcast.h
-**
-** Revision 1.19  2002/07/23 14:21:27  meichel
-** Added support for private tag data dictionaries to dcmdata
-**
-** Revision 1.18  2002/05/24 09:49:13  joergr
-** Renamed some parameters/variables to avoid ambiguities.
-**
-** Revision 1.17  2002/04/30 13:12:12  joergr
-** Added static helper function to convert strings (tag names or group/element
-** numbers) to DICOM tag objects.
-**
-** Revision 1.16  2001/11/19 15:23:10  meichel
-** Cleaned up signature code to avoid some gcc warnings.
-**
-** Revision 1.15  2001/11/16 15:54:40  meichel
-** Adapted digital signature code to final text of supplement 41.
-**
-** Revision 1.14  2001/09/25 17:19:29  meichel
-** Adapted dcmdata to class OFCondition
-**
-** Revision 1.13  2001/06/01 15:48:45  meichel
-** Updated copyright header
-**
-** Revision 1.12  2000/04/14 16:00:58  meichel
-** Restructured class DcmTag. Instances don't keep a permanent pointer
-**   to a data dictionary entry anymore. Required for MT applications.
-**
-** Revision 1.11  2000/03/08 16:26:19  meichel
-** Updated copyright header.
-**
-** Revision 1.10  1999/03/31 09:24:49  meichel
-** Updated copyright header in module dcmdata
-**
-** Revision 1.9  1998/07/15 15:48:54  joergr
-** Removed several compiler warnings reported by gcc 2.8.1 with
-** additional options, e.g. missing copy constructors and assignment
-** operators, initialization of member variables in the body of a
-** constructor instead of the member initialization list, hiding of
-** methods by use of identical names, uninitialized member variables,
-** missing const declaration of char pointers. Replaced tabs by spaces.
-**
-** Revision 1.8  1997/05/06 09:26:44  hewett
-** The DcmTag::getVMMax() method now returns a maximum value if the attribute
-** is unknown.  This makes the default VM=1-n (before it was VM=1).
-**
-** Revision 1.7  1997/03/26 17:18:01  hewett
-** Added member function to obtain a DcmTag's data dictionary reference.
-**
-** Revision 1.6  1996/04/19 08:37:21  andreas
-** correct bug with DEBUG and not DEBUG parts. It was not possible to compile
-** the dcmdata library with DEBUG and programs using dcmdata without DEBUG
-** (and vice versa)
-**
-** Revision 1.5  1996/03/13 14:48:32  hewett
-** Added useful VR access methods.
-**
-** Revision 1.4  1996/03/12 15:32:49  hewett
-** Added constructor with parameter to explicity set the VR.
-**
-** Revision 1.3  1996/01/05 13:23:01  andreas
-** - changed to support new streaming facilities
-** - more cleanups
-** - merged read / write methods for block and file transfer
-**
-** Revision 1.2  1995/11/23 16:38:03  hewett
-** Updated for loadable data dictionary + some cleanup (more to do).
-**
-*/

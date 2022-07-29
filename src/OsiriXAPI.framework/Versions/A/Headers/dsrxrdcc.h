@@ -1,19 +1,15 @@
 /*
  *
- *  Copyright (C) 2005, OFFIS
+ *  Copyright (C) 2005-2015, OFFIS e.V.
+ *  All rights reserved.  See COPYRIGHT file for details.
  *
  *  This software and supporting documentation were developed by
  *
- *    Kuratorium OFFIS e.V.
- *    Healthcare Information and Communication Systems
+ *    OFFIS e.V.
+ *    R&D Division Health
  *    Escherweg 2
  *    D-26121 Oldenburg, Germany
  *
- *  THIS SOFTWARE IS MADE AVAILABLE,  AS IS,  AND OFFIS MAKES NO  WARRANTY
- *  REGARDING  THE  SOFTWARE,  ITS  PERFORMANCE,  ITS  MERCHANTABILITY  OR
- *  FITNESS FOR ANY PARTICULAR USE, FREEDOM FROM ANY COMPUTER DISEASES  OR
- *  ITS CONFORMITY TO ANY SPECIFICATION. THE ENTIRE RISK AS TO QUALITY AND
- *  PERFORMANCE OF THE SOFTWARE IS WITH THE USER.
  *
  *  Module: dcmsr
  *
@@ -21,13 +17,6 @@
  *
  *  Purpose:
  *    classes: DSRXRayRadiationDoseSRConstraintChecker
- *
- *  Last Update:      $Author: lpysher $
- *  Update Date:      $Date: 2006/03/01 20:16:11 $
- *  CVS/RCS Revision: $Revision: 1.1 $
- *  Status:           $State: Exp $
- *
- *  CVS/RCS Log at end of file
  *
  */
 
@@ -44,9 +33,15 @@
  *  class declaration  *
  *---------------------*/
 
-/** Class for checking the content relationship constraints of the Enhanced SR IOD
+/** Class for checking the relationship content constraints of the X-Ray Radiation Dose
+ *  SR IOD.
+ *  According to DICOM PS 3.3: "The document may be constructed from Baseline TID 10001
+ *  (Projection X-Ray Radiation Dose) or Baseline TID 10011 (CT Radiation Dose) invoked
+ *  at the root node.  Note: This IOD maybe used with other Templates defined for Dose
+ *  Reporting.  Such other Templates may be specialized for specific modalities or
+ *  future dose measurement techniques."
  */
-class DSRXRayRadiationDoseSRConstraintChecker
+class DCMTK_DCMSR_EXPORT DSRXRayRadiationDoseSRConstraintChecker
   : public DSRIODConstraintChecker
 {
 
@@ -70,10 +65,14 @@ class DSRXRayRadiationDoseSRConstraintChecker
      */
     virtual OFBool isTemplateSupportRequired() const;
 
-    /** get identifier of the root template
-     ** @return always returns NULL (no template required)
+    /** get identifier and mapping resource of the root template (if any)
+     ** @param  templateIdentifier  identifier of the root template (might be empty)
+     *  @param  mappingResource     mapping resource that defines the root template
+     *                              (might be empty)
+     ** @return status, EC_Normal if successful, an error code otherwise
      */
-    virtual const char *getRootTemplateIdentifier() const;
+    virtual OFCondition getRootTemplateIdentification(OFString &templateIdentifier,
+                                                      OFString &mappingResource) const;
 
     /** get the associated document type of the SR IOD
      ** @return document type (DSRTypes::DT_XRayRadiationDoseSR)
@@ -96,19 +95,3 @@ class DSRXRayRadiationDoseSRConstraintChecker
 
 
 #endif
-
-
-/*
- *  CVS/RCS Log:
- *  $Log: dsrxrdcc.h,v $
- *  Revision 1.1  2006/03/01 20:16:11  lpysher
- *  Added dcmtkt ocvs not in xcode  and fixed bug with multiple monitors
- *
- *  Revision 1.2  2005/12/08 16:05:37  meichel
- *  Changed include path schema for all DCMTK header files
- *
- *  Revision 1.1  2005/11/30 12:05:59  joergr
- *  Added support for X-Ray Radiation Dose SR documents.
- *
- *
- */

@@ -1,20 +1,16 @@
 /*=========================================================================
-  Program:   OsiriX
-
-  Copyright (c) OsiriX Team
-  All rights reserved.
-  Distributed under GNU - LGPL
-  
-  See http://www.osirix-viewer.com/copyright.html for details.
-
-     This software is distributed WITHOUT ANY WARRANTY; without even
-     the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
-     PURPOSE.
-=========================================================================*/
+ Program:   OsiriX
+ Copyright (c) 2010 - 2020 Pixmeo SARL
+ 266 rue de Bernex
+ CH-1233 Bernex
+ Switzerland
+ All rights reserved.
+ =========================================================================*/
 
 #import <Cocoa/Cocoa.h>
 
 @class DCMTKRootQueryNode;
+@class DicomDatabase;
 
 /** \brief Controller for performing query */
 @interface QueryArrayController : NSObject
@@ -29,7 +25,10 @@
 	NSDictionary *distantServer;
 	NSLock *queryLock;
 	int retrieveMode;
+    DicomDatabase *db;
 }
+
+@property (retain, nonatomic) DicomDatabase *db;
 
 - (id)initWithCallingAET:(NSString *) myAET distantServer: (NSDictionary*) ds;
 
@@ -38,8 +37,8 @@
 - (NSMutableDictionary*) filters;
 - (void)addFilter:(id)filter forDescription:(NSString *)description;
 - (void)sortArray:(NSArray *)sortDesc;
-- (void)performQuery;
+- (BOOL)performQuery;
 - (NSDictionary *)parameters;
-- (void)performQuery: (BOOL) showError;
+- (BOOL)performQuery: (BOOL) showError;
 
 @end

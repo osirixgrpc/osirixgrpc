@@ -1,20 +1,18 @@
 /*=========================================================================
-  Program:   OsiriX
-
-  Copyright (c) OsiriX Team
-  All rights reserved.
-  Distributed under GNU - LGPL
-  
-  See http://www.osirix-viewer.com/copyright.html for details.
-
-     This software is distributed WITHOUT ANY WARRANTY; without even
-     the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
-     PURPOSE.
-=========================================================================*/
+ Program:   OsiriX
+ Copyright (c) 2010 - 2020 Pixmeo SARL
+ 266 rue de Bernex
+ CH-1233 Bernex
+ Switzerland
+ All rights reserved.
+ =========================================================================*/
 
 #import <Cocoa/Cocoa.h>
 
 @interface NSImage (N2)
+
++ (NSSize)badgeSizeForString:(NSString*)string;
++ (void)drawBadgeImageWithText:(NSString*)text atPoint:(NSPoint)point;
 
 -(NSImage *)rotateBy:(float) rotation;
 -(NSImage *)flipImageX:(BOOL) xFlip Y:(BOOL) yFlip;
@@ -30,10 +28,14 @@
 -(NSImage*)imageByScalingProportionallyToSize:(NSSize)targetSize;
 -(NSImage*)imageByScalingProportionallyToSizeUsingNSImage:(NSSize)targetSize;
 -(NSImage*)imageByScalingProportionallyToSize:(NSSize)targetSize retinaSupport: (BOOL) retinaSupport;
+-(NSImage*)imageByScalingToSize:(NSSize)targetSize retinaSupport: (BOOL) retinaSupport proportionally: (BOOL) proportionally;
 -(NSImage*)imageByScalingProportionallyUsingNSImage:(float)ratio;
 -(NSData*)getDataOfType:(NSBitmapImageFileType)type compressionFactor:(float)factor;
-
+-(NSBitmapImageRep *)bitmapImageRepresentation;
+-(NSBitmapImageRep *)bitmapImageRepresentationWithBitsPerSample: (int) bps andBitsPerPixel: (int) bpp;
+-(NSBitmapImageRep *)bitmapImageRepresentationWithBitsPerSample: (int) bps andBitsPerPixel: (int) bpp scalingFactor: (float) s;
 + (float) backingScaleNSImage;
++ (NSImage *)imageWithPreviewOfFileAtPath:(NSString *)path ofSize:(NSSize)size;
 
 @end
 

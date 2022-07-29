@@ -1,19 +1,15 @@
 /*
  *
- *  Copyright (C) 1994-2005, OFFIS
+ *  Copyright (C) 1994-2016, OFFIS e.V.
+ *  All rights reserved.  See COPYRIGHT file for details.
  *
  *  This software and supporting documentation were developed by
  *
- *    Kuratorium OFFIS e.V.
- *    Healthcare Information and Communication Systems
+ *    OFFIS e.V.
+ *    R&D Division Health
  *    Escherweg 2
  *    D-26121 Oldenburg, Germany
  *
- *  THIS SOFTWARE IS MADE AVAILABLE,  AS IS,  AND OFFIS MAKES NO  WARRANTY
- *  REGARDING  THE  SOFTWARE,  ITS  PERFORMANCE,  ITS  MERCHANTABILITY  OR
- *  FITNESS FOR ANY PARTICULAR USE, FREEDOM FROM ANY COMPUTER DISEASES  OR
- *  ITS CONFORMITY TO ANY SPECIFICATION. THE ENTIRE RISK AS TO QUALITY AND
- *  PERFORMANCE OF THE SOFTWARE IS WITH THE USER.
  *
  *  Module:  dcmdata
  *
@@ -21,130 +17,234 @@
  *
  *  Purpose: global type and constant definitions
  *
- *  Last Update:      $Author: lpysher $
- *  Update Date:      $Date: 2006/03/01 20:15:22 $
- *  CVS/RCS Revision: $Revision: 1.1 $
- *  Status:           $State: Exp $
- *
- *  CVS/RCS Log at end of file
- *
  */
 
 
 #ifndef DCTYPES_H
-#define DCTYPES_H 1
+#define DCTYPES_H
 
 #include "osconfig.h"    /* make sure OS specific configuration is included first */
-#include "oftypes.h"
+//#include "oflog.h"
+#include "dcdefine.h"
 
 #define INCLUDE_CSTDLIB
 #include "ofstdinc.h"
+#include "oftypes.h"
 
+BEGIN_EXTERN_C
+#ifdef HAVE_SYS_TYPES_H
+/* needed e.g. on Solaris for definition of size_t */
+#include <sys/types.h>
+#endif
+END_EXTERN_C
 
 /*
-** Macro Definitions
-*/
+ ** Logging
+ */
 
-// XML namespace URI for the dcmtk
+//extern DCMTK_DCMDATA_EXPORT OFLogger DCM_dcmdataLogger;
+
+#define DCMDATA_TRACE(msg) /*std::cout << msg*/
+#define DCMDATA_DEBUG(msg) /*std::cout << msg*/
+#define DCMDATA_INFO(msg) /*std::cout << msg*/
+#define DCMDATA_WARN(msg) std::cout << msg << std::endl
+#define DCMDATA_ERROR(msg) std::cout << msg << std::endl
+#define DCMDATA_FATAL(msg) std::cout << msg << std::endl
+
+/*
+ ** Macro Definitions
+ */
+
+/// XML namespace URI for the dcmtk
 #define DCMTK_XML_NAMESPACE_URI "http://dicom.offis.de/dcmtk"
+/// XML namespace URI for Native DICOM Model (see DICOM part 19)
+#define NATIVE_DICOM_MODEL_XML_NAMESPACE_URI "http://dicom.nema.org/PS3.19/models/NativeDICOM"
+
+// ANSI escape codes for color output of the print() method
+#define DCMDATA_ANSI_ESCAPE_CODE_RESET      "\033[0m"
+#define DCMDATA_ANSI_ESCAPE_CODE_TAG        "\033[22m\033[32m"
+#define DCMDATA_ANSI_ESCAPE_CODE_VR         "\033[22m\033[31m"
+#define DCMDATA_ANSI_ESCAPE_CODE_VALUE      "\033[1m\033[37m"
+#define DCMDATA_ANSI_ESCAPE_CODE_INFO       "\033[1m\033[30m"
+#define DCMDATA_ANSI_ESCAPE_CODE_LENGTH     "\033[22m\033[36m"
+#define DCMDATA_ANSI_ESCAPE_CODE_VM         "\033[22m\033[35m"
+#define DCMDATA_ANSI_ESCAPE_CODE_NAME       "\033[22m\033[33m"
+#define DCMDATA_ANSI_ESCAPE_CODE_NAME_1     "\033[1m\033[33m"
+#define DCMDATA_ANSI_ESCAPE_CODE_SEQUENCE   "\033[22m\033[32m"
+#define DCMDATA_ANSI_ESCAPE_CODE_SEQUENCE_1 "\033[1m\033[32m"
+#define DCMDATA_ANSI_ESCAPE_CODE_ITEM       "\033[1m\033[30m"
+#define DCMDATA_ANSI_ESCAPE_CODE_LINE       "\033[1m\033[30m"
+#define DCMDATA_ANSI_ESCAPE_CODE_COMMENT    "\033[1m\033[30m"
+
+
+// include this file in doxygen documentation
+
+/** @file dctypes.h
+ *  @brief type definitions for the dcmdata module
+ */
 
 
 /*
-** Type Definitions
-*/
+ ** Enumerated Types
+ */
 
-typedef Uint8		    BYTE;
-typedef Sint8		    SBYTE;
-
-
-/*
-** Enumerated Types
-*/
-
+/// encoding type for sequences and sequence items
 typedef enum {
+    /// defined length
     EET_ExplicitLength = 0,
+    /// undefined length
     EET_UndefinedLength = 1
 } E_EncodingType;
 
 
+/// handling of group length elements when reading/writing a dataset
 typedef enum {
-    EGL_noChange = 0,       // no change of GL values, WARNING: DO NOT USE FOR WRITE
-    EGL_withoutGL = 1,      // remove group length tags
-    EGL_withGL = 2,         // add group length tags for every group
-    EGL_recalcGL = 3        // recalculate values for existing group length tags
+    /// no change of group length values, WARNING: DO NOT USE THIS VALUE FOR WRITE OPERATIONS
+    EGL_noChange = 0,
+    /// remove group length tags
+    EGL_withoutGL = 1,
+    /// add group length tags for every group
+    EGL_withGL = 2,
+    /// recalculate values for existing group length tags
+    EGL_recalcGL = 3
 } E_GrpLenEncoding;
 
+/// handling of dataset trailing padding
 typedef enum {
-    EPD_noChange = 0,       // no change of padding tags
-    EPD_withoutPadding = 1, // remove all padding tags
-    EPD_withPadding = 2     // add padding tags
+    /// no change of padding tags
+    EPD_noChange = 0,
+    /// remove all padding tags
+    EPD_withoutPadding = 1,
+    /// add padding tags
+    EPD_withPadding = 2
 } E_PaddingEncoding;
 
-
+/// search mode for hierarchical search operations
 typedef enum {
+    /// start search from current object
     ESM_fromHere = 0,
+    /// start search from object pointed to by stack top
     ESM_fromStackTop = 1,
+    /// start search from object following the object pointed to by stack top
     ESM_afterStackTop = 2
 } E_SearchMode;
 
-
+/// object state during transfer (read/write) operations
 typedef enum {
+    /// object prepared for transfer, no data transferred yet
     ERW_init = 0,
+    /// object transfer completed
     ERW_ready = 1,
+    /// object transfer in progress
     ERW_inWork = 2,
+    /// object not prepared for transfer operation
     ERW_notInitialized = 3
 } E_TransferState;
 
-
+/// mode for file reading
 typedef enum {
-    ERM_autoDetect = 0,     // auto detect: fileformat or dataset
-    ERM_dataset = 1,        // dataset (ignore meta header)
-    ERM_fileOnly = 2        // fileformat only
+    /// auto detect: fileformat or dataset
+    ERM_autoDetect = 0,
+    /// read as dataset (assume no meta header present)
+    ERM_dataset = 1,
+    /// read file format only, refuse if no meta-header
+    ERM_fileOnly = 2,
+    /// read meta-header only, do not read the dataset
+    ERM_metaOnly = 3
 } E_FileReadMode;
+
+/// mode for file writing
+typedef enum {
+    /// write as fileformat (update only missing information, this is the old behavior)
+    EWM_fileformat = 0,
+    /// write as dataset (without meta header)
+    EWM_dataset = 1,
+    /// write as fileformat and update required information (e.g. SOP Class/Instance UID)
+    EWM_updateMeta = 2,
+    /// write as fileformat and create new meta header (do not retain existing information)
+    EWM_createNewMeta = 3,
+    /// write as fileformat but don't update the meta header (please be careful!)
+    EWM_dontUpdateMeta = 4
+} E_FileWriteMode;
 
 
 /** General purpose class hiding constants from the global namespace.
  */
-struct DCMTypes
+struct DCMTK_DCMDATA_EXPORT DCMTypes
 {
-  public:
-
+public:
+    
     /** @name print() flags.
      *  These flags can be combined and passed to the print() methods.
      */
     //@{
-
+    
     /// shorten long tag values (e.g. long texts, pixel data)
     static const size_t PF_shortenLongTagValues;
-
+    
     /// show hierarchical tree structure of the dataset
     static const size_t PF_showTreeStructure;
-
-    /// internal: current entry is the last one on the level
-    static const size_t PF_lastEntry;
-
+    
+    /// do not map well-known UID numbers to UID names (e.g. Transfer Syntax and SOP Class)
+    static const size_t PF_doNotMapUIDsToNames;
+    
+    /// quote non-ASCII string content as XML markup
+    static const size_t PF_convertToMarkup;
+    
+    /// quote non-ASCII string content as octal numbers
+    static const size_t PF_convertToOctalNumbers;
+    
+    /// use ANSI escape codes for output
+    static const size_t PF_useANSIEscapeCodes;
     //@}
-
-
+    
     /** @name writeXML() flags.
      *  These flags can be combined and passed to the writeXML() methods.
      */
     //@{
-
-    /// add document type definition (DTD)
+    
+    /// add document type definition (DTD). DCMTK-specific format only.
     static const size_t XF_addDocumentType;
-
-    /// write binary data to XML output file
+    
+    /// write binary data to XML output file. DCMTK-specific format only.
     static const size_t XF_writeBinaryData;
-
-    /// encode binary data as Base64 (MIME)
+    
+    /// encode binary data as Base64 (MIME).
+    /// - For the DCMTK-specific format, the default is to use hex numbers.
+    /// - For the Native DICOM Model, the default is to use a UUID reference.
     static const size_t XF_encodeBase64;
-
-    /// XML namespace URI for dcmsr module
-    static const size_t XF_useDcmtkNamespace;
-
-    /// embed content of document type definition
+    
+    /// use XML namespace URI. The value depends on the selected output format.
+    static const size_t XF_useXMLNamespace;
+    
+    /// embed content of document type definition. DCMTK-specific format only.
     static const size_t XF_embedDocumentType;
+    
+    /// don't write name of the DICOM data elements. DCMTK-specific format only.
+    static const size_t XF_omitDataElementName;
+    
+    /// convert non-ASCII characters to numeric values. DCMTK-specific format only.
+    static const size_t XF_convertNonASCII;
+    
+    /// write data in "Native DICOM Model" format as defined for Application Hosting (DICOM part 19).
+    /// The default is to use the DCMTK-specific format.
+    static const size_t XF_useNativeModel;
+    
+    //@}
+    
+    /** @name convertCharacterSet() flags.
+     *  These flags can be combined and passed to the convertCharacterSet() methods.
+     */
+    //@{
+    
+    /// try to approximate characters that cannot be represented through similar
+    /// looking characters.  See DcmSpecificCharacterSet::getTransliterationMode().
+    static const size_t CF_transliterate;
+    
+    /// discard characters that cannot be represented in destination character set.
+    /// See DcmSpecificCharacterSet::getDiscardIllegalSequenceMode().
+    static const size_t CF_discardIllegal;
+    
     //@}
 };
 
@@ -154,66 +254,3 @@ const Uint32 DCM_UndefinedLength = 0xffffffff;
 
 
 #endif /* !DCTYPES_H */
-
-
-/*
- * CVS/RCS Log:
- * $Log: dctypes.h,v $
- * Revision 1.1  2006/03/01 20:15:22  lpysher
- * Added dcmtkt ocvs not in xcode  and fixed bug with multiple monitors
- *
- * Revision 1.21  2005/12/08 16:28:47  meichel
- * Changed include path schema for all DCMTK header files
- *
- * Revision 1.20  2005/12/02 08:50:30  joergr
- * Added new file read mode that makes it possible to distinguish between DICOM
- * files, datasets and other non-DICOM files.
- *
- * Revision 1.19  2003/04/22 08:19:09  joergr
- * Added new command line option which allows to embed the content of the DTD
- * instead of referencing the DTD file.
- *
- * Revision 1.18  2003/04/01 14:57:08  joergr
- * Added support for XML namespaces.
- *
- * Revision 1.17  2002/12/06 12:21:00  joergr
- * Enhanced "print()" function by re-working the implementation and replacing
- * the boolean "showFullData" parameter by a more general integer flag.
- *
- * Revision 1.16  2002/11/27 12:07:23  meichel
- * Adapted module dcmdata to use of new header file ofstdinc.h
- *
- * Revision 1.15  2002/07/10 11:45:40  meichel
- * Moved definitions for Uint8, Sint8 ... Float64 from dcmdata to ofstd
- *   since these types are not DICOM specific
- *
- * Revision 1.14  2002/06/06 14:51:13  meichel
- * Corrected code for inclusion of stdlib.h
- *
- * Revision 1.13  2002/05/14 08:20:29  joergr
- * Added support for Base64 (MIME) encoded binary data.
- *
- * Revision 1.12  2002/04/25 10:07:13  joergr
- * Added support for XML output of DICOM objects.
- *
- * Revision 1.11  2001/06/01 15:48:45  meichel
- * Updated copyright header
- *
- * Revision 1.10  2000/03/08 16:26:19  meichel
- * Updated copyright header.
- *
- * Revision 1.9  2000/03/03 14:05:26  meichel
- * Implemented library support for redirecting error messages into memory
- *   instead of printing them to stdout/stderr for GUI applications.
- *
- * Revision 1.8  2000/02/07 14:44:45  meichel
- * The typedef for Sint8 now defaults to char instead of signed char.
- *   This avoids warnings on certain c-front related compilers.
- *   The old behaviour can be restored by compiling with the symbol
- *   CHAR_IS_UNSIGNED defined.
- *
- * Revision 1.7  1999/03/31 09:24:51  meichel
- * Updated copyright header in module dcmdata
- *
- *
- */

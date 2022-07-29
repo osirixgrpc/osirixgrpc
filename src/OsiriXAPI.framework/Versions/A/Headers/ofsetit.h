@@ -1,19 +1,15 @@
 /*
  *
- *  Copyright (C) 2003-2005, OFFIS
+ *  Copyright (C) 2003-2010, OFFIS e.V.
+ *  All rights reserved.  See COPYRIGHT file for details.
  *
  *  This software and supporting documentation were developed by
  *
- *    Kuratorium OFFIS e.V.
- *    Healthcare Information and Communication Systems
+ *    OFFIS e.V.
+ *    R&D Division Health
  *    Escherweg 2
  *    D-26121 Oldenburg, Germany
  *
- *  THIS SOFTWARE IS MADE AVAILABLE,  AS IS,  AND OFFIS MAKES NO  WARRANTY
- *  REGARDING  THE  SOFTWARE,  ITS  PERFORMANCE,  ITS  MERCHANTABILITY  OR
- *  FITNESS FOR ANY PARTICULAR USE, FREEDOM FROM ANY COMPUTER DISEASES  OR
- *  ITS CONFORMITY TO ANY SPECIFICATION. THE ENTIRE RISK AS TO QUALITY AND
- *  PERFORMANCE OF THE SOFTWARE IS WITH THE USER.
  *
  *  Module:  ofstd
  *
@@ -22,18 +18,10 @@
  *  Purpose: Template class which represents an iterator class for corres-
  *           ponding set data structures in ofstd.
  *
- *  Last Update:      $Author: lpysher $
- *  Update Date:      $Date: 2006/03/01 20:17:56 $
- *  Source File:      $Source: /cvsroot/osirix/osirix/Binaries/dcmtk-source/ofstd/ofsetit.h,v $
- *  CVS/RCS Revision: $Revision: 1.1 $
- *  Status:           $State: Exp $
- *
- *  CVS/RCS Log at end of file
- *
  */
 
-#ifndef OFSetIterator_h
-#define OFSetIterator_h
+#ifndef OFSETIT_H
+#define OFSETIT_H
 
 #include "osconfig.h"
 #include "oftypes.h"
@@ -56,7 +44,9 @@
 template <class T> class OFSetIterator
 {
   protected:
+    /// reference to the set instance
     OFSet<T> &ofset;
+    /// current position in the set
     unsigned int pos;
 
   public:
@@ -149,19 +139,3 @@ template <class T> class OFSetIterator
 };
 
 #endif
-
-/*
-** CVS/RCS Log:
-** $Log: ofsetit.h,v $
-** Revision 1.1  2006/03/01 20:17:56  lpysher
-** Added dcmtkt ocvs not in xcode  and fixed bug with multiple monitors
-**
-** Revision 1.2  2005/12/08 16:06:02  meichel
-** Changed include path schema for all DCMTK header files
-**
-** Revision 1.1  2003/08/20 14:45:25  wilkens
-** Added new class OFSetIterator, an iterator class for OFxxxSet data structures.
-**
-**
-**
-*/

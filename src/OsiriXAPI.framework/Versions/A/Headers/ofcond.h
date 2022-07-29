@@ -1,32 +1,21 @@
 /*
  *
- *  Copyright (C) 1997-2005, OFFIS
+ *  Copyright (C) 2001-2015, OFFIS e.V.
+ *  All rights reserved.  See COPYRIGHT file for details.
  *
  *  This software and supporting documentation were developed by
  *
- *    Kuratorium OFFIS e.V.
- *    Healthcare Information and Communication Systems
+ *    OFFIS e.V.
+ *    R&D Division Health
  *    Escherweg 2
  *    D-26121 Oldenburg, Germany
  *
- *  THIS SOFTWARE IS MADE AVAILABLE,  AS IS,  AND OFFIS MAKES NO  WARRANTY
- *  REGARDING  THE  SOFTWARE,  ITS  PERFORMANCE,  ITS  MERCHANTABILITY  OR
- *  FITNESS FOR ANY PARTICULAR USE, FREEDOM FROM ANY COMPUTER DISEASES  OR
- *  ITS CONFORMITY TO ANY SPECIFICATION. THE ENTIRE RISK AS TO QUALITY AND
- *  PERFORMANCE OF THE SOFTWARE IS WITH THE USER.
  *
  *  Module:  ofstd
  *
- *  Author:  Marco Eichelberg
+ *  Author:  Marco Eichelberg, Uli Schlachter
  *
  *  Purpose: class OFCondition and helper classes
- *
- *  Last Update:      $Author: lpysher $
- *  Update Date:      $Date: 2006/03/01 20:17:55 $
- *  CVS/RCS Revision: $Revision: 1.1 $
- *  Status:           $State: Exp $
- *
- *  CVS/RCS Log at end of file
  *
  */
 
@@ -34,13 +23,23 @@
 #ifndef OFCOND_H
 #define OFCOND_H
 
-#include "osconfig.h"
-#include "oftypes.h"   /* for class OFBool */
-#include "ofstring.h"  /* for class OFString */
+#include "osconfig.h"  /* include OS specific configuration first */
+
+#include "oftypes.h"    /* for class OFBool */
+#include "ofstring.h"   /* for class OFString */
 #include "ofcast.h"
 
-#define INCLUDE_CASSERT
+#define INCLUDE_CSTRING             /* for strdup() */
+#define INCLUDE_CSTDLIB             /* for free() */
 #include "ofstdinc.h"
+
+
+// include this file in doxygen documentation
+
+/** @file ofcond.h
+ *  @brief Error handling, codes and strings for all modules
+ */
+
 
 /** this enumeration describes the return status of an operation.
  */
@@ -57,351 +56,255 @@ enum OFStatus
 };
 
 
-/** abstract base class for condition codes
+/** A constant data structure which can be used for an OFCondition.
+ *  The reason this exists is because we need a trivially constructible class
+ *  (= needs no constructor to be run before being usable) that can hold static
+ *  condition codes.
  */
-class OFConditionBase
+struct DCMTK_OFSTD_EXPORT OFConditionConst
 {
-public:
 
-  /// default constructor
-  OFConditionBase()
-  {
-  }
+  /// module identifier. 0 is reserved for global codes.
+  unsigned short theModule;
 
-  /// copy constructor
-  OFConditionBase(const OFConditionBase& /* arg */)
-  {
-  }
+  /// status code that is unique for each module
+  unsigned short theCode;
 
-  /// destructor
-  virtual ~OFConditionBase()
-  {
-  }
-
-  /** this method returns a pointer to a OFConditionBase object containing a clone
-   *  of this object. If deletable() is true, the clone must be a deep copy allocated
-   *  on the heap.  If deletable() is false, the clone should be a pointer to this.
-   *  @return clone of this object, either deep copy or alias.
-   */
-  virtual const OFConditionBase *clone() const = 0;
-
-  /** returns a combined code and module for this object.
-   *  code is lower 16 bits, module is upper 16 bits
-   */
-  virtual unsigned int codeAndModule() const = 0;
-
-  /// returns the status for this object.
-  virtual OFStatus status() const = 0;
-
-  /// returns the error message text for this object.
-  virtual const char *text() const = 0;
-
-  /** checks if this object is deletable, e.g. all instances
-   *  of this class are allocated on the heap.
-   *  @return true if deletable, false otherwise
-   */
-  virtual OFBool deletable() const = 0;
-
-  /// returns the module identifier for this object.
-  unsigned short module() const
-  {
-    return OFstatic_cast(unsigned short,((codeAndModule() >> 16) & 0xFFFF));
-  }
-
-  /// returns the status code identifier for this object.
-  unsigned short code() const
-  {
-    return OFstatic_cast(unsigned short,(codeAndModule() & 0xFFFF));
-  }
-
-  /** comparison operator.
-   *  Compares status, code and module but not error text.
-   *  @param arg argument to compare to
-   *  @return true if equal, false otherwise
-   */
-  OFBool operator==(const OFConditionBase& arg) const
-  {
-    return ((status() == arg.status()) && (codeAndModule() == arg.codeAndModule()));
-  }
-
-  /** comparison operator, not equal.
-   *  Compares status, code and module but not error text.
-   *  @param arg argument to compare to
-   *  @return false if equal, true otherwise
-   */
-  OFBool operator!=(const OFConditionBase& arg) const
-  {
-    return ((status() != arg.status()) || (code() != arg.code()) || (module() != arg.module()));
-  }
-
-private:
-
-  /// private unimplemented copy assignment operator
-  OFConditionBase& operator=(const OFConditionBase& arg);
-
-};
-
-
-
-/** this class is used to declare global condition constants.
- *  OFError instances may keep multiple aliased pointers to an instance of
- *  this class. Therefore, instances should be global constants.
- */
-class OFConditionConst: public OFConditionBase
-{
-public:
-
-  /** constructor.
-   *  @param aModule module identifier. 0 is reserved for global codes,
-   *    other constants are defined elsewhere.
-   *  @param aCode status code that is unique for each module
-   *  @param aStatus condition status enum
-   *  @param aText error text.  The text is not copied, so the pointer must
-   *    remain valid for the full lifetime of this object.
-   */
-  OFConditionConst(unsigned short aModule, unsigned short aCode, OFStatus aStatus, const char *aText)
-  : OFConditionBase()
-  , theCodeAndModule(OFstatic_cast(unsigned int, aCode) | OFstatic_cast(unsigned int, aModule << 16))
-  , theStatus(aStatus)
-  , theText(aText)
-  {
-  }
-
-  /// copy constructor
-  OFConditionConst(const OFConditionConst& arg)
-  : OFConditionBase(arg)
-  , theCodeAndModule(arg.theCodeAndModule)
-  , theStatus(arg.theStatus)
-  , theText(arg.theText)
-  {
-  }
-
-  /// destructor
-  virtual ~OFConditionConst()
-  {
-  }
-
-  /** this method returns a pointer to a OFConditionBase object containing a clone
-   *  of this object. In this case, deletable() is false and clone just returns a pointer to this.
-   *  @return alias of this object
-   */
-  virtual const OFConditionBase *clone() const;
-
-  /** returns a combined code and module for this object.
-   *  code is lower 16 bits, module is upper 16 bits
-   */
-  virtual unsigned int codeAndModule() const;
-
-  /// returns the status for this object.
-  virtual OFStatus status() const;
-
-  /// returns the error message text for this object.
-  virtual const char *text() const;
-
-  /** checks if this object is deletable, e.g. all instances
-   *  of this class are allocated on the heap.
-   *  @return always false for this class
-   */
-  virtual OFBool deletable() const;
-
-private:
-
-  /// private undefined copy assignment operator
-  OFConditionConst& operator=(const OFConditionConst& arg);
-
-  /// code/module identification. Code is lower 16 bits, module is upper 16 bits
-  unsigned int theCodeAndModule;
-
-  /// status
+  /// condition status enum
   OFStatus theStatus;
 
-  /// condition description
+  /// error text
   const char *theText;
 
+  /** comparison operator. Compares status, code and module
+   *  but not error text.
+   *  @param arg error to compare to
+   *  @return true if equal, false otherwise
+   */
+  inline OFBool operator==(const OFConditionConst& arg) const
+  {
+    return ((theStatus == arg.theStatus) && (theCode == arg.theCode) && (theModule == arg.theModule));
+  }
+
+  /** comparison operator. Compares status, code and module
+   *  but not error text.
+   *  @param arg error to compare to
+   *  @return true if equal, false otherwise
+   */
+  inline OFBool operator!=(const OFConditionConst& arg) const
+  {
+    return !(*this == arg);
+  }
+
 };
 
 
-
-/** this class is used to declare condition codes with
- *  user defined error messages.
+/** @name global condition constants.
+ *  All constants defined here use module number 0, which is reserved for
+ *  global definitions. Other constants are defined in other modules.
  */
-class OFConditionString: public OFConditionBase
-{
-public:
+//@{
+/// condition constant: successful completion
+extern DCMTK_OFSTD_EXPORT const OFConditionConst EC_Normal;
+/// condition constant: error, function called with illegal parameters
+extern DCMTK_OFSTD_EXPORT const OFConditionConst EC_IllegalParameter;
+/// condition constant: failure, memory exhausted
+extern DCMTK_OFSTD_EXPORT const OFConditionConst EC_MemoryExhausted;
 
-  /** constructor.
-   *  @param aModule module identifier. 0 is reserved for global codes,
-   *    other constants are defined elsewhere.
-   *  @param aCode status code that is unique for each module
-   *  @param aStatus condition status enum
-   *  @param aText error text. The text is copied.
-   */
-  OFConditionString(unsigned short aModule, unsigned short aCode, OFStatus aStatus, const char *aText)
-  : OFConditionBase()
-  , theCodeAndModule(OFstatic_cast(unsigned int, aCode) | OFstatic_cast(unsigned int, aModule << 16))
-  , theStatus(aStatus)
-  , theText()
-  {
-    if (aText) theText = aText;
-  }
+/// condition constant: error, no character encoding library available
+extern DCMTK_OFSTD_EXPORT const OFConditionConst EC_NoEncodingLibrary;
+/// condition constant: error, no character encoding selected
+extern DCMTK_OFSTD_EXPORT const OFConditionConst EC_NoEncodingSelected;
 
-  /// copy constructor
-  OFConditionString(const OFConditionString& arg)
-  : OFConditionBase(arg)
-  , theCodeAndModule(arg.theCodeAndModule)
-  , theStatus(arg.theStatus)
-  , theText(arg.theText)
-  {
-  }
+/// condition constant: error, could not create temporary file
+extern DCMTK_OFSTD_EXPORT const OFConditionConst EC_CouldNotCreateTemporaryFile;
+/// condition constant: error, invalid filename
+extern DCMTK_OFSTD_EXPORT const OFConditionConst EC_InvalidFilename;
+/// condition constant: error, could not generate filename
+extern DCMTK_OFSTD_EXPORT const OFConditionConst EC_CouldNotGenerateFilename;
 
-  /// destructor
-  virtual ~OFConditionString()
-  {
-  }
+/// condition constant: error, directory does not exist
+extern DCMTK_OFSTD_EXPORT const OFConditionConst EC_DirectoryDoesNotExist;
+/// condition constant: error, directory is not writable
+extern DCMTK_OFSTD_EXPORT const OFConditionConst EC_DirectoryNotWritable;
+/// condition constant: error, could not generate directory name
+extern DCMTK_OFSTD_EXPORT const OFConditionConst EC_CouldNotGenerateDirectoryName;
+/// condition constant: error, call to setuid() failed
+extern DCMTK_OFSTD_EXPORT const OFConditionConst EC_setuidFailed;
 
-  /** this method returns a pointer to a OFConditionBase object containing a clone
-   *  of this object. The clone is a deep copy allocated on the heap.
-   *  @return deep copy of this object
-   */
-  virtual const OFConditionBase *clone() const;
+/// condition constant: error, function not yet implemented
+extern DCMTK_OFSTD_EXPORT const OFConditionConst EC_NotYetImplemented;
 
-  /** returns a combined code and module for this object.
-   *  code is lower 16 bits, module is upper 16 bits
-   */
-  virtual unsigned int codeAndModule() const;
+/// status code constant: error, cannot open character encoding
+extern DCMTK_OFSTD_EXPORT const unsigned short EC_CODE_CannotOpenEncoding;
+/// status code constant: error, cannot close character encoding
+extern DCMTK_OFSTD_EXPORT const unsigned short EC_CODE_CannotCloseEncoding;
+/// status code constant: error, cannot convert character encoding
+extern DCMTK_OFSTD_EXPORT const unsigned short EC_CODE_CannotConvertEncoding;
+/// status code constant: error, cannot control character encoding converter
+extern DCMTK_OFSTD_EXPORT const unsigned short EC_CODE_CannotControlConverter;
 
-  /// returns the status for this object.
-  virtual OFStatus status() const;
-
-  /// returns the error message text for this object.
-  virtual const char *text() const;
-
-  /** checks if this object is deletable, e.g. all instances
-   *  of this class are allocated on the heap.
-   *  @return true if deletable, false otherwise
-   */
-  virtual OFBool deletable() const;
-
-private:
-  /// private undefined copy assignment operator
-  OFConditionString& operator=(const OFConditionString& arg);
-
-  /// code/module identification. Code is lower 16 bits, module is upper 16 bits
-  unsigned int theCodeAndModule;
-
-  /// status
-  OFStatus theStatus;
-
-  /// condition description
-  OFString theText;
-};
+/// status code constant: error, cannot create directory
+extern DCMTK_OFSTD_EXPORT const unsigned short EC_CODE_CannotCreateDirectory;
+//@}
 
 
-// global constant used by OFCondition default constructor.
-extern const OFConditionConst ECC_Normal;
+/** use this macro for creating static OFCondition instances. Instead of an
+ *  OFCondition instance which needs a constructor, an instance of
+ *  OFConditionConst is created. This avoids the problem of static initializers
+ *  (and deinitializers) being executed in undefined order (some other static
+ *  initializer might want to use this OFCondition / OFConditionConst instance).
+ */
+#define makeOFConditionConst(name, module, code, status, text) \
+  const OFConditionConst name = { (module), (code), (status), (text) }
 
 
 /** General purpose class for condition codes. Objects of this class can be
- *  efficiently passed by value since they only contain a single pointer and
- *  no virtual methods. The condition code is maintained by the object of class
- *  OFConditionBase pointed to.
+ *  efficiently passed by value. To make this possible, the contained string is
+ *  not copied when possible.
  */
-class OFCondition
+class DCMTK_OFSTD_EXPORT OFCondition
 {
 public:
 
-  /** constructor for condition code with user-defined error text
-   *  @param base pointer to error base, which must be allocated on the heap.
-   *     The object pointed to is deleted upon destruction of this object.
-   *     Pointer must not be NULL.
+  /** constructor for condition code with text
+   *  @param aModule module identifier. 0 is reserved for global codes,
+   *    other constants are defined elsewhere.
+   *  @param aCode status code that is unique for each module
+   *  @param aStatus condition status enum
+   *  @param aText error text.
    */
-  OFCondition(OFConditionString *base)
-  : theCondition(base)
+  OFCondition(unsigned short aModule, unsigned short aCode, OFStatus aStatus, const char *aText)
+  : theCondition()
+  , ownsText(OFTrue)
   {
-    assert(theCondition);
+    theCondition.theModule = aModule;
+    theCondition.theCode = aCode;
+    theCondition.theStatus = aStatus;
+    /* Be nice when someone dares to pass in NULL */
+    if (aText != NULL) {
+      theCondition.theText = strdup(aText);
+      ownsText = OFTrue;
+    } else {
+      theCondition.theText = "";
+      ownsText = OFFalse;
+    }
   }
 
-  /** constructor for condition code with global const condition object
-   *  @param base reference to condition base, which must be guaranteed
-   *     to exist for the lifetime of this (and every derived) object
-   *     since it is only referenced but not copied.
+  /** constructor for condition code from constant data
+   *  @param aConst OFConditionConst to use
    */
-#ifdef OFCONDITION_STRICT_MODE
-  // in strict mode OFCondition has no default constructor.
-  OFCondition(const OFConditionConst& base)
-#else
-  OFCondition(const OFConditionConst& base = ECC_Normal)
-#endif
-  : theCondition(&base)
+  OFCondition(const OFConditionConst& aConst = EC_Normal)
+  : theCondition(aConst)
+  , ownsText(OFFalse)
   {
-    assert(theCondition);
   }
 
-  /// copy constructor
+  /** copy constructor
+   *  @param arg OFCondition to copy
+   */
   OFCondition(const OFCondition& arg)
-  : theCondition(arg.theCondition->clone())
+  : theCondition(arg.theCondition)
+  , ownsText(arg.ownsText)
   {
-    assert(theCondition);
+    // Do we need our own copy of the text?
+    if (ownsText)
+    {
+      theCondition.theText = strdup(theCondition.theText);
+    }
   }
 
   /// destructor
   ~OFCondition()
   {
-    if (theCondition->deletable())
+    if (ownsText)
     {
-      delete OFconst_cast(OFConditionBase *, theCondition); // cast away const
+      free(OFconst_cast(char *, theCondition.theText)); // cast away const
     }
   }
 
-  /// copy assignment operator
+  /** copy assignment operator
+   *  @param arg The OFCondition instance to copy
+   *  @return *this
+   */
   OFCondition& operator=(const OFCondition& arg)
   {
-    if (&arg != this && &arg && arg.theCondition)
+    if (&arg != this)
     {
-        if (theCondition->deletable())
-          delete OFconst_cast(OFConditionBase *, theCondition); // cast away const
-        
-        theCondition = arg.theCondition->clone();
-        assert(theCondition);
+      if (ownsText)
+      {
+        free(OFconst_cast(char *, theCondition.theText)); // cast away const
+      }
+      theCondition = arg.theCondition;
+      ownsText = arg.ownsText;
+      if (ownsText)
+      {
+        theCondition.theText = strdup(arg.theCondition.theText);
+      }
     }
     return *this;
   }
 
-  /// returns the module identifier for this object.
+  /** get the module identifier for this object.
+   *  @return the module identifier for this object.
+   *  @see code()
+   */
   inline unsigned short module() const
   {
-    return theCondition->module();
+    return theCondition.theModule;
   }
 
-  /// returns the status code identifier for this object.
+  /** get the status code identifier for this object. This uniquely identifies
+   *  the error code within the module.
+   *  @return the status code identifier for this object.
+   *  @see module()
+   */
   inline unsigned short code() const
   {
-    return theCondition->code();
+    return theCondition.theCode;
   }
 
-  /// returns the status for this object.
+  /** get the error status this object represents.
+   *  @return the status for this object.
+   */
   inline OFStatus status() const
   {
-    return theCondition->status();
+    return theCondition.theStatus;
   }
 
-  /// returns the error message text for this object.
+  /** get a human readable text representation of this error code. The returned
+   *  string is owned by this OFCondition instance and must not be modified or
+   *  freed.
+   *  @return the error message text for this object.
+   */
   inline const char *text() const
   {
-    return theCondition->text();
+    return theCondition.theText;
   }
 
-  /// returns true if status is OK
+  /** internal function only, don't use yourself.
+   *  @return an equivalent OFConditionConst for this object.
+   */
+  inline const OFConditionConst& condition() const
+  {
+    return theCondition;
+  }
+
+  /** check if the status is OK.
+   *  @return true if status is OK, else false
+   */
   inline OFBool good() const
   {
-    OFStatus s = theCondition->status();
+    OFStatus s = theCondition.theStatus;
     return (s == OF_ok);
   }
 
-  /// returns true if status is not OK, i. e. error or failure
+  /** check if the status is not OK, i.e.\ error or failure.
+   *  @return true if status is not OK, else false
+   */
   inline OFBool bad() const
   {
-    OFStatus s = theCondition->status();
+    OFStatus s = theCondition.theStatus;
     return (s != OF_ok);
   }
 
@@ -427,7 +330,7 @@ public:
    */
   inline OFBool operator==(const OFCondition& arg) const
   {
-    return (*theCondition == *arg.theCondition);
+    return theCondition == arg.theCondition;
   }
 
   /** comparison operator. Compares status, code and module
@@ -437,77 +340,64 @@ public:
    */
   inline OFBool operator!=(const OFCondition& arg) const
   {
-    return (*theCondition != *arg.theCondition);
+    return theCondition != arg.theCondition;
   }
 
 private:
 
-  /// pointer to the condition base object
-  const OFConditionBase *theCondition;
+  /// The condition information
+  OFConditionConst theCondition;
+
+  /// Does theCondition.theText point to our own heap string which must be freed?
+  OFBool ownsText;
 
 };
 
 
-/*  global condition constants.
- *  All constants defined here use module number 0 which is reserved for
- *  global definitions. Other constants are defined elsewhere.
+/** returns true if lhs refers to the same OFCondition as rhs
+ *  @param lhs left-hand side condition
+ *  @param rhs right-hand side condition
+ *  @return true if OFCondition::operator==() returns true
  */
+inline OFBool operator== (const OFConditionConst& lhs, const OFCondition& rhs)
+{
+  return lhs == rhs.condition();
+}
 
-/// condition constant: successful completion
-extern const OFCondition EC_Normal;
+/** returns true if lhs refers to the same OFCondition as rhs
+ *  @param lhs left-hand side condition
+ *  @param rhs right-hand side condition
+ *  @return true if OFCondition::operator==() returns true
+ */
+inline OFBool operator== (const OFCondition& lhs, const OFConditionConst& rhs)
+{
+  return lhs.condition() == rhs;
+}
 
-/// condition constant: error, function called with illegal parameters
-extern const OFCondition EC_IllegalParameter;
+/** returns true if lhs refers to a different OFCondition as rhs
+ *  @param lhs left-hand side condition
+ *  @param rhs right-hand side condition
+ *  @return true if OFCondition::operator!=() returns true
+ */
+inline OFBool operator!= (const OFConditionConst& lhs, const OFCondition& rhs)
+{
+  return lhs != rhs.condition();
+}
 
-/// condition constant: failure, memory exhausted
-extern const OFCondition EC_MemoryExhausted;
+/** returns true if lhs refers to a different OFCondition as rhs
+ *  @param lhs left-hand side condition
+ *  @param rhs right-hand side condition
+ *  @return true if OFCondition::operator!=() returns true
+ */
+inline OFBool operator!= (const OFCondition& lhs, const OFConditionConst& rhs)
+{
+  return lhs.condition() != rhs;
+}
 
 
 /** this macro is a shortcut for creating user-specific error messages.
  */
-#define makeOFCondition(A, B, C, D) OFCondition(new OFConditionString((A), (B), (C), (D)))
+#define makeOFCondition(A, B, C, D) OFCondition((A), (B), (C), (D))
 
 
 #endif
-
-/*
- * CVS/RCS Log:
- * $Log: ofcond.h,v $
- * Revision 1.1  2006/03/01 20:17:55  lpysher
- * Added dcmtkt ocvs not in xcode  and fixed bug with multiple monitors
- *
- * Revision 1.9  2005/12/08 16:05:50  meichel
- * Changed include path schema for all DCMTK header files
- *
- * Revision 1.8  2003/12/05 10:37:41  joergr
- * Removed leading underscore characters from preprocessor symbols (reserved
- * symbols). Updated copyright date where appropriate.
- *
- * Revision 1.7  2003/07/09 13:57:43  meichel
- * Adapted type casts to new-style typecast operators defined in ofcast.h
- *
- * Revision 1.6  2003/07/04 13:31:51  meichel
- * Fixed issues with compiling with HAVE_STD_STRING
- *
- * Revision 1.5  2003/06/12 13:15:59  joergr
- * Fixed inconsistent API documentation reported by Doxygen.
- *
- * Revision 1.4  2001/11/09 15:44:39  joergr
- * Removed ";" from macro definition to avoid compiler warnings reported by
- * Sun CC 2.0.1.
- *
- * Revision 1.3  2001/10/12 10:42:26  meichel
- * Introduced conditional define OFCONDITION_STRICT_MODE in which the
- *   compatibility options related to the transition to OFCondition are disabled:
- *   No OFCondition default constructor, no typedefs for E_Condition, CONDITION,
- *   no macros for SUCCESS and condition aliases.
- *
- * Revision 1.2  2001/09/25 17:07:24  meichel
- * Disabled implicit conversion to bool, added default constructor
- *   to class OFCondition.
- *
- * Revision 1.1  2001/08/23 16:08:37  meichel
- * Initial release of class OFCondition, a generic approach for condition codes
- *
- *
- */

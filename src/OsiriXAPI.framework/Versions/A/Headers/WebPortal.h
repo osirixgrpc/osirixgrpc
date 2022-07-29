@@ -1,15 +1,10 @@
 /*=========================================================================
  Program:   OsiriX
- 
- Copyright (c) OsiriX Team
+ Copyright (c) 2010 - 2020 Pixmeo SARL
+ 266 rue de Bernex
+ CH-1233 Bernex
+ Switzerland
  All rights reserved.
- Distributed under GNU - LGPL
- 
- See http://www.osirix-viewer.com/copyright.html for details.
- 
- This software is distributed WITHOUT ANY WARRANTY; without even
- the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
- PURPOSE.
  =========================================================================*/
 
 #import <Cocoa/Cocoa.h>
@@ -17,13 +12,10 @@
 
 @class WebPortalDatabase, WebPortalSession, WebPortalServer, DicomDatabase;
 
-#define THREAD_POOL_SIZE 8
-
 @interface WebPortal : NSObject {
 @private
 	WebPortalDatabase* database;
 	DicomDatabase* dicomDatabase;
-	BOOL isAcceptingConnections;
 	NSMutableArray* sessions;
 	NSLock* sessionsArrayLock;
 	NSLock* sessionCreateLock;
@@ -35,6 +27,9 @@
 	BOOL wadoEnabled;
 	BOOL weasisEnabled;
 	BOOL flashEnabled;
+    BOOL ohifEnabled;
+    NSInteger poolSize;
+    NSMutableDictionary *createPasswordDictionary;
 	
 	BOOL notificationsEnabled;
 	NSInteger notificationsInterval;
@@ -45,8 +40,6 @@
 	NSMutableArray *runLoops, *runLoopsLoad, *httpThreads;
 	WebPortalServer *server;
 	NSThread *serverThread;
-	
-//	NSMutableDictionary *seriesForUsersCache;
 }
 
 // called from AppController
@@ -54,22 +47,22 @@
 +(void)finalizeWebPortalClass;
 
 +(WebPortal*)defaultWebPortal;
++(BOOL) isWebPortalInitialized;
 +(WebPortal*)wadoOnlyWebPortal;
++(WebPortal*)auditWebPortal;
 
 +(NSDictionary*)webServicesHTMLFiles;
 
 @property(readonly, retain) WebPortalDatabase* database;
 @property(readonly, retain) DicomDatabase* dicomDatabase;
-@property(readonly, retain) NSMutableDictionary* cache;
+@property(readonly, retain) NSMutableDictionary* cache, *createPasswordDictionary;
 @property(readonly, retain) NSMutableDictionary* locks;
 @property(readonly, retain) NSMutableArray* sessions;
 
-@property(readonly) BOOL isAcceptingConnections;
-
-@property(readonly) NSMutableArray *runLoops, *runLoopsLoad;
+@property(readonly) NSMutableArray *runLoops, *runLoopsLoad, *httpThreads;
 
 @property (nonatomic) BOOL usesSSL;
-@property (nonatomic) NSInteger portNumber;
+@property (nonatomic) NSInteger portNumber, poolSize;
 @property(retain) NSString* address;
 
 @property BOOL authenticationRequired;
@@ -77,6 +70,7 @@
 
 @property BOOL wadoEnabled;
 @property BOOL weasisEnabled;
+@property (nonatomic) BOOL ohifEnabled;
 @property BOOL flashEnabled;
 
 @property (nonatomic) BOOL notificationsEnabled;
@@ -85,14 +79,14 @@
 -(id)initWithDatabase:(WebPortalDatabase*)database dicomDatabase:(DicomDatabase*)dd;
 -(id)initWithDatabaseAtPath:(NSString*)sqlFilePath dicomDatabase:(DicomDatabase*)dd;
 
--(void)startAcceptingConnections;
--(void)stopAcceptingConnections;
-
 - (NSThread*) threadForRunLoopRef: (CFRunLoopRef) runloopref;
 
 -(NSData*)dataForPath:(NSString*)rel;
 +(NSData*)dataForPath:(NSString*)file;
 +(NSString*)pathForPath:(NSString*)path;
++(NSArray*)filesForDirectory:(NSString*)path;
++(NSArray*)filesForDirectory:(NSString*)dirPath forExtension: (NSString*) extension;
++(NSString*)pathForPath:(NSString*)file includeInMemoryFiles: (BOOL) includeInMemoryFiles;
 -(NSString*)stringForPath:(NSString*)file;
 
 -(WebPortalSession*)newSession;
@@ -100,6 +94,7 @@
 -(void)deleteSessionId:(NSString*)sid;
 -(WebPortalSession*)sessionForId:(NSString*)sid;
 -(WebPortalSession*)sessionForUsername:(NSString*)username token:(NSString*)token;
+-(void)clearSessions;
 -(id)sessionForUsername:(NSString*)username token:(NSString*)token doConsume: (BOOL) doConsume;
 
 -(NSString*)URL;

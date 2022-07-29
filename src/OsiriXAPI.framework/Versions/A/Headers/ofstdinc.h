@@ -1,19 +1,15 @@
 /*
  *
- *  Copyright (C) 1997-2005, OFFIS
+ *  Copyright (C) 2002-2014, OFFIS e.V.
+ *  All rights reserved.  See COPYRIGHT file for details.
  *
  *  This software and supporting documentation were developed by
  *
- *    Kuratorium OFFIS e.V.
- *    Healthcare Information and Communication Systems
+ *    OFFIS e.V.
+ *    R&D Division Health
  *    Escherweg 2
  *    D-26121 Oldenburg, Germany
  *
- *  THIS SOFTWARE IS MADE AVAILABLE,  AS IS,  AND OFFIS MAKES NO  WARRANTY
- *  REGARDING  THE  SOFTWARE,  ITS  PERFORMANCE,  ITS  MERCHANTABILITY  OR
- *  FITNESS FOR ANY PARTICULAR USE, FREEDOM FROM ANY COMPUTER DISEASES  OR
- *  ITS CONFORMITY TO ANY SPECIFICATION. THE ENTIRE RISK AS TO QUALITY AND
- *  PERFORMANCE OF THE SOFTWARE IS WITH THE USER.
  *
  *  Module:  ofstd
  *
@@ -21,23 +17,31 @@
  *
  *  Purpose: encapsulation of old style vs. ISO C++ standard includes
  *
- *  Last Update:      $Author: lpysher $
- *  Update Date:      $Date: 2006/03/01 20:17:56 $
- *  Source File:      $Source: /cvsroot/osirix/osirix/Binaries/dcmtk-source/ofstd/ofstdinc.h,v $
- *  CVS/RCS Revision: $Revision: 1.1 $
- *  Status:           $State: Exp $
- *
- *  CVS/RCS Log at end of file
- *
  */
 
 // this file is not and should not be protected against multiple inclusion
 
 #include "osconfig.h"
 
-#ifdef HAVE_STD_NAMESPACE
+/* DCMTK by default does not anymore pollute the default namespace by
+ * importing namespace std. Earlier releases did this to simplify compatibility
+ * with older compilers where STL classes were not consistently defined
+ * in namespace std. We now have configure macros which should care for this.
+ * If user code still relies on namespace std to be included, compile with
+ * macro USING_STD_NAMESPACE defined.
+ */
+#ifdef USING_STD_NAMESPACE
 namespace std { }
 using namespace std;
+#endif
+
+// define STD_NAMESPACE to std:: if the standard namespace exists
+#ifndef STD_NAMESPACE
+#ifdef HAVE_STD_NAMESPACE
+#define STD_NAMESPACE std::
+#else
+#define STD_NAMESPACE
+#endif
 #endif
 
 /* Header files as defined in ISO/IEC 14882:1998, Section 17.4.1.2, Table 11
@@ -65,7 +69,30 @@ using namespace std;
 #include "oflist.h"
 #endif
 
-// we don't yet support <locale>, <map>, <memory>, <numeric>, <queue>, <set>
+// define INCLUDE_LOCALE to include <locale> or <locale.h> if available
+#ifdef INCLUDE_LOCALE
+#ifdef USE_STD_CXX_INCLUDES
+#include <locale>
+#elif defined(HAVE_LOCALE_H)
+#include <locale.h>
+#endif
+#endif
+
+// we don't yet support <numeric>, <queue>, <set>
+
+// define INCLUDE_MAP to include "ofmap.h"
+#ifdef INCLUDE_MAP
+#include "ofmap.h"
+#endif
+
+// define INCLUDE_MEMORY to include <memory> or <memory.h> if available
+#ifdef INCLUDE_MEMORY
+#ifdef USE_STD_CXX_INCLUDES
+#include <memory>
+#elif defined(HAVE_MEMORY_H)
+#include <memory.h>
+#endif
+#endif
 
 // define INCLUDE_NEW to include <new> or <new.h> if available
 #ifdef INCLUDE_NEW
@@ -97,7 +124,12 @@ using namespace std;
 #include "ofstring.h"
 #endif
 
-// we don't yet support <typeinfo>, <valarray>, <vector>
+// we don't yet support <typeinfo>, <valarray>
+
+// define INCLUDE_VECTOR to include "ofvector.h"
+#ifdef INCLUDE_VECTOR
+#include "ofvector.h"
+#endif
 
 
 /* Header files as defined in ISO/IEC 14882:1998, Section 17.4.1.2, Table 12
@@ -183,7 +215,7 @@ END_EXTERN_C
 
 // define INCLUDE_CMATH to include <cmath> or <math.h> if available
 #ifdef INCLUDE_CMATH
-#ifdef USE_STD_CXX_INCLUDES
+#ifdef HAVE_CMATH
 #include <cmath>
 #elif defined(HAVE_MATH_H)
 #ifndef INCLUDE_MATH_H_AS_CXX
@@ -232,12 +264,23 @@ END_EXTERN_C
 
 // define INCLUDE_CSTDDEF to include <cstddef> or <stddef.h> if available
 #ifdef INCLUDE_CSTDDEF
-#ifdef USE_STD_CXX_INCLUDES
+#ifdef HAVE_CSTDDEF
 #include <cstddef>
 #elif defined(HAVE_STDDEF_H)
 BEGIN_EXTERN_C
 #include <stddef.h>
 END_EXTERN_C
+#endif
+#endif
+
+// define INCLUDE_CSTDDINT to include <cstdint>, <stdint.h> or <sys/types.h> if available
+#ifdef INCLUDE_CSTDINT
+#ifdef HAVE_CSTDINT
+#include <cstdint>
+#elif defined(HAVE_STDINT_H)
+#include <stdint.h>
+#elif defined(HAVE_SYS_TYPES_H)
+#include <sys/types.h>
 #endif
 #endif
 
@@ -249,6 +292,10 @@ END_EXTERN_C
 BEGIN_EXTERN_C
 #include <stdio.h>
 END_EXTERN_C
+#endif
+// MSVC6 doesn't know vsnprintf(), but it does know _vsnprintf()
+#if defined(_WIN32) && !defined(HAVE_VSNPRINTF)
+#define vsnprintf _vsnprintf
 #endif
 #endif
 
@@ -271,13 +318,13 @@ END_EXTERN_C
 // define INCLUDE_CSTRING to include <cstring> or <string.h> if available
 #ifdef INCLUDE_CSTRING
 #ifdef USE_STD_CXX_INCLUDES
-#include <cstring>
+#include <string.h>
 #elif defined(HAVE_STRING_H)
 BEGIN_EXTERN_C
 #include <string.h>
 END_EXTERN_C
 #endif
-// Some platforms define additional string functions like bzero or 
+// Some platforms define additional string functions like bzero or
 // strcasecmp in <strings.h>, so we always include this file if available.
 #ifdef HAVE_STRINGS_H
 BEGIN_EXTERN_C
@@ -332,50 +379,3 @@ BEGIN_EXTERN_C
 END_EXTERN_C
 #endif
 #endif
-
-
-
-
-/*
- * CVS/RCS Log:
- * $Log: ofstdinc.h,v $
- * Revision 1.1  2006/03/01 20:17:56  lpysher
- * Added dcmtkt ocvs not in xcode  and fixed bug with multiple monitors
- *
- * Revision 1.11  2005/12/08 16:06:05  meichel
- * Changed include path schema for all DCMTK header files
- *
- * Revision 1.10  2004/08/03 11:45:09  meichel
- * Added macros INCLUDE_LIBC and INCLUDE_UNISTD that correctly include libc.h
- *
- * Revision 1.9  2004/05/07 10:46:32  meichel
- * Removed unneeded semicolon, reported by gcc 3.4
- *
- * Revision 1.8  2003/12/11 13:40:22  meichel
- * Added support for including <new> or <new.h>
- *
- * Revision 1.7  2003/10/13 13:38:44  meichel
- * Activated Borland stdlib workaround for compiler versions other than 4.
- *
- * Revision 1.6  2002/12/16 16:20:45  meichel
- * Added configure test that checks if extern "C" inclusion
- *   of <math.h> fails, e.g. on HP/UX 10 and WIN32
- *
- * Revision 1.5  2002/12/11 15:54:47  meichel
- * Added empty namespace std declaration, needed on MSVC.
- *
- * Revision 1.4  2002/11/28 17:16:39  meichel
- * Including <math.h> without extern "C" on Win32 to avoid problem with MSVC5.
- *
- * Revision 1.3  2002/11/27 17:21:18  meichel
- * Fixed bug in ofstack inclusion code
- *
- * Revision 1.2  2002/11/27 12:33:34  meichel
- * Now including <strings.h> even if <string.h> is present.
- *
- * Revision 1.1  2002/11/27 11:20:52  meichel
- * Added new file ofstdinc.h that encapsulates the inclusion
- *   of old style vs. ISO C++ standard header files.
- *
- *
- */

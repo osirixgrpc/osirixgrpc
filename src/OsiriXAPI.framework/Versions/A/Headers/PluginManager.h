@@ -1,16 +1,11 @@
 /*=========================================================================
-  Program:   OsiriX
-
-  Copyright (c) OsiriX Team
-  All rights reserved.
-  Distributed under GNU - LGPL
-  
-  See http://www.osirix-viewer.com/copyright.html for details.
-
-     This software is distributed WITHOUT ANY WARRANTY; without even
-     the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
-     PURPOSE.
-=========================================================================*/
+ Program:   OsiriX
+ Copyright (c) 2010 - 2020 Pixmeo SARL
+ 266 rue de Bernex
+ CH-1233 Bernex
+ Switzerland
+ All rights reserved.
+ =========================================================================*/
 
 
 
@@ -25,17 +20,26 @@
 
 @property(retain,readwrite) NSMutableArray *downloadQueue;
 
++ (PluginManager*) sharedInstance;
++ (void) startCheckForPluginsUpdatesVerbose: (BOOL) verbose;
+
 + (int) compareVersion: (NSString *) v1 withVersion: (NSString *) v2;
-+ (NSMutableDictionary*) plugins;
-+ (NSMutableDictionary*) pluginsDict;
++ (NSDictionary*) plugins;
++ (NSDictionary*) pluginsInstances;
++ (NSDictionary*) pluginsDict;
 + (NSDictionary*) pluginsBundleDictionnary;
-+ (NSMutableDictionary*) fileFormatPlugins;
-+ (NSMutableDictionary*) reportPlugins;
++ (NSDictionary*) pluginsLoadError;
++ (NSDictionary*) fileFormatPlugins;
++ (NSDictionary*) reportPlugins;
 + (NSArray*) preProcessPlugins;
 + (NSMenu*) fusionPluginsMenu;
 + (NSArray*) fusionPlugins;
 + (NSImage*) pluginIconForBundle: (NSBundle*) plugin;
 + (NSString*) versionForPath: (NSString*) path;
++ (NSString*) displayedVersionForPath: (NSString*) path;
+
++ (BOOL) pluginsAlertAlreadyDisplayed;
++ (void) setPluginsAlertAlreadyDisplayed:(BOOL) p;
 
 + (void) startProtectForCrashWithFilter: (id) filter;
 + (void) startProtectForCrashWithPath: (NSString*) path;
@@ -50,6 +54,7 @@
 + (void) setMenus:(NSMenu*) filtersMenu :(NSMenu*) roisMenu :(NSMenu*) othersMenu :(NSMenu*) dbMenu :(NSMenu*) reportMenu;
 + (BOOL) isComPACS;
 + (void) installPluginFromPath: (NSString*) path;
++ (void) installPluginFromPath: (NSString*) path andActivate: (BOOL) activate;
 + (NSString*)activePluginsDirectoryPath;
 + (NSString*)inactivePluginsDirectoryPath;
 + (NSString*)userActivePluginsDirectoryPath;
