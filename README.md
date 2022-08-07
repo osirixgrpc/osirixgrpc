@@ -42,4 +42,4 @@ Let us know your thoughts on these and we will prioritise depending on
  - Improve security through SSL/TCL encryption.  
  
  ## References
- 1. Timothy Sum Hon Mun, et. al., AAAI, 2022
+ 1. [Timothy Sum Hon Mun, et. al., AAAI, 2022](https://ai-2-ase.github.io/papers/29%5cCameraReady%5cAAAI_OsiriXgrpc__Rapid_prototyping_and_development_of_state_of_the_art_artificial_intelligence_in_OsiriX_cam_ready.pdf)
