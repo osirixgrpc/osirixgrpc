@@ -3,6 +3,7 @@
 # source: dicomseries.proto
 """Generated protocol buffer code."""
 from google.protobuf import descriptor as _descriptor
+from google.protobuf import descriptor_pool as _descriptor_pool
 from google.protobuf import message as _message
 from google.protobuf import reflection as _reflection
 from google.protobuf import symbol_database as _symbol_database
@@ -15,600 +16,23 @@ import utilities_pb2 as utilities__pb2
 import types_pb2 as types__pb2
 
 
-DESCRIPTOR = _descriptor.FileDescriptor(
-  name='dicomseries.proto',
-  package='osirixgrpc',
-  syntax='proto3',
-  serialized_options=None,
-  create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x11\x64icomseries.proto\x12\nosirixgrpc\x1a\x0futilities.proto\x1a\x0btypes.proto\"M\n\x18\x44icomSeriesPathsResponse\x12\"\n\x06status\x18\x01 \x01(\x0b\x32\x12.osirixgrpc.Status\x12\r\n\x05paths\x18\x02 \x03(\t\"y\n!DicomSeriesPreviousSeriesResponse\x12\"\n\x06status\x18\x01 \x01(\x0b\x32\x12.osirixgrpc.Status\x12\x30\n\x0fprevious_series\x18\x02 \x01(\x0b\x32\x17.osirixgrpc.DicomSeries\"q\n\x1d\x44icomSeriesNextSeriesResponse\x12\"\n\x06status\x18\x01 \x01(\x0b\x32\x12.osirixgrpc.Status\x12,\n\x0bnext_series\x18\x02 \x01(\x0b\x32\x17.osirixgrpc.DicomSeries\"t\n\x1f\x44icomSeriesSortedImagesResponse\x12\"\n\x06status\x18\x01 \x01(\x0b\x32\x12.osirixgrpc.Status\x12-\n\rsorted_images\x18\x02 \x03(\x0b\x32\x16.osirixgrpc.DicomImage\"e\n\x18\x44icomSeriesStudyResponse\x12\"\n\x06status\x18\x01 \x01(\x0b\x32\x12.osirixgrpc.Status\x12%\n\x05study\x18\x02 \x01(\x0b\x32\x16.osirixgrpc.DicomStudy\"g\n\x19\x44icomSeriesImagesResponse\x12\"\n\x06status\x18\x01 \x01(\x0b\x32\x12.osirixgrpc.Status\x12&\n\x06images\x18\x02 \x03(\x0b\x32\x16.osirixgrpc.DicomImage\"g\n$DicomSeriesSeriesInstanceUIDResponse\x12\"\n\x06status\x18\x01 \x01(\x0b\x32\x12.osirixgrpc.Status\x12\x1b\n\x13series_instance_uid\x18\x02 \x01(\t\"h\n$DicomSeriesSeriesSOPClassUIDResponse\x12\"\n\x06status\x18\x01 \x01(\x0b\x32\x12.osirixgrpc.Status\x12\x1c\n\x14series_sop_class_uid\x18\x02 \x01(\t\"f\n$DicomSeriesSeriesDescriptionResponse\x12\"\n\x06status\x18\x01 \x01(\x0b\x32\x12.osirixgrpc.Status\x12\x1a\n\x12series_description\x18\x02 \x01(\t\"S\n\x1b\x44icomSeriesModalityResponse\x12\"\n\x06status\x18\x01 \x01(\x0b\x32\x12.osirixgrpc.Status\x12\x10\n\x08modality\x18\x02 \x01(\t\"K\n\x17\x44icomSeriesNameResponse\x12\"\n\x06status\x18\x01 \x01(\x0b\x32\x12.osirixgrpc.Status\x12\x0c\n\x04name\x18\x02 \x01(\t\"a\n!DicomSeriesNumberOfImagesResponse\x12\"\n\x06status\x18\x01 \x01(\x0b\x32\x12.osirixgrpc.Status\x12\x18\n\x10number_of_images\x18\x02 \x01(\x05\"\xaa\x01\n\x17\x44icomSeriesDateResponse\x12\"\n\x06status\x18\x01 \x01(\x0b\x32\x12.osirixgrpc.Status\x12\x0c\n\x04year\x18\x02 \x01(\x05\x12\r\n\x05month\x18\x03 \x01(\x05\x12\x0b\n\x03\x64\x61y\x18\x04 \x01(\x05\x12\x0c\n\x04hour\x18\x05 \x01(\x05\x12\x0e\n\x06minute\x18\x06 \x01(\x05\x12\x0e\n\x06second\x18\x07 \x01(\x05\x12\x13\n\x0bmillisecond\x18\x08 \x01(\x05\x62\x06proto3'
-  ,
-  dependencies=[utilities__pb2.DESCRIPTOR,types__pb2.DESCRIPTOR,])
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x11\x64icomseries.proto\x12\nosirixgrpc\x1a\x0futilities.proto\x1a\x0btypes.proto\"M\n\x18\x44icomSeriesPathsResponse\x12\"\n\x06status\x18\x01 \x01(\x0b\x32\x12.osirixgrpc.Status\x12\r\n\x05paths\x18\x02 \x03(\t\"y\n!DicomSeriesPreviousSeriesResponse\x12\"\n\x06status\x18\x01 \x01(\x0b\x32\x12.osirixgrpc.Status\x12\x30\n\x0fprevious_series\x18\x02 \x01(\x0b\x32\x17.osirixgrpc.DicomSeries\"q\n\x1d\x44icomSeriesNextSeriesResponse\x12\"\n\x06status\x18\x01 \x01(\x0b\x32\x12.osirixgrpc.Status\x12,\n\x0bnext_series\x18\x02 \x01(\x0b\x32\x17.osirixgrpc.DicomSeries\"t\n\x1f\x44icomSeriesSortedImagesResponse\x12\"\n\x06status\x18\x01 \x01(\x0b\x32\x12.osirixgrpc.Status\x12-\n\rsorted_images\x18\x02 \x03(\x0b\x32\x16.osirixgrpc.DicomImage\"e\n\x18\x44icomSeriesStudyResponse\x12\"\n\x06status\x18\x01 \x01(\x0b\x32\x12.osirixgrpc.Status\x12%\n\x05study\x18\x02 \x01(\x0b\x32\x16.osirixgrpc.DicomStudy\"g\n\x19\x44icomSeriesImagesResponse\x12\"\n\x06status\x18\x01 \x01(\x0b\x32\x12.osirixgrpc.Status\x12&\n\x06images\x18\x02 \x03(\x0b\x32\x16.osirixgrpc.DicomImage\"g\n$DicomSeriesSeriesInstanceUIDResponse\x12\"\n\x06status\x18\x01 \x01(\x0b\x32\x12.osirixgrpc.Status\x12\x1b\n\x13series_instance_uid\x18\x02 \x01(\t\"h\n$DicomSeriesSeriesSOPClassUIDResponse\x12\"\n\x06status\x18\x01 \x01(\x0b\x32\x12.osirixgrpc.Status\x12\x1c\n\x14series_sop_class_uid\x18\x02 \x01(\t\"f\n$DicomSeriesSeriesDescriptionResponse\x12\"\n\x06status\x18\x01 \x01(\x0b\x32\x12.osirixgrpc.Status\x12\x1a\n\x12series_description\x18\x02 \x01(\t\"S\n\x1b\x44icomSeriesModalityResponse\x12\"\n\x06status\x18\x01 \x01(\x0b\x32\x12.osirixgrpc.Status\x12\x10\n\x08modality\x18\x02 \x01(\t\"K\n\x17\x44icomSeriesNameResponse\x12\"\n\x06status\x18\x01 \x01(\x0b\x32\x12.osirixgrpc.Status\x12\x0c\n\x04name\x18\x02 \x01(\t\"a\n!DicomSeriesNumberOfImagesResponse\x12\"\n\x06status\x18\x01 \x01(\x0b\x32\x12.osirixgrpc.Status\x12\x18\n\x10number_of_images\x18\x02 \x01(\x05\"\xaa\x01\n\x17\x44icomSeriesDateResponse\x12\"\n\x06status\x18\x01 \x01(\x0b\x32\x12.osirixgrpc.Status\x12\x0c\n\x04year\x18\x02 \x01(\x05\x12\r\n\x05month\x18\x03 \x01(\x05\x12\x0b\n\x03\x64\x61y\x18\x04 \x01(\x05\x12\x0c\n\x04hour\x18\x05 \x01(\x05\x12\x0e\n\x06minute\x18\x06 \x01(\x05\x12\x0e\n\x06second\x18\x07 \x01(\x05\x12\x13\n\x0bmillisecond\x18\x08 \x01(\x05\x62\x06proto3')
 
 
 
-
-_DICOMSERIESPATHSRESPONSE = _descriptor.Descriptor(
-  name='DicomSeriesPathsResponse',
-  full_name='osirixgrpc.DicomSeriesPathsResponse',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='status', full_name='osirixgrpc.DicomSeriesPathsResponse.status', index=0,
-      number=1, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='paths', full_name='osirixgrpc.DicomSeriesPathsResponse.paths', index=1,
-      number=2, type=9, cpp_type=9, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=63,
-  serialized_end=140,
-)
-
-
-_DICOMSERIESPREVIOUSSERIESRESPONSE = _descriptor.Descriptor(
-  name='DicomSeriesPreviousSeriesResponse',
-  full_name='osirixgrpc.DicomSeriesPreviousSeriesResponse',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='status', full_name='osirixgrpc.DicomSeriesPreviousSeriesResponse.status', index=0,
-      number=1, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='previous_series', full_name='osirixgrpc.DicomSeriesPreviousSeriesResponse.previous_series', index=1,
-      number=2, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=142,
-  serialized_end=263,
-)
-
-
-_DICOMSERIESNEXTSERIESRESPONSE = _descriptor.Descriptor(
-  name='DicomSeriesNextSeriesResponse',
-  full_name='osirixgrpc.DicomSeriesNextSeriesResponse',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='status', full_name='osirixgrpc.DicomSeriesNextSeriesResponse.status', index=0,
-      number=1, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='next_series', full_name='osirixgrpc.DicomSeriesNextSeriesResponse.next_series', index=1,
-      number=2, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=265,
-  serialized_end=378,
-)
-
-
-_DICOMSERIESSORTEDIMAGESRESPONSE = _descriptor.Descriptor(
-  name='DicomSeriesSortedImagesResponse',
-  full_name='osirixgrpc.DicomSeriesSortedImagesResponse',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='status', full_name='osirixgrpc.DicomSeriesSortedImagesResponse.status', index=0,
-      number=1, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='sorted_images', full_name='osirixgrpc.DicomSeriesSortedImagesResponse.sorted_images', index=1,
-      number=2, type=11, cpp_type=10, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=380,
-  serialized_end=496,
-)
-
-
-_DICOMSERIESSTUDYRESPONSE = _descriptor.Descriptor(
-  name='DicomSeriesStudyResponse',
-  full_name='osirixgrpc.DicomSeriesStudyResponse',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='status', full_name='osirixgrpc.DicomSeriesStudyResponse.status', index=0,
-      number=1, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='study', full_name='osirixgrpc.DicomSeriesStudyResponse.study', index=1,
-      number=2, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=498,
-  serialized_end=599,
-)
-
-
-_DICOMSERIESIMAGESRESPONSE = _descriptor.Descriptor(
-  name='DicomSeriesImagesResponse',
-  full_name='osirixgrpc.DicomSeriesImagesResponse',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='status', full_name='osirixgrpc.DicomSeriesImagesResponse.status', index=0,
-      number=1, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='images', full_name='osirixgrpc.DicomSeriesImagesResponse.images', index=1,
-      number=2, type=11, cpp_type=10, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=601,
-  serialized_end=704,
-)
-
-
-_DICOMSERIESSERIESINSTANCEUIDRESPONSE = _descriptor.Descriptor(
-  name='DicomSeriesSeriesInstanceUIDResponse',
-  full_name='osirixgrpc.DicomSeriesSeriesInstanceUIDResponse',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='status', full_name='osirixgrpc.DicomSeriesSeriesInstanceUIDResponse.status', index=0,
-      number=1, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='series_instance_uid', full_name='osirixgrpc.DicomSeriesSeriesInstanceUIDResponse.series_instance_uid', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=706,
-  serialized_end=809,
-)
-
-
-_DICOMSERIESSERIESSOPCLASSUIDRESPONSE = _descriptor.Descriptor(
-  name='DicomSeriesSeriesSOPClassUIDResponse',
-  full_name='osirixgrpc.DicomSeriesSeriesSOPClassUIDResponse',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='status', full_name='osirixgrpc.DicomSeriesSeriesSOPClassUIDResponse.status', index=0,
-      number=1, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='series_sop_class_uid', full_name='osirixgrpc.DicomSeriesSeriesSOPClassUIDResponse.series_sop_class_uid', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=811,
-  serialized_end=915,
-)
-
-
-_DICOMSERIESSERIESDESCRIPTIONRESPONSE = _descriptor.Descriptor(
-  name='DicomSeriesSeriesDescriptionResponse',
-  full_name='osirixgrpc.DicomSeriesSeriesDescriptionResponse',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='status', full_name='osirixgrpc.DicomSeriesSeriesDescriptionResponse.status', index=0,
-      number=1, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='series_description', full_name='osirixgrpc.DicomSeriesSeriesDescriptionResponse.series_description', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=917,
-  serialized_end=1019,
-)
-
-
-_DICOMSERIESMODALITYRESPONSE = _descriptor.Descriptor(
-  name='DicomSeriesModalityResponse',
-  full_name='osirixgrpc.DicomSeriesModalityResponse',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='status', full_name='osirixgrpc.DicomSeriesModalityResponse.status', index=0,
-      number=1, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='modality', full_name='osirixgrpc.DicomSeriesModalityResponse.modality', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=1021,
-  serialized_end=1104,
-)
-
-
-_DICOMSERIESNAMERESPONSE = _descriptor.Descriptor(
-  name='DicomSeriesNameResponse',
-  full_name='osirixgrpc.DicomSeriesNameResponse',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='status', full_name='osirixgrpc.DicomSeriesNameResponse.status', index=0,
-      number=1, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='name', full_name='osirixgrpc.DicomSeriesNameResponse.name', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=1106,
-  serialized_end=1181,
-)
-
-
-_DICOMSERIESNUMBEROFIMAGESRESPONSE = _descriptor.Descriptor(
-  name='DicomSeriesNumberOfImagesResponse',
-  full_name='osirixgrpc.DicomSeriesNumberOfImagesResponse',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='status', full_name='osirixgrpc.DicomSeriesNumberOfImagesResponse.status', index=0,
-      number=1, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='number_of_images', full_name='osirixgrpc.DicomSeriesNumberOfImagesResponse.number_of_images', index=1,
-      number=2, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=1183,
-  serialized_end=1280,
-)
-
-
-_DICOMSERIESDATERESPONSE = _descriptor.Descriptor(
-  name='DicomSeriesDateResponse',
-  full_name='osirixgrpc.DicomSeriesDateResponse',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='status', full_name='osirixgrpc.DicomSeriesDateResponse.status', index=0,
-      number=1, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='year', full_name='osirixgrpc.DicomSeriesDateResponse.year', index=1,
-      number=2, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='month', full_name='osirixgrpc.DicomSeriesDateResponse.month', index=2,
-      number=3, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='day', full_name='osirixgrpc.DicomSeriesDateResponse.day', index=3,
-      number=4, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='hour', full_name='osirixgrpc.DicomSeriesDateResponse.hour', index=4,
-      number=5, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='minute', full_name='osirixgrpc.DicomSeriesDateResponse.minute', index=5,
-      number=6, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='second', full_name='osirixgrpc.DicomSeriesDateResponse.second', index=6,
-      number=7, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='millisecond', full_name='osirixgrpc.DicomSeriesDateResponse.millisecond', index=7,
-      number=8, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=1283,
-  serialized_end=1453,
-)
-
-_DICOMSERIESPATHSRESPONSE.fields_by_name['status'].message_type = utilities__pb2._STATUS
-_DICOMSERIESPREVIOUSSERIESRESPONSE.fields_by_name['status'].message_type = utilities__pb2._STATUS
-_DICOMSERIESPREVIOUSSERIESRESPONSE.fields_by_name['previous_series'].message_type = types__pb2._DICOMSERIES
-_DICOMSERIESNEXTSERIESRESPONSE.fields_by_name['status'].message_type = utilities__pb2._STATUS
-_DICOMSERIESNEXTSERIESRESPONSE.fields_by_name['next_series'].message_type = types__pb2._DICOMSERIES
-_DICOMSERIESSORTEDIMAGESRESPONSE.fields_by_name['status'].message_type = utilities__pb2._STATUS
-_DICOMSERIESSORTEDIMAGESRESPONSE.fields_by_name['sorted_images'].message_type = types__pb2._DICOMIMAGE
-_DICOMSERIESSTUDYRESPONSE.fields_by_name['status'].message_type = utilities__pb2._STATUS
-_DICOMSERIESSTUDYRESPONSE.fields_by_name['study'].message_type = types__pb2._DICOMSTUDY
-_DICOMSERIESIMAGESRESPONSE.fields_by_name['status'].message_type = utilities__pb2._STATUS
-_DICOMSERIESIMAGESRESPONSE.fields_by_name['images'].message_type = types__pb2._DICOMIMAGE
-_DICOMSERIESSERIESINSTANCEUIDRESPONSE.fields_by_name['status'].message_type = utilities__pb2._STATUS
-_DICOMSERIESSERIESSOPCLASSUIDRESPONSE.fields_by_name['status'].message_type = utilities__pb2._STATUS
-_DICOMSERIESSERIESDESCRIPTIONRESPONSE.fields_by_name['status'].message_type = utilities__pb2._STATUS
-_DICOMSERIESMODALITYRESPONSE.fields_by_name['status'].message_type = utilities__pb2._STATUS
-_DICOMSERIESNAMERESPONSE.fields_by_name['status'].message_type = utilities__pb2._STATUS
-_DICOMSERIESNUMBEROFIMAGESRESPONSE.fields_by_name['status'].message_type = utilities__pb2._STATUS
-_DICOMSERIESDATERESPONSE.fields_by_name['status'].message_type = utilities__pb2._STATUS
-DESCRIPTOR.message_types_by_name['DicomSeriesPathsResponse'] = _DICOMSERIESPATHSRESPONSE
-DESCRIPTOR.message_types_by_name['DicomSeriesPreviousSeriesResponse'] = _DICOMSERIESPREVIOUSSERIESRESPONSE
-DESCRIPTOR.message_types_by_name['DicomSeriesNextSeriesResponse'] = _DICOMSERIESNEXTSERIESRESPONSE
-DESCRIPTOR.message_types_by_name['DicomSeriesSortedImagesResponse'] = _DICOMSERIESSORTEDIMAGESRESPONSE
-DESCRIPTOR.message_types_by_name['DicomSeriesStudyResponse'] = _DICOMSERIESSTUDYRESPONSE
-DESCRIPTOR.message_types_by_name['DicomSeriesImagesResponse'] = _DICOMSERIESIMAGESRESPONSE
-DESCRIPTOR.message_types_by_name['DicomSeriesSeriesInstanceUIDResponse'] = _DICOMSERIESSERIESINSTANCEUIDRESPONSE
-DESCRIPTOR.message_types_by_name['DicomSeriesSeriesSOPClassUIDResponse'] = _DICOMSERIESSERIESSOPCLASSUIDRESPONSE
-DESCRIPTOR.message_types_by_name['DicomSeriesSeriesDescriptionResponse'] = _DICOMSERIESSERIESDESCRIPTIONRESPONSE
-DESCRIPTOR.message_types_by_name['DicomSeriesModalityResponse'] = _DICOMSERIESMODALITYRESPONSE
-DESCRIPTOR.message_types_by_name['DicomSeriesNameResponse'] = _DICOMSERIESNAMERESPONSE
-DESCRIPTOR.message_types_by_name['DicomSeriesNumberOfImagesResponse'] = _DICOMSERIESNUMBEROFIMAGESRESPONSE
-DESCRIPTOR.message_types_by_name['DicomSeriesDateResponse'] = _DICOMSERIESDATERESPONSE
-_sym_db.RegisterFileDescriptor(DESCRIPTOR)
-
+_DICOMSERIESPATHSRESPONSE = DESCRIPTOR.message_types_by_name['DicomSeriesPathsResponse']
+_DICOMSERIESPREVIOUSSERIESRESPONSE = DESCRIPTOR.message_types_by_name['DicomSeriesPreviousSeriesResponse']
+_DICOMSERIESNEXTSERIESRESPONSE = DESCRIPTOR.message_types_by_name['DicomSeriesNextSeriesResponse']
+_DICOMSERIESSORTEDIMAGESRESPONSE = DESCRIPTOR.message_types_by_name['DicomSeriesSortedImagesResponse']
+_DICOMSERIESSTUDYRESPONSE = DESCRIPTOR.message_types_by_name['DicomSeriesStudyResponse']
+_DICOMSERIESIMAGESRESPONSE = DESCRIPTOR.message_types_by_name['DicomSeriesImagesResponse']
+_DICOMSERIESSERIESINSTANCEUIDRESPONSE = DESCRIPTOR.message_types_by_name['DicomSeriesSeriesInstanceUIDResponse']
+_DICOMSERIESSERIESSOPCLASSUIDRESPONSE = DESCRIPTOR.message_types_by_name['DicomSeriesSeriesSOPClassUIDResponse']
+_DICOMSERIESSERIESDESCRIPTIONRESPONSE = DESCRIPTOR.message_types_by_name['DicomSeriesSeriesDescriptionResponse']
+_DICOMSERIESMODALITYRESPONSE = DESCRIPTOR.message_types_by_name['DicomSeriesModalityResponse']
+_DICOMSERIESNAMERESPONSE = DESCRIPTOR.message_types_by_name['DicomSeriesNameResponse']
+_DICOMSERIESNUMBEROFIMAGESRESPONSE = DESCRIPTOR.message_types_by_name['DicomSeriesNumberOfImagesResponse']
+_DICOMSERIESDATERESPONSE = DESCRIPTOR.message_types_by_name['DicomSeriesDateResponse']
 DicomSeriesPathsResponse = _reflection.GeneratedProtocolMessageType('DicomSeriesPathsResponse', (_message.Message,), {
   'DESCRIPTOR' : _DICOMSERIESPATHSRESPONSE,
   '__module__' : 'dicomseries_pb2'
@@ -700,5 +124,33 @@ DicomSeriesDateResponse = _reflection.GeneratedProtocolMessageType('DicomSeriesD
   })
 _sym_db.RegisterMessage(DicomSeriesDateResponse)
 
+if _descriptor._USE_C_DESCRIPTORS == False:
 
+  DESCRIPTOR._options = None
+  _DICOMSERIESPATHSRESPONSE._serialized_start=63
+  _DICOMSERIESPATHSRESPONSE._serialized_end=140
+  _DICOMSERIESPREVIOUSSERIESRESPONSE._serialized_start=142
+  _DICOMSERIESPREVIOUSSERIESRESPONSE._serialized_end=263
+  _DICOMSERIESNEXTSERIESRESPONSE._serialized_start=265
+  _DICOMSERIESNEXTSERIESRESPONSE._serialized_end=378
+  _DICOMSERIESSORTEDIMAGESRESPONSE._serialized_start=380
+  _DICOMSERIESSORTEDIMAGESRESPONSE._serialized_end=496
+  _DICOMSERIESSTUDYRESPONSE._serialized_start=498
+  _DICOMSERIESSTUDYRESPONSE._serialized_end=599
+  _DICOMSERIESIMAGESRESPONSE._serialized_start=601
+  _DICOMSERIESIMAGESRESPONSE._serialized_end=704
+  _DICOMSERIESSERIESINSTANCEUIDRESPONSE._serialized_start=706
+  _DICOMSERIESSERIESINSTANCEUIDRESPONSE._serialized_end=809
+  _DICOMSERIESSERIESSOPCLASSUIDRESPONSE._serialized_start=811
+  _DICOMSERIESSERIESSOPCLASSUIDRESPONSE._serialized_end=915
+  _DICOMSERIESSERIESDESCRIPTIONRESPONSE._serialized_start=917
+  _DICOMSERIESSERIESDESCRIPTIONRESPONSE._serialized_end=1019
+  _DICOMSERIESMODALITYRESPONSE._serialized_start=1021
+  _DICOMSERIESMODALITYRESPONSE._serialized_end=1104
+  _DICOMSERIESNAMERESPONSE._serialized_start=1106
+  _DICOMSERIESNAMERESPONSE._serialized_end=1181
+  _DICOMSERIESNUMBEROFIMAGESRESPONSE._serialized_start=1183
+  _DICOMSERIESNUMBEROFIMAGESRESPONSE._serialized_end=1280
+  _DICOMSERIESDATERESPONSE._serialized_start=1283
+  _DICOMSERIESDATERESPONSE._serialized_end=1453
 # @@protoc_insertion_point(module_scope)
