@@ -693,6 +693,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 1240;
+				TargetAttributes = {
+					BF90A48625A270A80069D611 = {
+						DevelopmentTeam = RZ9YD92K2B;
+						ProvisioningStyle = Manual;
+					};
+				};
 			};
 			buildConfigurationList = CE6A9A9408AC841300D0C1EE /* Build configuration list for PBXProject "osirixgrpc" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -810,10 +816,12 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = NO;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = NO;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 0.1.1;
 				DEBUGGING_SYMBOLS = YES;
+				DEVELOPMENT_TEAM = RZ9YD92K2B;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(OSIRIX_SRC)",
 					"$(OSIRIX_SRC)/build/Development",
@@ -842,7 +850,7 @@
 					"$(PROJECT_DIR)",
 				);
 				LIBRARY_STYLE = Bundle;
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MARKETING_VERSION = 0.1.2;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = (
@@ -852,6 +860,7 @@
 				OTHER_REZFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.instituteofcancerresearch.osirixgrpc;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
 				SECTORDER_FLAGS = "";
 				VERSIONING_SYSTEM = "";
@@ -875,9 +884,11 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = NO;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = NO;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = YES;
 				CURRENT_PROJECT_VERSION = 0.1.1;
+				DEVELOPMENT_TEAM = RZ9YD92K2B;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(OSIRIX_SRC)",
 					"$(OSIRIX_SRC)/build/Development",
@@ -902,7 +913,7 @@
 					"$(PROJECT_DIR)",
 				);
 				LIBRARY_STYLE = Bundle;
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MARKETING_VERSION = 0.1.2;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = (
@@ -912,6 +923,7 @@
 				OTHER_REZFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.instituteofcancerresearch.osirixgrpc;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
 				SECTORDER_FLAGS = "";
 				VERSIONING_SYSTEM = "";

@@ -275,7 +275,7 @@ void copyVolumeDataForViewerController(ViewerController *vC, NSData** vD, NSMuta
             float thickness = request->thickness();
             [roi setThickness:thickness];
             
-            // Set thickness
+            // Set opacity
             float opacity = request->opacity();
             [roi setOpacity:opacity];
                 
