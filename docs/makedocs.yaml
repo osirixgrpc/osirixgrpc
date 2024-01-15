@@ -1,0 +1,46 @@
+# This provides set up for mkdocs documentation generation.
+
+site_name: OsiriXgrpc
+site_url: 
+repo_url: https://github.com/osirixgrpc/osirixgrpc
+
+# Copyright
+copyright: Copyright &copy; Matthew D Blackledge
+edit_uri: edit/main/docs/markdwon
+use_directory_urls: false
+theme:
+  name: material  # This theme is available through "mkdocs materials" extension.
+  locale: en
+  logo: assets/logo/logo.png
+  highlightjs: true
+  hljs_languages:
+      - python
+      - json
+      - console
+      - javascript
+      - typescript
+      - dockerfile
+      - bash
+      - shell
+      - sh
+  palette:
+    - scheme: default  # The color scheme to use.  Defined in stylesheets/extra.css.
+
+plugins:
+  - search
+  - git-revision-date-localized
+  # - with-pdf  # Uncomment if creating a pdf version of the documentation.
+
+# Documentation extensions.
+markdown_extensions:
+  - attr_list  # Attribute lists, used here for images.
+  - md_in_html  # Markdown in HTML for adding markdown syntax to HTML, used here for images.
+  
+# The page tree. This links the layout of the generated documentation site to the page contents.
+nav:
+  - Home: README.md  # Where the home page of the documentation will be stored.
+  - Contributing:
+    - Home:
+  - Plugin Setup:
+    - Server Configuration:
+    - Script Management:
