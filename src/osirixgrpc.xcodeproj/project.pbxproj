@@ -696,7 +696,7 @@
 				TargetAttributes = {
 					BF90A48625A270A80069D611 = {
 						DevelopmentTeam = RZ9YD92K2B;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -809,6 +809,7 @@
 		BF90A4D325A270A80069D611 /* Development */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = NO;
@@ -817,7 +818,7 @@
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = NO;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 0.1.1;
 				DEBUGGING_SYMBOLS = YES;
@@ -877,6 +878,7 @@
 		BF90A4D425A270A80069D611 /* Deployment */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = NO;
@@ -885,7 +887,7 @@
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = NO;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = YES;
 				CURRENT_PROJECT_VERSION = 0.1.1;
 				DEVELOPMENT_TEAM = RZ9YD92K2B;
@@ -940,6 +942,7 @@
 		CE6A9A9508AC841300D0C1EE /* Development */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_CXX_LIBRARY = "compiler-default";
@@ -979,6 +982,7 @@
 		CE6A9A9608AC841300D0C1EE /* Deployment */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_CXX_LIBRARY = "compiler-default";
