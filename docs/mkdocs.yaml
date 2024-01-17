@@ -3,10 +3,11 @@
 site_name: OsiriXgrpc
 site_url: 
 repo_url: https://github.com/osirixgrpc/osirixgrpc
+docs_dir: docfiles
 
 # Copyright
 copyright: Copyright &copy; Matthew D Blackledge
-edit_uri: edit/main/docs/markdwon
+edit_uri: edit/main/docs/docfiles
 use_directory_urls: false
 theme:
   name: material  # This theme is available through "mkdocs materials" extension.
@@ -28,7 +29,6 @@ theme:
 
 plugins:
   - search
-  - git-revision-date-localized
   # - with-pdf  # Uncomment if creating a pdf version of the documentation.
 
 # Documentation extensions.
@@ -40,7 +40,7 @@ markdown_extensions:
 nav:
   - Home: README.md  # Where the home page of the documentation will be stored.
   - Contributing:
-    - Home:
+    - Home: contributing/welcome.md
   - Plugin Setup:
-    - Server Configuration:
-    - Script Management:
+    - Server Configuration: plugin/server_configuration.md
+    - Script Management: plugin/script_management.md
