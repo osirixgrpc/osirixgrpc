@@ -9,17 +9,23 @@ The OsiriXgrpc plugin consists of three core functionalities, all of which are a
 
 1. __Server Configuration__ allows you to start and stop OsiriXgrpc servers. At lease one server must be active in 
    clients to be able to communicate with OsiriX.
-2. __Script Management__ provides the list of client files currently registered by OsiriXgrpc, and includes information
-   about where they are located and the location of executable to run the file. 
-3. __Task Console__
+2. __Script Management__ provides the list of client files currently registered by OsiriXgrpc that can be run through 
+   the OsiriXgrpc menu bars. This includes the locations of the scripts and executable used to run them. 
+3. __Task Console__ shows the currently running scripts and provides a location for all stdout and stderr messages to
+   recorded.
 
 ## Installation
 1. Download the [latest release](404.html).
 2. Extract the downloaded archive.
 3. Drag the `osirixgrpc.osirixplugin` file to the OsiriX application you want to install to.
-4. Follow instructions for installation.
+4. Follow instructions for further installation.
+
+## Server Configuration
+OsiriXgrpc servers can be started and stopped using 
 
 ## Script Management 
+
+## Task Console
 
 > ___Note___: This is the long-winded way to do things. We _strongly_ recommend using the [pyosirix](404.html) library\
 > for day-to-day development unless you want to do things the long way.
