@@ -222,7 +222,6 @@
 		8D5B49B7048680CD000E48DA /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8E069C372893D2DF008CD14B /* VTKHeaders */ = {isa = PBXFileReference; lastKnownFileType = folder; path = VTKHeaders; sourceTree = "<group>"; };
 		8E1A3E6E25E31D3E00ABB854 /* gRPCMenuItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = gRPCMenuItem.xib; sourceTree = "<group>"; };
-		8E3F254625F0358F00526BCF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		8E49B6F9277D1B8D00215DC9 /* gRPCServerControllerActiveCellView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = gRPCServerControllerActiveCellView.h; sourceTree = "<group>"; };
 		8E49B6FA277D1B8D00215DC9 /* gRPCServerControllerActiveCellView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = gRPCServerControllerActiveCellView.m; sourceTree = "<group>"; };
 		8E4FF1F926247AEE0082346A /* gRPCService.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = gRPCService.h; sourceTree = "<group>"; };
@@ -327,7 +326,6 @@
 		8EB91AFC260DF2E90034C16A /* gRPCDicomSeriesDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = gRPCDicomSeriesDelegate.mm; sourceTree = "<group>"; };
 		8EB91AFD260DF2E90034C16A /* gRPCBrowserControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gRPCBrowserControllerDelegate.h; sourceTree = "<group>"; };
 		8EB91B13260DF30C0034C16A /* version.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = version.plist; sourceTree = "<group>"; };
-		8EB91B15260DF3210034C16A /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logo.png; path = ../logo/logo.png; sourceTree = "<group>"; };
 		8EB91B18260DF3600034C16A /* libabsl_int128.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libabsl_int128.a; path = ../grpc/install/lib/libabsl_int128.a; sourceTree = "<group>"; };
 		8EB91B19260DF3600034C16A /* libabsl_city.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libabsl_city.a; path = ../grpc/install/lib/libabsl_city.a; sourceTree = "<group>"; };
 		8EB91B1A260DF3600034C16A /* libgrpcpp_channelz.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libgrpcpp_channelz.a; path = ../grpc/install/lib/libgrpcpp_channelz.a; sourceTree = "<group>"; };
@@ -569,8 +567,6 @@
 			children = (
 				8E1A3E6E25E31D3E00ABB854 /* gRPCMenuItem.xib */,
 				8D5B49B7048680CD000E48DA /* Info.plist */,
-				089C167DFE841241C02AAC07 /* InfoPlist.strings */,
-				8EB91B15260DF3210034C16A /* logo.png */,
 				8EB91B13260DF30C0034C16A /* version.plist */,
 			);
 			name = Resources;
@@ -1031,17 +1027,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		089C167DFE841241C02AAC07 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8E3F254625F0358F00526BCF /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		BF90A4D325A270A80069D611 /* Development */ = {

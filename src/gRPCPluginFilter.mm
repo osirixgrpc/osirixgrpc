@@ -80,7 +80,7 @@
         [scriptController showWindow:self];
     }
 
-    if ([menuName isEqualToString:@"Script Console"]) {
+    if ([menuName isEqualToString:@"Task Console"]) {
         [taskContoller showWindow:self];
     }
 

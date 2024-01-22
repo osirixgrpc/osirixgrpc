@@ -39,8 +39,9 @@ markdown_extensions:
 # The page tree. This links the layout of the generated documentation site to the page contents.
 nav:
   - Home: README.md  # Where the home page of the documentation will be stored.
-  - Contributing:
-    - Home: contributing/welcome.md
+  - Getting Started: plugin/getting_started.md
   - Plugin Setup:
     - Server Configuration: plugin/server_configuration.md
     - Script Management: plugin/script_management.md
+  - Contributing:
+    - Home: contributing/welcome.md
