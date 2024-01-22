@@ -4,9 +4,8 @@
 """Generated protocol buffer code."""
 from google.protobuf import descriptor as _descriptor
 from google.protobuf import descriptor_pool as _descriptor_pool
-from google.protobuf import message as _message
-from google.protobuf import reflection as _reflection
 from google.protobuf import symbol_database as _symbol_database
+from google.protobuf.internal import builder as _builder
 # @@protoc_insertion_point(imports)
 
 _sym_db = _symbol_database.Default()
@@ -18,29 +17,14 @@ import types_pb2 as types__pb2
 
 DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x17\x62rowsercontroller.proto\x12\nosirixgrpc\x1a\x0futilities.proto\x1a\x0btypes.proto\"\xa2\x01\n*BrowserControllerDatabaseSelectionResponse\x12\"\n\x06status\x18\x01 \x01(\x0b\x32\x12.osirixgrpc.Status\x12\'\n\x06series\x18\x02 \x03(\x0b\x32\x17.osirixgrpc.DicomSeries\x12\'\n\x07studies\x18\x03 \x03(\x0b\x32\x16.osirixgrpc.DicomStudy\"j\n)BrowserControllerCopyFilesIfNeededRequest\x12.\n\x07\x62rowser\x18\x01 \x01(\x0b\x32\x1d.osirixgrpc.BrowserController\x12\r\n\x05paths\x18\x02 \x03(\tb\x06proto3')
 
-
-
-_BROWSERCONTROLLERDATABASESELECTIONRESPONSE = DESCRIPTOR.message_types_by_name['BrowserControllerDatabaseSelectionResponse']
-_BROWSERCONTROLLERCOPYFILESIFNEEDEDREQUEST = DESCRIPTOR.message_types_by_name['BrowserControllerCopyFilesIfNeededRequest']
-BrowserControllerDatabaseSelectionResponse = _reflection.GeneratedProtocolMessageType('BrowserControllerDatabaseSelectionResponse', (_message.Message,), {
-  'DESCRIPTOR' : _BROWSERCONTROLLERDATABASESELECTIONRESPONSE,
-  '__module__' : 'browsercontroller_pb2'
-  # @@protoc_insertion_point(class_scope:osirixgrpc.BrowserControllerDatabaseSelectionResponse)
-  })
-_sym_db.RegisterMessage(BrowserControllerDatabaseSelectionResponse)
-
-BrowserControllerCopyFilesIfNeededRequest = _reflection.GeneratedProtocolMessageType('BrowserControllerCopyFilesIfNeededRequest', (_message.Message,), {
-  'DESCRIPTOR' : _BROWSERCONTROLLERCOPYFILESIFNEEDEDREQUEST,
-  '__module__' : 'browsercontroller_pb2'
-  # @@protoc_insertion_point(class_scope:osirixgrpc.BrowserControllerCopyFilesIfNeededRequest)
-  })
-_sym_db.RegisterMessage(BrowserControllerCopyFilesIfNeededRequest)
-
+_globals = globals()
+_builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
+_builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'browsercontroller_pb2', _globals)
 if _descriptor._USE_C_DESCRIPTORS == False:
 
   DESCRIPTOR._options = None
-  _BROWSERCONTROLLERDATABASESELECTIONRESPONSE._serialized_start=70
-  _BROWSERCONTROLLERDATABASESELECTIONRESPONSE._serialized_end=232
-  _BROWSERCONTROLLERCOPYFILESIFNEEDEDREQUEST._serialized_start=234
-  _BROWSERCONTROLLERCOPYFILESIFNEEDEDREQUEST._serialized_end=340
+  _globals['_BROWSERCONTROLLERDATABASESELECTIONRESPONSE']._serialized_start=70
+  _globals['_BROWSERCONTROLLERDATABASESELECTIONRESPONSE']._serialized_end=232
+  _globals['_BROWSERCONTROLLERCOPYFILESIFNEEDEDREQUEST']._serialized_start=234
+  _globals['_BROWSERCONTROLLERCOPYFILESIFNEEDEDREQUEST']._serialized_end=340
 # @@protoc_insertion_point(module_scope)

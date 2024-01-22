@@ -4,9 +4,8 @@
 """Generated protocol buffer code."""
 from google.protobuf import descriptor as _descriptor
 from google.protobuf import descriptor_pool as _descriptor_pool
-from google.protobuf import message as _message
-from google.protobuf import reflection as _reflection
 from google.protobuf import symbol_database as _symbol_database
+from google.protobuf.internal import builder as _builder
 # @@protoc_insertion_point(imports)
 
 _sym_db = _symbol_database.Default()
@@ -16,39 +15,16 @@ _sym_db = _symbol_database.Default()
 
 DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0futilities.proto\x12\nosirixgrpc\")\n\x06Status\x12\x0e\n\x06status\x18\x01 \x01(\x05\x12\x0f\n\x07message\x18\x02 \x01(\t\".\n\x08Response\x12\"\n\x06status\x18\x01 \x01(\x0b\x32\x12.osirixgrpc.Status\"\x07\n\x05\x45mptyb\x06proto3')
 
-
-
-_STATUS = DESCRIPTOR.message_types_by_name['Status']
-_RESPONSE = DESCRIPTOR.message_types_by_name['Response']
-_EMPTY = DESCRIPTOR.message_types_by_name['Empty']
-Status = _reflection.GeneratedProtocolMessageType('Status', (_message.Message,), {
-  'DESCRIPTOR' : _STATUS,
-  '__module__' : 'utilities_pb2'
-  # @@protoc_insertion_point(class_scope:osirixgrpc.Status)
-  })
-_sym_db.RegisterMessage(Status)
-
-Response = _reflection.GeneratedProtocolMessageType('Response', (_message.Message,), {
-  'DESCRIPTOR' : _RESPONSE,
-  '__module__' : 'utilities_pb2'
-  # @@protoc_insertion_point(class_scope:osirixgrpc.Response)
-  })
-_sym_db.RegisterMessage(Response)
-
-Empty = _reflection.GeneratedProtocolMessageType('Empty', (_message.Message,), {
-  'DESCRIPTOR' : _EMPTY,
-  '__module__' : 'utilities_pb2'
-  # @@protoc_insertion_point(class_scope:osirixgrpc.Empty)
-  })
-_sym_db.RegisterMessage(Empty)
-
+_globals = globals()
+_builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
+_builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'utilities_pb2', _globals)
 if _descriptor._USE_C_DESCRIPTORS == False:
 
   DESCRIPTOR._options = None
-  _STATUS._serialized_start=31
-  _STATUS._serialized_end=72
-  _RESPONSE._serialized_start=74
-  _RESPONSE._serialized_end=120
-  _EMPTY._serialized_start=122
-  _EMPTY._serialized_end=129
+  _globals['_STATUS']._serialized_start=31
+  _globals['_STATUS']._serialized_end=72
+  _globals['_RESPONSE']._serialized_start=74
+  _globals['_RESPONSE']._serialized_end=120
+  _globals['_EMPTY']._serialized_start=122
+  _globals['_EMPTY']._serialized_end=129
 # @@protoc_insertion_point(module_scope)

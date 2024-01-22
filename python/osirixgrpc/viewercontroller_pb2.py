@@ -4,9 +4,8 @@
 """Generated protocol buffer code."""
 from google.protobuf import descriptor as _descriptor
 from google.protobuf import descriptor_pool as _descriptor_pool
-from google.protobuf import message as _message
-from google.protobuf import reflection as _reflection
 from google.protobuf import symbol_database as _symbol_database
+from google.protobuf.internal import builder as _builder
 # @@protoc_insertion_point(imports)
 
 _sym_db = _symbol_database.Default()
@@ -18,334 +17,74 @@ import types_pb2 as types__pb2
 
 DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x16viewercontroller.proto\x12\nosirixgrpc\x1a\x0futilities.proto\x1a\x0btypes.proto\"f\n\x1fViewerControllerPixListResponse\x12\"\n\x06status\x18\x01 \x01(\x0b\x32\x12.osirixgrpc.Status\x12\x1f\n\x03pix\x18\x02 \x03(\x0b\x32\x12.osirixgrpc.DCMPix\"\xba\x01\n\x1fViewerControllerROIListResponse\x12\"\n\x06status\x18\x01 \x01(\x0b\x32\x12.osirixgrpc.Status\x12H\n\nroi_slices\x18\x02 \x03(\x0b\x32\x34.osirixgrpc.ViewerControllerROIListResponse.ROISlice\x1a)\n\x08ROISlice\x12\x1d\n\x04rois\x18\x01 \x03(\x0b\x32\x0f.osirixgrpc.ROI\"b\n\x1eViewerControllerNewROIResponse\x12\"\n\x06status\x18\x01 \x01(\x0b\x32\x12.osirixgrpc.Status\x12\x1c\n\x03roi\x18\x02 \x01(\x0b\x32\x0f.osirixgrpc.ROI\"e\n\x1eViewerControllerCurDCMResponse\x12\"\n\x06status\x18\x01 \x01(\x0b\x32\x12.osirixgrpc.Status\x12\x1f\n\x03pix\x18\x02 \x01(\x0b\x32\x12.osirixgrpc.DCMPix\"i\n$ViewerControllerROIsWithNameResponse\x12\"\n\x06status\x18\x01 \x01(\x0b\x32\x12.osirixgrpc.Status\x12\x1d\n\x04rois\x18\x02 \x03(\x0b\x32\x0f.osirixgrpc.ROI\"i\n$ViewerControllerSelectedROIsResponse\x12\"\n\x06status\x18\x01 \x01(\x0b\x32\x12.osirixgrpc.Status\x12\x1d\n\x04rois\x18\x02 \x03(\x0b\x32\x0f.osirixgrpc.ROI\"_\n%ViewerControllerIsDataVolumicResponse\x12\"\n\x06status\x18\x01 \x01(\x0b\x32\x12.osirixgrpc.Status\x12\x12\n\nis_volumic\x18\x02 \x01(\x08\"\x87\x01\n*ViewerControllerBlendingControllerResponse\x12\"\n\x06status\x18\x01 \x01(\x0b\x32\x12.osirixgrpc.Status\x12\x35\n\x0f\x62lending_viewer\x18\x02 \x01(\x0b\x32\x1c.osirixgrpc.ViewerController\"}\n%ViewerControllerVRControllersResponse\x12\"\n\x06status\x18\x01 \x01(\x0b\x32\x12.osirixgrpc.Status\x12\x30\n\x0evr_controllers\x18\x02 \x03(\x0b\x32\x18.osirixgrpc.VRController\"R\n\x1dViewerControllerTitleResponse\x12\"\n\x06status\x18\x01 \x01(\x0b\x32\x12.osirixgrpc.Status\x12\r\n\x05title\x18\x02 \x01(\t\"X\n ViewerControllerModalityResponse\x12\"\n\x06status\x18\x01 \x01(\x0b\x32\x12.osirixgrpc.Status\x12\x10\n\x08modality\x18\x02 \x01(\t\"Y\n ViewerControllerMovieIdxResponse\x12\"\n\x06status\x18\x01 \x01(\x0b\x32\x12.osirixgrpc.Status\x12\x11\n\tmovie_idx\x18\x02 \x01(\x05\"`\n#ViewerControllerMaxMovieIdxResponse\x12\"\n\x06status\x18\x01 \x01(\x0b\x32\x12.osirixgrpc.Status\x12\x15\n\rmax_movie_idx\x18\x02 \x01(\x05\"N\n\x1bViewerControllerIdxResponse\x12\"\n\x06status\x18\x01 \x01(\x0b\x32\x12.osirixgrpc.Status\x12\x0b\n\x03idx\x18\x02 \x01(\x05\"Z\n\x1cViewerControllerWLWWResponse\x12\"\n\x06status\x18\x01 \x01(\x0b\x32\x12.osirixgrpc.Status\x12\n\n\x02wl\x18\x02 \x01(\x02\x12\n\n\x02ww\x18\x03 \x01(\x02\"\x82\x01\n+ViewerControllerOpenVRViewerForModeResponse\x12\"\n\x06status\x18\x01 \x01(\x0b\x32\x12.osirixgrpc.Status\x12/\n\rvr_controller\x18\x02 \x01(\x0b\x32\x18.osirixgrpc.VRController\"l\n\x1eViewerControllerPixListRequest\x12\x37\n\x11viewer_controller\x18\x01 \x01(\x0b\x32\x1c.osirixgrpc.ViewerController\x12\x11\n\tmovie_idx\x18\x02 \x01(\x05\"l\n\x1eViewerControllerROIListRequest\x12\x37\n\x11viewer_controller\x18\x01 \x01(\x0b\x32\x1c.osirixgrpc.ViewerController\x12\x11\n\tmovie_idx\x18\x02 \x01(\x05\"\xcb\x05\n\x1dViewerControllerNewROIRequest\x12\x37\n\x11viewer_controller\x18\x01 \x01(\x0b\x32\x1c.osirixgrpc.ViewerController\x12\r\n\x05itype\x18\x02 \x01(\x05\x12\x0c\n\x04name\x18\x03 \x01(\t\x12\x10\n\x08position\x18\x04 \x01(\x05\x12\x11\n\tmovie_idx\x18\x05 \x01(\x05\x12\x19\n\x11\x62uffer_position_x\x18\x06 \x01(\x05\x12\x19\n\x11\x62uffer_position_y\x18\x07 \x01(\x05\x12>\n\x05\x63olor\x18\x08 \x01(\x0b\x32/.osirixgrpc.ViewerControllerNewROIRequest.Color\x12\x11\n\tthickness\x18\t \x01(\x02\x12\x0f\n\x07opacity\x18\n \x01(\x02\x12@\n\x06\x62uffer\x18\x0b \x01(\x0b\x32\x30.osirixgrpc.ViewerControllerNewROIRequest.Buffer\x12\x41\n\x06points\x18\x0c \x03(\x0b\x32\x31.osirixgrpc.ViewerControllerNewROIRequest.Point2D\x12\x41\n\trectangle\x18\r \x01(\x0b\x32..osirixgrpc.ViewerControllerNewROIRequest.Rect\x1a\x37\n\x06\x42uffer\x12\x0e\n\x06\x62uffer\x18\x01 \x03(\x08\x12\x0c\n\x04rows\x18\x02 \x01(\x05\x12\x0f\n\x07\x63olumns\x18\x03 \x01(\x05\x1a\x1f\n\x07Point2D\x12\t\n\x01x\x18\x01 \x01(\x02\x12\t\n\x01y\x18\x02 \x01(\x02\x1a(\n\x05\x43olor\x12\t\n\x01r\x18\x01 \x01(\x05\x12\t\n\x01g\x18\x02 \x01(\x05\x12\t\n\x01\x62\x18\x03 \x01(\x05\x1aI\n\x04Rect\x12\x10\n\x08origin_x\x18\x01 \x01(\x02\x12\x10\n\x08origin_y\x18\x02 \x01(\x02\x12\x0e\n\x06height\x18\x03 \x01(\x02\x12\r\n\x05width\x18\x04 \x01(\x02\"\x8e\x01\n#ViewerControllerROIsWithNameRequest\x12\x37\n\x11viewer_controller\x18\x01 \x01(\x0b\x32\x1c.osirixgrpc.ViewerController\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x11\n\tmovie_idx\x18\x03 \x01(\x05\x12\r\n\x05in_4d\x18\x04 \x01(\x08\"\xa9\x01\n/ViewerControllerResampleViewerControllerRequest\x12\x37\n\x11viewer_controller\x18\x01 \x01(\x0b\x32\x1c.osirixgrpc.ViewerController\x12=\n\x17\x66ixed_viewer_controller\x18\x02 \x01(\x0b\x32\x1c.osirixgrpc.ViewerController\"q\n\'ViewerControllerCopyViewerWindowRequest\x12\x37\n\x11viewer_controller\x18\x01 \x01(\x0b\x32\x1c.osirixgrpc.ViewerController\x12\r\n\x05in_4d\x18\x02 \x01(\x08\"p\n\"ViewerControllerSetMovieIdxRequest\x12\x37\n\x11viewer_controller\x18\x01 \x01(\x0b\x32\x1c.osirixgrpc.ViewerController\x12\x11\n\tmovie_idx\x18\x02 \x01(\x05\"n\n$ViewerControllerIsDataVolumicRequest\x12\x37\n\x11viewer_controller\x18\x01 \x01(\x0b\x32\x1c.osirixgrpc.ViewerController\x12\r\n\x05in_4d\x18\x02 \x01(\x08\"e\n\x1dViewerControllerSetIdxRequest\x12\x37\n\x11viewer_controller\x18\x01 \x01(\x0b\x32\x1c.osirixgrpc.ViewerController\x12\x0b\n\x03idx\x18\x02 \x01(\x05\"q\n\x1eViewerControllerSetWLWWRequest\x12\x37\n\x11viewer_controller\x18\x01 \x01(\x0b\x32\x1c.osirixgrpc.ViewerController\x12\n\n\x02wl\x18\x02 \x01(\x02\x12\n\n\x02ww\x18\x03 \x01(\x02\"s\n*ViewerControllerOpenVRViewerForModeRequest\x12\x37\n\x11viewer_controller\x18\x01 \x01(\x0b\x32\x1c.osirixgrpc.ViewerController\x12\x0c\n\x04mode\x18\x02 \x01(\tb\x06proto3')
 
-
-
-_VIEWERCONTROLLERPIXLISTRESPONSE = DESCRIPTOR.message_types_by_name['ViewerControllerPixListResponse']
-_VIEWERCONTROLLERROILISTRESPONSE = DESCRIPTOR.message_types_by_name['ViewerControllerROIListResponse']
-_VIEWERCONTROLLERROILISTRESPONSE_ROISLICE = _VIEWERCONTROLLERROILISTRESPONSE.nested_types_by_name['ROISlice']
-_VIEWERCONTROLLERNEWROIRESPONSE = DESCRIPTOR.message_types_by_name['ViewerControllerNewROIResponse']
-_VIEWERCONTROLLERCURDCMRESPONSE = DESCRIPTOR.message_types_by_name['ViewerControllerCurDCMResponse']
-_VIEWERCONTROLLERROISWITHNAMERESPONSE = DESCRIPTOR.message_types_by_name['ViewerControllerROIsWithNameResponse']
-_VIEWERCONTROLLERSELECTEDROISRESPONSE = DESCRIPTOR.message_types_by_name['ViewerControllerSelectedROIsResponse']
-_VIEWERCONTROLLERISDATAVOLUMICRESPONSE = DESCRIPTOR.message_types_by_name['ViewerControllerIsDataVolumicResponse']
-_VIEWERCONTROLLERBLENDINGCONTROLLERRESPONSE = DESCRIPTOR.message_types_by_name['ViewerControllerBlendingControllerResponse']
-_VIEWERCONTROLLERVRCONTROLLERSRESPONSE = DESCRIPTOR.message_types_by_name['ViewerControllerVRControllersResponse']
-_VIEWERCONTROLLERTITLERESPONSE = DESCRIPTOR.message_types_by_name['ViewerControllerTitleResponse']
-_VIEWERCONTROLLERMODALITYRESPONSE = DESCRIPTOR.message_types_by_name['ViewerControllerModalityResponse']
-_VIEWERCONTROLLERMOVIEIDXRESPONSE = DESCRIPTOR.message_types_by_name['ViewerControllerMovieIdxResponse']
-_VIEWERCONTROLLERMAXMOVIEIDXRESPONSE = DESCRIPTOR.message_types_by_name['ViewerControllerMaxMovieIdxResponse']
-_VIEWERCONTROLLERIDXRESPONSE = DESCRIPTOR.message_types_by_name['ViewerControllerIdxResponse']
-_VIEWERCONTROLLERWLWWRESPONSE = DESCRIPTOR.message_types_by_name['ViewerControllerWLWWResponse']
-_VIEWERCONTROLLEROPENVRVIEWERFORMODERESPONSE = DESCRIPTOR.message_types_by_name['ViewerControllerOpenVRViewerForModeResponse']
-_VIEWERCONTROLLERPIXLISTREQUEST = DESCRIPTOR.message_types_by_name['ViewerControllerPixListRequest']
-_VIEWERCONTROLLERROILISTREQUEST = DESCRIPTOR.message_types_by_name['ViewerControllerROIListRequest']
-_VIEWERCONTROLLERNEWROIREQUEST = DESCRIPTOR.message_types_by_name['ViewerControllerNewROIRequest']
-_VIEWERCONTROLLERNEWROIREQUEST_BUFFER = _VIEWERCONTROLLERNEWROIREQUEST.nested_types_by_name['Buffer']
-_VIEWERCONTROLLERNEWROIREQUEST_POINT2D = _VIEWERCONTROLLERNEWROIREQUEST.nested_types_by_name['Point2D']
-_VIEWERCONTROLLERNEWROIREQUEST_COLOR = _VIEWERCONTROLLERNEWROIREQUEST.nested_types_by_name['Color']
-_VIEWERCONTROLLERNEWROIREQUEST_RECT = _VIEWERCONTROLLERNEWROIREQUEST.nested_types_by_name['Rect']
-_VIEWERCONTROLLERROISWITHNAMEREQUEST = DESCRIPTOR.message_types_by_name['ViewerControllerROIsWithNameRequest']
-_VIEWERCONTROLLERRESAMPLEVIEWERCONTROLLERREQUEST = DESCRIPTOR.message_types_by_name['ViewerControllerResampleViewerControllerRequest']
-_VIEWERCONTROLLERCOPYVIEWERWINDOWREQUEST = DESCRIPTOR.message_types_by_name['ViewerControllerCopyViewerWindowRequest']
-_VIEWERCONTROLLERSETMOVIEIDXREQUEST = DESCRIPTOR.message_types_by_name['ViewerControllerSetMovieIdxRequest']
-_VIEWERCONTROLLERISDATAVOLUMICREQUEST = DESCRIPTOR.message_types_by_name['ViewerControllerIsDataVolumicRequest']
-_VIEWERCONTROLLERSETIDXREQUEST = DESCRIPTOR.message_types_by_name['ViewerControllerSetIdxRequest']
-_VIEWERCONTROLLERSETWLWWREQUEST = DESCRIPTOR.message_types_by_name['ViewerControllerSetWLWWRequest']
-_VIEWERCONTROLLEROPENVRVIEWERFORMODEREQUEST = DESCRIPTOR.message_types_by_name['ViewerControllerOpenVRViewerForModeRequest']
-ViewerControllerPixListResponse = _reflection.GeneratedProtocolMessageType('ViewerControllerPixListResponse', (_message.Message,), {
-  'DESCRIPTOR' : _VIEWERCONTROLLERPIXLISTRESPONSE,
-  '__module__' : 'viewercontroller_pb2'
-  # @@protoc_insertion_point(class_scope:osirixgrpc.ViewerControllerPixListResponse)
-  })
-_sym_db.RegisterMessage(ViewerControllerPixListResponse)
-
-ViewerControllerROIListResponse = _reflection.GeneratedProtocolMessageType('ViewerControllerROIListResponse', (_message.Message,), {
-
-  'ROISlice' : _reflection.GeneratedProtocolMessageType('ROISlice', (_message.Message,), {
-    'DESCRIPTOR' : _VIEWERCONTROLLERROILISTRESPONSE_ROISLICE,
-    '__module__' : 'viewercontroller_pb2'
-    # @@protoc_insertion_point(class_scope:osirixgrpc.ViewerControllerROIListResponse.ROISlice)
-    })
-  ,
-  'DESCRIPTOR' : _VIEWERCONTROLLERROILISTRESPONSE,
-  '__module__' : 'viewercontroller_pb2'
-  # @@protoc_insertion_point(class_scope:osirixgrpc.ViewerControllerROIListResponse)
-  })
-_sym_db.RegisterMessage(ViewerControllerROIListResponse)
-_sym_db.RegisterMessage(ViewerControllerROIListResponse.ROISlice)
-
-ViewerControllerNewROIResponse = _reflection.GeneratedProtocolMessageType('ViewerControllerNewROIResponse', (_message.Message,), {
-  'DESCRIPTOR' : _VIEWERCONTROLLERNEWROIRESPONSE,
-  '__module__' : 'viewercontroller_pb2'
-  # @@protoc_insertion_point(class_scope:osirixgrpc.ViewerControllerNewROIResponse)
-  })
-_sym_db.RegisterMessage(ViewerControllerNewROIResponse)
-
-ViewerControllerCurDCMResponse = _reflection.GeneratedProtocolMessageType('ViewerControllerCurDCMResponse', (_message.Message,), {
-  'DESCRIPTOR' : _VIEWERCONTROLLERCURDCMRESPONSE,
-  '__module__' : 'viewercontroller_pb2'
-  # @@protoc_insertion_point(class_scope:osirixgrpc.ViewerControllerCurDCMResponse)
-  })
-_sym_db.RegisterMessage(ViewerControllerCurDCMResponse)
-
-ViewerControllerROIsWithNameResponse = _reflection.GeneratedProtocolMessageType('ViewerControllerROIsWithNameResponse', (_message.Message,), {
-  'DESCRIPTOR' : _VIEWERCONTROLLERROISWITHNAMERESPONSE,
-  '__module__' : 'viewercontroller_pb2'
-  # @@protoc_insertion_point(class_scope:osirixgrpc.ViewerControllerROIsWithNameResponse)
-  })
-_sym_db.RegisterMessage(ViewerControllerROIsWithNameResponse)
-
-ViewerControllerSelectedROIsResponse = _reflection.GeneratedProtocolMessageType('ViewerControllerSelectedROIsResponse', (_message.Message,), {
-  'DESCRIPTOR' : _VIEWERCONTROLLERSELECTEDROISRESPONSE,
-  '__module__' : 'viewercontroller_pb2'
-  # @@protoc_insertion_point(class_scope:osirixgrpc.ViewerControllerSelectedROIsResponse)
-  })
-_sym_db.RegisterMessage(ViewerControllerSelectedROIsResponse)
-
-ViewerControllerIsDataVolumicResponse = _reflection.GeneratedProtocolMessageType('ViewerControllerIsDataVolumicResponse', (_message.Message,), {
-  'DESCRIPTOR' : _VIEWERCONTROLLERISDATAVOLUMICRESPONSE,
-  '__module__' : 'viewercontroller_pb2'
-  # @@protoc_insertion_point(class_scope:osirixgrpc.ViewerControllerIsDataVolumicResponse)
-  })
-_sym_db.RegisterMessage(ViewerControllerIsDataVolumicResponse)
-
-ViewerControllerBlendingControllerResponse = _reflection.GeneratedProtocolMessageType('ViewerControllerBlendingControllerResponse', (_message.Message,), {
-  'DESCRIPTOR' : _VIEWERCONTROLLERBLENDINGCONTROLLERRESPONSE,
-  '__module__' : 'viewercontroller_pb2'
-  # @@protoc_insertion_point(class_scope:osirixgrpc.ViewerControllerBlendingControllerResponse)
-  })
-_sym_db.RegisterMessage(ViewerControllerBlendingControllerResponse)
-
-ViewerControllerVRControllersResponse = _reflection.GeneratedProtocolMessageType('ViewerControllerVRControllersResponse', (_message.Message,), {
-  'DESCRIPTOR' : _VIEWERCONTROLLERVRCONTROLLERSRESPONSE,
-  '__module__' : 'viewercontroller_pb2'
-  # @@protoc_insertion_point(class_scope:osirixgrpc.ViewerControllerVRControllersResponse)
-  })
-_sym_db.RegisterMessage(ViewerControllerVRControllersResponse)
-
-ViewerControllerTitleResponse = _reflection.GeneratedProtocolMessageType('ViewerControllerTitleResponse', (_message.Message,), {
-  'DESCRIPTOR' : _VIEWERCONTROLLERTITLERESPONSE,
-  '__module__' : 'viewercontroller_pb2'
-  # @@protoc_insertion_point(class_scope:osirixgrpc.ViewerControllerTitleResponse)
-  })
-_sym_db.RegisterMessage(ViewerControllerTitleResponse)
-
-ViewerControllerModalityResponse = _reflection.GeneratedProtocolMessageType('ViewerControllerModalityResponse', (_message.Message,), {
-  'DESCRIPTOR' : _VIEWERCONTROLLERMODALITYRESPONSE,
-  '__module__' : 'viewercontroller_pb2'
-  # @@protoc_insertion_point(class_scope:osirixgrpc.ViewerControllerModalityResponse)
-  })
-_sym_db.RegisterMessage(ViewerControllerModalityResponse)
-
-ViewerControllerMovieIdxResponse = _reflection.GeneratedProtocolMessageType('ViewerControllerMovieIdxResponse', (_message.Message,), {
-  'DESCRIPTOR' : _VIEWERCONTROLLERMOVIEIDXRESPONSE,
-  '__module__' : 'viewercontroller_pb2'
-  # @@protoc_insertion_point(class_scope:osirixgrpc.ViewerControllerMovieIdxResponse)
-  })
-_sym_db.RegisterMessage(ViewerControllerMovieIdxResponse)
-
-ViewerControllerMaxMovieIdxResponse = _reflection.GeneratedProtocolMessageType('ViewerControllerMaxMovieIdxResponse', (_message.Message,), {
-  'DESCRIPTOR' : _VIEWERCONTROLLERMAXMOVIEIDXRESPONSE,
-  '__module__' : 'viewercontroller_pb2'
-  # @@protoc_insertion_point(class_scope:osirixgrpc.ViewerControllerMaxMovieIdxResponse)
-  })
-_sym_db.RegisterMessage(ViewerControllerMaxMovieIdxResponse)
-
-ViewerControllerIdxResponse = _reflection.GeneratedProtocolMessageType('ViewerControllerIdxResponse', (_message.Message,), {
-  'DESCRIPTOR' : _VIEWERCONTROLLERIDXRESPONSE,
-  '__module__' : 'viewercontroller_pb2'
-  # @@protoc_insertion_point(class_scope:osirixgrpc.ViewerControllerIdxResponse)
-  })
-_sym_db.RegisterMessage(ViewerControllerIdxResponse)
-
-ViewerControllerWLWWResponse = _reflection.GeneratedProtocolMessageType('ViewerControllerWLWWResponse', (_message.Message,), {
-  'DESCRIPTOR' : _VIEWERCONTROLLERWLWWRESPONSE,
-  '__module__' : 'viewercontroller_pb2'
-  # @@protoc_insertion_point(class_scope:osirixgrpc.ViewerControllerWLWWResponse)
-  })
-_sym_db.RegisterMessage(ViewerControllerWLWWResponse)
-
-ViewerControllerOpenVRViewerForModeResponse = _reflection.GeneratedProtocolMessageType('ViewerControllerOpenVRViewerForModeResponse', (_message.Message,), {
-  'DESCRIPTOR' : _VIEWERCONTROLLEROPENVRVIEWERFORMODERESPONSE,
-  '__module__' : 'viewercontroller_pb2'
-  # @@protoc_insertion_point(class_scope:osirixgrpc.ViewerControllerOpenVRViewerForModeResponse)
-  })
-_sym_db.RegisterMessage(ViewerControllerOpenVRViewerForModeResponse)
-
-ViewerControllerPixListRequest = _reflection.GeneratedProtocolMessageType('ViewerControllerPixListRequest', (_message.Message,), {
-  'DESCRIPTOR' : _VIEWERCONTROLLERPIXLISTREQUEST,
-  '__module__' : 'viewercontroller_pb2'
-  # @@protoc_insertion_point(class_scope:osirixgrpc.ViewerControllerPixListRequest)
-  })
-_sym_db.RegisterMessage(ViewerControllerPixListRequest)
-
-ViewerControllerROIListRequest = _reflection.GeneratedProtocolMessageType('ViewerControllerROIListRequest', (_message.Message,), {
-  'DESCRIPTOR' : _VIEWERCONTROLLERROILISTREQUEST,
-  '__module__' : 'viewercontroller_pb2'
-  # @@protoc_insertion_point(class_scope:osirixgrpc.ViewerControllerROIListRequest)
-  })
-_sym_db.RegisterMessage(ViewerControllerROIListRequest)
-
-ViewerControllerNewROIRequest = _reflection.GeneratedProtocolMessageType('ViewerControllerNewROIRequest', (_message.Message,), {
-
-  'Buffer' : _reflection.GeneratedProtocolMessageType('Buffer', (_message.Message,), {
-    'DESCRIPTOR' : _VIEWERCONTROLLERNEWROIREQUEST_BUFFER,
-    '__module__' : 'viewercontroller_pb2'
-    # @@protoc_insertion_point(class_scope:osirixgrpc.ViewerControllerNewROIRequest.Buffer)
-    })
-  ,
-
-  'Point2D' : _reflection.GeneratedProtocolMessageType('Point2D', (_message.Message,), {
-    'DESCRIPTOR' : _VIEWERCONTROLLERNEWROIREQUEST_POINT2D,
-    '__module__' : 'viewercontroller_pb2'
-    # @@protoc_insertion_point(class_scope:osirixgrpc.ViewerControllerNewROIRequest.Point2D)
-    })
-  ,
-
-  'Color' : _reflection.GeneratedProtocolMessageType('Color', (_message.Message,), {
-    'DESCRIPTOR' : _VIEWERCONTROLLERNEWROIREQUEST_COLOR,
-    '__module__' : 'viewercontroller_pb2'
-    # @@protoc_insertion_point(class_scope:osirixgrpc.ViewerControllerNewROIRequest.Color)
-    })
-  ,
-
-  'Rect' : _reflection.GeneratedProtocolMessageType('Rect', (_message.Message,), {
-    'DESCRIPTOR' : _VIEWERCONTROLLERNEWROIREQUEST_RECT,
-    '__module__' : 'viewercontroller_pb2'
-    # @@protoc_insertion_point(class_scope:osirixgrpc.ViewerControllerNewROIRequest.Rect)
-    })
-  ,
-  'DESCRIPTOR' : _VIEWERCONTROLLERNEWROIREQUEST,
-  '__module__' : 'viewercontroller_pb2'
-  # @@protoc_insertion_point(class_scope:osirixgrpc.ViewerControllerNewROIRequest)
-  })
-_sym_db.RegisterMessage(ViewerControllerNewROIRequest)
-_sym_db.RegisterMessage(ViewerControllerNewROIRequest.Buffer)
-_sym_db.RegisterMessage(ViewerControllerNewROIRequest.Point2D)
-_sym_db.RegisterMessage(ViewerControllerNewROIRequest.Color)
-_sym_db.RegisterMessage(ViewerControllerNewROIRequest.Rect)
-
-ViewerControllerROIsWithNameRequest = _reflection.GeneratedProtocolMessageType('ViewerControllerROIsWithNameRequest', (_message.Message,), {
-  'DESCRIPTOR' : _VIEWERCONTROLLERROISWITHNAMEREQUEST,
-  '__module__' : 'viewercontroller_pb2'
-  # @@protoc_insertion_point(class_scope:osirixgrpc.ViewerControllerROIsWithNameRequest)
-  })
-_sym_db.RegisterMessage(ViewerControllerROIsWithNameRequest)
-
-ViewerControllerResampleViewerControllerRequest = _reflection.GeneratedProtocolMessageType('ViewerControllerResampleViewerControllerRequest', (_message.Message,), {
-  'DESCRIPTOR' : _VIEWERCONTROLLERRESAMPLEVIEWERCONTROLLERREQUEST,
-  '__module__' : 'viewercontroller_pb2'
-  # @@protoc_insertion_point(class_scope:osirixgrpc.ViewerControllerResampleViewerControllerRequest)
-  })
-_sym_db.RegisterMessage(ViewerControllerResampleViewerControllerRequest)
-
-ViewerControllerCopyViewerWindowRequest = _reflection.GeneratedProtocolMessageType('ViewerControllerCopyViewerWindowRequest', (_message.Message,), {
-  'DESCRIPTOR' : _VIEWERCONTROLLERCOPYVIEWERWINDOWREQUEST,
-  '__module__' : 'viewercontroller_pb2'
-  # @@protoc_insertion_point(class_scope:osirixgrpc.ViewerControllerCopyViewerWindowRequest)
-  })
-_sym_db.RegisterMessage(ViewerControllerCopyViewerWindowRequest)
-
-ViewerControllerSetMovieIdxRequest = _reflection.GeneratedProtocolMessageType('ViewerControllerSetMovieIdxRequest', (_message.Message,), {
-  'DESCRIPTOR' : _VIEWERCONTROLLERSETMOVIEIDXREQUEST,
-  '__module__' : 'viewercontroller_pb2'
-  # @@protoc_insertion_point(class_scope:osirixgrpc.ViewerControllerSetMovieIdxRequest)
-  })
-_sym_db.RegisterMessage(ViewerControllerSetMovieIdxRequest)
-
-ViewerControllerIsDataVolumicRequest = _reflection.GeneratedProtocolMessageType('ViewerControllerIsDataVolumicRequest', (_message.Message,), {
-  'DESCRIPTOR' : _VIEWERCONTROLLERISDATAVOLUMICREQUEST,
-  '__module__' : 'viewercontroller_pb2'
-  # @@protoc_insertion_point(class_scope:osirixgrpc.ViewerControllerIsDataVolumicRequest)
-  })
-_sym_db.RegisterMessage(ViewerControllerIsDataVolumicRequest)
-
-ViewerControllerSetIdxRequest = _reflection.GeneratedProtocolMessageType('ViewerControllerSetIdxRequest', (_message.Message,), {
-  'DESCRIPTOR' : _VIEWERCONTROLLERSETIDXREQUEST,
-  '__module__' : 'viewercontroller_pb2'
-  # @@protoc_insertion_point(class_scope:osirixgrpc.ViewerControllerSetIdxRequest)
-  })
-_sym_db.RegisterMessage(ViewerControllerSetIdxRequest)
-
-ViewerControllerSetWLWWRequest = _reflection.GeneratedProtocolMessageType('ViewerControllerSetWLWWRequest', (_message.Message,), {
-  'DESCRIPTOR' : _VIEWERCONTROLLERSETWLWWREQUEST,
-  '__module__' : 'viewercontroller_pb2'
-  # @@protoc_insertion_point(class_scope:osirixgrpc.ViewerControllerSetWLWWRequest)
-  })
-_sym_db.RegisterMessage(ViewerControllerSetWLWWRequest)
-
-ViewerControllerOpenVRViewerForModeRequest = _reflection.GeneratedProtocolMessageType('ViewerControllerOpenVRViewerForModeRequest', (_message.Message,), {
-  'DESCRIPTOR' : _VIEWERCONTROLLEROPENVRVIEWERFORMODEREQUEST,
-  '__module__' : 'viewercontroller_pb2'
-  # @@protoc_insertion_point(class_scope:osirixgrpc.ViewerControllerOpenVRViewerForModeRequest)
-  })
-_sym_db.RegisterMessage(ViewerControllerOpenVRViewerForModeRequest)
-
+_globals = globals()
+_builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
+_builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'viewercontroller_pb2', _globals)
 if _descriptor._USE_C_DESCRIPTORS == False:
 
   DESCRIPTOR._options = None
-  _VIEWERCONTROLLERPIXLISTRESPONSE._serialized_start=68
-  _VIEWERCONTROLLERPIXLISTRESPONSE._serialized_end=170
-  _VIEWERCONTROLLERROILISTRESPONSE._serialized_start=173
-  _VIEWERCONTROLLERROILISTRESPONSE._serialized_end=359
-  _VIEWERCONTROLLERROILISTRESPONSE_ROISLICE._serialized_start=318
-  _VIEWERCONTROLLERROILISTRESPONSE_ROISLICE._serialized_end=359
-  _VIEWERCONTROLLERNEWROIRESPONSE._serialized_start=361
-  _VIEWERCONTROLLERNEWROIRESPONSE._serialized_end=459
-  _VIEWERCONTROLLERCURDCMRESPONSE._serialized_start=461
-  _VIEWERCONTROLLERCURDCMRESPONSE._serialized_end=562
-  _VIEWERCONTROLLERROISWITHNAMERESPONSE._serialized_start=564
-  _VIEWERCONTROLLERROISWITHNAMERESPONSE._serialized_end=669
-  _VIEWERCONTROLLERSELECTEDROISRESPONSE._serialized_start=671
-  _VIEWERCONTROLLERSELECTEDROISRESPONSE._serialized_end=776
-  _VIEWERCONTROLLERISDATAVOLUMICRESPONSE._serialized_start=778
-  _VIEWERCONTROLLERISDATAVOLUMICRESPONSE._serialized_end=873
-  _VIEWERCONTROLLERBLENDINGCONTROLLERRESPONSE._serialized_start=876
-  _VIEWERCONTROLLERBLENDINGCONTROLLERRESPONSE._serialized_end=1011
-  _VIEWERCONTROLLERVRCONTROLLERSRESPONSE._serialized_start=1013
-  _VIEWERCONTROLLERVRCONTROLLERSRESPONSE._serialized_end=1138
-  _VIEWERCONTROLLERTITLERESPONSE._serialized_start=1140
-  _VIEWERCONTROLLERTITLERESPONSE._serialized_end=1222
-  _VIEWERCONTROLLERMODALITYRESPONSE._serialized_start=1224
-  _VIEWERCONTROLLERMODALITYRESPONSE._serialized_end=1312
-  _VIEWERCONTROLLERMOVIEIDXRESPONSE._serialized_start=1314
-  _VIEWERCONTROLLERMOVIEIDXRESPONSE._serialized_end=1403
-  _VIEWERCONTROLLERMAXMOVIEIDXRESPONSE._serialized_start=1405
-  _VIEWERCONTROLLERMAXMOVIEIDXRESPONSE._serialized_end=1501
-  _VIEWERCONTROLLERIDXRESPONSE._serialized_start=1503
-  _VIEWERCONTROLLERIDXRESPONSE._serialized_end=1581
-  _VIEWERCONTROLLERWLWWRESPONSE._serialized_start=1583
-  _VIEWERCONTROLLERWLWWRESPONSE._serialized_end=1673
-  _VIEWERCONTROLLEROPENVRVIEWERFORMODERESPONSE._serialized_start=1676
-  _VIEWERCONTROLLEROPENVRVIEWERFORMODERESPONSE._serialized_end=1806
-  _VIEWERCONTROLLERPIXLISTREQUEST._serialized_start=1808
-  _VIEWERCONTROLLERPIXLISTREQUEST._serialized_end=1916
-  _VIEWERCONTROLLERROILISTREQUEST._serialized_start=1918
-  _VIEWERCONTROLLERROILISTREQUEST._serialized_end=2026
-  _VIEWERCONTROLLERNEWROIREQUEST._serialized_start=2029
-  _VIEWERCONTROLLERNEWROIREQUEST._serialized_end=2744
-  _VIEWERCONTROLLERNEWROIREQUEST_BUFFER._serialized_start=2539
-  _VIEWERCONTROLLERNEWROIREQUEST_BUFFER._serialized_end=2594
-  _VIEWERCONTROLLERNEWROIREQUEST_POINT2D._serialized_start=2596
-  _VIEWERCONTROLLERNEWROIREQUEST_POINT2D._serialized_end=2627
-  _VIEWERCONTROLLERNEWROIREQUEST_COLOR._serialized_start=2629
-  _VIEWERCONTROLLERNEWROIREQUEST_COLOR._serialized_end=2669
-  _VIEWERCONTROLLERNEWROIREQUEST_RECT._serialized_start=2671
-  _VIEWERCONTROLLERNEWROIREQUEST_RECT._serialized_end=2744
-  _VIEWERCONTROLLERROISWITHNAMEREQUEST._serialized_start=2747
-  _VIEWERCONTROLLERROISWITHNAMEREQUEST._serialized_end=2889
-  _VIEWERCONTROLLERRESAMPLEVIEWERCONTROLLERREQUEST._serialized_start=2892
-  _VIEWERCONTROLLERRESAMPLEVIEWERCONTROLLERREQUEST._serialized_end=3061
-  _VIEWERCONTROLLERCOPYVIEWERWINDOWREQUEST._serialized_start=3063
-  _VIEWERCONTROLLERCOPYVIEWERWINDOWREQUEST._serialized_end=3176
-  _VIEWERCONTROLLERSETMOVIEIDXREQUEST._serialized_start=3178
-  _VIEWERCONTROLLERSETMOVIEIDXREQUEST._serialized_end=3290
-  _VIEWERCONTROLLERISDATAVOLUMICREQUEST._serialized_start=3292
-  _VIEWERCONTROLLERISDATAVOLUMICREQUEST._serialized_end=3402
-  _VIEWERCONTROLLERSETIDXREQUEST._serialized_start=3404
-  _VIEWERCONTROLLERSETIDXREQUEST._serialized_end=3505
-  _VIEWERCONTROLLERSETWLWWREQUEST._serialized_start=3507
-  _VIEWERCONTROLLERSETWLWWREQUEST._serialized_end=3620
-  _VIEWERCONTROLLEROPENVRVIEWERFORMODEREQUEST._serialized_start=3622
-  _VIEWERCONTROLLEROPENVRVIEWERFORMODEREQUEST._serialized_end=3737
+  _globals['_VIEWERCONTROLLERPIXLISTRESPONSE']._serialized_start=68
+  _globals['_VIEWERCONTROLLERPIXLISTRESPONSE']._serialized_end=170
+  _globals['_VIEWERCONTROLLERROILISTRESPONSE']._serialized_start=173
+  _globals['_VIEWERCONTROLLERROILISTRESPONSE']._serialized_end=359
+  _globals['_VIEWERCONTROLLERROILISTRESPONSE_ROISLICE']._serialized_start=318
+  _globals['_VIEWERCONTROLLERROILISTRESPONSE_ROISLICE']._serialized_end=359
+  _globals['_VIEWERCONTROLLERNEWROIRESPONSE']._serialized_start=361
+  _globals['_VIEWERCONTROLLERNEWROIRESPONSE']._serialized_end=459
+  _globals['_VIEWERCONTROLLERCURDCMRESPONSE']._serialized_start=461
+  _globals['_VIEWERCONTROLLERCURDCMRESPONSE']._serialized_end=562
+  _globals['_VIEWERCONTROLLERROISWITHNAMERESPONSE']._serialized_start=564
+  _globals['_VIEWERCONTROLLERROISWITHNAMERESPONSE']._serialized_end=669
+  _globals['_VIEWERCONTROLLERSELECTEDROISRESPONSE']._serialized_start=671
+  _globals['_VIEWERCONTROLLERSELECTEDROISRESPONSE']._serialized_end=776
+  _globals['_VIEWERCONTROLLERISDATAVOLUMICRESPONSE']._serialized_start=778
+  _globals['_VIEWERCONTROLLERISDATAVOLUMICRESPONSE']._serialized_end=873
+  _globals['_VIEWERCONTROLLERBLENDINGCONTROLLERRESPONSE']._serialized_start=876
+  _globals['_VIEWERCONTROLLERBLENDINGCONTROLLERRESPONSE']._serialized_end=1011
+  _globals['_VIEWERCONTROLLERVRCONTROLLERSRESPONSE']._serialized_start=1013
+  _globals['_VIEWERCONTROLLERVRCONTROLLERSRESPONSE']._serialized_end=1138
+  _globals['_VIEWERCONTROLLERTITLERESPONSE']._serialized_start=1140
+  _globals['_VIEWERCONTROLLERTITLERESPONSE']._serialized_end=1222
+  _globals['_VIEWERCONTROLLERMODALITYRESPONSE']._serialized_start=1224
+  _globals['_VIEWERCONTROLLERMODALITYRESPONSE']._serialized_end=1312
+  _globals['_VIEWERCONTROLLERMOVIEIDXRESPONSE']._serialized_start=1314
+  _globals['_VIEWERCONTROLLERMOVIEIDXRESPONSE']._serialized_end=1403
+  _globals['_VIEWERCONTROLLERMAXMOVIEIDXRESPONSE']._serialized_start=1405
+  _globals['_VIEWERCONTROLLERMAXMOVIEIDXRESPONSE']._serialized_end=1501
+  _globals['_VIEWERCONTROLLERIDXRESPONSE']._serialized_start=1503
+  _globals['_VIEWERCONTROLLERIDXRESPONSE']._serialized_end=1581
+  _globals['_VIEWERCONTROLLERWLWWRESPONSE']._serialized_start=1583
+  _globals['_VIEWERCONTROLLERWLWWRESPONSE']._serialized_end=1673
+  _globals['_VIEWERCONTROLLEROPENVRVIEWERFORMODERESPONSE']._serialized_start=1676
+  _globals['_VIEWERCONTROLLEROPENVRVIEWERFORMODERESPONSE']._serialized_end=1806
+  _globals['_VIEWERCONTROLLERPIXLISTREQUEST']._serialized_start=1808
+  _globals['_VIEWERCONTROLLERPIXLISTREQUEST']._serialized_end=1916
+  _globals['_VIEWERCONTROLLERROILISTREQUEST']._serialized_start=1918
+  _globals['_VIEWERCONTROLLERROILISTREQUEST']._serialized_end=2026
+  _globals['_VIEWERCONTROLLERNEWROIREQUEST']._serialized_start=2029
+  _globals['_VIEWERCONTROLLERNEWROIREQUEST']._serialized_end=2744
+  _globals['_VIEWERCONTROLLERNEWROIREQUEST_BUFFER']._serialized_start=2539
+  _globals['_VIEWERCONTROLLERNEWROIREQUEST_BUFFER']._serialized_end=2594
+  _globals['_VIEWERCONTROLLERNEWROIREQUEST_POINT2D']._serialized_start=2596
+  _globals['_VIEWERCONTROLLERNEWROIREQUEST_POINT2D']._serialized_end=2627
+  _globals['_VIEWERCONTROLLERNEWROIREQUEST_COLOR']._serialized_start=2629
+  _globals['_VIEWERCONTROLLERNEWROIREQUEST_COLOR']._serialized_end=2669
+  _globals['_VIEWERCONTROLLERNEWROIREQUEST_RECT']._serialized_start=2671
+  _globals['_VIEWERCONTROLLERNEWROIREQUEST_RECT']._serialized_end=2744
+  _globals['_VIEWERCONTROLLERROISWITHNAMEREQUEST']._serialized_start=2747
+  _globals['_VIEWERCONTROLLERROISWITHNAMEREQUEST']._serialized_end=2889
+  _globals['_VIEWERCONTROLLERRESAMPLEVIEWERCONTROLLERREQUEST']._serialized_start=2892
+  _globals['_VIEWERCONTROLLERRESAMPLEVIEWERCONTROLLERREQUEST']._serialized_end=3061
+  _globals['_VIEWERCONTROLLERCOPYVIEWERWINDOWREQUEST']._serialized_start=3063
+  _globals['_VIEWERCONTROLLERCOPYVIEWERWINDOWREQUEST']._serialized_end=3176
+  _globals['_VIEWERCONTROLLERSETMOVIEIDXREQUEST']._serialized_start=3178
+  _globals['_VIEWERCONTROLLERSETMOVIEIDXREQUEST']._serialized_end=3290
+  _globals['_VIEWERCONTROLLERISDATAVOLUMICREQUEST']._serialized_start=3292
+  _globals['_VIEWERCONTROLLERISDATAVOLUMICREQUEST']._serialized_end=3402
+  _globals['_VIEWERCONTROLLERSETIDXREQUEST']._serialized_start=3404
+  _globals['_VIEWERCONTROLLERSETIDXREQUEST']._serialized_end=3505
+  _globals['_VIEWERCONTROLLERSETWLWWREQUEST']._serialized_start=3507
+  _globals['_VIEWERCONTROLLERSETWLWWREQUEST']._serialized_end=3620
+  _globals['_VIEWERCONTROLLEROPENVRVIEWERFORMODEREQUEST']._serialized_start=3622
+  _globals['_VIEWERCONTROLLEROPENVRVIEWERFORMODEREQUEST']._serialized_end=3737
 # @@protoc_insertion_point(module_scope)

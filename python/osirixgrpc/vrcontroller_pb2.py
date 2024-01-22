@@ -4,9 +4,8 @@
 """Generated protocol buffer code."""
 from google.protobuf import descriptor as _descriptor
 from google.protobuf import descriptor_pool as _descriptor_pool
-from google.protobuf import message as _message
-from google.protobuf import reflection as _reflection
 from google.protobuf import symbol_database as _symbol_database
+from google.protobuf.internal import builder as _builder
 # @@protoc_insertion_point(imports)
 
 _sym_db = _symbol_database.Default()
@@ -18,119 +17,32 @@ import types_pb2 as types__pb2
 
 DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x12vrcontroller.proto\x12\nosirixgrpc\x1a\x0futilities.proto\x1a\x0btypes.proto\"{\n\x1cVRControllerViewer2DResponse\x12\"\n\x06status\x18\x01 \x01(\x0b\x32\x12.osirixgrpc.Status\x12\x37\n\x11viewer_controller\x18\x02 \x01(\x0b\x32\x1c.osirixgrpc.ViewerController\"\x85\x01\n&VRControllerBlendingControllerResponse\x12\"\n\x06status\x18\x01 \x01(\x0b\x32\x12.osirixgrpc.Status\x12\x37\n\x11viewer_controller\x18\x02 \x01(\x0b\x32\x1c.osirixgrpc.ViewerController\"_\n!VRControllerRenderingModeResponse\x12\"\n\x06status\x18\x01 \x01(\x0b\x32\x12.osirixgrpc.Status\x12\x16\n\x0erendering_mode\x18\x02 \x01(\t\"V\n\x18VRControllerWLWWResponse\x12\"\n\x06status\x18\x01 \x01(\x0b\x32\x12.osirixgrpc.Status\x12\n\n\x02wl\x18\x02 \x01(\x02\x12\n\n\x02ww\x18\x03 \x01(\x02\"N\n\x19VRControllerStyleResponse\x12\"\n\x06status\x18\x01 \x01(\x0b\x32\x12.osirixgrpc.Status\x12\r\n\x05style\x18\x02 \x01(\t\"N\n\x19VRControllerTitleResponse\x12\"\n\x06status\x18\x01 \x01(\x0b\x32\x12.osirixgrpc.Status\x12\r\n\x05title\x18\x02 \x01(\t\"p\n\x1eVRControllerROIVolumesResponse\x12\"\n\x06status\x18\x01 \x01(\x0b\x32\x12.osirixgrpc.Status\x12*\n\x0broi_volumes\x18\x02 \x03(\x0b\x32\x15.osirixgrpc.ROIVolume\"n\n#VRControllerSetRenderingModeRequest\x12/\n\rvr_controller\x18\x01 \x01(\x0b\x32\x18.osirixgrpc.VRController\x12\x16\n\x0erendering_mode\x18\x02 \x01(\t\"e\n\x1aVRControllerSetWLWWRequest\x12/\n\rvr_controller\x18\x01 \x01(\x0b\x32\x18.osirixgrpc.VRController\x12\n\n\x02wl\x18\x02 \x01(\x02\x12\n\n\x02ww\x18\x03 \x01(\x02\"~\n VRControllerHideROIVolumeRequest\x12/\n\rvr_controller\x18\x01 \x01(\x0b\x32\x18.osirixgrpc.VRController\x12)\n\nroi_volume\x18\x02 \x01(\x0b\x32\x15.osirixgrpc.ROIVolume\"\x81\x01\n#VRControllerDisplayROIVolumeRequest\x12/\n\rvr_controller\x18\x01 \x01(\x0b\x32\x18.osirixgrpc.VRController\x12)\n\nroi_volume\x18\x02 \x01(\x0b\x32\x15.osirixgrpc.ROIVolumeb\x06proto3')
 
-
-
-_VRCONTROLLERVIEWER2DRESPONSE = DESCRIPTOR.message_types_by_name['VRControllerViewer2DResponse']
-_VRCONTROLLERBLENDINGCONTROLLERRESPONSE = DESCRIPTOR.message_types_by_name['VRControllerBlendingControllerResponse']
-_VRCONTROLLERRENDERINGMODERESPONSE = DESCRIPTOR.message_types_by_name['VRControllerRenderingModeResponse']
-_VRCONTROLLERWLWWRESPONSE = DESCRIPTOR.message_types_by_name['VRControllerWLWWResponse']
-_VRCONTROLLERSTYLERESPONSE = DESCRIPTOR.message_types_by_name['VRControllerStyleResponse']
-_VRCONTROLLERTITLERESPONSE = DESCRIPTOR.message_types_by_name['VRControllerTitleResponse']
-_VRCONTROLLERROIVOLUMESRESPONSE = DESCRIPTOR.message_types_by_name['VRControllerROIVolumesResponse']
-_VRCONTROLLERSETRENDERINGMODEREQUEST = DESCRIPTOR.message_types_by_name['VRControllerSetRenderingModeRequest']
-_VRCONTROLLERSETWLWWREQUEST = DESCRIPTOR.message_types_by_name['VRControllerSetWLWWRequest']
-_VRCONTROLLERHIDEROIVOLUMEREQUEST = DESCRIPTOR.message_types_by_name['VRControllerHideROIVolumeRequest']
-_VRCONTROLLERDISPLAYROIVOLUMEREQUEST = DESCRIPTOR.message_types_by_name['VRControllerDisplayROIVolumeRequest']
-VRControllerViewer2DResponse = _reflection.GeneratedProtocolMessageType('VRControllerViewer2DResponse', (_message.Message,), {
-  'DESCRIPTOR' : _VRCONTROLLERVIEWER2DRESPONSE,
-  '__module__' : 'vrcontroller_pb2'
-  # @@protoc_insertion_point(class_scope:osirixgrpc.VRControllerViewer2DResponse)
-  })
-_sym_db.RegisterMessage(VRControllerViewer2DResponse)
-
-VRControllerBlendingControllerResponse = _reflection.GeneratedProtocolMessageType('VRControllerBlendingControllerResponse', (_message.Message,), {
-  'DESCRIPTOR' : _VRCONTROLLERBLENDINGCONTROLLERRESPONSE,
-  '__module__' : 'vrcontroller_pb2'
-  # @@protoc_insertion_point(class_scope:osirixgrpc.VRControllerBlendingControllerResponse)
-  })
-_sym_db.RegisterMessage(VRControllerBlendingControllerResponse)
-
-VRControllerRenderingModeResponse = _reflection.GeneratedProtocolMessageType('VRControllerRenderingModeResponse', (_message.Message,), {
-  'DESCRIPTOR' : _VRCONTROLLERRENDERINGMODERESPONSE,
-  '__module__' : 'vrcontroller_pb2'
-  # @@protoc_insertion_point(class_scope:osirixgrpc.VRControllerRenderingModeResponse)
-  })
-_sym_db.RegisterMessage(VRControllerRenderingModeResponse)
-
-VRControllerWLWWResponse = _reflection.GeneratedProtocolMessageType('VRControllerWLWWResponse', (_message.Message,), {
-  'DESCRIPTOR' : _VRCONTROLLERWLWWRESPONSE,
-  '__module__' : 'vrcontroller_pb2'
-  # @@protoc_insertion_point(class_scope:osirixgrpc.VRControllerWLWWResponse)
-  })
-_sym_db.RegisterMessage(VRControllerWLWWResponse)
-
-VRControllerStyleResponse = _reflection.GeneratedProtocolMessageType('VRControllerStyleResponse', (_message.Message,), {
-  'DESCRIPTOR' : _VRCONTROLLERSTYLERESPONSE,
-  '__module__' : 'vrcontroller_pb2'
-  # @@protoc_insertion_point(class_scope:osirixgrpc.VRControllerStyleResponse)
-  })
-_sym_db.RegisterMessage(VRControllerStyleResponse)
-
-VRControllerTitleResponse = _reflection.GeneratedProtocolMessageType('VRControllerTitleResponse', (_message.Message,), {
-  'DESCRIPTOR' : _VRCONTROLLERTITLERESPONSE,
-  '__module__' : 'vrcontroller_pb2'
-  # @@protoc_insertion_point(class_scope:osirixgrpc.VRControllerTitleResponse)
-  })
-_sym_db.RegisterMessage(VRControllerTitleResponse)
-
-VRControllerROIVolumesResponse = _reflection.GeneratedProtocolMessageType('VRControllerROIVolumesResponse', (_message.Message,), {
-  'DESCRIPTOR' : _VRCONTROLLERROIVOLUMESRESPONSE,
-  '__module__' : 'vrcontroller_pb2'
-  # @@protoc_insertion_point(class_scope:osirixgrpc.VRControllerROIVolumesResponse)
-  })
-_sym_db.RegisterMessage(VRControllerROIVolumesResponse)
-
-VRControllerSetRenderingModeRequest = _reflection.GeneratedProtocolMessageType('VRControllerSetRenderingModeRequest', (_message.Message,), {
-  'DESCRIPTOR' : _VRCONTROLLERSETRENDERINGMODEREQUEST,
-  '__module__' : 'vrcontroller_pb2'
-  # @@protoc_insertion_point(class_scope:osirixgrpc.VRControllerSetRenderingModeRequest)
-  })
-_sym_db.RegisterMessage(VRControllerSetRenderingModeRequest)
-
-VRControllerSetWLWWRequest = _reflection.GeneratedProtocolMessageType('VRControllerSetWLWWRequest', (_message.Message,), {
-  'DESCRIPTOR' : _VRCONTROLLERSETWLWWREQUEST,
-  '__module__' : 'vrcontroller_pb2'
-  # @@protoc_insertion_point(class_scope:osirixgrpc.VRControllerSetWLWWRequest)
-  })
-_sym_db.RegisterMessage(VRControllerSetWLWWRequest)
-
-VRControllerHideROIVolumeRequest = _reflection.GeneratedProtocolMessageType('VRControllerHideROIVolumeRequest', (_message.Message,), {
-  'DESCRIPTOR' : _VRCONTROLLERHIDEROIVOLUMEREQUEST,
-  '__module__' : 'vrcontroller_pb2'
-  # @@protoc_insertion_point(class_scope:osirixgrpc.VRControllerHideROIVolumeRequest)
-  })
-_sym_db.RegisterMessage(VRControllerHideROIVolumeRequest)
-
-VRControllerDisplayROIVolumeRequest = _reflection.GeneratedProtocolMessageType('VRControllerDisplayROIVolumeRequest', (_message.Message,), {
-  'DESCRIPTOR' : _VRCONTROLLERDISPLAYROIVOLUMEREQUEST,
-  '__module__' : 'vrcontroller_pb2'
-  # @@protoc_insertion_point(class_scope:osirixgrpc.VRControllerDisplayROIVolumeRequest)
-  })
-_sym_db.RegisterMessage(VRControllerDisplayROIVolumeRequest)
-
+_globals = globals()
+_builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
+_builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'vrcontroller_pb2', _globals)
 if _descriptor._USE_C_DESCRIPTORS == False:
 
   DESCRIPTOR._options = None
-  _VRCONTROLLERVIEWER2DRESPONSE._serialized_start=64
-  _VRCONTROLLERVIEWER2DRESPONSE._serialized_end=187
-  _VRCONTROLLERBLENDINGCONTROLLERRESPONSE._serialized_start=190
-  _VRCONTROLLERBLENDINGCONTROLLERRESPONSE._serialized_end=323
-  _VRCONTROLLERRENDERINGMODERESPONSE._serialized_start=325
-  _VRCONTROLLERRENDERINGMODERESPONSE._serialized_end=420
-  _VRCONTROLLERWLWWRESPONSE._serialized_start=422
-  _VRCONTROLLERWLWWRESPONSE._serialized_end=508
-  _VRCONTROLLERSTYLERESPONSE._serialized_start=510
-  _VRCONTROLLERSTYLERESPONSE._serialized_end=588
-  _VRCONTROLLERTITLERESPONSE._serialized_start=590
-  _VRCONTROLLERTITLERESPONSE._serialized_end=668
-  _VRCONTROLLERROIVOLUMESRESPONSE._serialized_start=670
-  _VRCONTROLLERROIVOLUMESRESPONSE._serialized_end=782
-  _VRCONTROLLERSETRENDERINGMODEREQUEST._serialized_start=784
-  _VRCONTROLLERSETRENDERINGMODEREQUEST._serialized_end=894
-  _VRCONTROLLERSETWLWWREQUEST._serialized_start=896
-  _VRCONTROLLERSETWLWWREQUEST._serialized_end=997
-  _VRCONTROLLERHIDEROIVOLUMEREQUEST._serialized_start=999
-  _VRCONTROLLERHIDEROIVOLUMEREQUEST._serialized_end=1125
-  _VRCONTROLLERDISPLAYROIVOLUMEREQUEST._serialized_start=1128
-  _VRCONTROLLERDISPLAYROIVOLUMEREQUEST._serialized_end=1257
+  _globals['_VRCONTROLLERVIEWER2DRESPONSE']._serialized_start=64
+  _globals['_VRCONTROLLERVIEWER2DRESPONSE']._serialized_end=187
+  _globals['_VRCONTROLLERBLENDINGCONTROLLERRESPONSE']._serialized_start=190
+  _globals['_VRCONTROLLERBLENDINGCONTROLLERRESPONSE']._serialized_end=323
+  _globals['_VRCONTROLLERRENDERINGMODERESPONSE']._serialized_start=325
+  _globals['_VRCONTROLLERRENDERINGMODERESPONSE']._serialized_end=420
+  _globals['_VRCONTROLLERWLWWRESPONSE']._serialized_start=422
+  _globals['_VRCONTROLLERWLWWRESPONSE']._serialized_end=508
+  _globals['_VRCONTROLLERSTYLERESPONSE']._serialized_start=510
+  _globals['_VRCONTROLLERSTYLERESPONSE']._serialized_end=588
+  _globals['_VRCONTROLLERTITLERESPONSE']._serialized_start=590
+  _globals['_VRCONTROLLERTITLERESPONSE']._serialized_end=668
+  _globals['_VRCONTROLLERROIVOLUMESRESPONSE']._serialized_start=670
+  _globals['_VRCONTROLLERROIVOLUMESRESPONSE']._serialized_end=782
+  _globals['_VRCONTROLLERSETRENDERINGMODEREQUEST']._serialized_start=784
+  _globals['_VRCONTROLLERSETRENDERINGMODEREQUEST']._serialized_end=894
+  _globals['_VRCONTROLLERSETWLWWREQUEST']._serialized_start=896
+  _globals['_VRCONTROLLERSETWLWWREQUEST']._serialized_end=997
+  _globals['_VRCONTROLLERHIDEROIVOLUMEREQUEST']._serialized_start=999
+  _globals['_VRCONTROLLERHIDEROIVOLUMEREQUEST']._serialized_end=1125
+  _globals['_VRCONTROLLERDISPLAYROIVOLUMEREQUEST']._serialized_start=1128
+  _globals['_VRCONTROLLERDISPLAYROIVOLUMEREQUEST']._serialized_end=1257
 # @@protoc_insertion_point(module_scope)

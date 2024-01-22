@@ -4,9 +4,8 @@
 """Generated protocol buffer code."""
 from google.protobuf import descriptor as _descriptor
 from google.protobuf import descriptor_pool as _descriptor_pool
-from google.protobuf import message as _message
-from google.protobuf import reflection as _reflection
 from google.protobuf import symbol_database as _symbol_database
+from google.protobuf.internal import builder as _builder
 # @@protoc_insertion_point(imports)
 
 _sym_db = _symbol_database.Default()
@@ -18,219 +17,52 @@ import types_pb2 as types__pb2
 
 DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x10\x64icomstudy.proto\x12\nosirixgrpc\x1a\x0futilities.proto\x1a\x0btypes.proto\"L\n\x17\x44icomStudyPathsResponse\x12\"\n\x06status\x18\x01 \x01(\x0b\x32\x12.osirixgrpc.Status\x12\r\n\x05paths\x18\x02 \x03(\t\"f\n\x18\x44icomStudyImagesResponse\x12\"\n\x06status\x18\x01 \x01(\x0b\x32\x12.osirixgrpc.Status\x12&\n\x06images\x18\x02 \x03(\x0b\x32\x16.osirixgrpc.DicomImage\"V\n\x1c\x44icomStudyModalitiesResponse\x12\"\n\x06status\x18\x01 \x01(\x0b\x32\x12.osirixgrpc.Status\x12\x12\n\nmodalities\x18\x02 \x01(\t\"Q\n\x19\x44icomStudyNoFilesResponse\x12\"\n\x06status\x18\x01 \x01(\x0b\x32\x12.osirixgrpc.Status\x12\x10\n\x08no_files\x18\x02 \x01(\x05\"T\n\x1c\x44icomStudyRawNoFilesResponse\x12\"\n\x06status\x18\x01 \x01(\x0b\x32\x12.osirixgrpc.Status\x12\x10\n\x08no_files\x18\x02 \x01(\x05\"e\n-DicomStudyNoFilesExcludingMultiFramesResponse\x12\"\n\x06status\x18\x01 \x01(\x0b\x32\x12.osirixgrpc.Status\x12\x10\n\x08no_files\x18\x02 \x01(\x05\"Y\n DicomStudyNumberOfImagesResponse\x12\"\n\x06status\x18\x01 \x01(\x0b\x32\x12.osirixgrpc.Status\x12\x11\n\tno_images\x18\x02 \x01(\x05\"g\n\x18\x44icomStudySeriesResponse\x12\"\n\x06status\x18\x01 \x01(\x0b\x32\x12.osirixgrpc.Status\x12\'\n\x06series\x18\x02 \x03(\x0b\x32\x17.osirixgrpc.DicomSeries\"J\n\x16\x44icomStudyNameResponse\x12\"\n\x06status\x18\x01 \x01(\x0b\x32\x12.osirixgrpc.Status\x12\x0c\n\x04name\x18\x02 \x01(\t\"\xa9\x01\n\x16\x44icomStudyDateResponse\x12\"\n\x06status\x18\x01 \x01(\x0b\x32\x12.osirixgrpc.Status\x12\x0c\n\x04year\x18\x02 \x01(\x05\x12\r\n\x05month\x18\x03 \x01(\x05\x12\x0b\n\x03\x64\x61y\x18\x04 \x01(\x05\x12\x0c\n\x04hour\x18\x05 \x01(\x05\x12\x0e\n\x06minute\x18\x06 \x01(\x05\x12\x0e\n\x06second\x18\x07 \x01(\x05\x12\x13\n\x0bmillisecond\x18\x08 \x01(\x05\"\xae\x01\n\x1b\x44icomStudyDateAddedResponse\x12\"\n\x06status\x18\x01 \x01(\x0b\x32\x12.osirixgrpc.Status\x12\x0c\n\x04year\x18\x02 \x01(\x05\x12\r\n\x05month\x18\x03 \x01(\x05\x12\x0b\n\x03\x64\x61y\x18\x04 \x01(\x05\x12\x0c\n\x04hour\x18\x05 \x01(\x05\x12\x0e\n\x06minute\x18\x06 \x01(\x05\x12\x0e\n\x06second\x18\x07 \x01(\x05\x12\x13\n\x0bmillisecond\x18\x08 \x01(\x05\"m\n\x1d\x44icomStudyDateOfBirthResponse\x12\"\n\x06status\x18\x01 \x01(\x0b\x32\x12.osirixgrpc.Status\x12\x0c\n\x04year\x18\x02 \x01(\x05\x12\r\n\x05month\x18\x03 \x01(\x05\x12\x0b\n\x03\x64\x61y\x18\x04 \x01(\x05\"a\n!DicomStudyInstitutionNameResponse\x12\"\n\x06status\x18\x01 \x01(\x0b\x32\x12.osirixgrpc.Status\x12\x18\n\x10institution_name\x18\x02 \x01(\t\"R\n\x1a\x44icomStudyModalityResponse\x12\"\n\x06status\x18\x01 \x01(\x0b\x32\x12.osirixgrpc.Status\x12\x10\n\x08modality\x18\x02 \x01(\t\"U\n\x1b\x44icomStudyPatientIDResponse\x12\"\n\x06status\x18\x01 \x01(\x0b\x32\x12.osirixgrpc.Status\x12\x12\n\npatient_id\x18\x02 \x01(\t\"W\n\x1c\x44icomStudyPatientUIDResponse\x12\"\n\x06status\x18\x01 \x01(\x0b\x32\x12.osirixgrpc.Status\x12\x13\n\x0bpatient_uid\x18\x02 \x01(\t\"W\n\x1c\x44icomStudyPatientSexResponse\x12\"\n\x06status\x18\x01 \x01(\x0b\x32\x12.osirixgrpc.Status\x12\x13\n\x0bpatient_sex\x18\x02 \x01(\t\"i\n%DicomStudyPerformingPhysicianResponse\x12\"\n\x06status\x18\x01 \x01(\x0b\x32\x12.osirixgrpc.Status\x12\x1c\n\x14performing_physician\x18\x02 \x01(\t\"g\n$DicomStudyReferringPhysicianResponse\x12\"\n\x06status\x18\x01 \x01(\x0b\x32\x12.osirixgrpc.Status\x12\x1b\n\x13referring_physician\x18\x02 \x01(\t\"d\n\"DicomStudyStudyInstanceUIDResponse\x12\"\n\x06status\x18\x01 \x01(\x0b\x32\x12.osirixgrpc.Status\x12\x1a\n\x12study_instance_uid\x18\x02 \x01(\t\"U\n\x1b\x44icomStudyStudyNameResponse\x12\"\n\x06status\x18\x01 \x01(\x0b\x32\x12.osirixgrpc.Status\x12\x12\n\nstudy_name\x18\x02 \x01(\tb\x06proto3')
 
-
-
-_DICOMSTUDYPATHSRESPONSE = DESCRIPTOR.message_types_by_name['DicomStudyPathsResponse']
-_DICOMSTUDYIMAGESRESPONSE = DESCRIPTOR.message_types_by_name['DicomStudyImagesResponse']
-_DICOMSTUDYMODALITIESRESPONSE = DESCRIPTOR.message_types_by_name['DicomStudyModalitiesResponse']
-_DICOMSTUDYNOFILESRESPONSE = DESCRIPTOR.message_types_by_name['DicomStudyNoFilesResponse']
-_DICOMSTUDYRAWNOFILESRESPONSE = DESCRIPTOR.message_types_by_name['DicomStudyRawNoFilesResponse']
-_DICOMSTUDYNOFILESEXCLUDINGMULTIFRAMESRESPONSE = DESCRIPTOR.message_types_by_name['DicomStudyNoFilesExcludingMultiFramesResponse']
-_DICOMSTUDYNUMBEROFIMAGESRESPONSE = DESCRIPTOR.message_types_by_name['DicomStudyNumberOfImagesResponse']
-_DICOMSTUDYSERIESRESPONSE = DESCRIPTOR.message_types_by_name['DicomStudySeriesResponse']
-_DICOMSTUDYNAMERESPONSE = DESCRIPTOR.message_types_by_name['DicomStudyNameResponse']
-_DICOMSTUDYDATERESPONSE = DESCRIPTOR.message_types_by_name['DicomStudyDateResponse']
-_DICOMSTUDYDATEADDEDRESPONSE = DESCRIPTOR.message_types_by_name['DicomStudyDateAddedResponse']
-_DICOMSTUDYDATEOFBIRTHRESPONSE = DESCRIPTOR.message_types_by_name['DicomStudyDateOfBirthResponse']
-_DICOMSTUDYINSTITUTIONNAMERESPONSE = DESCRIPTOR.message_types_by_name['DicomStudyInstitutionNameResponse']
-_DICOMSTUDYMODALITYRESPONSE = DESCRIPTOR.message_types_by_name['DicomStudyModalityResponse']
-_DICOMSTUDYPATIENTIDRESPONSE = DESCRIPTOR.message_types_by_name['DicomStudyPatientIDResponse']
-_DICOMSTUDYPATIENTUIDRESPONSE = DESCRIPTOR.message_types_by_name['DicomStudyPatientUIDResponse']
-_DICOMSTUDYPATIENTSEXRESPONSE = DESCRIPTOR.message_types_by_name['DicomStudyPatientSexResponse']
-_DICOMSTUDYPERFORMINGPHYSICIANRESPONSE = DESCRIPTOR.message_types_by_name['DicomStudyPerformingPhysicianResponse']
-_DICOMSTUDYREFERRINGPHYSICIANRESPONSE = DESCRIPTOR.message_types_by_name['DicomStudyReferringPhysicianResponse']
-_DICOMSTUDYSTUDYINSTANCEUIDRESPONSE = DESCRIPTOR.message_types_by_name['DicomStudyStudyInstanceUIDResponse']
-_DICOMSTUDYSTUDYNAMERESPONSE = DESCRIPTOR.message_types_by_name['DicomStudyStudyNameResponse']
-DicomStudyPathsResponse = _reflection.GeneratedProtocolMessageType('DicomStudyPathsResponse', (_message.Message,), {
-  'DESCRIPTOR' : _DICOMSTUDYPATHSRESPONSE,
-  '__module__' : 'dicomstudy_pb2'
-  # @@protoc_insertion_point(class_scope:osirixgrpc.DicomStudyPathsResponse)
-  })
-_sym_db.RegisterMessage(DicomStudyPathsResponse)
-
-DicomStudyImagesResponse = _reflection.GeneratedProtocolMessageType('DicomStudyImagesResponse', (_message.Message,), {
-  'DESCRIPTOR' : _DICOMSTUDYIMAGESRESPONSE,
-  '__module__' : 'dicomstudy_pb2'
-  # @@protoc_insertion_point(class_scope:osirixgrpc.DicomStudyImagesResponse)
-  })
-_sym_db.RegisterMessage(DicomStudyImagesResponse)
-
-DicomStudyModalitiesResponse = _reflection.GeneratedProtocolMessageType('DicomStudyModalitiesResponse', (_message.Message,), {
-  'DESCRIPTOR' : _DICOMSTUDYMODALITIESRESPONSE,
-  '__module__' : 'dicomstudy_pb2'
-  # @@protoc_insertion_point(class_scope:osirixgrpc.DicomStudyModalitiesResponse)
-  })
-_sym_db.RegisterMessage(DicomStudyModalitiesResponse)
-
-DicomStudyNoFilesResponse = _reflection.GeneratedProtocolMessageType('DicomStudyNoFilesResponse', (_message.Message,), {
-  'DESCRIPTOR' : _DICOMSTUDYNOFILESRESPONSE,
-  '__module__' : 'dicomstudy_pb2'
-  # @@protoc_insertion_point(class_scope:osirixgrpc.DicomStudyNoFilesResponse)
-  })
-_sym_db.RegisterMessage(DicomStudyNoFilesResponse)
-
-DicomStudyRawNoFilesResponse = _reflection.GeneratedProtocolMessageType('DicomStudyRawNoFilesResponse', (_message.Message,), {
-  'DESCRIPTOR' : _DICOMSTUDYRAWNOFILESRESPONSE,
-  '__module__' : 'dicomstudy_pb2'
-  # @@protoc_insertion_point(class_scope:osirixgrpc.DicomStudyRawNoFilesResponse)
-  })
-_sym_db.RegisterMessage(DicomStudyRawNoFilesResponse)
-
-DicomStudyNoFilesExcludingMultiFramesResponse = _reflection.GeneratedProtocolMessageType('DicomStudyNoFilesExcludingMultiFramesResponse', (_message.Message,), {
-  'DESCRIPTOR' : _DICOMSTUDYNOFILESEXCLUDINGMULTIFRAMESRESPONSE,
-  '__module__' : 'dicomstudy_pb2'
-  # @@protoc_insertion_point(class_scope:osirixgrpc.DicomStudyNoFilesExcludingMultiFramesResponse)
-  })
-_sym_db.RegisterMessage(DicomStudyNoFilesExcludingMultiFramesResponse)
-
-DicomStudyNumberOfImagesResponse = _reflection.GeneratedProtocolMessageType('DicomStudyNumberOfImagesResponse', (_message.Message,), {
-  'DESCRIPTOR' : _DICOMSTUDYNUMBEROFIMAGESRESPONSE,
-  '__module__' : 'dicomstudy_pb2'
-  # @@protoc_insertion_point(class_scope:osirixgrpc.DicomStudyNumberOfImagesResponse)
-  })
-_sym_db.RegisterMessage(DicomStudyNumberOfImagesResponse)
-
-DicomStudySeriesResponse = _reflection.GeneratedProtocolMessageType('DicomStudySeriesResponse', (_message.Message,), {
-  'DESCRIPTOR' : _DICOMSTUDYSERIESRESPONSE,
-  '__module__' : 'dicomstudy_pb2'
-  # @@protoc_insertion_point(class_scope:osirixgrpc.DicomStudySeriesResponse)
-  })
-_sym_db.RegisterMessage(DicomStudySeriesResponse)
-
-DicomStudyNameResponse = _reflection.GeneratedProtocolMessageType('DicomStudyNameResponse', (_message.Message,), {
-  'DESCRIPTOR' : _DICOMSTUDYNAMERESPONSE,
-  '__module__' : 'dicomstudy_pb2'
-  # @@protoc_insertion_point(class_scope:osirixgrpc.DicomStudyNameResponse)
-  })
-_sym_db.RegisterMessage(DicomStudyNameResponse)
-
-DicomStudyDateResponse = _reflection.GeneratedProtocolMessageType('DicomStudyDateResponse', (_message.Message,), {
-  'DESCRIPTOR' : _DICOMSTUDYDATERESPONSE,
-  '__module__' : 'dicomstudy_pb2'
-  # @@protoc_insertion_point(class_scope:osirixgrpc.DicomStudyDateResponse)
-  })
-_sym_db.RegisterMessage(DicomStudyDateResponse)
-
-DicomStudyDateAddedResponse = _reflection.GeneratedProtocolMessageType('DicomStudyDateAddedResponse', (_message.Message,), {
-  'DESCRIPTOR' : _DICOMSTUDYDATEADDEDRESPONSE,
-  '__module__' : 'dicomstudy_pb2'
-  # @@protoc_insertion_point(class_scope:osirixgrpc.DicomStudyDateAddedResponse)
-  })
-_sym_db.RegisterMessage(DicomStudyDateAddedResponse)
-
-DicomStudyDateOfBirthResponse = _reflection.GeneratedProtocolMessageType('DicomStudyDateOfBirthResponse', (_message.Message,), {
-  'DESCRIPTOR' : _DICOMSTUDYDATEOFBIRTHRESPONSE,
-  '__module__' : 'dicomstudy_pb2'
-  # @@protoc_insertion_point(class_scope:osirixgrpc.DicomStudyDateOfBirthResponse)
-  })
-_sym_db.RegisterMessage(DicomStudyDateOfBirthResponse)
-
-DicomStudyInstitutionNameResponse = _reflection.GeneratedProtocolMessageType('DicomStudyInstitutionNameResponse', (_message.Message,), {
-  'DESCRIPTOR' : _DICOMSTUDYINSTITUTIONNAMERESPONSE,
-  '__module__' : 'dicomstudy_pb2'
-  # @@protoc_insertion_point(class_scope:osirixgrpc.DicomStudyInstitutionNameResponse)
-  })
-_sym_db.RegisterMessage(DicomStudyInstitutionNameResponse)
-
-DicomStudyModalityResponse = _reflection.GeneratedProtocolMessageType('DicomStudyModalityResponse', (_message.Message,), {
-  'DESCRIPTOR' : _DICOMSTUDYMODALITYRESPONSE,
-  '__module__' : 'dicomstudy_pb2'
-  # @@protoc_insertion_point(class_scope:osirixgrpc.DicomStudyModalityResponse)
-  })
-_sym_db.RegisterMessage(DicomStudyModalityResponse)
-
-DicomStudyPatientIDResponse = _reflection.GeneratedProtocolMessageType('DicomStudyPatientIDResponse', (_message.Message,), {
-  'DESCRIPTOR' : _DICOMSTUDYPATIENTIDRESPONSE,
-  '__module__' : 'dicomstudy_pb2'
-  # @@protoc_insertion_point(class_scope:osirixgrpc.DicomStudyPatientIDResponse)
-  })
-_sym_db.RegisterMessage(DicomStudyPatientIDResponse)
-
-DicomStudyPatientUIDResponse = _reflection.GeneratedProtocolMessageType('DicomStudyPatientUIDResponse', (_message.Message,), {
-  'DESCRIPTOR' : _DICOMSTUDYPATIENTUIDRESPONSE,
-  '__module__' : 'dicomstudy_pb2'
-  # @@protoc_insertion_point(class_scope:osirixgrpc.DicomStudyPatientUIDResponse)
-  })
-_sym_db.RegisterMessage(DicomStudyPatientUIDResponse)
-
-DicomStudyPatientSexResponse = _reflection.GeneratedProtocolMessageType('DicomStudyPatientSexResponse', (_message.Message,), {
-  'DESCRIPTOR' : _DICOMSTUDYPATIENTSEXRESPONSE,
-  '__module__' : 'dicomstudy_pb2'
-  # @@protoc_insertion_point(class_scope:osirixgrpc.DicomStudyPatientSexResponse)
-  })
-_sym_db.RegisterMessage(DicomStudyPatientSexResponse)
-
-DicomStudyPerformingPhysicianResponse = _reflection.GeneratedProtocolMessageType('DicomStudyPerformingPhysicianResponse', (_message.Message,), {
-  'DESCRIPTOR' : _DICOMSTUDYPERFORMINGPHYSICIANRESPONSE,
-  '__module__' : 'dicomstudy_pb2'
-  # @@protoc_insertion_point(class_scope:osirixgrpc.DicomStudyPerformingPhysicianResponse)
-  })
-_sym_db.RegisterMessage(DicomStudyPerformingPhysicianResponse)
-
-DicomStudyReferringPhysicianResponse = _reflection.GeneratedProtocolMessageType('DicomStudyReferringPhysicianResponse', (_message.Message,), {
-  'DESCRIPTOR' : _DICOMSTUDYREFERRINGPHYSICIANRESPONSE,
-  '__module__' : 'dicomstudy_pb2'
-  # @@protoc_insertion_point(class_scope:osirixgrpc.DicomStudyReferringPhysicianResponse)
-  })
-_sym_db.RegisterMessage(DicomStudyReferringPhysicianResponse)
-
-DicomStudyStudyInstanceUIDResponse = _reflection.GeneratedProtocolMessageType('DicomStudyStudyInstanceUIDResponse', (_message.Message,), {
-  'DESCRIPTOR' : _DICOMSTUDYSTUDYINSTANCEUIDRESPONSE,
-  '__module__' : 'dicomstudy_pb2'
-  # @@protoc_insertion_point(class_scope:osirixgrpc.DicomStudyStudyInstanceUIDResponse)
-  })
-_sym_db.RegisterMessage(DicomStudyStudyInstanceUIDResponse)
-
-DicomStudyStudyNameResponse = _reflection.GeneratedProtocolMessageType('DicomStudyStudyNameResponse', (_message.Message,), {
-  'DESCRIPTOR' : _DICOMSTUDYSTUDYNAMERESPONSE,
-  '__module__' : 'dicomstudy_pb2'
-  # @@protoc_insertion_point(class_scope:osirixgrpc.DicomStudyStudyNameResponse)
-  })
-_sym_db.RegisterMessage(DicomStudyStudyNameResponse)
-
+_globals = globals()
+_builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
+_builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'dicomstudy_pb2', _globals)
 if _descriptor._USE_C_DESCRIPTORS == False:
 
   DESCRIPTOR._options = None
-  _DICOMSTUDYPATHSRESPONSE._serialized_start=62
-  _DICOMSTUDYPATHSRESPONSE._serialized_end=138
-  _DICOMSTUDYIMAGESRESPONSE._serialized_start=140
-  _DICOMSTUDYIMAGESRESPONSE._serialized_end=242
-  _DICOMSTUDYMODALITIESRESPONSE._serialized_start=244
-  _DICOMSTUDYMODALITIESRESPONSE._serialized_end=330
-  _DICOMSTUDYNOFILESRESPONSE._serialized_start=332
-  _DICOMSTUDYNOFILESRESPONSE._serialized_end=413
-  _DICOMSTUDYRAWNOFILESRESPONSE._serialized_start=415
-  _DICOMSTUDYRAWNOFILESRESPONSE._serialized_end=499
-  _DICOMSTUDYNOFILESEXCLUDINGMULTIFRAMESRESPONSE._serialized_start=501
-  _DICOMSTUDYNOFILESEXCLUDINGMULTIFRAMESRESPONSE._serialized_end=602
-  _DICOMSTUDYNUMBEROFIMAGESRESPONSE._serialized_start=604
-  _DICOMSTUDYNUMBEROFIMAGESRESPONSE._serialized_end=693
-  _DICOMSTUDYSERIESRESPONSE._serialized_start=695
-  _DICOMSTUDYSERIESRESPONSE._serialized_end=798
-  _DICOMSTUDYNAMERESPONSE._serialized_start=800
-  _DICOMSTUDYNAMERESPONSE._serialized_end=874
-  _DICOMSTUDYDATERESPONSE._serialized_start=877
-  _DICOMSTUDYDATERESPONSE._serialized_end=1046
-  _DICOMSTUDYDATEADDEDRESPONSE._serialized_start=1049
-  _DICOMSTUDYDATEADDEDRESPONSE._serialized_end=1223
-  _DICOMSTUDYDATEOFBIRTHRESPONSE._serialized_start=1225
-  _DICOMSTUDYDATEOFBIRTHRESPONSE._serialized_end=1334
-  _DICOMSTUDYINSTITUTIONNAMERESPONSE._serialized_start=1336
-  _DICOMSTUDYINSTITUTIONNAMERESPONSE._serialized_end=1433
-  _DICOMSTUDYMODALITYRESPONSE._serialized_start=1435
-  _DICOMSTUDYMODALITYRESPONSE._serialized_end=1517
-  _DICOMSTUDYPATIENTIDRESPONSE._serialized_start=1519
-  _DICOMSTUDYPATIENTIDRESPONSE._serialized_end=1604
-  _DICOMSTUDYPATIENTUIDRESPONSE._serialized_start=1606
-  _DICOMSTUDYPATIENTUIDRESPONSE._serialized_end=1693
-  _DICOMSTUDYPATIENTSEXRESPONSE._serialized_start=1695
-  _DICOMSTUDYPATIENTSEXRESPONSE._serialized_end=1782
-  _DICOMSTUDYPERFORMINGPHYSICIANRESPONSE._serialized_start=1784
-  _DICOMSTUDYPERFORMINGPHYSICIANRESPONSE._serialized_end=1889
-  _DICOMSTUDYREFERRINGPHYSICIANRESPONSE._serialized_start=1891
-  _DICOMSTUDYREFERRINGPHYSICIANRESPONSE._serialized_end=1994
-  _DICOMSTUDYSTUDYINSTANCEUIDRESPONSE._serialized_start=1996
-  _DICOMSTUDYSTUDYINSTANCEUIDRESPONSE._serialized_end=2096
-  _DICOMSTUDYSTUDYNAMERESPONSE._serialized_start=2098
-  _DICOMSTUDYSTUDYNAMERESPONSE._serialized_end=2183
+  _globals['_DICOMSTUDYPATHSRESPONSE']._serialized_start=62
+  _globals['_DICOMSTUDYPATHSRESPONSE']._serialized_end=138
+  _globals['_DICOMSTUDYIMAGESRESPONSE']._serialized_start=140
+  _globals['_DICOMSTUDYIMAGESRESPONSE']._serialized_end=242
+  _globals['_DICOMSTUDYMODALITIESRESPONSE']._serialized_start=244
+  _globals['_DICOMSTUDYMODALITIESRESPONSE']._serialized_end=330
+  _globals['_DICOMSTUDYNOFILESRESPONSE']._serialized_start=332
+  _globals['_DICOMSTUDYNOFILESRESPONSE']._serialized_end=413
+  _globals['_DICOMSTUDYRAWNOFILESRESPONSE']._serialized_start=415
+  _globals['_DICOMSTUDYRAWNOFILESRESPONSE']._serialized_end=499
+  _globals['_DICOMSTUDYNOFILESEXCLUDINGMULTIFRAMESRESPONSE']._serialized_start=501
+  _globals['_DICOMSTUDYNOFILESEXCLUDINGMULTIFRAMESRESPONSE']._serialized_end=602
+  _globals['_DICOMSTUDYNUMBEROFIMAGESRESPONSE']._serialized_start=604
+  _globals['_DICOMSTUDYNUMBEROFIMAGESRESPONSE']._serialized_end=693
+  _globals['_DICOMSTUDYSERIESRESPONSE']._serialized_start=695
+  _globals['_DICOMSTUDYSERIESRESPONSE']._serialized_end=798
+  _globals['_DICOMSTUDYNAMERESPONSE']._serialized_start=800
+  _globals['_DICOMSTUDYNAMERESPONSE']._serialized_end=874
+  _globals['_DICOMSTUDYDATERESPONSE']._serialized_start=877
+  _globals['_DICOMSTUDYDATERESPONSE']._serialized_end=1046
+  _globals['_DICOMSTUDYDATEADDEDRESPONSE']._serialized_start=1049
+  _globals['_DICOMSTUDYDATEADDEDRESPONSE']._serialized_end=1223
+  _globals['_DICOMSTUDYDATEOFBIRTHRESPONSE']._serialized_start=1225
+  _globals['_DICOMSTUDYDATEOFBIRTHRESPONSE']._serialized_end=1334
+  _globals['_DICOMSTUDYINSTITUTIONNAMERESPONSE']._serialized_start=1336
+  _globals['_DICOMSTUDYINSTITUTIONNAMERESPONSE']._serialized_end=1433
+  _globals['_DICOMSTUDYMODALITYRESPONSE']._serialized_start=1435
+  _globals['_DICOMSTUDYMODALITYRESPONSE']._serialized_end=1517
+  _globals['_DICOMSTUDYPATIENTIDRESPONSE']._serialized_start=1519
+  _globals['_DICOMSTUDYPATIENTIDRESPONSE']._serialized_end=1604
+  _globals['_DICOMSTUDYPATIENTUIDRESPONSE']._serialized_start=1606
+  _globals['_DICOMSTUDYPATIENTUIDRESPONSE']._serialized_end=1693
+  _globals['_DICOMSTUDYPATIENTSEXRESPONSE']._serialized_start=1695
+  _globals['_DICOMSTUDYPATIENTSEXRESPONSE']._serialized_end=1782
+  _globals['_DICOMSTUDYPERFORMINGPHYSICIANRESPONSE']._serialized_start=1784
+  _globals['_DICOMSTUDYPERFORMINGPHYSICIANRESPONSE']._serialized_end=1889
+  _globals['_DICOMSTUDYREFERRINGPHYSICIANRESPONSE']._serialized_start=1891
+  _globals['_DICOMSTUDYREFERRINGPHYSICIANRESPONSE']._serialized_end=1994
+  _globals['_DICOMSTUDYSTUDYINSTANCEUIDRESPONSE']._serialized_start=1996
+  _globals['_DICOMSTUDYSTUDYINSTANCEUIDRESPONSE']._serialized_end=2096
+  _globals['_DICOMSTUDYSTUDYNAMERESPONSE']._serialized_start=2098
+  _globals['_DICOMSTUDYSTUDYNAMERESPONSE']._serialized_end=2183
 # @@protoc_insertion_point(module_scope)

@@ -4,694 +4,782 @@
 #include "dicomseries.pb.h"
 
 #include <algorithm>
-
-#include <google/protobuf/io/coded_stream.h>
-#include <google/protobuf/extension_set.h>
-#include <google/protobuf/wire_format_lite.h>
-#include <google/protobuf/descriptor.h>
-#include <google/protobuf/generated_message_reflection.h>
-#include <google/protobuf/reflection_ops.h>
-#include <google/protobuf/wire_format.h>
+#include "google/protobuf/io/coded_stream.h"
+#include "google/protobuf/extension_set.h"
+#include "google/protobuf/wire_format_lite.h"
+#include "google/protobuf/descriptor.h"
+#include "google/protobuf/generated_message_reflection.h"
+#include "google/protobuf/reflection_ops.h"
+#include "google/protobuf/wire_format.h"
 // @@protoc_insertion_point(includes)
-#include <google/protobuf/port_def.inc>
-extern PROTOBUF_INTERNAL_EXPORT_types_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_DicomImage_types_2eproto;
-extern PROTOBUF_INTERNAL_EXPORT_types_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_DicomSeries_types_2eproto;
-extern PROTOBUF_INTERNAL_EXPORT_types_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_DicomStudy_types_2eproto;
-extern PROTOBUF_INTERNAL_EXPORT_utilities_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_Status_utilities_2eproto;
+
+// Must be included last.
+#include "google/protobuf/port_def.inc"
+PROTOBUF_PRAGMA_INIT_SEG
+namespace _pb = ::PROTOBUF_NAMESPACE_ID;
+namespace _pbi = ::PROTOBUF_NAMESPACE_ID::internal;
 namespace osirixgrpc {
-class DicomSeriesPathsResponseDefaultTypeInternal {
- public:
-  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<DicomSeriesPathsResponse> _instance;
-} _DicomSeriesPathsResponse_default_instance_;
-class DicomSeriesPreviousSeriesResponseDefaultTypeInternal {
- public:
-  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<DicomSeriesPreviousSeriesResponse> _instance;
-} _DicomSeriesPreviousSeriesResponse_default_instance_;
-class DicomSeriesNextSeriesResponseDefaultTypeInternal {
- public:
-  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<DicomSeriesNextSeriesResponse> _instance;
-} _DicomSeriesNextSeriesResponse_default_instance_;
-class DicomSeriesSortedImagesResponseDefaultTypeInternal {
- public:
-  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<DicomSeriesSortedImagesResponse> _instance;
-} _DicomSeriesSortedImagesResponse_default_instance_;
-class DicomSeriesStudyResponseDefaultTypeInternal {
- public:
-  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<DicomSeriesStudyResponse> _instance;
-} _DicomSeriesStudyResponse_default_instance_;
-class DicomSeriesImagesResponseDefaultTypeInternal {
- public:
-  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<DicomSeriesImagesResponse> _instance;
-} _DicomSeriesImagesResponse_default_instance_;
-class DicomSeriesSeriesInstanceUIDResponseDefaultTypeInternal {
- public:
-  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<DicomSeriesSeriesInstanceUIDResponse> _instance;
-} _DicomSeriesSeriesInstanceUIDResponse_default_instance_;
-class DicomSeriesSeriesSOPClassUIDResponseDefaultTypeInternal {
- public:
-  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<DicomSeriesSeriesSOPClassUIDResponse> _instance;
-} _DicomSeriesSeriesSOPClassUIDResponse_default_instance_;
-class DicomSeriesSeriesDescriptionResponseDefaultTypeInternal {
- public:
-  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<DicomSeriesSeriesDescriptionResponse> _instance;
-} _DicomSeriesSeriesDescriptionResponse_default_instance_;
-class DicomSeriesModalityResponseDefaultTypeInternal {
- public:
-  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<DicomSeriesModalityResponse> _instance;
-} _DicomSeriesModalityResponse_default_instance_;
-class DicomSeriesNameResponseDefaultTypeInternal {
- public:
-  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<DicomSeriesNameResponse> _instance;
-} _DicomSeriesNameResponse_default_instance_;
-class DicomSeriesNumberOfImagesResponseDefaultTypeInternal {
- public:
-  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<DicomSeriesNumberOfImagesResponse> _instance;
-} _DicomSeriesNumberOfImagesResponse_default_instance_;
-class DicomSeriesDateResponseDefaultTypeInternal {
- public:
-  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<DicomSeriesDateResponse> _instance;
-} _DicomSeriesDateResponse_default_instance_;
+template <typename>
+PROTOBUF_CONSTEXPR DicomSeriesPathsResponse::DicomSeriesPathsResponse(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.paths_)*/{}
+  , /*decltype(_impl_.status_)*/nullptr} {}
+struct DicomSeriesPathsResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR DicomSeriesPathsResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~DicomSeriesPathsResponseDefaultTypeInternal() {}
+  union {
+    DicomSeriesPathsResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 DicomSeriesPathsResponseDefaultTypeInternal _DicomSeriesPathsResponse_default_instance_;
+template <typename>
+PROTOBUF_CONSTEXPR DicomSeriesPreviousSeriesResponse::DicomSeriesPreviousSeriesResponse(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.status_)*/nullptr
+  , /*decltype(_impl_.previous_series_)*/nullptr} {}
+struct DicomSeriesPreviousSeriesResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR DicomSeriesPreviousSeriesResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~DicomSeriesPreviousSeriesResponseDefaultTypeInternal() {}
+  union {
+    DicomSeriesPreviousSeriesResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 DicomSeriesPreviousSeriesResponseDefaultTypeInternal _DicomSeriesPreviousSeriesResponse_default_instance_;
+template <typename>
+PROTOBUF_CONSTEXPR DicomSeriesNextSeriesResponse::DicomSeriesNextSeriesResponse(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.status_)*/nullptr
+  , /*decltype(_impl_.next_series_)*/nullptr} {}
+struct DicomSeriesNextSeriesResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR DicomSeriesNextSeriesResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~DicomSeriesNextSeriesResponseDefaultTypeInternal() {}
+  union {
+    DicomSeriesNextSeriesResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 DicomSeriesNextSeriesResponseDefaultTypeInternal _DicomSeriesNextSeriesResponse_default_instance_;
+template <typename>
+PROTOBUF_CONSTEXPR DicomSeriesSortedImagesResponse::DicomSeriesSortedImagesResponse(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.sorted_images_)*/{}
+  , /*decltype(_impl_.status_)*/nullptr} {}
+struct DicomSeriesSortedImagesResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR DicomSeriesSortedImagesResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~DicomSeriesSortedImagesResponseDefaultTypeInternal() {}
+  union {
+    DicomSeriesSortedImagesResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 DicomSeriesSortedImagesResponseDefaultTypeInternal _DicomSeriesSortedImagesResponse_default_instance_;
+template <typename>
+PROTOBUF_CONSTEXPR DicomSeriesStudyResponse::DicomSeriesStudyResponse(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.status_)*/nullptr
+  , /*decltype(_impl_.study_)*/nullptr} {}
+struct DicomSeriesStudyResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR DicomSeriesStudyResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~DicomSeriesStudyResponseDefaultTypeInternal() {}
+  union {
+    DicomSeriesStudyResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 DicomSeriesStudyResponseDefaultTypeInternal _DicomSeriesStudyResponse_default_instance_;
+template <typename>
+PROTOBUF_CONSTEXPR DicomSeriesImagesResponse::DicomSeriesImagesResponse(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.images_)*/{}
+  , /*decltype(_impl_.status_)*/nullptr} {}
+struct DicomSeriesImagesResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR DicomSeriesImagesResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~DicomSeriesImagesResponseDefaultTypeInternal() {}
+  union {
+    DicomSeriesImagesResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 DicomSeriesImagesResponseDefaultTypeInternal _DicomSeriesImagesResponse_default_instance_;
+template <typename>
+PROTOBUF_CONSTEXPR DicomSeriesSeriesInstanceUIDResponse::DicomSeriesSeriesInstanceUIDResponse(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.series_instance_uid_)*/ {
+    &::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized {}
+  }
+
+  , /*decltype(_impl_.status_)*/nullptr} {}
+struct DicomSeriesSeriesInstanceUIDResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR DicomSeriesSeriesInstanceUIDResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~DicomSeriesSeriesInstanceUIDResponseDefaultTypeInternal() {}
+  union {
+    DicomSeriesSeriesInstanceUIDResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 DicomSeriesSeriesInstanceUIDResponseDefaultTypeInternal _DicomSeriesSeriesInstanceUIDResponse_default_instance_;
+template <typename>
+PROTOBUF_CONSTEXPR DicomSeriesSeriesSOPClassUIDResponse::DicomSeriesSeriesSOPClassUIDResponse(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.series_sop_class_uid_)*/ {
+    &::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized {}
+  }
+
+  , /*decltype(_impl_.status_)*/nullptr} {}
+struct DicomSeriesSeriesSOPClassUIDResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR DicomSeriesSeriesSOPClassUIDResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~DicomSeriesSeriesSOPClassUIDResponseDefaultTypeInternal() {}
+  union {
+    DicomSeriesSeriesSOPClassUIDResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 DicomSeriesSeriesSOPClassUIDResponseDefaultTypeInternal _DicomSeriesSeriesSOPClassUIDResponse_default_instance_;
+template <typename>
+PROTOBUF_CONSTEXPR DicomSeriesSeriesDescriptionResponse::DicomSeriesSeriesDescriptionResponse(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.series_description_)*/ {
+    &::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized {}
+  }
+
+  , /*decltype(_impl_.status_)*/nullptr} {}
+struct DicomSeriesSeriesDescriptionResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR DicomSeriesSeriesDescriptionResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~DicomSeriesSeriesDescriptionResponseDefaultTypeInternal() {}
+  union {
+    DicomSeriesSeriesDescriptionResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 DicomSeriesSeriesDescriptionResponseDefaultTypeInternal _DicomSeriesSeriesDescriptionResponse_default_instance_;
+template <typename>
+PROTOBUF_CONSTEXPR DicomSeriesModalityResponse::DicomSeriesModalityResponse(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.modality_)*/ {
+    &::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized {}
+  }
+
+  , /*decltype(_impl_.status_)*/nullptr} {}
+struct DicomSeriesModalityResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR DicomSeriesModalityResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~DicomSeriesModalityResponseDefaultTypeInternal() {}
+  union {
+    DicomSeriesModalityResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 DicomSeriesModalityResponseDefaultTypeInternal _DicomSeriesModalityResponse_default_instance_;
+template <typename>
+PROTOBUF_CONSTEXPR DicomSeriesNameResponse::DicomSeriesNameResponse(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.name_)*/ {
+    &::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized {}
+  }
+
+  , /*decltype(_impl_.status_)*/nullptr} {}
+struct DicomSeriesNameResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR DicomSeriesNameResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~DicomSeriesNameResponseDefaultTypeInternal() {}
+  union {
+    DicomSeriesNameResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 DicomSeriesNameResponseDefaultTypeInternal _DicomSeriesNameResponse_default_instance_;
+template <typename>
+PROTOBUF_CONSTEXPR DicomSeriesNumberOfImagesResponse::DicomSeriesNumberOfImagesResponse(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.status_)*/nullptr
+  , /*decltype(_impl_.number_of_images_)*/ 0
+} {}
+struct DicomSeriesNumberOfImagesResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR DicomSeriesNumberOfImagesResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~DicomSeriesNumberOfImagesResponseDefaultTypeInternal() {}
+  union {
+    DicomSeriesNumberOfImagesResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 DicomSeriesNumberOfImagesResponseDefaultTypeInternal _DicomSeriesNumberOfImagesResponse_default_instance_;
+template <typename>
+PROTOBUF_CONSTEXPR DicomSeriesDateResponse::DicomSeriesDateResponse(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.status_)*/nullptr
+  , /*decltype(_impl_.year_)*/ 0
+
+  , /*decltype(_impl_.month_)*/ 0
+
+  , /*decltype(_impl_.day_)*/ 0
+
+  , /*decltype(_impl_.hour_)*/ 0
+
+  , /*decltype(_impl_.minute_)*/ 0
+
+  , /*decltype(_impl_.second_)*/ 0
+
+  , /*decltype(_impl_.millisecond_)*/ 0
+} {}
+struct DicomSeriesDateResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR DicomSeriesDateResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~DicomSeriesDateResponseDefaultTypeInternal() {}
+  union {
+    DicomSeriesDateResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 DicomSeriesDateResponseDefaultTypeInternal _DicomSeriesDateResponse_default_instance_;
 }  // namespace osirixgrpc
-static void InitDefaultsscc_info_DicomSeriesDateResponse_dicomseries_2eproto() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::osirixgrpc::_DicomSeriesDateResponse_default_instance_;
-    new (ptr) ::osirixgrpc::DicomSeriesDateResponse();
-    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
-  }
-}
-
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_DicomSeriesDateResponse_dicomseries_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_DicomSeriesDateResponse_dicomseries_2eproto}, {
-      &scc_info_Status_utilities_2eproto.base,}};
-
-static void InitDefaultsscc_info_DicomSeriesImagesResponse_dicomseries_2eproto() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::osirixgrpc::_DicomSeriesImagesResponse_default_instance_;
-    new (ptr) ::osirixgrpc::DicomSeriesImagesResponse();
-    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
-  }
-}
-
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<2> scc_info_DicomSeriesImagesResponse_dicomseries_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 2, 0, InitDefaultsscc_info_DicomSeriesImagesResponse_dicomseries_2eproto}, {
-      &scc_info_Status_utilities_2eproto.base,
-      &scc_info_DicomImage_types_2eproto.base,}};
-
-static void InitDefaultsscc_info_DicomSeriesModalityResponse_dicomseries_2eproto() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::osirixgrpc::_DicomSeriesModalityResponse_default_instance_;
-    new (ptr) ::osirixgrpc::DicomSeriesModalityResponse();
-    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
-  }
-}
-
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_DicomSeriesModalityResponse_dicomseries_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_DicomSeriesModalityResponse_dicomseries_2eproto}, {
-      &scc_info_Status_utilities_2eproto.base,}};
-
-static void InitDefaultsscc_info_DicomSeriesNameResponse_dicomseries_2eproto() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::osirixgrpc::_DicomSeriesNameResponse_default_instance_;
-    new (ptr) ::osirixgrpc::DicomSeriesNameResponse();
-    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
-  }
-}
-
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_DicomSeriesNameResponse_dicomseries_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_DicomSeriesNameResponse_dicomseries_2eproto}, {
-      &scc_info_Status_utilities_2eproto.base,}};
-
-static void InitDefaultsscc_info_DicomSeriesNextSeriesResponse_dicomseries_2eproto() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::osirixgrpc::_DicomSeriesNextSeriesResponse_default_instance_;
-    new (ptr) ::osirixgrpc::DicomSeriesNextSeriesResponse();
-    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
-  }
-}
-
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<2> scc_info_DicomSeriesNextSeriesResponse_dicomseries_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 2, 0, InitDefaultsscc_info_DicomSeriesNextSeriesResponse_dicomseries_2eproto}, {
-      &scc_info_Status_utilities_2eproto.base,
-      &scc_info_DicomSeries_types_2eproto.base,}};
-
-static void InitDefaultsscc_info_DicomSeriesNumberOfImagesResponse_dicomseries_2eproto() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::osirixgrpc::_DicomSeriesNumberOfImagesResponse_default_instance_;
-    new (ptr) ::osirixgrpc::DicomSeriesNumberOfImagesResponse();
-    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
-  }
-}
-
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_DicomSeriesNumberOfImagesResponse_dicomseries_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_DicomSeriesNumberOfImagesResponse_dicomseries_2eproto}, {
-      &scc_info_Status_utilities_2eproto.base,}};
-
-static void InitDefaultsscc_info_DicomSeriesPathsResponse_dicomseries_2eproto() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::osirixgrpc::_DicomSeriesPathsResponse_default_instance_;
-    new (ptr) ::osirixgrpc::DicomSeriesPathsResponse();
-    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
-  }
-}
-
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_DicomSeriesPathsResponse_dicomseries_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_DicomSeriesPathsResponse_dicomseries_2eproto}, {
-      &scc_info_Status_utilities_2eproto.base,}};
-
-static void InitDefaultsscc_info_DicomSeriesPreviousSeriesResponse_dicomseries_2eproto() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::osirixgrpc::_DicomSeriesPreviousSeriesResponse_default_instance_;
-    new (ptr) ::osirixgrpc::DicomSeriesPreviousSeriesResponse();
-    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
-  }
-}
-
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<2> scc_info_DicomSeriesPreviousSeriesResponse_dicomseries_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 2, 0, InitDefaultsscc_info_DicomSeriesPreviousSeriesResponse_dicomseries_2eproto}, {
-      &scc_info_Status_utilities_2eproto.base,
-      &scc_info_DicomSeries_types_2eproto.base,}};
-
-static void InitDefaultsscc_info_DicomSeriesSeriesDescriptionResponse_dicomseries_2eproto() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::osirixgrpc::_DicomSeriesSeriesDescriptionResponse_default_instance_;
-    new (ptr) ::osirixgrpc::DicomSeriesSeriesDescriptionResponse();
-    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
-  }
-}
-
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_DicomSeriesSeriesDescriptionResponse_dicomseries_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_DicomSeriesSeriesDescriptionResponse_dicomseries_2eproto}, {
-      &scc_info_Status_utilities_2eproto.base,}};
-
-static void InitDefaultsscc_info_DicomSeriesSeriesInstanceUIDResponse_dicomseries_2eproto() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::osirixgrpc::_DicomSeriesSeriesInstanceUIDResponse_default_instance_;
-    new (ptr) ::osirixgrpc::DicomSeriesSeriesInstanceUIDResponse();
-    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
-  }
-}
-
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_DicomSeriesSeriesInstanceUIDResponse_dicomseries_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_DicomSeriesSeriesInstanceUIDResponse_dicomseries_2eproto}, {
-      &scc_info_Status_utilities_2eproto.base,}};
-
-static void InitDefaultsscc_info_DicomSeriesSeriesSOPClassUIDResponse_dicomseries_2eproto() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::osirixgrpc::_DicomSeriesSeriesSOPClassUIDResponse_default_instance_;
-    new (ptr) ::osirixgrpc::DicomSeriesSeriesSOPClassUIDResponse();
-    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
-  }
-}
-
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_DicomSeriesSeriesSOPClassUIDResponse_dicomseries_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_DicomSeriesSeriesSOPClassUIDResponse_dicomseries_2eproto}, {
-      &scc_info_Status_utilities_2eproto.base,}};
-
-static void InitDefaultsscc_info_DicomSeriesSortedImagesResponse_dicomseries_2eproto() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::osirixgrpc::_DicomSeriesSortedImagesResponse_default_instance_;
-    new (ptr) ::osirixgrpc::DicomSeriesSortedImagesResponse();
-    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
-  }
-}
-
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<2> scc_info_DicomSeriesSortedImagesResponse_dicomseries_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 2, 0, InitDefaultsscc_info_DicomSeriesSortedImagesResponse_dicomseries_2eproto}, {
-      &scc_info_Status_utilities_2eproto.base,
-      &scc_info_DicomImage_types_2eproto.base,}};
-
-static void InitDefaultsscc_info_DicomSeriesStudyResponse_dicomseries_2eproto() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::osirixgrpc::_DicomSeriesStudyResponse_default_instance_;
-    new (ptr) ::osirixgrpc::DicomSeriesStudyResponse();
-    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
-  }
-}
-
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<2> scc_info_DicomSeriesStudyResponse_dicomseries_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 2, 0, InitDefaultsscc_info_DicomSeriesStudyResponse_dicomseries_2eproto}, {
-      &scc_info_Status_utilities_2eproto.base,
-      &scc_info_DicomStudy_types_2eproto.base,}};
-
-static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_dicomseries_2eproto[13];
-static constexpr ::PROTOBUF_NAMESPACE_ID::EnumDescriptor const** file_level_enum_descriptors_dicomseries_2eproto = nullptr;
-static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_dicomseries_2eproto = nullptr;
-
-const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_dicomseries_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomSeriesPathsResponse, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomSeriesPathsResponse, status_),
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomSeriesPathsResponse, paths_),
-  ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomSeriesPreviousSeriesResponse, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomSeriesPreviousSeriesResponse, status_),
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomSeriesPreviousSeriesResponse, previous_series_),
-  ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomSeriesNextSeriesResponse, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomSeriesNextSeriesResponse, status_),
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomSeriesNextSeriesResponse, next_series_),
-  ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomSeriesSortedImagesResponse, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomSeriesSortedImagesResponse, status_),
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomSeriesSortedImagesResponse, sorted_images_),
-  ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomSeriesStudyResponse, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomSeriesStudyResponse, status_),
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomSeriesStudyResponse, study_),
-  ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomSeriesImagesResponse, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomSeriesImagesResponse, status_),
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomSeriesImagesResponse, images_),
-  ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomSeriesSeriesInstanceUIDResponse, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomSeriesSeriesInstanceUIDResponse, status_),
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomSeriesSeriesInstanceUIDResponse, series_instance_uid_),
-  ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomSeriesSeriesSOPClassUIDResponse, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomSeriesSeriesSOPClassUIDResponse, status_),
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomSeriesSeriesSOPClassUIDResponse, series_sop_class_uid_),
-  ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomSeriesSeriesDescriptionResponse, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomSeriesSeriesDescriptionResponse, status_),
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomSeriesSeriesDescriptionResponse, series_description_),
-  ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomSeriesModalityResponse, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomSeriesModalityResponse, status_),
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomSeriesModalityResponse, modality_),
-  ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomSeriesNameResponse, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomSeriesNameResponse, status_),
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomSeriesNameResponse, name_),
-  ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomSeriesNumberOfImagesResponse, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomSeriesNumberOfImagesResponse, status_),
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomSeriesNumberOfImagesResponse, number_of_images_),
-  ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomSeriesDateResponse, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomSeriesDateResponse, status_),
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomSeriesDateResponse, year_),
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomSeriesDateResponse, month_),
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomSeriesDateResponse, day_),
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomSeriesDateResponse, hour_),
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomSeriesDateResponse, minute_),
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomSeriesDateResponse, second_),
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomSeriesDateResponse, millisecond_),
-};
-static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  { 0, -1, sizeof(::osirixgrpc::DicomSeriesPathsResponse)},
-  { 7, -1, sizeof(::osirixgrpc::DicomSeriesPreviousSeriesResponse)},
-  { 14, -1, sizeof(::osirixgrpc::DicomSeriesNextSeriesResponse)},
-  { 21, -1, sizeof(::osirixgrpc::DicomSeriesSortedImagesResponse)},
-  { 28, -1, sizeof(::osirixgrpc::DicomSeriesStudyResponse)},
-  { 35, -1, sizeof(::osirixgrpc::DicomSeriesImagesResponse)},
-  { 42, -1, sizeof(::osirixgrpc::DicomSeriesSeriesInstanceUIDResponse)},
-  { 49, -1, sizeof(::osirixgrpc::DicomSeriesSeriesSOPClassUIDResponse)},
-  { 56, -1, sizeof(::osirixgrpc::DicomSeriesSeriesDescriptionResponse)},
-  { 63, -1, sizeof(::osirixgrpc::DicomSeriesModalityResponse)},
-  { 70, -1, sizeof(::osirixgrpc::DicomSeriesNameResponse)},
-  { 77, -1, sizeof(::osirixgrpc::DicomSeriesNumberOfImagesResponse)},
-  { 84, -1, sizeof(::osirixgrpc::DicomSeriesDateResponse)},
+static ::_pb::Metadata file_level_metadata_dicomseries_2eproto[13];
+static constexpr const ::_pb::EnumDescriptor**
+    file_level_enum_descriptors_dicomseries_2eproto = nullptr;
+static constexpr const ::_pb::ServiceDescriptor**
+    file_level_service_descriptors_dicomseries_2eproto = nullptr;
+const ::uint32_t TableStruct_dicomseries_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(
+    protodesc_cold) = {
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomSeriesPathsResponse, _impl_._has_bits_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomSeriesPathsResponse, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomSeriesPathsResponse, _impl_.status_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomSeriesPathsResponse, _impl_.paths_),
+    0,
+    ~0u,
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomSeriesPreviousSeriesResponse, _impl_._has_bits_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomSeriesPreviousSeriesResponse, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomSeriesPreviousSeriesResponse, _impl_.status_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomSeriesPreviousSeriesResponse, _impl_.previous_series_),
+    0,
+    1,
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomSeriesNextSeriesResponse, _impl_._has_bits_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomSeriesNextSeriesResponse, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomSeriesNextSeriesResponse, _impl_.status_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomSeriesNextSeriesResponse, _impl_.next_series_),
+    0,
+    1,
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomSeriesSortedImagesResponse, _impl_._has_bits_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomSeriesSortedImagesResponse, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomSeriesSortedImagesResponse, _impl_.status_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomSeriesSortedImagesResponse, _impl_.sorted_images_),
+    0,
+    ~0u,
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomSeriesStudyResponse, _impl_._has_bits_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomSeriesStudyResponse, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomSeriesStudyResponse, _impl_.status_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomSeriesStudyResponse, _impl_.study_),
+    0,
+    1,
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomSeriesImagesResponse, _impl_._has_bits_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomSeriesImagesResponse, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomSeriesImagesResponse, _impl_.status_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomSeriesImagesResponse, _impl_.images_),
+    0,
+    ~0u,
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomSeriesSeriesInstanceUIDResponse, _impl_._has_bits_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomSeriesSeriesInstanceUIDResponse, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomSeriesSeriesInstanceUIDResponse, _impl_.status_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomSeriesSeriesInstanceUIDResponse, _impl_.series_instance_uid_),
+    0,
+    ~0u,
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomSeriesSeriesSOPClassUIDResponse, _impl_._has_bits_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomSeriesSeriesSOPClassUIDResponse, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomSeriesSeriesSOPClassUIDResponse, _impl_.status_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomSeriesSeriesSOPClassUIDResponse, _impl_.series_sop_class_uid_),
+    0,
+    ~0u,
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomSeriesSeriesDescriptionResponse, _impl_._has_bits_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomSeriesSeriesDescriptionResponse, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomSeriesSeriesDescriptionResponse, _impl_.status_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomSeriesSeriesDescriptionResponse, _impl_.series_description_),
+    0,
+    ~0u,
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomSeriesModalityResponse, _impl_._has_bits_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomSeriesModalityResponse, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomSeriesModalityResponse, _impl_.status_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomSeriesModalityResponse, _impl_.modality_),
+    0,
+    ~0u,
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomSeriesNameResponse, _impl_._has_bits_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomSeriesNameResponse, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomSeriesNameResponse, _impl_.status_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomSeriesNameResponse, _impl_.name_),
+    0,
+    ~0u,
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomSeriesNumberOfImagesResponse, _impl_._has_bits_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomSeriesNumberOfImagesResponse, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomSeriesNumberOfImagesResponse, _impl_.status_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomSeriesNumberOfImagesResponse, _impl_.number_of_images_),
+    0,
+    ~0u,
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomSeriesDateResponse, _impl_._has_bits_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomSeriesDateResponse, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomSeriesDateResponse, _impl_.status_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomSeriesDateResponse, _impl_.year_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomSeriesDateResponse, _impl_.month_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomSeriesDateResponse, _impl_.day_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomSeriesDateResponse, _impl_.hour_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomSeriesDateResponse, _impl_.minute_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomSeriesDateResponse, _impl_.second_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomSeriesDateResponse, _impl_.millisecond_),
+    0,
+    ~0u,
+    ~0u,
+    ~0u,
+    ~0u,
+    ~0u,
+    ~0u,
+    ~0u,
 };
 
-static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::osirixgrpc::_DicomSeriesPathsResponse_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::osirixgrpc::_DicomSeriesPreviousSeriesResponse_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::osirixgrpc::_DicomSeriesNextSeriesResponse_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::osirixgrpc::_DicomSeriesSortedImagesResponse_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::osirixgrpc::_DicomSeriesStudyResponse_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::osirixgrpc::_DicomSeriesImagesResponse_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::osirixgrpc::_DicomSeriesSeriesInstanceUIDResponse_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::osirixgrpc::_DicomSeriesSeriesSOPClassUIDResponse_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::osirixgrpc::_DicomSeriesSeriesDescriptionResponse_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::osirixgrpc::_DicomSeriesModalityResponse_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::osirixgrpc::_DicomSeriesNameResponse_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::osirixgrpc::_DicomSeriesNumberOfImagesResponse_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::osirixgrpc::_DicomSeriesDateResponse_default_instance_),
+static const ::_pbi::MigrationSchema
+    schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
+        { 0, 10, -1, sizeof(::osirixgrpc::DicomSeriesPathsResponse)},
+        { 12, 22, -1, sizeof(::osirixgrpc::DicomSeriesPreviousSeriesResponse)},
+        { 24, 34, -1, sizeof(::osirixgrpc::DicomSeriesNextSeriesResponse)},
+        { 36, 46, -1, sizeof(::osirixgrpc::DicomSeriesSortedImagesResponse)},
+        { 48, 58, -1, sizeof(::osirixgrpc::DicomSeriesStudyResponse)},
+        { 60, 70, -1, sizeof(::osirixgrpc::DicomSeriesImagesResponse)},
+        { 72, 82, -1, sizeof(::osirixgrpc::DicomSeriesSeriesInstanceUIDResponse)},
+        { 84, 94, -1, sizeof(::osirixgrpc::DicomSeriesSeriesSOPClassUIDResponse)},
+        { 96, 106, -1, sizeof(::osirixgrpc::DicomSeriesSeriesDescriptionResponse)},
+        { 108, 118, -1, sizeof(::osirixgrpc::DicomSeriesModalityResponse)},
+        { 120, 130, -1, sizeof(::osirixgrpc::DicomSeriesNameResponse)},
+        { 132, 142, -1, sizeof(::osirixgrpc::DicomSeriesNumberOfImagesResponse)},
+        { 144, 160, -1, sizeof(::osirixgrpc::DicomSeriesDateResponse)},
 };
 
-const char descriptor_table_protodef_dicomseries_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
-  "\n\021dicomseries.proto\022\nosirixgrpc\032\017utiliti"
-  "es.proto\032\013types.proto\"M\n\030DicomSeriesPath"
-  "sResponse\022\"\n\006status\030\001 \001(\0132\022.osirixgrpc.S"
-  "tatus\022\r\n\005paths\030\002 \003(\t\"y\n!DicomSeriesPrevi"
-  "ousSeriesResponse\022\"\n\006status\030\001 \001(\0132\022.osir"
-  "ixgrpc.Status\0220\n\017previous_series\030\002 \001(\0132\027"
-  ".osirixgrpc.DicomSeries\"q\n\035DicomSeriesNe"
-  "xtSeriesResponse\022\"\n\006status\030\001 \001(\0132\022.osiri"
-  "xgrpc.Status\022,\n\013next_series\030\002 \001(\0132\027.osir"
-  "ixgrpc.DicomSeries\"t\n\037DicomSeriesSortedI"
-  "magesResponse\022\"\n\006status\030\001 \001(\0132\022.osirixgr"
-  "pc.Status\022-\n\rsorted_images\030\002 \003(\0132\026.osiri"
-  "xgrpc.DicomImage\"e\n\030DicomSeriesStudyResp"
-  "onse\022\"\n\006status\030\001 \001(\0132\022.osirixgrpc.Status"
-  "\022%\n\005study\030\002 \001(\0132\026.osirixgrpc.DicomStudy\""
-  "g\n\031DicomSeriesImagesResponse\022\"\n\006status\030\001"
-  " \001(\0132\022.osirixgrpc.Status\022&\n\006images\030\002 \003(\013"
-  "2\026.osirixgrpc.DicomImage\"g\n$DicomSeriesS"
-  "eriesInstanceUIDResponse\022\"\n\006status\030\001 \001(\013"
-  "2\022.osirixgrpc.Status\022\033\n\023series_instance_"
-  "uid\030\002 \001(\t\"h\n$DicomSeriesSeriesSOPClassUI"
-  "DResponse\022\"\n\006status\030\001 \001(\0132\022.osirixgrpc.S"
-  "tatus\022\034\n\024series_sop_class_uid\030\002 \001(\t\"f\n$D"
-  "icomSeriesSeriesDescriptionResponse\022\"\n\006s"
-  "tatus\030\001 \001(\0132\022.osirixgrpc.Status\022\032\n\022serie"
-  "s_description\030\002 \001(\t\"S\n\033DicomSeriesModali"
-  "tyResponse\022\"\n\006status\030\001 \001(\0132\022.osirixgrpc."
-  "Status\022\020\n\010modality\030\002 \001(\t\"K\n\027DicomSeriesN"
-  "ameResponse\022\"\n\006status\030\001 \001(\0132\022.osirixgrpc"
-  ".Status\022\014\n\004name\030\002 \001(\t\"a\n!DicomSeriesNumb"
-  "erOfImagesResponse\022\"\n\006status\030\001 \001(\0132\022.osi"
-  "rixgrpc.Status\022\030\n\020number_of_images\030\002 \001(\005"
-  "\"\252\001\n\027DicomSeriesDateResponse\022\"\n\006status\030\001"
-  " \001(\0132\022.osirixgrpc.Status\022\014\n\004year\030\002 \001(\005\022\r"
-  "\n\005month\030\003 \001(\005\022\013\n\003day\030\004 \001(\005\022\014\n\004hour\030\005 \001(\005"
-  "\022\016\n\006minute\030\006 \001(\005\022\016\n\006second\030\007 \001(\005\022\023\n\013mill"
-  "isecond\030\010 \001(\005b\006proto3"
-  ;
-static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_dicomseries_2eproto_deps[2] = {
-  &::descriptor_table_types_2eproto,
-  &::descriptor_table_utilities_2eproto,
+static const ::_pb::Message* const file_default_instances[] = {
+    &::osirixgrpc::_DicomSeriesPathsResponse_default_instance_._instance,
+    &::osirixgrpc::_DicomSeriesPreviousSeriesResponse_default_instance_._instance,
+    &::osirixgrpc::_DicomSeriesNextSeriesResponse_default_instance_._instance,
+    &::osirixgrpc::_DicomSeriesSortedImagesResponse_default_instance_._instance,
+    &::osirixgrpc::_DicomSeriesStudyResponse_default_instance_._instance,
+    &::osirixgrpc::_DicomSeriesImagesResponse_default_instance_._instance,
+    &::osirixgrpc::_DicomSeriesSeriesInstanceUIDResponse_default_instance_._instance,
+    &::osirixgrpc::_DicomSeriesSeriesSOPClassUIDResponse_default_instance_._instance,
+    &::osirixgrpc::_DicomSeriesSeriesDescriptionResponse_default_instance_._instance,
+    &::osirixgrpc::_DicomSeriesModalityResponse_default_instance_._instance,
+    &::osirixgrpc::_DicomSeriesNameResponse_default_instance_._instance,
+    &::osirixgrpc::_DicomSeriesNumberOfImagesResponse_default_instance_._instance,
+    &::osirixgrpc::_DicomSeriesDateResponse_default_instance_._instance,
 };
-static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_dicomseries_2eproto_sccs[13] = {
-  &scc_info_DicomSeriesDateResponse_dicomseries_2eproto.base,
-  &scc_info_DicomSeriesImagesResponse_dicomseries_2eproto.base,
-  &scc_info_DicomSeriesModalityResponse_dicomseries_2eproto.base,
-  &scc_info_DicomSeriesNameResponse_dicomseries_2eproto.base,
-  &scc_info_DicomSeriesNextSeriesResponse_dicomseries_2eproto.base,
-  &scc_info_DicomSeriesNumberOfImagesResponse_dicomseries_2eproto.base,
-  &scc_info_DicomSeriesPathsResponse_dicomseries_2eproto.base,
-  &scc_info_DicomSeriesPreviousSeriesResponse_dicomseries_2eproto.base,
-  &scc_info_DicomSeriesSeriesDescriptionResponse_dicomseries_2eproto.base,
-  &scc_info_DicomSeriesSeriesInstanceUIDResponse_dicomseries_2eproto.base,
-  &scc_info_DicomSeriesSeriesSOPClassUIDResponse_dicomseries_2eproto.base,
-  &scc_info_DicomSeriesSortedImagesResponse_dicomseries_2eproto.base,
-  &scc_info_DicomSeriesStudyResponse_dicomseries_2eproto.base,
+const char descriptor_table_protodef_dicomseries_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
+    "\n\021dicomseries.proto\022\nosirixgrpc\032\017utiliti"
+    "es.proto\032\013types.proto\"M\n\030DicomSeriesPath"
+    "sResponse\022\"\n\006status\030\001 \001(\0132\022.osirixgrpc.S"
+    "tatus\022\r\n\005paths\030\002 \003(\t\"y\n!DicomSeriesPrevi"
+    "ousSeriesResponse\022\"\n\006status\030\001 \001(\0132\022.osir"
+    "ixgrpc.Status\0220\n\017previous_series\030\002 \001(\0132\027"
+    ".osirixgrpc.DicomSeries\"q\n\035DicomSeriesNe"
+    "xtSeriesResponse\022\"\n\006status\030\001 \001(\0132\022.osiri"
+    "xgrpc.Status\022,\n\013next_series\030\002 \001(\0132\027.osir"
+    "ixgrpc.DicomSeries\"t\n\037DicomSeriesSortedI"
+    "magesResponse\022\"\n\006status\030\001 \001(\0132\022.osirixgr"
+    "pc.Status\022-\n\rsorted_images\030\002 \003(\0132\026.osiri"
+    "xgrpc.DicomImage\"e\n\030DicomSeriesStudyResp"
+    "onse\022\"\n\006status\030\001 \001(\0132\022.osirixgrpc.Status"
+    "\022%\n\005study\030\002 \001(\0132\026.osirixgrpc.DicomStudy\""
+    "g\n\031DicomSeriesImagesResponse\022\"\n\006status\030\001"
+    " \001(\0132\022.osirixgrpc.Status\022&\n\006images\030\002 \003(\013"
+    "2\026.osirixgrpc.DicomImage\"g\n$DicomSeriesS"
+    "eriesInstanceUIDResponse\022\"\n\006status\030\001 \001(\013"
+    "2\022.osirixgrpc.Status\022\033\n\023series_instance_"
+    "uid\030\002 \001(\t\"h\n$DicomSeriesSeriesSOPClassUI"
+    "DResponse\022\"\n\006status\030\001 \001(\0132\022.osirixgrpc.S"
+    "tatus\022\034\n\024series_sop_class_uid\030\002 \001(\t\"f\n$D"
+    "icomSeriesSeriesDescriptionResponse\022\"\n\006s"
+    "tatus\030\001 \001(\0132\022.osirixgrpc.Status\022\032\n\022serie"
+    "s_description\030\002 \001(\t\"S\n\033DicomSeriesModali"
+    "tyResponse\022\"\n\006status\030\001 \001(\0132\022.osirixgrpc."
+    "Status\022\020\n\010modality\030\002 \001(\t\"K\n\027DicomSeriesN"
+    "ameResponse\022\"\n\006status\030\001 \001(\0132\022.osirixgrpc"
+    ".Status\022\014\n\004name\030\002 \001(\t\"a\n!DicomSeriesNumb"
+    "erOfImagesResponse\022\"\n\006status\030\001 \001(\0132\022.osi"
+    "rixgrpc.Status\022\030\n\020number_of_images\030\002 \001(\005"
+    "\"\252\001\n\027DicomSeriesDateResponse\022\"\n\006status\030\001"
+    " \001(\0132\022.osirixgrpc.Status\022\014\n\004year\030\002 \001(\005\022\r"
+    "\n\005month\030\003 \001(\005\022\013\n\003day\030\004 \001(\005\022\014\n\004hour\030\005 \001(\005"
+    "\022\016\n\006minute\030\006 \001(\005\022\016\n\006second\030\007 \001(\005\022\023\n\013mill"
+    "isecond\030\010 \001(\005b\006proto3"
 };
-static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_dicomseries_2eproto_once;
-const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_dicomseries_2eproto = {
-  false, false, descriptor_table_protodef_dicomseries_2eproto, "dicomseries.proto", 1461,
-  &descriptor_table_dicomseries_2eproto_once, descriptor_table_dicomseries_2eproto_sccs, descriptor_table_dicomseries_2eproto_deps, 13, 2,
-  schemas, file_default_instances, TableStruct_dicomseries_2eproto::offsets,
-  file_level_metadata_dicomseries_2eproto, 13, file_level_enum_descriptors_dicomseries_2eproto, file_level_service_descriptors_dicomseries_2eproto,
+static const ::_pbi::DescriptorTable* const descriptor_table_dicomseries_2eproto_deps[2] =
+    {
+        &::descriptor_table_types_2eproto,
+        &::descriptor_table_utilities_2eproto,
+};
+static ::absl::once_flag descriptor_table_dicomseries_2eproto_once;
+const ::_pbi::DescriptorTable descriptor_table_dicomseries_2eproto = {
+    false,
+    false,
+    1461,
+    descriptor_table_protodef_dicomseries_2eproto,
+    "dicomseries.proto",
+    &descriptor_table_dicomseries_2eproto_once,
+    descriptor_table_dicomseries_2eproto_deps,
+    2,
+    13,
+    schemas,
+    file_default_instances,
+    TableStruct_dicomseries_2eproto::offsets,
+    file_level_metadata_dicomseries_2eproto,
+    file_level_enum_descriptors_dicomseries_2eproto,
+    file_level_service_descriptors_dicomseries_2eproto,
 };
 
+// This function exists to be marked as weak.
+// It can significantly speed up compilation by breaking up LLVM's SCC
+// in the .pb.cc translation units. Large translation units see a
+// reduction of more than 35% of walltime for optimized builds. Without
+// the weak attribute all the messages in the file, including all the
+// vtables and everything they use become part of the same SCC through
+// a cycle like:
+// GetMetadata -> descriptor table -> default instances ->
+//   vtables -> GetMetadata
+// By adding a weak function here we break the connection from the
+// individual vtables back into the descriptor table.
+PROTOBUF_ATTRIBUTE_WEAK const ::_pbi::DescriptorTable* descriptor_table_dicomseries_2eproto_getter() {
+  return &descriptor_table_dicomseries_2eproto;
+}
 // Force running AddDescriptors() at dynamic initialization time.
-static bool dynamic_init_dummy_dicomseries_2eproto = (static_cast<void>(::PROTOBUF_NAMESPACE_ID::internal::AddDescriptors(&descriptor_table_dicomseries_2eproto)), true);
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY2
+static ::_pbi::AddDescriptorsRunner dynamic_init_dummy_dicomseries_2eproto(&descriptor_table_dicomseries_2eproto);
 namespace osirixgrpc {
-
 // ===================================================================
 
 class DicomSeriesPathsResponse::_Internal {
  public:
+  using HasBits = decltype(std::declval<DicomSeriesPathsResponse>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+    8 * PROTOBUF_FIELD_OFFSET(DicomSeriesPathsResponse, _impl_._has_bits_);
   static const ::osirixgrpc::Status& status(const DicomSeriesPathsResponse* msg);
+  static void set_has_status(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
 };
 
 const ::osirixgrpc::Status&
 DicomSeriesPathsResponse::_Internal::status(const DicomSeriesPathsResponse* msg) {
-  return *msg->status_;
+  return *msg->_impl_.status_;
 }
 void DicomSeriesPathsResponse::clear_status() {
-  if (GetArena() == nullptr && status_ != nullptr) {
-    delete status_;
-  }
-  status_ = nullptr;
+  if (_impl_.status_ != nullptr) _impl_.status_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000001u;
 }
 DicomSeriesPathsResponse::DicomSeriesPathsResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena),
-  paths_(arena) {
-  SharedCtor();
-  RegisterArenaDtor(arena);
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
+  SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.DicomSeriesPathsResponse)
 }
 DicomSeriesPathsResponse::DicomSeriesPathsResponse(const DicomSeriesPathsResponse& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      paths_(from.paths_) {
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  DicomSeriesPathsResponse* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.paths_){from._impl_.paths_}
+    , decltype(_impl_.status_){nullptr}};
+
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if (from._internal_has_status()) {
-    status_ = new ::osirixgrpc::Status(*from.status_);
-  } else {
-    status_ = nullptr;
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_impl_.status_ = new ::osirixgrpc::Status(*from._impl_.status_);
   }
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.DicomSeriesPathsResponse)
 }
 
-void DicomSeriesPathsResponse::SharedCtor() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_DicomSeriesPathsResponse_dicomseries_2eproto.base);
-  status_ = nullptr;
+inline void DicomSeriesPathsResponse::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.paths_){arena}
+    , decltype(_impl_.status_){nullptr}
+  };
 }
 
 DicomSeriesPathsResponse::~DicomSeriesPathsResponse() {
   // @@protoc_insertion_point(destructor:osirixgrpc.DicomSeriesPathsResponse)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-void DicomSeriesPathsResponse::SharedDtor() {
-  GOOGLE_DCHECK(GetArena() == nullptr);
-  if (this != internal_default_instance()) delete status_;
+inline void DicomSeriesPathsResponse::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  _internal_mutable_paths()->~RepeatedPtrField();
+  if (this != internal_default_instance()) delete _impl_.status_;
 }
 
-void DicomSeriesPathsResponse::ArenaDtor(void* object) {
-  DicomSeriesPathsResponse* _this = reinterpret_cast< DicomSeriesPathsResponse* >(object);
-  (void)_this;
-}
-void DicomSeriesPathsResponse::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void DicomSeriesPathsResponse::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
-const DicomSeriesPathsResponse& DicomSeriesPathsResponse::default_instance() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_DicomSeriesPathsResponse_dicomseries_2eproto.base);
-  return *internal_default_instance();
-}
-
 
 void DicomSeriesPathsResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.DicomSeriesPathsResponse)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  paths_.Clear();
-  if (GetArena() == nullptr && status_ != nullptr) {
-    delete status_;
+  _internal_mutable_paths()->Clear();
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    ABSL_DCHECK(_impl_.status_ != nullptr);
+    _impl_.status_->Clear();
   }
-  status_ = nullptr;
+  _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* DicomSeriesPathsResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* DicomSeriesPathsResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
-    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-    CHK_(ptr);
+    ::uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // .osirixgrpc.Status status = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
           ptr = ctx->ParseMessage(_internal_mutable_status(), ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
+        } else {
+          goto handle_unusual;
+        }
         continue;
       // repeated string paths = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 18)) {
           ptr -= 1;
           do {
             ptr += 1;
             auto str = _internal_add_paths();
-            ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-            CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "osirixgrpc.DicomSeriesPathsResponse.paths"));
+            ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
             CHK_(ptr);
+            CHK_(::_pbi::VerifyUTF8(str, "osirixgrpc.DicomSeriesPathsResponse.paths"));
             if (!ctx->DataAvailable(ptr)) break;
           } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<18>(ptr));
-        } else goto handle_unusual;
-        continue;
-      default: {
-      handle_unusual:
-        if ((tag & 7) == 4 || tag == 0) {
-          ctx->SetLastTag(tag);
-          goto success;
+        } else {
+          goto handle_unusual;
         }
-        ptr = UnknownFieldParse(tag,
-            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-            ptr, ctx);
-        CHK_(ptr != nullptr);
         continue;
-      }
+      default:
+        goto handle_unusual;
     }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
   }  // while
-success:
+message_done:
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
-  goto success;
+  goto message_done;
 #undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* DicomSeriesPathsResponse::_InternalSerialize(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+::uint8_t* DicomSeriesPathsResponse::_InternalSerialize(
+    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.DicomSeriesPathsResponse)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
+  cached_has_bits = _impl_._has_bits_[0];
   // .osirixgrpc.Status status = 1;
-  if (this->has_status()) {
-    target = stream->EnsureSpace(target);
+  if (cached_has_bits & 0x00000001u) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::status(this), target, stream);
+      InternalWriteMessage(1, _Internal::status(this),
+        _Internal::status(this).GetCachedSize(), target, stream);
   }
 
   // repeated string paths = 2;
-  for (int i = 0, n = this->_internal_paths_size(); i < n; i++) {
+  for (int i = 0, n = this->_internal_paths_size(); i < n; ++i) {
     const auto& s = this->_internal_paths(i);
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      s.data(), static_cast<int>(s.length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "osirixgrpc.DicomSeriesPathsResponse.paths");
+        s.data(), static_cast<int>(s.length()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE, "osirixgrpc.DicomSeriesPathsResponse.paths");
     target = stream->WriteString(2, s, target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.DicomSeriesPathsResponse)
   return target;
 }
 
-size_t DicomSeriesPathsResponse::ByteSizeLong() const {
+::size_t DicomSeriesPathsResponse::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:osirixgrpc.DicomSeriesPathsResponse)
-  size_t total_size = 0;
+  ::size_t total_size = 0;
 
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // repeated string paths = 2;
-  total_size += 1 *
-      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(paths_.size());
-  for (int i = 0, n = paths_.size(); i < n; i++) {
+  total_size += 1 * ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(_internal_paths().size());
+  for (int i = 0, n = _internal_paths().size(); i < n; ++i) {
     total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-      paths_.Get(i));
+        _internal_paths().Get(i));
   }
 
   // .osirixgrpc.Status status = 1;
-  if (this->has_status()) {
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *status_);
+        *_impl_.status_);
   }
 
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
-        _internal_metadata_, total_size, &_cached_size_);
-  }
-  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-void DicomSeriesPathsResponse::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:osirixgrpc.DicomSeriesPathsResponse)
-  GOOGLE_DCHECK_NE(&from, this);
-  const DicomSeriesPathsResponse* source =
-      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<DicomSeriesPathsResponse>(
-          &from);
-  if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:osirixgrpc.DicomSeriesPathsResponse)
-    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:osirixgrpc.DicomSeriesPathsResponse)
-    MergeFrom(*source);
-  }
-}
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData DicomSeriesPathsResponse::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    DicomSeriesPathsResponse::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*DicomSeriesPathsResponse::GetClassData() const { return &_class_data_; }
 
-void DicomSeriesPathsResponse::MergeFrom(const DicomSeriesPathsResponse& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.DicomSeriesPathsResponse)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+
+void DicomSeriesPathsResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<DicomSeriesPathsResponse*>(&to_msg);
+  auto& from = static_cast<const DicomSeriesPathsResponse&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.DicomSeriesPathsResponse)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  paths_.MergeFrom(from.paths_);
-  if (from.has_status()) {
-    _internal_mutable_status()->::osirixgrpc::Status::MergeFrom(from._internal_status());
+  _this->_internal_mutable_paths()->MergeFrom(from._internal_paths());
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_internal_mutable_status()->::osirixgrpc::Status::MergeFrom(
+        from._internal_status());
   }
-}
-
-void DicomSeriesPathsResponse::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:osirixgrpc.DicomSeriesPathsResponse)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void DicomSeriesPathsResponse::CopyFrom(const DicomSeriesPathsResponse& from) {
@@ -707,257 +795,258 @@ bool DicomSeriesPathsResponse::IsInitialized() const {
 
 void DicomSeriesPathsResponse::InternalSwap(DicomSeriesPathsResponse* other) {
   using std::swap;
-  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
-  paths_.InternalSwap(&other->paths_);
-  swap(status_, other->status_);
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  _internal_mutable_paths()->InternalSwap(
+      other->_internal_mutable_paths());
+  swap(_impl_.status_, other->_impl_.status_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata DicomSeriesPathsResponse::GetMetadata() const {
-  return GetMetadataStatic();
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_dicomseries_2eproto_getter, &descriptor_table_dicomseries_2eproto_once,
+      file_level_metadata_dicomseries_2eproto[0]);
 }
-
-
 // ===================================================================
 
 class DicomSeriesPreviousSeriesResponse::_Internal {
  public:
+  using HasBits = decltype(std::declval<DicomSeriesPreviousSeriesResponse>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+    8 * PROTOBUF_FIELD_OFFSET(DicomSeriesPreviousSeriesResponse, _impl_._has_bits_);
   static const ::osirixgrpc::Status& status(const DicomSeriesPreviousSeriesResponse* msg);
+  static void set_has_status(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
   static const ::osirixgrpc::DicomSeries& previous_series(const DicomSeriesPreviousSeriesResponse* msg);
+  static void set_has_previous_series(HasBits* has_bits) {
+    (*has_bits)[0] |= 2u;
+  }
 };
 
 const ::osirixgrpc::Status&
 DicomSeriesPreviousSeriesResponse::_Internal::status(const DicomSeriesPreviousSeriesResponse* msg) {
-  return *msg->status_;
+  return *msg->_impl_.status_;
 }
 const ::osirixgrpc::DicomSeries&
 DicomSeriesPreviousSeriesResponse::_Internal::previous_series(const DicomSeriesPreviousSeriesResponse* msg) {
-  return *msg->previous_series_;
+  return *msg->_impl_.previous_series_;
 }
 void DicomSeriesPreviousSeriesResponse::clear_status() {
-  if (GetArena() == nullptr && status_ != nullptr) {
-    delete status_;
-  }
-  status_ = nullptr;
+  if (_impl_.status_ != nullptr) _impl_.status_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000001u;
 }
 void DicomSeriesPreviousSeriesResponse::clear_previous_series() {
-  if (GetArena() == nullptr && previous_series_ != nullptr) {
-    delete previous_series_;
-  }
-  previous_series_ = nullptr;
+  if (_impl_.previous_series_ != nullptr) _impl_.previous_series_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000002u;
 }
 DicomSeriesPreviousSeriesResponse::DicomSeriesPreviousSeriesResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
-  SharedCtor();
-  RegisterArenaDtor(arena);
+  SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.DicomSeriesPreviousSeriesResponse)
 }
 DicomSeriesPreviousSeriesResponse::DicomSeriesPreviousSeriesResponse(const DicomSeriesPreviousSeriesResponse& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
+  DicomSeriesPreviousSeriesResponse* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.status_){nullptr}
+    , decltype(_impl_.previous_series_){nullptr}};
+
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if (from._internal_has_status()) {
-    status_ = new ::osirixgrpc::Status(*from.status_);
-  } else {
-    status_ = nullptr;
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_impl_.status_ = new ::osirixgrpc::Status(*from._impl_.status_);
   }
-  if (from._internal_has_previous_series()) {
-    previous_series_ = new ::osirixgrpc::DicomSeries(*from.previous_series_);
-  } else {
-    previous_series_ = nullptr;
+  if ((from._impl_._has_bits_[0] & 0x00000002u) != 0) {
+    _this->_impl_.previous_series_ = new ::osirixgrpc::DicomSeries(*from._impl_.previous_series_);
   }
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.DicomSeriesPreviousSeriesResponse)
 }
 
-void DicomSeriesPreviousSeriesResponse::SharedCtor() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_DicomSeriesPreviousSeriesResponse_dicomseries_2eproto.base);
-  ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-      reinterpret_cast<char*>(&status_) - reinterpret_cast<char*>(this)),
-      0, static_cast<size_t>(reinterpret_cast<char*>(&previous_series_) -
-      reinterpret_cast<char*>(&status_)) + sizeof(previous_series_));
+inline void DicomSeriesPreviousSeriesResponse::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.status_){nullptr}
+    , decltype(_impl_.previous_series_){nullptr}
+  };
 }
 
 DicomSeriesPreviousSeriesResponse::~DicomSeriesPreviousSeriesResponse() {
   // @@protoc_insertion_point(destructor:osirixgrpc.DicomSeriesPreviousSeriesResponse)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-void DicomSeriesPreviousSeriesResponse::SharedDtor() {
-  GOOGLE_DCHECK(GetArena() == nullptr);
-  if (this != internal_default_instance()) delete status_;
-  if (this != internal_default_instance()) delete previous_series_;
+inline void DicomSeriesPreviousSeriesResponse::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  if (this != internal_default_instance()) delete _impl_.status_;
+  if (this != internal_default_instance()) delete _impl_.previous_series_;
 }
 
-void DicomSeriesPreviousSeriesResponse::ArenaDtor(void* object) {
-  DicomSeriesPreviousSeriesResponse* _this = reinterpret_cast< DicomSeriesPreviousSeriesResponse* >(object);
-  (void)_this;
-}
-void DicomSeriesPreviousSeriesResponse::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void DicomSeriesPreviousSeriesResponse::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
-const DicomSeriesPreviousSeriesResponse& DicomSeriesPreviousSeriesResponse::default_instance() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_DicomSeriesPreviousSeriesResponse_dicomseries_2eproto.base);
-  return *internal_default_instance();
-}
-
 
 void DicomSeriesPreviousSeriesResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.DicomSeriesPreviousSeriesResponse)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  if (GetArena() == nullptr && status_ != nullptr) {
-    delete status_;
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000003u) {
+    if (cached_has_bits & 0x00000001u) {
+      ABSL_DCHECK(_impl_.status_ != nullptr);
+      _impl_.status_->Clear();
+    }
+    if (cached_has_bits & 0x00000002u) {
+      ABSL_DCHECK(_impl_.previous_series_ != nullptr);
+      _impl_.previous_series_->Clear();
+    }
   }
-  status_ = nullptr;
-  if (GetArena() == nullptr && previous_series_ != nullptr) {
-    delete previous_series_;
-  }
-  previous_series_ = nullptr;
+  _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* DicomSeriesPreviousSeriesResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* DicomSeriesPreviousSeriesResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
-    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-    CHK_(ptr);
+    ::uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // .osirixgrpc.Status status = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
           ptr = ctx->ParseMessage(_internal_mutable_status(), ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
+        } else {
+          goto handle_unusual;
+        }
         continue;
       // .osirixgrpc.DicomSeries previous_series = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 18)) {
           ptr = ctx->ParseMessage(_internal_mutable_previous_series(), ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
-        continue;
-      default: {
-      handle_unusual:
-        if ((tag & 7) == 4 || tag == 0) {
-          ctx->SetLastTag(tag);
-          goto success;
+        } else {
+          goto handle_unusual;
         }
-        ptr = UnknownFieldParse(tag,
-            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-            ptr, ctx);
-        CHK_(ptr != nullptr);
         continue;
-      }
+      default:
+        goto handle_unusual;
     }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
   }  // while
-success:
+message_done:
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
-  goto success;
+  goto message_done;
 #undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* DicomSeriesPreviousSeriesResponse::_InternalSerialize(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+::uint8_t* DicomSeriesPreviousSeriesResponse::_InternalSerialize(
+    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.DicomSeriesPreviousSeriesResponse)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
+  cached_has_bits = _impl_._has_bits_[0];
   // .osirixgrpc.Status status = 1;
-  if (this->has_status()) {
-    target = stream->EnsureSpace(target);
+  if (cached_has_bits & 0x00000001u) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::status(this), target, stream);
+      InternalWriteMessage(1, _Internal::status(this),
+        _Internal::status(this).GetCachedSize(), target, stream);
   }
 
   // .osirixgrpc.DicomSeries previous_series = 2;
-  if (this->has_previous_series()) {
-    target = stream->EnsureSpace(target);
+  if (cached_has_bits & 0x00000002u) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        2, _Internal::previous_series(this), target, stream);
+      InternalWriteMessage(2, _Internal::previous_series(this),
+        _Internal::previous_series(this).GetCachedSize(), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.DicomSeriesPreviousSeriesResponse)
   return target;
 }
 
-size_t DicomSeriesPreviousSeriesResponse::ByteSizeLong() const {
+::size_t DicomSeriesPreviousSeriesResponse::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:osirixgrpc.DicomSeriesPreviousSeriesResponse)
-  size_t total_size = 0;
+  ::size_t total_size = 0;
 
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // .osirixgrpc.Status status = 1;
-  if (this->has_status()) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *status_);
-  }
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000003u) {
+    // .osirixgrpc.Status status = 1;
+    if (cached_has_bits & 0x00000001u) {
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+          *_impl_.status_);
+    }
 
-  // .osirixgrpc.DicomSeries previous_series = 2;
-  if (this->has_previous_series()) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *previous_series_);
-  }
+    // .osirixgrpc.DicomSeries previous_series = 2;
+    if (cached_has_bits & 0x00000002u) {
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+          *_impl_.previous_series_);
+    }
 
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
-        _internal_metadata_, total_size, &_cached_size_);
   }
-  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-void DicomSeriesPreviousSeriesResponse::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:osirixgrpc.DicomSeriesPreviousSeriesResponse)
-  GOOGLE_DCHECK_NE(&from, this);
-  const DicomSeriesPreviousSeriesResponse* source =
-      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<DicomSeriesPreviousSeriesResponse>(
-          &from);
-  if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:osirixgrpc.DicomSeriesPreviousSeriesResponse)
-    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:osirixgrpc.DicomSeriesPreviousSeriesResponse)
-    MergeFrom(*source);
-  }
-}
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData DicomSeriesPreviousSeriesResponse::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    DicomSeriesPreviousSeriesResponse::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*DicomSeriesPreviousSeriesResponse::GetClassData() const { return &_class_data_; }
 
-void DicomSeriesPreviousSeriesResponse::MergeFrom(const DicomSeriesPreviousSeriesResponse& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.DicomSeriesPreviousSeriesResponse)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+
+void DicomSeriesPreviousSeriesResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<DicomSeriesPreviousSeriesResponse*>(&to_msg);
+  auto& from = static_cast<const DicomSeriesPreviousSeriesResponse&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.DicomSeriesPreviousSeriesResponse)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.has_status()) {
-    _internal_mutable_status()->::osirixgrpc::Status::MergeFrom(from._internal_status());
+  cached_has_bits = from._impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000003u) {
+    if (cached_has_bits & 0x00000001u) {
+      _this->_internal_mutable_status()->::osirixgrpc::Status::MergeFrom(
+          from._internal_status());
+    }
+    if (cached_has_bits & 0x00000002u) {
+      _this->_internal_mutable_previous_series()->::osirixgrpc::DicomSeries::MergeFrom(
+          from._internal_previous_series());
+    }
   }
-  if (from.has_previous_series()) {
-    _internal_mutable_previous_series()->::osirixgrpc::DicomSeries::MergeFrom(from._internal_previous_series());
-  }
-}
-
-void DicomSeriesPreviousSeriesResponse::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:osirixgrpc.DicomSeriesPreviousSeriesResponse)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void DicomSeriesPreviousSeriesResponse::CopyFrom(const DicomSeriesPreviousSeriesResponse& from) {
@@ -973,261 +1062,261 @@ bool DicomSeriesPreviousSeriesResponse::IsInitialized() const {
 
 void DicomSeriesPreviousSeriesResponse::InternalSwap(DicomSeriesPreviousSeriesResponse* other) {
   using std::swap;
-  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(DicomSeriesPreviousSeriesResponse, previous_series_)
-      + sizeof(DicomSeriesPreviousSeriesResponse::previous_series_)
-      - PROTOBUF_FIELD_OFFSET(DicomSeriesPreviousSeriesResponse, status_)>(
-          reinterpret_cast<char*>(&status_),
-          reinterpret_cast<char*>(&other->status_));
+      PROTOBUF_FIELD_OFFSET(DicomSeriesPreviousSeriesResponse, _impl_.previous_series_)
+      + sizeof(DicomSeriesPreviousSeriesResponse::_impl_.previous_series_)
+      - PROTOBUF_FIELD_OFFSET(DicomSeriesPreviousSeriesResponse, _impl_.status_)>(
+          reinterpret_cast<char*>(&_impl_.status_),
+          reinterpret_cast<char*>(&other->_impl_.status_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata DicomSeriesPreviousSeriesResponse::GetMetadata() const {
-  return GetMetadataStatic();
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_dicomseries_2eproto_getter, &descriptor_table_dicomseries_2eproto_once,
+      file_level_metadata_dicomseries_2eproto[1]);
 }
-
-
 // ===================================================================
 
 class DicomSeriesNextSeriesResponse::_Internal {
  public:
+  using HasBits = decltype(std::declval<DicomSeriesNextSeriesResponse>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+    8 * PROTOBUF_FIELD_OFFSET(DicomSeriesNextSeriesResponse, _impl_._has_bits_);
   static const ::osirixgrpc::Status& status(const DicomSeriesNextSeriesResponse* msg);
+  static void set_has_status(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
   static const ::osirixgrpc::DicomSeries& next_series(const DicomSeriesNextSeriesResponse* msg);
+  static void set_has_next_series(HasBits* has_bits) {
+    (*has_bits)[0] |= 2u;
+  }
 };
 
 const ::osirixgrpc::Status&
 DicomSeriesNextSeriesResponse::_Internal::status(const DicomSeriesNextSeriesResponse* msg) {
-  return *msg->status_;
+  return *msg->_impl_.status_;
 }
 const ::osirixgrpc::DicomSeries&
 DicomSeriesNextSeriesResponse::_Internal::next_series(const DicomSeriesNextSeriesResponse* msg) {
-  return *msg->next_series_;
+  return *msg->_impl_.next_series_;
 }
 void DicomSeriesNextSeriesResponse::clear_status() {
-  if (GetArena() == nullptr && status_ != nullptr) {
-    delete status_;
-  }
-  status_ = nullptr;
+  if (_impl_.status_ != nullptr) _impl_.status_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000001u;
 }
 void DicomSeriesNextSeriesResponse::clear_next_series() {
-  if (GetArena() == nullptr && next_series_ != nullptr) {
-    delete next_series_;
-  }
-  next_series_ = nullptr;
+  if (_impl_.next_series_ != nullptr) _impl_.next_series_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000002u;
 }
 DicomSeriesNextSeriesResponse::DicomSeriesNextSeriesResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
-  SharedCtor();
-  RegisterArenaDtor(arena);
+  SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.DicomSeriesNextSeriesResponse)
 }
 DicomSeriesNextSeriesResponse::DicomSeriesNextSeriesResponse(const DicomSeriesNextSeriesResponse& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
+  DicomSeriesNextSeriesResponse* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.status_){nullptr}
+    , decltype(_impl_.next_series_){nullptr}};
+
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if (from._internal_has_status()) {
-    status_ = new ::osirixgrpc::Status(*from.status_);
-  } else {
-    status_ = nullptr;
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_impl_.status_ = new ::osirixgrpc::Status(*from._impl_.status_);
   }
-  if (from._internal_has_next_series()) {
-    next_series_ = new ::osirixgrpc::DicomSeries(*from.next_series_);
-  } else {
-    next_series_ = nullptr;
+  if ((from._impl_._has_bits_[0] & 0x00000002u) != 0) {
+    _this->_impl_.next_series_ = new ::osirixgrpc::DicomSeries(*from._impl_.next_series_);
   }
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.DicomSeriesNextSeriesResponse)
 }
 
-void DicomSeriesNextSeriesResponse::SharedCtor() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_DicomSeriesNextSeriesResponse_dicomseries_2eproto.base);
-  ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-      reinterpret_cast<char*>(&status_) - reinterpret_cast<char*>(this)),
-      0, static_cast<size_t>(reinterpret_cast<char*>(&next_series_) -
-      reinterpret_cast<char*>(&status_)) + sizeof(next_series_));
+inline void DicomSeriesNextSeriesResponse::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.status_){nullptr}
+    , decltype(_impl_.next_series_){nullptr}
+  };
 }
 
 DicomSeriesNextSeriesResponse::~DicomSeriesNextSeriesResponse() {
   // @@protoc_insertion_point(destructor:osirixgrpc.DicomSeriesNextSeriesResponse)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-void DicomSeriesNextSeriesResponse::SharedDtor() {
-  GOOGLE_DCHECK(GetArena() == nullptr);
-  if (this != internal_default_instance()) delete status_;
-  if (this != internal_default_instance()) delete next_series_;
+inline void DicomSeriesNextSeriesResponse::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  if (this != internal_default_instance()) delete _impl_.status_;
+  if (this != internal_default_instance()) delete _impl_.next_series_;
 }
 
-void DicomSeriesNextSeriesResponse::ArenaDtor(void* object) {
-  DicomSeriesNextSeriesResponse* _this = reinterpret_cast< DicomSeriesNextSeriesResponse* >(object);
-  (void)_this;
-}
-void DicomSeriesNextSeriesResponse::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void DicomSeriesNextSeriesResponse::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
-const DicomSeriesNextSeriesResponse& DicomSeriesNextSeriesResponse::default_instance() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_DicomSeriesNextSeriesResponse_dicomseries_2eproto.base);
-  return *internal_default_instance();
-}
-
 
 void DicomSeriesNextSeriesResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.DicomSeriesNextSeriesResponse)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  if (GetArena() == nullptr && status_ != nullptr) {
-    delete status_;
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000003u) {
+    if (cached_has_bits & 0x00000001u) {
+      ABSL_DCHECK(_impl_.status_ != nullptr);
+      _impl_.status_->Clear();
+    }
+    if (cached_has_bits & 0x00000002u) {
+      ABSL_DCHECK(_impl_.next_series_ != nullptr);
+      _impl_.next_series_->Clear();
+    }
   }
-  status_ = nullptr;
-  if (GetArena() == nullptr && next_series_ != nullptr) {
-    delete next_series_;
-  }
-  next_series_ = nullptr;
+  _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* DicomSeriesNextSeriesResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* DicomSeriesNextSeriesResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
-    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-    CHK_(ptr);
+    ::uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // .osirixgrpc.Status status = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
           ptr = ctx->ParseMessage(_internal_mutable_status(), ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
+        } else {
+          goto handle_unusual;
+        }
         continue;
       // .osirixgrpc.DicomSeries next_series = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 18)) {
           ptr = ctx->ParseMessage(_internal_mutable_next_series(), ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
-        continue;
-      default: {
-      handle_unusual:
-        if ((tag & 7) == 4 || tag == 0) {
-          ctx->SetLastTag(tag);
-          goto success;
+        } else {
+          goto handle_unusual;
         }
-        ptr = UnknownFieldParse(tag,
-            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-            ptr, ctx);
-        CHK_(ptr != nullptr);
         continue;
-      }
+      default:
+        goto handle_unusual;
     }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
   }  // while
-success:
+message_done:
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
-  goto success;
+  goto message_done;
 #undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* DicomSeriesNextSeriesResponse::_InternalSerialize(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+::uint8_t* DicomSeriesNextSeriesResponse::_InternalSerialize(
+    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.DicomSeriesNextSeriesResponse)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
+  cached_has_bits = _impl_._has_bits_[0];
   // .osirixgrpc.Status status = 1;
-  if (this->has_status()) {
-    target = stream->EnsureSpace(target);
+  if (cached_has_bits & 0x00000001u) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::status(this), target, stream);
+      InternalWriteMessage(1, _Internal::status(this),
+        _Internal::status(this).GetCachedSize(), target, stream);
   }
 
   // .osirixgrpc.DicomSeries next_series = 2;
-  if (this->has_next_series()) {
-    target = stream->EnsureSpace(target);
+  if (cached_has_bits & 0x00000002u) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        2, _Internal::next_series(this), target, stream);
+      InternalWriteMessage(2, _Internal::next_series(this),
+        _Internal::next_series(this).GetCachedSize(), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.DicomSeriesNextSeriesResponse)
   return target;
 }
 
-size_t DicomSeriesNextSeriesResponse::ByteSizeLong() const {
+::size_t DicomSeriesNextSeriesResponse::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:osirixgrpc.DicomSeriesNextSeriesResponse)
-  size_t total_size = 0;
+  ::size_t total_size = 0;
 
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // .osirixgrpc.Status status = 1;
-  if (this->has_status()) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *status_);
-  }
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000003u) {
+    // .osirixgrpc.Status status = 1;
+    if (cached_has_bits & 0x00000001u) {
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+          *_impl_.status_);
+    }
 
-  // .osirixgrpc.DicomSeries next_series = 2;
-  if (this->has_next_series()) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *next_series_);
-  }
+    // .osirixgrpc.DicomSeries next_series = 2;
+    if (cached_has_bits & 0x00000002u) {
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+          *_impl_.next_series_);
+    }
 
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
-        _internal_metadata_, total_size, &_cached_size_);
   }
-  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-void DicomSeriesNextSeriesResponse::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:osirixgrpc.DicomSeriesNextSeriesResponse)
-  GOOGLE_DCHECK_NE(&from, this);
-  const DicomSeriesNextSeriesResponse* source =
-      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<DicomSeriesNextSeriesResponse>(
-          &from);
-  if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:osirixgrpc.DicomSeriesNextSeriesResponse)
-    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:osirixgrpc.DicomSeriesNextSeriesResponse)
-    MergeFrom(*source);
-  }
-}
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData DicomSeriesNextSeriesResponse::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    DicomSeriesNextSeriesResponse::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*DicomSeriesNextSeriesResponse::GetClassData() const { return &_class_data_; }
 
-void DicomSeriesNextSeriesResponse::MergeFrom(const DicomSeriesNextSeriesResponse& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.DicomSeriesNextSeriesResponse)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+
+void DicomSeriesNextSeriesResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<DicomSeriesNextSeriesResponse*>(&to_msg);
+  auto& from = static_cast<const DicomSeriesNextSeriesResponse&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.DicomSeriesNextSeriesResponse)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.has_status()) {
-    _internal_mutable_status()->::osirixgrpc::Status::MergeFrom(from._internal_status());
+  cached_has_bits = from._impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000003u) {
+    if (cached_has_bits & 0x00000001u) {
+      _this->_internal_mutable_status()->::osirixgrpc::Status::MergeFrom(
+          from._internal_status());
+    }
+    if (cached_has_bits & 0x00000002u) {
+      _this->_internal_mutable_next_series()->::osirixgrpc::DicomSeries::MergeFrom(
+          from._internal_next_series());
+    }
   }
-  if (from.has_next_series()) {
-    _internal_mutable_next_series()->::osirixgrpc::DicomSeries::MergeFrom(from._internal_next_series());
-  }
-}
-
-void DicomSeriesNextSeriesResponse::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:osirixgrpc.DicomSeriesNextSeriesResponse)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void DicomSeriesNextSeriesResponse::CopyFrom(const DicomSeriesNextSeriesResponse& from) {
@@ -1243,121 +1332,130 @@ bool DicomSeriesNextSeriesResponse::IsInitialized() const {
 
 void DicomSeriesNextSeriesResponse::InternalSwap(DicomSeriesNextSeriesResponse* other) {
   using std::swap;
-  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(DicomSeriesNextSeriesResponse, next_series_)
-      + sizeof(DicomSeriesNextSeriesResponse::next_series_)
-      - PROTOBUF_FIELD_OFFSET(DicomSeriesNextSeriesResponse, status_)>(
-          reinterpret_cast<char*>(&status_),
-          reinterpret_cast<char*>(&other->status_));
+      PROTOBUF_FIELD_OFFSET(DicomSeriesNextSeriesResponse, _impl_.next_series_)
+      + sizeof(DicomSeriesNextSeriesResponse::_impl_.next_series_)
+      - PROTOBUF_FIELD_OFFSET(DicomSeriesNextSeriesResponse, _impl_.status_)>(
+          reinterpret_cast<char*>(&_impl_.status_),
+          reinterpret_cast<char*>(&other->_impl_.status_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata DicomSeriesNextSeriesResponse::GetMetadata() const {
-  return GetMetadataStatic();
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_dicomseries_2eproto_getter, &descriptor_table_dicomseries_2eproto_once,
+      file_level_metadata_dicomseries_2eproto[2]);
 }
-
-
 // ===================================================================
 
 class DicomSeriesSortedImagesResponse::_Internal {
  public:
+  using HasBits = decltype(std::declval<DicomSeriesSortedImagesResponse>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+    8 * PROTOBUF_FIELD_OFFSET(DicomSeriesSortedImagesResponse, _impl_._has_bits_);
   static const ::osirixgrpc::Status& status(const DicomSeriesSortedImagesResponse* msg);
+  static void set_has_status(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
 };
 
 const ::osirixgrpc::Status&
 DicomSeriesSortedImagesResponse::_Internal::status(const DicomSeriesSortedImagesResponse* msg) {
-  return *msg->status_;
+  return *msg->_impl_.status_;
 }
 void DicomSeriesSortedImagesResponse::clear_status() {
-  if (GetArena() == nullptr && status_ != nullptr) {
-    delete status_;
-  }
-  status_ = nullptr;
+  if (_impl_.status_ != nullptr) _impl_.status_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000001u;
 }
 void DicomSeriesSortedImagesResponse::clear_sorted_images() {
-  sorted_images_.Clear();
+  _internal_mutable_sorted_images()->Clear();
 }
 DicomSeriesSortedImagesResponse::DicomSeriesSortedImagesResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena),
-  sorted_images_(arena) {
-  SharedCtor();
-  RegisterArenaDtor(arena);
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
+  SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.DicomSeriesSortedImagesResponse)
 }
 DicomSeriesSortedImagesResponse::DicomSeriesSortedImagesResponse(const DicomSeriesSortedImagesResponse& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      sorted_images_(from.sorted_images_) {
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  DicomSeriesSortedImagesResponse* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.sorted_images_){from._impl_.sorted_images_}
+    , decltype(_impl_.status_){nullptr}};
+
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if (from._internal_has_status()) {
-    status_ = new ::osirixgrpc::Status(*from.status_);
-  } else {
-    status_ = nullptr;
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_impl_.status_ = new ::osirixgrpc::Status(*from._impl_.status_);
   }
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.DicomSeriesSortedImagesResponse)
 }
 
-void DicomSeriesSortedImagesResponse::SharedCtor() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_DicomSeriesSortedImagesResponse_dicomseries_2eproto.base);
-  status_ = nullptr;
+inline void DicomSeriesSortedImagesResponse::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.sorted_images_){arena}
+    , decltype(_impl_.status_){nullptr}
+  };
 }
 
 DicomSeriesSortedImagesResponse::~DicomSeriesSortedImagesResponse() {
   // @@protoc_insertion_point(destructor:osirixgrpc.DicomSeriesSortedImagesResponse)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-void DicomSeriesSortedImagesResponse::SharedDtor() {
-  GOOGLE_DCHECK(GetArena() == nullptr);
-  if (this != internal_default_instance()) delete status_;
+inline void DicomSeriesSortedImagesResponse::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  _internal_mutable_sorted_images()->~RepeatedPtrField();
+  if (this != internal_default_instance()) delete _impl_.status_;
 }
 
-void DicomSeriesSortedImagesResponse::ArenaDtor(void* object) {
-  DicomSeriesSortedImagesResponse* _this = reinterpret_cast< DicomSeriesSortedImagesResponse* >(object);
-  (void)_this;
-}
-void DicomSeriesSortedImagesResponse::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void DicomSeriesSortedImagesResponse::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
-const DicomSeriesSortedImagesResponse& DicomSeriesSortedImagesResponse::default_instance() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_DicomSeriesSortedImagesResponse_dicomseries_2eproto.base);
-  return *internal_default_instance();
-}
-
 
 void DicomSeriesSortedImagesResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.DicomSeriesSortedImagesResponse)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  sorted_images_.Clear();
-  if (GetArena() == nullptr && status_ != nullptr) {
-    delete status_;
+  _internal_mutable_sorted_images()->Clear();
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    ABSL_DCHECK(_impl_.status_ != nullptr);
+    _impl_.status_->Clear();
   }
-  status_ = nullptr;
+  _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* DicomSeriesSortedImagesResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* DicomSeriesSortedImagesResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
-    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-    CHK_(ptr);
+    ::uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // .osirixgrpc.Status status = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
           ptr = ctx->ParseMessage(_internal_mutable_status(), ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
+        } else {
+          goto handle_unusual;
+        }
         continue;
       // repeated .osirixgrpc.DicomImage sorted_images = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 18)) {
           ptr -= 1;
           do {
             ptr += 1;
@@ -1365,124 +1463,111 @@ const char* DicomSeriesSortedImagesResponse::_InternalParse(const char* ptr, ::P
             CHK_(ptr);
             if (!ctx->DataAvailable(ptr)) break;
           } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<18>(ptr));
-        } else goto handle_unusual;
-        continue;
-      default: {
-      handle_unusual:
-        if ((tag & 7) == 4 || tag == 0) {
-          ctx->SetLastTag(tag);
-          goto success;
+        } else {
+          goto handle_unusual;
         }
-        ptr = UnknownFieldParse(tag,
-            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-            ptr, ctx);
-        CHK_(ptr != nullptr);
         continue;
-      }
+      default:
+        goto handle_unusual;
     }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
   }  // while
-success:
+message_done:
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
-  goto success;
+  goto message_done;
 #undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* DicomSeriesSortedImagesResponse::_InternalSerialize(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+::uint8_t* DicomSeriesSortedImagesResponse::_InternalSerialize(
+    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.DicomSeriesSortedImagesResponse)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
+  cached_has_bits = _impl_._has_bits_[0];
   // .osirixgrpc.Status status = 1;
-  if (this->has_status()) {
-    target = stream->EnsureSpace(target);
+  if (cached_has_bits & 0x00000001u) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::status(this), target, stream);
+      InternalWriteMessage(1, _Internal::status(this),
+        _Internal::status(this).GetCachedSize(), target, stream);
   }
 
   // repeated .osirixgrpc.DicomImage sorted_images = 2;
-  for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->_internal_sorted_images_size()); i < n; i++) {
-    target = stream->EnsureSpace(target);
+  for (unsigned i = 0,
+      n = static_cast<unsigned>(this->_internal_sorted_images_size()); i < n; i++) {
+    const auto& repfield = this->_internal_sorted_images(i);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(2, this->_internal_sorted_images(i), target, stream);
+        InternalWriteMessage(2, repfield, repfield.GetCachedSize(), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.DicomSeriesSortedImagesResponse)
   return target;
 }
 
-size_t DicomSeriesSortedImagesResponse::ByteSizeLong() const {
+::size_t DicomSeriesSortedImagesResponse::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:osirixgrpc.DicomSeriesSortedImagesResponse)
-  size_t total_size = 0;
+  ::size_t total_size = 0;
 
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // repeated .osirixgrpc.DicomImage sorted_images = 2;
   total_size += 1UL * this->_internal_sorted_images_size();
-  for (const auto& msg : this->sorted_images_) {
+  for (const auto& msg : this->_internal_sorted_images()) {
     total_size +=
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
 
   // .osirixgrpc.Status status = 1;
-  if (this->has_status()) {
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *status_);
+        *_impl_.status_);
   }
 
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
-        _internal_metadata_, total_size, &_cached_size_);
-  }
-  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-void DicomSeriesSortedImagesResponse::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:osirixgrpc.DicomSeriesSortedImagesResponse)
-  GOOGLE_DCHECK_NE(&from, this);
-  const DicomSeriesSortedImagesResponse* source =
-      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<DicomSeriesSortedImagesResponse>(
-          &from);
-  if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:osirixgrpc.DicomSeriesSortedImagesResponse)
-    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:osirixgrpc.DicomSeriesSortedImagesResponse)
-    MergeFrom(*source);
-  }
-}
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData DicomSeriesSortedImagesResponse::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    DicomSeriesSortedImagesResponse::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*DicomSeriesSortedImagesResponse::GetClassData() const { return &_class_data_; }
 
-void DicomSeriesSortedImagesResponse::MergeFrom(const DicomSeriesSortedImagesResponse& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.DicomSeriesSortedImagesResponse)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+
+void DicomSeriesSortedImagesResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<DicomSeriesSortedImagesResponse*>(&to_msg);
+  auto& from = static_cast<const DicomSeriesSortedImagesResponse&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.DicomSeriesSortedImagesResponse)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  sorted_images_.MergeFrom(from.sorted_images_);
-  if (from.has_status()) {
-    _internal_mutable_status()->::osirixgrpc::Status::MergeFrom(from._internal_status());
+  _this->_internal_mutable_sorted_images()->MergeFrom(from._internal_sorted_images());
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_internal_mutable_status()->::osirixgrpc::Status::MergeFrom(
+        from._internal_status());
   }
-}
-
-void DicomSeriesSortedImagesResponse::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:osirixgrpc.DicomSeriesSortedImagesResponse)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void DicomSeriesSortedImagesResponse::CopyFrom(const DicomSeriesSortedImagesResponse& from) {
@@ -1498,257 +1583,257 @@ bool DicomSeriesSortedImagesResponse::IsInitialized() const {
 
 void DicomSeriesSortedImagesResponse::InternalSwap(DicomSeriesSortedImagesResponse* other) {
   using std::swap;
-  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
-  sorted_images_.InternalSwap(&other->sorted_images_);
-  swap(status_, other->status_);
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  _internal_mutable_sorted_images()->InternalSwap(other->_internal_mutable_sorted_images());
+  swap(_impl_.status_, other->_impl_.status_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata DicomSeriesSortedImagesResponse::GetMetadata() const {
-  return GetMetadataStatic();
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_dicomseries_2eproto_getter, &descriptor_table_dicomseries_2eproto_once,
+      file_level_metadata_dicomseries_2eproto[3]);
 }
-
-
 // ===================================================================
 
 class DicomSeriesStudyResponse::_Internal {
  public:
+  using HasBits = decltype(std::declval<DicomSeriesStudyResponse>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+    8 * PROTOBUF_FIELD_OFFSET(DicomSeriesStudyResponse, _impl_._has_bits_);
   static const ::osirixgrpc::Status& status(const DicomSeriesStudyResponse* msg);
+  static void set_has_status(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
   static const ::osirixgrpc::DicomStudy& study(const DicomSeriesStudyResponse* msg);
+  static void set_has_study(HasBits* has_bits) {
+    (*has_bits)[0] |= 2u;
+  }
 };
 
 const ::osirixgrpc::Status&
 DicomSeriesStudyResponse::_Internal::status(const DicomSeriesStudyResponse* msg) {
-  return *msg->status_;
+  return *msg->_impl_.status_;
 }
 const ::osirixgrpc::DicomStudy&
 DicomSeriesStudyResponse::_Internal::study(const DicomSeriesStudyResponse* msg) {
-  return *msg->study_;
+  return *msg->_impl_.study_;
 }
 void DicomSeriesStudyResponse::clear_status() {
-  if (GetArena() == nullptr && status_ != nullptr) {
-    delete status_;
-  }
-  status_ = nullptr;
+  if (_impl_.status_ != nullptr) _impl_.status_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000001u;
 }
 void DicomSeriesStudyResponse::clear_study() {
-  if (GetArena() == nullptr && study_ != nullptr) {
-    delete study_;
-  }
-  study_ = nullptr;
+  if (_impl_.study_ != nullptr) _impl_.study_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000002u;
 }
 DicomSeriesStudyResponse::DicomSeriesStudyResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
-  SharedCtor();
-  RegisterArenaDtor(arena);
+  SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.DicomSeriesStudyResponse)
 }
 DicomSeriesStudyResponse::DicomSeriesStudyResponse(const DicomSeriesStudyResponse& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
+  DicomSeriesStudyResponse* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.status_){nullptr}
+    , decltype(_impl_.study_){nullptr}};
+
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if (from._internal_has_status()) {
-    status_ = new ::osirixgrpc::Status(*from.status_);
-  } else {
-    status_ = nullptr;
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_impl_.status_ = new ::osirixgrpc::Status(*from._impl_.status_);
   }
-  if (from._internal_has_study()) {
-    study_ = new ::osirixgrpc::DicomStudy(*from.study_);
-  } else {
-    study_ = nullptr;
+  if ((from._impl_._has_bits_[0] & 0x00000002u) != 0) {
+    _this->_impl_.study_ = new ::osirixgrpc::DicomStudy(*from._impl_.study_);
   }
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.DicomSeriesStudyResponse)
 }
 
-void DicomSeriesStudyResponse::SharedCtor() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_DicomSeriesStudyResponse_dicomseries_2eproto.base);
-  ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-      reinterpret_cast<char*>(&status_) - reinterpret_cast<char*>(this)),
-      0, static_cast<size_t>(reinterpret_cast<char*>(&study_) -
-      reinterpret_cast<char*>(&status_)) + sizeof(study_));
+inline void DicomSeriesStudyResponse::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.status_){nullptr}
+    , decltype(_impl_.study_){nullptr}
+  };
 }
 
 DicomSeriesStudyResponse::~DicomSeriesStudyResponse() {
   // @@protoc_insertion_point(destructor:osirixgrpc.DicomSeriesStudyResponse)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-void DicomSeriesStudyResponse::SharedDtor() {
-  GOOGLE_DCHECK(GetArena() == nullptr);
-  if (this != internal_default_instance()) delete status_;
-  if (this != internal_default_instance()) delete study_;
+inline void DicomSeriesStudyResponse::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  if (this != internal_default_instance()) delete _impl_.status_;
+  if (this != internal_default_instance()) delete _impl_.study_;
 }
 
-void DicomSeriesStudyResponse::ArenaDtor(void* object) {
-  DicomSeriesStudyResponse* _this = reinterpret_cast< DicomSeriesStudyResponse* >(object);
-  (void)_this;
-}
-void DicomSeriesStudyResponse::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void DicomSeriesStudyResponse::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
-const DicomSeriesStudyResponse& DicomSeriesStudyResponse::default_instance() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_DicomSeriesStudyResponse_dicomseries_2eproto.base);
-  return *internal_default_instance();
-}
-
 
 void DicomSeriesStudyResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.DicomSeriesStudyResponse)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  if (GetArena() == nullptr && status_ != nullptr) {
-    delete status_;
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000003u) {
+    if (cached_has_bits & 0x00000001u) {
+      ABSL_DCHECK(_impl_.status_ != nullptr);
+      _impl_.status_->Clear();
+    }
+    if (cached_has_bits & 0x00000002u) {
+      ABSL_DCHECK(_impl_.study_ != nullptr);
+      _impl_.study_->Clear();
+    }
   }
-  status_ = nullptr;
-  if (GetArena() == nullptr && study_ != nullptr) {
-    delete study_;
-  }
-  study_ = nullptr;
+  _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* DicomSeriesStudyResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* DicomSeriesStudyResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
-    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-    CHK_(ptr);
+    ::uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // .osirixgrpc.Status status = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
           ptr = ctx->ParseMessage(_internal_mutable_status(), ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
+        } else {
+          goto handle_unusual;
+        }
         continue;
       // .osirixgrpc.DicomStudy study = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 18)) {
           ptr = ctx->ParseMessage(_internal_mutable_study(), ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
-        continue;
-      default: {
-      handle_unusual:
-        if ((tag & 7) == 4 || tag == 0) {
-          ctx->SetLastTag(tag);
-          goto success;
+        } else {
+          goto handle_unusual;
         }
-        ptr = UnknownFieldParse(tag,
-            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-            ptr, ctx);
-        CHK_(ptr != nullptr);
         continue;
-      }
+      default:
+        goto handle_unusual;
     }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
   }  // while
-success:
+message_done:
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
-  goto success;
+  goto message_done;
 #undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* DicomSeriesStudyResponse::_InternalSerialize(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+::uint8_t* DicomSeriesStudyResponse::_InternalSerialize(
+    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.DicomSeriesStudyResponse)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
+  cached_has_bits = _impl_._has_bits_[0];
   // .osirixgrpc.Status status = 1;
-  if (this->has_status()) {
-    target = stream->EnsureSpace(target);
+  if (cached_has_bits & 0x00000001u) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::status(this), target, stream);
+      InternalWriteMessage(1, _Internal::status(this),
+        _Internal::status(this).GetCachedSize(), target, stream);
   }
 
   // .osirixgrpc.DicomStudy study = 2;
-  if (this->has_study()) {
-    target = stream->EnsureSpace(target);
+  if (cached_has_bits & 0x00000002u) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        2, _Internal::study(this), target, stream);
+      InternalWriteMessage(2, _Internal::study(this),
+        _Internal::study(this).GetCachedSize(), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.DicomSeriesStudyResponse)
   return target;
 }
 
-size_t DicomSeriesStudyResponse::ByteSizeLong() const {
+::size_t DicomSeriesStudyResponse::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:osirixgrpc.DicomSeriesStudyResponse)
-  size_t total_size = 0;
+  ::size_t total_size = 0;
 
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // .osirixgrpc.Status status = 1;
-  if (this->has_status()) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *status_);
-  }
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000003u) {
+    // .osirixgrpc.Status status = 1;
+    if (cached_has_bits & 0x00000001u) {
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+          *_impl_.status_);
+    }
 
-  // .osirixgrpc.DicomStudy study = 2;
-  if (this->has_study()) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *study_);
-  }
+    // .osirixgrpc.DicomStudy study = 2;
+    if (cached_has_bits & 0x00000002u) {
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+          *_impl_.study_);
+    }
 
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
-        _internal_metadata_, total_size, &_cached_size_);
   }
-  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-void DicomSeriesStudyResponse::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:osirixgrpc.DicomSeriesStudyResponse)
-  GOOGLE_DCHECK_NE(&from, this);
-  const DicomSeriesStudyResponse* source =
-      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<DicomSeriesStudyResponse>(
-          &from);
-  if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:osirixgrpc.DicomSeriesStudyResponse)
-    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:osirixgrpc.DicomSeriesStudyResponse)
-    MergeFrom(*source);
-  }
-}
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData DicomSeriesStudyResponse::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    DicomSeriesStudyResponse::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*DicomSeriesStudyResponse::GetClassData() const { return &_class_data_; }
 
-void DicomSeriesStudyResponse::MergeFrom(const DicomSeriesStudyResponse& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.DicomSeriesStudyResponse)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+
+void DicomSeriesStudyResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<DicomSeriesStudyResponse*>(&to_msg);
+  auto& from = static_cast<const DicomSeriesStudyResponse&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.DicomSeriesStudyResponse)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.has_status()) {
-    _internal_mutable_status()->::osirixgrpc::Status::MergeFrom(from._internal_status());
+  cached_has_bits = from._impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000003u) {
+    if (cached_has_bits & 0x00000001u) {
+      _this->_internal_mutable_status()->::osirixgrpc::Status::MergeFrom(
+          from._internal_status());
+    }
+    if (cached_has_bits & 0x00000002u) {
+      _this->_internal_mutable_study()->::osirixgrpc::DicomStudy::MergeFrom(
+          from._internal_study());
+    }
   }
-  if (from.has_study()) {
-    _internal_mutable_study()->::osirixgrpc::DicomStudy::MergeFrom(from._internal_study());
-  }
-}
-
-void DicomSeriesStudyResponse::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:osirixgrpc.DicomSeriesStudyResponse)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void DicomSeriesStudyResponse::CopyFrom(const DicomSeriesStudyResponse& from) {
@@ -1764,121 +1849,130 @@ bool DicomSeriesStudyResponse::IsInitialized() const {
 
 void DicomSeriesStudyResponse::InternalSwap(DicomSeriesStudyResponse* other) {
   using std::swap;
-  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(DicomSeriesStudyResponse, study_)
-      + sizeof(DicomSeriesStudyResponse::study_)
-      - PROTOBUF_FIELD_OFFSET(DicomSeriesStudyResponse, status_)>(
-          reinterpret_cast<char*>(&status_),
-          reinterpret_cast<char*>(&other->status_));
+      PROTOBUF_FIELD_OFFSET(DicomSeriesStudyResponse, _impl_.study_)
+      + sizeof(DicomSeriesStudyResponse::_impl_.study_)
+      - PROTOBUF_FIELD_OFFSET(DicomSeriesStudyResponse, _impl_.status_)>(
+          reinterpret_cast<char*>(&_impl_.status_),
+          reinterpret_cast<char*>(&other->_impl_.status_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata DicomSeriesStudyResponse::GetMetadata() const {
-  return GetMetadataStatic();
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_dicomseries_2eproto_getter, &descriptor_table_dicomseries_2eproto_once,
+      file_level_metadata_dicomseries_2eproto[4]);
 }
-
-
 // ===================================================================
 
 class DicomSeriesImagesResponse::_Internal {
  public:
+  using HasBits = decltype(std::declval<DicomSeriesImagesResponse>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+    8 * PROTOBUF_FIELD_OFFSET(DicomSeriesImagesResponse, _impl_._has_bits_);
   static const ::osirixgrpc::Status& status(const DicomSeriesImagesResponse* msg);
+  static void set_has_status(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
 };
 
 const ::osirixgrpc::Status&
 DicomSeriesImagesResponse::_Internal::status(const DicomSeriesImagesResponse* msg) {
-  return *msg->status_;
+  return *msg->_impl_.status_;
 }
 void DicomSeriesImagesResponse::clear_status() {
-  if (GetArena() == nullptr && status_ != nullptr) {
-    delete status_;
-  }
-  status_ = nullptr;
+  if (_impl_.status_ != nullptr) _impl_.status_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000001u;
 }
 void DicomSeriesImagesResponse::clear_images() {
-  images_.Clear();
+  _internal_mutable_images()->Clear();
 }
 DicomSeriesImagesResponse::DicomSeriesImagesResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena),
-  images_(arena) {
-  SharedCtor();
-  RegisterArenaDtor(arena);
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
+  SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.DicomSeriesImagesResponse)
 }
 DicomSeriesImagesResponse::DicomSeriesImagesResponse(const DicomSeriesImagesResponse& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      images_(from.images_) {
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  DicomSeriesImagesResponse* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.images_){from._impl_.images_}
+    , decltype(_impl_.status_){nullptr}};
+
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if (from._internal_has_status()) {
-    status_ = new ::osirixgrpc::Status(*from.status_);
-  } else {
-    status_ = nullptr;
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_impl_.status_ = new ::osirixgrpc::Status(*from._impl_.status_);
   }
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.DicomSeriesImagesResponse)
 }
 
-void DicomSeriesImagesResponse::SharedCtor() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_DicomSeriesImagesResponse_dicomseries_2eproto.base);
-  status_ = nullptr;
+inline void DicomSeriesImagesResponse::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.images_){arena}
+    , decltype(_impl_.status_){nullptr}
+  };
 }
 
 DicomSeriesImagesResponse::~DicomSeriesImagesResponse() {
   // @@protoc_insertion_point(destructor:osirixgrpc.DicomSeriesImagesResponse)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-void DicomSeriesImagesResponse::SharedDtor() {
-  GOOGLE_DCHECK(GetArena() == nullptr);
-  if (this != internal_default_instance()) delete status_;
+inline void DicomSeriesImagesResponse::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  _internal_mutable_images()->~RepeatedPtrField();
+  if (this != internal_default_instance()) delete _impl_.status_;
 }
 
-void DicomSeriesImagesResponse::ArenaDtor(void* object) {
-  DicomSeriesImagesResponse* _this = reinterpret_cast< DicomSeriesImagesResponse* >(object);
-  (void)_this;
-}
-void DicomSeriesImagesResponse::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void DicomSeriesImagesResponse::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
-const DicomSeriesImagesResponse& DicomSeriesImagesResponse::default_instance() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_DicomSeriesImagesResponse_dicomseries_2eproto.base);
-  return *internal_default_instance();
-}
-
 
 void DicomSeriesImagesResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.DicomSeriesImagesResponse)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  images_.Clear();
-  if (GetArena() == nullptr && status_ != nullptr) {
-    delete status_;
+  _internal_mutable_images()->Clear();
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    ABSL_DCHECK(_impl_.status_ != nullptr);
+    _impl_.status_->Clear();
   }
-  status_ = nullptr;
+  _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* DicomSeriesImagesResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* DicomSeriesImagesResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
-    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-    CHK_(ptr);
+    ::uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // .osirixgrpc.Status status = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
           ptr = ctx->ParseMessage(_internal_mutable_status(), ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
+        } else {
+          goto handle_unusual;
+        }
         continue;
       // repeated .osirixgrpc.DicomImage images = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 18)) {
           ptr -= 1;
           do {
             ptr += 1;
@@ -1886,124 +1980,111 @@ const char* DicomSeriesImagesResponse::_InternalParse(const char* ptr, ::PROTOBU
             CHK_(ptr);
             if (!ctx->DataAvailable(ptr)) break;
           } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<18>(ptr));
-        } else goto handle_unusual;
-        continue;
-      default: {
-      handle_unusual:
-        if ((tag & 7) == 4 || tag == 0) {
-          ctx->SetLastTag(tag);
-          goto success;
+        } else {
+          goto handle_unusual;
         }
-        ptr = UnknownFieldParse(tag,
-            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-            ptr, ctx);
-        CHK_(ptr != nullptr);
         continue;
-      }
+      default:
+        goto handle_unusual;
     }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
   }  // while
-success:
+message_done:
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
-  goto success;
+  goto message_done;
 #undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* DicomSeriesImagesResponse::_InternalSerialize(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+::uint8_t* DicomSeriesImagesResponse::_InternalSerialize(
+    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.DicomSeriesImagesResponse)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
+  cached_has_bits = _impl_._has_bits_[0];
   // .osirixgrpc.Status status = 1;
-  if (this->has_status()) {
-    target = stream->EnsureSpace(target);
+  if (cached_has_bits & 0x00000001u) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::status(this), target, stream);
+      InternalWriteMessage(1, _Internal::status(this),
+        _Internal::status(this).GetCachedSize(), target, stream);
   }
 
   // repeated .osirixgrpc.DicomImage images = 2;
-  for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->_internal_images_size()); i < n; i++) {
-    target = stream->EnsureSpace(target);
+  for (unsigned i = 0,
+      n = static_cast<unsigned>(this->_internal_images_size()); i < n; i++) {
+    const auto& repfield = this->_internal_images(i);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(2, this->_internal_images(i), target, stream);
+        InternalWriteMessage(2, repfield, repfield.GetCachedSize(), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.DicomSeriesImagesResponse)
   return target;
 }
 
-size_t DicomSeriesImagesResponse::ByteSizeLong() const {
+::size_t DicomSeriesImagesResponse::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:osirixgrpc.DicomSeriesImagesResponse)
-  size_t total_size = 0;
+  ::size_t total_size = 0;
 
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // repeated .osirixgrpc.DicomImage images = 2;
   total_size += 1UL * this->_internal_images_size();
-  for (const auto& msg : this->images_) {
+  for (const auto& msg : this->_internal_images()) {
     total_size +=
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
 
   // .osirixgrpc.Status status = 1;
-  if (this->has_status()) {
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *status_);
+        *_impl_.status_);
   }
 
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
-        _internal_metadata_, total_size, &_cached_size_);
-  }
-  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-void DicomSeriesImagesResponse::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:osirixgrpc.DicomSeriesImagesResponse)
-  GOOGLE_DCHECK_NE(&from, this);
-  const DicomSeriesImagesResponse* source =
-      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<DicomSeriesImagesResponse>(
-          &from);
-  if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:osirixgrpc.DicomSeriesImagesResponse)
-    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:osirixgrpc.DicomSeriesImagesResponse)
-    MergeFrom(*source);
-  }
-}
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData DicomSeriesImagesResponse::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    DicomSeriesImagesResponse::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*DicomSeriesImagesResponse::GetClassData() const { return &_class_data_; }
 
-void DicomSeriesImagesResponse::MergeFrom(const DicomSeriesImagesResponse& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.DicomSeriesImagesResponse)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+
+void DicomSeriesImagesResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<DicomSeriesImagesResponse*>(&to_msg);
+  auto& from = static_cast<const DicomSeriesImagesResponse&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.DicomSeriesImagesResponse)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  images_.MergeFrom(from.images_);
-  if (from.has_status()) {
-    _internal_mutable_status()->::osirixgrpc::Status::MergeFrom(from._internal_status());
+  _this->_internal_mutable_images()->MergeFrom(from._internal_images());
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_internal_mutable_status()->::osirixgrpc::Status::MergeFrom(
+        from._internal_status());
   }
-}
-
-void DicomSeriesImagesResponse::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:osirixgrpc.DicomSeriesImagesResponse)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void DicomSeriesImagesResponse::CopyFrom(const DicomSeriesImagesResponse& from) {
@@ -2019,245 +2100,246 @@ bool DicomSeriesImagesResponse::IsInitialized() const {
 
 void DicomSeriesImagesResponse::InternalSwap(DicomSeriesImagesResponse* other) {
   using std::swap;
-  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
-  images_.InternalSwap(&other->images_);
-  swap(status_, other->status_);
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  _internal_mutable_images()->InternalSwap(other->_internal_mutable_images());
+  swap(_impl_.status_, other->_impl_.status_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata DicomSeriesImagesResponse::GetMetadata() const {
-  return GetMetadataStatic();
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_dicomseries_2eproto_getter, &descriptor_table_dicomseries_2eproto_once,
+      file_level_metadata_dicomseries_2eproto[5]);
 }
-
-
 // ===================================================================
 
 class DicomSeriesSeriesInstanceUIDResponse::_Internal {
  public:
+  using HasBits = decltype(std::declval<DicomSeriesSeriesInstanceUIDResponse>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+    8 * PROTOBUF_FIELD_OFFSET(DicomSeriesSeriesInstanceUIDResponse, _impl_._has_bits_);
   static const ::osirixgrpc::Status& status(const DicomSeriesSeriesInstanceUIDResponse* msg);
+  static void set_has_status(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
 };
 
 const ::osirixgrpc::Status&
 DicomSeriesSeriesInstanceUIDResponse::_Internal::status(const DicomSeriesSeriesInstanceUIDResponse* msg) {
-  return *msg->status_;
+  return *msg->_impl_.status_;
 }
 void DicomSeriesSeriesInstanceUIDResponse::clear_status() {
-  if (GetArena() == nullptr && status_ != nullptr) {
-    delete status_;
-  }
-  status_ = nullptr;
+  if (_impl_.status_ != nullptr) _impl_.status_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000001u;
 }
 DicomSeriesSeriesInstanceUIDResponse::DicomSeriesSeriesInstanceUIDResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
-  SharedCtor();
-  RegisterArenaDtor(arena);
+  SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.DicomSeriesSeriesInstanceUIDResponse)
 }
 DicomSeriesSeriesInstanceUIDResponse::DicomSeriesSeriesInstanceUIDResponse(const DicomSeriesSeriesInstanceUIDResponse& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
+  DicomSeriesSeriesInstanceUIDResponse* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.series_instance_uid_) {}
+
+    , decltype(_impl_.status_){nullptr}};
+
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  series_instance_uid_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  _impl_.series_instance_uid_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.series_instance_uid_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_series_instance_uid().empty()) {
-    series_instance_uid_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_series_instance_uid(), 
-      GetArena());
+    _this->_impl_.series_instance_uid_.Set(from._internal_series_instance_uid(), _this->GetArenaForAllocation());
   }
-  if (from._internal_has_status()) {
-    status_ = new ::osirixgrpc::Status(*from.status_);
-  } else {
-    status_ = nullptr;
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_impl_.status_ = new ::osirixgrpc::Status(*from._impl_.status_);
   }
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.DicomSeriesSeriesInstanceUIDResponse)
 }
 
-void DicomSeriesSeriesInstanceUIDResponse::SharedCtor() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_DicomSeriesSeriesInstanceUIDResponse_dicomseries_2eproto.base);
-  series_instance_uid_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  status_ = nullptr;
+inline void DicomSeriesSeriesInstanceUIDResponse::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.series_instance_uid_) {}
+
+    , decltype(_impl_.status_){nullptr}
+  };
+  _impl_.series_instance_uid_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.series_instance_uid_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
 
 DicomSeriesSeriesInstanceUIDResponse::~DicomSeriesSeriesInstanceUIDResponse() {
   // @@protoc_insertion_point(destructor:osirixgrpc.DicomSeriesSeriesInstanceUIDResponse)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-void DicomSeriesSeriesInstanceUIDResponse::SharedDtor() {
-  GOOGLE_DCHECK(GetArena() == nullptr);
-  series_instance_uid_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (this != internal_default_instance()) delete status_;
+inline void DicomSeriesSeriesInstanceUIDResponse::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.series_instance_uid_.Destroy();
+  if (this != internal_default_instance()) delete _impl_.status_;
 }
 
-void DicomSeriesSeriesInstanceUIDResponse::ArenaDtor(void* object) {
-  DicomSeriesSeriesInstanceUIDResponse* _this = reinterpret_cast< DicomSeriesSeriesInstanceUIDResponse* >(object);
-  (void)_this;
-}
-void DicomSeriesSeriesInstanceUIDResponse::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void DicomSeriesSeriesInstanceUIDResponse::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
-const DicomSeriesSeriesInstanceUIDResponse& DicomSeriesSeriesInstanceUIDResponse::default_instance() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_DicomSeriesSeriesInstanceUIDResponse_dicomseries_2eproto.base);
-  return *internal_default_instance();
-}
-
 
 void DicomSeriesSeriesInstanceUIDResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.DicomSeriesSeriesInstanceUIDResponse)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  series_instance_uid_.ClearToEmpty();
-  if (GetArena() == nullptr && status_ != nullptr) {
-    delete status_;
+  _impl_.series_instance_uid_.ClearToEmpty();
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    ABSL_DCHECK(_impl_.status_ != nullptr);
+    _impl_.status_->Clear();
   }
-  status_ = nullptr;
+  _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* DicomSeriesSeriesInstanceUIDResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* DicomSeriesSeriesInstanceUIDResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
-    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-    CHK_(ptr);
+    ::uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // .osirixgrpc.Status status = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
           ptr = ctx->ParseMessage(_internal_mutable_status(), ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
+        } else {
+          goto handle_unusual;
+        }
         continue;
       // string series_instance_uid = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 18)) {
           auto str = _internal_mutable_series_instance_uid();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "osirixgrpc.DicomSeriesSeriesInstanceUIDResponse.series_instance_uid"));
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
-        } else goto handle_unusual;
-        continue;
-      default: {
-      handle_unusual:
-        if ((tag & 7) == 4 || tag == 0) {
-          ctx->SetLastTag(tag);
-          goto success;
+          CHK_(::_pbi::VerifyUTF8(str, "osirixgrpc.DicomSeriesSeriesInstanceUIDResponse.series_instance_uid"));
+        } else {
+          goto handle_unusual;
         }
-        ptr = UnknownFieldParse(tag,
-            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-            ptr, ctx);
-        CHK_(ptr != nullptr);
         continue;
-      }
+      default:
+        goto handle_unusual;
     }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
   }  // while
-success:
+message_done:
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
-  goto success;
+  goto message_done;
 #undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* DicomSeriesSeriesInstanceUIDResponse::_InternalSerialize(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+::uint8_t* DicomSeriesSeriesInstanceUIDResponse::_InternalSerialize(
+    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.DicomSeriesSeriesInstanceUIDResponse)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
+  cached_has_bits = _impl_._has_bits_[0];
   // .osirixgrpc.Status status = 1;
-  if (this->has_status()) {
-    target = stream->EnsureSpace(target);
+  if (cached_has_bits & 0x00000001u) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::status(this), target, stream);
+      InternalWriteMessage(1, _Internal::status(this),
+        _Internal::status(this).GetCachedSize(), target, stream);
   }
 
   // string series_instance_uid = 2;
-  if (this->series_instance_uid().size() > 0) {
+  if (!this->_internal_series_instance_uid().empty()) {
+    const std::string& _s = this->_internal_series_instance_uid();
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_series_instance_uid().data(), static_cast<int>(this->_internal_series_instance_uid().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "osirixgrpc.DicomSeriesSeriesInstanceUIDResponse.series_instance_uid");
-    target = stream->WriteStringMaybeAliased(
-        2, this->_internal_series_instance_uid(), target);
+        _s.data(), static_cast<int>(_s.length()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE, "osirixgrpc.DicomSeriesSeriesInstanceUIDResponse.series_instance_uid");
+    target = stream->WriteStringMaybeAliased(2, _s, target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.DicomSeriesSeriesInstanceUIDResponse)
   return target;
 }
 
-size_t DicomSeriesSeriesInstanceUIDResponse::ByteSizeLong() const {
+::size_t DicomSeriesSeriesInstanceUIDResponse::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:osirixgrpc.DicomSeriesSeriesInstanceUIDResponse)
-  size_t total_size = 0;
+  ::size_t total_size = 0;
 
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // string series_instance_uid = 2;
-  if (this->series_instance_uid().size() > 0) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_series_instance_uid());
+  if (!this->_internal_series_instance_uid().empty()) {
+    total_size += 1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+                                    this->_internal_series_instance_uid());
   }
 
   // .osirixgrpc.Status status = 1;
-  if (this->has_status()) {
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *status_);
+        *_impl_.status_);
   }
 
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
-        _internal_metadata_, total_size, &_cached_size_);
-  }
-  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-void DicomSeriesSeriesInstanceUIDResponse::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:osirixgrpc.DicomSeriesSeriesInstanceUIDResponse)
-  GOOGLE_DCHECK_NE(&from, this);
-  const DicomSeriesSeriesInstanceUIDResponse* source =
-      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<DicomSeriesSeriesInstanceUIDResponse>(
-          &from);
-  if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:osirixgrpc.DicomSeriesSeriesInstanceUIDResponse)
-    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:osirixgrpc.DicomSeriesSeriesInstanceUIDResponse)
-    MergeFrom(*source);
-  }
-}
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData DicomSeriesSeriesInstanceUIDResponse::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    DicomSeriesSeriesInstanceUIDResponse::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*DicomSeriesSeriesInstanceUIDResponse::GetClassData() const { return &_class_data_; }
 
-void DicomSeriesSeriesInstanceUIDResponse::MergeFrom(const DicomSeriesSeriesInstanceUIDResponse& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.DicomSeriesSeriesInstanceUIDResponse)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+
+void DicomSeriesSeriesInstanceUIDResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<DicomSeriesSeriesInstanceUIDResponse*>(&to_msg);
+  auto& from = static_cast<const DicomSeriesSeriesInstanceUIDResponse&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.DicomSeriesSeriesInstanceUIDResponse)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.series_instance_uid().size() > 0) {
-    _internal_set_series_instance_uid(from._internal_series_instance_uid());
+  if (!from._internal_series_instance_uid().empty()) {
+    _this->_internal_set_series_instance_uid(from._internal_series_instance_uid());
   }
-  if (from.has_status()) {
-    _internal_mutable_status()->::osirixgrpc::Status::MergeFrom(from._internal_status());
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_internal_mutable_status()->::osirixgrpc::Status::MergeFrom(
+        from._internal_status());
   }
-}
-
-void DicomSeriesSeriesInstanceUIDResponse::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:osirixgrpc.DicomSeriesSeriesInstanceUIDResponse)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void DicomSeriesSeriesInstanceUIDResponse::CopyFrom(const DicomSeriesSeriesInstanceUIDResponse& from) {
@@ -2273,245 +2355,249 @@ bool DicomSeriesSeriesInstanceUIDResponse::IsInitialized() const {
 
 void DicomSeriesSeriesInstanceUIDResponse::InternalSwap(DicomSeriesSeriesInstanceUIDResponse* other) {
   using std::swap;
-  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
-  series_instance_uid_.Swap(&other->series_instance_uid_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
-  swap(status_, other->status_);
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.series_instance_uid_, lhs_arena,
+                                       &other->_impl_.series_instance_uid_, rhs_arena);
+  swap(_impl_.status_, other->_impl_.status_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata DicomSeriesSeriesInstanceUIDResponse::GetMetadata() const {
-  return GetMetadataStatic();
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_dicomseries_2eproto_getter, &descriptor_table_dicomseries_2eproto_once,
+      file_level_metadata_dicomseries_2eproto[6]);
 }
-
-
 // ===================================================================
 
 class DicomSeriesSeriesSOPClassUIDResponse::_Internal {
  public:
+  using HasBits = decltype(std::declval<DicomSeriesSeriesSOPClassUIDResponse>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+    8 * PROTOBUF_FIELD_OFFSET(DicomSeriesSeriesSOPClassUIDResponse, _impl_._has_bits_);
   static const ::osirixgrpc::Status& status(const DicomSeriesSeriesSOPClassUIDResponse* msg);
+  static void set_has_status(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
 };
 
 const ::osirixgrpc::Status&
 DicomSeriesSeriesSOPClassUIDResponse::_Internal::status(const DicomSeriesSeriesSOPClassUIDResponse* msg) {
-  return *msg->status_;
+  return *msg->_impl_.status_;
 }
 void DicomSeriesSeriesSOPClassUIDResponse::clear_status() {
-  if (GetArena() == nullptr && status_ != nullptr) {
-    delete status_;
-  }
-  status_ = nullptr;
+  if (_impl_.status_ != nullptr) _impl_.status_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000001u;
 }
 DicomSeriesSeriesSOPClassUIDResponse::DicomSeriesSeriesSOPClassUIDResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
-  SharedCtor();
-  RegisterArenaDtor(arena);
+  SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.DicomSeriesSeriesSOPClassUIDResponse)
 }
 DicomSeriesSeriesSOPClassUIDResponse::DicomSeriesSeriesSOPClassUIDResponse(const DicomSeriesSeriesSOPClassUIDResponse& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
+  DicomSeriesSeriesSOPClassUIDResponse* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.series_sop_class_uid_) {}
+
+    , decltype(_impl_.status_){nullptr}};
+
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  series_sop_class_uid_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  _impl_.series_sop_class_uid_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.series_sop_class_uid_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_series_sop_class_uid().empty()) {
-    series_sop_class_uid_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_series_sop_class_uid(), 
-      GetArena());
+    _this->_impl_.series_sop_class_uid_.Set(from._internal_series_sop_class_uid(), _this->GetArenaForAllocation());
   }
-  if (from._internal_has_status()) {
-    status_ = new ::osirixgrpc::Status(*from.status_);
-  } else {
-    status_ = nullptr;
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_impl_.status_ = new ::osirixgrpc::Status(*from._impl_.status_);
   }
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.DicomSeriesSeriesSOPClassUIDResponse)
 }
 
-void DicomSeriesSeriesSOPClassUIDResponse::SharedCtor() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_DicomSeriesSeriesSOPClassUIDResponse_dicomseries_2eproto.base);
-  series_sop_class_uid_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  status_ = nullptr;
+inline void DicomSeriesSeriesSOPClassUIDResponse::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.series_sop_class_uid_) {}
+
+    , decltype(_impl_.status_){nullptr}
+  };
+  _impl_.series_sop_class_uid_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.series_sop_class_uid_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
 
 DicomSeriesSeriesSOPClassUIDResponse::~DicomSeriesSeriesSOPClassUIDResponse() {
   // @@protoc_insertion_point(destructor:osirixgrpc.DicomSeriesSeriesSOPClassUIDResponse)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-void DicomSeriesSeriesSOPClassUIDResponse::SharedDtor() {
-  GOOGLE_DCHECK(GetArena() == nullptr);
-  series_sop_class_uid_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (this != internal_default_instance()) delete status_;
+inline void DicomSeriesSeriesSOPClassUIDResponse::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.series_sop_class_uid_.Destroy();
+  if (this != internal_default_instance()) delete _impl_.status_;
 }
 
-void DicomSeriesSeriesSOPClassUIDResponse::ArenaDtor(void* object) {
-  DicomSeriesSeriesSOPClassUIDResponse* _this = reinterpret_cast< DicomSeriesSeriesSOPClassUIDResponse* >(object);
-  (void)_this;
-}
-void DicomSeriesSeriesSOPClassUIDResponse::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void DicomSeriesSeriesSOPClassUIDResponse::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
-const DicomSeriesSeriesSOPClassUIDResponse& DicomSeriesSeriesSOPClassUIDResponse::default_instance() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_DicomSeriesSeriesSOPClassUIDResponse_dicomseries_2eproto.base);
-  return *internal_default_instance();
-}
-
 
 void DicomSeriesSeriesSOPClassUIDResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.DicomSeriesSeriesSOPClassUIDResponse)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  series_sop_class_uid_.ClearToEmpty();
-  if (GetArena() == nullptr && status_ != nullptr) {
-    delete status_;
+  _impl_.series_sop_class_uid_.ClearToEmpty();
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    ABSL_DCHECK(_impl_.status_ != nullptr);
+    _impl_.status_->Clear();
   }
-  status_ = nullptr;
+  _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* DicomSeriesSeriesSOPClassUIDResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* DicomSeriesSeriesSOPClassUIDResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
-    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-    CHK_(ptr);
+    ::uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // .osirixgrpc.Status status = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
           ptr = ctx->ParseMessage(_internal_mutable_status(), ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
+        } else {
+          goto handle_unusual;
+        }
         continue;
       // string series_sop_class_uid = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 18)) {
           auto str = _internal_mutable_series_sop_class_uid();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "osirixgrpc.DicomSeriesSeriesSOPClassUIDResponse.series_sop_class_uid"));
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
-        } else goto handle_unusual;
-        continue;
-      default: {
-      handle_unusual:
-        if ((tag & 7) == 4 || tag == 0) {
-          ctx->SetLastTag(tag);
-          goto success;
+          CHK_(::_pbi::VerifyUTF8(str, "osirixgrpc.DicomSeriesSeriesSOPClassUIDResponse.series_sop_class_uid"));
+        } else {
+          goto handle_unusual;
         }
-        ptr = UnknownFieldParse(tag,
-            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-            ptr, ctx);
-        CHK_(ptr != nullptr);
         continue;
-      }
+      default:
+        goto handle_unusual;
     }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
   }  // while
-success:
+message_done:
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
-  goto success;
+  goto message_done;
 #undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* DicomSeriesSeriesSOPClassUIDResponse::_InternalSerialize(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+::uint8_t* DicomSeriesSeriesSOPClassUIDResponse::_InternalSerialize(
+    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.DicomSeriesSeriesSOPClassUIDResponse)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
+  cached_has_bits = _impl_._has_bits_[0];
   // .osirixgrpc.Status status = 1;
-  if (this->has_status()) {
-    target = stream->EnsureSpace(target);
+  if (cached_has_bits & 0x00000001u) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::status(this), target, stream);
+      InternalWriteMessage(1, _Internal::status(this),
+        _Internal::status(this).GetCachedSize(), target, stream);
   }
 
   // string series_sop_class_uid = 2;
-  if (this->series_sop_class_uid().size() > 0) {
+  if (!this->_internal_series_sop_class_uid().empty()) {
+    const std::string& _s = this->_internal_series_sop_class_uid();
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_series_sop_class_uid().data(), static_cast<int>(this->_internal_series_sop_class_uid().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "osirixgrpc.DicomSeriesSeriesSOPClassUIDResponse.series_sop_class_uid");
-    target = stream->WriteStringMaybeAliased(
-        2, this->_internal_series_sop_class_uid(), target);
+        _s.data(), static_cast<int>(_s.length()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE, "osirixgrpc.DicomSeriesSeriesSOPClassUIDResponse.series_sop_class_uid");
+    target = stream->WriteStringMaybeAliased(2, _s, target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.DicomSeriesSeriesSOPClassUIDResponse)
   return target;
 }
 
-size_t DicomSeriesSeriesSOPClassUIDResponse::ByteSizeLong() const {
+::size_t DicomSeriesSeriesSOPClassUIDResponse::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:osirixgrpc.DicomSeriesSeriesSOPClassUIDResponse)
-  size_t total_size = 0;
+  ::size_t total_size = 0;
 
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // string series_sop_class_uid = 2;
-  if (this->series_sop_class_uid().size() > 0) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_series_sop_class_uid());
+  if (!this->_internal_series_sop_class_uid().empty()) {
+    total_size += 1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+                                    this->_internal_series_sop_class_uid());
   }
 
   // .osirixgrpc.Status status = 1;
-  if (this->has_status()) {
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *status_);
+        *_impl_.status_);
   }
 
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
-        _internal_metadata_, total_size, &_cached_size_);
-  }
-  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-void DicomSeriesSeriesSOPClassUIDResponse::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:osirixgrpc.DicomSeriesSeriesSOPClassUIDResponse)
-  GOOGLE_DCHECK_NE(&from, this);
-  const DicomSeriesSeriesSOPClassUIDResponse* source =
-      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<DicomSeriesSeriesSOPClassUIDResponse>(
-          &from);
-  if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:osirixgrpc.DicomSeriesSeriesSOPClassUIDResponse)
-    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:osirixgrpc.DicomSeriesSeriesSOPClassUIDResponse)
-    MergeFrom(*source);
-  }
-}
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData DicomSeriesSeriesSOPClassUIDResponse::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    DicomSeriesSeriesSOPClassUIDResponse::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*DicomSeriesSeriesSOPClassUIDResponse::GetClassData() const { return &_class_data_; }
 
-void DicomSeriesSeriesSOPClassUIDResponse::MergeFrom(const DicomSeriesSeriesSOPClassUIDResponse& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.DicomSeriesSeriesSOPClassUIDResponse)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+
+void DicomSeriesSeriesSOPClassUIDResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<DicomSeriesSeriesSOPClassUIDResponse*>(&to_msg);
+  auto& from = static_cast<const DicomSeriesSeriesSOPClassUIDResponse&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.DicomSeriesSeriesSOPClassUIDResponse)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.series_sop_class_uid().size() > 0) {
-    _internal_set_series_sop_class_uid(from._internal_series_sop_class_uid());
+  if (!from._internal_series_sop_class_uid().empty()) {
+    _this->_internal_set_series_sop_class_uid(from._internal_series_sop_class_uid());
   }
-  if (from.has_status()) {
-    _internal_mutable_status()->::osirixgrpc::Status::MergeFrom(from._internal_status());
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_internal_mutable_status()->::osirixgrpc::Status::MergeFrom(
+        from._internal_status());
   }
-}
-
-void DicomSeriesSeriesSOPClassUIDResponse::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:osirixgrpc.DicomSeriesSeriesSOPClassUIDResponse)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void DicomSeriesSeriesSOPClassUIDResponse::CopyFrom(const DicomSeriesSeriesSOPClassUIDResponse& from) {
@@ -2527,245 +2613,249 @@ bool DicomSeriesSeriesSOPClassUIDResponse::IsInitialized() const {
 
 void DicomSeriesSeriesSOPClassUIDResponse::InternalSwap(DicomSeriesSeriesSOPClassUIDResponse* other) {
   using std::swap;
-  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
-  series_sop_class_uid_.Swap(&other->series_sop_class_uid_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
-  swap(status_, other->status_);
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.series_sop_class_uid_, lhs_arena,
+                                       &other->_impl_.series_sop_class_uid_, rhs_arena);
+  swap(_impl_.status_, other->_impl_.status_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata DicomSeriesSeriesSOPClassUIDResponse::GetMetadata() const {
-  return GetMetadataStatic();
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_dicomseries_2eproto_getter, &descriptor_table_dicomseries_2eproto_once,
+      file_level_metadata_dicomseries_2eproto[7]);
 }
-
-
 // ===================================================================
 
 class DicomSeriesSeriesDescriptionResponse::_Internal {
  public:
+  using HasBits = decltype(std::declval<DicomSeriesSeriesDescriptionResponse>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+    8 * PROTOBUF_FIELD_OFFSET(DicomSeriesSeriesDescriptionResponse, _impl_._has_bits_);
   static const ::osirixgrpc::Status& status(const DicomSeriesSeriesDescriptionResponse* msg);
+  static void set_has_status(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
 };
 
 const ::osirixgrpc::Status&
 DicomSeriesSeriesDescriptionResponse::_Internal::status(const DicomSeriesSeriesDescriptionResponse* msg) {
-  return *msg->status_;
+  return *msg->_impl_.status_;
 }
 void DicomSeriesSeriesDescriptionResponse::clear_status() {
-  if (GetArena() == nullptr && status_ != nullptr) {
-    delete status_;
-  }
-  status_ = nullptr;
+  if (_impl_.status_ != nullptr) _impl_.status_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000001u;
 }
 DicomSeriesSeriesDescriptionResponse::DicomSeriesSeriesDescriptionResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
-  SharedCtor();
-  RegisterArenaDtor(arena);
+  SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.DicomSeriesSeriesDescriptionResponse)
 }
 DicomSeriesSeriesDescriptionResponse::DicomSeriesSeriesDescriptionResponse(const DicomSeriesSeriesDescriptionResponse& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
+  DicomSeriesSeriesDescriptionResponse* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.series_description_) {}
+
+    , decltype(_impl_.status_){nullptr}};
+
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  series_description_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  _impl_.series_description_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.series_description_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_series_description().empty()) {
-    series_description_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_series_description(), 
-      GetArena());
+    _this->_impl_.series_description_.Set(from._internal_series_description(), _this->GetArenaForAllocation());
   }
-  if (from._internal_has_status()) {
-    status_ = new ::osirixgrpc::Status(*from.status_);
-  } else {
-    status_ = nullptr;
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_impl_.status_ = new ::osirixgrpc::Status(*from._impl_.status_);
   }
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.DicomSeriesSeriesDescriptionResponse)
 }
 
-void DicomSeriesSeriesDescriptionResponse::SharedCtor() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_DicomSeriesSeriesDescriptionResponse_dicomseries_2eproto.base);
-  series_description_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  status_ = nullptr;
+inline void DicomSeriesSeriesDescriptionResponse::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.series_description_) {}
+
+    , decltype(_impl_.status_){nullptr}
+  };
+  _impl_.series_description_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.series_description_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
 
 DicomSeriesSeriesDescriptionResponse::~DicomSeriesSeriesDescriptionResponse() {
   // @@protoc_insertion_point(destructor:osirixgrpc.DicomSeriesSeriesDescriptionResponse)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-void DicomSeriesSeriesDescriptionResponse::SharedDtor() {
-  GOOGLE_DCHECK(GetArena() == nullptr);
-  series_description_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (this != internal_default_instance()) delete status_;
+inline void DicomSeriesSeriesDescriptionResponse::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.series_description_.Destroy();
+  if (this != internal_default_instance()) delete _impl_.status_;
 }
 
-void DicomSeriesSeriesDescriptionResponse::ArenaDtor(void* object) {
-  DicomSeriesSeriesDescriptionResponse* _this = reinterpret_cast< DicomSeriesSeriesDescriptionResponse* >(object);
-  (void)_this;
-}
-void DicomSeriesSeriesDescriptionResponse::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void DicomSeriesSeriesDescriptionResponse::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
-const DicomSeriesSeriesDescriptionResponse& DicomSeriesSeriesDescriptionResponse::default_instance() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_DicomSeriesSeriesDescriptionResponse_dicomseries_2eproto.base);
-  return *internal_default_instance();
-}
-
 
 void DicomSeriesSeriesDescriptionResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.DicomSeriesSeriesDescriptionResponse)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  series_description_.ClearToEmpty();
-  if (GetArena() == nullptr && status_ != nullptr) {
-    delete status_;
+  _impl_.series_description_.ClearToEmpty();
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    ABSL_DCHECK(_impl_.status_ != nullptr);
+    _impl_.status_->Clear();
   }
-  status_ = nullptr;
+  _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* DicomSeriesSeriesDescriptionResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* DicomSeriesSeriesDescriptionResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
-    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-    CHK_(ptr);
+    ::uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // .osirixgrpc.Status status = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
           ptr = ctx->ParseMessage(_internal_mutable_status(), ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
+        } else {
+          goto handle_unusual;
+        }
         continue;
       // string series_description = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 18)) {
           auto str = _internal_mutable_series_description();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "osirixgrpc.DicomSeriesSeriesDescriptionResponse.series_description"));
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
-        } else goto handle_unusual;
-        continue;
-      default: {
-      handle_unusual:
-        if ((tag & 7) == 4 || tag == 0) {
-          ctx->SetLastTag(tag);
-          goto success;
+          CHK_(::_pbi::VerifyUTF8(str, "osirixgrpc.DicomSeriesSeriesDescriptionResponse.series_description"));
+        } else {
+          goto handle_unusual;
         }
-        ptr = UnknownFieldParse(tag,
-            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-            ptr, ctx);
-        CHK_(ptr != nullptr);
         continue;
-      }
+      default:
+        goto handle_unusual;
     }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
   }  // while
-success:
+message_done:
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
-  goto success;
+  goto message_done;
 #undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* DicomSeriesSeriesDescriptionResponse::_InternalSerialize(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+::uint8_t* DicomSeriesSeriesDescriptionResponse::_InternalSerialize(
+    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.DicomSeriesSeriesDescriptionResponse)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
+  cached_has_bits = _impl_._has_bits_[0];
   // .osirixgrpc.Status status = 1;
-  if (this->has_status()) {
-    target = stream->EnsureSpace(target);
+  if (cached_has_bits & 0x00000001u) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::status(this), target, stream);
+      InternalWriteMessage(1, _Internal::status(this),
+        _Internal::status(this).GetCachedSize(), target, stream);
   }
 
   // string series_description = 2;
-  if (this->series_description().size() > 0) {
+  if (!this->_internal_series_description().empty()) {
+    const std::string& _s = this->_internal_series_description();
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_series_description().data(), static_cast<int>(this->_internal_series_description().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "osirixgrpc.DicomSeriesSeriesDescriptionResponse.series_description");
-    target = stream->WriteStringMaybeAliased(
-        2, this->_internal_series_description(), target);
+        _s.data(), static_cast<int>(_s.length()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE, "osirixgrpc.DicomSeriesSeriesDescriptionResponse.series_description");
+    target = stream->WriteStringMaybeAliased(2, _s, target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.DicomSeriesSeriesDescriptionResponse)
   return target;
 }
 
-size_t DicomSeriesSeriesDescriptionResponse::ByteSizeLong() const {
+::size_t DicomSeriesSeriesDescriptionResponse::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:osirixgrpc.DicomSeriesSeriesDescriptionResponse)
-  size_t total_size = 0;
+  ::size_t total_size = 0;
 
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // string series_description = 2;
-  if (this->series_description().size() > 0) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_series_description());
+  if (!this->_internal_series_description().empty()) {
+    total_size += 1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+                                    this->_internal_series_description());
   }
 
   // .osirixgrpc.Status status = 1;
-  if (this->has_status()) {
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *status_);
+        *_impl_.status_);
   }
 
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
-        _internal_metadata_, total_size, &_cached_size_);
-  }
-  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-void DicomSeriesSeriesDescriptionResponse::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:osirixgrpc.DicomSeriesSeriesDescriptionResponse)
-  GOOGLE_DCHECK_NE(&from, this);
-  const DicomSeriesSeriesDescriptionResponse* source =
-      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<DicomSeriesSeriesDescriptionResponse>(
-          &from);
-  if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:osirixgrpc.DicomSeriesSeriesDescriptionResponse)
-    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:osirixgrpc.DicomSeriesSeriesDescriptionResponse)
-    MergeFrom(*source);
-  }
-}
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData DicomSeriesSeriesDescriptionResponse::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    DicomSeriesSeriesDescriptionResponse::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*DicomSeriesSeriesDescriptionResponse::GetClassData() const { return &_class_data_; }
 
-void DicomSeriesSeriesDescriptionResponse::MergeFrom(const DicomSeriesSeriesDescriptionResponse& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.DicomSeriesSeriesDescriptionResponse)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+
+void DicomSeriesSeriesDescriptionResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<DicomSeriesSeriesDescriptionResponse*>(&to_msg);
+  auto& from = static_cast<const DicomSeriesSeriesDescriptionResponse&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.DicomSeriesSeriesDescriptionResponse)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.series_description().size() > 0) {
-    _internal_set_series_description(from._internal_series_description());
+  if (!from._internal_series_description().empty()) {
+    _this->_internal_set_series_description(from._internal_series_description());
   }
-  if (from.has_status()) {
-    _internal_mutable_status()->::osirixgrpc::Status::MergeFrom(from._internal_status());
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_internal_mutable_status()->::osirixgrpc::Status::MergeFrom(
+        from._internal_status());
   }
-}
-
-void DicomSeriesSeriesDescriptionResponse::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:osirixgrpc.DicomSeriesSeriesDescriptionResponse)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void DicomSeriesSeriesDescriptionResponse::CopyFrom(const DicomSeriesSeriesDescriptionResponse& from) {
@@ -2781,245 +2871,249 @@ bool DicomSeriesSeriesDescriptionResponse::IsInitialized() const {
 
 void DicomSeriesSeriesDescriptionResponse::InternalSwap(DicomSeriesSeriesDescriptionResponse* other) {
   using std::swap;
-  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
-  series_description_.Swap(&other->series_description_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
-  swap(status_, other->status_);
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.series_description_, lhs_arena,
+                                       &other->_impl_.series_description_, rhs_arena);
+  swap(_impl_.status_, other->_impl_.status_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata DicomSeriesSeriesDescriptionResponse::GetMetadata() const {
-  return GetMetadataStatic();
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_dicomseries_2eproto_getter, &descriptor_table_dicomseries_2eproto_once,
+      file_level_metadata_dicomseries_2eproto[8]);
 }
-
-
 // ===================================================================
 
 class DicomSeriesModalityResponse::_Internal {
  public:
+  using HasBits = decltype(std::declval<DicomSeriesModalityResponse>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+    8 * PROTOBUF_FIELD_OFFSET(DicomSeriesModalityResponse, _impl_._has_bits_);
   static const ::osirixgrpc::Status& status(const DicomSeriesModalityResponse* msg);
+  static void set_has_status(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
 };
 
 const ::osirixgrpc::Status&
 DicomSeriesModalityResponse::_Internal::status(const DicomSeriesModalityResponse* msg) {
-  return *msg->status_;
+  return *msg->_impl_.status_;
 }
 void DicomSeriesModalityResponse::clear_status() {
-  if (GetArena() == nullptr && status_ != nullptr) {
-    delete status_;
-  }
-  status_ = nullptr;
+  if (_impl_.status_ != nullptr) _impl_.status_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000001u;
 }
 DicomSeriesModalityResponse::DicomSeriesModalityResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
-  SharedCtor();
-  RegisterArenaDtor(arena);
+  SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.DicomSeriesModalityResponse)
 }
 DicomSeriesModalityResponse::DicomSeriesModalityResponse(const DicomSeriesModalityResponse& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
+  DicomSeriesModalityResponse* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.modality_) {}
+
+    , decltype(_impl_.status_){nullptr}};
+
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  modality_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  _impl_.modality_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.modality_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_modality().empty()) {
-    modality_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_modality(), 
-      GetArena());
+    _this->_impl_.modality_.Set(from._internal_modality(), _this->GetArenaForAllocation());
   }
-  if (from._internal_has_status()) {
-    status_ = new ::osirixgrpc::Status(*from.status_);
-  } else {
-    status_ = nullptr;
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_impl_.status_ = new ::osirixgrpc::Status(*from._impl_.status_);
   }
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.DicomSeriesModalityResponse)
 }
 
-void DicomSeriesModalityResponse::SharedCtor() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_DicomSeriesModalityResponse_dicomseries_2eproto.base);
-  modality_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  status_ = nullptr;
+inline void DicomSeriesModalityResponse::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.modality_) {}
+
+    , decltype(_impl_.status_){nullptr}
+  };
+  _impl_.modality_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.modality_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
 
 DicomSeriesModalityResponse::~DicomSeriesModalityResponse() {
   // @@protoc_insertion_point(destructor:osirixgrpc.DicomSeriesModalityResponse)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-void DicomSeriesModalityResponse::SharedDtor() {
-  GOOGLE_DCHECK(GetArena() == nullptr);
-  modality_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (this != internal_default_instance()) delete status_;
+inline void DicomSeriesModalityResponse::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.modality_.Destroy();
+  if (this != internal_default_instance()) delete _impl_.status_;
 }
 
-void DicomSeriesModalityResponse::ArenaDtor(void* object) {
-  DicomSeriesModalityResponse* _this = reinterpret_cast< DicomSeriesModalityResponse* >(object);
-  (void)_this;
-}
-void DicomSeriesModalityResponse::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void DicomSeriesModalityResponse::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
-const DicomSeriesModalityResponse& DicomSeriesModalityResponse::default_instance() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_DicomSeriesModalityResponse_dicomseries_2eproto.base);
-  return *internal_default_instance();
-}
-
 
 void DicomSeriesModalityResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.DicomSeriesModalityResponse)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  modality_.ClearToEmpty();
-  if (GetArena() == nullptr && status_ != nullptr) {
-    delete status_;
+  _impl_.modality_.ClearToEmpty();
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    ABSL_DCHECK(_impl_.status_ != nullptr);
+    _impl_.status_->Clear();
   }
-  status_ = nullptr;
+  _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* DicomSeriesModalityResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* DicomSeriesModalityResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
-    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-    CHK_(ptr);
+    ::uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // .osirixgrpc.Status status = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
           ptr = ctx->ParseMessage(_internal_mutable_status(), ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
+        } else {
+          goto handle_unusual;
+        }
         continue;
       // string modality = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 18)) {
           auto str = _internal_mutable_modality();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "osirixgrpc.DicomSeriesModalityResponse.modality"));
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
-        } else goto handle_unusual;
-        continue;
-      default: {
-      handle_unusual:
-        if ((tag & 7) == 4 || tag == 0) {
-          ctx->SetLastTag(tag);
-          goto success;
+          CHK_(::_pbi::VerifyUTF8(str, "osirixgrpc.DicomSeriesModalityResponse.modality"));
+        } else {
+          goto handle_unusual;
         }
-        ptr = UnknownFieldParse(tag,
-            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-            ptr, ctx);
-        CHK_(ptr != nullptr);
         continue;
-      }
+      default:
+        goto handle_unusual;
     }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
   }  // while
-success:
+message_done:
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
-  goto success;
+  goto message_done;
 #undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* DicomSeriesModalityResponse::_InternalSerialize(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+::uint8_t* DicomSeriesModalityResponse::_InternalSerialize(
+    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.DicomSeriesModalityResponse)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
+  cached_has_bits = _impl_._has_bits_[0];
   // .osirixgrpc.Status status = 1;
-  if (this->has_status()) {
-    target = stream->EnsureSpace(target);
+  if (cached_has_bits & 0x00000001u) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::status(this), target, stream);
+      InternalWriteMessage(1, _Internal::status(this),
+        _Internal::status(this).GetCachedSize(), target, stream);
   }
 
   // string modality = 2;
-  if (this->modality().size() > 0) {
+  if (!this->_internal_modality().empty()) {
+    const std::string& _s = this->_internal_modality();
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_modality().data(), static_cast<int>(this->_internal_modality().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "osirixgrpc.DicomSeriesModalityResponse.modality");
-    target = stream->WriteStringMaybeAliased(
-        2, this->_internal_modality(), target);
+        _s.data(), static_cast<int>(_s.length()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE, "osirixgrpc.DicomSeriesModalityResponse.modality");
+    target = stream->WriteStringMaybeAliased(2, _s, target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.DicomSeriesModalityResponse)
   return target;
 }
 
-size_t DicomSeriesModalityResponse::ByteSizeLong() const {
+::size_t DicomSeriesModalityResponse::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:osirixgrpc.DicomSeriesModalityResponse)
-  size_t total_size = 0;
+  ::size_t total_size = 0;
 
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // string modality = 2;
-  if (this->modality().size() > 0) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_modality());
+  if (!this->_internal_modality().empty()) {
+    total_size += 1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+                                    this->_internal_modality());
   }
 
   // .osirixgrpc.Status status = 1;
-  if (this->has_status()) {
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *status_);
+        *_impl_.status_);
   }
 
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
-        _internal_metadata_, total_size, &_cached_size_);
-  }
-  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-void DicomSeriesModalityResponse::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:osirixgrpc.DicomSeriesModalityResponse)
-  GOOGLE_DCHECK_NE(&from, this);
-  const DicomSeriesModalityResponse* source =
-      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<DicomSeriesModalityResponse>(
-          &from);
-  if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:osirixgrpc.DicomSeriesModalityResponse)
-    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:osirixgrpc.DicomSeriesModalityResponse)
-    MergeFrom(*source);
-  }
-}
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData DicomSeriesModalityResponse::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    DicomSeriesModalityResponse::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*DicomSeriesModalityResponse::GetClassData() const { return &_class_data_; }
 
-void DicomSeriesModalityResponse::MergeFrom(const DicomSeriesModalityResponse& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.DicomSeriesModalityResponse)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+
+void DicomSeriesModalityResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<DicomSeriesModalityResponse*>(&to_msg);
+  auto& from = static_cast<const DicomSeriesModalityResponse&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.DicomSeriesModalityResponse)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.modality().size() > 0) {
-    _internal_set_modality(from._internal_modality());
+  if (!from._internal_modality().empty()) {
+    _this->_internal_set_modality(from._internal_modality());
   }
-  if (from.has_status()) {
-    _internal_mutable_status()->::osirixgrpc::Status::MergeFrom(from._internal_status());
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_internal_mutable_status()->::osirixgrpc::Status::MergeFrom(
+        from._internal_status());
   }
-}
-
-void DicomSeriesModalityResponse::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:osirixgrpc.DicomSeriesModalityResponse)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void DicomSeriesModalityResponse::CopyFrom(const DicomSeriesModalityResponse& from) {
@@ -3035,245 +3129,249 @@ bool DicomSeriesModalityResponse::IsInitialized() const {
 
 void DicomSeriesModalityResponse::InternalSwap(DicomSeriesModalityResponse* other) {
   using std::swap;
-  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
-  modality_.Swap(&other->modality_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
-  swap(status_, other->status_);
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.modality_, lhs_arena,
+                                       &other->_impl_.modality_, rhs_arena);
+  swap(_impl_.status_, other->_impl_.status_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata DicomSeriesModalityResponse::GetMetadata() const {
-  return GetMetadataStatic();
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_dicomseries_2eproto_getter, &descriptor_table_dicomseries_2eproto_once,
+      file_level_metadata_dicomseries_2eproto[9]);
 }
-
-
 // ===================================================================
 
 class DicomSeriesNameResponse::_Internal {
  public:
+  using HasBits = decltype(std::declval<DicomSeriesNameResponse>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+    8 * PROTOBUF_FIELD_OFFSET(DicomSeriesNameResponse, _impl_._has_bits_);
   static const ::osirixgrpc::Status& status(const DicomSeriesNameResponse* msg);
+  static void set_has_status(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
 };
 
 const ::osirixgrpc::Status&
 DicomSeriesNameResponse::_Internal::status(const DicomSeriesNameResponse* msg) {
-  return *msg->status_;
+  return *msg->_impl_.status_;
 }
 void DicomSeriesNameResponse::clear_status() {
-  if (GetArena() == nullptr && status_ != nullptr) {
-    delete status_;
-  }
-  status_ = nullptr;
+  if (_impl_.status_ != nullptr) _impl_.status_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000001u;
 }
 DicomSeriesNameResponse::DicomSeriesNameResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
-  SharedCtor();
-  RegisterArenaDtor(arena);
+  SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.DicomSeriesNameResponse)
 }
 DicomSeriesNameResponse::DicomSeriesNameResponse(const DicomSeriesNameResponse& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
+  DicomSeriesNameResponse* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.name_) {}
+
+    , decltype(_impl_.status_){nullptr}};
+
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  _impl_.name_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.name_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_name().empty()) {
-    name_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_name(), 
-      GetArena());
+    _this->_impl_.name_.Set(from._internal_name(), _this->GetArenaForAllocation());
   }
-  if (from._internal_has_status()) {
-    status_ = new ::osirixgrpc::Status(*from.status_);
-  } else {
-    status_ = nullptr;
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_impl_.status_ = new ::osirixgrpc::Status(*from._impl_.status_);
   }
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.DicomSeriesNameResponse)
 }
 
-void DicomSeriesNameResponse::SharedCtor() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_DicomSeriesNameResponse_dicomseries_2eproto.base);
-  name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  status_ = nullptr;
+inline void DicomSeriesNameResponse::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.name_) {}
+
+    , decltype(_impl_.status_){nullptr}
+  };
+  _impl_.name_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.name_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
 
 DicomSeriesNameResponse::~DicomSeriesNameResponse() {
   // @@protoc_insertion_point(destructor:osirixgrpc.DicomSeriesNameResponse)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-void DicomSeriesNameResponse::SharedDtor() {
-  GOOGLE_DCHECK(GetArena() == nullptr);
-  name_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (this != internal_default_instance()) delete status_;
+inline void DicomSeriesNameResponse::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.name_.Destroy();
+  if (this != internal_default_instance()) delete _impl_.status_;
 }
 
-void DicomSeriesNameResponse::ArenaDtor(void* object) {
-  DicomSeriesNameResponse* _this = reinterpret_cast< DicomSeriesNameResponse* >(object);
-  (void)_this;
-}
-void DicomSeriesNameResponse::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void DicomSeriesNameResponse::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
-const DicomSeriesNameResponse& DicomSeriesNameResponse::default_instance() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_DicomSeriesNameResponse_dicomseries_2eproto.base);
-  return *internal_default_instance();
-}
-
 
 void DicomSeriesNameResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.DicomSeriesNameResponse)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  name_.ClearToEmpty();
-  if (GetArena() == nullptr && status_ != nullptr) {
-    delete status_;
+  _impl_.name_.ClearToEmpty();
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    ABSL_DCHECK(_impl_.status_ != nullptr);
+    _impl_.status_->Clear();
   }
-  status_ = nullptr;
+  _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* DicomSeriesNameResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* DicomSeriesNameResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
-    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-    CHK_(ptr);
+    ::uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // .osirixgrpc.Status status = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
           ptr = ctx->ParseMessage(_internal_mutable_status(), ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
+        } else {
+          goto handle_unusual;
+        }
         continue;
       // string name = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 18)) {
           auto str = _internal_mutable_name();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "osirixgrpc.DicomSeriesNameResponse.name"));
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
-        } else goto handle_unusual;
-        continue;
-      default: {
-      handle_unusual:
-        if ((tag & 7) == 4 || tag == 0) {
-          ctx->SetLastTag(tag);
-          goto success;
+          CHK_(::_pbi::VerifyUTF8(str, "osirixgrpc.DicomSeriesNameResponse.name"));
+        } else {
+          goto handle_unusual;
         }
-        ptr = UnknownFieldParse(tag,
-            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-            ptr, ctx);
-        CHK_(ptr != nullptr);
         continue;
-      }
+      default:
+        goto handle_unusual;
     }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
   }  // while
-success:
+message_done:
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
-  goto success;
+  goto message_done;
 #undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* DicomSeriesNameResponse::_InternalSerialize(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+::uint8_t* DicomSeriesNameResponse::_InternalSerialize(
+    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.DicomSeriesNameResponse)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
+  cached_has_bits = _impl_._has_bits_[0];
   // .osirixgrpc.Status status = 1;
-  if (this->has_status()) {
-    target = stream->EnsureSpace(target);
+  if (cached_has_bits & 0x00000001u) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::status(this), target, stream);
+      InternalWriteMessage(1, _Internal::status(this),
+        _Internal::status(this).GetCachedSize(), target, stream);
   }
 
   // string name = 2;
-  if (this->name().size() > 0) {
+  if (!this->_internal_name().empty()) {
+    const std::string& _s = this->_internal_name();
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_name().data(), static_cast<int>(this->_internal_name().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "osirixgrpc.DicomSeriesNameResponse.name");
-    target = stream->WriteStringMaybeAliased(
-        2, this->_internal_name(), target);
+        _s.data(), static_cast<int>(_s.length()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE, "osirixgrpc.DicomSeriesNameResponse.name");
+    target = stream->WriteStringMaybeAliased(2, _s, target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.DicomSeriesNameResponse)
   return target;
 }
 
-size_t DicomSeriesNameResponse::ByteSizeLong() const {
+::size_t DicomSeriesNameResponse::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:osirixgrpc.DicomSeriesNameResponse)
-  size_t total_size = 0;
+  ::size_t total_size = 0;
 
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // string name = 2;
-  if (this->name().size() > 0) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_name());
+  if (!this->_internal_name().empty()) {
+    total_size += 1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+                                    this->_internal_name());
   }
 
   // .osirixgrpc.Status status = 1;
-  if (this->has_status()) {
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *status_);
+        *_impl_.status_);
   }
 
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
-        _internal_metadata_, total_size, &_cached_size_);
-  }
-  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-void DicomSeriesNameResponse::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:osirixgrpc.DicomSeriesNameResponse)
-  GOOGLE_DCHECK_NE(&from, this);
-  const DicomSeriesNameResponse* source =
-      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<DicomSeriesNameResponse>(
-          &from);
-  if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:osirixgrpc.DicomSeriesNameResponse)
-    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:osirixgrpc.DicomSeriesNameResponse)
-    MergeFrom(*source);
-  }
-}
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData DicomSeriesNameResponse::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    DicomSeriesNameResponse::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*DicomSeriesNameResponse::GetClassData() const { return &_class_data_; }
 
-void DicomSeriesNameResponse::MergeFrom(const DicomSeriesNameResponse& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.DicomSeriesNameResponse)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+
+void DicomSeriesNameResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<DicomSeriesNameResponse*>(&to_msg);
+  auto& from = static_cast<const DicomSeriesNameResponse&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.DicomSeriesNameResponse)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.name().size() > 0) {
-    _internal_set_name(from._internal_name());
+  if (!from._internal_name().empty()) {
+    _this->_internal_set_name(from._internal_name());
   }
-  if (from.has_status()) {
-    _internal_mutable_status()->::osirixgrpc::Status::MergeFrom(from._internal_status());
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_internal_mutable_status()->::osirixgrpc::Status::MergeFrom(
+        from._internal_status());
   }
-}
-
-void DicomSeriesNameResponse::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:osirixgrpc.DicomSeriesNameResponse)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void DicomSeriesNameResponse::CopyFrom(const DicomSeriesNameResponse& from) {
@@ -3289,236 +3387,235 @@ bool DicomSeriesNameResponse::IsInitialized() const {
 
 void DicomSeriesNameResponse::InternalSwap(DicomSeriesNameResponse* other) {
   using std::swap;
-  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
-  name_.Swap(&other->name_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
-  swap(status_, other->status_);
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.name_, lhs_arena,
+                                       &other->_impl_.name_, rhs_arena);
+  swap(_impl_.status_, other->_impl_.status_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata DicomSeriesNameResponse::GetMetadata() const {
-  return GetMetadataStatic();
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_dicomseries_2eproto_getter, &descriptor_table_dicomseries_2eproto_once,
+      file_level_metadata_dicomseries_2eproto[10]);
 }
-
-
 // ===================================================================
 
 class DicomSeriesNumberOfImagesResponse::_Internal {
  public:
+  using HasBits = decltype(std::declval<DicomSeriesNumberOfImagesResponse>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+    8 * PROTOBUF_FIELD_OFFSET(DicomSeriesNumberOfImagesResponse, _impl_._has_bits_);
   static const ::osirixgrpc::Status& status(const DicomSeriesNumberOfImagesResponse* msg);
+  static void set_has_status(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
 };
 
 const ::osirixgrpc::Status&
 DicomSeriesNumberOfImagesResponse::_Internal::status(const DicomSeriesNumberOfImagesResponse* msg) {
-  return *msg->status_;
+  return *msg->_impl_.status_;
 }
 void DicomSeriesNumberOfImagesResponse::clear_status() {
-  if (GetArena() == nullptr && status_ != nullptr) {
-    delete status_;
-  }
-  status_ = nullptr;
+  if (_impl_.status_ != nullptr) _impl_.status_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000001u;
 }
 DicomSeriesNumberOfImagesResponse::DicomSeriesNumberOfImagesResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
-  SharedCtor();
-  RegisterArenaDtor(arena);
+  SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.DicomSeriesNumberOfImagesResponse)
 }
 DicomSeriesNumberOfImagesResponse::DicomSeriesNumberOfImagesResponse(const DicomSeriesNumberOfImagesResponse& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
+  DicomSeriesNumberOfImagesResponse* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.status_){nullptr}
+    , decltype(_impl_.number_of_images_) {}
+  };
+
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if (from._internal_has_status()) {
-    status_ = new ::osirixgrpc::Status(*from.status_);
-  } else {
-    status_ = nullptr;
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_impl_.status_ = new ::osirixgrpc::Status(*from._impl_.status_);
   }
-  number_of_images_ = from.number_of_images_;
+  _this->_impl_.number_of_images_ = from._impl_.number_of_images_;
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.DicomSeriesNumberOfImagesResponse)
 }
 
-void DicomSeriesNumberOfImagesResponse::SharedCtor() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_DicomSeriesNumberOfImagesResponse_dicomseries_2eproto.base);
-  ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-      reinterpret_cast<char*>(&status_) - reinterpret_cast<char*>(this)),
-      0, static_cast<size_t>(reinterpret_cast<char*>(&number_of_images_) -
-      reinterpret_cast<char*>(&status_)) + sizeof(number_of_images_));
+inline void DicomSeriesNumberOfImagesResponse::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.status_){nullptr}
+    , decltype(_impl_.number_of_images_) { 0 }
+
+  };
 }
 
 DicomSeriesNumberOfImagesResponse::~DicomSeriesNumberOfImagesResponse() {
   // @@protoc_insertion_point(destructor:osirixgrpc.DicomSeriesNumberOfImagesResponse)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-void DicomSeriesNumberOfImagesResponse::SharedDtor() {
-  GOOGLE_DCHECK(GetArena() == nullptr);
-  if (this != internal_default_instance()) delete status_;
+inline void DicomSeriesNumberOfImagesResponse::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  if (this != internal_default_instance()) delete _impl_.status_;
 }
 
-void DicomSeriesNumberOfImagesResponse::ArenaDtor(void* object) {
-  DicomSeriesNumberOfImagesResponse* _this = reinterpret_cast< DicomSeriesNumberOfImagesResponse* >(object);
-  (void)_this;
-}
-void DicomSeriesNumberOfImagesResponse::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void DicomSeriesNumberOfImagesResponse::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
-const DicomSeriesNumberOfImagesResponse& DicomSeriesNumberOfImagesResponse::default_instance() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_DicomSeriesNumberOfImagesResponse_dicomseries_2eproto.base);
-  return *internal_default_instance();
-}
-
 
 void DicomSeriesNumberOfImagesResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.DicomSeriesNumberOfImagesResponse)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  if (GetArena() == nullptr && status_ != nullptr) {
-    delete status_;
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    ABSL_DCHECK(_impl_.status_ != nullptr);
+    _impl_.status_->Clear();
   }
-  status_ = nullptr;
-  number_of_images_ = 0;
+  _impl_.number_of_images_ = 0;
+  _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* DicomSeriesNumberOfImagesResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* DicomSeriesNumberOfImagesResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
-    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-    CHK_(ptr);
+    ::uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // .osirixgrpc.Status status = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
           ptr = ctx->ParseMessage(_internal_mutable_status(), ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
+        } else {
+          goto handle_unusual;
+        }
         continue;
       // int32 number_of_images = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
-          number_of_images_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 16)) {
+          _impl_.number_of_images_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
-        continue;
-      default: {
-      handle_unusual:
-        if ((tag & 7) == 4 || tag == 0) {
-          ctx->SetLastTag(tag);
-          goto success;
+        } else {
+          goto handle_unusual;
         }
-        ptr = UnknownFieldParse(tag,
-            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-            ptr, ctx);
-        CHK_(ptr != nullptr);
         continue;
-      }
+      default:
+        goto handle_unusual;
     }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
   }  // while
-success:
+message_done:
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
-  goto success;
+  goto message_done;
 #undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* DicomSeriesNumberOfImagesResponse::_InternalSerialize(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+::uint8_t* DicomSeriesNumberOfImagesResponse::_InternalSerialize(
+    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.DicomSeriesNumberOfImagesResponse)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
+  cached_has_bits = _impl_._has_bits_[0];
   // .osirixgrpc.Status status = 1;
-  if (this->has_status()) {
-    target = stream->EnsureSpace(target);
+  if (cached_has_bits & 0x00000001u) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::status(this), target, stream);
+      InternalWriteMessage(1, _Internal::status(this),
+        _Internal::status(this).GetCachedSize(), target, stream);
   }
 
   // int32 number_of_images = 2;
-  if (this->number_of_images() != 0) {
+  if (this->_internal_number_of_images() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(2, this->_internal_number_of_images(), target);
+    target = ::_pbi::WireFormatLite::WriteInt32ToArray(
+        2, this->_internal_number_of_images(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.DicomSeriesNumberOfImagesResponse)
   return target;
 }
 
-size_t DicomSeriesNumberOfImagesResponse::ByteSizeLong() const {
+::size_t DicomSeriesNumberOfImagesResponse::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:osirixgrpc.DicomSeriesNumberOfImagesResponse)
-  size_t total_size = 0;
+  ::size_t total_size = 0;
 
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // .osirixgrpc.Status status = 1;
-  if (this->has_status()) {
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *status_);
+        *_impl_.status_);
   }
 
   // int32 number_of_images = 2;
-  if (this->number_of_images() != 0) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+  if (this->_internal_number_of_images() != 0) {
+    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
         this->_internal_number_of_images());
   }
 
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
-        _internal_metadata_, total_size, &_cached_size_);
-  }
-  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-void DicomSeriesNumberOfImagesResponse::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:osirixgrpc.DicomSeriesNumberOfImagesResponse)
-  GOOGLE_DCHECK_NE(&from, this);
-  const DicomSeriesNumberOfImagesResponse* source =
-      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<DicomSeriesNumberOfImagesResponse>(
-          &from);
-  if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:osirixgrpc.DicomSeriesNumberOfImagesResponse)
-    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:osirixgrpc.DicomSeriesNumberOfImagesResponse)
-    MergeFrom(*source);
-  }
-}
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData DicomSeriesNumberOfImagesResponse::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    DicomSeriesNumberOfImagesResponse::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*DicomSeriesNumberOfImagesResponse::GetClassData() const { return &_class_data_; }
 
-void DicomSeriesNumberOfImagesResponse::MergeFrom(const DicomSeriesNumberOfImagesResponse& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.DicomSeriesNumberOfImagesResponse)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+
+void DicomSeriesNumberOfImagesResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<DicomSeriesNumberOfImagesResponse*>(&to_msg);
+  auto& from = static_cast<const DicomSeriesNumberOfImagesResponse&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.DicomSeriesNumberOfImagesResponse)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.has_status()) {
-    _internal_mutable_status()->::osirixgrpc::Status::MergeFrom(from._internal_status());
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_internal_mutable_status()->::osirixgrpc::Status::MergeFrom(
+        from._internal_status());
   }
-  if (from.number_of_images() != 0) {
-    _internal_set_number_of_images(from._internal_number_of_images());
+  if (from._internal_number_of_images() != 0) {
+    _this->_internal_set_number_of_images(from._internal_number_of_images());
   }
-}
-
-void DicomSeriesNumberOfImagesResponse::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:osirixgrpc.DicomSeriesNumberOfImagesResponse)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void DicomSeriesNumberOfImagesResponse::CopyFrom(const DicomSeriesNumberOfImagesResponse& from) {
@@ -3534,382 +3631,414 @@ bool DicomSeriesNumberOfImagesResponse::IsInitialized() const {
 
 void DicomSeriesNumberOfImagesResponse::InternalSwap(DicomSeriesNumberOfImagesResponse* other) {
   using std::swap;
-  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(DicomSeriesNumberOfImagesResponse, number_of_images_)
-      + sizeof(DicomSeriesNumberOfImagesResponse::number_of_images_)
-      - PROTOBUF_FIELD_OFFSET(DicomSeriesNumberOfImagesResponse, status_)>(
-          reinterpret_cast<char*>(&status_),
-          reinterpret_cast<char*>(&other->status_));
+      PROTOBUF_FIELD_OFFSET(DicomSeriesNumberOfImagesResponse, _impl_.number_of_images_)
+      + sizeof(DicomSeriesNumberOfImagesResponse::_impl_.number_of_images_)
+      - PROTOBUF_FIELD_OFFSET(DicomSeriesNumberOfImagesResponse, _impl_.status_)>(
+          reinterpret_cast<char*>(&_impl_.status_),
+          reinterpret_cast<char*>(&other->_impl_.status_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata DicomSeriesNumberOfImagesResponse::GetMetadata() const {
-  return GetMetadataStatic();
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_dicomseries_2eproto_getter, &descriptor_table_dicomseries_2eproto_once,
+      file_level_metadata_dicomseries_2eproto[11]);
 }
-
-
 // ===================================================================
 
 class DicomSeriesDateResponse::_Internal {
  public:
+  using HasBits = decltype(std::declval<DicomSeriesDateResponse>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+    8 * PROTOBUF_FIELD_OFFSET(DicomSeriesDateResponse, _impl_._has_bits_);
   static const ::osirixgrpc::Status& status(const DicomSeriesDateResponse* msg);
+  static void set_has_status(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
 };
 
 const ::osirixgrpc::Status&
 DicomSeriesDateResponse::_Internal::status(const DicomSeriesDateResponse* msg) {
-  return *msg->status_;
+  return *msg->_impl_.status_;
 }
 void DicomSeriesDateResponse::clear_status() {
-  if (GetArena() == nullptr && status_ != nullptr) {
-    delete status_;
-  }
-  status_ = nullptr;
+  if (_impl_.status_ != nullptr) _impl_.status_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000001u;
 }
 DicomSeriesDateResponse::DicomSeriesDateResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
-  SharedCtor();
-  RegisterArenaDtor(arena);
+  SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.DicomSeriesDateResponse)
 }
 DicomSeriesDateResponse::DicomSeriesDateResponse(const DicomSeriesDateResponse& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
+  DicomSeriesDateResponse* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.status_){nullptr}
+    , decltype(_impl_.year_) {}
+
+    , decltype(_impl_.month_) {}
+
+    , decltype(_impl_.day_) {}
+
+    , decltype(_impl_.hour_) {}
+
+    , decltype(_impl_.minute_) {}
+
+    , decltype(_impl_.second_) {}
+
+    , decltype(_impl_.millisecond_) {}
+  };
+
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if (from._internal_has_status()) {
-    status_ = new ::osirixgrpc::Status(*from.status_);
-  } else {
-    status_ = nullptr;
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_impl_.status_ = new ::osirixgrpc::Status(*from._impl_.status_);
   }
-  ::memcpy(&year_, &from.year_,
-    static_cast<size_t>(reinterpret_cast<char*>(&millisecond_) -
-    reinterpret_cast<char*>(&year_)) + sizeof(millisecond_));
+  ::memcpy(&_impl_.year_, &from._impl_.year_,
+    static_cast<::size_t>(reinterpret_cast<char*>(&_impl_.millisecond_) -
+    reinterpret_cast<char*>(&_impl_.year_)) + sizeof(_impl_.millisecond_));
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.DicomSeriesDateResponse)
 }
 
-void DicomSeriesDateResponse::SharedCtor() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_DicomSeriesDateResponse_dicomseries_2eproto.base);
-  ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-      reinterpret_cast<char*>(&status_) - reinterpret_cast<char*>(this)),
-      0, static_cast<size_t>(reinterpret_cast<char*>(&millisecond_) -
-      reinterpret_cast<char*>(&status_)) + sizeof(millisecond_));
+inline void DicomSeriesDateResponse::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.status_){nullptr}
+    , decltype(_impl_.year_) { 0 }
+
+    , decltype(_impl_.month_) { 0 }
+
+    , decltype(_impl_.day_) { 0 }
+
+    , decltype(_impl_.hour_) { 0 }
+
+    , decltype(_impl_.minute_) { 0 }
+
+    , decltype(_impl_.second_) { 0 }
+
+    , decltype(_impl_.millisecond_) { 0 }
+
+  };
 }
 
 DicomSeriesDateResponse::~DicomSeriesDateResponse() {
   // @@protoc_insertion_point(destructor:osirixgrpc.DicomSeriesDateResponse)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-void DicomSeriesDateResponse::SharedDtor() {
-  GOOGLE_DCHECK(GetArena() == nullptr);
-  if (this != internal_default_instance()) delete status_;
+inline void DicomSeriesDateResponse::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  if (this != internal_default_instance()) delete _impl_.status_;
 }
 
-void DicomSeriesDateResponse::ArenaDtor(void* object) {
-  DicomSeriesDateResponse* _this = reinterpret_cast< DicomSeriesDateResponse* >(object);
-  (void)_this;
-}
-void DicomSeriesDateResponse::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void DicomSeriesDateResponse::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
-const DicomSeriesDateResponse& DicomSeriesDateResponse::default_instance() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_DicomSeriesDateResponse_dicomseries_2eproto.base);
-  return *internal_default_instance();
-}
-
 
 void DicomSeriesDateResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.DicomSeriesDateResponse)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  if (GetArena() == nullptr && status_ != nullptr) {
-    delete status_;
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    ABSL_DCHECK(_impl_.status_ != nullptr);
+    _impl_.status_->Clear();
   }
-  status_ = nullptr;
-  ::memset(&year_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&millisecond_) -
-      reinterpret_cast<char*>(&year_)) + sizeof(millisecond_));
+  ::memset(&_impl_.year_, 0, static_cast<::size_t>(
+      reinterpret_cast<char*>(&_impl_.millisecond_) -
+      reinterpret_cast<char*>(&_impl_.year_)) + sizeof(_impl_.millisecond_));
+  _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* DicomSeriesDateResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* DicomSeriesDateResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
-    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-    CHK_(ptr);
+    ::uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // .osirixgrpc.Status status = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
           ptr = ctx->ParseMessage(_internal_mutable_status(), ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
+        } else {
+          goto handle_unusual;
+        }
         continue;
       // int32 year = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
-          year_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 16)) {
+          _impl_.year_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
+        } else {
+          goto handle_unusual;
+        }
         continue;
       // int32 month = 3;
       case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 24)) {
-          month_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 24)) {
+          _impl_.month_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
+        } else {
+          goto handle_unusual;
+        }
         continue;
       // int32 day = 4;
       case 4:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 32)) {
-          day_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 32)) {
+          _impl_.day_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
+        } else {
+          goto handle_unusual;
+        }
         continue;
       // int32 hour = 5;
       case 5:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 40)) {
-          hour_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 40)) {
+          _impl_.hour_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
+        } else {
+          goto handle_unusual;
+        }
         continue;
       // int32 minute = 6;
       case 6:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 48)) {
-          minute_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 48)) {
+          _impl_.minute_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
+        } else {
+          goto handle_unusual;
+        }
         continue;
       // int32 second = 7;
       case 7:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 56)) {
-          second_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 56)) {
+          _impl_.second_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
+        } else {
+          goto handle_unusual;
+        }
         continue;
       // int32 millisecond = 8;
       case 8:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 64)) {
-          millisecond_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 64)) {
+          _impl_.millisecond_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
-        continue;
-      default: {
-      handle_unusual:
-        if ((tag & 7) == 4 || tag == 0) {
-          ctx->SetLastTag(tag);
-          goto success;
+        } else {
+          goto handle_unusual;
         }
-        ptr = UnknownFieldParse(tag,
-            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-            ptr, ctx);
-        CHK_(ptr != nullptr);
         continue;
-      }
+      default:
+        goto handle_unusual;
     }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
   }  // while
-success:
+message_done:
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
-  goto success;
+  goto message_done;
 #undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* DicomSeriesDateResponse::_InternalSerialize(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+::uint8_t* DicomSeriesDateResponse::_InternalSerialize(
+    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.DicomSeriesDateResponse)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
+  cached_has_bits = _impl_._has_bits_[0];
   // .osirixgrpc.Status status = 1;
-  if (this->has_status()) {
-    target = stream->EnsureSpace(target);
+  if (cached_has_bits & 0x00000001u) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::status(this), target, stream);
+      InternalWriteMessage(1, _Internal::status(this),
+        _Internal::status(this).GetCachedSize(), target, stream);
   }
 
   // int32 year = 2;
-  if (this->year() != 0) {
+  if (this->_internal_year() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(2, this->_internal_year(), target);
+    target = ::_pbi::WireFormatLite::WriteInt32ToArray(
+        2, this->_internal_year(), target);
   }
 
   // int32 month = 3;
-  if (this->month() != 0) {
+  if (this->_internal_month() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(3, this->_internal_month(), target);
+    target = ::_pbi::WireFormatLite::WriteInt32ToArray(
+        3, this->_internal_month(), target);
   }
 
   // int32 day = 4;
-  if (this->day() != 0) {
+  if (this->_internal_day() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(4, this->_internal_day(), target);
+    target = ::_pbi::WireFormatLite::WriteInt32ToArray(
+        4, this->_internal_day(), target);
   }
 
   // int32 hour = 5;
-  if (this->hour() != 0) {
+  if (this->_internal_hour() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(5, this->_internal_hour(), target);
+    target = ::_pbi::WireFormatLite::WriteInt32ToArray(
+        5, this->_internal_hour(), target);
   }
 
   // int32 minute = 6;
-  if (this->minute() != 0) {
+  if (this->_internal_minute() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(6, this->_internal_minute(), target);
+    target = ::_pbi::WireFormatLite::WriteInt32ToArray(
+        6, this->_internal_minute(), target);
   }
 
   // int32 second = 7;
-  if (this->second() != 0) {
+  if (this->_internal_second() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(7, this->_internal_second(), target);
+    target = ::_pbi::WireFormatLite::WriteInt32ToArray(
+        7, this->_internal_second(), target);
   }
 
   // int32 millisecond = 8;
-  if (this->millisecond() != 0) {
+  if (this->_internal_millisecond() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(8, this->_internal_millisecond(), target);
+    target = ::_pbi::WireFormatLite::WriteInt32ToArray(
+        8, this->_internal_millisecond(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.DicomSeriesDateResponse)
   return target;
 }
 
-size_t DicomSeriesDateResponse::ByteSizeLong() const {
+::size_t DicomSeriesDateResponse::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:osirixgrpc.DicomSeriesDateResponse)
-  size_t total_size = 0;
+  ::size_t total_size = 0;
 
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // .osirixgrpc.Status status = 1;
-  if (this->has_status()) {
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *status_);
+        *_impl_.status_);
   }
 
   // int32 year = 2;
-  if (this->year() != 0) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+  if (this->_internal_year() != 0) {
+    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
         this->_internal_year());
   }
 
   // int32 month = 3;
-  if (this->month() != 0) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+  if (this->_internal_month() != 0) {
+    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
         this->_internal_month());
   }
 
   // int32 day = 4;
-  if (this->day() != 0) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+  if (this->_internal_day() != 0) {
+    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
         this->_internal_day());
   }
 
   // int32 hour = 5;
-  if (this->hour() != 0) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+  if (this->_internal_hour() != 0) {
+    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
         this->_internal_hour());
   }
 
   // int32 minute = 6;
-  if (this->minute() != 0) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+  if (this->_internal_minute() != 0) {
+    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
         this->_internal_minute());
   }
 
   // int32 second = 7;
-  if (this->second() != 0) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+  if (this->_internal_second() != 0) {
+    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
         this->_internal_second());
   }
 
   // int32 millisecond = 8;
-  if (this->millisecond() != 0) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+  if (this->_internal_millisecond() != 0) {
+    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
         this->_internal_millisecond());
   }
 
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
-        _internal_metadata_, total_size, &_cached_size_);
-  }
-  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-void DicomSeriesDateResponse::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:osirixgrpc.DicomSeriesDateResponse)
-  GOOGLE_DCHECK_NE(&from, this);
-  const DicomSeriesDateResponse* source =
-      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<DicomSeriesDateResponse>(
-          &from);
-  if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:osirixgrpc.DicomSeriesDateResponse)
-    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:osirixgrpc.DicomSeriesDateResponse)
-    MergeFrom(*source);
-  }
-}
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData DicomSeriesDateResponse::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    DicomSeriesDateResponse::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*DicomSeriesDateResponse::GetClassData() const { return &_class_data_; }
 
-void DicomSeriesDateResponse::MergeFrom(const DicomSeriesDateResponse& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.DicomSeriesDateResponse)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+
+void DicomSeriesDateResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<DicomSeriesDateResponse*>(&to_msg);
+  auto& from = static_cast<const DicomSeriesDateResponse&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.DicomSeriesDateResponse)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.has_status()) {
-    _internal_mutable_status()->::osirixgrpc::Status::MergeFrom(from._internal_status());
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_internal_mutable_status()->::osirixgrpc::Status::MergeFrom(
+        from._internal_status());
   }
-  if (from.year() != 0) {
-    _internal_set_year(from._internal_year());
+  if (from._internal_year() != 0) {
+    _this->_internal_set_year(from._internal_year());
   }
-  if (from.month() != 0) {
-    _internal_set_month(from._internal_month());
+  if (from._internal_month() != 0) {
+    _this->_internal_set_month(from._internal_month());
   }
-  if (from.day() != 0) {
-    _internal_set_day(from._internal_day());
+  if (from._internal_day() != 0) {
+    _this->_internal_set_day(from._internal_day());
   }
-  if (from.hour() != 0) {
-    _internal_set_hour(from._internal_hour());
+  if (from._internal_hour() != 0) {
+    _this->_internal_set_hour(from._internal_hour());
   }
-  if (from.minute() != 0) {
-    _internal_set_minute(from._internal_minute());
+  if (from._internal_minute() != 0) {
+    _this->_internal_set_minute(from._internal_minute());
   }
-  if (from.second() != 0) {
-    _internal_set_second(from._internal_second());
+  if (from._internal_second() != 0) {
+    _this->_internal_set_second(from._internal_second());
   }
-  if (from.millisecond() != 0) {
-    _internal_set_millisecond(from._internal_millisecond());
+  if (from._internal_millisecond() != 0) {
+    _this->_internal_set_millisecond(from._internal_millisecond());
   }
-}
-
-void DicomSeriesDateResponse::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:osirixgrpc.DicomSeriesDateResponse)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void DicomSeriesDateResponse::CopyFrom(const DicomSeriesDateResponse& from) {
@@ -3925,63 +4054,76 @@ bool DicomSeriesDateResponse::IsInitialized() const {
 
 void DicomSeriesDateResponse::InternalSwap(DicomSeriesDateResponse* other) {
   using std::swap;
-  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(DicomSeriesDateResponse, millisecond_)
-      + sizeof(DicomSeriesDateResponse::millisecond_)
-      - PROTOBUF_FIELD_OFFSET(DicomSeriesDateResponse, status_)>(
-          reinterpret_cast<char*>(&status_),
-          reinterpret_cast<char*>(&other->status_));
+      PROTOBUF_FIELD_OFFSET(DicomSeriesDateResponse, _impl_.millisecond_)
+      + sizeof(DicomSeriesDateResponse::_impl_.millisecond_)
+      - PROTOBUF_FIELD_OFFSET(DicomSeriesDateResponse, _impl_.status_)>(
+          reinterpret_cast<char*>(&_impl_.status_),
+          reinterpret_cast<char*>(&other->_impl_.status_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata DicomSeriesDateResponse::GetMetadata() const {
-  return GetMetadataStatic();
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_dicomseries_2eproto_getter, &descriptor_table_dicomseries_2eproto_once,
+      file_level_metadata_dicomseries_2eproto[12]);
 }
-
-
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace osirixgrpc
 PROTOBUF_NAMESPACE_OPEN
-template<> PROTOBUF_NOINLINE ::osirixgrpc::DicomSeriesPathsResponse* Arena::CreateMaybeMessage< ::osirixgrpc::DicomSeriesPathsResponse >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::osirixgrpc::DicomSeriesPathsResponse*
+Arena::CreateMaybeMessage< ::osirixgrpc::DicomSeriesPathsResponse >(Arena* arena) {
   return Arena::CreateMessageInternal< ::osirixgrpc::DicomSeriesPathsResponse >(arena);
 }
-template<> PROTOBUF_NOINLINE ::osirixgrpc::DicomSeriesPreviousSeriesResponse* Arena::CreateMaybeMessage< ::osirixgrpc::DicomSeriesPreviousSeriesResponse >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::osirixgrpc::DicomSeriesPreviousSeriesResponse*
+Arena::CreateMaybeMessage< ::osirixgrpc::DicomSeriesPreviousSeriesResponse >(Arena* arena) {
   return Arena::CreateMessageInternal< ::osirixgrpc::DicomSeriesPreviousSeriesResponse >(arena);
 }
-template<> PROTOBUF_NOINLINE ::osirixgrpc::DicomSeriesNextSeriesResponse* Arena::CreateMaybeMessage< ::osirixgrpc::DicomSeriesNextSeriesResponse >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::osirixgrpc::DicomSeriesNextSeriesResponse*
+Arena::CreateMaybeMessage< ::osirixgrpc::DicomSeriesNextSeriesResponse >(Arena* arena) {
   return Arena::CreateMessageInternal< ::osirixgrpc::DicomSeriesNextSeriesResponse >(arena);
 }
-template<> PROTOBUF_NOINLINE ::osirixgrpc::DicomSeriesSortedImagesResponse* Arena::CreateMaybeMessage< ::osirixgrpc::DicomSeriesSortedImagesResponse >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::osirixgrpc::DicomSeriesSortedImagesResponse*
+Arena::CreateMaybeMessage< ::osirixgrpc::DicomSeriesSortedImagesResponse >(Arena* arena) {
   return Arena::CreateMessageInternal< ::osirixgrpc::DicomSeriesSortedImagesResponse >(arena);
 }
-template<> PROTOBUF_NOINLINE ::osirixgrpc::DicomSeriesStudyResponse* Arena::CreateMaybeMessage< ::osirixgrpc::DicomSeriesStudyResponse >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::osirixgrpc::DicomSeriesStudyResponse*
+Arena::CreateMaybeMessage< ::osirixgrpc::DicomSeriesStudyResponse >(Arena* arena) {
   return Arena::CreateMessageInternal< ::osirixgrpc::DicomSeriesStudyResponse >(arena);
 }
-template<> PROTOBUF_NOINLINE ::osirixgrpc::DicomSeriesImagesResponse* Arena::CreateMaybeMessage< ::osirixgrpc::DicomSeriesImagesResponse >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::osirixgrpc::DicomSeriesImagesResponse*
+Arena::CreateMaybeMessage< ::osirixgrpc::DicomSeriesImagesResponse >(Arena* arena) {
   return Arena::CreateMessageInternal< ::osirixgrpc::DicomSeriesImagesResponse >(arena);
 }
-template<> PROTOBUF_NOINLINE ::osirixgrpc::DicomSeriesSeriesInstanceUIDResponse* Arena::CreateMaybeMessage< ::osirixgrpc::DicomSeriesSeriesInstanceUIDResponse >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::osirixgrpc::DicomSeriesSeriesInstanceUIDResponse*
+Arena::CreateMaybeMessage< ::osirixgrpc::DicomSeriesSeriesInstanceUIDResponse >(Arena* arena) {
   return Arena::CreateMessageInternal< ::osirixgrpc::DicomSeriesSeriesInstanceUIDResponse >(arena);
 }
-template<> PROTOBUF_NOINLINE ::osirixgrpc::DicomSeriesSeriesSOPClassUIDResponse* Arena::CreateMaybeMessage< ::osirixgrpc::DicomSeriesSeriesSOPClassUIDResponse >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::osirixgrpc::DicomSeriesSeriesSOPClassUIDResponse*
+Arena::CreateMaybeMessage< ::osirixgrpc::DicomSeriesSeriesSOPClassUIDResponse >(Arena* arena) {
   return Arena::CreateMessageInternal< ::osirixgrpc::DicomSeriesSeriesSOPClassUIDResponse >(arena);
 }
-template<> PROTOBUF_NOINLINE ::osirixgrpc::DicomSeriesSeriesDescriptionResponse* Arena::CreateMaybeMessage< ::osirixgrpc::DicomSeriesSeriesDescriptionResponse >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::osirixgrpc::DicomSeriesSeriesDescriptionResponse*
+Arena::CreateMaybeMessage< ::osirixgrpc::DicomSeriesSeriesDescriptionResponse >(Arena* arena) {
   return Arena::CreateMessageInternal< ::osirixgrpc::DicomSeriesSeriesDescriptionResponse >(arena);
 }
-template<> PROTOBUF_NOINLINE ::osirixgrpc::DicomSeriesModalityResponse* Arena::CreateMaybeMessage< ::osirixgrpc::DicomSeriesModalityResponse >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::osirixgrpc::DicomSeriesModalityResponse*
+Arena::CreateMaybeMessage< ::osirixgrpc::DicomSeriesModalityResponse >(Arena* arena) {
   return Arena::CreateMessageInternal< ::osirixgrpc::DicomSeriesModalityResponse >(arena);
 }
-template<> PROTOBUF_NOINLINE ::osirixgrpc::DicomSeriesNameResponse* Arena::CreateMaybeMessage< ::osirixgrpc::DicomSeriesNameResponse >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::osirixgrpc::DicomSeriesNameResponse*
+Arena::CreateMaybeMessage< ::osirixgrpc::DicomSeriesNameResponse >(Arena* arena) {
   return Arena::CreateMessageInternal< ::osirixgrpc::DicomSeriesNameResponse >(arena);
 }
-template<> PROTOBUF_NOINLINE ::osirixgrpc::DicomSeriesNumberOfImagesResponse* Arena::CreateMaybeMessage< ::osirixgrpc::DicomSeriesNumberOfImagesResponse >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::osirixgrpc::DicomSeriesNumberOfImagesResponse*
+Arena::CreateMaybeMessage< ::osirixgrpc::DicomSeriesNumberOfImagesResponse >(Arena* arena) {
   return Arena::CreateMessageInternal< ::osirixgrpc::DicomSeriesNumberOfImagesResponse >(arena);
 }
-template<> PROTOBUF_NOINLINE ::osirixgrpc::DicomSeriesDateResponse* Arena::CreateMaybeMessage< ::osirixgrpc::DicomSeriesDateResponse >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::osirixgrpc::DicomSeriesDateResponse*
+Arena::CreateMaybeMessage< ::osirixgrpc::DicomSeriesDateResponse >(Arena* arena) {
   return Arena::CreateMessageInternal< ::osirixgrpc::DicomSeriesDateResponse >(arena);
 }
 PROTOBUF_NAMESPACE_CLOSE
-
 // @@protoc_insertion_point(global_scope)
-#include <google/protobuf/port_undef.inc>
+#include "google/protobuf/port_undef.inc"

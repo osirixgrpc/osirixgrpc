@@ -4,9 +4,8 @@
 """Generated protocol buffer code."""
 from google.protobuf import descriptor as _descriptor
 from google.protobuf import descriptor_pool as _descriptor_pool
-from google.protobuf import message as _message
-from google.protobuf import reflection as _reflection
 from google.protobuf import symbol_database as _symbol_database
+from google.protobuf.internal import builder as _builder
 # @@protoc_insertion_point(imports)
 
 _sym_db = _symbol_database.Default()
@@ -18,191 +17,46 @@ import types_pb2 as types__pb2
 
 DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\troi.proto\x12\nosirixgrpc\x1a\x0futilities.proto\x1a\x0btypes.proto\"C\n\x0fROIAreaResponse\x12\"\n\x06status\x18\x01 \x01(\x0b\x32\x12.osirixgrpc.Status\x12\x0c\n\x04\x61rea\x18\x02 \x01(\x02\"O\n\x13ROICentroidResponse\x12\"\n\x06status\x18\x01 \x01(\x0b\x32\x12.osirixgrpc.Status\x12\t\n\x01x\x18\x02 \x01(\x02\x12\t\n\x01y\x18\x03 \x01(\x02\"U\n\x0eROIPixResponse\x12\"\n\x06status\x18\x01 \x01(\x0b\x32\x12.osirixgrpc.Status\x12\x1f\n\x03pix\x18\x02 \x01(\x0b\x32\x12.osirixgrpc.DCMPix\"C\n\x0fROINameResponse\x12\"\n\x06status\x18\x01 \x01(\x0b\x32\x12.osirixgrpc.Status\x12\x0c\n\x04name\x18\x02 \x01(\t\"W\n\x10ROIColorResponse\x12\"\n\x06status\x18\x01 \x01(\x0b\x32\x12.osirixgrpc.Status\x12\t\n\x01r\x18\x02 \x01(\x05\x12\t\n\x01g\x18\x03 \x01(\x05\x12\t\n\x01\x62\x18\x04 \x01(\x05\"I\n\x12ROIOpacityResponse\x12\"\n\x06status\x18\x01 \x01(\x0b\x32\x12.osirixgrpc.Status\x12\x0f\n\x07opacity\x18\x02 \x01(\x02\"M\n\x14ROIThicknessResponse\x12\"\n\x06status\x18\x01 \x01(\x0b\x32\x12.osirixgrpc.Status\x12\x11\n\tthickness\x18\x02 \x01(\x02\"\x8f\x01\n\x11ROIPointsResponse\x12\"\n\x06status\x18\x01 \x01(\x0b\x32\x12.osirixgrpc.Status\x12\x35\n\x06points\x18\x02 \x03(\x0b\x32%.osirixgrpc.ROIPointsResponse.Point2D\x1a\x1f\n\x07Point2D\x12\t\n\x01x\x18\x01 \x01(\x02\x12\t\n\x01y\x18\x02 \x01(\x02\"E\n\x10ROIITypeResponse\x12\"\n\x06status\x18\x01 \x01(\x0b\x32\x12.osirixgrpc.Status\x12\r\n\x05itype\x18\x02 \x01(\x05\"W\n\x10ROIRotateRequest\x12\x1c\n\x03roi\x18\x01 \x01(\x0b\x32\x0f.osirixgrpc.ROI\x12\x0f\n\x07\x64\x65grees\x18\x02 \x01(\x02\x12\t\n\x01x\x18\x03 \x01(\x02\x12\t\n\x01y\x18\x04 \x01(\x02\"M\n\x0eROIMoveRequest\x12\x1c\n\x03roi\x18\x01 \x01(\x0b\x32\x0f.osirixgrpc.ROI\x12\x0f\n\x07\x63olumns\x18\x02 \x01(\x05\x12\x0c\n\x04rows\x18\x03 \x01(\x05\"?\n\x11ROISetNameRequest\x12\x1c\n\x03roi\x18\x01 \x01(\x0b\x32\x0f.osirixgrpc.ROI\x12\x0c\n\x04name\x18\x02 \x01(\t\"S\n\x12ROISetColorRequest\x12\x1c\n\x03roi\x18\x01 \x01(\x0b\x32\x0f.osirixgrpc.ROI\x12\t\n\x01r\x18\x02 \x01(\x05\x12\t\n\x01g\x18\x03 \x01(\x05\x12\t\n\x01\x62\x18\x04 \x01(\x05\"E\n\x14ROISetOpacityRequest\x12\x1c\n\x03roi\x18\x01 \x01(\x0b\x32\x0f.osirixgrpc.ROI\x12\x0f\n\x07opacity\x18\x02 \x01(\x02\"I\n\x16ROISetThicknessRequest\x12\x1c\n\x03roi\x18\x01 \x01(\x0b\x32\x0f.osirixgrpc.ROI\x12\x11\n\tthickness\x18\x02 \x01(\x02\"\x8d\x01\n\x13ROISetPointsRequest\x12\x1c\n\x03roi\x18\x01 \x01(\x0b\x32\x0f.osirixgrpc.ROI\x12\x37\n\x06points\x18\x02 \x03(\x0b\x32\'.osirixgrpc.ROISetPointsRequest.Point2D\x1a\x1f\n\x07Point2D\x12\t\n\x01x\x18\x01 \x01(\x02\x12\t\n\x01y\x18\x02 \x01(\x02\x62\x06proto3')
 
-
-
-_ROIAREARESPONSE = DESCRIPTOR.message_types_by_name['ROIAreaResponse']
-_ROICENTROIDRESPONSE = DESCRIPTOR.message_types_by_name['ROICentroidResponse']
-_ROIPIXRESPONSE = DESCRIPTOR.message_types_by_name['ROIPixResponse']
-_ROINAMERESPONSE = DESCRIPTOR.message_types_by_name['ROINameResponse']
-_ROICOLORRESPONSE = DESCRIPTOR.message_types_by_name['ROIColorResponse']
-_ROIOPACITYRESPONSE = DESCRIPTOR.message_types_by_name['ROIOpacityResponse']
-_ROITHICKNESSRESPONSE = DESCRIPTOR.message_types_by_name['ROIThicknessResponse']
-_ROIPOINTSRESPONSE = DESCRIPTOR.message_types_by_name['ROIPointsResponse']
-_ROIPOINTSRESPONSE_POINT2D = _ROIPOINTSRESPONSE.nested_types_by_name['Point2D']
-_ROIITYPERESPONSE = DESCRIPTOR.message_types_by_name['ROIITypeResponse']
-_ROIROTATEREQUEST = DESCRIPTOR.message_types_by_name['ROIRotateRequest']
-_ROIMOVEREQUEST = DESCRIPTOR.message_types_by_name['ROIMoveRequest']
-_ROISETNAMEREQUEST = DESCRIPTOR.message_types_by_name['ROISetNameRequest']
-_ROISETCOLORREQUEST = DESCRIPTOR.message_types_by_name['ROISetColorRequest']
-_ROISETOPACITYREQUEST = DESCRIPTOR.message_types_by_name['ROISetOpacityRequest']
-_ROISETTHICKNESSREQUEST = DESCRIPTOR.message_types_by_name['ROISetThicknessRequest']
-_ROISETPOINTSREQUEST = DESCRIPTOR.message_types_by_name['ROISetPointsRequest']
-_ROISETPOINTSREQUEST_POINT2D = _ROISETPOINTSREQUEST.nested_types_by_name['Point2D']
-ROIAreaResponse = _reflection.GeneratedProtocolMessageType('ROIAreaResponse', (_message.Message,), {
-  'DESCRIPTOR' : _ROIAREARESPONSE,
-  '__module__' : 'roi_pb2'
-  # @@protoc_insertion_point(class_scope:osirixgrpc.ROIAreaResponse)
-  })
-_sym_db.RegisterMessage(ROIAreaResponse)
-
-ROICentroidResponse = _reflection.GeneratedProtocolMessageType('ROICentroidResponse', (_message.Message,), {
-  'DESCRIPTOR' : _ROICENTROIDRESPONSE,
-  '__module__' : 'roi_pb2'
-  # @@protoc_insertion_point(class_scope:osirixgrpc.ROICentroidResponse)
-  })
-_sym_db.RegisterMessage(ROICentroidResponse)
-
-ROIPixResponse = _reflection.GeneratedProtocolMessageType('ROIPixResponse', (_message.Message,), {
-  'DESCRIPTOR' : _ROIPIXRESPONSE,
-  '__module__' : 'roi_pb2'
-  # @@protoc_insertion_point(class_scope:osirixgrpc.ROIPixResponse)
-  })
-_sym_db.RegisterMessage(ROIPixResponse)
-
-ROINameResponse = _reflection.GeneratedProtocolMessageType('ROINameResponse', (_message.Message,), {
-  'DESCRIPTOR' : _ROINAMERESPONSE,
-  '__module__' : 'roi_pb2'
-  # @@protoc_insertion_point(class_scope:osirixgrpc.ROINameResponse)
-  })
-_sym_db.RegisterMessage(ROINameResponse)
-
-ROIColorResponse = _reflection.GeneratedProtocolMessageType('ROIColorResponse', (_message.Message,), {
-  'DESCRIPTOR' : _ROICOLORRESPONSE,
-  '__module__' : 'roi_pb2'
-  # @@protoc_insertion_point(class_scope:osirixgrpc.ROIColorResponse)
-  })
-_sym_db.RegisterMessage(ROIColorResponse)
-
-ROIOpacityResponse = _reflection.GeneratedProtocolMessageType('ROIOpacityResponse', (_message.Message,), {
-  'DESCRIPTOR' : _ROIOPACITYRESPONSE,
-  '__module__' : 'roi_pb2'
-  # @@protoc_insertion_point(class_scope:osirixgrpc.ROIOpacityResponse)
-  })
-_sym_db.RegisterMessage(ROIOpacityResponse)
-
-ROIThicknessResponse = _reflection.GeneratedProtocolMessageType('ROIThicknessResponse', (_message.Message,), {
-  'DESCRIPTOR' : _ROITHICKNESSRESPONSE,
-  '__module__' : 'roi_pb2'
-  # @@protoc_insertion_point(class_scope:osirixgrpc.ROIThicknessResponse)
-  })
-_sym_db.RegisterMessage(ROIThicknessResponse)
-
-ROIPointsResponse = _reflection.GeneratedProtocolMessageType('ROIPointsResponse', (_message.Message,), {
-
-  'Point2D' : _reflection.GeneratedProtocolMessageType('Point2D', (_message.Message,), {
-    'DESCRIPTOR' : _ROIPOINTSRESPONSE_POINT2D,
-    '__module__' : 'roi_pb2'
-    # @@protoc_insertion_point(class_scope:osirixgrpc.ROIPointsResponse.Point2D)
-    })
-  ,
-  'DESCRIPTOR' : _ROIPOINTSRESPONSE,
-  '__module__' : 'roi_pb2'
-  # @@protoc_insertion_point(class_scope:osirixgrpc.ROIPointsResponse)
-  })
-_sym_db.RegisterMessage(ROIPointsResponse)
-_sym_db.RegisterMessage(ROIPointsResponse.Point2D)
-
-ROIITypeResponse = _reflection.GeneratedProtocolMessageType('ROIITypeResponse', (_message.Message,), {
-  'DESCRIPTOR' : _ROIITYPERESPONSE,
-  '__module__' : 'roi_pb2'
-  # @@protoc_insertion_point(class_scope:osirixgrpc.ROIITypeResponse)
-  })
-_sym_db.RegisterMessage(ROIITypeResponse)
-
-ROIRotateRequest = _reflection.GeneratedProtocolMessageType('ROIRotateRequest', (_message.Message,), {
-  'DESCRIPTOR' : _ROIROTATEREQUEST,
-  '__module__' : 'roi_pb2'
-  # @@protoc_insertion_point(class_scope:osirixgrpc.ROIRotateRequest)
-  })
-_sym_db.RegisterMessage(ROIRotateRequest)
-
-ROIMoveRequest = _reflection.GeneratedProtocolMessageType('ROIMoveRequest', (_message.Message,), {
-  'DESCRIPTOR' : _ROIMOVEREQUEST,
-  '__module__' : 'roi_pb2'
-  # @@protoc_insertion_point(class_scope:osirixgrpc.ROIMoveRequest)
-  })
-_sym_db.RegisterMessage(ROIMoveRequest)
-
-ROISetNameRequest = _reflection.GeneratedProtocolMessageType('ROISetNameRequest', (_message.Message,), {
-  'DESCRIPTOR' : _ROISETNAMEREQUEST,
-  '__module__' : 'roi_pb2'
-  # @@protoc_insertion_point(class_scope:osirixgrpc.ROISetNameRequest)
-  })
-_sym_db.RegisterMessage(ROISetNameRequest)
-
-ROISetColorRequest = _reflection.GeneratedProtocolMessageType('ROISetColorRequest', (_message.Message,), {
-  'DESCRIPTOR' : _ROISETCOLORREQUEST,
-  '__module__' : 'roi_pb2'
-  # @@protoc_insertion_point(class_scope:osirixgrpc.ROISetColorRequest)
-  })
-_sym_db.RegisterMessage(ROISetColorRequest)
-
-ROISetOpacityRequest = _reflection.GeneratedProtocolMessageType('ROISetOpacityRequest', (_message.Message,), {
-  'DESCRIPTOR' : _ROISETOPACITYREQUEST,
-  '__module__' : 'roi_pb2'
-  # @@protoc_insertion_point(class_scope:osirixgrpc.ROISetOpacityRequest)
-  })
-_sym_db.RegisterMessage(ROISetOpacityRequest)
-
-ROISetThicknessRequest = _reflection.GeneratedProtocolMessageType('ROISetThicknessRequest', (_message.Message,), {
-  'DESCRIPTOR' : _ROISETTHICKNESSREQUEST,
-  '__module__' : 'roi_pb2'
-  # @@protoc_insertion_point(class_scope:osirixgrpc.ROISetThicknessRequest)
-  })
-_sym_db.RegisterMessage(ROISetThicknessRequest)
-
-ROISetPointsRequest = _reflection.GeneratedProtocolMessageType('ROISetPointsRequest', (_message.Message,), {
-
-  'Point2D' : _reflection.GeneratedProtocolMessageType('Point2D', (_message.Message,), {
-    'DESCRIPTOR' : _ROISETPOINTSREQUEST_POINT2D,
-    '__module__' : 'roi_pb2'
-    # @@protoc_insertion_point(class_scope:osirixgrpc.ROISetPointsRequest.Point2D)
-    })
-  ,
-  'DESCRIPTOR' : _ROISETPOINTSREQUEST,
-  '__module__' : 'roi_pb2'
-  # @@protoc_insertion_point(class_scope:osirixgrpc.ROISetPointsRequest)
-  })
-_sym_db.RegisterMessage(ROISetPointsRequest)
-_sym_db.RegisterMessage(ROISetPointsRequest.Point2D)
-
+_globals = globals()
+_builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
+_builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'roi_pb2', _globals)
 if _descriptor._USE_C_DESCRIPTORS == False:
 
   DESCRIPTOR._options = None
-  _ROIAREARESPONSE._serialized_start=55
-  _ROIAREARESPONSE._serialized_end=122
-  _ROICENTROIDRESPONSE._serialized_start=124
-  _ROICENTROIDRESPONSE._serialized_end=203
-  _ROIPIXRESPONSE._serialized_start=205
-  _ROIPIXRESPONSE._serialized_end=290
-  _ROINAMERESPONSE._serialized_start=292
-  _ROINAMERESPONSE._serialized_end=359
-  _ROICOLORRESPONSE._serialized_start=361
-  _ROICOLORRESPONSE._serialized_end=448
-  _ROIOPACITYRESPONSE._serialized_start=450
-  _ROIOPACITYRESPONSE._serialized_end=523
-  _ROITHICKNESSRESPONSE._serialized_start=525
-  _ROITHICKNESSRESPONSE._serialized_end=602
-  _ROIPOINTSRESPONSE._serialized_start=605
-  _ROIPOINTSRESPONSE._serialized_end=748
-  _ROIPOINTSRESPONSE_POINT2D._serialized_start=717
-  _ROIPOINTSRESPONSE_POINT2D._serialized_end=748
-  _ROIITYPERESPONSE._serialized_start=750
-  _ROIITYPERESPONSE._serialized_end=819
-  _ROIROTATEREQUEST._serialized_start=821
-  _ROIROTATEREQUEST._serialized_end=908
-  _ROIMOVEREQUEST._serialized_start=910
-  _ROIMOVEREQUEST._serialized_end=987
-  _ROISETNAMEREQUEST._serialized_start=989
-  _ROISETNAMEREQUEST._serialized_end=1052
-  _ROISETCOLORREQUEST._serialized_start=1054
-  _ROISETCOLORREQUEST._serialized_end=1137
-  _ROISETOPACITYREQUEST._serialized_start=1139
-  _ROISETOPACITYREQUEST._serialized_end=1208
-  _ROISETTHICKNESSREQUEST._serialized_start=1210
-  _ROISETTHICKNESSREQUEST._serialized_end=1283
-  _ROISETPOINTSREQUEST._serialized_start=1286
-  _ROISETPOINTSREQUEST._serialized_end=1427
-  _ROISETPOINTSREQUEST_POINT2D._serialized_start=717
-  _ROISETPOINTSREQUEST_POINT2D._serialized_end=748
+  _globals['_ROIAREARESPONSE']._serialized_start=55
+  _globals['_ROIAREARESPONSE']._serialized_end=122
+  _globals['_ROICENTROIDRESPONSE']._serialized_start=124
+  _globals['_ROICENTROIDRESPONSE']._serialized_end=203
+  _globals['_ROIPIXRESPONSE']._serialized_start=205
+  _globals['_ROIPIXRESPONSE']._serialized_end=290
+  _globals['_ROINAMERESPONSE']._serialized_start=292
+  _globals['_ROINAMERESPONSE']._serialized_end=359
+  _globals['_ROICOLORRESPONSE']._serialized_start=361
+  _globals['_ROICOLORRESPONSE']._serialized_end=448
+  _globals['_ROIOPACITYRESPONSE']._serialized_start=450
+  _globals['_ROIOPACITYRESPONSE']._serialized_end=523
+  _globals['_ROITHICKNESSRESPONSE']._serialized_start=525
+  _globals['_ROITHICKNESSRESPONSE']._serialized_end=602
+  _globals['_ROIPOINTSRESPONSE']._serialized_start=605
+  _globals['_ROIPOINTSRESPONSE']._serialized_end=748
+  _globals['_ROIPOINTSRESPONSE_POINT2D']._serialized_start=717
+  _globals['_ROIPOINTSRESPONSE_POINT2D']._serialized_end=748
+  _globals['_ROIITYPERESPONSE']._serialized_start=750
+  _globals['_ROIITYPERESPONSE']._serialized_end=819
+  _globals['_ROIROTATEREQUEST']._serialized_start=821
+  _globals['_ROIROTATEREQUEST']._serialized_end=908
+  _globals['_ROIMOVEREQUEST']._serialized_start=910
+  _globals['_ROIMOVEREQUEST']._serialized_end=987
+  _globals['_ROISETNAMEREQUEST']._serialized_start=989
+  _globals['_ROISETNAMEREQUEST']._serialized_end=1052
+  _globals['_ROISETCOLORREQUEST']._serialized_start=1054
+  _globals['_ROISETCOLORREQUEST']._serialized_end=1137
+  _globals['_ROISETOPACITYREQUEST']._serialized_start=1139
+  _globals['_ROISETOPACITYREQUEST']._serialized_end=1208
+  _globals['_ROISETTHICKNESSREQUEST']._serialized_start=1210
+  _globals['_ROISETTHICKNESSREQUEST']._serialized_end=1283
+  _globals['_ROISETPOINTSREQUEST']._serialized_start=1286
+  _globals['_ROISETPOINTSREQUEST']._serialized_end=1427
+  _globals['_ROISETPOINTSREQUEST_POINT2D']._serialized_start=717
+  _globals['_ROISETPOINTSREQUEST_POINT2D']._serialized_end=748
 # @@protoc_insertion_point(module_scope)

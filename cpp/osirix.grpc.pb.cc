@@ -6,19 +6,19 @@
 #include "osirix.grpc.pb.h"
 
 #include <functional>
-#include <grpcpp/impl/codegen/async_stream.h>
-#include <grpcpp/impl/codegen/async_unary_call.h>
-#include <grpcpp/impl/codegen/channel_interface.h>
-#include <grpcpp/impl/codegen/client_unary_call.h>
-#include <grpcpp/impl/codegen/client_callback.h>
-#include <grpcpp/impl/codegen/message_allocator.h>
-#include <grpcpp/impl/codegen/method_handler.h>
-#include <grpcpp/impl/codegen/rpc_service_method.h>
-#include <grpcpp/impl/codegen/server_callback.h>
-#include <grpcpp/impl/codegen/server_callback_handlers.h>
-#include <grpcpp/impl/codegen/server_context.h>
-#include <grpcpp/impl/codegen/service_type.h>
-#include <grpcpp/impl/codegen/sync_stream.h>
+#include <grpcpp/support/async_stream.h>
+#include <grpcpp/support/async_unary_call.h>
+#include <grpcpp/impl/channel_interface.h>
+#include <grpcpp/impl/client_unary_call.h>
+#include <grpcpp/support/client_callback.h>
+#include <grpcpp/support/message_allocator.h>
+#include <grpcpp/support/method_handler.h>
+#include <grpcpp/impl/rpc_service_method.h>
+#include <grpcpp/support/server_callback.h>
+#include <grpcpp/impl/server_callback_handlers.h>
+#include <grpcpp/server_context.h>
+#include <grpcpp/impl/service_type.h>
+#include <grpcpp/support/sync_stream.h>
 namespace osirixgrpc {
 
 static const char* OsiriXService_method_names[] = {
@@ -158,154 +158,154 @@ static const char* OsiriXService_method_names[] = {
 
 std::unique_ptr< OsiriXService::Stub> OsiriXService::NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options) {
   (void)options;
-  std::unique_ptr< OsiriXService::Stub> stub(new OsiriXService::Stub(channel));
+  std::unique_ptr< OsiriXService::Stub> stub(new OsiriXService::Stub(channel, options));
   return stub;
 }
 
-OsiriXService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel)
-  : channel_(channel), rpcmethod_OsirixCurrentBrowser_(OsiriXService_method_names[0], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_OsirixFrontmostViewer_(OsiriXService_method_names[1], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_OsirixDisplayed2DViewers_(OsiriXService_method_names[2], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_OsirixFrontmostVRController_(OsiriXService_method_names[3], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_OsirixDisplayedVRControllers_(OsiriXService_method_names[4], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_ROIFlipHorizontally_(OsiriXService_method_names[5], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_ROIFlipVertically_(OsiriXService_method_names[6], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_ROIArea_(OsiriXService_method_names[7], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_ROICentroid_(OsiriXService_method_names[8], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_ROIRotate_(OsiriXService_method_names[9], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_ROIMove_(OsiriXService_method_names[10], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_ROIPix_(OsiriXService_method_names[11], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_ROIName_(OsiriXService_method_names[12], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_ROIIType_(OsiriXService_method_names[13], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_ROISetName_(OsiriXService_method_names[14], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_ROIColor_(OsiriXService_method_names[15], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_ROISetColor_(OsiriXService_method_names[16], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_ROIOpacity_(OsiriXService_method_names[17], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_ROISetOpacity_(OsiriXService_method_names[18], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_ROIThickness_(OsiriXService_method_names[19], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_ROISetThickness_(OsiriXService_method_names[20], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_ROIPoints_(OsiriXService_method_names[21], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_ROISetPoints_(OsiriXService_method_names[22], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_ROIVolumeTexture_(OsiriXService_method_names[23], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_ROIVolumeSetTexture_(OsiriXService_method_names[24], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_ROIVolumeVolume_(OsiriXService_method_names[25], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_ROIVolumeColor_(OsiriXService_method_names[26], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_ROIVolumeSetColor_(OsiriXService_method_names[27], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_ROIVolumeOpacity_(OsiriXService_method_names[28], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_ROIVolumeSetOpacity_(OsiriXService_method_names[29], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_ROIVolumeFactor_(OsiriXService_method_names[30], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_ROIVolumeSetFactor_(OsiriXService_method_names[31], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_ROIVolumeName_(OsiriXService_method_names[32], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_ROIVolumeVisible_(OsiriXService_method_names[33], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_DCMPixConvertToRGB_(OsiriXService_method_names[34], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_DCMPixConvertToBW_(OsiriXService_method_names[35], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_DCMPixIsRGB_(OsiriXService_method_names[36], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_DCMPixComputeROI_(OsiriXService_method_names[37], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_DCMPixROIValues_(OsiriXService_method_names[38], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_DCMPixShape_(OsiriXService_method_names[39], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_DCMPixSpacing_(OsiriXService_method_names[40], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_DCMPixOrigin_(OsiriXService_method_names[41], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_DCMPixOrientation_(OsiriXService_method_names[42], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_DCMPixSliceLocation_(OsiriXService_method_names[43], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_DCMPixSourceFile_(OsiriXService_method_names[44], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_DCMPixImage_(OsiriXService_method_names[45], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_DCMPixSetImage_(OsiriXService_method_names[46], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_DCMPixGetMapFromROI_(OsiriXService_method_names[47], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_DCMPixDicomImage_(OsiriXService_method_names[48], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_DCMPixDicomSeries_(OsiriXService_method_names[49], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_DCMPixDicomStudy_(OsiriXService_method_names[50], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_VRControllerViewer2D_(OsiriXService_method_names[51], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_VRControllerBlendingController_(OsiriXService_method_names[52], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_VRControllerStyle_(OsiriXService_method_names[53], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_VRControllerTitle_(OsiriXService_method_names[54], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_VRControllerROIVolumes_(OsiriXService_method_names[55], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_VRControllerRenderingMode_(OsiriXService_method_names[56], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_VRControllerSetRenderingMode_(OsiriXService_method_names[57], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_VRControllerWLWW_(OsiriXService_method_names[58], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_VRControllerSetWLWW_(OsiriXService_method_names[59], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_VRControllerHideROIVolume_(OsiriXService_method_names[60], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_VRControllerDisplayROIVolume_(OsiriXService_method_names[61], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_VRControllerNeedsDisplayUpdate_(OsiriXService_method_names[62], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_ViewerControllerCloseViewer_(OsiriXService_method_names[63], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_ViewerControllerPixList_(OsiriXService_method_names[64], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_ViewerControllerNeedsDisplayUpdate_(OsiriXService_method_names[65], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_ViewerControllerROIList_(OsiriXService_method_names[66], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_ViewerControllerNewROI_(OsiriXService_method_names[67], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_ViewerControllerCurDCM_(OsiriXService_method_names[68], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_ViewerControllerROIsWithName_(OsiriXService_method_names[69], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_ViewerControllerSelectedROIs_(OsiriXService_method_names[70], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_ViewerControllerIsDataVolumic_(OsiriXService_method_names[71], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_ViewerControllerCopyViewerWindow_(OsiriXService_method_names[72], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_ViewerControllerResampleViewerController_(OsiriXService_method_names[73], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_ViewerControllerBlendingController_(OsiriXService_method_names[74], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_ViewerControllerVRControllers_(OsiriXService_method_names[75], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_ViewerControllerTitle_(OsiriXService_method_names[76], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_ViewerControllerModality_(OsiriXService_method_names[77], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_ViewerControllerMovieIdx_(OsiriXService_method_names[78], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_ViewerControllerSetMovieIdx_(OsiriXService_method_names[79], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_ViewerControllerMaxMovieIdx_(OsiriXService_method_names[80], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_ViewerControllerIdx_(OsiriXService_method_names[81], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_ViewerControllerSetIdx_(OsiriXService_method_names[82], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_ViewerControllerWLWW_(OsiriXService_method_names[83], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_ViewerControllerSetWLWW_(OsiriXService_method_names[84], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_ViewerControllerOpenVRViewerForMode_(OsiriXService_method_names[85], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_BrowserControllerDatabaseSelection_(OsiriXService_method_names[86], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_BrowserControllerCopyFilesIfNeeded_(OsiriXService_method_names[87], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_DicomImageWidth_(OsiriXService_method_names[88], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_DicomImageHeight_(OsiriXService_method_names[89], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_DicomImageSOPInstanceUID_(OsiriXService_method_names[90], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_DicomImageCompletePath_(OsiriXService_method_names[91], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_DicomImageDate_(OsiriXService_method_names[92], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_DicomImageNumberOfFrames_(OsiriXService_method_names[93], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_DicomImageModality_(OsiriXService_method_names[94], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_DicomImageSeries_(OsiriXService_method_names[95], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_DicomImageSliceLocation_(OsiriXService_method_names[96], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_DicomImageInstanceNumber_(OsiriXService_method_names[97], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_DicomSeriesPaths_(OsiriXService_method_names[98], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_DicomSeriesPreviousSeries_(OsiriXService_method_names[99], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_DicomSeriesNextSeries_(OsiriXService_method_names[100], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_DicomSeriesSortedImages_(OsiriXService_method_names[101], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_DicomSeriesStudy_(OsiriXService_method_names[102], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_DicomSeriesImages_(OsiriXService_method_names[103], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_DicomSeriesSeriesInstanceUID_(OsiriXService_method_names[104], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_DicomSeriesSeriesSOPClassUID_(OsiriXService_method_names[105], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_DicomSeriesSeriesDescription_(OsiriXService_method_names[106], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_DicomSeriesModality_(OsiriXService_method_names[107], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_DicomSeriesName_(OsiriXService_method_names[108], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_DicomSeriesDate_(OsiriXService_method_names[109], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_DicomSeriesNumberOfImages_(OsiriXService_method_names[110], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_DicomStudyPaths_(OsiriXService_method_names[111], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_DicomStudyImages_(OsiriXService_method_names[112], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_DicomStudyModalities_(OsiriXService_method_names[113], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_DicomStudyNoFiles_(OsiriXService_method_names[114], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_DicomStudyRawNoFiles_(OsiriXService_method_names[115], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_DicomStudyNoFilesExcludingMultiFrames_(OsiriXService_method_names[116], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_DicomStudyNumberOfImages_(OsiriXService_method_names[117], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_DicomStudySeries_(OsiriXService_method_names[118], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_DicomStudyName_(OsiriXService_method_names[119], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_DicomStudyDate_(OsiriXService_method_names[120], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_DicomStudyDateAdded_(OsiriXService_method_names[121], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_DicomStudyDateOfBirth_(OsiriXService_method_names[122], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_DicomStudyInstitutionName_(OsiriXService_method_names[123], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_DicomStudyModality_(OsiriXService_method_names[124], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_DicomStudyPatientID_(OsiriXService_method_names[125], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_DicomStudyPatientUID_(OsiriXService_method_names[126], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_DicomStudyPatientSex_(OsiriXService_method_names[127], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_DicomStudyPerformingPhysician_(OsiriXService_method_names[128], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_DicomStudyReferringPhysician_(OsiriXService_method_names[129], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_DicomStudyStudyInstanceUID_(OsiriXService_method_names[130], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_DicomStudyStudyName_(OsiriXService_method_names[131], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+OsiriXService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options)
+  : channel_(channel), rpcmethod_OsirixCurrentBrowser_(OsiriXService_method_names[0], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_OsirixFrontmostViewer_(OsiriXService_method_names[1], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_OsirixDisplayed2DViewers_(OsiriXService_method_names[2], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_OsirixFrontmostVRController_(OsiriXService_method_names[3], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_OsirixDisplayedVRControllers_(OsiriXService_method_names[4], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_ROIFlipHorizontally_(OsiriXService_method_names[5], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_ROIFlipVertically_(OsiriXService_method_names[6], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_ROIArea_(OsiriXService_method_names[7], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_ROICentroid_(OsiriXService_method_names[8], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_ROIRotate_(OsiriXService_method_names[9], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_ROIMove_(OsiriXService_method_names[10], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_ROIPix_(OsiriXService_method_names[11], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_ROIName_(OsiriXService_method_names[12], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_ROIIType_(OsiriXService_method_names[13], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_ROISetName_(OsiriXService_method_names[14], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_ROIColor_(OsiriXService_method_names[15], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_ROISetColor_(OsiriXService_method_names[16], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_ROIOpacity_(OsiriXService_method_names[17], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_ROISetOpacity_(OsiriXService_method_names[18], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_ROIThickness_(OsiriXService_method_names[19], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_ROISetThickness_(OsiriXService_method_names[20], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_ROIPoints_(OsiriXService_method_names[21], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_ROISetPoints_(OsiriXService_method_names[22], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_ROIVolumeTexture_(OsiriXService_method_names[23], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_ROIVolumeSetTexture_(OsiriXService_method_names[24], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_ROIVolumeVolume_(OsiriXService_method_names[25], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_ROIVolumeColor_(OsiriXService_method_names[26], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_ROIVolumeSetColor_(OsiriXService_method_names[27], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_ROIVolumeOpacity_(OsiriXService_method_names[28], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_ROIVolumeSetOpacity_(OsiriXService_method_names[29], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_ROIVolumeFactor_(OsiriXService_method_names[30], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_ROIVolumeSetFactor_(OsiriXService_method_names[31], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_ROIVolumeName_(OsiriXService_method_names[32], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_ROIVolumeVisible_(OsiriXService_method_names[33], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_DCMPixConvertToRGB_(OsiriXService_method_names[34], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_DCMPixConvertToBW_(OsiriXService_method_names[35], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_DCMPixIsRGB_(OsiriXService_method_names[36], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_DCMPixComputeROI_(OsiriXService_method_names[37], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_DCMPixROIValues_(OsiriXService_method_names[38], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_DCMPixShape_(OsiriXService_method_names[39], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_DCMPixSpacing_(OsiriXService_method_names[40], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_DCMPixOrigin_(OsiriXService_method_names[41], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_DCMPixOrientation_(OsiriXService_method_names[42], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_DCMPixSliceLocation_(OsiriXService_method_names[43], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_DCMPixSourceFile_(OsiriXService_method_names[44], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_DCMPixImage_(OsiriXService_method_names[45], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_DCMPixSetImage_(OsiriXService_method_names[46], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_DCMPixGetMapFromROI_(OsiriXService_method_names[47], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_DCMPixDicomImage_(OsiriXService_method_names[48], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_DCMPixDicomSeries_(OsiriXService_method_names[49], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_DCMPixDicomStudy_(OsiriXService_method_names[50], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_VRControllerViewer2D_(OsiriXService_method_names[51], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_VRControllerBlendingController_(OsiriXService_method_names[52], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_VRControllerStyle_(OsiriXService_method_names[53], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_VRControllerTitle_(OsiriXService_method_names[54], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_VRControllerROIVolumes_(OsiriXService_method_names[55], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_VRControllerRenderingMode_(OsiriXService_method_names[56], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_VRControllerSetRenderingMode_(OsiriXService_method_names[57], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_VRControllerWLWW_(OsiriXService_method_names[58], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_VRControllerSetWLWW_(OsiriXService_method_names[59], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_VRControllerHideROIVolume_(OsiriXService_method_names[60], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_VRControllerDisplayROIVolume_(OsiriXService_method_names[61], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_VRControllerNeedsDisplayUpdate_(OsiriXService_method_names[62], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_ViewerControllerCloseViewer_(OsiriXService_method_names[63], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_ViewerControllerPixList_(OsiriXService_method_names[64], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_ViewerControllerNeedsDisplayUpdate_(OsiriXService_method_names[65], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_ViewerControllerROIList_(OsiriXService_method_names[66], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_ViewerControllerNewROI_(OsiriXService_method_names[67], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_ViewerControllerCurDCM_(OsiriXService_method_names[68], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_ViewerControllerROIsWithName_(OsiriXService_method_names[69], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_ViewerControllerSelectedROIs_(OsiriXService_method_names[70], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_ViewerControllerIsDataVolumic_(OsiriXService_method_names[71], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_ViewerControllerCopyViewerWindow_(OsiriXService_method_names[72], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_ViewerControllerResampleViewerController_(OsiriXService_method_names[73], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_ViewerControllerBlendingController_(OsiriXService_method_names[74], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_ViewerControllerVRControllers_(OsiriXService_method_names[75], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_ViewerControllerTitle_(OsiriXService_method_names[76], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_ViewerControllerModality_(OsiriXService_method_names[77], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_ViewerControllerMovieIdx_(OsiriXService_method_names[78], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_ViewerControllerSetMovieIdx_(OsiriXService_method_names[79], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_ViewerControllerMaxMovieIdx_(OsiriXService_method_names[80], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_ViewerControllerIdx_(OsiriXService_method_names[81], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_ViewerControllerSetIdx_(OsiriXService_method_names[82], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_ViewerControllerWLWW_(OsiriXService_method_names[83], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_ViewerControllerSetWLWW_(OsiriXService_method_names[84], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_ViewerControllerOpenVRViewerForMode_(OsiriXService_method_names[85], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_BrowserControllerDatabaseSelection_(OsiriXService_method_names[86], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_BrowserControllerCopyFilesIfNeeded_(OsiriXService_method_names[87], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_DicomImageWidth_(OsiriXService_method_names[88], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_DicomImageHeight_(OsiriXService_method_names[89], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_DicomImageSOPInstanceUID_(OsiriXService_method_names[90], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_DicomImageCompletePath_(OsiriXService_method_names[91], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_DicomImageDate_(OsiriXService_method_names[92], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_DicomImageNumberOfFrames_(OsiriXService_method_names[93], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_DicomImageModality_(OsiriXService_method_names[94], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_DicomImageSeries_(OsiriXService_method_names[95], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_DicomImageSliceLocation_(OsiriXService_method_names[96], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_DicomImageInstanceNumber_(OsiriXService_method_names[97], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_DicomSeriesPaths_(OsiriXService_method_names[98], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_DicomSeriesPreviousSeries_(OsiriXService_method_names[99], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_DicomSeriesNextSeries_(OsiriXService_method_names[100], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_DicomSeriesSortedImages_(OsiriXService_method_names[101], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_DicomSeriesStudy_(OsiriXService_method_names[102], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_DicomSeriesImages_(OsiriXService_method_names[103], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_DicomSeriesSeriesInstanceUID_(OsiriXService_method_names[104], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_DicomSeriesSeriesSOPClassUID_(OsiriXService_method_names[105], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_DicomSeriesSeriesDescription_(OsiriXService_method_names[106], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_DicomSeriesModality_(OsiriXService_method_names[107], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_DicomSeriesName_(OsiriXService_method_names[108], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_DicomSeriesDate_(OsiriXService_method_names[109], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_DicomSeriesNumberOfImages_(OsiriXService_method_names[110], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_DicomStudyPaths_(OsiriXService_method_names[111], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_DicomStudyImages_(OsiriXService_method_names[112], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_DicomStudyModalities_(OsiriXService_method_names[113], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_DicomStudyNoFiles_(OsiriXService_method_names[114], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_DicomStudyRawNoFiles_(OsiriXService_method_names[115], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_DicomStudyNoFilesExcludingMultiFrames_(OsiriXService_method_names[116], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_DicomStudyNumberOfImages_(OsiriXService_method_names[117], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_DicomStudySeries_(OsiriXService_method_names[118], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_DicomStudyName_(OsiriXService_method_names[119], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_DicomStudyDate_(OsiriXService_method_names[120], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_DicomStudyDateAdded_(OsiriXService_method_names[121], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_DicomStudyDateOfBirth_(OsiriXService_method_names[122], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_DicomStudyInstitutionName_(OsiriXService_method_names[123], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_DicomStudyModality_(OsiriXService_method_names[124], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_DicomStudyPatientID_(OsiriXService_method_names[125], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_DicomStudyPatientUID_(OsiriXService_method_names[126], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_DicomStudyPatientSex_(OsiriXService_method_names[127], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_DicomStudyPerformingPhysician_(OsiriXService_method_names[128], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_DicomStudyReferringPhysician_(OsiriXService_method_names[129], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_DicomStudyStudyInstanceUID_(OsiriXService_method_names[130], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_DicomStudyStudyName_(OsiriXService_method_names[131], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   {}
 
 ::grpc::Status OsiriXService::Stub::OsirixCurrentBrowser(::grpc::ClientContext* context, const ::osirixgrpc::Empty& request, ::osirixgrpc::OsirixCurrentBrowserResponse* response) {
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::Empty, ::osirixgrpc::OsirixCurrentBrowserResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_OsirixCurrentBrowser_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::OsirixCurrentBrowser(::grpc::ClientContext* context, const ::osirixgrpc::Empty* request, ::osirixgrpc::OsirixCurrentBrowserResponse* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::OsirixCurrentBrowser(::grpc::ClientContext* context, const ::osirixgrpc::Empty* request, ::osirixgrpc::OsirixCurrentBrowserResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::Empty, ::osirixgrpc::OsirixCurrentBrowserResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_OsirixCurrentBrowser_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::OsirixCurrentBrowser(::grpc::ClientContext* context, const ::osirixgrpc::Empty* request, ::osirixgrpc::OsirixCurrentBrowserResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::OsirixCurrentBrowser(::grpc::ClientContext* context, const ::osirixgrpc::Empty* request, ::osirixgrpc::OsirixCurrentBrowserResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_OsirixCurrentBrowser_, context, request, response, reactor);
 }
 
@@ -324,11 +324,11 @@ void OsiriXService::Stub::experimental_async::OsirixCurrentBrowser(::grpc::Clien
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::Empty, ::osirixgrpc::OsirixFrontmostViewerResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_OsirixFrontmostViewer_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::OsirixFrontmostViewer(::grpc::ClientContext* context, const ::osirixgrpc::Empty* request, ::osirixgrpc::OsirixFrontmostViewerResponse* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::OsirixFrontmostViewer(::grpc::ClientContext* context, const ::osirixgrpc::Empty* request, ::osirixgrpc::OsirixFrontmostViewerResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::Empty, ::osirixgrpc::OsirixFrontmostViewerResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_OsirixFrontmostViewer_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::OsirixFrontmostViewer(::grpc::ClientContext* context, const ::osirixgrpc::Empty* request, ::osirixgrpc::OsirixFrontmostViewerResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::OsirixFrontmostViewer(::grpc::ClientContext* context, const ::osirixgrpc::Empty* request, ::osirixgrpc::OsirixFrontmostViewerResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_OsirixFrontmostViewer_, context, request, response, reactor);
 }
 
@@ -347,11 +347,11 @@ void OsiriXService::Stub::experimental_async::OsirixFrontmostViewer(::grpc::Clie
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::Empty, ::osirixgrpc::OsirixDisplayed2DViewersResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_OsirixDisplayed2DViewers_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::OsirixDisplayed2DViewers(::grpc::ClientContext* context, const ::osirixgrpc::Empty* request, ::osirixgrpc::OsirixDisplayed2DViewersResponse* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::OsirixDisplayed2DViewers(::grpc::ClientContext* context, const ::osirixgrpc::Empty* request, ::osirixgrpc::OsirixDisplayed2DViewersResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::Empty, ::osirixgrpc::OsirixDisplayed2DViewersResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_OsirixDisplayed2DViewers_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::OsirixDisplayed2DViewers(::grpc::ClientContext* context, const ::osirixgrpc::Empty* request, ::osirixgrpc::OsirixDisplayed2DViewersResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::OsirixDisplayed2DViewers(::grpc::ClientContext* context, const ::osirixgrpc::Empty* request, ::osirixgrpc::OsirixDisplayed2DViewersResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_OsirixDisplayed2DViewers_, context, request, response, reactor);
 }
 
@@ -370,11 +370,11 @@ void OsiriXService::Stub::experimental_async::OsirixDisplayed2DViewers(::grpc::C
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::Empty, ::osirixgrpc::OsirixFrontmostVRControllerResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_OsirixFrontmostVRController_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::OsirixFrontmostVRController(::grpc::ClientContext* context, const ::osirixgrpc::Empty* request, ::osirixgrpc::OsirixFrontmostVRControllerResponse* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::OsirixFrontmostVRController(::grpc::ClientContext* context, const ::osirixgrpc::Empty* request, ::osirixgrpc::OsirixFrontmostVRControllerResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::Empty, ::osirixgrpc::OsirixFrontmostVRControllerResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_OsirixFrontmostVRController_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::OsirixFrontmostVRController(::grpc::ClientContext* context, const ::osirixgrpc::Empty* request, ::osirixgrpc::OsirixFrontmostVRControllerResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::OsirixFrontmostVRController(::grpc::ClientContext* context, const ::osirixgrpc::Empty* request, ::osirixgrpc::OsirixFrontmostVRControllerResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_OsirixFrontmostVRController_, context, request, response, reactor);
 }
 
@@ -393,11 +393,11 @@ void OsiriXService::Stub::experimental_async::OsirixFrontmostVRController(::grpc
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::Empty, ::osirixgrpc::OsirixDisplayedVRControllersResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_OsirixDisplayedVRControllers_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::OsirixDisplayedVRControllers(::grpc::ClientContext* context, const ::osirixgrpc::Empty* request, ::osirixgrpc::OsirixDisplayedVRControllersResponse* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::OsirixDisplayedVRControllers(::grpc::ClientContext* context, const ::osirixgrpc::Empty* request, ::osirixgrpc::OsirixDisplayedVRControllersResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::Empty, ::osirixgrpc::OsirixDisplayedVRControllersResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_OsirixDisplayedVRControllers_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::OsirixDisplayedVRControllers(::grpc::ClientContext* context, const ::osirixgrpc::Empty* request, ::osirixgrpc::OsirixDisplayedVRControllersResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::OsirixDisplayedVRControllers(::grpc::ClientContext* context, const ::osirixgrpc::Empty* request, ::osirixgrpc::OsirixDisplayedVRControllersResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_OsirixDisplayedVRControllers_, context, request, response, reactor);
 }
 
@@ -416,11 +416,11 @@ void OsiriXService::Stub::experimental_async::OsirixDisplayedVRControllers(::grp
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::ROI, ::osirixgrpc::Response, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_ROIFlipHorizontally_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::ROIFlipHorizontally(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::ROIFlipHorizontally(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::ROI, ::osirixgrpc::Response, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ROIFlipHorizontally_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::ROIFlipHorizontally(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::Response* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::ROIFlipHorizontally(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::Response* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ROIFlipHorizontally_, context, request, response, reactor);
 }
 
@@ -439,11 +439,11 @@ void OsiriXService::Stub::experimental_async::ROIFlipHorizontally(::grpc::Client
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::ROI, ::osirixgrpc::Response, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_ROIFlipVertically_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::ROIFlipVertically(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::ROIFlipVertically(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::ROI, ::osirixgrpc::Response, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ROIFlipVertically_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::ROIFlipVertically(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::Response* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::ROIFlipVertically(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::Response* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ROIFlipVertically_, context, request, response, reactor);
 }
 
@@ -462,11 +462,11 @@ void OsiriXService::Stub::experimental_async::ROIFlipVertically(::grpc::ClientCo
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::ROI, ::osirixgrpc::ROIAreaResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_ROIArea_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::ROIArea(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROIAreaResponse* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::ROIArea(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROIAreaResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::ROI, ::osirixgrpc::ROIAreaResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ROIArea_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::ROIArea(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROIAreaResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::ROIArea(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROIAreaResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ROIArea_, context, request, response, reactor);
 }
 
@@ -485,11 +485,11 @@ void OsiriXService::Stub::experimental_async::ROIArea(::grpc::ClientContext* con
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::ROI, ::osirixgrpc::ROICentroidResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_ROICentroid_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::ROICentroid(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROICentroidResponse* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::ROICentroid(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROICentroidResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::ROI, ::osirixgrpc::ROICentroidResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ROICentroid_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::ROICentroid(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROICentroidResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::ROICentroid(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROICentroidResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ROICentroid_, context, request, response, reactor);
 }
 
@@ -508,11 +508,11 @@ void OsiriXService::Stub::experimental_async::ROICentroid(::grpc::ClientContext*
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::ROIRotateRequest, ::osirixgrpc::Response, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_ROIRotate_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::ROIRotate(::grpc::ClientContext* context, const ::osirixgrpc::ROIRotateRequest* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::ROIRotate(::grpc::ClientContext* context, const ::osirixgrpc::ROIRotateRequest* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::ROIRotateRequest, ::osirixgrpc::Response, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ROIRotate_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::ROIRotate(::grpc::ClientContext* context, const ::osirixgrpc::ROIRotateRequest* request, ::osirixgrpc::Response* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::ROIRotate(::grpc::ClientContext* context, const ::osirixgrpc::ROIRotateRequest* request, ::osirixgrpc::Response* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ROIRotate_, context, request, response, reactor);
 }
 
@@ -531,11 +531,11 @@ void OsiriXService::Stub::experimental_async::ROIRotate(::grpc::ClientContext* c
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::ROIMoveRequest, ::osirixgrpc::Response, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_ROIMove_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::ROIMove(::grpc::ClientContext* context, const ::osirixgrpc::ROIMoveRequest* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::ROIMove(::grpc::ClientContext* context, const ::osirixgrpc::ROIMoveRequest* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::ROIMoveRequest, ::osirixgrpc::Response, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ROIMove_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::ROIMove(::grpc::ClientContext* context, const ::osirixgrpc::ROIMoveRequest* request, ::osirixgrpc::Response* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::ROIMove(::grpc::ClientContext* context, const ::osirixgrpc::ROIMoveRequest* request, ::osirixgrpc::Response* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ROIMove_, context, request, response, reactor);
 }
 
@@ -554,11 +554,11 @@ void OsiriXService::Stub::experimental_async::ROIMove(::grpc::ClientContext* con
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::ROI, ::osirixgrpc::ROIPixResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_ROIPix_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::ROIPix(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROIPixResponse* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::ROIPix(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROIPixResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::ROI, ::osirixgrpc::ROIPixResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ROIPix_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::ROIPix(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROIPixResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::ROIPix(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROIPixResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ROIPix_, context, request, response, reactor);
 }
 
@@ -577,11 +577,11 @@ void OsiriXService::Stub::experimental_async::ROIPix(::grpc::ClientContext* cont
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::ROI, ::osirixgrpc::ROINameResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_ROIName_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::ROIName(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROINameResponse* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::ROIName(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROINameResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::ROI, ::osirixgrpc::ROINameResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ROIName_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::ROIName(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROINameResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::ROIName(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROINameResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ROIName_, context, request, response, reactor);
 }
 
@@ -600,11 +600,11 @@ void OsiriXService::Stub::experimental_async::ROIName(::grpc::ClientContext* con
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::ROI, ::osirixgrpc::ROIITypeResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_ROIIType_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::ROIIType(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROIITypeResponse* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::ROIIType(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROIITypeResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::ROI, ::osirixgrpc::ROIITypeResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ROIIType_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::ROIIType(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROIITypeResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::ROIIType(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROIITypeResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ROIIType_, context, request, response, reactor);
 }
 
@@ -623,11 +623,11 @@ void OsiriXService::Stub::experimental_async::ROIIType(::grpc::ClientContext* co
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::ROISetNameRequest, ::osirixgrpc::Response, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_ROISetName_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::ROISetName(::grpc::ClientContext* context, const ::osirixgrpc::ROISetNameRequest* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::ROISetName(::grpc::ClientContext* context, const ::osirixgrpc::ROISetNameRequest* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::ROISetNameRequest, ::osirixgrpc::Response, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ROISetName_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::ROISetName(::grpc::ClientContext* context, const ::osirixgrpc::ROISetNameRequest* request, ::osirixgrpc::Response* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::ROISetName(::grpc::ClientContext* context, const ::osirixgrpc::ROISetNameRequest* request, ::osirixgrpc::Response* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ROISetName_, context, request, response, reactor);
 }
 
@@ -646,11 +646,11 @@ void OsiriXService::Stub::experimental_async::ROISetName(::grpc::ClientContext* 
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::ROI, ::osirixgrpc::ROIColorResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_ROIColor_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::ROIColor(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROIColorResponse* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::ROIColor(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROIColorResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::ROI, ::osirixgrpc::ROIColorResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ROIColor_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::ROIColor(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROIColorResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::ROIColor(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROIColorResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ROIColor_, context, request, response, reactor);
 }
 
@@ -669,11 +669,11 @@ void OsiriXService::Stub::experimental_async::ROIColor(::grpc::ClientContext* co
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::ROISetColorRequest, ::osirixgrpc::Response, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_ROISetColor_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::ROISetColor(::grpc::ClientContext* context, const ::osirixgrpc::ROISetColorRequest* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::ROISetColor(::grpc::ClientContext* context, const ::osirixgrpc::ROISetColorRequest* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::ROISetColorRequest, ::osirixgrpc::Response, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ROISetColor_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::ROISetColor(::grpc::ClientContext* context, const ::osirixgrpc::ROISetColorRequest* request, ::osirixgrpc::Response* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::ROISetColor(::grpc::ClientContext* context, const ::osirixgrpc::ROISetColorRequest* request, ::osirixgrpc::Response* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ROISetColor_, context, request, response, reactor);
 }
 
@@ -692,11 +692,11 @@ void OsiriXService::Stub::experimental_async::ROISetColor(::grpc::ClientContext*
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::ROI, ::osirixgrpc::ROIOpacityResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_ROIOpacity_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::ROIOpacity(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROIOpacityResponse* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::ROIOpacity(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROIOpacityResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::ROI, ::osirixgrpc::ROIOpacityResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ROIOpacity_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::ROIOpacity(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROIOpacityResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::ROIOpacity(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROIOpacityResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ROIOpacity_, context, request, response, reactor);
 }
 
@@ -715,11 +715,11 @@ void OsiriXService::Stub::experimental_async::ROIOpacity(::grpc::ClientContext* 
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::ROISetOpacityRequest, ::osirixgrpc::Response, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_ROISetOpacity_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::ROISetOpacity(::grpc::ClientContext* context, const ::osirixgrpc::ROISetOpacityRequest* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::ROISetOpacity(::grpc::ClientContext* context, const ::osirixgrpc::ROISetOpacityRequest* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::ROISetOpacityRequest, ::osirixgrpc::Response, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ROISetOpacity_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::ROISetOpacity(::grpc::ClientContext* context, const ::osirixgrpc::ROISetOpacityRequest* request, ::osirixgrpc::Response* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::ROISetOpacity(::grpc::ClientContext* context, const ::osirixgrpc::ROISetOpacityRequest* request, ::osirixgrpc::Response* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ROISetOpacity_, context, request, response, reactor);
 }
 
@@ -738,11 +738,11 @@ void OsiriXService::Stub::experimental_async::ROISetOpacity(::grpc::ClientContex
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::ROI, ::osirixgrpc::ROIThicknessResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_ROIThickness_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::ROIThickness(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROIThicknessResponse* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::ROIThickness(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROIThicknessResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::ROI, ::osirixgrpc::ROIThicknessResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ROIThickness_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::ROIThickness(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROIThicknessResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::ROIThickness(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROIThicknessResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ROIThickness_, context, request, response, reactor);
 }
 
@@ -761,11 +761,11 @@ void OsiriXService::Stub::experimental_async::ROIThickness(::grpc::ClientContext
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::ROISetThicknessRequest, ::osirixgrpc::Response, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_ROISetThickness_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::ROISetThickness(::grpc::ClientContext* context, const ::osirixgrpc::ROISetThicknessRequest* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::ROISetThickness(::grpc::ClientContext* context, const ::osirixgrpc::ROISetThicknessRequest* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::ROISetThicknessRequest, ::osirixgrpc::Response, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ROISetThickness_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::ROISetThickness(::grpc::ClientContext* context, const ::osirixgrpc::ROISetThicknessRequest* request, ::osirixgrpc::Response* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::ROISetThickness(::grpc::ClientContext* context, const ::osirixgrpc::ROISetThicknessRequest* request, ::osirixgrpc::Response* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ROISetThickness_, context, request, response, reactor);
 }
 
@@ -784,11 +784,11 @@ void OsiriXService::Stub::experimental_async::ROISetThickness(::grpc::ClientCont
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::ROI, ::osirixgrpc::ROIPointsResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_ROIPoints_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::ROIPoints(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROIPointsResponse* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::ROIPoints(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROIPointsResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::ROI, ::osirixgrpc::ROIPointsResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ROIPoints_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::ROIPoints(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROIPointsResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::ROIPoints(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROIPointsResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ROIPoints_, context, request, response, reactor);
 }
 
@@ -807,11 +807,11 @@ void OsiriXService::Stub::experimental_async::ROIPoints(::grpc::ClientContext* c
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::ROISetPointsRequest, ::osirixgrpc::Response, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_ROISetPoints_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::ROISetPoints(::grpc::ClientContext* context, const ::osirixgrpc::ROISetPointsRequest* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::ROISetPoints(::grpc::ClientContext* context, const ::osirixgrpc::ROISetPointsRequest* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::ROISetPointsRequest, ::osirixgrpc::Response, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ROISetPoints_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::ROISetPoints(::grpc::ClientContext* context, const ::osirixgrpc::ROISetPointsRequest* request, ::osirixgrpc::Response* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::ROISetPoints(::grpc::ClientContext* context, const ::osirixgrpc::ROISetPointsRequest* request, ::osirixgrpc::Response* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ROISetPoints_, context, request, response, reactor);
 }
 
@@ -830,11 +830,11 @@ void OsiriXService::Stub::experimental_async::ROISetPoints(::grpc::ClientContext
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::ROIVolume, ::osirixgrpc::ROIVolumeTextureResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_ROIVolumeTexture_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::ROIVolumeTexture(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolume* request, ::osirixgrpc::ROIVolumeTextureResponse* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::ROIVolumeTexture(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolume* request, ::osirixgrpc::ROIVolumeTextureResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::ROIVolume, ::osirixgrpc::ROIVolumeTextureResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ROIVolumeTexture_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::ROIVolumeTexture(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolume* request, ::osirixgrpc::ROIVolumeTextureResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::ROIVolumeTexture(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolume* request, ::osirixgrpc::ROIVolumeTextureResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ROIVolumeTexture_, context, request, response, reactor);
 }
 
@@ -853,11 +853,11 @@ void OsiriXService::Stub::experimental_async::ROIVolumeTexture(::grpc::ClientCon
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::ROIVolumeSetTextureRequest, ::osirixgrpc::Response, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_ROIVolumeSetTexture_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::ROIVolumeSetTexture(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolumeSetTextureRequest* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::ROIVolumeSetTexture(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolumeSetTextureRequest* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::ROIVolumeSetTextureRequest, ::osirixgrpc::Response, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ROIVolumeSetTexture_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::ROIVolumeSetTexture(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolumeSetTextureRequest* request, ::osirixgrpc::Response* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::ROIVolumeSetTexture(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolumeSetTextureRequest* request, ::osirixgrpc::Response* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ROIVolumeSetTexture_, context, request, response, reactor);
 }
 
@@ -876,11 +876,11 @@ void OsiriXService::Stub::experimental_async::ROIVolumeSetTexture(::grpc::Client
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::ROIVolume, ::osirixgrpc::ROIVolumeVolumeResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_ROIVolumeVolume_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::ROIVolumeVolume(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolume* request, ::osirixgrpc::ROIVolumeVolumeResponse* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::ROIVolumeVolume(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolume* request, ::osirixgrpc::ROIVolumeVolumeResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::ROIVolume, ::osirixgrpc::ROIVolumeVolumeResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ROIVolumeVolume_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::ROIVolumeVolume(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolume* request, ::osirixgrpc::ROIVolumeVolumeResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::ROIVolumeVolume(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolume* request, ::osirixgrpc::ROIVolumeVolumeResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ROIVolumeVolume_, context, request, response, reactor);
 }
 
@@ -899,11 +899,11 @@ void OsiriXService::Stub::experimental_async::ROIVolumeVolume(::grpc::ClientCont
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::ROIVolume, ::osirixgrpc::ROIVolumeColorResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_ROIVolumeColor_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::ROIVolumeColor(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolume* request, ::osirixgrpc::ROIVolumeColorResponse* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::ROIVolumeColor(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolume* request, ::osirixgrpc::ROIVolumeColorResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::ROIVolume, ::osirixgrpc::ROIVolumeColorResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ROIVolumeColor_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::ROIVolumeColor(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolume* request, ::osirixgrpc::ROIVolumeColorResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::ROIVolumeColor(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolume* request, ::osirixgrpc::ROIVolumeColorResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ROIVolumeColor_, context, request, response, reactor);
 }
 
@@ -922,11 +922,11 @@ void OsiriXService::Stub::experimental_async::ROIVolumeColor(::grpc::ClientConte
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::ROIVolumeSetColorRequest, ::osirixgrpc::Response, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_ROIVolumeSetColor_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::ROIVolumeSetColor(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolumeSetColorRequest* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::ROIVolumeSetColor(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolumeSetColorRequest* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::ROIVolumeSetColorRequest, ::osirixgrpc::Response, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ROIVolumeSetColor_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::ROIVolumeSetColor(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolumeSetColorRequest* request, ::osirixgrpc::Response* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::ROIVolumeSetColor(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolumeSetColorRequest* request, ::osirixgrpc::Response* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ROIVolumeSetColor_, context, request, response, reactor);
 }
 
@@ -945,11 +945,11 @@ void OsiriXService::Stub::experimental_async::ROIVolumeSetColor(::grpc::ClientCo
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::ROIVolume, ::osirixgrpc::ROIVolumeOpacityResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_ROIVolumeOpacity_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::ROIVolumeOpacity(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolume* request, ::osirixgrpc::ROIVolumeOpacityResponse* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::ROIVolumeOpacity(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolume* request, ::osirixgrpc::ROIVolumeOpacityResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::ROIVolume, ::osirixgrpc::ROIVolumeOpacityResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ROIVolumeOpacity_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::ROIVolumeOpacity(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolume* request, ::osirixgrpc::ROIVolumeOpacityResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::ROIVolumeOpacity(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolume* request, ::osirixgrpc::ROIVolumeOpacityResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ROIVolumeOpacity_, context, request, response, reactor);
 }
 
@@ -968,11 +968,11 @@ void OsiriXService::Stub::experimental_async::ROIVolumeOpacity(::grpc::ClientCon
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::ROIVolumeSetOpacityRequest, ::osirixgrpc::Response, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_ROIVolumeSetOpacity_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::ROIVolumeSetOpacity(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolumeSetOpacityRequest* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::ROIVolumeSetOpacity(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolumeSetOpacityRequest* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::ROIVolumeSetOpacityRequest, ::osirixgrpc::Response, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ROIVolumeSetOpacity_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::ROIVolumeSetOpacity(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolumeSetOpacityRequest* request, ::osirixgrpc::Response* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::ROIVolumeSetOpacity(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolumeSetOpacityRequest* request, ::osirixgrpc::Response* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ROIVolumeSetOpacity_, context, request, response, reactor);
 }
 
@@ -991,11 +991,11 @@ void OsiriXService::Stub::experimental_async::ROIVolumeSetOpacity(::grpc::Client
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::ROIVolume, ::osirixgrpc::ROIVolumeFactorResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_ROIVolumeFactor_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::ROIVolumeFactor(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolume* request, ::osirixgrpc::ROIVolumeFactorResponse* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::ROIVolumeFactor(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolume* request, ::osirixgrpc::ROIVolumeFactorResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::ROIVolume, ::osirixgrpc::ROIVolumeFactorResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ROIVolumeFactor_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::ROIVolumeFactor(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolume* request, ::osirixgrpc::ROIVolumeFactorResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::ROIVolumeFactor(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolume* request, ::osirixgrpc::ROIVolumeFactorResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ROIVolumeFactor_, context, request, response, reactor);
 }
 
@@ -1014,11 +1014,11 @@ void OsiriXService::Stub::experimental_async::ROIVolumeFactor(::grpc::ClientCont
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::ROIVolumeSetFactorRequest, ::osirixgrpc::Response, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_ROIVolumeSetFactor_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::ROIVolumeSetFactor(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolumeSetFactorRequest* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::ROIVolumeSetFactor(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolumeSetFactorRequest* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::ROIVolumeSetFactorRequest, ::osirixgrpc::Response, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ROIVolumeSetFactor_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::ROIVolumeSetFactor(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolumeSetFactorRequest* request, ::osirixgrpc::Response* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::ROIVolumeSetFactor(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolumeSetFactorRequest* request, ::osirixgrpc::Response* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ROIVolumeSetFactor_, context, request, response, reactor);
 }
 
@@ -1037,11 +1037,11 @@ void OsiriXService::Stub::experimental_async::ROIVolumeSetFactor(::grpc::ClientC
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::ROIVolume, ::osirixgrpc::ROIVolumeNameResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_ROIVolumeName_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::ROIVolumeName(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolume* request, ::osirixgrpc::ROIVolumeNameResponse* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::ROIVolumeName(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolume* request, ::osirixgrpc::ROIVolumeNameResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::ROIVolume, ::osirixgrpc::ROIVolumeNameResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ROIVolumeName_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::ROIVolumeName(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolume* request, ::osirixgrpc::ROIVolumeNameResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::ROIVolumeName(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolume* request, ::osirixgrpc::ROIVolumeNameResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ROIVolumeName_, context, request, response, reactor);
 }
 
@@ -1060,11 +1060,11 @@ void OsiriXService::Stub::experimental_async::ROIVolumeName(::grpc::ClientContex
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::ROIVolume, ::osirixgrpc::ROIVolumeVisibleResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_ROIVolumeVisible_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::ROIVolumeVisible(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolume* request, ::osirixgrpc::ROIVolumeVisibleResponse* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::ROIVolumeVisible(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolume* request, ::osirixgrpc::ROIVolumeVisibleResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::ROIVolume, ::osirixgrpc::ROIVolumeVisibleResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ROIVolumeVisible_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::ROIVolumeVisible(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolume* request, ::osirixgrpc::ROIVolumeVisibleResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::ROIVolumeVisible(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolume* request, ::osirixgrpc::ROIVolumeVisibleResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ROIVolumeVisible_, context, request, response, reactor);
 }
 
@@ -1083,11 +1083,11 @@ void OsiriXService::Stub::experimental_async::ROIVolumeVisible(::grpc::ClientCon
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::DCMPixConvertToRGBRequest, ::osirixgrpc::Response, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_DCMPixConvertToRGB_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::DCMPixConvertToRGB(::grpc::ClientContext* context, const ::osirixgrpc::DCMPixConvertToRGBRequest* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::DCMPixConvertToRGB(::grpc::ClientContext* context, const ::osirixgrpc::DCMPixConvertToRGBRequest* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::DCMPixConvertToRGBRequest, ::osirixgrpc::Response, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DCMPixConvertToRGB_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::DCMPixConvertToRGB(::grpc::ClientContext* context, const ::osirixgrpc::DCMPixConvertToRGBRequest* request, ::osirixgrpc::Response* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::DCMPixConvertToRGB(::grpc::ClientContext* context, const ::osirixgrpc::DCMPixConvertToRGBRequest* request, ::osirixgrpc::Response* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DCMPixConvertToRGB_, context, request, response, reactor);
 }
 
@@ -1106,11 +1106,11 @@ void OsiriXService::Stub::experimental_async::DCMPixConvertToRGB(::grpc::ClientC
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::DCMPixConvertToBWRequest, ::osirixgrpc::Response, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_DCMPixConvertToBW_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::DCMPixConvertToBW(::grpc::ClientContext* context, const ::osirixgrpc::DCMPixConvertToBWRequest* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::DCMPixConvertToBW(::grpc::ClientContext* context, const ::osirixgrpc::DCMPixConvertToBWRequest* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::DCMPixConvertToBWRequest, ::osirixgrpc::Response, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DCMPixConvertToBW_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::DCMPixConvertToBW(::grpc::ClientContext* context, const ::osirixgrpc::DCMPixConvertToBWRequest* request, ::osirixgrpc::Response* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::DCMPixConvertToBW(::grpc::ClientContext* context, const ::osirixgrpc::DCMPixConvertToBWRequest* request, ::osirixgrpc::Response* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DCMPixConvertToBW_, context, request, response, reactor);
 }
 
@@ -1129,11 +1129,11 @@ void OsiriXService::Stub::experimental_async::DCMPixConvertToBW(::grpc::ClientCo
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::DCMPix, ::osirixgrpc::DCMPixIsRGBResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_DCMPixIsRGB_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::DCMPixIsRGB(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixIsRGBResponse* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::DCMPixIsRGB(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixIsRGBResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::DCMPix, ::osirixgrpc::DCMPixIsRGBResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DCMPixIsRGB_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::DCMPixIsRGB(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixIsRGBResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::DCMPixIsRGB(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixIsRGBResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DCMPixIsRGB_, context, request, response, reactor);
 }
 
@@ -1152,11 +1152,11 @@ void OsiriXService::Stub::experimental_async::DCMPixIsRGB(::grpc::ClientContext*
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::DCMPixComputeROIRequest, ::osirixgrpc::DCMPixComputeROIResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_DCMPixComputeROI_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::DCMPixComputeROI(::grpc::ClientContext* context, const ::osirixgrpc::DCMPixComputeROIRequest* request, ::osirixgrpc::DCMPixComputeROIResponse* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::DCMPixComputeROI(::grpc::ClientContext* context, const ::osirixgrpc::DCMPixComputeROIRequest* request, ::osirixgrpc::DCMPixComputeROIResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::DCMPixComputeROIRequest, ::osirixgrpc::DCMPixComputeROIResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DCMPixComputeROI_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::DCMPixComputeROI(::grpc::ClientContext* context, const ::osirixgrpc::DCMPixComputeROIRequest* request, ::osirixgrpc::DCMPixComputeROIResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::DCMPixComputeROI(::grpc::ClientContext* context, const ::osirixgrpc::DCMPixComputeROIRequest* request, ::osirixgrpc::DCMPixComputeROIResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DCMPixComputeROI_, context, request, response, reactor);
 }
 
@@ -1175,11 +1175,11 @@ void OsiriXService::Stub::experimental_async::DCMPixComputeROI(::grpc::ClientCon
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::DCMPixROIValuesRequest, ::osirixgrpc::DCMPixROIValuesResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_DCMPixROIValues_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::DCMPixROIValues(::grpc::ClientContext* context, const ::osirixgrpc::DCMPixROIValuesRequest* request, ::osirixgrpc::DCMPixROIValuesResponse* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::DCMPixROIValues(::grpc::ClientContext* context, const ::osirixgrpc::DCMPixROIValuesRequest* request, ::osirixgrpc::DCMPixROIValuesResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::DCMPixROIValuesRequest, ::osirixgrpc::DCMPixROIValuesResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DCMPixROIValues_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::DCMPixROIValues(::grpc::ClientContext* context, const ::osirixgrpc::DCMPixROIValuesRequest* request, ::osirixgrpc::DCMPixROIValuesResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::DCMPixROIValues(::grpc::ClientContext* context, const ::osirixgrpc::DCMPixROIValuesRequest* request, ::osirixgrpc::DCMPixROIValuesResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DCMPixROIValues_, context, request, response, reactor);
 }
 
@@ -1198,11 +1198,11 @@ void OsiriXService::Stub::experimental_async::DCMPixROIValues(::grpc::ClientCont
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::DCMPix, ::osirixgrpc::DCMPixShapeResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_DCMPixShape_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::DCMPixShape(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixShapeResponse* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::DCMPixShape(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixShapeResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::DCMPix, ::osirixgrpc::DCMPixShapeResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DCMPixShape_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::DCMPixShape(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixShapeResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::DCMPixShape(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixShapeResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DCMPixShape_, context, request, response, reactor);
 }
 
@@ -1221,11 +1221,11 @@ void OsiriXService::Stub::experimental_async::DCMPixShape(::grpc::ClientContext*
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::DCMPix, ::osirixgrpc::DCMPixSpacingResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_DCMPixSpacing_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::DCMPixSpacing(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixSpacingResponse* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::DCMPixSpacing(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixSpacingResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::DCMPix, ::osirixgrpc::DCMPixSpacingResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DCMPixSpacing_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::DCMPixSpacing(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixSpacingResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::DCMPixSpacing(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixSpacingResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DCMPixSpacing_, context, request, response, reactor);
 }
 
@@ -1244,11 +1244,11 @@ void OsiriXService::Stub::experimental_async::DCMPixSpacing(::grpc::ClientContex
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::DCMPix, ::osirixgrpc::DCMPixOriginResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_DCMPixOrigin_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::DCMPixOrigin(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixOriginResponse* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::DCMPixOrigin(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixOriginResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::DCMPix, ::osirixgrpc::DCMPixOriginResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DCMPixOrigin_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::DCMPixOrigin(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixOriginResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::DCMPixOrigin(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixOriginResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DCMPixOrigin_, context, request, response, reactor);
 }
 
@@ -1267,11 +1267,11 @@ void OsiriXService::Stub::experimental_async::DCMPixOrigin(::grpc::ClientContext
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::DCMPix, ::osirixgrpc::DCMPixOrientationResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_DCMPixOrientation_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::DCMPixOrientation(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixOrientationResponse* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::DCMPixOrientation(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixOrientationResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::DCMPix, ::osirixgrpc::DCMPixOrientationResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DCMPixOrientation_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::DCMPixOrientation(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixOrientationResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::DCMPixOrientation(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixOrientationResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DCMPixOrientation_, context, request, response, reactor);
 }
 
@@ -1290,11 +1290,11 @@ void OsiriXService::Stub::experimental_async::DCMPixOrientation(::grpc::ClientCo
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::DCMPix, ::osirixgrpc::DCMPixSliceLocationResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_DCMPixSliceLocation_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::DCMPixSliceLocation(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixSliceLocationResponse* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::DCMPixSliceLocation(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixSliceLocationResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::DCMPix, ::osirixgrpc::DCMPixSliceLocationResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DCMPixSliceLocation_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::DCMPixSliceLocation(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixSliceLocationResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::DCMPixSliceLocation(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixSliceLocationResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DCMPixSliceLocation_, context, request, response, reactor);
 }
 
@@ -1313,11 +1313,11 @@ void OsiriXService::Stub::experimental_async::DCMPixSliceLocation(::grpc::Client
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::DCMPix, ::osirixgrpc::DCMPixSourceFileResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_DCMPixSourceFile_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::DCMPixSourceFile(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixSourceFileResponse* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::DCMPixSourceFile(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixSourceFileResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::DCMPix, ::osirixgrpc::DCMPixSourceFileResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DCMPixSourceFile_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::DCMPixSourceFile(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixSourceFileResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::DCMPixSourceFile(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixSourceFileResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DCMPixSourceFile_, context, request, response, reactor);
 }
 
@@ -1336,11 +1336,11 @@ void OsiriXService::Stub::experimental_async::DCMPixSourceFile(::grpc::ClientCon
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::DCMPix, ::osirixgrpc::DCMPixImageResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_DCMPixImage_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::DCMPixImage(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixImageResponse* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::DCMPixImage(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixImageResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::DCMPix, ::osirixgrpc::DCMPixImageResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DCMPixImage_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::DCMPixImage(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixImageResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::DCMPixImage(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixImageResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DCMPixImage_, context, request, response, reactor);
 }
 
@@ -1359,11 +1359,11 @@ void OsiriXService::Stub::experimental_async::DCMPixImage(::grpc::ClientContext*
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::DCMPixSetImageRequest, ::osirixgrpc::Response, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_DCMPixSetImage_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::DCMPixSetImage(::grpc::ClientContext* context, const ::osirixgrpc::DCMPixSetImageRequest* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::DCMPixSetImage(::grpc::ClientContext* context, const ::osirixgrpc::DCMPixSetImageRequest* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::DCMPixSetImageRequest, ::osirixgrpc::Response, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DCMPixSetImage_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::DCMPixSetImage(::grpc::ClientContext* context, const ::osirixgrpc::DCMPixSetImageRequest* request, ::osirixgrpc::Response* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::DCMPixSetImage(::grpc::ClientContext* context, const ::osirixgrpc::DCMPixSetImageRequest* request, ::osirixgrpc::Response* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DCMPixSetImage_, context, request, response, reactor);
 }
 
@@ -1382,11 +1382,11 @@ void OsiriXService::Stub::experimental_async::DCMPixSetImage(::grpc::ClientConte
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::DCMPixGetMapFromROIRequest, ::osirixgrpc::DCMPixGetMapFromROIResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_DCMPixGetMapFromROI_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::DCMPixGetMapFromROI(::grpc::ClientContext* context, const ::osirixgrpc::DCMPixGetMapFromROIRequest* request, ::osirixgrpc::DCMPixGetMapFromROIResponse* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::DCMPixGetMapFromROI(::grpc::ClientContext* context, const ::osirixgrpc::DCMPixGetMapFromROIRequest* request, ::osirixgrpc::DCMPixGetMapFromROIResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::DCMPixGetMapFromROIRequest, ::osirixgrpc::DCMPixGetMapFromROIResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DCMPixGetMapFromROI_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::DCMPixGetMapFromROI(::grpc::ClientContext* context, const ::osirixgrpc::DCMPixGetMapFromROIRequest* request, ::osirixgrpc::DCMPixGetMapFromROIResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::DCMPixGetMapFromROI(::grpc::ClientContext* context, const ::osirixgrpc::DCMPixGetMapFromROIRequest* request, ::osirixgrpc::DCMPixGetMapFromROIResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DCMPixGetMapFromROI_, context, request, response, reactor);
 }
 
@@ -1405,11 +1405,11 @@ void OsiriXService::Stub::experimental_async::DCMPixGetMapFromROI(::grpc::Client
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::DCMPix, ::osirixgrpc::DCMPixDicomImageResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_DCMPixDicomImage_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::DCMPixDicomImage(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixDicomImageResponse* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::DCMPixDicomImage(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixDicomImageResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::DCMPix, ::osirixgrpc::DCMPixDicomImageResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DCMPixDicomImage_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::DCMPixDicomImage(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixDicomImageResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::DCMPixDicomImage(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixDicomImageResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DCMPixDicomImage_, context, request, response, reactor);
 }
 
@@ -1428,11 +1428,11 @@ void OsiriXService::Stub::experimental_async::DCMPixDicomImage(::grpc::ClientCon
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::DCMPix, ::osirixgrpc::DCMPixDicomSeriesResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_DCMPixDicomSeries_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::DCMPixDicomSeries(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixDicomSeriesResponse* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::DCMPixDicomSeries(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixDicomSeriesResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::DCMPix, ::osirixgrpc::DCMPixDicomSeriesResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DCMPixDicomSeries_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::DCMPixDicomSeries(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixDicomSeriesResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::DCMPixDicomSeries(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixDicomSeriesResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DCMPixDicomSeries_, context, request, response, reactor);
 }
 
@@ -1451,11 +1451,11 @@ void OsiriXService::Stub::experimental_async::DCMPixDicomSeries(::grpc::ClientCo
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::DCMPix, ::osirixgrpc::DCMPixDicomStudyResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_DCMPixDicomStudy_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::DCMPixDicomStudy(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixDicomStudyResponse* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::DCMPixDicomStudy(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixDicomStudyResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::DCMPix, ::osirixgrpc::DCMPixDicomStudyResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DCMPixDicomStudy_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::DCMPixDicomStudy(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixDicomStudyResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::DCMPixDicomStudy(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixDicomStudyResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DCMPixDicomStudy_, context, request, response, reactor);
 }
 
@@ -1474,11 +1474,11 @@ void OsiriXService::Stub::experimental_async::DCMPixDicomStudy(::grpc::ClientCon
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::VRController, ::osirixgrpc::VRControllerViewer2DResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_VRControllerViewer2D_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::VRControllerViewer2D(::grpc::ClientContext* context, const ::osirixgrpc::VRController* request, ::osirixgrpc::VRControllerViewer2DResponse* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::VRControllerViewer2D(::grpc::ClientContext* context, const ::osirixgrpc::VRController* request, ::osirixgrpc::VRControllerViewer2DResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::VRController, ::osirixgrpc::VRControllerViewer2DResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_VRControllerViewer2D_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::VRControllerViewer2D(::grpc::ClientContext* context, const ::osirixgrpc::VRController* request, ::osirixgrpc::VRControllerViewer2DResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::VRControllerViewer2D(::grpc::ClientContext* context, const ::osirixgrpc::VRController* request, ::osirixgrpc::VRControllerViewer2DResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_VRControllerViewer2D_, context, request, response, reactor);
 }
 
@@ -1497,11 +1497,11 @@ void OsiriXService::Stub::experimental_async::VRControllerViewer2D(::grpc::Clien
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::VRController, ::osirixgrpc::VRControllerBlendingControllerResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_VRControllerBlendingController_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::VRControllerBlendingController(::grpc::ClientContext* context, const ::osirixgrpc::VRController* request, ::osirixgrpc::VRControllerBlendingControllerResponse* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::VRControllerBlendingController(::grpc::ClientContext* context, const ::osirixgrpc::VRController* request, ::osirixgrpc::VRControllerBlendingControllerResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::VRController, ::osirixgrpc::VRControllerBlendingControllerResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_VRControllerBlendingController_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::VRControllerBlendingController(::grpc::ClientContext* context, const ::osirixgrpc::VRController* request, ::osirixgrpc::VRControllerBlendingControllerResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::VRControllerBlendingController(::grpc::ClientContext* context, const ::osirixgrpc::VRController* request, ::osirixgrpc::VRControllerBlendingControllerResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_VRControllerBlendingController_, context, request, response, reactor);
 }
 
@@ -1520,11 +1520,11 @@ void OsiriXService::Stub::experimental_async::VRControllerBlendingController(::g
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::VRController, ::osirixgrpc::VRControllerStyleResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_VRControllerStyle_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::VRControllerStyle(::grpc::ClientContext* context, const ::osirixgrpc::VRController* request, ::osirixgrpc::VRControllerStyleResponse* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::VRControllerStyle(::grpc::ClientContext* context, const ::osirixgrpc::VRController* request, ::osirixgrpc::VRControllerStyleResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::VRController, ::osirixgrpc::VRControllerStyleResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_VRControllerStyle_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::VRControllerStyle(::grpc::ClientContext* context, const ::osirixgrpc::VRController* request, ::osirixgrpc::VRControllerStyleResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::VRControllerStyle(::grpc::ClientContext* context, const ::osirixgrpc::VRController* request, ::osirixgrpc::VRControllerStyleResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_VRControllerStyle_, context, request, response, reactor);
 }
 
@@ -1543,11 +1543,11 @@ void OsiriXService::Stub::experimental_async::VRControllerStyle(::grpc::ClientCo
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::VRController, ::osirixgrpc::VRControllerTitleResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_VRControllerTitle_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::VRControllerTitle(::grpc::ClientContext* context, const ::osirixgrpc::VRController* request, ::osirixgrpc::VRControllerTitleResponse* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::VRControllerTitle(::grpc::ClientContext* context, const ::osirixgrpc::VRController* request, ::osirixgrpc::VRControllerTitleResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::VRController, ::osirixgrpc::VRControllerTitleResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_VRControllerTitle_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::VRControllerTitle(::grpc::ClientContext* context, const ::osirixgrpc::VRController* request, ::osirixgrpc::VRControllerTitleResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::VRControllerTitle(::grpc::ClientContext* context, const ::osirixgrpc::VRController* request, ::osirixgrpc::VRControllerTitleResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_VRControllerTitle_, context, request, response, reactor);
 }
 
@@ -1566,11 +1566,11 @@ void OsiriXService::Stub::experimental_async::VRControllerTitle(::grpc::ClientCo
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::VRController, ::osirixgrpc::VRControllerROIVolumesResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_VRControllerROIVolumes_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::VRControllerROIVolumes(::grpc::ClientContext* context, const ::osirixgrpc::VRController* request, ::osirixgrpc::VRControllerROIVolumesResponse* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::VRControllerROIVolumes(::grpc::ClientContext* context, const ::osirixgrpc::VRController* request, ::osirixgrpc::VRControllerROIVolumesResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::VRController, ::osirixgrpc::VRControllerROIVolumesResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_VRControllerROIVolumes_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::VRControllerROIVolumes(::grpc::ClientContext* context, const ::osirixgrpc::VRController* request, ::osirixgrpc::VRControllerROIVolumesResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::VRControllerROIVolumes(::grpc::ClientContext* context, const ::osirixgrpc::VRController* request, ::osirixgrpc::VRControllerROIVolumesResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_VRControllerROIVolumes_, context, request, response, reactor);
 }
 
@@ -1589,11 +1589,11 @@ void OsiriXService::Stub::experimental_async::VRControllerROIVolumes(::grpc::Cli
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::VRController, ::osirixgrpc::VRControllerRenderingModeResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_VRControllerRenderingMode_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::VRControllerRenderingMode(::grpc::ClientContext* context, const ::osirixgrpc::VRController* request, ::osirixgrpc::VRControllerRenderingModeResponse* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::VRControllerRenderingMode(::grpc::ClientContext* context, const ::osirixgrpc::VRController* request, ::osirixgrpc::VRControllerRenderingModeResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::VRController, ::osirixgrpc::VRControllerRenderingModeResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_VRControllerRenderingMode_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::VRControllerRenderingMode(::grpc::ClientContext* context, const ::osirixgrpc::VRController* request, ::osirixgrpc::VRControllerRenderingModeResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::VRControllerRenderingMode(::grpc::ClientContext* context, const ::osirixgrpc::VRController* request, ::osirixgrpc::VRControllerRenderingModeResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_VRControllerRenderingMode_, context, request, response, reactor);
 }
 
@@ -1612,11 +1612,11 @@ void OsiriXService::Stub::experimental_async::VRControllerRenderingMode(::grpc::
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::VRControllerSetRenderingModeRequest, ::osirixgrpc::Response, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_VRControllerSetRenderingMode_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::VRControllerSetRenderingMode(::grpc::ClientContext* context, const ::osirixgrpc::VRControllerSetRenderingModeRequest* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::VRControllerSetRenderingMode(::grpc::ClientContext* context, const ::osirixgrpc::VRControllerSetRenderingModeRequest* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::VRControllerSetRenderingModeRequest, ::osirixgrpc::Response, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_VRControllerSetRenderingMode_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::VRControllerSetRenderingMode(::grpc::ClientContext* context, const ::osirixgrpc::VRControllerSetRenderingModeRequest* request, ::osirixgrpc::Response* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::VRControllerSetRenderingMode(::grpc::ClientContext* context, const ::osirixgrpc::VRControllerSetRenderingModeRequest* request, ::osirixgrpc::Response* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_VRControllerSetRenderingMode_, context, request, response, reactor);
 }
 
@@ -1635,11 +1635,11 @@ void OsiriXService::Stub::experimental_async::VRControllerSetRenderingMode(::grp
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::VRController, ::osirixgrpc::VRControllerWLWWResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_VRControllerWLWW_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::VRControllerWLWW(::grpc::ClientContext* context, const ::osirixgrpc::VRController* request, ::osirixgrpc::VRControllerWLWWResponse* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::VRControllerWLWW(::grpc::ClientContext* context, const ::osirixgrpc::VRController* request, ::osirixgrpc::VRControllerWLWWResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::VRController, ::osirixgrpc::VRControllerWLWWResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_VRControllerWLWW_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::VRControllerWLWW(::grpc::ClientContext* context, const ::osirixgrpc::VRController* request, ::osirixgrpc::VRControllerWLWWResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::VRControllerWLWW(::grpc::ClientContext* context, const ::osirixgrpc::VRController* request, ::osirixgrpc::VRControllerWLWWResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_VRControllerWLWW_, context, request, response, reactor);
 }
 
@@ -1658,11 +1658,11 @@ void OsiriXService::Stub::experimental_async::VRControllerWLWW(::grpc::ClientCon
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::VRControllerSetWLWWRequest, ::osirixgrpc::Response, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_VRControllerSetWLWW_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::VRControllerSetWLWW(::grpc::ClientContext* context, const ::osirixgrpc::VRControllerSetWLWWRequest* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::VRControllerSetWLWW(::grpc::ClientContext* context, const ::osirixgrpc::VRControllerSetWLWWRequest* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::VRControllerSetWLWWRequest, ::osirixgrpc::Response, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_VRControllerSetWLWW_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::VRControllerSetWLWW(::grpc::ClientContext* context, const ::osirixgrpc::VRControllerSetWLWWRequest* request, ::osirixgrpc::Response* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::VRControllerSetWLWW(::grpc::ClientContext* context, const ::osirixgrpc::VRControllerSetWLWWRequest* request, ::osirixgrpc::Response* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_VRControllerSetWLWW_, context, request, response, reactor);
 }
 
@@ -1681,11 +1681,11 @@ void OsiriXService::Stub::experimental_async::VRControllerSetWLWW(::grpc::Client
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::VRControllerHideROIVolumeRequest, ::osirixgrpc::Response, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_VRControllerHideROIVolume_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::VRControllerHideROIVolume(::grpc::ClientContext* context, const ::osirixgrpc::VRControllerHideROIVolumeRequest* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::VRControllerHideROIVolume(::grpc::ClientContext* context, const ::osirixgrpc::VRControllerHideROIVolumeRequest* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::VRControllerHideROIVolumeRequest, ::osirixgrpc::Response, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_VRControllerHideROIVolume_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::VRControllerHideROIVolume(::grpc::ClientContext* context, const ::osirixgrpc::VRControllerHideROIVolumeRequest* request, ::osirixgrpc::Response* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::VRControllerHideROIVolume(::grpc::ClientContext* context, const ::osirixgrpc::VRControllerHideROIVolumeRequest* request, ::osirixgrpc::Response* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_VRControllerHideROIVolume_, context, request, response, reactor);
 }
 
@@ -1704,11 +1704,11 @@ void OsiriXService::Stub::experimental_async::VRControllerHideROIVolume(::grpc::
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::VRControllerDisplayROIVolumeRequest, ::osirixgrpc::Response, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_VRControllerDisplayROIVolume_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::VRControllerDisplayROIVolume(::grpc::ClientContext* context, const ::osirixgrpc::VRControllerDisplayROIVolumeRequest* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::VRControllerDisplayROIVolume(::grpc::ClientContext* context, const ::osirixgrpc::VRControllerDisplayROIVolumeRequest* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::VRControllerDisplayROIVolumeRequest, ::osirixgrpc::Response, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_VRControllerDisplayROIVolume_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::VRControllerDisplayROIVolume(::grpc::ClientContext* context, const ::osirixgrpc::VRControllerDisplayROIVolumeRequest* request, ::osirixgrpc::Response* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::VRControllerDisplayROIVolume(::grpc::ClientContext* context, const ::osirixgrpc::VRControllerDisplayROIVolumeRequest* request, ::osirixgrpc::Response* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_VRControllerDisplayROIVolume_, context, request, response, reactor);
 }
 
@@ -1727,11 +1727,11 @@ void OsiriXService::Stub::experimental_async::VRControllerDisplayROIVolume(::grp
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::VRController, ::osirixgrpc::Response, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_VRControllerNeedsDisplayUpdate_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::VRControllerNeedsDisplayUpdate(::grpc::ClientContext* context, const ::osirixgrpc::VRController* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::VRControllerNeedsDisplayUpdate(::grpc::ClientContext* context, const ::osirixgrpc::VRController* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::VRController, ::osirixgrpc::Response, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_VRControllerNeedsDisplayUpdate_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::VRControllerNeedsDisplayUpdate(::grpc::ClientContext* context, const ::osirixgrpc::VRController* request, ::osirixgrpc::Response* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::VRControllerNeedsDisplayUpdate(::grpc::ClientContext* context, const ::osirixgrpc::VRController* request, ::osirixgrpc::Response* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_VRControllerNeedsDisplayUpdate_, context, request, response, reactor);
 }
 
@@ -1750,11 +1750,11 @@ void OsiriXService::Stub::experimental_async::VRControllerNeedsDisplayUpdate(::g
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::ViewerController, ::osirixgrpc::Response, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_ViewerControllerCloseViewer_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::ViewerControllerCloseViewer(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::ViewerControllerCloseViewer(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::ViewerController, ::osirixgrpc::Response, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ViewerControllerCloseViewer_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::ViewerControllerCloseViewer(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::Response* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::ViewerControllerCloseViewer(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::Response* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ViewerControllerCloseViewer_, context, request, response, reactor);
 }
 
@@ -1773,11 +1773,11 @@ void OsiriXService::Stub::experimental_async::ViewerControllerCloseViewer(::grpc
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::ViewerControllerPixListRequest, ::osirixgrpc::ViewerControllerPixListResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_ViewerControllerPixList_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::ViewerControllerPixList(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerPixListRequest* request, ::osirixgrpc::ViewerControllerPixListResponse* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::ViewerControllerPixList(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerPixListRequest* request, ::osirixgrpc::ViewerControllerPixListResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::ViewerControllerPixListRequest, ::osirixgrpc::ViewerControllerPixListResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ViewerControllerPixList_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::ViewerControllerPixList(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerPixListRequest* request, ::osirixgrpc::ViewerControllerPixListResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::ViewerControllerPixList(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerPixListRequest* request, ::osirixgrpc::ViewerControllerPixListResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ViewerControllerPixList_, context, request, response, reactor);
 }
 
@@ -1796,11 +1796,11 @@ void OsiriXService::Stub::experimental_async::ViewerControllerPixList(::grpc::Cl
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::ViewerController, ::osirixgrpc::Response, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_ViewerControllerNeedsDisplayUpdate_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::ViewerControllerNeedsDisplayUpdate(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::ViewerControllerNeedsDisplayUpdate(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::ViewerController, ::osirixgrpc::Response, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ViewerControllerNeedsDisplayUpdate_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::ViewerControllerNeedsDisplayUpdate(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::Response* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::ViewerControllerNeedsDisplayUpdate(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::Response* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ViewerControllerNeedsDisplayUpdate_, context, request, response, reactor);
 }
 
@@ -1819,11 +1819,11 @@ void OsiriXService::Stub::experimental_async::ViewerControllerNeedsDisplayUpdate
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::ViewerControllerROIListRequest, ::osirixgrpc::ViewerControllerROIListResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_ViewerControllerROIList_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::ViewerControllerROIList(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerROIListRequest* request, ::osirixgrpc::ViewerControllerROIListResponse* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::ViewerControllerROIList(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerROIListRequest* request, ::osirixgrpc::ViewerControllerROIListResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::ViewerControllerROIListRequest, ::osirixgrpc::ViewerControllerROIListResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ViewerControllerROIList_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::ViewerControllerROIList(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerROIListRequest* request, ::osirixgrpc::ViewerControllerROIListResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::ViewerControllerROIList(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerROIListRequest* request, ::osirixgrpc::ViewerControllerROIListResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ViewerControllerROIList_, context, request, response, reactor);
 }
 
@@ -1842,11 +1842,11 @@ void OsiriXService::Stub::experimental_async::ViewerControllerROIList(::grpc::Cl
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::ViewerControllerNewROIRequest, ::osirixgrpc::ViewerControllerNewROIResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_ViewerControllerNewROI_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::ViewerControllerNewROI(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerNewROIRequest* request, ::osirixgrpc::ViewerControllerNewROIResponse* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::ViewerControllerNewROI(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerNewROIRequest* request, ::osirixgrpc::ViewerControllerNewROIResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::ViewerControllerNewROIRequest, ::osirixgrpc::ViewerControllerNewROIResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ViewerControllerNewROI_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::ViewerControllerNewROI(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerNewROIRequest* request, ::osirixgrpc::ViewerControllerNewROIResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::ViewerControllerNewROI(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerNewROIRequest* request, ::osirixgrpc::ViewerControllerNewROIResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ViewerControllerNewROI_, context, request, response, reactor);
 }
 
@@ -1865,11 +1865,11 @@ void OsiriXService::Stub::experimental_async::ViewerControllerNewROI(::grpc::Cli
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::ViewerController, ::osirixgrpc::ViewerControllerCurDCMResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_ViewerControllerCurDCM_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::ViewerControllerCurDCM(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerCurDCMResponse* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::ViewerControllerCurDCM(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerCurDCMResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::ViewerController, ::osirixgrpc::ViewerControllerCurDCMResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ViewerControllerCurDCM_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::ViewerControllerCurDCM(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerCurDCMResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::ViewerControllerCurDCM(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerCurDCMResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ViewerControllerCurDCM_, context, request, response, reactor);
 }
 
@@ -1888,11 +1888,11 @@ void OsiriXService::Stub::experimental_async::ViewerControllerCurDCM(::grpc::Cli
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::ViewerControllerROIsWithNameRequest, ::osirixgrpc::ViewerControllerROIsWithNameResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_ViewerControllerROIsWithName_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::ViewerControllerROIsWithName(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerROIsWithNameRequest* request, ::osirixgrpc::ViewerControllerROIsWithNameResponse* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::ViewerControllerROIsWithName(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerROIsWithNameRequest* request, ::osirixgrpc::ViewerControllerROIsWithNameResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::ViewerControllerROIsWithNameRequest, ::osirixgrpc::ViewerControllerROIsWithNameResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ViewerControllerROIsWithName_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::ViewerControllerROIsWithName(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerROIsWithNameRequest* request, ::osirixgrpc::ViewerControllerROIsWithNameResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::ViewerControllerROIsWithName(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerROIsWithNameRequest* request, ::osirixgrpc::ViewerControllerROIsWithNameResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ViewerControllerROIsWithName_, context, request, response, reactor);
 }
 
@@ -1911,11 +1911,11 @@ void OsiriXService::Stub::experimental_async::ViewerControllerROIsWithName(::grp
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::ViewerController, ::osirixgrpc::ViewerControllerSelectedROIsResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_ViewerControllerSelectedROIs_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::ViewerControllerSelectedROIs(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerSelectedROIsResponse* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::ViewerControllerSelectedROIs(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerSelectedROIsResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::ViewerController, ::osirixgrpc::ViewerControllerSelectedROIsResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ViewerControllerSelectedROIs_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::ViewerControllerSelectedROIs(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerSelectedROIsResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::ViewerControllerSelectedROIs(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerSelectedROIsResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ViewerControllerSelectedROIs_, context, request, response, reactor);
 }
 
@@ -1934,11 +1934,11 @@ void OsiriXService::Stub::experimental_async::ViewerControllerSelectedROIs(::grp
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::ViewerControllerIsDataVolumicRequest, ::osirixgrpc::ViewerControllerIsDataVolumicResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_ViewerControllerIsDataVolumic_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::ViewerControllerIsDataVolumic(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerIsDataVolumicRequest* request, ::osirixgrpc::ViewerControllerIsDataVolumicResponse* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::ViewerControllerIsDataVolumic(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerIsDataVolumicRequest* request, ::osirixgrpc::ViewerControllerIsDataVolumicResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::ViewerControllerIsDataVolumicRequest, ::osirixgrpc::ViewerControllerIsDataVolumicResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ViewerControllerIsDataVolumic_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::ViewerControllerIsDataVolumic(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerIsDataVolumicRequest* request, ::osirixgrpc::ViewerControllerIsDataVolumicResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::ViewerControllerIsDataVolumic(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerIsDataVolumicRequest* request, ::osirixgrpc::ViewerControllerIsDataVolumicResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ViewerControllerIsDataVolumic_, context, request, response, reactor);
 }
 
@@ -1957,11 +1957,11 @@ void OsiriXService::Stub::experimental_async::ViewerControllerIsDataVolumic(::gr
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::ViewerControllerCopyViewerWindowRequest, ::osirixgrpc::Response, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_ViewerControllerCopyViewerWindow_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::ViewerControllerCopyViewerWindow(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerCopyViewerWindowRequest* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::ViewerControllerCopyViewerWindow(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerCopyViewerWindowRequest* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::ViewerControllerCopyViewerWindowRequest, ::osirixgrpc::Response, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ViewerControllerCopyViewerWindow_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::ViewerControllerCopyViewerWindow(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerCopyViewerWindowRequest* request, ::osirixgrpc::Response* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::ViewerControllerCopyViewerWindow(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerCopyViewerWindowRequest* request, ::osirixgrpc::Response* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ViewerControllerCopyViewerWindow_, context, request, response, reactor);
 }
 
@@ -1980,11 +1980,11 @@ void OsiriXService::Stub::experimental_async::ViewerControllerCopyViewerWindow(:
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::ViewerControllerResampleViewerControllerRequest, ::osirixgrpc::Response, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_ViewerControllerResampleViewerController_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::ViewerControllerResampleViewerController(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerResampleViewerControllerRequest* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::ViewerControllerResampleViewerController(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerResampleViewerControllerRequest* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::ViewerControllerResampleViewerControllerRequest, ::osirixgrpc::Response, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ViewerControllerResampleViewerController_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::ViewerControllerResampleViewerController(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerResampleViewerControllerRequest* request, ::osirixgrpc::Response* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::ViewerControllerResampleViewerController(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerResampleViewerControllerRequest* request, ::osirixgrpc::Response* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ViewerControllerResampleViewerController_, context, request, response, reactor);
 }
 
@@ -2003,11 +2003,11 @@ void OsiriXService::Stub::experimental_async::ViewerControllerResampleViewerCont
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::ViewerController, ::osirixgrpc::ViewerControllerBlendingControllerResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_ViewerControllerBlendingController_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::ViewerControllerBlendingController(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerBlendingControllerResponse* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::ViewerControllerBlendingController(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerBlendingControllerResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::ViewerController, ::osirixgrpc::ViewerControllerBlendingControllerResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ViewerControllerBlendingController_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::ViewerControllerBlendingController(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerBlendingControllerResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::ViewerControllerBlendingController(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerBlendingControllerResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ViewerControllerBlendingController_, context, request, response, reactor);
 }
 
@@ -2026,11 +2026,11 @@ void OsiriXService::Stub::experimental_async::ViewerControllerBlendingController
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::ViewerController, ::osirixgrpc::ViewerControllerVRControllersResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_ViewerControllerVRControllers_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::ViewerControllerVRControllers(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerVRControllersResponse* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::ViewerControllerVRControllers(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerVRControllersResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::ViewerController, ::osirixgrpc::ViewerControllerVRControllersResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ViewerControllerVRControllers_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::ViewerControllerVRControllers(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerVRControllersResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::ViewerControllerVRControllers(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerVRControllersResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ViewerControllerVRControllers_, context, request, response, reactor);
 }
 
@@ -2049,11 +2049,11 @@ void OsiriXService::Stub::experimental_async::ViewerControllerVRControllers(::gr
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::ViewerController, ::osirixgrpc::ViewerControllerTitleResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_ViewerControllerTitle_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::ViewerControllerTitle(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerTitleResponse* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::ViewerControllerTitle(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerTitleResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::ViewerController, ::osirixgrpc::ViewerControllerTitleResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ViewerControllerTitle_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::ViewerControllerTitle(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerTitleResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::ViewerControllerTitle(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerTitleResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ViewerControllerTitle_, context, request, response, reactor);
 }
 
@@ -2072,11 +2072,11 @@ void OsiriXService::Stub::experimental_async::ViewerControllerTitle(::grpc::Clie
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::ViewerController, ::osirixgrpc::ViewerControllerModalityResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_ViewerControllerModality_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::ViewerControllerModality(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerModalityResponse* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::ViewerControllerModality(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerModalityResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::ViewerController, ::osirixgrpc::ViewerControllerModalityResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ViewerControllerModality_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::ViewerControllerModality(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerModalityResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::ViewerControllerModality(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerModalityResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ViewerControllerModality_, context, request, response, reactor);
 }
 
@@ -2095,11 +2095,11 @@ void OsiriXService::Stub::experimental_async::ViewerControllerModality(::grpc::C
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::ViewerController, ::osirixgrpc::ViewerControllerMovieIdxResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_ViewerControllerMovieIdx_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::ViewerControllerMovieIdx(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerMovieIdxResponse* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::ViewerControllerMovieIdx(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerMovieIdxResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::ViewerController, ::osirixgrpc::ViewerControllerMovieIdxResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ViewerControllerMovieIdx_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::ViewerControllerMovieIdx(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerMovieIdxResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::ViewerControllerMovieIdx(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerMovieIdxResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ViewerControllerMovieIdx_, context, request, response, reactor);
 }
 
@@ -2118,11 +2118,11 @@ void OsiriXService::Stub::experimental_async::ViewerControllerMovieIdx(::grpc::C
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::ViewerControllerSetMovieIdxRequest, ::osirixgrpc::Response, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_ViewerControllerSetMovieIdx_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::ViewerControllerSetMovieIdx(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerSetMovieIdxRequest* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::ViewerControllerSetMovieIdx(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerSetMovieIdxRequest* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::ViewerControllerSetMovieIdxRequest, ::osirixgrpc::Response, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ViewerControllerSetMovieIdx_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::ViewerControllerSetMovieIdx(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerSetMovieIdxRequest* request, ::osirixgrpc::Response* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::ViewerControllerSetMovieIdx(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerSetMovieIdxRequest* request, ::osirixgrpc::Response* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ViewerControllerSetMovieIdx_, context, request, response, reactor);
 }
 
@@ -2141,11 +2141,11 @@ void OsiriXService::Stub::experimental_async::ViewerControllerSetMovieIdx(::grpc
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::ViewerController, ::osirixgrpc::ViewerControllerMaxMovieIdxResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_ViewerControllerMaxMovieIdx_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::ViewerControllerMaxMovieIdx(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerMaxMovieIdxResponse* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::ViewerControllerMaxMovieIdx(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerMaxMovieIdxResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::ViewerController, ::osirixgrpc::ViewerControllerMaxMovieIdxResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ViewerControllerMaxMovieIdx_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::ViewerControllerMaxMovieIdx(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerMaxMovieIdxResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::ViewerControllerMaxMovieIdx(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerMaxMovieIdxResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ViewerControllerMaxMovieIdx_, context, request, response, reactor);
 }
 
@@ -2164,11 +2164,11 @@ void OsiriXService::Stub::experimental_async::ViewerControllerMaxMovieIdx(::grpc
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::ViewerController, ::osirixgrpc::ViewerControllerIdxResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_ViewerControllerIdx_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::ViewerControllerIdx(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerIdxResponse* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::ViewerControllerIdx(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerIdxResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::ViewerController, ::osirixgrpc::ViewerControllerIdxResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ViewerControllerIdx_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::ViewerControllerIdx(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerIdxResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::ViewerControllerIdx(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerIdxResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ViewerControllerIdx_, context, request, response, reactor);
 }
 
@@ -2187,11 +2187,11 @@ void OsiriXService::Stub::experimental_async::ViewerControllerIdx(::grpc::Client
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::ViewerControllerSetIdxRequest, ::osirixgrpc::Response, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_ViewerControllerSetIdx_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::ViewerControllerSetIdx(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerSetIdxRequest* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::ViewerControllerSetIdx(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerSetIdxRequest* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::ViewerControllerSetIdxRequest, ::osirixgrpc::Response, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ViewerControllerSetIdx_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::ViewerControllerSetIdx(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerSetIdxRequest* request, ::osirixgrpc::Response* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::ViewerControllerSetIdx(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerSetIdxRequest* request, ::osirixgrpc::Response* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ViewerControllerSetIdx_, context, request, response, reactor);
 }
 
@@ -2210,11 +2210,11 @@ void OsiriXService::Stub::experimental_async::ViewerControllerSetIdx(::grpc::Cli
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::ViewerController, ::osirixgrpc::ViewerControllerWLWWResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_ViewerControllerWLWW_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::ViewerControllerWLWW(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerWLWWResponse* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::ViewerControllerWLWW(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerWLWWResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::ViewerController, ::osirixgrpc::ViewerControllerWLWWResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ViewerControllerWLWW_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::ViewerControllerWLWW(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerWLWWResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::ViewerControllerWLWW(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerWLWWResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ViewerControllerWLWW_, context, request, response, reactor);
 }
 
@@ -2233,11 +2233,11 @@ void OsiriXService::Stub::experimental_async::ViewerControllerWLWW(::grpc::Clien
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::ViewerControllerSetWLWWRequest, ::osirixgrpc::Response, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_ViewerControllerSetWLWW_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::ViewerControllerSetWLWW(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerSetWLWWRequest* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::ViewerControllerSetWLWW(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerSetWLWWRequest* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::ViewerControllerSetWLWWRequest, ::osirixgrpc::Response, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ViewerControllerSetWLWW_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::ViewerControllerSetWLWW(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerSetWLWWRequest* request, ::osirixgrpc::Response* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::ViewerControllerSetWLWW(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerSetWLWWRequest* request, ::osirixgrpc::Response* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ViewerControllerSetWLWW_, context, request, response, reactor);
 }
 
@@ -2256,11 +2256,11 @@ void OsiriXService::Stub::experimental_async::ViewerControllerSetWLWW(::grpc::Cl
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::ViewerControllerOpenVRViewerForModeRequest, ::osirixgrpc::ViewerControllerOpenVRViewerForModeResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_ViewerControllerOpenVRViewerForMode_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::ViewerControllerOpenVRViewerForMode(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerOpenVRViewerForModeRequest* request, ::osirixgrpc::ViewerControllerOpenVRViewerForModeResponse* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::ViewerControllerOpenVRViewerForMode(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerOpenVRViewerForModeRequest* request, ::osirixgrpc::ViewerControllerOpenVRViewerForModeResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::ViewerControllerOpenVRViewerForModeRequest, ::osirixgrpc::ViewerControllerOpenVRViewerForModeResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ViewerControllerOpenVRViewerForMode_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::ViewerControllerOpenVRViewerForMode(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerOpenVRViewerForModeRequest* request, ::osirixgrpc::ViewerControllerOpenVRViewerForModeResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::ViewerControllerOpenVRViewerForMode(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerOpenVRViewerForModeRequest* request, ::osirixgrpc::ViewerControllerOpenVRViewerForModeResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ViewerControllerOpenVRViewerForMode_, context, request, response, reactor);
 }
 
@@ -2279,11 +2279,11 @@ void OsiriXService::Stub::experimental_async::ViewerControllerOpenVRViewerForMod
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::BrowserController, ::osirixgrpc::BrowserControllerDatabaseSelectionResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_BrowserControllerDatabaseSelection_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::BrowserControllerDatabaseSelection(::grpc::ClientContext* context, const ::osirixgrpc::BrowserController* request, ::osirixgrpc::BrowserControllerDatabaseSelectionResponse* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::BrowserControllerDatabaseSelection(::grpc::ClientContext* context, const ::osirixgrpc::BrowserController* request, ::osirixgrpc::BrowserControllerDatabaseSelectionResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::BrowserController, ::osirixgrpc::BrowserControllerDatabaseSelectionResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_BrowserControllerDatabaseSelection_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::BrowserControllerDatabaseSelection(::grpc::ClientContext* context, const ::osirixgrpc::BrowserController* request, ::osirixgrpc::BrowserControllerDatabaseSelectionResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::BrowserControllerDatabaseSelection(::grpc::ClientContext* context, const ::osirixgrpc::BrowserController* request, ::osirixgrpc::BrowserControllerDatabaseSelectionResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_BrowserControllerDatabaseSelection_, context, request, response, reactor);
 }
 
@@ -2302,11 +2302,11 @@ void OsiriXService::Stub::experimental_async::BrowserControllerDatabaseSelection
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::BrowserControllerCopyFilesIfNeededRequest, ::osirixgrpc::Response, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_BrowserControllerCopyFilesIfNeeded_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::BrowserControllerCopyFilesIfNeeded(::grpc::ClientContext* context, const ::osirixgrpc::BrowserControllerCopyFilesIfNeededRequest* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::BrowserControllerCopyFilesIfNeeded(::grpc::ClientContext* context, const ::osirixgrpc::BrowserControllerCopyFilesIfNeededRequest* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::BrowserControllerCopyFilesIfNeededRequest, ::osirixgrpc::Response, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_BrowserControllerCopyFilesIfNeeded_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::BrowserControllerCopyFilesIfNeeded(::grpc::ClientContext* context, const ::osirixgrpc::BrowserControllerCopyFilesIfNeededRequest* request, ::osirixgrpc::Response* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::BrowserControllerCopyFilesIfNeeded(::grpc::ClientContext* context, const ::osirixgrpc::BrowserControllerCopyFilesIfNeededRequest* request, ::osirixgrpc::Response* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_BrowserControllerCopyFilesIfNeeded_, context, request, response, reactor);
 }
 
@@ -2325,11 +2325,11 @@ void OsiriXService::Stub::experimental_async::BrowserControllerCopyFilesIfNeeded
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::DicomImage, ::osirixgrpc::DicomImageWidthResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_DicomImageWidth_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::DicomImageWidth(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageWidthResponse* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::DicomImageWidth(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageWidthResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::DicomImage, ::osirixgrpc::DicomImageWidthResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DicomImageWidth_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::DicomImageWidth(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageWidthResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::DicomImageWidth(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageWidthResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DicomImageWidth_, context, request, response, reactor);
 }
 
@@ -2348,11 +2348,11 @@ void OsiriXService::Stub::experimental_async::DicomImageWidth(::grpc::ClientCont
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::DicomImage, ::osirixgrpc::DicomImageHeightResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_DicomImageHeight_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::DicomImageHeight(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageHeightResponse* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::DicomImageHeight(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageHeightResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::DicomImage, ::osirixgrpc::DicomImageHeightResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DicomImageHeight_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::DicomImageHeight(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageHeightResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::DicomImageHeight(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageHeightResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DicomImageHeight_, context, request, response, reactor);
 }
 
@@ -2371,11 +2371,11 @@ void OsiriXService::Stub::experimental_async::DicomImageHeight(::grpc::ClientCon
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::DicomImage, ::osirixgrpc::DicomImageSOPInstanceUIDResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_DicomImageSOPInstanceUID_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::DicomImageSOPInstanceUID(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageSOPInstanceUIDResponse* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::DicomImageSOPInstanceUID(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageSOPInstanceUIDResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::DicomImage, ::osirixgrpc::DicomImageSOPInstanceUIDResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DicomImageSOPInstanceUID_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::DicomImageSOPInstanceUID(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageSOPInstanceUIDResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::DicomImageSOPInstanceUID(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageSOPInstanceUIDResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DicomImageSOPInstanceUID_, context, request, response, reactor);
 }
 
@@ -2394,11 +2394,11 @@ void OsiriXService::Stub::experimental_async::DicomImageSOPInstanceUID(::grpc::C
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::DicomImage, ::osirixgrpc::DicomImageCompletePathResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_DicomImageCompletePath_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::DicomImageCompletePath(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageCompletePathResponse* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::DicomImageCompletePath(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageCompletePathResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::DicomImage, ::osirixgrpc::DicomImageCompletePathResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DicomImageCompletePath_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::DicomImageCompletePath(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageCompletePathResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::DicomImageCompletePath(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageCompletePathResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DicomImageCompletePath_, context, request, response, reactor);
 }
 
@@ -2417,11 +2417,11 @@ void OsiriXService::Stub::experimental_async::DicomImageCompletePath(::grpc::Cli
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::DicomImage, ::osirixgrpc::DicomImageDateResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_DicomImageDate_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::DicomImageDate(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageDateResponse* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::DicomImageDate(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageDateResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::DicomImage, ::osirixgrpc::DicomImageDateResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DicomImageDate_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::DicomImageDate(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageDateResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::DicomImageDate(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageDateResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DicomImageDate_, context, request, response, reactor);
 }
 
@@ -2440,11 +2440,11 @@ void OsiriXService::Stub::experimental_async::DicomImageDate(::grpc::ClientConte
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::DicomImage, ::osirixgrpc::DicomImageNumberOfFramesResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_DicomImageNumberOfFrames_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::DicomImageNumberOfFrames(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageNumberOfFramesResponse* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::DicomImageNumberOfFrames(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageNumberOfFramesResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::DicomImage, ::osirixgrpc::DicomImageNumberOfFramesResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DicomImageNumberOfFrames_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::DicomImageNumberOfFrames(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageNumberOfFramesResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::DicomImageNumberOfFrames(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageNumberOfFramesResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DicomImageNumberOfFrames_, context, request, response, reactor);
 }
 
@@ -2463,11 +2463,11 @@ void OsiriXService::Stub::experimental_async::DicomImageNumberOfFrames(::grpc::C
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::DicomImage, ::osirixgrpc::DicomImageModalityResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_DicomImageModality_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::DicomImageModality(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageModalityResponse* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::DicomImageModality(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageModalityResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::DicomImage, ::osirixgrpc::DicomImageModalityResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DicomImageModality_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::DicomImageModality(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageModalityResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::DicomImageModality(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageModalityResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DicomImageModality_, context, request, response, reactor);
 }
 
@@ -2486,11 +2486,11 @@ void OsiriXService::Stub::experimental_async::DicomImageModality(::grpc::ClientC
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::DicomImage, ::osirixgrpc::DicomImageSeriesResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_DicomImageSeries_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::DicomImageSeries(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageSeriesResponse* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::DicomImageSeries(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageSeriesResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::DicomImage, ::osirixgrpc::DicomImageSeriesResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DicomImageSeries_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::DicomImageSeries(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageSeriesResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::DicomImageSeries(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageSeriesResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DicomImageSeries_, context, request, response, reactor);
 }
 
@@ -2509,11 +2509,11 @@ void OsiriXService::Stub::experimental_async::DicomImageSeries(::grpc::ClientCon
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::DicomImage, ::osirixgrpc::DicomImageSliceLocationResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_DicomImageSliceLocation_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::DicomImageSliceLocation(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageSliceLocationResponse* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::DicomImageSliceLocation(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageSliceLocationResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::DicomImage, ::osirixgrpc::DicomImageSliceLocationResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DicomImageSliceLocation_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::DicomImageSliceLocation(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageSliceLocationResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::DicomImageSliceLocation(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageSliceLocationResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DicomImageSliceLocation_, context, request, response, reactor);
 }
 
@@ -2532,11 +2532,11 @@ void OsiriXService::Stub::experimental_async::DicomImageSliceLocation(::grpc::Cl
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::DicomImage, ::osirixgrpc::DicomImageInstanceNumberResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_DicomImageInstanceNumber_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::DicomImageInstanceNumber(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageInstanceNumberResponse* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::DicomImageInstanceNumber(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageInstanceNumberResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::DicomImage, ::osirixgrpc::DicomImageInstanceNumberResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DicomImageInstanceNumber_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::DicomImageInstanceNumber(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageInstanceNumberResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::DicomImageInstanceNumber(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageInstanceNumberResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DicomImageInstanceNumber_, context, request, response, reactor);
 }
 
@@ -2555,11 +2555,11 @@ void OsiriXService::Stub::experimental_async::DicomImageInstanceNumber(::grpc::C
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::DicomSeries, ::osirixgrpc::DicomSeriesPathsResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_DicomSeriesPaths_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::DicomSeriesPaths(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesPathsResponse* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::DicomSeriesPaths(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesPathsResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::DicomSeries, ::osirixgrpc::DicomSeriesPathsResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DicomSeriesPaths_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::DicomSeriesPaths(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesPathsResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::DicomSeriesPaths(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesPathsResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DicomSeriesPaths_, context, request, response, reactor);
 }
 
@@ -2578,11 +2578,11 @@ void OsiriXService::Stub::experimental_async::DicomSeriesPaths(::grpc::ClientCon
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::DicomSeries, ::osirixgrpc::DicomSeriesPreviousSeriesResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_DicomSeriesPreviousSeries_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::DicomSeriesPreviousSeries(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesPreviousSeriesResponse* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::DicomSeriesPreviousSeries(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesPreviousSeriesResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::DicomSeries, ::osirixgrpc::DicomSeriesPreviousSeriesResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DicomSeriesPreviousSeries_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::DicomSeriesPreviousSeries(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesPreviousSeriesResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::DicomSeriesPreviousSeries(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesPreviousSeriesResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DicomSeriesPreviousSeries_, context, request, response, reactor);
 }
 
@@ -2601,11 +2601,11 @@ void OsiriXService::Stub::experimental_async::DicomSeriesPreviousSeries(::grpc::
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::DicomSeries, ::osirixgrpc::DicomSeriesNextSeriesResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_DicomSeriesNextSeries_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::DicomSeriesNextSeries(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesNextSeriesResponse* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::DicomSeriesNextSeries(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesNextSeriesResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::DicomSeries, ::osirixgrpc::DicomSeriesNextSeriesResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DicomSeriesNextSeries_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::DicomSeriesNextSeries(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesNextSeriesResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::DicomSeriesNextSeries(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesNextSeriesResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DicomSeriesNextSeries_, context, request, response, reactor);
 }
 
@@ -2624,11 +2624,11 @@ void OsiriXService::Stub::experimental_async::DicomSeriesNextSeries(::grpc::Clie
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::DicomSeries, ::osirixgrpc::DicomSeriesSortedImagesResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_DicomSeriesSortedImages_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::DicomSeriesSortedImages(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesSortedImagesResponse* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::DicomSeriesSortedImages(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesSortedImagesResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::DicomSeries, ::osirixgrpc::DicomSeriesSortedImagesResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DicomSeriesSortedImages_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::DicomSeriesSortedImages(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesSortedImagesResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::DicomSeriesSortedImages(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesSortedImagesResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DicomSeriesSortedImages_, context, request, response, reactor);
 }
 
@@ -2647,11 +2647,11 @@ void OsiriXService::Stub::experimental_async::DicomSeriesSortedImages(::grpc::Cl
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::DicomSeries, ::osirixgrpc::DicomSeriesStudyResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_DicomSeriesStudy_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::DicomSeriesStudy(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesStudyResponse* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::DicomSeriesStudy(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesStudyResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::DicomSeries, ::osirixgrpc::DicomSeriesStudyResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DicomSeriesStudy_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::DicomSeriesStudy(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesStudyResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::DicomSeriesStudy(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesStudyResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DicomSeriesStudy_, context, request, response, reactor);
 }
 
@@ -2670,11 +2670,11 @@ void OsiriXService::Stub::experimental_async::DicomSeriesStudy(::grpc::ClientCon
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::DicomSeries, ::osirixgrpc::DicomSeriesImagesResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_DicomSeriesImages_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::DicomSeriesImages(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesImagesResponse* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::DicomSeriesImages(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesImagesResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::DicomSeries, ::osirixgrpc::DicomSeriesImagesResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DicomSeriesImages_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::DicomSeriesImages(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesImagesResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::DicomSeriesImages(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesImagesResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DicomSeriesImages_, context, request, response, reactor);
 }
 
@@ -2693,11 +2693,11 @@ void OsiriXService::Stub::experimental_async::DicomSeriesImages(::grpc::ClientCo
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::DicomSeries, ::osirixgrpc::DicomSeriesSeriesInstanceUIDResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_DicomSeriesSeriesInstanceUID_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::DicomSeriesSeriesInstanceUID(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesSeriesInstanceUIDResponse* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::DicomSeriesSeriesInstanceUID(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesSeriesInstanceUIDResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::DicomSeries, ::osirixgrpc::DicomSeriesSeriesInstanceUIDResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DicomSeriesSeriesInstanceUID_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::DicomSeriesSeriesInstanceUID(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesSeriesInstanceUIDResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::DicomSeriesSeriesInstanceUID(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesSeriesInstanceUIDResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DicomSeriesSeriesInstanceUID_, context, request, response, reactor);
 }
 
@@ -2716,11 +2716,11 @@ void OsiriXService::Stub::experimental_async::DicomSeriesSeriesInstanceUID(::grp
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::DicomSeries, ::osirixgrpc::DicomSeriesSeriesSOPClassUIDResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_DicomSeriesSeriesSOPClassUID_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::DicomSeriesSeriesSOPClassUID(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesSeriesSOPClassUIDResponse* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::DicomSeriesSeriesSOPClassUID(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesSeriesSOPClassUIDResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::DicomSeries, ::osirixgrpc::DicomSeriesSeriesSOPClassUIDResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DicomSeriesSeriesSOPClassUID_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::DicomSeriesSeriesSOPClassUID(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesSeriesSOPClassUIDResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::DicomSeriesSeriesSOPClassUID(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesSeriesSOPClassUIDResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DicomSeriesSeriesSOPClassUID_, context, request, response, reactor);
 }
 
@@ -2739,11 +2739,11 @@ void OsiriXService::Stub::experimental_async::DicomSeriesSeriesSOPClassUID(::grp
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::DicomSeries, ::osirixgrpc::DicomSeriesSeriesDescriptionResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_DicomSeriesSeriesDescription_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::DicomSeriesSeriesDescription(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesSeriesDescriptionResponse* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::DicomSeriesSeriesDescription(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesSeriesDescriptionResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::DicomSeries, ::osirixgrpc::DicomSeriesSeriesDescriptionResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DicomSeriesSeriesDescription_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::DicomSeriesSeriesDescription(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesSeriesDescriptionResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::DicomSeriesSeriesDescription(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesSeriesDescriptionResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DicomSeriesSeriesDescription_, context, request, response, reactor);
 }
 
@@ -2762,11 +2762,11 @@ void OsiriXService::Stub::experimental_async::DicomSeriesSeriesDescription(::grp
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::DicomSeries, ::osirixgrpc::DicomSeriesModalityResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_DicomSeriesModality_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::DicomSeriesModality(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesModalityResponse* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::DicomSeriesModality(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesModalityResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::DicomSeries, ::osirixgrpc::DicomSeriesModalityResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DicomSeriesModality_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::DicomSeriesModality(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesModalityResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::DicomSeriesModality(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesModalityResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DicomSeriesModality_, context, request, response, reactor);
 }
 
@@ -2785,11 +2785,11 @@ void OsiriXService::Stub::experimental_async::DicomSeriesModality(::grpc::Client
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::DicomSeries, ::osirixgrpc::DicomSeriesNameResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_DicomSeriesName_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::DicomSeriesName(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesNameResponse* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::DicomSeriesName(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesNameResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::DicomSeries, ::osirixgrpc::DicomSeriesNameResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DicomSeriesName_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::DicomSeriesName(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesNameResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::DicomSeriesName(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesNameResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DicomSeriesName_, context, request, response, reactor);
 }
 
@@ -2808,11 +2808,11 @@ void OsiriXService::Stub::experimental_async::DicomSeriesName(::grpc::ClientCont
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::DicomSeries, ::osirixgrpc::DicomSeriesDateResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_DicomSeriesDate_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::DicomSeriesDate(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesDateResponse* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::DicomSeriesDate(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesDateResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::DicomSeries, ::osirixgrpc::DicomSeriesDateResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DicomSeriesDate_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::DicomSeriesDate(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesDateResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::DicomSeriesDate(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesDateResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DicomSeriesDate_, context, request, response, reactor);
 }
 
@@ -2831,11 +2831,11 @@ void OsiriXService::Stub::experimental_async::DicomSeriesDate(::grpc::ClientCont
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::DicomSeries, ::osirixgrpc::DicomSeriesNumberOfImagesResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_DicomSeriesNumberOfImages_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::DicomSeriesNumberOfImages(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesNumberOfImagesResponse* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::DicomSeriesNumberOfImages(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesNumberOfImagesResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::DicomSeries, ::osirixgrpc::DicomSeriesNumberOfImagesResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DicomSeriesNumberOfImages_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::DicomSeriesNumberOfImages(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesNumberOfImagesResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::DicomSeriesNumberOfImages(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesNumberOfImagesResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DicomSeriesNumberOfImages_, context, request, response, reactor);
 }
 
@@ -2854,11 +2854,11 @@ void OsiriXService::Stub::experimental_async::DicomSeriesNumberOfImages(::grpc::
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyPathsResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_DicomStudyPaths_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::DicomStudyPaths(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyPathsResponse* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::DicomStudyPaths(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyPathsResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyPathsResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DicomStudyPaths_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::DicomStudyPaths(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyPathsResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::DicomStudyPaths(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyPathsResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DicomStudyPaths_, context, request, response, reactor);
 }
 
@@ -2877,11 +2877,11 @@ void OsiriXService::Stub::experimental_async::DicomStudyPaths(::grpc::ClientCont
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyImagesResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_DicomStudyImages_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::DicomStudyImages(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyImagesResponse* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::DicomStudyImages(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyImagesResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyImagesResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DicomStudyImages_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::DicomStudyImages(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyImagesResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::DicomStudyImages(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyImagesResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DicomStudyImages_, context, request, response, reactor);
 }
 
@@ -2900,11 +2900,11 @@ void OsiriXService::Stub::experimental_async::DicomStudyImages(::grpc::ClientCon
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyModalitiesResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_DicomStudyModalities_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::DicomStudyModalities(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyModalitiesResponse* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::DicomStudyModalities(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyModalitiesResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyModalitiesResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DicomStudyModalities_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::DicomStudyModalities(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyModalitiesResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::DicomStudyModalities(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyModalitiesResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DicomStudyModalities_, context, request, response, reactor);
 }
 
@@ -2923,11 +2923,11 @@ void OsiriXService::Stub::experimental_async::DicomStudyModalities(::grpc::Clien
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyNoFilesResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_DicomStudyNoFiles_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::DicomStudyNoFiles(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyNoFilesResponse* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::DicomStudyNoFiles(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyNoFilesResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyNoFilesResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DicomStudyNoFiles_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::DicomStudyNoFiles(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyNoFilesResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::DicomStudyNoFiles(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyNoFilesResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DicomStudyNoFiles_, context, request, response, reactor);
 }
 
@@ -2946,11 +2946,11 @@ void OsiriXService::Stub::experimental_async::DicomStudyNoFiles(::grpc::ClientCo
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyRawNoFilesResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_DicomStudyRawNoFiles_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::DicomStudyRawNoFiles(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyRawNoFilesResponse* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::DicomStudyRawNoFiles(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyRawNoFilesResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyRawNoFilesResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DicomStudyRawNoFiles_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::DicomStudyRawNoFiles(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyRawNoFilesResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::DicomStudyRawNoFiles(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyRawNoFilesResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DicomStudyRawNoFiles_, context, request, response, reactor);
 }
 
@@ -2969,11 +2969,11 @@ void OsiriXService::Stub::experimental_async::DicomStudyRawNoFiles(::grpc::Clien
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyNoFilesExcludingMultiFramesResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_DicomStudyNoFilesExcludingMultiFrames_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::DicomStudyNoFilesExcludingMultiFrames(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyNoFilesExcludingMultiFramesResponse* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::DicomStudyNoFilesExcludingMultiFrames(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyNoFilesExcludingMultiFramesResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyNoFilesExcludingMultiFramesResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DicomStudyNoFilesExcludingMultiFrames_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::DicomStudyNoFilesExcludingMultiFrames(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyNoFilesExcludingMultiFramesResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::DicomStudyNoFilesExcludingMultiFrames(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyNoFilesExcludingMultiFramesResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DicomStudyNoFilesExcludingMultiFrames_, context, request, response, reactor);
 }
 
@@ -2992,11 +2992,11 @@ void OsiriXService::Stub::experimental_async::DicomStudyNoFilesExcludingMultiFra
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyNumberOfImagesResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_DicomStudyNumberOfImages_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::DicomStudyNumberOfImages(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyNumberOfImagesResponse* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::DicomStudyNumberOfImages(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyNumberOfImagesResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyNumberOfImagesResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DicomStudyNumberOfImages_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::DicomStudyNumberOfImages(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyNumberOfImagesResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::DicomStudyNumberOfImages(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyNumberOfImagesResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DicomStudyNumberOfImages_, context, request, response, reactor);
 }
 
@@ -3015,11 +3015,11 @@ void OsiriXService::Stub::experimental_async::DicomStudyNumberOfImages(::grpc::C
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudySeriesResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_DicomStudySeries_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::DicomStudySeries(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudySeriesResponse* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::DicomStudySeries(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudySeriesResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudySeriesResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DicomStudySeries_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::DicomStudySeries(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudySeriesResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::DicomStudySeries(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudySeriesResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DicomStudySeries_, context, request, response, reactor);
 }
 
@@ -3038,11 +3038,11 @@ void OsiriXService::Stub::experimental_async::DicomStudySeries(::grpc::ClientCon
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyNameResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_DicomStudyName_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::DicomStudyName(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyNameResponse* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::DicomStudyName(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyNameResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyNameResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DicomStudyName_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::DicomStudyName(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyNameResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::DicomStudyName(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyNameResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DicomStudyName_, context, request, response, reactor);
 }
 
@@ -3061,11 +3061,11 @@ void OsiriXService::Stub::experimental_async::DicomStudyName(::grpc::ClientConte
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyDateResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_DicomStudyDate_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::DicomStudyDate(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyDateResponse* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::DicomStudyDate(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyDateResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyDateResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DicomStudyDate_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::DicomStudyDate(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyDateResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::DicomStudyDate(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyDateResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DicomStudyDate_, context, request, response, reactor);
 }
 
@@ -3084,11 +3084,11 @@ void OsiriXService::Stub::experimental_async::DicomStudyDate(::grpc::ClientConte
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyDateAddedResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_DicomStudyDateAdded_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::DicomStudyDateAdded(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyDateAddedResponse* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::DicomStudyDateAdded(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyDateAddedResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyDateAddedResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DicomStudyDateAdded_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::DicomStudyDateAdded(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyDateAddedResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::DicomStudyDateAdded(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyDateAddedResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DicomStudyDateAdded_, context, request, response, reactor);
 }
 
@@ -3107,11 +3107,11 @@ void OsiriXService::Stub::experimental_async::DicomStudyDateAdded(::grpc::Client
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyDateOfBirthResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_DicomStudyDateOfBirth_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::DicomStudyDateOfBirth(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyDateOfBirthResponse* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::DicomStudyDateOfBirth(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyDateOfBirthResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyDateOfBirthResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DicomStudyDateOfBirth_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::DicomStudyDateOfBirth(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyDateOfBirthResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::DicomStudyDateOfBirth(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyDateOfBirthResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DicomStudyDateOfBirth_, context, request, response, reactor);
 }
 
@@ -3130,11 +3130,11 @@ void OsiriXService::Stub::experimental_async::DicomStudyDateOfBirth(::grpc::Clie
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyInstitutionNameResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_DicomStudyInstitutionName_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::DicomStudyInstitutionName(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyInstitutionNameResponse* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::DicomStudyInstitutionName(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyInstitutionNameResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyInstitutionNameResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DicomStudyInstitutionName_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::DicomStudyInstitutionName(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyInstitutionNameResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::DicomStudyInstitutionName(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyInstitutionNameResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DicomStudyInstitutionName_, context, request, response, reactor);
 }
 
@@ -3153,11 +3153,11 @@ void OsiriXService::Stub::experimental_async::DicomStudyInstitutionName(::grpc::
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyModalityResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_DicomStudyModality_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::DicomStudyModality(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyModalityResponse* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::DicomStudyModality(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyModalityResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyModalityResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DicomStudyModality_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::DicomStudyModality(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyModalityResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::DicomStudyModality(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyModalityResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DicomStudyModality_, context, request, response, reactor);
 }
 
@@ -3176,11 +3176,11 @@ void OsiriXService::Stub::experimental_async::DicomStudyModality(::grpc::ClientC
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyPatientIDResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_DicomStudyPatientID_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::DicomStudyPatientID(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyPatientIDResponse* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::DicomStudyPatientID(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyPatientIDResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyPatientIDResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DicomStudyPatientID_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::DicomStudyPatientID(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyPatientIDResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::DicomStudyPatientID(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyPatientIDResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DicomStudyPatientID_, context, request, response, reactor);
 }
 
@@ -3199,11 +3199,11 @@ void OsiriXService::Stub::experimental_async::DicomStudyPatientID(::grpc::Client
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyPatientUIDResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_DicomStudyPatientUID_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::DicomStudyPatientUID(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyPatientUIDResponse* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::DicomStudyPatientUID(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyPatientUIDResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyPatientUIDResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DicomStudyPatientUID_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::DicomStudyPatientUID(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyPatientUIDResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::DicomStudyPatientUID(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyPatientUIDResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DicomStudyPatientUID_, context, request, response, reactor);
 }
 
@@ -3222,11 +3222,11 @@ void OsiriXService::Stub::experimental_async::DicomStudyPatientUID(::grpc::Clien
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyPatientSexResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_DicomStudyPatientSex_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::DicomStudyPatientSex(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyPatientSexResponse* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::DicomStudyPatientSex(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyPatientSexResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyPatientSexResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DicomStudyPatientSex_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::DicomStudyPatientSex(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyPatientSexResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::DicomStudyPatientSex(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyPatientSexResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DicomStudyPatientSex_, context, request, response, reactor);
 }
 
@@ -3245,11 +3245,11 @@ void OsiriXService::Stub::experimental_async::DicomStudyPatientSex(::grpc::Clien
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyPerformingPhysicianResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_DicomStudyPerformingPhysician_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::DicomStudyPerformingPhysician(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyPerformingPhysicianResponse* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::DicomStudyPerformingPhysician(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyPerformingPhysicianResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyPerformingPhysicianResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DicomStudyPerformingPhysician_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::DicomStudyPerformingPhysician(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyPerformingPhysicianResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::DicomStudyPerformingPhysician(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyPerformingPhysicianResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DicomStudyPerformingPhysician_, context, request, response, reactor);
 }
 
@@ -3268,11 +3268,11 @@ void OsiriXService::Stub::experimental_async::DicomStudyPerformingPhysician(::gr
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyReferringPhysicianResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_DicomStudyReferringPhysician_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::DicomStudyReferringPhysician(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyReferringPhysicianResponse* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::DicomStudyReferringPhysician(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyReferringPhysicianResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyReferringPhysicianResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DicomStudyReferringPhysician_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::DicomStudyReferringPhysician(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyReferringPhysicianResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::DicomStudyReferringPhysician(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyReferringPhysicianResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DicomStudyReferringPhysician_, context, request, response, reactor);
 }
 
@@ -3291,11 +3291,11 @@ void OsiriXService::Stub::experimental_async::DicomStudyReferringPhysician(::grp
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyStudyInstanceUIDResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_DicomStudyStudyInstanceUID_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::DicomStudyStudyInstanceUID(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyStudyInstanceUIDResponse* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::DicomStudyStudyInstanceUID(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyStudyInstanceUIDResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyStudyInstanceUIDResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DicomStudyStudyInstanceUID_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::DicomStudyStudyInstanceUID(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyStudyInstanceUIDResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::DicomStudyStudyInstanceUID(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyStudyInstanceUIDResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DicomStudyStudyInstanceUID_, context, request, response, reactor);
 }
 
@@ -3314,11 +3314,11 @@ void OsiriXService::Stub::experimental_async::DicomStudyStudyInstanceUID(::grpc:
   return ::grpc::internal::BlockingUnaryCall< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyStudyNameResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_DicomStudyStudyName_, context, request, response);
 }
 
-void OsiriXService::Stub::experimental_async::DicomStudyStudyName(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyStudyNameResponse* response, std::function<void(::grpc::Status)> f) {
+void OsiriXService::Stub::async::DicomStudyStudyName(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyStudyNameResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyStudyNameResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DicomStudyStudyName_, context, request, response, std::move(f));
 }
 
-void OsiriXService::Stub::experimental_async::DicomStudyStudyName(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyStudyNameResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void OsiriXService::Stub::async::DicomStudyStudyName(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyStudyNameResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DicomStudyStudyName_, context, request, response, reactor);
 }
 

@@ -4,1178 +4,1362 @@
 #include "viewercontroller.pb.h"
 
 #include <algorithm>
-
-#include <google/protobuf/io/coded_stream.h>
-#include <google/protobuf/extension_set.h>
-#include <google/protobuf/wire_format_lite.h>
-#include <google/protobuf/descriptor.h>
-#include <google/protobuf/generated_message_reflection.h>
-#include <google/protobuf/reflection_ops.h>
-#include <google/protobuf/wire_format.h>
+#include "google/protobuf/io/coded_stream.h"
+#include "google/protobuf/extension_set.h"
+#include "google/protobuf/wire_format_lite.h"
+#include "google/protobuf/descriptor.h"
+#include "google/protobuf/generated_message_reflection.h"
+#include "google/protobuf/reflection_ops.h"
+#include "google/protobuf/wire_format.h"
 // @@protoc_insertion_point(includes)
-#include <google/protobuf/port_def.inc>
-extern PROTOBUF_INTERNAL_EXPORT_types_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_DCMPix_types_2eproto;
-extern PROTOBUF_INTERNAL_EXPORT_types_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_ROI_types_2eproto;
-extern PROTOBUF_INTERNAL_EXPORT_utilities_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_Status_utilities_2eproto;
-extern PROTOBUF_INTERNAL_EXPORT_types_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_VRController_types_2eproto;
-extern PROTOBUF_INTERNAL_EXPORT_types_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_ViewerController_types_2eproto;
-extern PROTOBUF_INTERNAL_EXPORT_viewercontroller_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_ViewerControllerNewROIRequest_Buffer_viewercontroller_2eproto;
-extern PROTOBUF_INTERNAL_EXPORT_viewercontroller_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_ViewerControllerNewROIRequest_Color_viewercontroller_2eproto;
-extern PROTOBUF_INTERNAL_EXPORT_viewercontroller_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_ViewerControllerNewROIRequest_Point2D_viewercontroller_2eproto;
-extern PROTOBUF_INTERNAL_EXPORT_viewercontroller_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_ViewerControllerNewROIRequest_Rect_viewercontroller_2eproto;
-extern PROTOBUF_INTERNAL_EXPORT_viewercontroller_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_ViewerControllerROIListResponse_ROISlice_viewercontroller_2eproto;
+
+// Must be included last.
+#include "google/protobuf/port_def.inc"
+PROTOBUF_PRAGMA_INIT_SEG
+namespace _pb = ::PROTOBUF_NAMESPACE_ID;
+namespace _pbi = ::PROTOBUF_NAMESPACE_ID::internal;
 namespace osirixgrpc {
-class ViewerControllerPixListResponseDefaultTypeInternal {
- public:
-  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<ViewerControllerPixListResponse> _instance;
-} _ViewerControllerPixListResponse_default_instance_;
-class ViewerControllerROIListResponse_ROISliceDefaultTypeInternal {
- public:
-  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<ViewerControllerROIListResponse_ROISlice> _instance;
-} _ViewerControllerROIListResponse_ROISlice_default_instance_;
-class ViewerControllerROIListResponseDefaultTypeInternal {
- public:
-  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<ViewerControllerROIListResponse> _instance;
-} _ViewerControllerROIListResponse_default_instance_;
-class ViewerControllerNewROIResponseDefaultTypeInternal {
- public:
-  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<ViewerControllerNewROIResponse> _instance;
-} _ViewerControllerNewROIResponse_default_instance_;
-class ViewerControllerCurDCMResponseDefaultTypeInternal {
- public:
-  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<ViewerControllerCurDCMResponse> _instance;
-} _ViewerControllerCurDCMResponse_default_instance_;
-class ViewerControllerROIsWithNameResponseDefaultTypeInternal {
- public:
-  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<ViewerControllerROIsWithNameResponse> _instance;
-} _ViewerControllerROIsWithNameResponse_default_instance_;
-class ViewerControllerSelectedROIsResponseDefaultTypeInternal {
- public:
-  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<ViewerControllerSelectedROIsResponse> _instance;
-} _ViewerControllerSelectedROIsResponse_default_instance_;
-class ViewerControllerIsDataVolumicResponseDefaultTypeInternal {
- public:
-  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<ViewerControllerIsDataVolumicResponse> _instance;
-} _ViewerControllerIsDataVolumicResponse_default_instance_;
-class ViewerControllerBlendingControllerResponseDefaultTypeInternal {
- public:
-  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<ViewerControllerBlendingControllerResponse> _instance;
-} _ViewerControllerBlendingControllerResponse_default_instance_;
-class ViewerControllerVRControllersResponseDefaultTypeInternal {
- public:
-  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<ViewerControllerVRControllersResponse> _instance;
-} _ViewerControllerVRControllersResponse_default_instance_;
-class ViewerControllerTitleResponseDefaultTypeInternal {
- public:
-  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<ViewerControllerTitleResponse> _instance;
-} _ViewerControllerTitleResponse_default_instance_;
-class ViewerControllerModalityResponseDefaultTypeInternal {
- public:
-  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<ViewerControllerModalityResponse> _instance;
-} _ViewerControllerModalityResponse_default_instance_;
-class ViewerControllerMovieIdxResponseDefaultTypeInternal {
- public:
-  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<ViewerControllerMovieIdxResponse> _instance;
-} _ViewerControllerMovieIdxResponse_default_instance_;
-class ViewerControllerMaxMovieIdxResponseDefaultTypeInternal {
- public:
-  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<ViewerControllerMaxMovieIdxResponse> _instance;
-} _ViewerControllerMaxMovieIdxResponse_default_instance_;
-class ViewerControllerIdxResponseDefaultTypeInternal {
- public:
-  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<ViewerControllerIdxResponse> _instance;
-} _ViewerControllerIdxResponse_default_instance_;
-class ViewerControllerWLWWResponseDefaultTypeInternal {
- public:
-  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<ViewerControllerWLWWResponse> _instance;
-} _ViewerControllerWLWWResponse_default_instance_;
-class ViewerControllerOpenVRViewerForModeResponseDefaultTypeInternal {
- public:
-  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<ViewerControllerOpenVRViewerForModeResponse> _instance;
-} _ViewerControllerOpenVRViewerForModeResponse_default_instance_;
-class ViewerControllerPixListRequestDefaultTypeInternal {
- public:
-  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<ViewerControllerPixListRequest> _instance;
-} _ViewerControllerPixListRequest_default_instance_;
-class ViewerControllerROIListRequestDefaultTypeInternal {
- public:
-  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<ViewerControllerROIListRequest> _instance;
-} _ViewerControllerROIListRequest_default_instance_;
-class ViewerControllerNewROIRequest_BufferDefaultTypeInternal {
- public:
-  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<ViewerControllerNewROIRequest_Buffer> _instance;
-} _ViewerControllerNewROIRequest_Buffer_default_instance_;
-class ViewerControllerNewROIRequest_Point2DDefaultTypeInternal {
- public:
-  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<ViewerControllerNewROIRequest_Point2D> _instance;
-} _ViewerControllerNewROIRequest_Point2D_default_instance_;
-class ViewerControllerNewROIRequest_ColorDefaultTypeInternal {
- public:
-  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<ViewerControllerNewROIRequest_Color> _instance;
-} _ViewerControllerNewROIRequest_Color_default_instance_;
-class ViewerControllerNewROIRequest_RectDefaultTypeInternal {
- public:
-  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<ViewerControllerNewROIRequest_Rect> _instance;
-} _ViewerControllerNewROIRequest_Rect_default_instance_;
-class ViewerControllerNewROIRequestDefaultTypeInternal {
- public:
-  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<ViewerControllerNewROIRequest> _instance;
-} _ViewerControllerNewROIRequest_default_instance_;
-class ViewerControllerROIsWithNameRequestDefaultTypeInternal {
- public:
-  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<ViewerControllerROIsWithNameRequest> _instance;
-} _ViewerControllerROIsWithNameRequest_default_instance_;
-class ViewerControllerResampleViewerControllerRequestDefaultTypeInternal {
- public:
-  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<ViewerControllerResampleViewerControllerRequest> _instance;
-} _ViewerControllerResampleViewerControllerRequest_default_instance_;
-class ViewerControllerCopyViewerWindowRequestDefaultTypeInternal {
- public:
-  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<ViewerControllerCopyViewerWindowRequest> _instance;
-} _ViewerControllerCopyViewerWindowRequest_default_instance_;
-class ViewerControllerSetMovieIdxRequestDefaultTypeInternal {
- public:
-  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<ViewerControllerSetMovieIdxRequest> _instance;
-} _ViewerControllerSetMovieIdxRequest_default_instance_;
-class ViewerControllerIsDataVolumicRequestDefaultTypeInternal {
- public:
-  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<ViewerControllerIsDataVolumicRequest> _instance;
-} _ViewerControllerIsDataVolumicRequest_default_instance_;
-class ViewerControllerSetIdxRequestDefaultTypeInternal {
- public:
-  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<ViewerControllerSetIdxRequest> _instance;
-} _ViewerControllerSetIdxRequest_default_instance_;
-class ViewerControllerSetWLWWRequestDefaultTypeInternal {
- public:
-  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<ViewerControllerSetWLWWRequest> _instance;
-} _ViewerControllerSetWLWWRequest_default_instance_;
-class ViewerControllerOpenVRViewerForModeRequestDefaultTypeInternal {
- public:
-  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<ViewerControllerOpenVRViewerForModeRequest> _instance;
-} _ViewerControllerOpenVRViewerForModeRequest_default_instance_;
+template <typename>
+PROTOBUF_CONSTEXPR ViewerControllerPixListResponse::ViewerControllerPixListResponse(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.pix_)*/{}
+  , /*decltype(_impl_.status_)*/nullptr} {}
+struct ViewerControllerPixListResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ViewerControllerPixListResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ViewerControllerPixListResponseDefaultTypeInternal() {}
+  union {
+    ViewerControllerPixListResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ViewerControllerPixListResponseDefaultTypeInternal _ViewerControllerPixListResponse_default_instance_;
+template <typename>
+PROTOBUF_CONSTEXPR ViewerControllerROIListResponse_ROISlice::ViewerControllerROIListResponse_ROISlice(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.rois_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct ViewerControllerROIListResponse_ROISliceDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ViewerControllerROIListResponse_ROISliceDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ViewerControllerROIListResponse_ROISliceDefaultTypeInternal() {}
+  union {
+    ViewerControllerROIListResponse_ROISlice _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ViewerControllerROIListResponse_ROISliceDefaultTypeInternal _ViewerControllerROIListResponse_ROISlice_default_instance_;
+template <typename>
+PROTOBUF_CONSTEXPR ViewerControllerROIListResponse::ViewerControllerROIListResponse(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.roi_slices_)*/{}
+  , /*decltype(_impl_.status_)*/nullptr} {}
+struct ViewerControllerROIListResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ViewerControllerROIListResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ViewerControllerROIListResponseDefaultTypeInternal() {}
+  union {
+    ViewerControllerROIListResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ViewerControllerROIListResponseDefaultTypeInternal _ViewerControllerROIListResponse_default_instance_;
+template <typename>
+PROTOBUF_CONSTEXPR ViewerControllerNewROIResponse::ViewerControllerNewROIResponse(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.status_)*/nullptr
+  , /*decltype(_impl_.roi_)*/nullptr} {}
+struct ViewerControllerNewROIResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ViewerControllerNewROIResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ViewerControllerNewROIResponseDefaultTypeInternal() {}
+  union {
+    ViewerControllerNewROIResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ViewerControllerNewROIResponseDefaultTypeInternal _ViewerControllerNewROIResponse_default_instance_;
+template <typename>
+PROTOBUF_CONSTEXPR ViewerControllerCurDCMResponse::ViewerControllerCurDCMResponse(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.status_)*/nullptr
+  , /*decltype(_impl_.pix_)*/nullptr} {}
+struct ViewerControllerCurDCMResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ViewerControllerCurDCMResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ViewerControllerCurDCMResponseDefaultTypeInternal() {}
+  union {
+    ViewerControllerCurDCMResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ViewerControllerCurDCMResponseDefaultTypeInternal _ViewerControllerCurDCMResponse_default_instance_;
+template <typename>
+PROTOBUF_CONSTEXPR ViewerControllerROIsWithNameResponse::ViewerControllerROIsWithNameResponse(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.rois_)*/{}
+  , /*decltype(_impl_.status_)*/nullptr} {}
+struct ViewerControllerROIsWithNameResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ViewerControllerROIsWithNameResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ViewerControllerROIsWithNameResponseDefaultTypeInternal() {}
+  union {
+    ViewerControllerROIsWithNameResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ViewerControllerROIsWithNameResponseDefaultTypeInternal _ViewerControllerROIsWithNameResponse_default_instance_;
+template <typename>
+PROTOBUF_CONSTEXPR ViewerControllerSelectedROIsResponse::ViewerControllerSelectedROIsResponse(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.rois_)*/{}
+  , /*decltype(_impl_.status_)*/nullptr} {}
+struct ViewerControllerSelectedROIsResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ViewerControllerSelectedROIsResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ViewerControllerSelectedROIsResponseDefaultTypeInternal() {}
+  union {
+    ViewerControllerSelectedROIsResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ViewerControllerSelectedROIsResponseDefaultTypeInternal _ViewerControllerSelectedROIsResponse_default_instance_;
+template <typename>
+PROTOBUF_CONSTEXPR ViewerControllerIsDataVolumicResponse::ViewerControllerIsDataVolumicResponse(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.status_)*/nullptr
+  , /*decltype(_impl_.is_volumic_)*/ false
+} {}
+struct ViewerControllerIsDataVolumicResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ViewerControllerIsDataVolumicResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ViewerControllerIsDataVolumicResponseDefaultTypeInternal() {}
+  union {
+    ViewerControllerIsDataVolumicResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ViewerControllerIsDataVolumicResponseDefaultTypeInternal _ViewerControllerIsDataVolumicResponse_default_instance_;
+template <typename>
+PROTOBUF_CONSTEXPR ViewerControllerBlendingControllerResponse::ViewerControllerBlendingControllerResponse(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.status_)*/nullptr
+  , /*decltype(_impl_.blending_viewer_)*/nullptr} {}
+struct ViewerControllerBlendingControllerResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ViewerControllerBlendingControllerResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ViewerControllerBlendingControllerResponseDefaultTypeInternal() {}
+  union {
+    ViewerControllerBlendingControllerResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ViewerControllerBlendingControllerResponseDefaultTypeInternal _ViewerControllerBlendingControllerResponse_default_instance_;
+template <typename>
+PROTOBUF_CONSTEXPR ViewerControllerVRControllersResponse::ViewerControllerVRControllersResponse(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.vr_controllers_)*/{}
+  , /*decltype(_impl_.status_)*/nullptr} {}
+struct ViewerControllerVRControllersResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ViewerControllerVRControllersResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ViewerControllerVRControllersResponseDefaultTypeInternal() {}
+  union {
+    ViewerControllerVRControllersResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ViewerControllerVRControllersResponseDefaultTypeInternal _ViewerControllerVRControllersResponse_default_instance_;
+template <typename>
+PROTOBUF_CONSTEXPR ViewerControllerTitleResponse::ViewerControllerTitleResponse(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.title_)*/ {
+    &::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized {}
+  }
+
+  , /*decltype(_impl_.status_)*/nullptr} {}
+struct ViewerControllerTitleResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ViewerControllerTitleResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ViewerControllerTitleResponseDefaultTypeInternal() {}
+  union {
+    ViewerControllerTitleResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ViewerControllerTitleResponseDefaultTypeInternal _ViewerControllerTitleResponse_default_instance_;
+template <typename>
+PROTOBUF_CONSTEXPR ViewerControllerModalityResponse::ViewerControllerModalityResponse(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.modality_)*/ {
+    &::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized {}
+  }
+
+  , /*decltype(_impl_.status_)*/nullptr} {}
+struct ViewerControllerModalityResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ViewerControllerModalityResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ViewerControllerModalityResponseDefaultTypeInternal() {}
+  union {
+    ViewerControllerModalityResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ViewerControllerModalityResponseDefaultTypeInternal _ViewerControllerModalityResponse_default_instance_;
+template <typename>
+PROTOBUF_CONSTEXPR ViewerControllerMovieIdxResponse::ViewerControllerMovieIdxResponse(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.status_)*/nullptr
+  , /*decltype(_impl_.movie_idx_)*/ 0
+} {}
+struct ViewerControllerMovieIdxResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ViewerControllerMovieIdxResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ViewerControllerMovieIdxResponseDefaultTypeInternal() {}
+  union {
+    ViewerControllerMovieIdxResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ViewerControllerMovieIdxResponseDefaultTypeInternal _ViewerControllerMovieIdxResponse_default_instance_;
+template <typename>
+PROTOBUF_CONSTEXPR ViewerControllerMaxMovieIdxResponse::ViewerControllerMaxMovieIdxResponse(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.status_)*/nullptr
+  , /*decltype(_impl_.max_movie_idx_)*/ 0
+} {}
+struct ViewerControllerMaxMovieIdxResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ViewerControllerMaxMovieIdxResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ViewerControllerMaxMovieIdxResponseDefaultTypeInternal() {}
+  union {
+    ViewerControllerMaxMovieIdxResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ViewerControllerMaxMovieIdxResponseDefaultTypeInternal _ViewerControllerMaxMovieIdxResponse_default_instance_;
+template <typename>
+PROTOBUF_CONSTEXPR ViewerControllerIdxResponse::ViewerControllerIdxResponse(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.status_)*/nullptr
+  , /*decltype(_impl_.idx_)*/ 0
+} {}
+struct ViewerControllerIdxResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ViewerControllerIdxResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ViewerControllerIdxResponseDefaultTypeInternal() {}
+  union {
+    ViewerControllerIdxResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ViewerControllerIdxResponseDefaultTypeInternal _ViewerControllerIdxResponse_default_instance_;
+template <typename>
+PROTOBUF_CONSTEXPR ViewerControllerWLWWResponse::ViewerControllerWLWWResponse(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.status_)*/nullptr
+  , /*decltype(_impl_.wl_)*/ 0
+
+  , /*decltype(_impl_.ww_)*/ 0
+} {}
+struct ViewerControllerWLWWResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ViewerControllerWLWWResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ViewerControllerWLWWResponseDefaultTypeInternal() {}
+  union {
+    ViewerControllerWLWWResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ViewerControllerWLWWResponseDefaultTypeInternal _ViewerControllerWLWWResponse_default_instance_;
+template <typename>
+PROTOBUF_CONSTEXPR ViewerControllerOpenVRViewerForModeResponse::ViewerControllerOpenVRViewerForModeResponse(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.status_)*/nullptr
+  , /*decltype(_impl_.vr_controller_)*/nullptr} {}
+struct ViewerControllerOpenVRViewerForModeResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ViewerControllerOpenVRViewerForModeResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ViewerControllerOpenVRViewerForModeResponseDefaultTypeInternal() {}
+  union {
+    ViewerControllerOpenVRViewerForModeResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ViewerControllerOpenVRViewerForModeResponseDefaultTypeInternal _ViewerControllerOpenVRViewerForModeResponse_default_instance_;
+template <typename>
+PROTOBUF_CONSTEXPR ViewerControllerPixListRequest::ViewerControllerPixListRequest(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.viewer_controller_)*/nullptr
+  , /*decltype(_impl_.movie_idx_)*/ 0
+} {}
+struct ViewerControllerPixListRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ViewerControllerPixListRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ViewerControllerPixListRequestDefaultTypeInternal() {}
+  union {
+    ViewerControllerPixListRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ViewerControllerPixListRequestDefaultTypeInternal _ViewerControllerPixListRequest_default_instance_;
+template <typename>
+PROTOBUF_CONSTEXPR ViewerControllerROIListRequest::ViewerControllerROIListRequest(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.viewer_controller_)*/nullptr
+  , /*decltype(_impl_.movie_idx_)*/ 0
+} {}
+struct ViewerControllerROIListRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ViewerControllerROIListRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ViewerControllerROIListRequestDefaultTypeInternal() {}
+  union {
+    ViewerControllerROIListRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ViewerControllerROIListRequestDefaultTypeInternal _ViewerControllerROIListRequest_default_instance_;
+template <typename>
+PROTOBUF_CONSTEXPR ViewerControllerNewROIRequest_Buffer::ViewerControllerNewROIRequest_Buffer(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.buffer_)*/ {}
+
+  , /*decltype(_impl_.rows_)*/ 0
+
+  , /*decltype(_impl_.columns_)*/ 0
+
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct ViewerControllerNewROIRequest_BufferDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ViewerControllerNewROIRequest_BufferDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ViewerControllerNewROIRequest_BufferDefaultTypeInternal() {}
+  union {
+    ViewerControllerNewROIRequest_Buffer _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ViewerControllerNewROIRequest_BufferDefaultTypeInternal _ViewerControllerNewROIRequest_Buffer_default_instance_;
+template <typename>
+PROTOBUF_CONSTEXPR ViewerControllerNewROIRequest_Point2D::ViewerControllerNewROIRequest_Point2D(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.x_)*/ 0
+
+  , /*decltype(_impl_.y_)*/ 0
+
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct ViewerControllerNewROIRequest_Point2DDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ViewerControllerNewROIRequest_Point2DDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ViewerControllerNewROIRequest_Point2DDefaultTypeInternal() {}
+  union {
+    ViewerControllerNewROIRequest_Point2D _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ViewerControllerNewROIRequest_Point2DDefaultTypeInternal _ViewerControllerNewROIRequest_Point2D_default_instance_;
+template <typename>
+PROTOBUF_CONSTEXPR ViewerControllerNewROIRequest_Color::ViewerControllerNewROIRequest_Color(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.r_)*/ 0
+
+  , /*decltype(_impl_.g_)*/ 0
+
+  , /*decltype(_impl_.b_)*/ 0
+
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct ViewerControllerNewROIRequest_ColorDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ViewerControllerNewROIRequest_ColorDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ViewerControllerNewROIRequest_ColorDefaultTypeInternal() {}
+  union {
+    ViewerControllerNewROIRequest_Color _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ViewerControllerNewROIRequest_ColorDefaultTypeInternal _ViewerControllerNewROIRequest_Color_default_instance_;
+template <typename>
+PROTOBUF_CONSTEXPR ViewerControllerNewROIRequest_Rect::ViewerControllerNewROIRequest_Rect(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.origin_x_)*/ 0
+
+  , /*decltype(_impl_.origin_y_)*/ 0
+
+  , /*decltype(_impl_.height_)*/ 0
+
+  , /*decltype(_impl_.width_)*/ 0
+
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct ViewerControllerNewROIRequest_RectDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ViewerControllerNewROIRequest_RectDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ViewerControllerNewROIRequest_RectDefaultTypeInternal() {}
+  union {
+    ViewerControllerNewROIRequest_Rect _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ViewerControllerNewROIRequest_RectDefaultTypeInternal _ViewerControllerNewROIRequest_Rect_default_instance_;
+template <typename>
+PROTOBUF_CONSTEXPR ViewerControllerNewROIRequest::ViewerControllerNewROIRequest(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.points_)*/{}
+  , /*decltype(_impl_.name_)*/ {
+    &::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized {}
+  }
+
+  , /*decltype(_impl_.viewer_controller_)*/nullptr
+  , /*decltype(_impl_.color_)*/nullptr
+  , /*decltype(_impl_.buffer_)*/nullptr
+  , /*decltype(_impl_.rectangle_)*/nullptr
+  , /*decltype(_impl_.itype_)*/ 0
+
+  , /*decltype(_impl_.position_)*/ 0
+
+  , /*decltype(_impl_.movie_idx_)*/ 0
+
+  , /*decltype(_impl_.buffer_position_x_)*/ 0
+
+  , /*decltype(_impl_.buffer_position_y_)*/ 0
+
+  , /*decltype(_impl_.thickness_)*/ 0
+
+  , /*decltype(_impl_.opacity_)*/ 0
+} {}
+struct ViewerControllerNewROIRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ViewerControllerNewROIRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ViewerControllerNewROIRequestDefaultTypeInternal() {}
+  union {
+    ViewerControllerNewROIRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ViewerControllerNewROIRequestDefaultTypeInternal _ViewerControllerNewROIRequest_default_instance_;
+template <typename>
+PROTOBUF_CONSTEXPR ViewerControllerROIsWithNameRequest::ViewerControllerROIsWithNameRequest(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.name_)*/ {
+    &::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized {}
+  }
+
+  , /*decltype(_impl_.viewer_controller_)*/nullptr
+  , /*decltype(_impl_.movie_idx_)*/ 0
+
+  , /*decltype(_impl_.in_4d_)*/ false
+} {}
+struct ViewerControllerROIsWithNameRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ViewerControllerROIsWithNameRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ViewerControllerROIsWithNameRequestDefaultTypeInternal() {}
+  union {
+    ViewerControllerROIsWithNameRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ViewerControllerROIsWithNameRequestDefaultTypeInternal _ViewerControllerROIsWithNameRequest_default_instance_;
+template <typename>
+PROTOBUF_CONSTEXPR ViewerControllerResampleViewerControllerRequest::ViewerControllerResampleViewerControllerRequest(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.viewer_controller_)*/nullptr
+  , /*decltype(_impl_.fixed_viewer_controller_)*/nullptr} {}
+struct ViewerControllerResampleViewerControllerRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ViewerControllerResampleViewerControllerRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ViewerControllerResampleViewerControllerRequestDefaultTypeInternal() {}
+  union {
+    ViewerControllerResampleViewerControllerRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ViewerControllerResampleViewerControllerRequestDefaultTypeInternal _ViewerControllerResampleViewerControllerRequest_default_instance_;
+template <typename>
+PROTOBUF_CONSTEXPR ViewerControllerCopyViewerWindowRequest::ViewerControllerCopyViewerWindowRequest(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.viewer_controller_)*/nullptr
+  , /*decltype(_impl_.in_4d_)*/ false
+} {}
+struct ViewerControllerCopyViewerWindowRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ViewerControllerCopyViewerWindowRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ViewerControllerCopyViewerWindowRequestDefaultTypeInternal() {}
+  union {
+    ViewerControllerCopyViewerWindowRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ViewerControllerCopyViewerWindowRequestDefaultTypeInternal _ViewerControllerCopyViewerWindowRequest_default_instance_;
+template <typename>
+PROTOBUF_CONSTEXPR ViewerControllerSetMovieIdxRequest::ViewerControllerSetMovieIdxRequest(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.viewer_controller_)*/nullptr
+  , /*decltype(_impl_.movie_idx_)*/ 0
+} {}
+struct ViewerControllerSetMovieIdxRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ViewerControllerSetMovieIdxRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ViewerControllerSetMovieIdxRequestDefaultTypeInternal() {}
+  union {
+    ViewerControllerSetMovieIdxRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ViewerControllerSetMovieIdxRequestDefaultTypeInternal _ViewerControllerSetMovieIdxRequest_default_instance_;
+template <typename>
+PROTOBUF_CONSTEXPR ViewerControllerIsDataVolumicRequest::ViewerControllerIsDataVolumicRequest(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.viewer_controller_)*/nullptr
+  , /*decltype(_impl_.in_4d_)*/ false
+} {}
+struct ViewerControllerIsDataVolumicRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ViewerControllerIsDataVolumicRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ViewerControllerIsDataVolumicRequestDefaultTypeInternal() {}
+  union {
+    ViewerControllerIsDataVolumicRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ViewerControllerIsDataVolumicRequestDefaultTypeInternal _ViewerControllerIsDataVolumicRequest_default_instance_;
+template <typename>
+PROTOBUF_CONSTEXPR ViewerControllerSetIdxRequest::ViewerControllerSetIdxRequest(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.viewer_controller_)*/nullptr
+  , /*decltype(_impl_.idx_)*/ 0
+} {}
+struct ViewerControllerSetIdxRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ViewerControllerSetIdxRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ViewerControllerSetIdxRequestDefaultTypeInternal() {}
+  union {
+    ViewerControllerSetIdxRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ViewerControllerSetIdxRequestDefaultTypeInternal _ViewerControllerSetIdxRequest_default_instance_;
+template <typename>
+PROTOBUF_CONSTEXPR ViewerControllerSetWLWWRequest::ViewerControllerSetWLWWRequest(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.viewer_controller_)*/nullptr
+  , /*decltype(_impl_.wl_)*/ 0
+
+  , /*decltype(_impl_.ww_)*/ 0
+} {}
+struct ViewerControllerSetWLWWRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ViewerControllerSetWLWWRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ViewerControllerSetWLWWRequestDefaultTypeInternal() {}
+  union {
+    ViewerControllerSetWLWWRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ViewerControllerSetWLWWRequestDefaultTypeInternal _ViewerControllerSetWLWWRequest_default_instance_;
+template <typename>
+PROTOBUF_CONSTEXPR ViewerControllerOpenVRViewerForModeRequest::ViewerControllerOpenVRViewerForModeRequest(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.mode_)*/ {
+    &::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized {}
+  }
+
+  , /*decltype(_impl_.viewer_controller_)*/nullptr} {}
+struct ViewerControllerOpenVRViewerForModeRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ViewerControllerOpenVRViewerForModeRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ViewerControllerOpenVRViewerForModeRequestDefaultTypeInternal() {}
+  union {
+    ViewerControllerOpenVRViewerForModeRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ViewerControllerOpenVRViewerForModeRequestDefaultTypeInternal _ViewerControllerOpenVRViewerForModeRequest_default_instance_;
 }  // namespace osirixgrpc
-static void InitDefaultsscc_info_ViewerControllerBlendingControllerResponse_viewercontroller_2eproto() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::osirixgrpc::_ViewerControllerBlendingControllerResponse_default_instance_;
-    new (ptr) ::osirixgrpc::ViewerControllerBlendingControllerResponse();
-    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
-  }
-}
-
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<2> scc_info_ViewerControllerBlendingControllerResponse_viewercontroller_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 2, 0, InitDefaultsscc_info_ViewerControllerBlendingControllerResponse_viewercontroller_2eproto}, {
-      &scc_info_Status_utilities_2eproto.base,
-      &scc_info_ViewerController_types_2eproto.base,}};
-
-static void InitDefaultsscc_info_ViewerControllerCopyViewerWindowRequest_viewercontroller_2eproto() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::osirixgrpc::_ViewerControllerCopyViewerWindowRequest_default_instance_;
-    new (ptr) ::osirixgrpc::ViewerControllerCopyViewerWindowRequest();
-    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
-  }
-}
-
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_ViewerControllerCopyViewerWindowRequest_viewercontroller_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_ViewerControllerCopyViewerWindowRequest_viewercontroller_2eproto}, {
-      &scc_info_ViewerController_types_2eproto.base,}};
-
-static void InitDefaultsscc_info_ViewerControllerCurDCMResponse_viewercontroller_2eproto() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::osirixgrpc::_ViewerControllerCurDCMResponse_default_instance_;
-    new (ptr) ::osirixgrpc::ViewerControllerCurDCMResponse();
-    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
-  }
-}
-
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<2> scc_info_ViewerControllerCurDCMResponse_viewercontroller_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 2, 0, InitDefaultsscc_info_ViewerControllerCurDCMResponse_viewercontroller_2eproto}, {
-      &scc_info_Status_utilities_2eproto.base,
-      &scc_info_DCMPix_types_2eproto.base,}};
-
-static void InitDefaultsscc_info_ViewerControllerIdxResponse_viewercontroller_2eproto() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::osirixgrpc::_ViewerControllerIdxResponse_default_instance_;
-    new (ptr) ::osirixgrpc::ViewerControllerIdxResponse();
-    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
-  }
-}
-
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_ViewerControllerIdxResponse_viewercontroller_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_ViewerControllerIdxResponse_viewercontroller_2eproto}, {
-      &scc_info_Status_utilities_2eproto.base,}};
-
-static void InitDefaultsscc_info_ViewerControllerIsDataVolumicRequest_viewercontroller_2eproto() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::osirixgrpc::_ViewerControllerIsDataVolumicRequest_default_instance_;
-    new (ptr) ::osirixgrpc::ViewerControllerIsDataVolumicRequest();
-    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
-  }
-}
-
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_ViewerControllerIsDataVolumicRequest_viewercontroller_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_ViewerControllerIsDataVolumicRequest_viewercontroller_2eproto}, {
-      &scc_info_ViewerController_types_2eproto.base,}};
-
-static void InitDefaultsscc_info_ViewerControllerIsDataVolumicResponse_viewercontroller_2eproto() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::osirixgrpc::_ViewerControllerIsDataVolumicResponse_default_instance_;
-    new (ptr) ::osirixgrpc::ViewerControllerIsDataVolumicResponse();
-    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
-  }
-}
-
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_ViewerControllerIsDataVolumicResponse_viewercontroller_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_ViewerControllerIsDataVolumicResponse_viewercontroller_2eproto}, {
-      &scc_info_Status_utilities_2eproto.base,}};
-
-static void InitDefaultsscc_info_ViewerControllerMaxMovieIdxResponse_viewercontroller_2eproto() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::osirixgrpc::_ViewerControllerMaxMovieIdxResponse_default_instance_;
-    new (ptr) ::osirixgrpc::ViewerControllerMaxMovieIdxResponse();
-    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
-  }
-}
-
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_ViewerControllerMaxMovieIdxResponse_viewercontroller_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_ViewerControllerMaxMovieIdxResponse_viewercontroller_2eproto}, {
-      &scc_info_Status_utilities_2eproto.base,}};
-
-static void InitDefaultsscc_info_ViewerControllerModalityResponse_viewercontroller_2eproto() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::osirixgrpc::_ViewerControllerModalityResponse_default_instance_;
-    new (ptr) ::osirixgrpc::ViewerControllerModalityResponse();
-    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
-  }
-}
-
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_ViewerControllerModalityResponse_viewercontroller_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_ViewerControllerModalityResponse_viewercontroller_2eproto}, {
-      &scc_info_Status_utilities_2eproto.base,}};
-
-static void InitDefaultsscc_info_ViewerControllerMovieIdxResponse_viewercontroller_2eproto() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::osirixgrpc::_ViewerControllerMovieIdxResponse_default_instance_;
-    new (ptr) ::osirixgrpc::ViewerControllerMovieIdxResponse();
-    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
-  }
-}
-
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_ViewerControllerMovieIdxResponse_viewercontroller_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_ViewerControllerMovieIdxResponse_viewercontroller_2eproto}, {
-      &scc_info_Status_utilities_2eproto.base,}};
-
-static void InitDefaultsscc_info_ViewerControllerNewROIRequest_viewercontroller_2eproto() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::osirixgrpc::_ViewerControllerNewROIRequest_default_instance_;
-    new (ptr) ::osirixgrpc::ViewerControllerNewROIRequest();
-    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
-  }
-}
-
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<5> scc_info_ViewerControllerNewROIRequest_viewercontroller_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 5, 0, InitDefaultsscc_info_ViewerControllerNewROIRequest_viewercontroller_2eproto}, {
-      &scc_info_ViewerController_types_2eproto.base,
-      &scc_info_ViewerControllerNewROIRequest_Color_viewercontroller_2eproto.base,
-      &scc_info_ViewerControllerNewROIRequest_Buffer_viewercontroller_2eproto.base,
-      &scc_info_ViewerControllerNewROIRequest_Point2D_viewercontroller_2eproto.base,
-      &scc_info_ViewerControllerNewROIRequest_Rect_viewercontroller_2eproto.base,}};
-
-static void InitDefaultsscc_info_ViewerControllerNewROIRequest_Buffer_viewercontroller_2eproto() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::osirixgrpc::_ViewerControllerNewROIRequest_Buffer_default_instance_;
-    new (ptr) ::osirixgrpc::ViewerControllerNewROIRequest_Buffer();
-    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
-  }
-}
-
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_ViewerControllerNewROIRequest_Buffer_viewercontroller_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_ViewerControllerNewROIRequest_Buffer_viewercontroller_2eproto}, {}};
-
-static void InitDefaultsscc_info_ViewerControllerNewROIRequest_Color_viewercontroller_2eproto() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::osirixgrpc::_ViewerControllerNewROIRequest_Color_default_instance_;
-    new (ptr) ::osirixgrpc::ViewerControllerNewROIRequest_Color();
-    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
-  }
-}
-
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_ViewerControllerNewROIRequest_Color_viewercontroller_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_ViewerControllerNewROIRequest_Color_viewercontroller_2eproto}, {}};
-
-static void InitDefaultsscc_info_ViewerControllerNewROIRequest_Point2D_viewercontroller_2eproto() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::osirixgrpc::_ViewerControllerNewROIRequest_Point2D_default_instance_;
-    new (ptr) ::osirixgrpc::ViewerControllerNewROIRequest_Point2D();
-    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
-  }
-}
-
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_ViewerControllerNewROIRequest_Point2D_viewercontroller_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_ViewerControllerNewROIRequest_Point2D_viewercontroller_2eproto}, {}};
-
-static void InitDefaultsscc_info_ViewerControllerNewROIRequest_Rect_viewercontroller_2eproto() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::osirixgrpc::_ViewerControllerNewROIRequest_Rect_default_instance_;
-    new (ptr) ::osirixgrpc::ViewerControllerNewROIRequest_Rect();
-    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
-  }
-}
-
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_ViewerControllerNewROIRequest_Rect_viewercontroller_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_ViewerControllerNewROIRequest_Rect_viewercontroller_2eproto}, {}};
-
-static void InitDefaultsscc_info_ViewerControllerNewROIResponse_viewercontroller_2eproto() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::osirixgrpc::_ViewerControllerNewROIResponse_default_instance_;
-    new (ptr) ::osirixgrpc::ViewerControllerNewROIResponse();
-    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
-  }
-}
-
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<2> scc_info_ViewerControllerNewROIResponse_viewercontroller_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 2, 0, InitDefaultsscc_info_ViewerControllerNewROIResponse_viewercontroller_2eproto}, {
-      &scc_info_Status_utilities_2eproto.base,
-      &scc_info_ROI_types_2eproto.base,}};
-
-static void InitDefaultsscc_info_ViewerControllerOpenVRViewerForModeRequest_viewercontroller_2eproto() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::osirixgrpc::_ViewerControllerOpenVRViewerForModeRequest_default_instance_;
-    new (ptr) ::osirixgrpc::ViewerControllerOpenVRViewerForModeRequest();
-    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
-  }
-}
-
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_ViewerControllerOpenVRViewerForModeRequest_viewercontroller_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_ViewerControllerOpenVRViewerForModeRequest_viewercontroller_2eproto}, {
-      &scc_info_ViewerController_types_2eproto.base,}};
-
-static void InitDefaultsscc_info_ViewerControllerOpenVRViewerForModeResponse_viewercontroller_2eproto() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::osirixgrpc::_ViewerControllerOpenVRViewerForModeResponse_default_instance_;
-    new (ptr) ::osirixgrpc::ViewerControllerOpenVRViewerForModeResponse();
-    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
-  }
-}
-
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<2> scc_info_ViewerControllerOpenVRViewerForModeResponse_viewercontroller_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 2, 0, InitDefaultsscc_info_ViewerControllerOpenVRViewerForModeResponse_viewercontroller_2eproto}, {
-      &scc_info_Status_utilities_2eproto.base,
-      &scc_info_VRController_types_2eproto.base,}};
-
-static void InitDefaultsscc_info_ViewerControllerPixListRequest_viewercontroller_2eproto() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::osirixgrpc::_ViewerControllerPixListRequest_default_instance_;
-    new (ptr) ::osirixgrpc::ViewerControllerPixListRequest();
-    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
-  }
-}
-
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_ViewerControllerPixListRequest_viewercontroller_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_ViewerControllerPixListRequest_viewercontroller_2eproto}, {
-      &scc_info_ViewerController_types_2eproto.base,}};
-
-static void InitDefaultsscc_info_ViewerControllerPixListResponse_viewercontroller_2eproto() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::osirixgrpc::_ViewerControllerPixListResponse_default_instance_;
-    new (ptr) ::osirixgrpc::ViewerControllerPixListResponse();
-    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
-  }
-}
-
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<2> scc_info_ViewerControllerPixListResponse_viewercontroller_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 2, 0, InitDefaultsscc_info_ViewerControllerPixListResponse_viewercontroller_2eproto}, {
-      &scc_info_Status_utilities_2eproto.base,
-      &scc_info_DCMPix_types_2eproto.base,}};
-
-static void InitDefaultsscc_info_ViewerControllerROIListRequest_viewercontroller_2eproto() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::osirixgrpc::_ViewerControllerROIListRequest_default_instance_;
-    new (ptr) ::osirixgrpc::ViewerControllerROIListRequest();
-    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
-  }
-}
-
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_ViewerControllerROIListRequest_viewercontroller_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_ViewerControllerROIListRequest_viewercontroller_2eproto}, {
-      &scc_info_ViewerController_types_2eproto.base,}};
-
-static void InitDefaultsscc_info_ViewerControllerROIListResponse_viewercontroller_2eproto() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::osirixgrpc::_ViewerControllerROIListResponse_default_instance_;
-    new (ptr) ::osirixgrpc::ViewerControllerROIListResponse();
-    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
-  }
-}
-
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<2> scc_info_ViewerControllerROIListResponse_viewercontroller_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 2, 0, InitDefaultsscc_info_ViewerControllerROIListResponse_viewercontroller_2eproto}, {
-      &scc_info_Status_utilities_2eproto.base,
-      &scc_info_ViewerControllerROIListResponse_ROISlice_viewercontroller_2eproto.base,}};
-
-static void InitDefaultsscc_info_ViewerControllerROIListResponse_ROISlice_viewercontroller_2eproto() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::osirixgrpc::_ViewerControllerROIListResponse_ROISlice_default_instance_;
-    new (ptr) ::osirixgrpc::ViewerControllerROIListResponse_ROISlice();
-    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
-  }
-}
-
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_ViewerControllerROIListResponse_ROISlice_viewercontroller_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_ViewerControllerROIListResponse_ROISlice_viewercontroller_2eproto}, {
-      &scc_info_ROI_types_2eproto.base,}};
-
-static void InitDefaultsscc_info_ViewerControllerROIsWithNameRequest_viewercontroller_2eproto() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::osirixgrpc::_ViewerControllerROIsWithNameRequest_default_instance_;
-    new (ptr) ::osirixgrpc::ViewerControllerROIsWithNameRequest();
-    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
-  }
-}
-
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_ViewerControllerROIsWithNameRequest_viewercontroller_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_ViewerControllerROIsWithNameRequest_viewercontroller_2eproto}, {
-      &scc_info_ViewerController_types_2eproto.base,}};
-
-static void InitDefaultsscc_info_ViewerControllerROIsWithNameResponse_viewercontroller_2eproto() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::osirixgrpc::_ViewerControllerROIsWithNameResponse_default_instance_;
-    new (ptr) ::osirixgrpc::ViewerControllerROIsWithNameResponse();
-    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
-  }
-}
-
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<2> scc_info_ViewerControllerROIsWithNameResponse_viewercontroller_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 2, 0, InitDefaultsscc_info_ViewerControllerROIsWithNameResponse_viewercontroller_2eproto}, {
-      &scc_info_Status_utilities_2eproto.base,
-      &scc_info_ROI_types_2eproto.base,}};
-
-static void InitDefaultsscc_info_ViewerControllerResampleViewerControllerRequest_viewercontroller_2eproto() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::osirixgrpc::_ViewerControllerResampleViewerControllerRequest_default_instance_;
-    new (ptr) ::osirixgrpc::ViewerControllerResampleViewerControllerRequest();
-    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
-  }
-}
-
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_ViewerControllerResampleViewerControllerRequest_viewercontroller_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_ViewerControllerResampleViewerControllerRequest_viewercontroller_2eproto}, {
-      &scc_info_ViewerController_types_2eproto.base,}};
-
-static void InitDefaultsscc_info_ViewerControllerSelectedROIsResponse_viewercontroller_2eproto() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::osirixgrpc::_ViewerControllerSelectedROIsResponse_default_instance_;
-    new (ptr) ::osirixgrpc::ViewerControllerSelectedROIsResponse();
-    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
-  }
-}
-
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<2> scc_info_ViewerControllerSelectedROIsResponse_viewercontroller_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 2, 0, InitDefaultsscc_info_ViewerControllerSelectedROIsResponse_viewercontroller_2eproto}, {
-      &scc_info_Status_utilities_2eproto.base,
-      &scc_info_ROI_types_2eproto.base,}};
-
-static void InitDefaultsscc_info_ViewerControllerSetIdxRequest_viewercontroller_2eproto() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::osirixgrpc::_ViewerControllerSetIdxRequest_default_instance_;
-    new (ptr) ::osirixgrpc::ViewerControllerSetIdxRequest();
-    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
-  }
-}
-
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_ViewerControllerSetIdxRequest_viewercontroller_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_ViewerControllerSetIdxRequest_viewercontroller_2eproto}, {
-      &scc_info_ViewerController_types_2eproto.base,}};
-
-static void InitDefaultsscc_info_ViewerControllerSetMovieIdxRequest_viewercontroller_2eproto() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::osirixgrpc::_ViewerControllerSetMovieIdxRequest_default_instance_;
-    new (ptr) ::osirixgrpc::ViewerControllerSetMovieIdxRequest();
-    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
-  }
-}
-
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_ViewerControllerSetMovieIdxRequest_viewercontroller_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_ViewerControllerSetMovieIdxRequest_viewercontroller_2eproto}, {
-      &scc_info_ViewerController_types_2eproto.base,}};
-
-static void InitDefaultsscc_info_ViewerControllerSetWLWWRequest_viewercontroller_2eproto() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::osirixgrpc::_ViewerControllerSetWLWWRequest_default_instance_;
-    new (ptr) ::osirixgrpc::ViewerControllerSetWLWWRequest();
-    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
-  }
-}
-
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_ViewerControllerSetWLWWRequest_viewercontroller_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_ViewerControllerSetWLWWRequest_viewercontroller_2eproto}, {
-      &scc_info_ViewerController_types_2eproto.base,}};
-
-static void InitDefaultsscc_info_ViewerControllerTitleResponse_viewercontroller_2eproto() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::osirixgrpc::_ViewerControllerTitleResponse_default_instance_;
-    new (ptr) ::osirixgrpc::ViewerControllerTitleResponse();
-    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
-  }
-}
-
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_ViewerControllerTitleResponse_viewercontroller_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_ViewerControllerTitleResponse_viewercontroller_2eproto}, {
-      &scc_info_Status_utilities_2eproto.base,}};
-
-static void InitDefaultsscc_info_ViewerControllerVRControllersResponse_viewercontroller_2eproto() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::osirixgrpc::_ViewerControllerVRControllersResponse_default_instance_;
-    new (ptr) ::osirixgrpc::ViewerControllerVRControllersResponse();
-    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
-  }
-}
-
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<2> scc_info_ViewerControllerVRControllersResponse_viewercontroller_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 2, 0, InitDefaultsscc_info_ViewerControllerVRControllersResponse_viewercontroller_2eproto}, {
-      &scc_info_Status_utilities_2eproto.base,
-      &scc_info_VRController_types_2eproto.base,}};
-
-static void InitDefaultsscc_info_ViewerControllerWLWWResponse_viewercontroller_2eproto() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::osirixgrpc::_ViewerControllerWLWWResponse_default_instance_;
-    new (ptr) ::osirixgrpc::ViewerControllerWLWWResponse();
-    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
-  }
-}
-
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_ViewerControllerWLWWResponse_viewercontroller_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_ViewerControllerWLWWResponse_viewercontroller_2eproto}, {
-      &scc_info_Status_utilities_2eproto.base,}};
-
-static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_viewercontroller_2eproto[32];
-static constexpr ::PROTOBUF_NAMESPACE_ID::EnumDescriptor const** file_level_enum_descriptors_viewercontroller_2eproto = nullptr;
-static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_viewercontroller_2eproto = nullptr;
-
-const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_viewercontroller_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerPixListResponse, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerPixListResponse, status_),
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerPixListResponse, pix_),
-  ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerROIListResponse_ROISlice, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerROIListResponse_ROISlice, rois_),
-  ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerROIListResponse, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerROIListResponse, status_),
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerROIListResponse, roi_slices_),
-  ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerNewROIResponse, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerNewROIResponse, status_),
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerNewROIResponse, roi_),
-  ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerCurDCMResponse, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerCurDCMResponse, status_),
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerCurDCMResponse, pix_),
-  ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerROIsWithNameResponse, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerROIsWithNameResponse, status_),
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerROIsWithNameResponse, rois_),
-  ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerSelectedROIsResponse, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerSelectedROIsResponse, status_),
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerSelectedROIsResponse, rois_),
-  ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerIsDataVolumicResponse, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerIsDataVolumicResponse, status_),
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerIsDataVolumicResponse, is_volumic_),
-  ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerBlendingControllerResponse, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerBlendingControllerResponse, status_),
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerBlendingControllerResponse, blending_viewer_),
-  ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerVRControllersResponse, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerVRControllersResponse, status_),
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerVRControllersResponse, vr_controllers_),
-  ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerTitleResponse, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerTitleResponse, status_),
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerTitleResponse, title_),
-  ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerModalityResponse, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerModalityResponse, status_),
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerModalityResponse, modality_),
-  ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerMovieIdxResponse, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerMovieIdxResponse, status_),
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerMovieIdxResponse, movie_idx_),
-  ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerMaxMovieIdxResponse, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerMaxMovieIdxResponse, status_),
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerMaxMovieIdxResponse, max_movie_idx_),
-  ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerIdxResponse, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerIdxResponse, status_),
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerIdxResponse, idx_),
-  ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerWLWWResponse, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerWLWWResponse, status_),
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerWLWWResponse, wl_),
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerWLWWResponse, ww_),
-  ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerOpenVRViewerForModeResponse, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerOpenVRViewerForModeResponse, status_),
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerOpenVRViewerForModeResponse, vr_controller_),
-  ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerPixListRequest, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerPixListRequest, viewer_controller_),
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerPixListRequest, movie_idx_),
-  ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerROIListRequest, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerROIListRequest, viewer_controller_),
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerROIListRequest, movie_idx_),
-  ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerNewROIRequest_Buffer, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerNewROIRequest_Buffer, buffer_),
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerNewROIRequest_Buffer, rows_),
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerNewROIRequest_Buffer, columns_),
-  ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerNewROIRequest_Point2D, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerNewROIRequest_Point2D, x_),
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerNewROIRequest_Point2D, y_),
-  ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerNewROIRequest_Color, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerNewROIRequest_Color, r_),
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerNewROIRequest_Color, g_),
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerNewROIRequest_Color, b_),
-  ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerNewROIRequest_Rect, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerNewROIRequest_Rect, origin_x_),
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerNewROIRequest_Rect, origin_y_),
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerNewROIRequest_Rect, height_),
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerNewROIRequest_Rect, width_),
-  ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerNewROIRequest, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerNewROIRequest, viewer_controller_),
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerNewROIRequest, itype_),
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerNewROIRequest, name_),
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerNewROIRequest, position_),
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerNewROIRequest, movie_idx_),
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerNewROIRequest, buffer_position_x_),
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerNewROIRequest, buffer_position_y_),
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerNewROIRequest, color_),
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerNewROIRequest, thickness_),
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerNewROIRequest, opacity_),
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerNewROIRequest, buffer_),
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerNewROIRequest, points_),
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerNewROIRequest, rectangle_),
-  ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerROIsWithNameRequest, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerROIsWithNameRequest, viewer_controller_),
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerROIsWithNameRequest, name_),
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerROIsWithNameRequest, movie_idx_),
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerROIsWithNameRequest, in_4d_),
-  ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerResampleViewerControllerRequest, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerResampleViewerControllerRequest, viewer_controller_),
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerResampleViewerControllerRequest, fixed_viewer_controller_),
-  ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerCopyViewerWindowRequest, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerCopyViewerWindowRequest, viewer_controller_),
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerCopyViewerWindowRequest, in_4d_),
-  ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerSetMovieIdxRequest, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerSetMovieIdxRequest, viewer_controller_),
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerSetMovieIdxRequest, movie_idx_),
-  ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerIsDataVolumicRequest, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerIsDataVolumicRequest, viewer_controller_),
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerIsDataVolumicRequest, in_4d_),
-  ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerSetIdxRequest, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerSetIdxRequest, viewer_controller_),
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerSetIdxRequest, idx_),
-  ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerSetWLWWRequest, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerSetWLWWRequest, viewer_controller_),
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerSetWLWWRequest, wl_),
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerSetWLWWRequest, ww_),
-  ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerOpenVRViewerForModeRequest, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerOpenVRViewerForModeRequest, viewer_controller_),
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerOpenVRViewerForModeRequest, mode_),
-};
-static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  { 0, -1, sizeof(::osirixgrpc::ViewerControllerPixListResponse)},
-  { 7, -1, sizeof(::osirixgrpc::ViewerControllerROIListResponse_ROISlice)},
-  { 13, -1, sizeof(::osirixgrpc::ViewerControllerROIListResponse)},
-  { 20, -1, sizeof(::osirixgrpc::ViewerControllerNewROIResponse)},
-  { 27, -1, sizeof(::osirixgrpc::ViewerControllerCurDCMResponse)},
-  { 34, -1, sizeof(::osirixgrpc::ViewerControllerROIsWithNameResponse)},
-  { 41, -1, sizeof(::osirixgrpc::ViewerControllerSelectedROIsResponse)},
-  { 48, -1, sizeof(::osirixgrpc::ViewerControllerIsDataVolumicResponse)},
-  { 55, -1, sizeof(::osirixgrpc::ViewerControllerBlendingControllerResponse)},
-  { 62, -1, sizeof(::osirixgrpc::ViewerControllerVRControllersResponse)},
-  { 69, -1, sizeof(::osirixgrpc::ViewerControllerTitleResponse)},
-  { 76, -1, sizeof(::osirixgrpc::ViewerControllerModalityResponse)},
-  { 83, -1, sizeof(::osirixgrpc::ViewerControllerMovieIdxResponse)},
-  { 90, -1, sizeof(::osirixgrpc::ViewerControllerMaxMovieIdxResponse)},
-  { 97, -1, sizeof(::osirixgrpc::ViewerControllerIdxResponse)},
-  { 104, -1, sizeof(::osirixgrpc::ViewerControllerWLWWResponse)},
-  { 112, -1, sizeof(::osirixgrpc::ViewerControllerOpenVRViewerForModeResponse)},
-  { 119, -1, sizeof(::osirixgrpc::ViewerControllerPixListRequest)},
-  { 126, -1, sizeof(::osirixgrpc::ViewerControllerROIListRequest)},
-  { 133, -1, sizeof(::osirixgrpc::ViewerControllerNewROIRequest_Buffer)},
-  { 141, -1, sizeof(::osirixgrpc::ViewerControllerNewROIRequest_Point2D)},
-  { 148, -1, sizeof(::osirixgrpc::ViewerControllerNewROIRequest_Color)},
-  { 156, -1, sizeof(::osirixgrpc::ViewerControllerNewROIRequest_Rect)},
-  { 165, -1, sizeof(::osirixgrpc::ViewerControllerNewROIRequest)},
-  { 183, -1, sizeof(::osirixgrpc::ViewerControllerROIsWithNameRequest)},
-  { 192, -1, sizeof(::osirixgrpc::ViewerControllerResampleViewerControllerRequest)},
-  { 199, -1, sizeof(::osirixgrpc::ViewerControllerCopyViewerWindowRequest)},
-  { 206, -1, sizeof(::osirixgrpc::ViewerControllerSetMovieIdxRequest)},
-  { 213, -1, sizeof(::osirixgrpc::ViewerControllerIsDataVolumicRequest)},
-  { 220, -1, sizeof(::osirixgrpc::ViewerControllerSetIdxRequest)},
-  { 227, -1, sizeof(::osirixgrpc::ViewerControllerSetWLWWRequest)},
-  { 235, -1, sizeof(::osirixgrpc::ViewerControllerOpenVRViewerForModeRequest)},
+static ::_pb::Metadata file_level_metadata_viewercontroller_2eproto[32];
+static constexpr const ::_pb::EnumDescriptor**
+    file_level_enum_descriptors_viewercontroller_2eproto = nullptr;
+static constexpr const ::_pb::ServiceDescriptor**
+    file_level_service_descriptors_viewercontroller_2eproto = nullptr;
+const ::uint32_t TableStruct_viewercontroller_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(
+    protodesc_cold) = {
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerPixListResponse, _impl_._has_bits_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerPixListResponse, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerPixListResponse, _impl_.status_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerPixListResponse, _impl_.pix_),
+    0,
+    ~0u,
+    ~0u,  // no _has_bits_
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerROIListResponse_ROISlice, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerROIListResponse_ROISlice, _impl_.rois_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerROIListResponse, _impl_._has_bits_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerROIListResponse, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerROIListResponse, _impl_.status_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerROIListResponse, _impl_.roi_slices_),
+    0,
+    ~0u,
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerNewROIResponse, _impl_._has_bits_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerNewROIResponse, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerNewROIResponse, _impl_.status_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerNewROIResponse, _impl_.roi_),
+    0,
+    1,
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerCurDCMResponse, _impl_._has_bits_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerCurDCMResponse, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerCurDCMResponse, _impl_.status_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerCurDCMResponse, _impl_.pix_),
+    0,
+    1,
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerROIsWithNameResponse, _impl_._has_bits_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerROIsWithNameResponse, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerROIsWithNameResponse, _impl_.status_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerROIsWithNameResponse, _impl_.rois_),
+    0,
+    ~0u,
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerSelectedROIsResponse, _impl_._has_bits_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerSelectedROIsResponse, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerSelectedROIsResponse, _impl_.status_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerSelectedROIsResponse, _impl_.rois_),
+    0,
+    ~0u,
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerIsDataVolumicResponse, _impl_._has_bits_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerIsDataVolumicResponse, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerIsDataVolumicResponse, _impl_.status_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerIsDataVolumicResponse, _impl_.is_volumic_),
+    0,
+    ~0u,
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerBlendingControllerResponse, _impl_._has_bits_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerBlendingControllerResponse, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerBlendingControllerResponse, _impl_.status_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerBlendingControllerResponse, _impl_.blending_viewer_),
+    0,
+    1,
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerVRControllersResponse, _impl_._has_bits_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerVRControllersResponse, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerVRControllersResponse, _impl_.status_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerVRControllersResponse, _impl_.vr_controllers_),
+    0,
+    ~0u,
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerTitleResponse, _impl_._has_bits_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerTitleResponse, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerTitleResponse, _impl_.status_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerTitleResponse, _impl_.title_),
+    0,
+    ~0u,
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerModalityResponse, _impl_._has_bits_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerModalityResponse, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerModalityResponse, _impl_.status_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerModalityResponse, _impl_.modality_),
+    0,
+    ~0u,
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerMovieIdxResponse, _impl_._has_bits_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerMovieIdxResponse, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerMovieIdxResponse, _impl_.status_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerMovieIdxResponse, _impl_.movie_idx_),
+    0,
+    ~0u,
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerMaxMovieIdxResponse, _impl_._has_bits_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerMaxMovieIdxResponse, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerMaxMovieIdxResponse, _impl_.status_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerMaxMovieIdxResponse, _impl_.max_movie_idx_),
+    0,
+    ~0u,
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerIdxResponse, _impl_._has_bits_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerIdxResponse, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerIdxResponse, _impl_.status_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerIdxResponse, _impl_.idx_),
+    0,
+    ~0u,
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerWLWWResponse, _impl_._has_bits_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerWLWWResponse, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerWLWWResponse, _impl_.status_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerWLWWResponse, _impl_.wl_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerWLWWResponse, _impl_.ww_),
+    0,
+    ~0u,
+    ~0u,
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerOpenVRViewerForModeResponse, _impl_._has_bits_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerOpenVRViewerForModeResponse, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerOpenVRViewerForModeResponse, _impl_.status_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerOpenVRViewerForModeResponse, _impl_.vr_controller_),
+    0,
+    1,
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerPixListRequest, _impl_._has_bits_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerPixListRequest, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerPixListRequest, _impl_.viewer_controller_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerPixListRequest, _impl_.movie_idx_),
+    0,
+    ~0u,
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerROIListRequest, _impl_._has_bits_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerROIListRequest, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerROIListRequest, _impl_.viewer_controller_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerROIListRequest, _impl_.movie_idx_),
+    0,
+    ~0u,
+    ~0u,  // no _has_bits_
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerNewROIRequest_Buffer, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerNewROIRequest_Buffer, _impl_.buffer_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerNewROIRequest_Buffer, _impl_.rows_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerNewROIRequest_Buffer, _impl_.columns_),
+    ~0u,  // no _has_bits_
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerNewROIRequest_Point2D, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerNewROIRequest_Point2D, _impl_.x_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerNewROIRequest_Point2D, _impl_.y_),
+    ~0u,  // no _has_bits_
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerNewROIRequest_Color, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerNewROIRequest_Color, _impl_.r_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerNewROIRequest_Color, _impl_.g_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerNewROIRequest_Color, _impl_.b_),
+    ~0u,  // no _has_bits_
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerNewROIRequest_Rect, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerNewROIRequest_Rect, _impl_.origin_x_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerNewROIRequest_Rect, _impl_.origin_y_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerNewROIRequest_Rect, _impl_.height_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerNewROIRequest_Rect, _impl_.width_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerNewROIRequest, _impl_._has_bits_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerNewROIRequest, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerNewROIRequest, _impl_.viewer_controller_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerNewROIRequest, _impl_.itype_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerNewROIRequest, _impl_.name_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerNewROIRequest, _impl_.position_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerNewROIRequest, _impl_.movie_idx_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerNewROIRequest, _impl_.buffer_position_x_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerNewROIRequest, _impl_.buffer_position_y_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerNewROIRequest, _impl_.color_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerNewROIRequest, _impl_.thickness_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerNewROIRequest, _impl_.opacity_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerNewROIRequest, _impl_.buffer_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerNewROIRequest, _impl_.points_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerNewROIRequest, _impl_.rectangle_),
+    0,
+    ~0u,
+    ~0u,
+    ~0u,
+    ~0u,
+    ~0u,
+    ~0u,
+    1,
+    ~0u,
+    ~0u,
+    2,
+    ~0u,
+    3,
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerROIsWithNameRequest, _impl_._has_bits_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerROIsWithNameRequest, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerROIsWithNameRequest, _impl_.viewer_controller_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerROIsWithNameRequest, _impl_.name_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerROIsWithNameRequest, _impl_.movie_idx_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerROIsWithNameRequest, _impl_.in_4d_),
+    0,
+    ~0u,
+    ~0u,
+    ~0u,
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerResampleViewerControllerRequest, _impl_._has_bits_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerResampleViewerControllerRequest, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerResampleViewerControllerRequest, _impl_.viewer_controller_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerResampleViewerControllerRequest, _impl_.fixed_viewer_controller_),
+    0,
+    1,
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerCopyViewerWindowRequest, _impl_._has_bits_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerCopyViewerWindowRequest, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerCopyViewerWindowRequest, _impl_.viewer_controller_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerCopyViewerWindowRequest, _impl_.in_4d_),
+    0,
+    ~0u,
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerSetMovieIdxRequest, _impl_._has_bits_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerSetMovieIdxRequest, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerSetMovieIdxRequest, _impl_.viewer_controller_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerSetMovieIdxRequest, _impl_.movie_idx_),
+    0,
+    ~0u,
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerIsDataVolumicRequest, _impl_._has_bits_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerIsDataVolumicRequest, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerIsDataVolumicRequest, _impl_.viewer_controller_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerIsDataVolumicRequest, _impl_.in_4d_),
+    0,
+    ~0u,
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerSetIdxRequest, _impl_._has_bits_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerSetIdxRequest, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerSetIdxRequest, _impl_.viewer_controller_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerSetIdxRequest, _impl_.idx_),
+    0,
+    ~0u,
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerSetWLWWRequest, _impl_._has_bits_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerSetWLWWRequest, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerSetWLWWRequest, _impl_.viewer_controller_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerSetWLWWRequest, _impl_.wl_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerSetWLWWRequest, _impl_.ww_),
+    0,
+    ~0u,
+    ~0u,
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerOpenVRViewerForModeRequest, _impl_._has_bits_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerOpenVRViewerForModeRequest, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerOpenVRViewerForModeRequest, _impl_.viewer_controller_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ViewerControllerOpenVRViewerForModeRequest, _impl_.mode_),
+    0,
+    ~0u,
 };
 
-static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::osirixgrpc::_ViewerControllerPixListResponse_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::osirixgrpc::_ViewerControllerROIListResponse_ROISlice_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::osirixgrpc::_ViewerControllerROIListResponse_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::osirixgrpc::_ViewerControllerNewROIResponse_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::osirixgrpc::_ViewerControllerCurDCMResponse_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::osirixgrpc::_ViewerControllerROIsWithNameResponse_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::osirixgrpc::_ViewerControllerSelectedROIsResponse_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::osirixgrpc::_ViewerControllerIsDataVolumicResponse_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::osirixgrpc::_ViewerControllerBlendingControllerResponse_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::osirixgrpc::_ViewerControllerVRControllersResponse_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::osirixgrpc::_ViewerControllerTitleResponse_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::osirixgrpc::_ViewerControllerModalityResponse_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::osirixgrpc::_ViewerControllerMovieIdxResponse_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::osirixgrpc::_ViewerControllerMaxMovieIdxResponse_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::osirixgrpc::_ViewerControllerIdxResponse_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::osirixgrpc::_ViewerControllerWLWWResponse_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::osirixgrpc::_ViewerControllerOpenVRViewerForModeResponse_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::osirixgrpc::_ViewerControllerPixListRequest_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::osirixgrpc::_ViewerControllerROIListRequest_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::osirixgrpc::_ViewerControllerNewROIRequest_Buffer_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::osirixgrpc::_ViewerControllerNewROIRequest_Point2D_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::osirixgrpc::_ViewerControllerNewROIRequest_Color_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::osirixgrpc::_ViewerControllerNewROIRequest_Rect_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::osirixgrpc::_ViewerControllerNewROIRequest_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::osirixgrpc::_ViewerControllerROIsWithNameRequest_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::osirixgrpc::_ViewerControllerResampleViewerControllerRequest_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::osirixgrpc::_ViewerControllerCopyViewerWindowRequest_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::osirixgrpc::_ViewerControllerSetMovieIdxRequest_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::osirixgrpc::_ViewerControllerIsDataVolumicRequest_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::osirixgrpc::_ViewerControllerSetIdxRequest_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::osirixgrpc::_ViewerControllerSetWLWWRequest_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::osirixgrpc::_ViewerControllerOpenVRViewerForModeRequest_default_instance_),
+static const ::_pbi::MigrationSchema
+    schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
+        { 0, 10, -1, sizeof(::osirixgrpc::ViewerControllerPixListResponse)},
+        { 12, -1, -1, sizeof(::osirixgrpc::ViewerControllerROIListResponse_ROISlice)},
+        { 21, 31, -1, sizeof(::osirixgrpc::ViewerControllerROIListResponse)},
+        { 33, 43, -1, sizeof(::osirixgrpc::ViewerControllerNewROIResponse)},
+        { 45, 55, -1, sizeof(::osirixgrpc::ViewerControllerCurDCMResponse)},
+        { 57, 67, -1, sizeof(::osirixgrpc::ViewerControllerROIsWithNameResponse)},
+        { 69, 79, -1, sizeof(::osirixgrpc::ViewerControllerSelectedROIsResponse)},
+        { 81, 91, -1, sizeof(::osirixgrpc::ViewerControllerIsDataVolumicResponse)},
+        { 93, 103, -1, sizeof(::osirixgrpc::ViewerControllerBlendingControllerResponse)},
+        { 105, 115, -1, sizeof(::osirixgrpc::ViewerControllerVRControllersResponse)},
+        { 117, 127, -1, sizeof(::osirixgrpc::ViewerControllerTitleResponse)},
+        { 129, 139, -1, sizeof(::osirixgrpc::ViewerControllerModalityResponse)},
+        { 141, 151, -1, sizeof(::osirixgrpc::ViewerControllerMovieIdxResponse)},
+        { 153, 163, -1, sizeof(::osirixgrpc::ViewerControllerMaxMovieIdxResponse)},
+        { 165, 175, -1, sizeof(::osirixgrpc::ViewerControllerIdxResponse)},
+        { 177, 188, -1, sizeof(::osirixgrpc::ViewerControllerWLWWResponse)},
+        { 191, 201, -1, sizeof(::osirixgrpc::ViewerControllerOpenVRViewerForModeResponse)},
+        { 203, 213, -1, sizeof(::osirixgrpc::ViewerControllerPixListRequest)},
+        { 215, 225, -1, sizeof(::osirixgrpc::ViewerControllerROIListRequest)},
+        { 227, -1, -1, sizeof(::osirixgrpc::ViewerControllerNewROIRequest_Buffer)},
+        { 238, -1, -1, sizeof(::osirixgrpc::ViewerControllerNewROIRequest_Point2D)},
+        { 248, -1, -1, sizeof(::osirixgrpc::ViewerControllerNewROIRequest_Color)},
+        { 259, -1, -1, sizeof(::osirixgrpc::ViewerControllerNewROIRequest_Rect)},
+        { 271, 292, -1, sizeof(::osirixgrpc::ViewerControllerNewROIRequest)},
+        { 305, 317, -1, sizeof(::osirixgrpc::ViewerControllerROIsWithNameRequest)},
+        { 321, 331, -1, sizeof(::osirixgrpc::ViewerControllerResampleViewerControllerRequest)},
+        { 333, 343, -1, sizeof(::osirixgrpc::ViewerControllerCopyViewerWindowRequest)},
+        { 345, 355, -1, sizeof(::osirixgrpc::ViewerControllerSetMovieIdxRequest)},
+        { 357, 367, -1, sizeof(::osirixgrpc::ViewerControllerIsDataVolumicRequest)},
+        { 369, 379, -1, sizeof(::osirixgrpc::ViewerControllerSetIdxRequest)},
+        { 381, 392, -1, sizeof(::osirixgrpc::ViewerControllerSetWLWWRequest)},
+        { 395, 405, -1, sizeof(::osirixgrpc::ViewerControllerOpenVRViewerForModeRequest)},
 };
 
-const char descriptor_table_protodef_viewercontroller_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
-  "\n\026viewercontroller.proto\022\nosirixgrpc\032\017ut"
-  "ilities.proto\032\013types.proto\"f\n\037ViewerCont"
-  "rollerPixListResponse\022\"\n\006status\030\001 \001(\0132\022."
-  "osirixgrpc.Status\022\037\n\003pix\030\002 \003(\0132\022.osirixg"
-  "rpc.DCMPix\"\272\001\n\037ViewerControllerROIListRe"
-  "sponse\022\"\n\006status\030\001 \001(\0132\022.osirixgrpc.Stat"
-  "us\022H\n\nroi_slices\030\002 \003(\01324.osirixgrpc.View"
-  "erControllerROIListResponse.ROISlice\032)\n\010"
-  "ROISlice\022\035\n\004rois\030\001 \003(\0132\017.osirixgrpc.ROI\""
-  "b\n\036ViewerControllerNewROIResponse\022\"\n\006sta"
-  "tus\030\001 \001(\0132\022.osirixgrpc.Status\022\034\n\003roi\030\002 \001"
-  "(\0132\017.osirixgrpc.ROI\"e\n\036ViewerControllerC"
-  "urDCMResponse\022\"\n\006status\030\001 \001(\0132\022.osirixgr"
-  "pc.Status\022\037\n\003pix\030\002 \001(\0132\022.osirixgrpc.DCMP"
-  "ix\"i\n$ViewerControllerROIsWithNameRespon"
-  "se\022\"\n\006status\030\001 \001(\0132\022.osirixgrpc.Status\022\035"
-  "\n\004rois\030\002 \003(\0132\017.osirixgrpc.ROI\"i\n$ViewerC"
-  "ontrollerSelectedROIsResponse\022\"\n\006status\030"
-  "\001 \001(\0132\022.osirixgrpc.Status\022\035\n\004rois\030\002 \003(\0132"
-  "\017.osirixgrpc.ROI\"_\n%ViewerControllerIsDa"
-  "taVolumicResponse\022\"\n\006status\030\001 \001(\0132\022.osir"
-  "ixgrpc.Status\022\022\n\nis_volumic\030\002 \001(\010\"\207\001\n*Vi"
-  "ewerControllerBlendingControllerResponse"
-  "\022\"\n\006status\030\001 \001(\0132\022.osirixgrpc.Status\0225\n\017"
-  "blending_viewer\030\002 \001(\0132\034.osirixgrpc.Viewe"
-  "rController\"}\n%ViewerControllerVRControl"
-  "lersResponse\022\"\n\006status\030\001 \001(\0132\022.osirixgrp"
-  "c.Status\0220\n\016vr_controllers\030\002 \003(\0132\030.osiri"
-  "xgrpc.VRController\"R\n\035ViewerControllerTi"
-  "tleResponse\022\"\n\006status\030\001 \001(\0132\022.osirixgrpc"
-  ".Status\022\r\n\005title\030\002 \001(\t\"X\n ViewerControll"
-  "erModalityResponse\022\"\n\006status\030\001 \001(\0132\022.osi"
-  "rixgrpc.Status\022\020\n\010modality\030\002 \001(\t\"Y\n View"
-  "erControllerMovieIdxResponse\022\"\n\006status\030\001"
-  " \001(\0132\022.osirixgrpc.Status\022\021\n\tmovie_idx\030\002 "
-  "\001(\005\"`\n#ViewerControllerMaxMovieIdxRespon"
-  "se\022\"\n\006status\030\001 \001(\0132\022.osirixgrpc.Status\022\025"
-  "\n\rmax_movie_idx\030\002 \001(\005\"N\n\033ViewerControlle"
-  "rIdxResponse\022\"\n\006status\030\001 \001(\0132\022.osirixgrp"
-  "c.Status\022\013\n\003idx\030\002 \001(\005\"Z\n\034ViewerControlle"
-  "rWLWWResponse\022\"\n\006status\030\001 \001(\0132\022.osirixgr"
-  "pc.Status\022\n\n\002wl\030\002 \001(\002\022\n\n\002ww\030\003 \001(\002\"\202\001\n+Vi"
-  "ewerControllerOpenVRViewerForModeRespons"
-  "e\022\"\n\006status\030\001 \001(\0132\022.osirixgrpc.Status\022/\n"
-  "\rvr_controller\030\002 \001(\0132\030.osirixgrpc.VRCont"
-  "roller\"l\n\036ViewerControllerPixListRequest"
-  "\0227\n\021viewer_controller\030\001 \001(\0132\034.osirixgrpc"
-  ".ViewerController\022\021\n\tmovie_idx\030\002 \001(\005\"l\n\036"
-  "ViewerControllerROIListRequest\0227\n\021viewer"
-  "_controller\030\001 \001(\0132\034.osirixgrpc.ViewerCon"
-  "troller\022\021\n\tmovie_idx\030\002 \001(\005\"\313\005\n\035ViewerCon"
-  "trollerNewROIRequest\0227\n\021viewer_controlle"
-  "r\030\001 \001(\0132\034.osirixgrpc.ViewerController\022\r\n"
-  "\005itype\030\002 \001(\005\022\014\n\004name\030\003 \001(\t\022\020\n\010position\030\004"
-  " \001(\005\022\021\n\tmovie_idx\030\005 \001(\005\022\031\n\021buffer_positi"
-  "on_x\030\006 \001(\005\022\031\n\021buffer_position_y\030\007 \001(\005\022>\n"
-  "\005color\030\010 \001(\0132/.osirixgrpc.ViewerControll"
-  "erNewROIRequest.Color\022\021\n\tthickness\030\t \001(\002"
-  "\022\017\n\007opacity\030\n \001(\002\022@\n\006buffer\030\013 \001(\01320.osir"
-  "ixgrpc.ViewerControllerNewROIRequest.Buf"
-  "fer\022A\n\006points\030\014 \003(\01321.osirixgrpc.ViewerC"
-  "ontrollerNewROIRequest.Point2D\022A\n\trectan"
-  "gle\030\r \001(\0132..osirixgrpc.ViewerControllerN"
-  "ewROIRequest.Rect\0327\n\006Buffer\022\016\n\006buffer\030\001 "
-  "\003(\010\022\014\n\004rows\030\002 \001(\005\022\017\n\007columns\030\003 \001(\005\032\037\n\007Po"
-  "int2D\022\t\n\001x\030\001 \001(\002\022\t\n\001y\030\002 \001(\002\032(\n\005Color\022\t\n\001"
-  "r\030\001 \001(\005\022\t\n\001g\030\002 \001(\005\022\t\n\001b\030\003 \001(\005\032I\n\004Rect\022\020\n"
-  "\010origin_x\030\001 \001(\002\022\020\n\010origin_y\030\002 \001(\002\022\016\n\006hei"
-  "ght\030\003 \001(\002\022\r\n\005width\030\004 \001(\002\"\216\001\n#ViewerContr"
-  "ollerROIsWithNameRequest\0227\n\021viewer_contr"
-  "oller\030\001 \001(\0132\034.osirixgrpc.ViewerControlle"
-  "r\022\014\n\004name\030\002 \001(\t\022\021\n\tmovie_idx\030\003 \001(\005\022\r\n\005in"
-  "_4d\030\004 \001(\010\"\251\001\n/ViewerControllerResampleVi"
-  "ewerControllerRequest\0227\n\021viewer_controll"
-  "er\030\001 \001(\0132\034.osirixgrpc.ViewerController\022="
-  "\n\027fixed_viewer_controller\030\002 \001(\0132\034.osirix"
-  "grpc.ViewerController\"q\n\'ViewerControlle"
-  "rCopyViewerWindowRequest\0227\n\021viewer_contr"
-  "oller\030\001 \001(\0132\034.osirixgrpc.ViewerControlle"
-  "r\022\r\n\005in_4d\030\002 \001(\010\"p\n\"ViewerControllerSetM"
-  "ovieIdxRequest\0227\n\021viewer_controller\030\001 \001("
-  "\0132\034.osirixgrpc.ViewerController\022\021\n\tmovie"
-  "_idx\030\002 \001(\005\"n\n$ViewerControllerIsDataVolu"
-  "micRequest\0227\n\021viewer_controller\030\001 \001(\0132\034."
-  "osirixgrpc.ViewerController\022\r\n\005in_4d\030\002 \001"
-  "(\010\"e\n\035ViewerControllerSetIdxRequest\0227\n\021v"
-  "iewer_controller\030\001 \001(\0132\034.osirixgrpc.View"
-  "erController\022\013\n\003idx\030\002 \001(\005\"q\n\036ViewerContr"
-  "ollerSetWLWWRequest\0227\n\021viewer_controller"
-  "\030\001 \001(\0132\034.osirixgrpc.ViewerController\022\n\n\002"
-  "wl\030\002 \001(\002\022\n\n\002ww\030\003 \001(\002\"s\n*ViewerController"
-  "OpenVRViewerForModeRequest\0227\n\021viewer_con"
-  "troller\030\001 \001(\0132\034.osirixgrpc.ViewerControl"
-  "ler\022\014\n\004mode\030\002 \001(\tb\006proto3"
-  ;
-static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_viewercontroller_2eproto_deps[2] = {
-  &::descriptor_table_types_2eproto,
-  &::descriptor_table_utilities_2eproto,
+static const ::_pb::Message* const file_default_instances[] = {
+    &::osirixgrpc::_ViewerControllerPixListResponse_default_instance_._instance,
+    &::osirixgrpc::_ViewerControllerROIListResponse_ROISlice_default_instance_._instance,
+    &::osirixgrpc::_ViewerControllerROIListResponse_default_instance_._instance,
+    &::osirixgrpc::_ViewerControllerNewROIResponse_default_instance_._instance,
+    &::osirixgrpc::_ViewerControllerCurDCMResponse_default_instance_._instance,
+    &::osirixgrpc::_ViewerControllerROIsWithNameResponse_default_instance_._instance,
+    &::osirixgrpc::_ViewerControllerSelectedROIsResponse_default_instance_._instance,
+    &::osirixgrpc::_ViewerControllerIsDataVolumicResponse_default_instance_._instance,
+    &::osirixgrpc::_ViewerControllerBlendingControllerResponse_default_instance_._instance,
+    &::osirixgrpc::_ViewerControllerVRControllersResponse_default_instance_._instance,
+    &::osirixgrpc::_ViewerControllerTitleResponse_default_instance_._instance,
+    &::osirixgrpc::_ViewerControllerModalityResponse_default_instance_._instance,
+    &::osirixgrpc::_ViewerControllerMovieIdxResponse_default_instance_._instance,
+    &::osirixgrpc::_ViewerControllerMaxMovieIdxResponse_default_instance_._instance,
+    &::osirixgrpc::_ViewerControllerIdxResponse_default_instance_._instance,
+    &::osirixgrpc::_ViewerControllerWLWWResponse_default_instance_._instance,
+    &::osirixgrpc::_ViewerControllerOpenVRViewerForModeResponse_default_instance_._instance,
+    &::osirixgrpc::_ViewerControllerPixListRequest_default_instance_._instance,
+    &::osirixgrpc::_ViewerControllerROIListRequest_default_instance_._instance,
+    &::osirixgrpc::_ViewerControllerNewROIRequest_Buffer_default_instance_._instance,
+    &::osirixgrpc::_ViewerControllerNewROIRequest_Point2D_default_instance_._instance,
+    &::osirixgrpc::_ViewerControllerNewROIRequest_Color_default_instance_._instance,
+    &::osirixgrpc::_ViewerControllerNewROIRequest_Rect_default_instance_._instance,
+    &::osirixgrpc::_ViewerControllerNewROIRequest_default_instance_._instance,
+    &::osirixgrpc::_ViewerControllerROIsWithNameRequest_default_instance_._instance,
+    &::osirixgrpc::_ViewerControllerResampleViewerControllerRequest_default_instance_._instance,
+    &::osirixgrpc::_ViewerControllerCopyViewerWindowRequest_default_instance_._instance,
+    &::osirixgrpc::_ViewerControllerSetMovieIdxRequest_default_instance_._instance,
+    &::osirixgrpc::_ViewerControllerIsDataVolumicRequest_default_instance_._instance,
+    &::osirixgrpc::_ViewerControllerSetIdxRequest_default_instance_._instance,
+    &::osirixgrpc::_ViewerControllerSetWLWWRequest_default_instance_._instance,
+    &::osirixgrpc::_ViewerControllerOpenVRViewerForModeRequest_default_instance_._instance,
 };
-static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_viewercontroller_2eproto_sccs[32] = {
-  &scc_info_ViewerControllerBlendingControllerResponse_viewercontroller_2eproto.base,
-  &scc_info_ViewerControllerCopyViewerWindowRequest_viewercontroller_2eproto.base,
-  &scc_info_ViewerControllerCurDCMResponse_viewercontroller_2eproto.base,
-  &scc_info_ViewerControllerIdxResponse_viewercontroller_2eproto.base,
-  &scc_info_ViewerControllerIsDataVolumicRequest_viewercontroller_2eproto.base,
-  &scc_info_ViewerControllerIsDataVolumicResponse_viewercontroller_2eproto.base,
-  &scc_info_ViewerControllerMaxMovieIdxResponse_viewercontroller_2eproto.base,
-  &scc_info_ViewerControllerModalityResponse_viewercontroller_2eproto.base,
-  &scc_info_ViewerControllerMovieIdxResponse_viewercontroller_2eproto.base,
-  &scc_info_ViewerControllerNewROIRequest_viewercontroller_2eproto.base,
-  &scc_info_ViewerControllerNewROIRequest_Buffer_viewercontroller_2eproto.base,
-  &scc_info_ViewerControllerNewROIRequest_Color_viewercontroller_2eproto.base,
-  &scc_info_ViewerControllerNewROIRequest_Point2D_viewercontroller_2eproto.base,
-  &scc_info_ViewerControllerNewROIRequest_Rect_viewercontroller_2eproto.base,
-  &scc_info_ViewerControllerNewROIResponse_viewercontroller_2eproto.base,
-  &scc_info_ViewerControllerOpenVRViewerForModeRequest_viewercontroller_2eproto.base,
-  &scc_info_ViewerControllerOpenVRViewerForModeResponse_viewercontroller_2eproto.base,
-  &scc_info_ViewerControllerPixListRequest_viewercontroller_2eproto.base,
-  &scc_info_ViewerControllerPixListResponse_viewercontroller_2eproto.base,
-  &scc_info_ViewerControllerROIListRequest_viewercontroller_2eproto.base,
-  &scc_info_ViewerControllerROIListResponse_viewercontroller_2eproto.base,
-  &scc_info_ViewerControllerROIListResponse_ROISlice_viewercontroller_2eproto.base,
-  &scc_info_ViewerControllerROIsWithNameRequest_viewercontroller_2eproto.base,
-  &scc_info_ViewerControllerROIsWithNameResponse_viewercontroller_2eproto.base,
-  &scc_info_ViewerControllerResampleViewerControllerRequest_viewercontroller_2eproto.base,
-  &scc_info_ViewerControllerSelectedROIsResponse_viewercontroller_2eproto.base,
-  &scc_info_ViewerControllerSetIdxRequest_viewercontroller_2eproto.base,
-  &scc_info_ViewerControllerSetMovieIdxRequest_viewercontroller_2eproto.base,
-  &scc_info_ViewerControllerSetWLWWRequest_viewercontroller_2eproto.base,
-  &scc_info_ViewerControllerTitleResponse_viewercontroller_2eproto.base,
-  &scc_info_ViewerControllerVRControllersResponse_viewercontroller_2eproto.base,
-  &scc_info_ViewerControllerWLWWResponse_viewercontroller_2eproto.base,
+const char descriptor_table_protodef_viewercontroller_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
+    "\n\026viewercontroller.proto\022\nosirixgrpc\032\017ut"
+    "ilities.proto\032\013types.proto\"f\n\037ViewerCont"
+    "rollerPixListResponse\022\"\n\006status\030\001 \001(\0132\022."
+    "osirixgrpc.Status\022\037\n\003pix\030\002 \003(\0132\022.osirixg"
+    "rpc.DCMPix\"\272\001\n\037ViewerControllerROIListRe"
+    "sponse\022\"\n\006status\030\001 \001(\0132\022.osirixgrpc.Stat"
+    "us\022H\n\nroi_slices\030\002 \003(\01324.osirixgrpc.View"
+    "erControllerROIListResponse.ROISlice\032)\n\010"
+    "ROISlice\022\035\n\004rois\030\001 \003(\0132\017.osirixgrpc.ROI\""
+    "b\n\036ViewerControllerNewROIResponse\022\"\n\006sta"
+    "tus\030\001 \001(\0132\022.osirixgrpc.Status\022\034\n\003roi\030\002 \001"
+    "(\0132\017.osirixgrpc.ROI\"e\n\036ViewerControllerC"
+    "urDCMResponse\022\"\n\006status\030\001 \001(\0132\022.osirixgr"
+    "pc.Status\022\037\n\003pix\030\002 \001(\0132\022.osirixgrpc.DCMP"
+    "ix\"i\n$ViewerControllerROIsWithNameRespon"
+    "se\022\"\n\006status\030\001 \001(\0132\022.osirixgrpc.Status\022\035"
+    "\n\004rois\030\002 \003(\0132\017.osirixgrpc.ROI\"i\n$ViewerC"
+    "ontrollerSelectedROIsResponse\022\"\n\006status\030"
+    "\001 \001(\0132\022.osirixgrpc.Status\022\035\n\004rois\030\002 \003(\0132"
+    "\017.osirixgrpc.ROI\"_\n%ViewerControllerIsDa"
+    "taVolumicResponse\022\"\n\006status\030\001 \001(\0132\022.osir"
+    "ixgrpc.Status\022\022\n\nis_volumic\030\002 \001(\010\"\207\001\n*Vi"
+    "ewerControllerBlendingControllerResponse"
+    "\022\"\n\006status\030\001 \001(\0132\022.osirixgrpc.Status\0225\n\017"
+    "blending_viewer\030\002 \001(\0132\034.osirixgrpc.Viewe"
+    "rController\"}\n%ViewerControllerVRControl"
+    "lersResponse\022\"\n\006status\030\001 \001(\0132\022.osirixgrp"
+    "c.Status\0220\n\016vr_controllers\030\002 \003(\0132\030.osiri"
+    "xgrpc.VRController\"R\n\035ViewerControllerTi"
+    "tleResponse\022\"\n\006status\030\001 \001(\0132\022.osirixgrpc"
+    ".Status\022\r\n\005title\030\002 \001(\t\"X\n ViewerControll"
+    "erModalityResponse\022\"\n\006status\030\001 \001(\0132\022.osi"
+    "rixgrpc.Status\022\020\n\010modality\030\002 \001(\t\"Y\n View"
+    "erControllerMovieIdxResponse\022\"\n\006status\030\001"
+    " \001(\0132\022.osirixgrpc.Status\022\021\n\tmovie_idx\030\002 "
+    "\001(\005\"`\n#ViewerControllerMaxMovieIdxRespon"
+    "se\022\"\n\006status\030\001 \001(\0132\022.osirixgrpc.Status\022\025"
+    "\n\rmax_movie_idx\030\002 \001(\005\"N\n\033ViewerControlle"
+    "rIdxResponse\022\"\n\006status\030\001 \001(\0132\022.osirixgrp"
+    "c.Status\022\013\n\003idx\030\002 \001(\005\"Z\n\034ViewerControlle"
+    "rWLWWResponse\022\"\n\006status\030\001 \001(\0132\022.osirixgr"
+    "pc.Status\022\n\n\002wl\030\002 \001(\002\022\n\n\002ww\030\003 \001(\002\"\202\001\n+Vi"
+    "ewerControllerOpenVRViewerForModeRespons"
+    "e\022\"\n\006status\030\001 \001(\0132\022.osirixgrpc.Status\022/\n"
+    "\rvr_controller\030\002 \001(\0132\030.osirixgrpc.VRCont"
+    "roller\"l\n\036ViewerControllerPixListRequest"
+    "\0227\n\021viewer_controller\030\001 \001(\0132\034.osirixgrpc"
+    ".ViewerController\022\021\n\tmovie_idx\030\002 \001(\005\"l\n\036"
+    "ViewerControllerROIListRequest\0227\n\021viewer"
+    "_controller\030\001 \001(\0132\034.osirixgrpc.ViewerCon"
+    "troller\022\021\n\tmovie_idx\030\002 \001(\005\"\313\005\n\035ViewerCon"
+    "trollerNewROIRequest\0227\n\021viewer_controlle"
+    "r\030\001 \001(\0132\034.osirixgrpc.ViewerController\022\r\n"
+    "\005itype\030\002 \001(\005\022\014\n\004name\030\003 \001(\t\022\020\n\010position\030\004"
+    " \001(\005\022\021\n\tmovie_idx\030\005 \001(\005\022\031\n\021buffer_positi"
+    "on_x\030\006 \001(\005\022\031\n\021buffer_position_y\030\007 \001(\005\022>\n"
+    "\005color\030\010 \001(\0132/.osirixgrpc.ViewerControll"
+    "erNewROIRequest.Color\022\021\n\tthickness\030\t \001(\002"
+    "\022\017\n\007opacity\030\n \001(\002\022@\n\006buffer\030\013 \001(\01320.osir"
+    "ixgrpc.ViewerControllerNewROIRequest.Buf"
+    "fer\022A\n\006points\030\014 \003(\01321.osirixgrpc.ViewerC"
+    "ontrollerNewROIRequest.Point2D\022A\n\trectan"
+    "gle\030\r \001(\0132..osirixgrpc.ViewerControllerN"
+    "ewROIRequest.Rect\0327\n\006Buffer\022\016\n\006buffer\030\001 "
+    "\003(\010\022\014\n\004rows\030\002 \001(\005\022\017\n\007columns\030\003 \001(\005\032\037\n\007Po"
+    "int2D\022\t\n\001x\030\001 \001(\002\022\t\n\001y\030\002 \001(\002\032(\n\005Color\022\t\n\001"
+    "r\030\001 \001(\005\022\t\n\001g\030\002 \001(\005\022\t\n\001b\030\003 \001(\005\032I\n\004Rect\022\020\n"
+    "\010origin_x\030\001 \001(\002\022\020\n\010origin_y\030\002 \001(\002\022\016\n\006hei"
+    "ght\030\003 \001(\002\022\r\n\005width\030\004 \001(\002\"\216\001\n#ViewerContr"
+    "ollerROIsWithNameRequest\0227\n\021viewer_contr"
+    "oller\030\001 \001(\0132\034.osirixgrpc.ViewerControlle"
+    "r\022\014\n\004name\030\002 \001(\t\022\021\n\tmovie_idx\030\003 \001(\005\022\r\n\005in"
+    "_4d\030\004 \001(\010\"\251\001\n/ViewerControllerResampleVi"
+    "ewerControllerRequest\0227\n\021viewer_controll"
+    "er\030\001 \001(\0132\034.osirixgrpc.ViewerController\022="
+    "\n\027fixed_viewer_controller\030\002 \001(\0132\034.osirix"
+    "grpc.ViewerController\"q\n\'ViewerControlle"
+    "rCopyViewerWindowRequest\0227\n\021viewer_contr"
+    "oller\030\001 \001(\0132\034.osirixgrpc.ViewerControlle"
+    "r\022\r\n\005in_4d\030\002 \001(\010\"p\n\"ViewerControllerSetM"
+    "ovieIdxRequest\0227\n\021viewer_controller\030\001 \001("
+    "\0132\034.osirixgrpc.ViewerController\022\021\n\tmovie"
+    "_idx\030\002 \001(\005\"n\n$ViewerControllerIsDataVolu"
+    "micRequest\0227\n\021viewer_controller\030\001 \001(\0132\034."
+    "osirixgrpc.ViewerController\022\r\n\005in_4d\030\002 \001"
+    "(\010\"e\n\035ViewerControllerSetIdxRequest\0227\n\021v"
+    "iewer_controller\030\001 \001(\0132\034.osirixgrpc.View"
+    "erController\022\013\n\003idx\030\002 \001(\005\"q\n\036ViewerContr"
+    "ollerSetWLWWRequest\0227\n\021viewer_controller"
+    "\030\001 \001(\0132\034.osirixgrpc.ViewerController\022\n\n\002"
+    "wl\030\002 \001(\002\022\n\n\002ww\030\003 \001(\002\"s\n*ViewerController"
+    "OpenVRViewerForModeRequest\0227\n\021viewer_con"
+    "troller\030\001 \001(\0132\034.osirixgrpc.ViewerControl"
+    "ler\022\014\n\004mode\030\002 \001(\tb\006proto3"
 };
-static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_viewercontroller_2eproto_once;
-const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_viewercontroller_2eproto = {
-  false, false, descriptor_table_protodef_viewercontroller_2eproto, "viewercontroller.proto", 3745,
-  &descriptor_table_viewercontroller_2eproto_once, descriptor_table_viewercontroller_2eproto_sccs, descriptor_table_viewercontroller_2eproto_deps, 32, 2,
-  schemas, file_default_instances, TableStruct_viewercontroller_2eproto::offsets,
-  file_level_metadata_viewercontroller_2eproto, 32, file_level_enum_descriptors_viewercontroller_2eproto, file_level_service_descriptors_viewercontroller_2eproto,
+static const ::_pbi::DescriptorTable* const descriptor_table_viewercontroller_2eproto_deps[2] =
+    {
+        &::descriptor_table_types_2eproto,
+        &::descriptor_table_utilities_2eproto,
+};
+static ::absl::once_flag descriptor_table_viewercontroller_2eproto_once;
+const ::_pbi::DescriptorTable descriptor_table_viewercontroller_2eproto = {
+    false,
+    false,
+    3745,
+    descriptor_table_protodef_viewercontroller_2eproto,
+    "viewercontroller.proto",
+    &descriptor_table_viewercontroller_2eproto_once,
+    descriptor_table_viewercontroller_2eproto_deps,
+    2,
+    32,
+    schemas,
+    file_default_instances,
+    TableStruct_viewercontroller_2eproto::offsets,
+    file_level_metadata_viewercontroller_2eproto,
+    file_level_enum_descriptors_viewercontroller_2eproto,
+    file_level_service_descriptors_viewercontroller_2eproto,
 };
 
+// This function exists to be marked as weak.
+// It can significantly speed up compilation by breaking up LLVM's SCC
+// in the .pb.cc translation units. Large translation units see a
+// reduction of more than 35% of walltime for optimized builds. Without
+// the weak attribute all the messages in the file, including all the
+// vtables and everything they use become part of the same SCC through
+// a cycle like:
+// GetMetadata -> descriptor table -> default instances ->
+//   vtables -> GetMetadata
+// By adding a weak function here we break the connection from the
+// individual vtables back into the descriptor table.
+PROTOBUF_ATTRIBUTE_WEAK const ::_pbi::DescriptorTable* descriptor_table_viewercontroller_2eproto_getter() {
+  return &descriptor_table_viewercontroller_2eproto;
+}
 // Force running AddDescriptors() at dynamic initialization time.
-static bool dynamic_init_dummy_viewercontroller_2eproto = (static_cast<void>(::PROTOBUF_NAMESPACE_ID::internal::AddDescriptors(&descriptor_table_viewercontroller_2eproto)), true);
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY2
+static ::_pbi::AddDescriptorsRunner dynamic_init_dummy_viewercontroller_2eproto(&descriptor_table_viewercontroller_2eproto);
 namespace osirixgrpc {
-
 // ===================================================================
 
 class ViewerControllerPixListResponse::_Internal {
  public:
+  using HasBits = decltype(std::declval<ViewerControllerPixListResponse>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+    8 * PROTOBUF_FIELD_OFFSET(ViewerControllerPixListResponse, _impl_._has_bits_);
   static const ::osirixgrpc::Status& status(const ViewerControllerPixListResponse* msg);
+  static void set_has_status(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
 };
 
 const ::osirixgrpc::Status&
 ViewerControllerPixListResponse::_Internal::status(const ViewerControllerPixListResponse* msg) {
-  return *msg->status_;
+  return *msg->_impl_.status_;
 }
 void ViewerControllerPixListResponse::clear_status() {
-  if (GetArena() == nullptr && status_ != nullptr) {
-    delete status_;
-  }
-  status_ = nullptr;
+  if (_impl_.status_ != nullptr) _impl_.status_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000001u;
 }
 void ViewerControllerPixListResponse::clear_pix() {
-  pix_.Clear();
+  _internal_mutable_pix()->Clear();
 }
 ViewerControllerPixListResponse::ViewerControllerPixListResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena),
-  pix_(arena) {
-  SharedCtor();
-  RegisterArenaDtor(arena);
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
+  SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.ViewerControllerPixListResponse)
 }
 ViewerControllerPixListResponse::ViewerControllerPixListResponse(const ViewerControllerPixListResponse& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      pix_(from.pix_) {
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  ViewerControllerPixListResponse* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.pix_){from._impl_.pix_}
+    , decltype(_impl_.status_){nullptr}};
+
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if (from._internal_has_status()) {
-    status_ = new ::osirixgrpc::Status(*from.status_);
-  } else {
-    status_ = nullptr;
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_impl_.status_ = new ::osirixgrpc::Status(*from._impl_.status_);
   }
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.ViewerControllerPixListResponse)
 }
 
-void ViewerControllerPixListResponse::SharedCtor() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_ViewerControllerPixListResponse_viewercontroller_2eproto.base);
-  status_ = nullptr;
+inline void ViewerControllerPixListResponse::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.pix_){arena}
+    , decltype(_impl_.status_){nullptr}
+  };
 }
 
 ViewerControllerPixListResponse::~ViewerControllerPixListResponse() {
   // @@protoc_insertion_point(destructor:osirixgrpc.ViewerControllerPixListResponse)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-void ViewerControllerPixListResponse::SharedDtor() {
-  GOOGLE_DCHECK(GetArena() == nullptr);
-  if (this != internal_default_instance()) delete status_;
+inline void ViewerControllerPixListResponse::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  _internal_mutable_pix()->~RepeatedPtrField();
+  if (this != internal_default_instance()) delete _impl_.status_;
 }
 
-void ViewerControllerPixListResponse::ArenaDtor(void* object) {
-  ViewerControllerPixListResponse* _this = reinterpret_cast< ViewerControllerPixListResponse* >(object);
-  (void)_this;
-}
-void ViewerControllerPixListResponse::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void ViewerControllerPixListResponse::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
-const ViewerControllerPixListResponse& ViewerControllerPixListResponse::default_instance() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_ViewerControllerPixListResponse_viewercontroller_2eproto.base);
-  return *internal_default_instance();
-}
-
 
 void ViewerControllerPixListResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.ViewerControllerPixListResponse)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  pix_.Clear();
-  if (GetArena() == nullptr && status_ != nullptr) {
-    delete status_;
+  _internal_mutable_pix()->Clear();
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    ABSL_DCHECK(_impl_.status_ != nullptr);
+    _impl_.status_->Clear();
   }
-  status_ = nullptr;
+  _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* ViewerControllerPixListResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* ViewerControllerPixListResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
-    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-    CHK_(ptr);
+    ::uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // .osirixgrpc.Status status = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
           ptr = ctx->ParseMessage(_internal_mutable_status(), ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
+        } else {
+          goto handle_unusual;
+        }
         continue;
       // repeated .osirixgrpc.DCMPix pix = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 18)) {
           ptr -= 1;
           do {
             ptr += 1;
@@ -1183,124 +1367,111 @@ const char* ViewerControllerPixListResponse::_InternalParse(const char* ptr, ::P
             CHK_(ptr);
             if (!ctx->DataAvailable(ptr)) break;
           } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<18>(ptr));
-        } else goto handle_unusual;
-        continue;
-      default: {
-      handle_unusual:
-        if ((tag & 7) == 4 || tag == 0) {
-          ctx->SetLastTag(tag);
-          goto success;
+        } else {
+          goto handle_unusual;
         }
-        ptr = UnknownFieldParse(tag,
-            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-            ptr, ctx);
-        CHK_(ptr != nullptr);
         continue;
-      }
+      default:
+        goto handle_unusual;
     }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
   }  // while
-success:
+message_done:
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
-  goto success;
+  goto message_done;
 #undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* ViewerControllerPixListResponse::_InternalSerialize(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+::uint8_t* ViewerControllerPixListResponse::_InternalSerialize(
+    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.ViewerControllerPixListResponse)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
+  cached_has_bits = _impl_._has_bits_[0];
   // .osirixgrpc.Status status = 1;
-  if (this->has_status()) {
-    target = stream->EnsureSpace(target);
+  if (cached_has_bits & 0x00000001u) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::status(this), target, stream);
+      InternalWriteMessage(1, _Internal::status(this),
+        _Internal::status(this).GetCachedSize(), target, stream);
   }
 
   // repeated .osirixgrpc.DCMPix pix = 2;
-  for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->_internal_pix_size()); i < n; i++) {
-    target = stream->EnsureSpace(target);
+  for (unsigned i = 0,
+      n = static_cast<unsigned>(this->_internal_pix_size()); i < n; i++) {
+    const auto& repfield = this->_internal_pix(i);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(2, this->_internal_pix(i), target, stream);
+        InternalWriteMessage(2, repfield, repfield.GetCachedSize(), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.ViewerControllerPixListResponse)
   return target;
 }
 
-size_t ViewerControllerPixListResponse::ByteSizeLong() const {
+::size_t ViewerControllerPixListResponse::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:osirixgrpc.ViewerControllerPixListResponse)
-  size_t total_size = 0;
+  ::size_t total_size = 0;
 
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // repeated .osirixgrpc.DCMPix pix = 2;
   total_size += 1UL * this->_internal_pix_size();
-  for (const auto& msg : this->pix_) {
+  for (const auto& msg : this->_internal_pix()) {
     total_size +=
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
 
   // .osirixgrpc.Status status = 1;
-  if (this->has_status()) {
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *status_);
+        *_impl_.status_);
   }
 
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
-        _internal_metadata_, total_size, &_cached_size_);
-  }
-  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-void ViewerControllerPixListResponse::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:osirixgrpc.ViewerControllerPixListResponse)
-  GOOGLE_DCHECK_NE(&from, this);
-  const ViewerControllerPixListResponse* source =
-      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<ViewerControllerPixListResponse>(
-          &from);
-  if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:osirixgrpc.ViewerControllerPixListResponse)
-    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:osirixgrpc.ViewerControllerPixListResponse)
-    MergeFrom(*source);
-  }
-}
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ViewerControllerPixListResponse::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    ViewerControllerPixListResponse::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ViewerControllerPixListResponse::GetClassData() const { return &_class_data_; }
 
-void ViewerControllerPixListResponse::MergeFrom(const ViewerControllerPixListResponse& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ViewerControllerPixListResponse)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+
+void ViewerControllerPixListResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<ViewerControllerPixListResponse*>(&to_msg);
+  auto& from = static_cast<const ViewerControllerPixListResponse&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ViewerControllerPixListResponse)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  pix_.MergeFrom(from.pix_);
-  if (from.has_status()) {
-    _internal_mutable_status()->::osirixgrpc::Status::MergeFrom(from._internal_status());
+  _this->_internal_mutable_pix()->MergeFrom(from._internal_pix());
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_internal_mutable_status()->::osirixgrpc::Status::MergeFrom(
+        from._internal_status());
   }
-}
-
-void ViewerControllerPixListResponse::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:osirixgrpc.ViewerControllerPixListResponse)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void ViewerControllerPixListResponse::CopyFrom(const ViewerControllerPixListResponse& from) {
@@ -1316,16 +1487,17 @@ bool ViewerControllerPixListResponse::IsInitialized() const {
 
 void ViewerControllerPixListResponse::InternalSwap(ViewerControllerPixListResponse* other) {
   using std::swap;
-  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
-  pix_.InternalSwap(&other->pix_);
-  swap(status_, other->status_);
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  _internal_mutable_pix()->InternalSwap(other->_internal_mutable_pix());
+  swap(_impl_.status_, other->_impl_.status_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata ViewerControllerPixListResponse::GetMetadata() const {
-  return GetMetadataStatic();
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_viewercontroller_2eproto_getter, &descriptor_table_viewercontroller_2eproto_once,
+      file_level_metadata_viewercontroller_2eproto[0]);
 }
-
-
 // ===================================================================
 
 class ViewerControllerROIListResponse_ROISlice::_Internal {
@@ -1333,71 +1505,69 @@ class ViewerControllerROIListResponse_ROISlice::_Internal {
 };
 
 void ViewerControllerROIListResponse_ROISlice::clear_rois() {
-  rois_.Clear();
+  _internal_mutable_rois()->Clear();
 }
 ViewerControllerROIListResponse_ROISlice::ViewerControllerROIListResponse_ROISlice(::PROTOBUF_NAMESPACE_ID::Arena* arena)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena),
-  rois_(arena) {
-  SharedCtor();
-  RegisterArenaDtor(arena);
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
+  SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.ViewerControllerROIListResponse.ROISlice)
 }
 ViewerControllerROIListResponse_ROISlice::ViewerControllerROIListResponse_ROISlice(const ViewerControllerROIListResponse_ROISlice& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      rois_(from.rois_) {
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  ViewerControllerROIListResponse_ROISlice* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.rois_){from._impl_.rois_}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.ViewerControllerROIListResponse.ROISlice)
 }
 
-void ViewerControllerROIListResponse_ROISlice::SharedCtor() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_ViewerControllerROIListResponse_ROISlice_viewercontroller_2eproto.base);
+inline void ViewerControllerROIListResponse_ROISlice::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_.rois_){arena}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
 }
 
 ViewerControllerROIListResponse_ROISlice::~ViewerControllerROIListResponse_ROISlice() {
   // @@protoc_insertion_point(destructor:osirixgrpc.ViewerControllerROIListResponse.ROISlice)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-void ViewerControllerROIListResponse_ROISlice::SharedDtor() {
-  GOOGLE_DCHECK(GetArena() == nullptr);
+inline void ViewerControllerROIListResponse_ROISlice::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  _internal_mutable_rois()->~RepeatedPtrField();
 }
 
-void ViewerControllerROIListResponse_ROISlice::ArenaDtor(void* object) {
-  ViewerControllerROIListResponse_ROISlice* _this = reinterpret_cast< ViewerControllerROIListResponse_ROISlice* >(object);
-  (void)_this;
-}
-void ViewerControllerROIListResponse_ROISlice::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void ViewerControllerROIListResponse_ROISlice::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
-const ViewerControllerROIListResponse_ROISlice& ViewerControllerROIListResponse_ROISlice::default_instance() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_ViewerControllerROIListResponse_ROISlice_viewercontroller_2eproto.base);
-  return *internal_default_instance();
-}
-
 
 void ViewerControllerROIListResponse_ROISlice::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.ViewerControllerROIListResponse.ROISlice)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  rois_.Clear();
+  _internal_mutable_rois()->Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* ViewerControllerROIListResponse_ROISlice::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* ViewerControllerROIListResponse_ROISlice::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
-    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-    CHK_(ptr);
+    ::uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // repeated .osirixgrpc.ROI rois = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
           ptr -= 1;
           do {
             ptr += 1;
@@ -1405,106 +1575,90 @@ const char* ViewerControllerROIListResponse_ROISlice::_InternalParse(const char*
             CHK_(ptr);
             if (!ctx->DataAvailable(ptr)) break;
           } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<10>(ptr));
-        } else goto handle_unusual;
-        continue;
-      default: {
-      handle_unusual:
-        if ((tag & 7) == 4 || tag == 0) {
-          ctx->SetLastTag(tag);
-          goto success;
+        } else {
+          goto handle_unusual;
         }
-        ptr = UnknownFieldParse(tag,
-            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-            ptr, ctx);
-        CHK_(ptr != nullptr);
         continue;
-      }
+      default:
+        goto handle_unusual;
     }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
   }  // while
-success:
+message_done:
   return ptr;
 failure:
   ptr = nullptr;
-  goto success;
+  goto message_done;
 #undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* ViewerControllerROIListResponse_ROISlice::_InternalSerialize(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+::uint8_t* ViewerControllerROIListResponse_ROISlice::_InternalSerialize(
+    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.ViewerControllerROIListResponse.ROISlice)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
   // repeated .osirixgrpc.ROI rois = 1;
-  for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->_internal_rois_size()); i < n; i++) {
-    target = stream->EnsureSpace(target);
+  for (unsigned i = 0,
+      n = static_cast<unsigned>(this->_internal_rois_size()); i < n; i++) {
+    const auto& repfield = this->_internal_rois(i);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(1, this->_internal_rois(i), target, stream);
+        InternalWriteMessage(1, repfield, repfield.GetCachedSize(), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.ViewerControllerROIListResponse.ROISlice)
   return target;
 }
 
-size_t ViewerControllerROIListResponse_ROISlice::ByteSizeLong() const {
+::size_t ViewerControllerROIListResponse_ROISlice::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:osirixgrpc.ViewerControllerROIListResponse.ROISlice)
-  size_t total_size = 0;
+  ::size_t total_size = 0;
 
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // repeated .osirixgrpc.ROI rois = 1;
   total_size += 1UL * this->_internal_rois_size();
-  for (const auto& msg : this->rois_) {
+  for (const auto& msg : this->_internal_rois()) {
     total_size +=
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
 
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
-        _internal_metadata_, total_size, &_cached_size_);
-  }
-  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-void ViewerControllerROIListResponse_ROISlice::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:osirixgrpc.ViewerControllerROIListResponse.ROISlice)
-  GOOGLE_DCHECK_NE(&from, this);
-  const ViewerControllerROIListResponse_ROISlice* source =
-      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<ViewerControllerROIListResponse_ROISlice>(
-          &from);
-  if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:osirixgrpc.ViewerControllerROIListResponse.ROISlice)
-    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:osirixgrpc.ViewerControllerROIListResponse.ROISlice)
-    MergeFrom(*source);
-  }
-}
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ViewerControllerROIListResponse_ROISlice::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    ViewerControllerROIListResponse_ROISlice::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ViewerControllerROIListResponse_ROISlice::GetClassData() const { return &_class_data_; }
 
-void ViewerControllerROIListResponse_ROISlice::MergeFrom(const ViewerControllerROIListResponse_ROISlice& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ViewerControllerROIListResponse.ROISlice)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+
+void ViewerControllerROIListResponse_ROISlice::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<ViewerControllerROIListResponse_ROISlice*>(&to_msg);
+  auto& from = static_cast<const ViewerControllerROIListResponse_ROISlice&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ViewerControllerROIListResponse.ROISlice)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  rois_.MergeFrom(from.rois_);
-}
-
-void ViewerControllerROIListResponse_ROISlice::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:osirixgrpc.ViewerControllerROIListResponse.ROISlice)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
+  _this->_internal_mutable_rois()->MergeFrom(from._internal_rois());
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void ViewerControllerROIListResponse_ROISlice::CopyFrom(const ViewerControllerROIListResponse_ROISlice& from) {
@@ -1520,113 +1674,121 @@ bool ViewerControllerROIListResponse_ROISlice::IsInitialized() const {
 
 void ViewerControllerROIListResponse_ROISlice::InternalSwap(ViewerControllerROIListResponse_ROISlice* other) {
   using std::swap;
-  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
-  rois_.InternalSwap(&other->rois_);
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  _internal_mutable_rois()->InternalSwap(other->_internal_mutable_rois());
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata ViewerControllerROIListResponse_ROISlice::GetMetadata() const {
-  return GetMetadataStatic();
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_viewercontroller_2eproto_getter, &descriptor_table_viewercontroller_2eproto_once,
+      file_level_metadata_viewercontroller_2eproto[1]);
 }
-
-
 // ===================================================================
 
 class ViewerControllerROIListResponse::_Internal {
  public:
+  using HasBits = decltype(std::declval<ViewerControllerROIListResponse>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+    8 * PROTOBUF_FIELD_OFFSET(ViewerControllerROIListResponse, _impl_._has_bits_);
   static const ::osirixgrpc::Status& status(const ViewerControllerROIListResponse* msg);
+  static void set_has_status(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
 };
 
 const ::osirixgrpc::Status&
 ViewerControllerROIListResponse::_Internal::status(const ViewerControllerROIListResponse* msg) {
-  return *msg->status_;
+  return *msg->_impl_.status_;
 }
 void ViewerControllerROIListResponse::clear_status() {
-  if (GetArena() == nullptr && status_ != nullptr) {
-    delete status_;
-  }
-  status_ = nullptr;
+  if (_impl_.status_ != nullptr) _impl_.status_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000001u;
 }
 ViewerControllerROIListResponse::ViewerControllerROIListResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena),
-  roi_slices_(arena) {
-  SharedCtor();
-  RegisterArenaDtor(arena);
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
+  SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.ViewerControllerROIListResponse)
 }
 ViewerControllerROIListResponse::ViewerControllerROIListResponse(const ViewerControllerROIListResponse& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      roi_slices_(from.roi_slices_) {
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  ViewerControllerROIListResponse* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.roi_slices_){from._impl_.roi_slices_}
+    , decltype(_impl_.status_){nullptr}};
+
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if (from._internal_has_status()) {
-    status_ = new ::osirixgrpc::Status(*from.status_);
-  } else {
-    status_ = nullptr;
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_impl_.status_ = new ::osirixgrpc::Status(*from._impl_.status_);
   }
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.ViewerControllerROIListResponse)
 }
 
-void ViewerControllerROIListResponse::SharedCtor() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_ViewerControllerROIListResponse_viewercontroller_2eproto.base);
-  status_ = nullptr;
+inline void ViewerControllerROIListResponse::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.roi_slices_){arena}
+    , decltype(_impl_.status_){nullptr}
+  };
 }
 
 ViewerControllerROIListResponse::~ViewerControllerROIListResponse() {
   // @@protoc_insertion_point(destructor:osirixgrpc.ViewerControllerROIListResponse)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-void ViewerControllerROIListResponse::SharedDtor() {
-  GOOGLE_DCHECK(GetArena() == nullptr);
-  if (this != internal_default_instance()) delete status_;
+inline void ViewerControllerROIListResponse::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  _internal_mutable_roi_slices()->~RepeatedPtrField();
+  if (this != internal_default_instance()) delete _impl_.status_;
 }
 
-void ViewerControllerROIListResponse::ArenaDtor(void* object) {
-  ViewerControllerROIListResponse* _this = reinterpret_cast< ViewerControllerROIListResponse* >(object);
-  (void)_this;
-}
-void ViewerControllerROIListResponse::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void ViewerControllerROIListResponse::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
-const ViewerControllerROIListResponse& ViewerControllerROIListResponse::default_instance() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_ViewerControllerROIListResponse_viewercontroller_2eproto.base);
-  return *internal_default_instance();
-}
-
 
 void ViewerControllerROIListResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.ViewerControllerROIListResponse)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  roi_slices_.Clear();
-  if (GetArena() == nullptr && status_ != nullptr) {
-    delete status_;
+  _internal_mutable_roi_slices()->Clear();
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    ABSL_DCHECK(_impl_.status_ != nullptr);
+    _impl_.status_->Clear();
   }
-  status_ = nullptr;
+  _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* ViewerControllerROIListResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* ViewerControllerROIListResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
-    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-    CHK_(ptr);
+    ::uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // .osirixgrpc.Status status = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
           ptr = ctx->ParseMessage(_internal_mutable_status(), ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
+        } else {
+          goto handle_unusual;
+        }
         continue;
       // repeated .osirixgrpc.ViewerControllerROIListResponse.ROISlice roi_slices = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 18)) {
           ptr -= 1;
           do {
             ptr += 1;
@@ -1634,124 +1796,111 @@ const char* ViewerControllerROIListResponse::_InternalParse(const char* ptr, ::P
             CHK_(ptr);
             if (!ctx->DataAvailable(ptr)) break;
           } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<18>(ptr));
-        } else goto handle_unusual;
-        continue;
-      default: {
-      handle_unusual:
-        if ((tag & 7) == 4 || tag == 0) {
-          ctx->SetLastTag(tag);
-          goto success;
+        } else {
+          goto handle_unusual;
         }
-        ptr = UnknownFieldParse(tag,
-            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-            ptr, ctx);
-        CHK_(ptr != nullptr);
         continue;
-      }
+      default:
+        goto handle_unusual;
     }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
   }  // while
-success:
+message_done:
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
-  goto success;
+  goto message_done;
 #undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* ViewerControllerROIListResponse::_InternalSerialize(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+::uint8_t* ViewerControllerROIListResponse::_InternalSerialize(
+    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.ViewerControllerROIListResponse)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
+  cached_has_bits = _impl_._has_bits_[0];
   // .osirixgrpc.Status status = 1;
-  if (this->has_status()) {
-    target = stream->EnsureSpace(target);
+  if (cached_has_bits & 0x00000001u) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::status(this), target, stream);
+      InternalWriteMessage(1, _Internal::status(this),
+        _Internal::status(this).GetCachedSize(), target, stream);
   }
 
   // repeated .osirixgrpc.ViewerControllerROIListResponse.ROISlice roi_slices = 2;
-  for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->_internal_roi_slices_size()); i < n; i++) {
-    target = stream->EnsureSpace(target);
+  for (unsigned i = 0,
+      n = static_cast<unsigned>(this->_internal_roi_slices_size()); i < n; i++) {
+    const auto& repfield = this->_internal_roi_slices(i);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(2, this->_internal_roi_slices(i), target, stream);
+        InternalWriteMessage(2, repfield, repfield.GetCachedSize(), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.ViewerControllerROIListResponse)
   return target;
 }
 
-size_t ViewerControllerROIListResponse::ByteSizeLong() const {
+::size_t ViewerControllerROIListResponse::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:osirixgrpc.ViewerControllerROIListResponse)
-  size_t total_size = 0;
+  ::size_t total_size = 0;
 
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // repeated .osirixgrpc.ViewerControllerROIListResponse.ROISlice roi_slices = 2;
   total_size += 1UL * this->_internal_roi_slices_size();
-  for (const auto& msg : this->roi_slices_) {
+  for (const auto& msg : this->_internal_roi_slices()) {
     total_size +=
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
 
   // .osirixgrpc.Status status = 1;
-  if (this->has_status()) {
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *status_);
+        *_impl_.status_);
   }
 
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
-        _internal_metadata_, total_size, &_cached_size_);
-  }
-  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-void ViewerControllerROIListResponse::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:osirixgrpc.ViewerControllerROIListResponse)
-  GOOGLE_DCHECK_NE(&from, this);
-  const ViewerControllerROIListResponse* source =
-      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<ViewerControllerROIListResponse>(
-          &from);
-  if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:osirixgrpc.ViewerControllerROIListResponse)
-    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:osirixgrpc.ViewerControllerROIListResponse)
-    MergeFrom(*source);
-  }
-}
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ViewerControllerROIListResponse::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    ViewerControllerROIListResponse::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ViewerControllerROIListResponse::GetClassData() const { return &_class_data_; }
 
-void ViewerControllerROIListResponse::MergeFrom(const ViewerControllerROIListResponse& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ViewerControllerROIListResponse)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+
+void ViewerControllerROIListResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<ViewerControllerROIListResponse*>(&to_msg);
+  auto& from = static_cast<const ViewerControllerROIListResponse&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ViewerControllerROIListResponse)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  roi_slices_.MergeFrom(from.roi_slices_);
-  if (from.has_status()) {
-    _internal_mutable_status()->::osirixgrpc::Status::MergeFrom(from._internal_status());
+  _this->_internal_mutable_roi_slices()->MergeFrom(from._internal_roi_slices());
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_internal_mutable_status()->::osirixgrpc::Status::MergeFrom(
+        from._internal_status());
   }
-}
-
-void ViewerControllerROIListResponse::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:osirixgrpc.ViewerControllerROIListResponse)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void ViewerControllerROIListResponse::CopyFrom(const ViewerControllerROIListResponse& from) {
@@ -1767,257 +1916,257 @@ bool ViewerControllerROIListResponse::IsInitialized() const {
 
 void ViewerControllerROIListResponse::InternalSwap(ViewerControllerROIListResponse* other) {
   using std::swap;
-  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
-  roi_slices_.InternalSwap(&other->roi_slices_);
-  swap(status_, other->status_);
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  _internal_mutable_roi_slices()->InternalSwap(other->_internal_mutable_roi_slices());
+  swap(_impl_.status_, other->_impl_.status_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata ViewerControllerROIListResponse::GetMetadata() const {
-  return GetMetadataStatic();
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_viewercontroller_2eproto_getter, &descriptor_table_viewercontroller_2eproto_once,
+      file_level_metadata_viewercontroller_2eproto[2]);
 }
-
-
 // ===================================================================
 
 class ViewerControllerNewROIResponse::_Internal {
  public:
+  using HasBits = decltype(std::declval<ViewerControllerNewROIResponse>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+    8 * PROTOBUF_FIELD_OFFSET(ViewerControllerNewROIResponse, _impl_._has_bits_);
   static const ::osirixgrpc::Status& status(const ViewerControllerNewROIResponse* msg);
+  static void set_has_status(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
   static const ::osirixgrpc::ROI& roi(const ViewerControllerNewROIResponse* msg);
+  static void set_has_roi(HasBits* has_bits) {
+    (*has_bits)[0] |= 2u;
+  }
 };
 
 const ::osirixgrpc::Status&
 ViewerControllerNewROIResponse::_Internal::status(const ViewerControllerNewROIResponse* msg) {
-  return *msg->status_;
+  return *msg->_impl_.status_;
 }
 const ::osirixgrpc::ROI&
 ViewerControllerNewROIResponse::_Internal::roi(const ViewerControllerNewROIResponse* msg) {
-  return *msg->roi_;
+  return *msg->_impl_.roi_;
 }
 void ViewerControllerNewROIResponse::clear_status() {
-  if (GetArena() == nullptr && status_ != nullptr) {
-    delete status_;
-  }
-  status_ = nullptr;
+  if (_impl_.status_ != nullptr) _impl_.status_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000001u;
 }
 void ViewerControllerNewROIResponse::clear_roi() {
-  if (GetArena() == nullptr && roi_ != nullptr) {
-    delete roi_;
-  }
-  roi_ = nullptr;
+  if (_impl_.roi_ != nullptr) _impl_.roi_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000002u;
 }
 ViewerControllerNewROIResponse::ViewerControllerNewROIResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
-  SharedCtor();
-  RegisterArenaDtor(arena);
+  SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.ViewerControllerNewROIResponse)
 }
 ViewerControllerNewROIResponse::ViewerControllerNewROIResponse(const ViewerControllerNewROIResponse& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
+  ViewerControllerNewROIResponse* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.status_){nullptr}
+    , decltype(_impl_.roi_){nullptr}};
+
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if (from._internal_has_status()) {
-    status_ = new ::osirixgrpc::Status(*from.status_);
-  } else {
-    status_ = nullptr;
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_impl_.status_ = new ::osirixgrpc::Status(*from._impl_.status_);
   }
-  if (from._internal_has_roi()) {
-    roi_ = new ::osirixgrpc::ROI(*from.roi_);
-  } else {
-    roi_ = nullptr;
+  if ((from._impl_._has_bits_[0] & 0x00000002u) != 0) {
+    _this->_impl_.roi_ = new ::osirixgrpc::ROI(*from._impl_.roi_);
   }
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.ViewerControllerNewROIResponse)
 }
 
-void ViewerControllerNewROIResponse::SharedCtor() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_ViewerControllerNewROIResponse_viewercontroller_2eproto.base);
-  ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-      reinterpret_cast<char*>(&status_) - reinterpret_cast<char*>(this)),
-      0, static_cast<size_t>(reinterpret_cast<char*>(&roi_) -
-      reinterpret_cast<char*>(&status_)) + sizeof(roi_));
+inline void ViewerControllerNewROIResponse::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.status_){nullptr}
+    , decltype(_impl_.roi_){nullptr}
+  };
 }
 
 ViewerControllerNewROIResponse::~ViewerControllerNewROIResponse() {
   // @@protoc_insertion_point(destructor:osirixgrpc.ViewerControllerNewROIResponse)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-void ViewerControllerNewROIResponse::SharedDtor() {
-  GOOGLE_DCHECK(GetArena() == nullptr);
-  if (this != internal_default_instance()) delete status_;
-  if (this != internal_default_instance()) delete roi_;
+inline void ViewerControllerNewROIResponse::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  if (this != internal_default_instance()) delete _impl_.status_;
+  if (this != internal_default_instance()) delete _impl_.roi_;
 }
 
-void ViewerControllerNewROIResponse::ArenaDtor(void* object) {
-  ViewerControllerNewROIResponse* _this = reinterpret_cast< ViewerControllerNewROIResponse* >(object);
-  (void)_this;
-}
-void ViewerControllerNewROIResponse::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void ViewerControllerNewROIResponse::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
-const ViewerControllerNewROIResponse& ViewerControllerNewROIResponse::default_instance() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_ViewerControllerNewROIResponse_viewercontroller_2eproto.base);
-  return *internal_default_instance();
-}
-
 
 void ViewerControllerNewROIResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.ViewerControllerNewROIResponse)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  if (GetArena() == nullptr && status_ != nullptr) {
-    delete status_;
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000003u) {
+    if (cached_has_bits & 0x00000001u) {
+      ABSL_DCHECK(_impl_.status_ != nullptr);
+      _impl_.status_->Clear();
+    }
+    if (cached_has_bits & 0x00000002u) {
+      ABSL_DCHECK(_impl_.roi_ != nullptr);
+      _impl_.roi_->Clear();
+    }
   }
-  status_ = nullptr;
-  if (GetArena() == nullptr && roi_ != nullptr) {
-    delete roi_;
-  }
-  roi_ = nullptr;
+  _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* ViewerControllerNewROIResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* ViewerControllerNewROIResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
-    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-    CHK_(ptr);
+    ::uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // .osirixgrpc.Status status = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
           ptr = ctx->ParseMessage(_internal_mutable_status(), ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
+        } else {
+          goto handle_unusual;
+        }
         continue;
       // .osirixgrpc.ROI roi = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 18)) {
           ptr = ctx->ParseMessage(_internal_mutable_roi(), ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
-        continue;
-      default: {
-      handle_unusual:
-        if ((tag & 7) == 4 || tag == 0) {
-          ctx->SetLastTag(tag);
-          goto success;
+        } else {
+          goto handle_unusual;
         }
-        ptr = UnknownFieldParse(tag,
-            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-            ptr, ctx);
-        CHK_(ptr != nullptr);
         continue;
-      }
+      default:
+        goto handle_unusual;
     }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
   }  // while
-success:
+message_done:
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
-  goto success;
+  goto message_done;
 #undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* ViewerControllerNewROIResponse::_InternalSerialize(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+::uint8_t* ViewerControllerNewROIResponse::_InternalSerialize(
+    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.ViewerControllerNewROIResponse)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
+  cached_has_bits = _impl_._has_bits_[0];
   // .osirixgrpc.Status status = 1;
-  if (this->has_status()) {
-    target = stream->EnsureSpace(target);
+  if (cached_has_bits & 0x00000001u) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::status(this), target, stream);
+      InternalWriteMessage(1, _Internal::status(this),
+        _Internal::status(this).GetCachedSize(), target, stream);
   }
 
   // .osirixgrpc.ROI roi = 2;
-  if (this->has_roi()) {
-    target = stream->EnsureSpace(target);
+  if (cached_has_bits & 0x00000002u) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        2, _Internal::roi(this), target, stream);
+      InternalWriteMessage(2, _Internal::roi(this),
+        _Internal::roi(this).GetCachedSize(), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.ViewerControllerNewROIResponse)
   return target;
 }
 
-size_t ViewerControllerNewROIResponse::ByteSizeLong() const {
+::size_t ViewerControllerNewROIResponse::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:osirixgrpc.ViewerControllerNewROIResponse)
-  size_t total_size = 0;
+  ::size_t total_size = 0;
 
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // .osirixgrpc.Status status = 1;
-  if (this->has_status()) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *status_);
-  }
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000003u) {
+    // .osirixgrpc.Status status = 1;
+    if (cached_has_bits & 0x00000001u) {
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+          *_impl_.status_);
+    }
 
-  // .osirixgrpc.ROI roi = 2;
-  if (this->has_roi()) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *roi_);
-  }
+    // .osirixgrpc.ROI roi = 2;
+    if (cached_has_bits & 0x00000002u) {
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+          *_impl_.roi_);
+    }
 
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
-        _internal_metadata_, total_size, &_cached_size_);
   }
-  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-void ViewerControllerNewROIResponse::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:osirixgrpc.ViewerControllerNewROIResponse)
-  GOOGLE_DCHECK_NE(&from, this);
-  const ViewerControllerNewROIResponse* source =
-      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<ViewerControllerNewROIResponse>(
-          &from);
-  if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:osirixgrpc.ViewerControllerNewROIResponse)
-    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:osirixgrpc.ViewerControllerNewROIResponse)
-    MergeFrom(*source);
-  }
-}
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ViewerControllerNewROIResponse::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    ViewerControllerNewROIResponse::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ViewerControllerNewROIResponse::GetClassData() const { return &_class_data_; }
 
-void ViewerControllerNewROIResponse::MergeFrom(const ViewerControllerNewROIResponse& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ViewerControllerNewROIResponse)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+
+void ViewerControllerNewROIResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<ViewerControllerNewROIResponse*>(&to_msg);
+  auto& from = static_cast<const ViewerControllerNewROIResponse&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ViewerControllerNewROIResponse)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.has_status()) {
-    _internal_mutable_status()->::osirixgrpc::Status::MergeFrom(from._internal_status());
+  cached_has_bits = from._impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000003u) {
+    if (cached_has_bits & 0x00000001u) {
+      _this->_internal_mutable_status()->::osirixgrpc::Status::MergeFrom(
+          from._internal_status());
+    }
+    if (cached_has_bits & 0x00000002u) {
+      _this->_internal_mutable_roi()->::osirixgrpc::ROI::MergeFrom(
+          from._internal_roi());
+    }
   }
-  if (from.has_roi()) {
-    _internal_mutable_roi()->::osirixgrpc::ROI::MergeFrom(from._internal_roi());
-  }
-}
-
-void ViewerControllerNewROIResponse::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:osirixgrpc.ViewerControllerNewROIResponse)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void ViewerControllerNewROIResponse::CopyFrom(const ViewerControllerNewROIResponse& from) {
@@ -2033,261 +2182,261 @@ bool ViewerControllerNewROIResponse::IsInitialized() const {
 
 void ViewerControllerNewROIResponse::InternalSwap(ViewerControllerNewROIResponse* other) {
   using std::swap;
-  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(ViewerControllerNewROIResponse, roi_)
-      + sizeof(ViewerControllerNewROIResponse::roi_)
-      - PROTOBUF_FIELD_OFFSET(ViewerControllerNewROIResponse, status_)>(
-          reinterpret_cast<char*>(&status_),
-          reinterpret_cast<char*>(&other->status_));
+      PROTOBUF_FIELD_OFFSET(ViewerControllerNewROIResponse, _impl_.roi_)
+      + sizeof(ViewerControllerNewROIResponse::_impl_.roi_)
+      - PROTOBUF_FIELD_OFFSET(ViewerControllerNewROIResponse, _impl_.status_)>(
+          reinterpret_cast<char*>(&_impl_.status_),
+          reinterpret_cast<char*>(&other->_impl_.status_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata ViewerControllerNewROIResponse::GetMetadata() const {
-  return GetMetadataStatic();
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_viewercontroller_2eproto_getter, &descriptor_table_viewercontroller_2eproto_once,
+      file_level_metadata_viewercontroller_2eproto[3]);
 }
-
-
 // ===================================================================
 
 class ViewerControllerCurDCMResponse::_Internal {
  public:
+  using HasBits = decltype(std::declval<ViewerControllerCurDCMResponse>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+    8 * PROTOBUF_FIELD_OFFSET(ViewerControllerCurDCMResponse, _impl_._has_bits_);
   static const ::osirixgrpc::Status& status(const ViewerControllerCurDCMResponse* msg);
+  static void set_has_status(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
   static const ::osirixgrpc::DCMPix& pix(const ViewerControllerCurDCMResponse* msg);
+  static void set_has_pix(HasBits* has_bits) {
+    (*has_bits)[0] |= 2u;
+  }
 };
 
 const ::osirixgrpc::Status&
 ViewerControllerCurDCMResponse::_Internal::status(const ViewerControllerCurDCMResponse* msg) {
-  return *msg->status_;
+  return *msg->_impl_.status_;
 }
 const ::osirixgrpc::DCMPix&
 ViewerControllerCurDCMResponse::_Internal::pix(const ViewerControllerCurDCMResponse* msg) {
-  return *msg->pix_;
+  return *msg->_impl_.pix_;
 }
 void ViewerControllerCurDCMResponse::clear_status() {
-  if (GetArena() == nullptr && status_ != nullptr) {
-    delete status_;
-  }
-  status_ = nullptr;
+  if (_impl_.status_ != nullptr) _impl_.status_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000001u;
 }
 void ViewerControllerCurDCMResponse::clear_pix() {
-  if (GetArena() == nullptr && pix_ != nullptr) {
-    delete pix_;
-  }
-  pix_ = nullptr;
+  if (_impl_.pix_ != nullptr) _impl_.pix_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000002u;
 }
 ViewerControllerCurDCMResponse::ViewerControllerCurDCMResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
-  SharedCtor();
-  RegisterArenaDtor(arena);
+  SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.ViewerControllerCurDCMResponse)
 }
 ViewerControllerCurDCMResponse::ViewerControllerCurDCMResponse(const ViewerControllerCurDCMResponse& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
+  ViewerControllerCurDCMResponse* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.status_){nullptr}
+    , decltype(_impl_.pix_){nullptr}};
+
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if (from._internal_has_status()) {
-    status_ = new ::osirixgrpc::Status(*from.status_);
-  } else {
-    status_ = nullptr;
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_impl_.status_ = new ::osirixgrpc::Status(*from._impl_.status_);
   }
-  if (from._internal_has_pix()) {
-    pix_ = new ::osirixgrpc::DCMPix(*from.pix_);
-  } else {
-    pix_ = nullptr;
+  if ((from._impl_._has_bits_[0] & 0x00000002u) != 0) {
+    _this->_impl_.pix_ = new ::osirixgrpc::DCMPix(*from._impl_.pix_);
   }
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.ViewerControllerCurDCMResponse)
 }
 
-void ViewerControllerCurDCMResponse::SharedCtor() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_ViewerControllerCurDCMResponse_viewercontroller_2eproto.base);
-  ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-      reinterpret_cast<char*>(&status_) - reinterpret_cast<char*>(this)),
-      0, static_cast<size_t>(reinterpret_cast<char*>(&pix_) -
-      reinterpret_cast<char*>(&status_)) + sizeof(pix_));
+inline void ViewerControllerCurDCMResponse::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.status_){nullptr}
+    , decltype(_impl_.pix_){nullptr}
+  };
 }
 
 ViewerControllerCurDCMResponse::~ViewerControllerCurDCMResponse() {
   // @@protoc_insertion_point(destructor:osirixgrpc.ViewerControllerCurDCMResponse)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-void ViewerControllerCurDCMResponse::SharedDtor() {
-  GOOGLE_DCHECK(GetArena() == nullptr);
-  if (this != internal_default_instance()) delete status_;
-  if (this != internal_default_instance()) delete pix_;
+inline void ViewerControllerCurDCMResponse::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  if (this != internal_default_instance()) delete _impl_.status_;
+  if (this != internal_default_instance()) delete _impl_.pix_;
 }
 
-void ViewerControllerCurDCMResponse::ArenaDtor(void* object) {
-  ViewerControllerCurDCMResponse* _this = reinterpret_cast< ViewerControllerCurDCMResponse* >(object);
-  (void)_this;
-}
-void ViewerControllerCurDCMResponse::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void ViewerControllerCurDCMResponse::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
-const ViewerControllerCurDCMResponse& ViewerControllerCurDCMResponse::default_instance() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_ViewerControllerCurDCMResponse_viewercontroller_2eproto.base);
-  return *internal_default_instance();
-}
-
 
 void ViewerControllerCurDCMResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.ViewerControllerCurDCMResponse)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  if (GetArena() == nullptr && status_ != nullptr) {
-    delete status_;
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000003u) {
+    if (cached_has_bits & 0x00000001u) {
+      ABSL_DCHECK(_impl_.status_ != nullptr);
+      _impl_.status_->Clear();
+    }
+    if (cached_has_bits & 0x00000002u) {
+      ABSL_DCHECK(_impl_.pix_ != nullptr);
+      _impl_.pix_->Clear();
+    }
   }
-  status_ = nullptr;
-  if (GetArena() == nullptr && pix_ != nullptr) {
-    delete pix_;
-  }
-  pix_ = nullptr;
+  _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* ViewerControllerCurDCMResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* ViewerControllerCurDCMResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
-    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-    CHK_(ptr);
+    ::uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // .osirixgrpc.Status status = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
           ptr = ctx->ParseMessage(_internal_mutable_status(), ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
+        } else {
+          goto handle_unusual;
+        }
         continue;
       // .osirixgrpc.DCMPix pix = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 18)) {
           ptr = ctx->ParseMessage(_internal_mutable_pix(), ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
-        continue;
-      default: {
-      handle_unusual:
-        if ((tag & 7) == 4 || tag == 0) {
-          ctx->SetLastTag(tag);
-          goto success;
+        } else {
+          goto handle_unusual;
         }
-        ptr = UnknownFieldParse(tag,
-            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-            ptr, ctx);
-        CHK_(ptr != nullptr);
         continue;
-      }
+      default:
+        goto handle_unusual;
     }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
   }  // while
-success:
+message_done:
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
-  goto success;
+  goto message_done;
 #undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* ViewerControllerCurDCMResponse::_InternalSerialize(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+::uint8_t* ViewerControllerCurDCMResponse::_InternalSerialize(
+    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.ViewerControllerCurDCMResponse)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
+  cached_has_bits = _impl_._has_bits_[0];
   // .osirixgrpc.Status status = 1;
-  if (this->has_status()) {
-    target = stream->EnsureSpace(target);
+  if (cached_has_bits & 0x00000001u) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::status(this), target, stream);
+      InternalWriteMessage(1, _Internal::status(this),
+        _Internal::status(this).GetCachedSize(), target, stream);
   }
 
   // .osirixgrpc.DCMPix pix = 2;
-  if (this->has_pix()) {
-    target = stream->EnsureSpace(target);
+  if (cached_has_bits & 0x00000002u) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        2, _Internal::pix(this), target, stream);
+      InternalWriteMessage(2, _Internal::pix(this),
+        _Internal::pix(this).GetCachedSize(), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.ViewerControllerCurDCMResponse)
   return target;
 }
 
-size_t ViewerControllerCurDCMResponse::ByteSizeLong() const {
+::size_t ViewerControllerCurDCMResponse::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:osirixgrpc.ViewerControllerCurDCMResponse)
-  size_t total_size = 0;
+  ::size_t total_size = 0;
 
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // .osirixgrpc.Status status = 1;
-  if (this->has_status()) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *status_);
-  }
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000003u) {
+    // .osirixgrpc.Status status = 1;
+    if (cached_has_bits & 0x00000001u) {
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+          *_impl_.status_);
+    }
 
-  // .osirixgrpc.DCMPix pix = 2;
-  if (this->has_pix()) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *pix_);
-  }
+    // .osirixgrpc.DCMPix pix = 2;
+    if (cached_has_bits & 0x00000002u) {
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+          *_impl_.pix_);
+    }
 
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
-        _internal_metadata_, total_size, &_cached_size_);
   }
-  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-void ViewerControllerCurDCMResponse::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:osirixgrpc.ViewerControllerCurDCMResponse)
-  GOOGLE_DCHECK_NE(&from, this);
-  const ViewerControllerCurDCMResponse* source =
-      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<ViewerControllerCurDCMResponse>(
-          &from);
-  if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:osirixgrpc.ViewerControllerCurDCMResponse)
-    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:osirixgrpc.ViewerControllerCurDCMResponse)
-    MergeFrom(*source);
-  }
-}
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ViewerControllerCurDCMResponse::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    ViewerControllerCurDCMResponse::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ViewerControllerCurDCMResponse::GetClassData() const { return &_class_data_; }
 
-void ViewerControllerCurDCMResponse::MergeFrom(const ViewerControllerCurDCMResponse& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ViewerControllerCurDCMResponse)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+
+void ViewerControllerCurDCMResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<ViewerControllerCurDCMResponse*>(&to_msg);
+  auto& from = static_cast<const ViewerControllerCurDCMResponse&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ViewerControllerCurDCMResponse)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.has_status()) {
-    _internal_mutable_status()->::osirixgrpc::Status::MergeFrom(from._internal_status());
+  cached_has_bits = from._impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000003u) {
+    if (cached_has_bits & 0x00000001u) {
+      _this->_internal_mutable_status()->::osirixgrpc::Status::MergeFrom(
+          from._internal_status());
+    }
+    if (cached_has_bits & 0x00000002u) {
+      _this->_internal_mutable_pix()->::osirixgrpc::DCMPix::MergeFrom(
+          from._internal_pix());
+    }
   }
-  if (from.has_pix()) {
-    _internal_mutable_pix()->::osirixgrpc::DCMPix::MergeFrom(from._internal_pix());
-  }
-}
-
-void ViewerControllerCurDCMResponse::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:osirixgrpc.ViewerControllerCurDCMResponse)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void ViewerControllerCurDCMResponse::CopyFrom(const ViewerControllerCurDCMResponse& from) {
@@ -2303,121 +2452,130 @@ bool ViewerControllerCurDCMResponse::IsInitialized() const {
 
 void ViewerControllerCurDCMResponse::InternalSwap(ViewerControllerCurDCMResponse* other) {
   using std::swap;
-  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(ViewerControllerCurDCMResponse, pix_)
-      + sizeof(ViewerControllerCurDCMResponse::pix_)
-      - PROTOBUF_FIELD_OFFSET(ViewerControllerCurDCMResponse, status_)>(
-          reinterpret_cast<char*>(&status_),
-          reinterpret_cast<char*>(&other->status_));
+      PROTOBUF_FIELD_OFFSET(ViewerControllerCurDCMResponse, _impl_.pix_)
+      + sizeof(ViewerControllerCurDCMResponse::_impl_.pix_)
+      - PROTOBUF_FIELD_OFFSET(ViewerControllerCurDCMResponse, _impl_.status_)>(
+          reinterpret_cast<char*>(&_impl_.status_),
+          reinterpret_cast<char*>(&other->_impl_.status_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata ViewerControllerCurDCMResponse::GetMetadata() const {
-  return GetMetadataStatic();
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_viewercontroller_2eproto_getter, &descriptor_table_viewercontroller_2eproto_once,
+      file_level_metadata_viewercontroller_2eproto[4]);
 }
-
-
 // ===================================================================
 
 class ViewerControllerROIsWithNameResponse::_Internal {
  public:
+  using HasBits = decltype(std::declval<ViewerControllerROIsWithNameResponse>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+    8 * PROTOBUF_FIELD_OFFSET(ViewerControllerROIsWithNameResponse, _impl_._has_bits_);
   static const ::osirixgrpc::Status& status(const ViewerControllerROIsWithNameResponse* msg);
+  static void set_has_status(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
 };
 
 const ::osirixgrpc::Status&
 ViewerControllerROIsWithNameResponse::_Internal::status(const ViewerControllerROIsWithNameResponse* msg) {
-  return *msg->status_;
+  return *msg->_impl_.status_;
 }
 void ViewerControllerROIsWithNameResponse::clear_status() {
-  if (GetArena() == nullptr && status_ != nullptr) {
-    delete status_;
-  }
-  status_ = nullptr;
+  if (_impl_.status_ != nullptr) _impl_.status_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000001u;
 }
 void ViewerControllerROIsWithNameResponse::clear_rois() {
-  rois_.Clear();
+  _internal_mutable_rois()->Clear();
 }
 ViewerControllerROIsWithNameResponse::ViewerControllerROIsWithNameResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena),
-  rois_(arena) {
-  SharedCtor();
-  RegisterArenaDtor(arena);
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
+  SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.ViewerControllerROIsWithNameResponse)
 }
 ViewerControllerROIsWithNameResponse::ViewerControllerROIsWithNameResponse(const ViewerControllerROIsWithNameResponse& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      rois_(from.rois_) {
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  ViewerControllerROIsWithNameResponse* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.rois_){from._impl_.rois_}
+    , decltype(_impl_.status_){nullptr}};
+
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if (from._internal_has_status()) {
-    status_ = new ::osirixgrpc::Status(*from.status_);
-  } else {
-    status_ = nullptr;
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_impl_.status_ = new ::osirixgrpc::Status(*from._impl_.status_);
   }
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.ViewerControllerROIsWithNameResponse)
 }
 
-void ViewerControllerROIsWithNameResponse::SharedCtor() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_ViewerControllerROIsWithNameResponse_viewercontroller_2eproto.base);
-  status_ = nullptr;
+inline void ViewerControllerROIsWithNameResponse::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.rois_){arena}
+    , decltype(_impl_.status_){nullptr}
+  };
 }
 
 ViewerControllerROIsWithNameResponse::~ViewerControllerROIsWithNameResponse() {
   // @@protoc_insertion_point(destructor:osirixgrpc.ViewerControllerROIsWithNameResponse)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-void ViewerControllerROIsWithNameResponse::SharedDtor() {
-  GOOGLE_DCHECK(GetArena() == nullptr);
-  if (this != internal_default_instance()) delete status_;
+inline void ViewerControllerROIsWithNameResponse::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  _internal_mutable_rois()->~RepeatedPtrField();
+  if (this != internal_default_instance()) delete _impl_.status_;
 }
 
-void ViewerControllerROIsWithNameResponse::ArenaDtor(void* object) {
-  ViewerControllerROIsWithNameResponse* _this = reinterpret_cast< ViewerControllerROIsWithNameResponse* >(object);
-  (void)_this;
-}
-void ViewerControllerROIsWithNameResponse::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void ViewerControllerROIsWithNameResponse::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
-const ViewerControllerROIsWithNameResponse& ViewerControllerROIsWithNameResponse::default_instance() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_ViewerControllerROIsWithNameResponse_viewercontroller_2eproto.base);
-  return *internal_default_instance();
-}
-
 
 void ViewerControllerROIsWithNameResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.ViewerControllerROIsWithNameResponse)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  rois_.Clear();
-  if (GetArena() == nullptr && status_ != nullptr) {
-    delete status_;
+  _internal_mutable_rois()->Clear();
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    ABSL_DCHECK(_impl_.status_ != nullptr);
+    _impl_.status_->Clear();
   }
-  status_ = nullptr;
+  _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* ViewerControllerROIsWithNameResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* ViewerControllerROIsWithNameResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
-    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-    CHK_(ptr);
+    ::uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // .osirixgrpc.Status status = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
           ptr = ctx->ParseMessage(_internal_mutable_status(), ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
+        } else {
+          goto handle_unusual;
+        }
         continue;
       // repeated .osirixgrpc.ROI rois = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 18)) {
           ptr -= 1;
           do {
             ptr += 1;
@@ -2425,124 +2583,111 @@ const char* ViewerControllerROIsWithNameResponse::_InternalParse(const char* ptr
             CHK_(ptr);
             if (!ctx->DataAvailable(ptr)) break;
           } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<18>(ptr));
-        } else goto handle_unusual;
-        continue;
-      default: {
-      handle_unusual:
-        if ((tag & 7) == 4 || tag == 0) {
-          ctx->SetLastTag(tag);
-          goto success;
+        } else {
+          goto handle_unusual;
         }
-        ptr = UnknownFieldParse(tag,
-            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-            ptr, ctx);
-        CHK_(ptr != nullptr);
         continue;
-      }
+      default:
+        goto handle_unusual;
     }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
   }  // while
-success:
+message_done:
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
-  goto success;
+  goto message_done;
 #undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* ViewerControllerROIsWithNameResponse::_InternalSerialize(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+::uint8_t* ViewerControllerROIsWithNameResponse::_InternalSerialize(
+    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.ViewerControllerROIsWithNameResponse)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
+  cached_has_bits = _impl_._has_bits_[0];
   // .osirixgrpc.Status status = 1;
-  if (this->has_status()) {
-    target = stream->EnsureSpace(target);
+  if (cached_has_bits & 0x00000001u) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::status(this), target, stream);
+      InternalWriteMessage(1, _Internal::status(this),
+        _Internal::status(this).GetCachedSize(), target, stream);
   }
 
   // repeated .osirixgrpc.ROI rois = 2;
-  for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->_internal_rois_size()); i < n; i++) {
-    target = stream->EnsureSpace(target);
+  for (unsigned i = 0,
+      n = static_cast<unsigned>(this->_internal_rois_size()); i < n; i++) {
+    const auto& repfield = this->_internal_rois(i);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(2, this->_internal_rois(i), target, stream);
+        InternalWriteMessage(2, repfield, repfield.GetCachedSize(), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.ViewerControllerROIsWithNameResponse)
   return target;
 }
 
-size_t ViewerControllerROIsWithNameResponse::ByteSizeLong() const {
+::size_t ViewerControllerROIsWithNameResponse::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:osirixgrpc.ViewerControllerROIsWithNameResponse)
-  size_t total_size = 0;
+  ::size_t total_size = 0;
 
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // repeated .osirixgrpc.ROI rois = 2;
   total_size += 1UL * this->_internal_rois_size();
-  for (const auto& msg : this->rois_) {
+  for (const auto& msg : this->_internal_rois()) {
     total_size +=
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
 
   // .osirixgrpc.Status status = 1;
-  if (this->has_status()) {
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *status_);
+        *_impl_.status_);
   }
 
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
-        _internal_metadata_, total_size, &_cached_size_);
-  }
-  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-void ViewerControllerROIsWithNameResponse::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:osirixgrpc.ViewerControllerROIsWithNameResponse)
-  GOOGLE_DCHECK_NE(&from, this);
-  const ViewerControllerROIsWithNameResponse* source =
-      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<ViewerControllerROIsWithNameResponse>(
-          &from);
-  if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:osirixgrpc.ViewerControllerROIsWithNameResponse)
-    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:osirixgrpc.ViewerControllerROIsWithNameResponse)
-    MergeFrom(*source);
-  }
-}
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ViewerControllerROIsWithNameResponse::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    ViewerControllerROIsWithNameResponse::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ViewerControllerROIsWithNameResponse::GetClassData() const { return &_class_data_; }
 
-void ViewerControllerROIsWithNameResponse::MergeFrom(const ViewerControllerROIsWithNameResponse& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ViewerControllerROIsWithNameResponse)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+
+void ViewerControllerROIsWithNameResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<ViewerControllerROIsWithNameResponse*>(&to_msg);
+  auto& from = static_cast<const ViewerControllerROIsWithNameResponse&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ViewerControllerROIsWithNameResponse)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  rois_.MergeFrom(from.rois_);
-  if (from.has_status()) {
-    _internal_mutable_status()->::osirixgrpc::Status::MergeFrom(from._internal_status());
+  _this->_internal_mutable_rois()->MergeFrom(from._internal_rois());
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_internal_mutable_status()->::osirixgrpc::Status::MergeFrom(
+        from._internal_status());
   }
-}
-
-void ViewerControllerROIsWithNameResponse::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:osirixgrpc.ViewerControllerROIsWithNameResponse)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void ViewerControllerROIsWithNameResponse::CopyFrom(const ViewerControllerROIsWithNameResponse& from) {
@@ -2558,117 +2703,126 @@ bool ViewerControllerROIsWithNameResponse::IsInitialized() const {
 
 void ViewerControllerROIsWithNameResponse::InternalSwap(ViewerControllerROIsWithNameResponse* other) {
   using std::swap;
-  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
-  rois_.InternalSwap(&other->rois_);
-  swap(status_, other->status_);
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  _internal_mutable_rois()->InternalSwap(other->_internal_mutable_rois());
+  swap(_impl_.status_, other->_impl_.status_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata ViewerControllerROIsWithNameResponse::GetMetadata() const {
-  return GetMetadataStatic();
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_viewercontroller_2eproto_getter, &descriptor_table_viewercontroller_2eproto_once,
+      file_level_metadata_viewercontroller_2eproto[5]);
 }
-
-
 // ===================================================================
 
 class ViewerControllerSelectedROIsResponse::_Internal {
  public:
+  using HasBits = decltype(std::declval<ViewerControllerSelectedROIsResponse>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+    8 * PROTOBUF_FIELD_OFFSET(ViewerControllerSelectedROIsResponse, _impl_._has_bits_);
   static const ::osirixgrpc::Status& status(const ViewerControllerSelectedROIsResponse* msg);
+  static void set_has_status(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
 };
 
 const ::osirixgrpc::Status&
 ViewerControllerSelectedROIsResponse::_Internal::status(const ViewerControllerSelectedROIsResponse* msg) {
-  return *msg->status_;
+  return *msg->_impl_.status_;
 }
 void ViewerControllerSelectedROIsResponse::clear_status() {
-  if (GetArena() == nullptr && status_ != nullptr) {
-    delete status_;
-  }
-  status_ = nullptr;
+  if (_impl_.status_ != nullptr) _impl_.status_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000001u;
 }
 void ViewerControllerSelectedROIsResponse::clear_rois() {
-  rois_.Clear();
+  _internal_mutable_rois()->Clear();
 }
 ViewerControllerSelectedROIsResponse::ViewerControllerSelectedROIsResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena),
-  rois_(arena) {
-  SharedCtor();
-  RegisterArenaDtor(arena);
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
+  SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.ViewerControllerSelectedROIsResponse)
 }
 ViewerControllerSelectedROIsResponse::ViewerControllerSelectedROIsResponse(const ViewerControllerSelectedROIsResponse& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      rois_(from.rois_) {
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  ViewerControllerSelectedROIsResponse* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.rois_){from._impl_.rois_}
+    , decltype(_impl_.status_){nullptr}};
+
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if (from._internal_has_status()) {
-    status_ = new ::osirixgrpc::Status(*from.status_);
-  } else {
-    status_ = nullptr;
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_impl_.status_ = new ::osirixgrpc::Status(*from._impl_.status_);
   }
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.ViewerControllerSelectedROIsResponse)
 }
 
-void ViewerControllerSelectedROIsResponse::SharedCtor() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_ViewerControllerSelectedROIsResponse_viewercontroller_2eproto.base);
-  status_ = nullptr;
+inline void ViewerControllerSelectedROIsResponse::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.rois_){arena}
+    , decltype(_impl_.status_){nullptr}
+  };
 }
 
 ViewerControllerSelectedROIsResponse::~ViewerControllerSelectedROIsResponse() {
   // @@protoc_insertion_point(destructor:osirixgrpc.ViewerControllerSelectedROIsResponse)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-void ViewerControllerSelectedROIsResponse::SharedDtor() {
-  GOOGLE_DCHECK(GetArena() == nullptr);
-  if (this != internal_default_instance()) delete status_;
+inline void ViewerControllerSelectedROIsResponse::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  _internal_mutable_rois()->~RepeatedPtrField();
+  if (this != internal_default_instance()) delete _impl_.status_;
 }
 
-void ViewerControllerSelectedROIsResponse::ArenaDtor(void* object) {
-  ViewerControllerSelectedROIsResponse* _this = reinterpret_cast< ViewerControllerSelectedROIsResponse* >(object);
-  (void)_this;
-}
-void ViewerControllerSelectedROIsResponse::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void ViewerControllerSelectedROIsResponse::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
-const ViewerControllerSelectedROIsResponse& ViewerControllerSelectedROIsResponse::default_instance() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_ViewerControllerSelectedROIsResponse_viewercontroller_2eproto.base);
-  return *internal_default_instance();
-}
-
 
 void ViewerControllerSelectedROIsResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.ViewerControllerSelectedROIsResponse)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  rois_.Clear();
-  if (GetArena() == nullptr && status_ != nullptr) {
-    delete status_;
+  _internal_mutable_rois()->Clear();
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    ABSL_DCHECK(_impl_.status_ != nullptr);
+    _impl_.status_->Clear();
   }
-  status_ = nullptr;
+  _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* ViewerControllerSelectedROIsResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* ViewerControllerSelectedROIsResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
-    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-    CHK_(ptr);
+    ::uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // .osirixgrpc.Status status = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
           ptr = ctx->ParseMessage(_internal_mutable_status(), ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
+        } else {
+          goto handle_unusual;
+        }
         continue;
       // repeated .osirixgrpc.ROI rois = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 18)) {
           ptr -= 1;
           do {
             ptr += 1;
@@ -2676,124 +2830,111 @@ const char* ViewerControllerSelectedROIsResponse::_InternalParse(const char* ptr
             CHK_(ptr);
             if (!ctx->DataAvailable(ptr)) break;
           } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<18>(ptr));
-        } else goto handle_unusual;
-        continue;
-      default: {
-      handle_unusual:
-        if ((tag & 7) == 4 || tag == 0) {
-          ctx->SetLastTag(tag);
-          goto success;
+        } else {
+          goto handle_unusual;
         }
-        ptr = UnknownFieldParse(tag,
-            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-            ptr, ctx);
-        CHK_(ptr != nullptr);
         continue;
-      }
+      default:
+        goto handle_unusual;
     }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
   }  // while
-success:
+message_done:
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
-  goto success;
+  goto message_done;
 #undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* ViewerControllerSelectedROIsResponse::_InternalSerialize(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+::uint8_t* ViewerControllerSelectedROIsResponse::_InternalSerialize(
+    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.ViewerControllerSelectedROIsResponse)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
+  cached_has_bits = _impl_._has_bits_[0];
   // .osirixgrpc.Status status = 1;
-  if (this->has_status()) {
-    target = stream->EnsureSpace(target);
+  if (cached_has_bits & 0x00000001u) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::status(this), target, stream);
+      InternalWriteMessage(1, _Internal::status(this),
+        _Internal::status(this).GetCachedSize(), target, stream);
   }
 
   // repeated .osirixgrpc.ROI rois = 2;
-  for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->_internal_rois_size()); i < n; i++) {
-    target = stream->EnsureSpace(target);
+  for (unsigned i = 0,
+      n = static_cast<unsigned>(this->_internal_rois_size()); i < n; i++) {
+    const auto& repfield = this->_internal_rois(i);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(2, this->_internal_rois(i), target, stream);
+        InternalWriteMessage(2, repfield, repfield.GetCachedSize(), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.ViewerControllerSelectedROIsResponse)
   return target;
 }
 
-size_t ViewerControllerSelectedROIsResponse::ByteSizeLong() const {
+::size_t ViewerControllerSelectedROIsResponse::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:osirixgrpc.ViewerControllerSelectedROIsResponse)
-  size_t total_size = 0;
+  ::size_t total_size = 0;
 
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // repeated .osirixgrpc.ROI rois = 2;
   total_size += 1UL * this->_internal_rois_size();
-  for (const auto& msg : this->rois_) {
+  for (const auto& msg : this->_internal_rois()) {
     total_size +=
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
 
   // .osirixgrpc.Status status = 1;
-  if (this->has_status()) {
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *status_);
+        *_impl_.status_);
   }
 
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
-        _internal_metadata_, total_size, &_cached_size_);
-  }
-  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-void ViewerControllerSelectedROIsResponse::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:osirixgrpc.ViewerControllerSelectedROIsResponse)
-  GOOGLE_DCHECK_NE(&from, this);
-  const ViewerControllerSelectedROIsResponse* source =
-      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<ViewerControllerSelectedROIsResponse>(
-          &from);
-  if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:osirixgrpc.ViewerControllerSelectedROIsResponse)
-    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:osirixgrpc.ViewerControllerSelectedROIsResponse)
-    MergeFrom(*source);
-  }
-}
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ViewerControllerSelectedROIsResponse::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    ViewerControllerSelectedROIsResponse::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ViewerControllerSelectedROIsResponse::GetClassData() const { return &_class_data_; }
 
-void ViewerControllerSelectedROIsResponse::MergeFrom(const ViewerControllerSelectedROIsResponse& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ViewerControllerSelectedROIsResponse)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+
+void ViewerControllerSelectedROIsResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<ViewerControllerSelectedROIsResponse*>(&to_msg);
+  auto& from = static_cast<const ViewerControllerSelectedROIsResponse&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ViewerControllerSelectedROIsResponse)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  rois_.MergeFrom(from.rois_);
-  if (from.has_status()) {
-    _internal_mutable_status()->::osirixgrpc::Status::MergeFrom(from._internal_status());
+  _this->_internal_mutable_rois()->MergeFrom(from._internal_rois());
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_internal_mutable_status()->::osirixgrpc::Status::MergeFrom(
+        from._internal_status());
   }
-}
-
-void ViewerControllerSelectedROIsResponse::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:osirixgrpc.ViewerControllerSelectedROIsResponse)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void ViewerControllerSelectedROIsResponse::CopyFrom(const ViewerControllerSelectedROIsResponse& from) {
@@ -2809,234 +2950,231 @@ bool ViewerControllerSelectedROIsResponse::IsInitialized() const {
 
 void ViewerControllerSelectedROIsResponse::InternalSwap(ViewerControllerSelectedROIsResponse* other) {
   using std::swap;
-  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
-  rois_.InternalSwap(&other->rois_);
-  swap(status_, other->status_);
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  _internal_mutable_rois()->InternalSwap(other->_internal_mutable_rois());
+  swap(_impl_.status_, other->_impl_.status_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata ViewerControllerSelectedROIsResponse::GetMetadata() const {
-  return GetMetadataStatic();
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_viewercontroller_2eproto_getter, &descriptor_table_viewercontroller_2eproto_once,
+      file_level_metadata_viewercontroller_2eproto[6]);
 }
-
-
 // ===================================================================
 
 class ViewerControllerIsDataVolumicResponse::_Internal {
  public:
+  using HasBits = decltype(std::declval<ViewerControllerIsDataVolumicResponse>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+    8 * PROTOBUF_FIELD_OFFSET(ViewerControllerIsDataVolumicResponse, _impl_._has_bits_);
   static const ::osirixgrpc::Status& status(const ViewerControllerIsDataVolumicResponse* msg);
+  static void set_has_status(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
 };
 
 const ::osirixgrpc::Status&
 ViewerControllerIsDataVolumicResponse::_Internal::status(const ViewerControllerIsDataVolumicResponse* msg) {
-  return *msg->status_;
+  return *msg->_impl_.status_;
 }
 void ViewerControllerIsDataVolumicResponse::clear_status() {
-  if (GetArena() == nullptr && status_ != nullptr) {
-    delete status_;
-  }
-  status_ = nullptr;
+  if (_impl_.status_ != nullptr) _impl_.status_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000001u;
 }
 ViewerControllerIsDataVolumicResponse::ViewerControllerIsDataVolumicResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
-  SharedCtor();
-  RegisterArenaDtor(arena);
+  SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.ViewerControllerIsDataVolumicResponse)
 }
 ViewerControllerIsDataVolumicResponse::ViewerControllerIsDataVolumicResponse(const ViewerControllerIsDataVolumicResponse& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
+  ViewerControllerIsDataVolumicResponse* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.status_){nullptr}
+    , decltype(_impl_.is_volumic_) {}
+  };
+
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if (from._internal_has_status()) {
-    status_ = new ::osirixgrpc::Status(*from.status_);
-  } else {
-    status_ = nullptr;
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_impl_.status_ = new ::osirixgrpc::Status(*from._impl_.status_);
   }
-  is_volumic_ = from.is_volumic_;
+  _this->_impl_.is_volumic_ = from._impl_.is_volumic_;
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.ViewerControllerIsDataVolumicResponse)
 }
 
-void ViewerControllerIsDataVolumicResponse::SharedCtor() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_ViewerControllerIsDataVolumicResponse_viewercontroller_2eproto.base);
-  ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-      reinterpret_cast<char*>(&status_) - reinterpret_cast<char*>(this)),
-      0, static_cast<size_t>(reinterpret_cast<char*>(&is_volumic_) -
-      reinterpret_cast<char*>(&status_)) + sizeof(is_volumic_));
+inline void ViewerControllerIsDataVolumicResponse::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.status_){nullptr}
+    , decltype(_impl_.is_volumic_) { false }
+
+  };
 }
 
 ViewerControllerIsDataVolumicResponse::~ViewerControllerIsDataVolumicResponse() {
   // @@protoc_insertion_point(destructor:osirixgrpc.ViewerControllerIsDataVolumicResponse)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-void ViewerControllerIsDataVolumicResponse::SharedDtor() {
-  GOOGLE_DCHECK(GetArena() == nullptr);
-  if (this != internal_default_instance()) delete status_;
+inline void ViewerControllerIsDataVolumicResponse::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  if (this != internal_default_instance()) delete _impl_.status_;
 }
 
-void ViewerControllerIsDataVolumicResponse::ArenaDtor(void* object) {
-  ViewerControllerIsDataVolumicResponse* _this = reinterpret_cast< ViewerControllerIsDataVolumicResponse* >(object);
-  (void)_this;
-}
-void ViewerControllerIsDataVolumicResponse::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void ViewerControllerIsDataVolumicResponse::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
-const ViewerControllerIsDataVolumicResponse& ViewerControllerIsDataVolumicResponse::default_instance() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_ViewerControllerIsDataVolumicResponse_viewercontroller_2eproto.base);
-  return *internal_default_instance();
-}
-
 
 void ViewerControllerIsDataVolumicResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.ViewerControllerIsDataVolumicResponse)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  if (GetArena() == nullptr && status_ != nullptr) {
-    delete status_;
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    ABSL_DCHECK(_impl_.status_ != nullptr);
+    _impl_.status_->Clear();
   }
-  status_ = nullptr;
-  is_volumic_ = false;
+  _impl_.is_volumic_ = false;
+  _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* ViewerControllerIsDataVolumicResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* ViewerControllerIsDataVolumicResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
-    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-    CHK_(ptr);
+    ::uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // .osirixgrpc.Status status = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
           ptr = ctx->ParseMessage(_internal_mutable_status(), ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
+        } else {
+          goto handle_unusual;
+        }
         continue;
       // bool is_volumic = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
-          is_volumic_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 16)) {
+          _impl_.is_volumic_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
-        continue;
-      default: {
-      handle_unusual:
-        if ((tag & 7) == 4 || tag == 0) {
-          ctx->SetLastTag(tag);
-          goto success;
+        } else {
+          goto handle_unusual;
         }
-        ptr = UnknownFieldParse(tag,
-            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-            ptr, ctx);
-        CHK_(ptr != nullptr);
         continue;
-      }
+      default:
+        goto handle_unusual;
     }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
   }  // while
-success:
+message_done:
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
-  goto success;
+  goto message_done;
 #undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* ViewerControllerIsDataVolumicResponse::_InternalSerialize(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+::uint8_t* ViewerControllerIsDataVolumicResponse::_InternalSerialize(
+    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.ViewerControllerIsDataVolumicResponse)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
+  cached_has_bits = _impl_._has_bits_[0];
   // .osirixgrpc.Status status = 1;
-  if (this->has_status()) {
-    target = stream->EnsureSpace(target);
+  if (cached_has_bits & 0x00000001u) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::status(this), target, stream);
+      InternalWriteMessage(1, _Internal::status(this),
+        _Internal::status(this).GetCachedSize(), target, stream);
   }
 
   // bool is_volumic = 2;
-  if (this->is_volumic() != 0) {
+  if (this->_internal_is_volumic() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteBoolToArray(2, this->_internal_is_volumic(), target);
+    target = ::_pbi::WireFormatLite::WriteBoolToArray(
+        2, this->_internal_is_volumic(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.ViewerControllerIsDataVolumicResponse)
   return target;
 }
 
-size_t ViewerControllerIsDataVolumicResponse::ByteSizeLong() const {
+::size_t ViewerControllerIsDataVolumicResponse::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:osirixgrpc.ViewerControllerIsDataVolumicResponse)
-  size_t total_size = 0;
+  ::size_t total_size = 0;
 
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // .osirixgrpc.Status status = 1;
-  if (this->has_status()) {
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *status_);
+        *_impl_.status_);
   }
 
   // bool is_volumic = 2;
-  if (this->is_volumic() != 0) {
-    total_size += 1 + 1;
+  if (this->_internal_is_volumic() != 0) {
+    total_size += 2;
   }
 
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
-        _internal_metadata_, total_size, &_cached_size_);
-  }
-  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-void ViewerControllerIsDataVolumicResponse::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:osirixgrpc.ViewerControllerIsDataVolumicResponse)
-  GOOGLE_DCHECK_NE(&from, this);
-  const ViewerControllerIsDataVolumicResponse* source =
-      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<ViewerControllerIsDataVolumicResponse>(
-          &from);
-  if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:osirixgrpc.ViewerControllerIsDataVolumicResponse)
-    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:osirixgrpc.ViewerControllerIsDataVolumicResponse)
-    MergeFrom(*source);
-  }
-}
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ViewerControllerIsDataVolumicResponse::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    ViewerControllerIsDataVolumicResponse::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ViewerControllerIsDataVolumicResponse::GetClassData() const { return &_class_data_; }
 
-void ViewerControllerIsDataVolumicResponse::MergeFrom(const ViewerControllerIsDataVolumicResponse& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ViewerControllerIsDataVolumicResponse)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+
+void ViewerControllerIsDataVolumicResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<ViewerControllerIsDataVolumicResponse*>(&to_msg);
+  auto& from = static_cast<const ViewerControllerIsDataVolumicResponse&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ViewerControllerIsDataVolumicResponse)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.has_status()) {
-    _internal_mutable_status()->::osirixgrpc::Status::MergeFrom(from._internal_status());
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_internal_mutable_status()->::osirixgrpc::Status::MergeFrom(
+        from._internal_status());
   }
-  if (from.is_volumic() != 0) {
-    _internal_set_is_volumic(from._internal_is_volumic());
+  if (from._internal_is_volumic() != 0) {
+    _this->_internal_set_is_volumic(from._internal_is_volumic());
   }
-}
-
-void ViewerControllerIsDataVolumicResponse::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:osirixgrpc.ViewerControllerIsDataVolumicResponse)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void ViewerControllerIsDataVolumicResponse::CopyFrom(const ViewerControllerIsDataVolumicResponse& from) {
@@ -3052,261 +3190,261 @@ bool ViewerControllerIsDataVolumicResponse::IsInitialized() const {
 
 void ViewerControllerIsDataVolumicResponse::InternalSwap(ViewerControllerIsDataVolumicResponse* other) {
   using std::swap;
-  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(ViewerControllerIsDataVolumicResponse, is_volumic_)
-      + sizeof(ViewerControllerIsDataVolumicResponse::is_volumic_)
-      - PROTOBUF_FIELD_OFFSET(ViewerControllerIsDataVolumicResponse, status_)>(
-          reinterpret_cast<char*>(&status_),
-          reinterpret_cast<char*>(&other->status_));
+      PROTOBUF_FIELD_OFFSET(ViewerControllerIsDataVolumicResponse, _impl_.is_volumic_)
+      + sizeof(ViewerControllerIsDataVolumicResponse::_impl_.is_volumic_)
+      - PROTOBUF_FIELD_OFFSET(ViewerControllerIsDataVolumicResponse, _impl_.status_)>(
+          reinterpret_cast<char*>(&_impl_.status_),
+          reinterpret_cast<char*>(&other->_impl_.status_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata ViewerControllerIsDataVolumicResponse::GetMetadata() const {
-  return GetMetadataStatic();
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_viewercontroller_2eproto_getter, &descriptor_table_viewercontroller_2eproto_once,
+      file_level_metadata_viewercontroller_2eproto[7]);
 }
-
-
 // ===================================================================
 
 class ViewerControllerBlendingControllerResponse::_Internal {
  public:
+  using HasBits = decltype(std::declval<ViewerControllerBlendingControllerResponse>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+    8 * PROTOBUF_FIELD_OFFSET(ViewerControllerBlendingControllerResponse, _impl_._has_bits_);
   static const ::osirixgrpc::Status& status(const ViewerControllerBlendingControllerResponse* msg);
+  static void set_has_status(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
   static const ::osirixgrpc::ViewerController& blending_viewer(const ViewerControllerBlendingControllerResponse* msg);
+  static void set_has_blending_viewer(HasBits* has_bits) {
+    (*has_bits)[0] |= 2u;
+  }
 };
 
 const ::osirixgrpc::Status&
 ViewerControllerBlendingControllerResponse::_Internal::status(const ViewerControllerBlendingControllerResponse* msg) {
-  return *msg->status_;
+  return *msg->_impl_.status_;
 }
 const ::osirixgrpc::ViewerController&
 ViewerControllerBlendingControllerResponse::_Internal::blending_viewer(const ViewerControllerBlendingControllerResponse* msg) {
-  return *msg->blending_viewer_;
+  return *msg->_impl_.blending_viewer_;
 }
 void ViewerControllerBlendingControllerResponse::clear_status() {
-  if (GetArena() == nullptr && status_ != nullptr) {
-    delete status_;
-  }
-  status_ = nullptr;
+  if (_impl_.status_ != nullptr) _impl_.status_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000001u;
 }
 void ViewerControllerBlendingControllerResponse::clear_blending_viewer() {
-  if (GetArena() == nullptr && blending_viewer_ != nullptr) {
-    delete blending_viewer_;
-  }
-  blending_viewer_ = nullptr;
+  if (_impl_.blending_viewer_ != nullptr) _impl_.blending_viewer_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000002u;
 }
 ViewerControllerBlendingControllerResponse::ViewerControllerBlendingControllerResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
-  SharedCtor();
-  RegisterArenaDtor(arena);
+  SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.ViewerControllerBlendingControllerResponse)
 }
 ViewerControllerBlendingControllerResponse::ViewerControllerBlendingControllerResponse(const ViewerControllerBlendingControllerResponse& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
+  ViewerControllerBlendingControllerResponse* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.status_){nullptr}
+    , decltype(_impl_.blending_viewer_){nullptr}};
+
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if (from._internal_has_status()) {
-    status_ = new ::osirixgrpc::Status(*from.status_);
-  } else {
-    status_ = nullptr;
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_impl_.status_ = new ::osirixgrpc::Status(*from._impl_.status_);
   }
-  if (from._internal_has_blending_viewer()) {
-    blending_viewer_ = new ::osirixgrpc::ViewerController(*from.blending_viewer_);
-  } else {
-    blending_viewer_ = nullptr;
+  if ((from._impl_._has_bits_[0] & 0x00000002u) != 0) {
+    _this->_impl_.blending_viewer_ = new ::osirixgrpc::ViewerController(*from._impl_.blending_viewer_);
   }
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.ViewerControllerBlendingControllerResponse)
 }
 
-void ViewerControllerBlendingControllerResponse::SharedCtor() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_ViewerControllerBlendingControllerResponse_viewercontroller_2eproto.base);
-  ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-      reinterpret_cast<char*>(&status_) - reinterpret_cast<char*>(this)),
-      0, static_cast<size_t>(reinterpret_cast<char*>(&blending_viewer_) -
-      reinterpret_cast<char*>(&status_)) + sizeof(blending_viewer_));
+inline void ViewerControllerBlendingControllerResponse::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.status_){nullptr}
+    , decltype(_impl_.blending_viewer_){nullptr}
+  };
 }
 
 ViewerControllerBlendingControllerResponse::~ViewerControllerBlendingControllerResponse() {
   // @@protoc_insertion_point(destructor:osirixgrpc.ViewerControllerBlendingControllerResponse)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-void ViewerControllerBlendingControllerResponse::SharedDtor() {
-  GOOGLE_DCHECK(GetArena() == nullptr);
-  if (this != internal_default_instance()) delete status_;
-  if (this != internal_default_instance()) delete blending_viewer_;
+inline void ViewerControllerBlendingControllerResponse::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  if (this != internal_default_instance()) delete _impl_.status_;
+  if (this != internal_default_instance()) delete _impl_.blending_viewer_;
 }
 
-void ViewerControllerBlendingControllerResponse::ArenaDtor(void* object) {
-  ViewerControllerBlendingControllerResponse* _this = reinterpret_cast< ViewerControllerBlendingControllerResponse* >(object);
-  (void)_this;
-}
-void ViewerControllerBlendingControllerResponse::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void ViewerControllerBlendingControllerResponse::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
-const ViewerControllerBlendingControllerResponse& ViewerControllerBlendingControllerResponse::default_instance() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_ViewerControllerBlendingControllerResponse_viewercontroller_2eproto.base);
-  return *internal_default_instance();
-}
-
 
 void ViewerControllerBlendingControllerResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.ViewerControllerBlendingControllerResponse)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  if (GetArena() == nullptr && status_ != nullptr) {
-    delete status_;
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000003u) {
+    if (cached_has_bits & 0x00000001u) {
+      ABSL_DCHECK(_impl_.status_ != nullptr);
+      _impl_.status_->Clear();
+    }
+    if (cached_has_bits & 0x00000002u) {
+      ABSL_DCHECK(_impl_.blending_viewer_ != nullptr);
+      _impl_.blending_viewer_->Clear();
+    }
   }
-  status_ = nullptr;
-  if (GetArena() == nullptr && blending_viewer_ != nullptr) {
-    delete blending_viewer_;
-  }
-  blending_viewer_ = nullptr;
+  _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* ViewerControllerBlendingControllerResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* ViewerControllerBlendingControllerResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
-    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-    CHK_(ptr);
+    ::uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // .osirixgrpc.Status status = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
           ptr = ctx->ParseMessage(_internal_mutable_status(), ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
+        } else {
+          goto handle_unusual;
+        }
         continue;
       // .osirixgrpc.ViewerController blending_viewer = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 18)) {
           ptr = ctx->ParseMessage(_internal_mutable_blending_viewer(), ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
-        continue;
-      default: {
-      handle_unusual:
-        if ((tag & 7) == 4 || tag == 0) {
-          ctx->SetLastTag(tag);
-          goto success;
+        } else {
+          goto handle_unusual;
         }
-        ptr = UnknownFieldParse(tag,
-            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-            ptr, ctx);
-        CHK_(ptr != nullptr);
         continue;
-      }
+      default:
+        goto handle_unusual;
     }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
   }  // while
-success:
+message_done:
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
-  goto success;
+  goto message_done;
 #undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* ViewerControllerBlendingControllerResponse::_InternalSerialize(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+::uint8_t* ViewerControllerBlendingControllerResponse::_InternalSerialize(
+    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.ViewerControllerBlendingControllerResponse)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
+  cached_has_bits = _impl_._has_bits_[0];
   // .osirixgrpc.Status status = 1;
-  if (this->has_status()) {
-    target = stream->EnsureSpace(target);
+  if (cached_has_bits & 0x00000001u) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::status(this), target, stream);
+      InternalWriteMessage(1, _Internal::status(this),
+        _Internal::status(this).GetCachedSize(), target, stream);
   }
 
   // .osirixgrpc.ViewerController blending_viewer = 2;
-  if (this->has_blending_viewer()) {
-    target = stream->EnsureSpace(target);
+  if (cached_has_bits & 0x00000002u) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        2, _Internal::blending_viewer(this), target, stream);
+      InternalWriteMessage(2, _Internal::blending_viewer(this),
+        _Internal::blending_viewer(this).GetCachedSize(), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.ViewerControllerBlendingControllerResponse)
   return target;
 }
 
-size_t ViewerControllerBlendingControllerResponse::ByteSizeLong() const {
+::size_t ViewerControllerBlendingControllerResponse::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:osirixgrpc.ViewerControllerBlendingControllerResponse)
-  size_t total_size = 0;
+  ::size_t total_size = 0;
 
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // .osirixgrpc.Status status = 1;
-  if (this->has_status()) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *status_);
-  }
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000003u) {
+    // .osirixgrpc.Status status = 1;
+    if (cached_has_bits & 0x00000001u) {
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+          *_impl_.status_);
+    }
 
-  // .osirixgrpc.ViewerController blending_viewer = 2;
-  if (this->has_blending_viewer()) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *blending_viewer_);
-  }
+    // .osirixgrpc.ViewerController blending_viewer = 2;
+    if (cached_has_bits & 0x00000002u) {
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+          *_impl_.blending_viewer_);
+    }
 
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
-        _internal_metadata_, total_size, &_cached_size_);
   }
-  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-void ViewerControllerBlendingControllerResponse::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:osirixgrpc.ViewerControllerBlendingControllerResponse)
-  GOOGLE_DCHECK_NE(&from, this);
-  const ViewerControllerBlendingControllerResponse* source =
-      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<ViewerControllerBlendingControllerResponse>(
-          &from);
-  if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:osirixgrpc.ViewerControllerBlendingControllerResponse)
-    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:osirixgrpc.ViewerControllerBlendingControllerResponse)
-    MergeFrom(*source);
-  }
-}
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ViewerControllerBlendingControllerResponse::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    ViewerControllerBlendingControllerResponse::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ViewerControllerBlendingControllerResponse::GetClassData() const { return &_class_data_; }
 
-void ViewerControllerBlendingControllerResponse::MergeFrom(const ViewerControllerBlendingControllerResponse& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ViewerControllerBlendingControllerResponse)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+
+void ViewerControllerBlendingControllerResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<ViewerControllerBlendingControllerResponse*>(&to_msg);
+  auto& from = static_cast<const ViewerControllerBlendingControllerResponse&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ViewerControllerBlendingControllerResponse)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.has_status()) {
-    _internal_mutable_status()->::osirixgrpc::Status::MergeFrom(from._internal_status());
+  cached_has_bits = from._impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000003u) {
+    if (cached_has_bits & 0x00000001u) {
+      _this->_internal_mutable_status()->::osirixgrpc::Status::MergeFrom(
+          from._internal_status());
+    }
+    if (cached_has_bits & 0x00000002u) {
+      _this->_internal_mutable_blending_viewer()->::osirixgrpc::ViewerController::MergeFrom(
+          from._internal_blending_viewer());
+    }
   }
-  if (from.has_blending_viewer()) {
-    _internal_mutable_blending_viewer()->::osirixgrpc::ViewerController::MergeFrom(from._internal_blending_viewer());
-  }
-}
-
-void ViewerControllerBlendingControllerResponse::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:osirixgrpc.ViewerControllerBlendingControllerResponse)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void ViewerControllerBlendingControllerResponse::CopyFrom(const ViewerControllerBlendingControllerResponse& from) {
@@ -3322,121 +3460,130 @@ bool ViewerControllerBlendingControllerResponse::IsInitialized() const {
 
 void ViewerControllerBlendingControllerResponse::InternalSwap(ViewerControllerBlendingControllerResponse* other) {
   using std::swap;
-  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(ViewerControllerBlendingControllerResponse, blending_viewer_)
-      + sizeof(ViewerControllerBlendingControllerResponse::blending_viewer_)
-      - PROTOBUF_FIELD_OFFSET(ViewerControllerBlendingControllerResponse, status_)>(
-          reinterpret_cast<char*>(&status_),
-          reinterpret_cast<char*>(&other->status_));
+      PROTOBUF_FIELD_OFFSET(ViewerControllerBlendingControllerResponse, _impl_.blending_viewer_)
+      + sizeof(ViewerControllerBlendingControllerResponse::_impl_.blending_viewer_)
+      - PROTOBUF_FIELD_OFFSET(ViewerControllerBlendingControllerResponse, _impl_.status_)>(
+          reinterpret_cast<char*>(&_impl_.status_),
+          reinterpret_cast<char*>(&other->_impl_.status_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata ViewerControllerBlendingControllerResponse::GetMetadata() const {
-  return GetMetadataStatic();
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_viewercontroller_2eproto_getter, &descriptor_table_viewercontroller_2eproto_once,
+      file_level_metadata_viewercontroller_2eproto[8]);
 }
-
-
 // ===================================================================
 
 class ViewerControllerVRControllersResponse::_Internal {
  public:
+  using HasBits = decltype(std::declval<ViewerControllerVRControllersResponse>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+    8 * PROTOBUF_FIELD_OFFSET(ViewerControllerVRControllersResponse, _impl_._has_bits_);
   static const ::osirixgrpc::Status& status(const ViewerControllerVRControllersResponse* msg);
+  static void set_has_status(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
 };
 
 const ::osirixgrpc::Status&
 ViewerControllerVRControllersResponse::_Internal::status(const ViewerControllerVRControllersResponse* msg) {
-  return *msg->status_;
+  return *msg->_impl_.status_;
 }
 void ViewerControllerVRControllersResponse::clear_status() {
-  if (GetArena() == nullptr && status_ != nullptr) {
-    delete status_;
-  }
-  status_ = nullptr;
+  if (_impl_.status_ != nullptr) _impl_.status_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000001u;
 }
 void ViewerControllerVRControllersResponse::clear_vr_controllers() {
-  vr_controllers_.Clear();
+  _internal_mutable_vr_controllers()->Clear();
 }
 ViewerControllerVRControllersResponse::ViewerControllerVRControllersResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena),
-  vr_controllers_(arena) {
-  SharedCtor();
-  RegisterArenaDtor(arena);
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
+  SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.ViewerControllerVRControllersResponse)
 }
 ViewerControllerVRControllersResponse::ViewerControllerVRControllersResponse(const ViewerControllerVRControllersResponse& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      vr_controllers_(from.vr_controllers_) {
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  ViewerControllerVRControllersResponse* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.vr_controllers_){from._impl_.vr_controllers_}
+    , decltype(_impl_.status_){nullptr}};
+
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if (from._internal_has_status()) {
-    status_ = new ::osirixgrpc::Status(*from.status_);
-  } else {
-    status_ = nullptr;
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_impl_.status_ = new ::osirixgrpc::Status(*from._impl_.status_);
   }
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.ViewerControllerVRControllersResponse)
 }
 
-void ViewerControllerVRControllersResponse::SharedCtor() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_ViewerControllerVRControllersResponse_viewercontroller_2eproto.base);
-  status_ = nullptr;
+inline void ViewerControllerVRControllersResponse::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.vr_controllers_){arena}
+    , decltype(_impl_.status_){nullptr}
+  };
 }
 
 ViewerControllerVRControllersResponse::~ViewerControllerVRControllersResponse() {
   // @@protoc_insertion_point(destructor:osirixgrpc.ViewerControllerVRControllersResponse)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-void ViewerControllerVRControllersResponse::SharedDtor() {
-  GOOGLE_DCHECK(GetArena() == nullptr);
-  if (this != internal_default_instance()) delete status_;
+inline void ViewerControllerVRControllersResponse::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  _internal_mutable_vr_controllers()->~RepeatedPtrField();
+  if (this != internal_default_instance()) delete _impl_.status_;
 }
 
-void ViewerControllerVRControllersResponse::ArenaDtor(void* object) {
-  ViewerControllerVRControllersResponse* _this = reinterpret_cast< ViewerControllerVRControllersResponse* >(object);
-  (void)_this;
-}
-void ViewerControllerVRControllersResponse::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void ViewerControllerVRControllersResponse::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
-const ViewerControllerVRControllersResponse& ViewerControllerVRControllersResponse::default_instance() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_ViewerControllerVRControllersResponse_viewercontroller_2eproto.base);
-  return *internal_default_instance();
-}
-
 
 void ViewerControllerVRControllersResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.ViewerControllerVRControllersResponse)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  vr_controllers_.Clear();
-  if (GetArena() == nullptr && status_ != nullptr) {
-    delete status_;
+  _internal_mutable_vr_controllers()->Clear();
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    ABSL_DCHECK(_impl_.status_ != nullptr);
+    _impl_.status_->Clear();
   }
-  status_ = nullptr;
+  _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* ViewerControllerVRControllersResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* ViewerControllerVRControllersResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
-    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-    CHK_(ptr);
+    ::uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // .osirixgrpc.Status status = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
           ptr = ctx->ParseMessage(_internal_mutable_status(), ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
+        } else {
+          goto handle_unusual;
+        }
         continue;
       // repeated .osirixgrpc.VRController vr_controllers = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 18)) {
           ptr -= 1;
           do {
             ptr += 1;
@@ -3444,124 +3591,111 @@ const char* ViewerControllerVRControllersResponse::_InternalParse(const char* pt
             CHK_(ptr);
             if (!ctx->DataAvailable(ptr)) break;
           } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<18>(ptr));
-        } else goto handle_unusual;
-        continue;
-      default: {
-      handle_unusual:
-        if ((tag & 7) == 4 || tag == 0) {
-          ctx->SetLastTag(tag);
-          goto success;
+        } else {
+          goto handle_unusual;
         }
-        ptr = UnknownFieldParse(tag,
-            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-            ptr, ctx);
-        CHK_(ptr != nullptr);
         continue;
-      }
+      default:
+        goto handle_unusual;
     }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
   }  // while
-success:
+message_done:
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
-  goto success;
+  goto message_done;
 #undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* ViewerControllerVRControllersResponse::_InternalSerialize(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+::uint8_t* ViewerControllerVRControllersResponse::_InternalSerialize(
+    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.ViewerControllerVRControllersResponse)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
+  cached_has_bits = _impl_._has_bits_[0];
   // .osirixgrpc.Status status = 1;
-  if (this->has_status()) {
-    target = stream->EnsureSpace(target);
+  if (cached_has_bits & 0x00000001u) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::status(this), target, stream);
+      InternalWriteMessage(1, _Internal::status(this),
+        _Internal::status(this).GetCachedSize(), target, stream);
   }
 
   // repeated .osirixgrpc.VRController vr_controllers = 2;
-  for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->_internal_vr_controllers_size()); i < n; i++) {
-    target = stream->EnsureSpace(target);
+  for (unsigned i = 0,
+      n = static_cast<unsigned>(this->_internal_vr_controllers_size()); i < n; i++) {
+    const auto& repfield = this->_internal_vr_controllers(i);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(2, this->_internal_vr_controllers(i), target, stream);
+        InternalWriteMessage(2, repfield, repfield.GetCachedSize(), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.ViewerControllerVRControllersResponse)
   return target;
 }
 
-size_t ViewerControllerVRControllersResponse::ByteSizeLong() const {
+::size_t ViewerControllerVRControllersResponse::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:osirixgrpc.ViewerControllerVRControllersResponse)
-  size_t total_size = 0;
+  ::size_t total_size = 0;
 
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // repeated .osirixgrpc.VRController vr_controllers = 2;
   total_size += 1UL * this->_internal_vr_controllers_size();
-  for (const auto& msg : this->vr_controllers_) {
+  for (const auto& msg : this->_internal_vr_controllers()) {
     total_size +=
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
 
   // .osirixgrpc.Status status = 1;
-  if (this->has_status()) {
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *status_);
+        *_impl_.status_);
   }
 
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
-        _internal_metadata_, total_size, &_cached_size_);
-  }
-  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-void ViewerControllerVRControllersResponse::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:osirixgrpc.ViewerControllerVRControllersResponse)
-  GOOGLE_DCHECK_NE(&from, this);
-  const ViewerControllerVRControllersResponse* source =
-      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<ViewerControllerVRControllersResponse>(
-          &from);
-  if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:osirixgrpc.ViewerControllerVRControllersResponse)
-    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:osirixgrpc.ViewerControllerVRControllersResponse)
-    MergeFrom(*source);
-  }
-}
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ViewerControllerVRControllersResponse::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    ViewerControllerVRControllersResponse::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ViewerControllerVRControllersResponse::GetClassData() const { return &_class_data_; }
 
-void ViewerControllerVRControllersResponse::MergeFrom(const ViewerControllerVRControllersResponse& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ViewerControllerVRControllersResponse)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+
+void ViewerControllerVRControllersResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<ViewerControllerVRControllersResponse*>(&to_msg);
+  auto& from = static_cast<const ViewerControllerVRControllersResponse&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ViewerControllerVRControllersResponse)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  vr_controllers_.MergeFrom(from.vr_controllers_);
-  if (from.has_status()) {
-    _internal_mutable_status()->::osirixgrpc::Status::MergeFrom(from._internal_status());
+  _this->_internal_mutable_vr_controllers()->MergeFrom(from._internal_vr_controllers());
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_internal_mutable_status()->::osirixgrpc::Status::MergeFrom(
+        from._internal_status());
   }
-}
-
-void ViewerControllerVRControllersResponse::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:osirixgrpc.ViewerControllerVRControllersResponse)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void ViewerControllerVRControllersResponse::CopyFrom(const ViewerControllerVRControllersResponse& from) {
@@ -3577,245 +3711,246 @@ bool ViewerControllerVRControllersResponse::IsInitialized() const {
 
 void ViewerControllerVRControllersResponse::InternalSwap(ViewerControllerVRControllersResponse* other) {
   using std::swap;
-  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
-  vr_controllers_.InternalSwap(&other->vr_controllers_);
-  swap(status_, other->status_);
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  _internal_mutable_vr_controllers()->InternalSwap(other->_internal_mutable_vr_controllers());
+  swap(_impl_.status_, other->_impl_.status_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata ViewerControllerVRControllersResponse::GetMetadata() const {
-  return GetMetadataStatic();
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_viewercontroller_2eproto_getter, &descriptor_table_viewercontroller_2eproto_once,
+      file_level_metadata_viewercontroller_2eproto[9]);
 }
-
-
 // ===================================================================
 
 class ViewerControllerTitleResponse::_Internal {
  public:
+  using HasBits = decltype(std::declval<ViewerControllerTitleResponse>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+    8 * PROTOBUF_FIELD_OFFSET(ViewerControllerTitleResponse, _impl_._has_bits_);
   static const ::osirixgrpc::Status& status(const ViewerControllerTitleResponse* msg);
+  static void set_has_status(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
 };
 
 const ::osirixgrpc::Status&
 ViewerControllerTitleResponse::_Internal::status(const ViewerControllerTitleResponse* msg) {
-  return *msg->status_;
+  return *msg->_impl_.status_;
 }
 void ViewerControllerTitleResponse::clear_status() {
-  if (GetArena() == nullptr && status_ != nullptr) {
-    delete status_;
-  }
-  status_ = nullptr;
+  if (_impl_.status_ != nullptr) _impl_.status_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000001u;
 }
 ViewerControllerTitleResponse::ViewerControllerTitleResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
-  SharedCtor();
-  RegisterArenaDtor(arena);
+  SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.ViewerControllerTitleResponse)
 }
 ViewerControllerTitleResponse::ViewerControllerTitleResponse(const ViewerControllerTitleResponse& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
+  ViewerControllerTitleResponse* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.title_) {}
+
+    , decltype(_impl_.status_){nullptr}};
+
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  title_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  _impl_.title_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.title_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_title().empty()) {
-    title_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_title(), 
-      GetArena());
+    _this->_impl_.title_.Set(from._internal_title(), _this->GetArenaForAllocation());
   }
-  if (from._internal_has_status()) {
-    status_ = new ::osirixgrpc::Status(*from.status_);
-  } else {
-    status_ = nullptr;
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_impl_.status_ = new ::osirixgrpc::Status(*from._impl_.status_);
   }
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.ViewerControllerTitleResponse)
 }
 
-void ViewerControllerTitleResponse::SharedCtor() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_ViewerControllerTitleResponse_viewercontroller_2eproto.base);
-  title_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  status_ = nullptr;
+inline void ViewerControllerTitleResponse::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.title_) {}
+
+    , decltype(_impl_.status_){nullptr}
+  };
+  _impl_.title_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.title_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
 
 ViewerControllerTitleResponse::~ViewerControllerTitleResponse() {
   // @@protoc_insertion_point(destructor:osirixgrpc.ViewerControllerTitleResponse)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-void ViewerControllerTitleResponse::SharedDtor() {
-  GOOGLE_DCHECK(GetArena() == nullptr);
-  title_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (this != internal_default_instance()) delete status_;
+inline void ViewerControllerTitleResponse::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.title_.Destroy();
+  if (this != internal_default_instance()) delete _impl_.status_;
 }
 
-void ViewerControllerTitleResponse::ArenaDtor(void* object) {
-  ViewerControllerTitleResponse* _this = reinterpret_cast< ViewerControllerTitleResponse* >(object);
-  (void)_this;
-}
-void ViewerControllerTitleResponse::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void ViewerControllerTitleResponse::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
-const ViewerControllerTitleResponse& ViewerControllerTitleResponse::default_instance() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_ViewerControllerTitleResponse_viewercontroller_2eproto.base);
-  return *internal_default_instance();
-}
-
 
 void ViewerControllerTitleResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.ViewerControllerTitleResponse)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  title_.ClearToEmpty();
-  if (GetArena() == nullptr && status_ != nullptr) {
-    delete status_;
+  _impl_.title_.ClearToEmpty();
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    ABSL_DCHECK(_impl_.status_ != nullptr);
+    _impl_.status_->Clear();
   }
-  status_ = nullptr;
+  _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* ViewerControllerTitleResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* ViewerControllerTitleResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
-    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-    CHK_(ptr);
+    ::uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // .osirixgrpc.Status status = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
           ptr = ctx->ParseMessage(_internal_mutable_status(), ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
+        } else {
+          goto handle_unusual;
+        }
         continue;
       // string title = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 18)) {
           auto str = _internal_mutable_title();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "osirixgrpc.ViewerControllerTitleResponse.title"));
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
-        } else goto handle_unusual;
-        continue;
-      default: {
-      handle_unusual:
-        if ((tag & 7) == 4 || tag == 0) {
-          ctx->SetLastTag(tag);
-          goto success;
+          CHK_(::_pbi::VerifyUTF8(str, "osirixgrpc.ViewerControllerTitleResponse.title"));
+        } else {
+          goto handle_unusual;
         }
-        ptr = UnknownFieldParse(tag,
-            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-            ptr, ctx);
-        CHK_(ptr != nullptr);
         continue;
-      }
+      default:
+        goto handle_unusual;
     }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
   }  // while
-success:
+message_done:
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
-  goto success;
+  goto message_done;
 #undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* ViewerControllerTitleResponse::_InternalSerialize(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+::uint8_t* ViewerControllerTitleResponse::_InternalSerialize(
+    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.ViewerControllerTitleResponse)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
+  cached_has_bits = _impl_._has_bits_[0];
   // .osirixgrpc.Status status = 1;
-  if (this->has_status()) {
-    target = stream->EnsureSpace(target);
+  if (cached_has_bits & 0x00000001u) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::status(this), target, stream);
+      InternalWriteMessage(1, _Internal::status(this),
+        _Internal::status(this).GetCachedSize(), target, stream);
   }
 
   // string title = 2;
-  if (this->title().size() > 0) {
+  if (!this->_internal_title().empty()) {
+    const std::string& _s = this->_internal_title();
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_title().data(), static_cast<int>(this->_internal_title().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "osirixgrpc.ViewerControllerTitleResponse.title");
-    target = stream->WriteStringMaybeAliased(
-        2, this->_internal_title(), target);
+        _s.data(), static_cast<int>(_s.length()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE, "osirixgrpc.ViewerControllerTitleResponse.title");
+    target = stream->WriteStringMaybeAliased(2, _s, target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.ViewerControllerTitleResponse)
   return target;
 }
 
-size_t ViewerControllerTitleResponse::ByteSizeLong() const {
+::size_t ViewerControllerTitleResponse::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:osirixgrpc.ViewerControllerTitleResponse)
-  size_t total_size = 0;
+  ::size_t total_size = 0;
 
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // string title = 2;
-  if (this->title().size() > 0) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_title());
+  if (!this->_internal_title().empty()) {
+    total_size += 1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+                                    this->_internal_title());
   }
 
   // .osirixgrpc.Status status = 1;
-  if (this->has_status()) {
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *status_);
+        *_impl_.status_);
   }
 
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
-        _internal_metadata_, total_size, &_cached_size_);
-  }
-  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-void ViewerControllerTitleResponse::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:osirixgrpc.ViewerControllerTitleResponse)
-  GOOGLE_DCHECK_NE(&from, this);
-  const ViewerControllerTitleResponse* source =
-      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<ViewerControllerTitleResponse>(
-          &from);
-  if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:osirixgrpc.ViewerControllerTitleResponse)
-    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:osirixgrpc.ViewerControllerTitleResponse)
-    MergeFrom(*source);
-  }
-}
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ViewerControllerTitleResponse::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    ViewerControllerTitleResponse::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ViewerControllerTitleResponse::GetClassData() const { return &_class_data_; }
 
-void ViewerControllerTitleResponse::MergeFrom(const ViewerControllerTitleResponse& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ViewerControllerTitleResponse)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+
+void ViewerControllerTitleResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<ViewerControllerTitleResponse*>(&to_msg);
+  auto& from = static_cast<const ViewerControllerTitleResponse&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ViewerControllerTitleResponse)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.title().size() > 0) {
-    _internal_set_title(from._internal_title());
+  if (!from._internal_title().empty()) {
+    _this->_internal_set_title(from._internal_title());
   }
-  if (from.has_status()) {
-    _internal_mutable_status()->::osirixgrpc::Status::MergeFrom(from._internal_status());
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_internal_mutable_status()->::osirixgrpc::Status::MergeFrom(
+        from._internal_status());
   }
-}
-
-void ViewerControllerTitleResponse::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:osirixgrpc.ViewerControllerTitleResponse)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void ViewerControllerTitleResponse::CopyFrom(const ViewerControllerTitleResponse& from) {
@@ -3831,245 +3966,249 @@ bool ViewerControllerTitleResponse::IsInitialized() const {
 
 void ViewerControllerTitleResponse::InternalSwap(ViewerControllerTitleResponse* other) {
   using std::swap;
-  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
-  title_.Swap(&other->title_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
-  swap(status_, other->status_);
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.title_, lhs_arena,
+                                       &other->_impl_.title_, rhs_arena);
+  swap(_impl_.status_, other->_impl_.status_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata ViewerControllerTitleResponse::GetMetadata() const {
-  return GetMetadataStatic();
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_viewercontroller_2eproto_getter, &descriptor_table_viewercontroller_2eproto_once,
+      file_level_metadata_viewercontroller_2eproto[10]);
 }
-
-
 // ===================================================================
 
 class ViewerControllerModalityResponse::_Internal {
  public:
+  using HasBits = decltype(std::declval<ViewerControllerModalityResponse>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+    8 * PROTOBUF_FIELD_OFFSET(ViewerControllerModalityResponse, _impl_._has_bits_);
   static const ::osirixgrpc::Status& status(const ViewerControllerModalityResponse* msg);
+  static void set_has_status(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
 };
 
 const ::osirixgrpc::Status&
 ViewerControllerModalityResponse::_Internal::status(const ViewerControllerModalityResponse* msg) {
-  return *msg->status_;
+  return *msg->_impl_.status_;
 }
 void ViewerControllerModalityResponse::clear_status() {
-  if (GetArena() == nullptr && status_ != nullptr) {
-    delete status_;
-  }
-  status_ = nullptr;
+  if (_impl_.status_ != nullptr) _impl_.status_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000001u;
 }
 ViewerControllerModalityResponse::ViewerControllerModalityResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
-  SharedCtor();
-  RegisterArenaDtor(arena);
+  SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.ViewerControllerModalityResponse)
 }
 ViewerControllerModalityResponse::ViewerControllerModalityResponse(const ViewerControllerModalityResponse& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
+  ViewerControllerModalityResponse* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.modality_) {}
+
+    , decltype(_impl_.status_){nullptr}};
+
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  modality_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  _impl_.modality_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.modality_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_modality().empty()) {
-    modality_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_modality(), 
-      GetArena());
+    _this->_impl_.modality_.Set(from._internal_modality(), _this->GetArenaForAllocation());
   }
-  if (from._internal_has_status()) {
-    status_ = new ::osirixgrpc::Status(*from.status_);
-  } else {
-    status_ = nullptr;
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_impl_.status_ = new ::osirixgrpc::Status(*from._impl_.status_);
   }
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.ViewerControllerModalityResponse)
 }
 
-void ViewerControllerModalityResponse::SharedCtor() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_ViewerControllerModalityResponse_viewercontroller_2eproto.base);
-  modality_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  status_ = nullptr;
+inline void ViewerControllerModalityResponse::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.modality_) {}
+
+    , decltype(_impl_.status_){nullptr}
+  };
+  _impl_.modality_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.modality_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
 
 ViewerControllerModalityResponse::~ViewerControllerModalityResponse() {
   // @@protoc_insertion_point(destructor:osirixgrpc.ViewerControllerModalityResponse)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-void ViewerControllerModalityResponse::SharedDtor() {
-  GOOGLE_DCHECK(GetArena() == nullptr);
-  modality_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (this != internal_default_instance()) delete status_;
+inline void ViewerControllerModalityResponse::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.modality_.Destroy();
+  if (this != internal_default_instance()) delete _impl_.status_;
 }
 
-void ViewerControllerModalityResponse::ArenaDtor(void* object) {
-  ViewerControllerModalityResponse* _this = reinterpret_cast< ViewerControllerModalityResponse* >(object);
-  (void)_this;
-}
-void ViewerControllerModalityResponse::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void ViewerControllerModalityResponse::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
-const ViewerControllerModalityResponse& ViewerControllerModalityResponse::default_instance() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_ViewerControllerModalityResponse_viewercontroller_2eproto.base);
-  return *internal_default_instance();
-}
-
 
 void ViewerControllerModalityResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.ViewerControllerModalityResponse)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  modality_.ClearToEmpty();
-  if (GetArena() == nullptr && status_ != nullptr) {
-    delete status_;
+  _impl_.modality_.ClearToEmpty();
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    ABSL_DCHECK(_impl_.status_ != nullptr);
+    _impl_.status_->Clear();
   }
-  status_ = nullptr;
+  _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* ViewerControllerModalityResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* ViewerControllerModalityResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
-    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-    CHK_(ptr);
+    ::uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // .osirixgrpc.Status status = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
           ptr = ctx->ParseMessage(_internal_mutable_status(), ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
+        } else {
+          goto handle_unusual;
+        }
         continue;
       // string modality = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 18)) {
           auto str = _internal_mutable_modality();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "osirixgrpc.ViewerControllerModalityResponse.modality"));
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
-        } else goto handle_unusual;
-        continue;
-      default: {
-      handle_unusual:
-        if ((tag & 7) == 4 || tag == 0) {
-          ctx->SetLastTag(tag);
-          goto success;
+          CHK_(::_pbi::VerifyUTF8(str, "osirixgrpc.ViewerControllerModalityResponse.modality"));
+        } else {
+          goto handle_unusual;
         }
-        ptr = UnknownFieldParse(tag,
-            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-            ptr, ctx);
-        CHK_(ptr != nullptr);
         continue;
-      }
+      default:
+        goto handle_unusual;
     }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
   }  // while
-success:
+message_done:
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
-  goto success;
+  goto message_done;
 #undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* ViewerControllerModalityResponse::_InternalSerialize(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+::uint8_t* ViewerControllerModalityResponse::_InternalSerialize(
+    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.ViewerControllerModalityResponse)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
+  cached_has_bits = _impl_._has_bits_[0];
   // .osirixgrpc.Status status = 1;
-  if (this->has_status()) {
-    target = stream->EnsureSpace(target);
+  if (cached_has_bits & 0x00000001u) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::status(this), target, stream);
+      InternalWriteMessage(1, _Internal::status(this),
+        _Internal::status(this).GetCachedSize(), target, stream);
   }
 
   // string modality = 2;
-  if (this->modality().size() > 0) {
+  if (!this->_internal_modality().empty()) {
+    const std::string& _s = this->_internal_modality();
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_modality().data(), static_cast<int>(this->_internal_modality().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "osirixgrpc.ViewerControllerModalityResponse.modality");
-    target = stream->WriteStringMaybeAliased(
-        2, this->_internal_modality(), target);
+        _s.data(), static_cast<int>(_s.length()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE, "osirixgrpc.ViewerControllerModalityResponse.modality");
+    target = stream->WriteStringMaybeAliased(2, _s, target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.ViewerControllerModalityResponse)
   return target;
 }
 
-size_t ViewerControllerModalityResponse::ByteSizeLong() const {
+::size_t ViewerControllerModalityResponse::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:osirixgrpc.ViewerControllerModalityResponse)
-  size_t total_size = 0;
+  ::size_t total_size = 0;
 
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // string modality = 2;
-  if (this->modality().size() > 0) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_modality());
+  if (!this->_internal_modality().empty()) {
+    total_size += 1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+                                    this->_internal_modality());
   }
 
   // .osirixgrpc.Status status = 1;
-  if (this->has_status()) {
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *status_);
+        *_impl_.status_);
   }
 
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
-        _internal_metadata_, total_size, &_cached_size_);
-  }
-  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-void ViewerControllerModalityResponse::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:osirixgrpc.ViewerControllerModalityResponse)
-  GOOGLE_DCHECK_NE(&from, this);
-  const ViewerControllerModalityResponse* source =
-      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<ViewerControllerModalityResponse>(
-          &from);
-  if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:osirixgrpc.ViewerControllerModalityResponse)
-    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:osirixgrpc.ViewerControllerModalityResponse)
-    MergeFrom(*source);
-  }
-}
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ViewerControllerModalityResponse::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    ViewerControllerModalityResponse::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ViewerControllerModalityResponse::GetClassData() const { return &_class_data_; }
 
-void ViewerControllerModalityResponse::MergeFrom(const ViewerControllerModalityResponse& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ViewerControllerModalityResponse)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+
+void ViewerControllerModalityResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<ViewerControllerModalityResponse*>(&to_msg);
+  auto& from = static_cast<const ViewerControllerModalityResponse&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ViewerControllerModalityResponse)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.modality().size() > 0) {
-    _internal_set_modality(from._internal_modality());
+  if (!from._internal_modality().empty()) {
+    _this->_internal_set_modality(from._internal_modality());
   }
-  if (from.has_status()) {
-    _internal_mutable_status()->::osirixgrpc::Status::MergeFrom(from._internal_status());
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_internal_mutable_status()->::osirixgrpc::Status::MergeFrom(
+        from._internal_status());
   }
-}
-
-void ViewerControllerModalityResponse::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:osirixgrpc.ViewerControllerModalityResponse)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void ViewerControllerModalityResponse::CopyFrom(const ViewerControllerModalityResponse& from) {
@@ -4085,236 +4224,235 @@ bool ViewerControllerModalityResponse::IsInitialized() const {
 
 void ViewerControllerModalityResponse::InternalSwap(ViewerControllerModalityResponse* other) {
   using std::swap;
-  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
-  modality_.Swap(&other->modality_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
-  swap(status_, other->status_);
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.modality_, lhs_arena,
+                                       &other->_impl_.modality_, rhs_arena);
+  swap(_impl_.status_, other->_impl_.status_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata ViewerControllerModalityResponse::GetMetadata() const {
-  return GetMetadataStatic();
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_viewercontroller_2eproto_getter, &descriptor_table_viewercontroller_2eproto_once,
+      file_level_metadata_viewercontroller_2eproto[11]);
 }
-
-
 // ===================================================================
 
 class ViewerControllerMovieIdxResponse::_Internal {
  public:
+  using HasBits = decltype(std::declval<ViewerControllerMovieIdxResponse>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+    8 * PROTOBUF_FIELD_OFFSET(ViewerControllerMovieIdxResponse, _impl_._has_bits_);
   static const ::osirixgrpc::Status& status(const ViewerControllerMovieIdxResponse* msg);
+  static void set_has_status(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
 };
 
 const ::osirixgrpc::Status&
 ViewerControllerMovieIdxResponse::_Internal::status(const ViewerControllerMovieIdxResponse* msg) {
-  return *msg->status_;
+  return *msg->_impl_.status_;
 }
 void ViewerControllerMovieIdxResponse::clear_status() {
-  if (GetArena() == nullptr && status_ != nullptr) {
-    delete status_;
-  }
-  status_ = nullptr;
+  if (_impl_.status_ != nullptr) _impl_.status_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000001u;
 }
 ViewerControllerMovieIdxResponse::ViewerControllerMovieIdxResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
-  SharedCtor();
-  RegisterArenaDtor(arena);
+  SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.ViewerControllerMovieIdxResponse)
 }
 ViewerControllerMovieIdxResponse::ViewerControllerMovieIdxResponse(const ViewerControllerMovieIdxResponse& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
+  ViewerControllerMovieIdxResponse* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.status_){nullptr}
+    , decltype(_impl_.movie_idx_) {}
+  };
+
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if (from._internal_has_status()) {
-    status_ = new ::osirixgrpc::Status(*from.status_);
-  } else {
-    status_ = nullptr;
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_impl_.status_ = new ::osirixgrpc::Status(*from._impl_.status_);
   }
-  movie_idx_ = from.movie_idx_;
+  _this->_impl_.movie_idx_ = from._impl_.movie_idx_;
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.ViewerControllerMovieIdxResponse)
 }
 
-void ViewerControllerMovieIdxResponse::SharedCtor() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_ViewerControllerMovieIdxResponse_viewercontroller_2eproto.base);
-  ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-      reinterpret_cast<char*>(&status_) - reinterpret_cast<char*>(this)),
-      0, static_cast<size_t>(reinterpret_cast<char*>(&movie_idx_) -
-      reinterpret_cast<char*>(&status_)) + sizeof(movie_idx_));
+inline void ViewerControllerMovieIdxResponse::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.status_){nullptr}
+    , decltype(_impl_.movie_idx_) { 0 }
+
+  };
 }
 
 ViewerControllerMovieIdxResponse::~ViewerControllerMovieIdxResponse() {
   // @@protoc_insertion_point(destructor:osirixgrpc.ViewerControllerMovieIdxResponse)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-void ViewerControllerMovieIdxResponse::SharedDtor() {
-  GOOGLE_DCHECK(GetArena() == nullptr);
-  if (this != internal_default_instance()) delete status_;
+inline void ViewerControllerMovieIdxResponse::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  if (this != internal_default_instance()) delete _impl_.status_;
 }
 
-void ViewerControllerMovieIdxResponse::ArenaDtor(void* object) {
-  ViewerControllerMovieIdxResponse* _this = reinterpret_cast< ViewerControllerMovieIdxResponse* >(object);
-  (void)_this;
-}
-void ViewerControllerMovieIdxResponse::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void ViewerControllerMovieIdxResponse::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
-const ViewerControllerMovieIdxResponse& ViewerControllerMovieIdxResponse::default_instance() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_ViewerControllerMovieIdxResponse_viewercontroller_2eproto.base);
-  return *internal_default_instance();
-}
-
 
 void ViewerControllerMovieIdxResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.ViewerControllerMovieIdxResponse)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  if (GetArena() == nullptr && status_ != nullptr) {
-    delete status_;
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    ABSL_DCHECK(_impl_.status_ != nullptr);
+    _impl_.status_->Clear();
   }
-  status_ = nullptr;
-  movie_idx_ = 0;
+  _impl_.movie_idx_ = 0;
+  _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* ViewerControllerMovieIdxResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* ViewerControllerMovieIdxResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
-    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-    CHK_(ptr);
+    ::uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // .osirixgrpc.Status status = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
           ptr = ctx->ParseMessage(_internal_mutable_status(), ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
+        } else {
+          goto handle_unusual;
+        }
         continue;
       // int32 movie_idx = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
-          movie_idx_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 16)) {
+          _impl_.movie_idx_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
-        continue;
-      default: {
-      handle_unusual:
-        if ((tag & 7) == 4 || tag == 0) {
-          ctx->SetLastTag(tag);
-          goto success;
+        } else {
+          goto handle_unusual;
         }
-        ptr = UnknownFieldParse(tag,
-            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-            ptr, ctx);
-        CHK_(ptr != nullptr);
         continue;
-      }
+      default:
+        goto handle_unusual;
     }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
   }  // while
-success:
+message_done:
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
-  goto success;
+  goto message_done;
 #undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* ViewerControllerMovieIdxResponse::_InternalSerialize(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+::uint8_t* ViewerControllerMovieIdxResponse::_InternalSerialize(
+    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.ViewerControllerMovieIdxResponse)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
+  cached_has_bits = _impl_._has_bits_[0];
   // .osirixgrpc.Status status = 1;
-  if (this->has_status()) {
-    target = stream->EnsureSpace(target);
+  if (cached_has_bits & 0x00000001u) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::status(this), target, stream);
+      InternalWriteMessage(1, _Internal::status(this),
+        _Internal::status(this).GetCachedSize(), target, stream);
   }
 
   // int32 movie_idx = 2;
-  if (this->movie_idx() != 0) {
+  if (this->_internal_movie_idx() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(2, this->_internal_movie_idx(), target);
+    target = ::_pbi::WireFormatLite::WriteInt32ToArray(
+        2, this->_internal_movie_idx(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.ViewerControllerMovieIdxResponse)
   return target;
 }
 
-size_t ViewerControllerMovieIdxResponse::ByteSizeLong() const {
+::size_t ViewerControllerMovieIdxResponse::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:osirixgrpc.ViewerControllerMovieIdxResponse)
-  size_t total_size = 0;
+  ::size_t total_size = 0;
 
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // .osirixgrpc.Status status = 1;
-  if (this->has_status()) {
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *status_);
+        *_impl_.status_);
   }
 
   // int32 movie_idx = 2;
-  if (this->movie_idx() != 0) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+  if (this->_internal_movie_idx() != 0) {
+    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
         this->_internal_movie_idx());
   }
 
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
-        _internal_metadata_, total_size, &_cached_size_);
-  }
-  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-void ViewerControllerMovieIdxResponse::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:osirixgrpc.ViewerControllerMovieIdxResponse)
-  GOOGLE_DCHECK_NE(&from, this);
-  const ViewerControllerMovieIdxResponse* source =
-      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<ViewerControllerMovieIdxResponse>(
-          &from);
-  if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:osirixgrpc.ViewerControllerMovieIdxResponse)
-    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:osirixgrpc.ViewerControllerMovieIdxResponse)
-    MergeFrom(*source);
-  }
-}
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ViewerControllerMovieIdxResponse::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    ViewerControllerMovieIdxResponse::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ViewerControllerMovieIdxResponse::GetClassData() const { return &_class_data_; }
 
-void ViewerControllerMovieIdxResponse::MergeFrom(const ViewerControllerMovieIdxResponse& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ViewerControllerMovieIdxResponse)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+
+void ViewerControllerMovieIdxResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<ViewerControllerMovieIdxResponse*>(&to_msg);
+  auto& from = static_cast<const ViewerControllerMovieIdxResponse&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ViewerControllerMovieIdxResponse)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.has_status()) {
-    _internal_mutable_status()->::osirixgrpc::Status::MergeFrom(from._internal_status());
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_internal_mutable_status()->::osirixgrpc::Status::MergeFrom(
+        from._internal_status());
   }
-  if (from.movie_idx() != 0) {
-    _internal_set_movie_idx(from._internal_movie_idx());
+  if (from._internal_movie_idx() != 0) {
+    _this->_internal_set_movie_idx(from._internal_movie_idx());
   }
-}
-
-void ViewerControllerMovieIdxResponse::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:osirixgrpc.ViewerControllerMovieIdxResponse)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void ViewerControllerMovieIdxResponse::CopyFrom(const ViewerControllerMovieIdxResponse& from) {
@@ -4330,240 +4468,236 @@ bool ViewerControllerMovieIdxResponse::IsInitialized() const {
 
 void ViewerControllerMovieIdxResponse::InternalSwap(ViewerControllerMovieIdxResponse* other) {
   using std::swap;
-  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(ViewerControllerMovieIdxResponse, movie_idx_)
-      + sizeof(ViewerControllerMovieIdxResponse::movie_idx_)
-      - PROTOBUF_FIELD_OFFSET(ViewerControllerMovieIdxResponse, status_)>(
-          reinterpret_cast<char*>(&status_),
-          reinterpret_cast<char*>(&other->status_));
+      PROTOBUF_FIELD_OFFSET(ViewerControllerMovieIdxResponse, _impl_.movie_idx_)
+      + sizeof(ViewerControllerMovieIdxResponse::_impl_.movie_idx_)
+      - PROTOBUF_FIELD_OFFSET(ViewerControllerMovieIdxResponse, _impl_.status_)>(
+          reinterpret_cast<char*>(&_impl_.status_),
+          reinterpret_cast<char*>(&other->_impl_.status_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata ViewerControllerMovieIdxResponse::GetMetadata() const {
-  return GetMetadataStatic();
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_viewercontroller_2eproto_getter, &descriptor_table_viewercontroller_2eproto_once,
+      file_level_metadata_viewercontroller_2eproto[12]);
 }
-
-
 // ===================================================================
 
 class ViewerControllerMaxMovieIdxResponse::_Internal {
  public:
+  using HasBits = decltype(std::declval<ViewerControllerMaxMovieIdxResponse>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+    8 * PROTOBUF_FIELD_OFFSET(ViewerControllerMaxMovieIdxResponse, _impl_._has_bits_);
   static const ::osirixgrpc::Status& status(const ViewerControllerMaxMovieIdxResponse* msg);
+  static void set_has_status(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
 };
 
 const ::osirixgrpc::Status&
 ViewerControllerMaxMovieIdxResponse::_Internal::status(const ViewerControllerMaxMovieIdxResponse* msg) {
-  return *msg->status_;
+  return *msg->_impl_.status_;
 }
 void ViewerControllerMaxMovieIdxResponse::clear_status() {
-  if (GetArena() == nullptr && status_ != nullptr) {
-    delete status_;
-  }
-  status_ = nullptr;
+  if (_impl_.status_ != nullptr) _impl_.status_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000001u;
 }
 ViewerControllerMaxMovieIdxResponse::ViewerControllerMaxMovieIdxResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
-  SharedCtor();
-  RegisterArenaDtor(arena);
+  SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.ViewerControllerMaxMovieIdxResponse)
 }
 ViewerControllerMaxMovieIdxResponse::ViewerControllerMaxMovieIdxResponse(const ViewerControllerMaxMovieIdxResponse& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
+  ViewerControllerMaxMovieIdxResponse* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.status_){nullptr}
+    , decltype(_impl_.max_movie_idx_) {}
+  };
+
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if (from._internal_has_status()) {
-    status_ = new ::osirixgrpc::Status(*from.status_);
-  } else {
-    status_ = nullptr;
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_impl_.status_ = new ::osirixgrpc::Status(*from._impl_.status_);
   }
-  max_movie_idx_ = from.max_movie_idx_;
+  _this->_impl_.max_movie_idx_ = from._impl_.max_movie_idx_;
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.ViewerControllerMaxMovieIdxResponse)
 }
 
-void ViewerControllerMaxMovieIdxResponse::SharedCtor() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_ViewerControllerMaxMovieIdxResponse_viewercontroller_2eproto.base);
-  ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-      reinterpret_cast<char*>(&status_) - reinterpret_cast<char*>(this)),
-      0, static_cast<size_t>(reinterpret_cast<char*>(&max_movie_idx_) -
-      reinterpret_cast<char*>(&status_)) + sizeof(max_movie_idx_));
+inline void ViewerControllerMaxMovieIdxResponse::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.status_){nullptr}
+    , decltype(_impl_.max_movie_idx_) { 0 }
+
+  };
 }
 
 ViewerControllerMaxMovieIdxResponse::~ViewerControllerMaxMovieIdxResponse() {
   // @@protoc_insertion_point(destructor:osirixgrpc.ViewerControllerMaxMovieIdxResponse)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-void ViewerControllerMaxMovieIdxResponse::SharedDtor() {
-  GOOGLE_DCHECK(GetArena() == nullptr);
-  if (this != internal_default_instance()) delete status_;
+inline void ViewerControllerMaxMovieIdxResponse::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  if (this != internal_default_instance()) delete _impl_.status_;
 }
 
-void ViewerControllerMaxMovieIdxResponse::ArenaDtor(void* object) {
-  ViewerControllerMaxMovieIdxResponse* _this = reinterpret_cast< ViewerControllerMaxMovieIdxResponse* >(object);
-  (void)_this;
-}
-void ViewerControllerMaxMovieIdxResponse::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void ViewerControllerMaxMovieIdxResponse::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
-const ViewerControllerMaxMovieIdxResponse& ViewerControllerMaxMovieIdxResponse::default_instance() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_ViewerControllerMaxMovieIdxResponse_viewercontroller_2eproto.base);
-  return *internal_default_instance();
-}
-
 
 void ViewerControllerMaxMovieIdxResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.ViewerControllerMaxMovieIdxResponse)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  if (GetArena() == nullptr && status_ != nullptr) {
-    delete status_;
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    ABSL_DCHECK(_impl_.status_ != nullptr);
+    _impl_.status_->Clear();
   }
-  status_ = nullptr;
-  max_movie_idx_ = 0;
+  _impl_.max_movie_idx_ = 0;
+  _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* ViewerControllerMaxMovieIdxResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* ViewerControllerMaxMovieIdxResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
-    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-    CHK_(ptr);
+    ::uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // .osirixgrpc.Status status = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
           ptr = ctx->ParseMessage(_internal_mutable_status(), ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
+        } else {
+          goto handle_unusual;
+        }
         continue;
       // int32 max_movie_idx = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
-          max_movie_idx_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 16)) {
+          _impl_.max_movie_idx_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
-        continue;
-      default: {
-      handle_unusual:
-        if ((tag & 7) == 4 || tag == 0) {
-          ctx->SetLastTag(tag);
-          goto success;
+        } else {
+          goto handle_unusual;
         }
-        ptr = UnknownFieldParse(tag,
-            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-            ptr, ctx);
-        CHK_(ptr != nullptr);
         continue;
-      }
+      default:
+        goto handle_unusual;
     }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
   }  // while
-success:
+message_done:
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
-  goto success;
+  goto message_done;
 #undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* ViewerControllerMaxMovieIdxResponse::_InternalSerialize(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+::uint8_t* ViewerControllerMaxMovieIdxResponse::_InternalSerialize(
+    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.ViewerControllerMaxMovieIdxResponse)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
+  cached_has_bits = _impl_._has_bits_[0];
   // .osirixgrpc.Status status = 1;
-  if (this->has_status()) {
-    target = stream->EnsureSpace(target);
+  if (cached_has_bits & 0x00000001u) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::status(this), target, stream);
+      InternalWriteMessage(1, _Internal::status(this),
+        _Internal::status(this).GetCachedSize(), target, stream);
   }
 
   // int32 max_movie_idx = 2;
-  if (this->max_movie_idx() != 0) {
+  if (this->_internal_max_movie_idx() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(2, this->_internal_max_movie_idx(), target);
+    target = ::_pbi::WireFormatLite::WriteInt32ToArray(
+        2, this->_internal_max_movie_idx(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.ViewerControllerMaxMovieIdxResponse)
   return target;
 }
 
-size_t ViewerControllerMaxMovieIdxResponse::ByteSizeLong() const {
+::size_t ViewerControllerMaxMovieIdxResponse::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:osirixgrpc.ViewerControllerMaxMovieIdxResponse)
-  size_t total_size = 0;
+  ::size_t total_size = 0;
 
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // .osirixgrpc.Status status = 1;
-  if (this->has_status()) {
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *status_);
+        *_impl_.status_);
   }
 
   // int32 max_movie_idx = 2;
-  if (this->max_movie_idx() != 0) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+  if (this->_internal_max_movie_idx() != 0) {
+    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
         this->_internal_max_movie_idx());
   }
 
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
-        _internal_metadata_, total_size, &_cached_size_);
-  }
-  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-void ViewerControllerMaxMovieIdxResponse::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:osirixgrpc.ViewerControllerMaxMovieIdxResponse)
-  GOOGLE_DCHECK_NE(&from, this);
-  const ViewerControllerMaxMovieIdxResponse* source =
-      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<ViewerControllerMaxMovieIdxResponse>(
-          &from);
-  if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:osirixgrpc.ViewerControllerMaxMovieIdxResponse)
-    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:osirixgrpc.ViewerControllerMaxMovieIdxResponse)
-    MergeFrom(*source);
-  }
-}
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ViewerControllerMaxMovieIdxResponse::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    ViewerControllerMaxMovieIdxResponse::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ViewerControllerMaxMovieIdxResponse::GetClassData() const { return &_class_data_; }
 
-void ViewerControllerMaxMovieIdxResponse::MergeFrom(const ViewerControllerMaxMovieIdxResponse& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ViewerControllerMaxMovieIdxResponse)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+
+void ViewerControllerMaxMovieIdxResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<ViewerControllerMaxMovieIdxResponse*>(&to_msg);
+  auto& from = static_cast<const ViewerControllerMaxMovieIdxResponse&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ViewerControllerMaxMovieIdxResponse)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.has_status()) {
-    _internal_mutable_status()->::osirixgrpc::Status::MergeFrom(from._internal_status());
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_internal_mutable_status()->::osirixgrpc::Status::MergeFrom(
+        from._internal_status());
   }
-  if (from.max_movie_idx() != 0) {
-    _internal_set_max_movie_idx(from._internal_max_movie_idx());
+  if (from._internal_max_movie_idx() != 0) {
+    _this->_internal_set_max_movie_idx(from._internal_max_movie_idx());
   }
-}
-
-void ViewerControllerMaxMovieIdxResponse::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:osirixgrpc.ViewerControllerMaxMovieIdxResponse)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void ViewerControllerMaxMovieIdxResponse::CopyFrom(const ViewerControllerMaxMovieIdxResponse& from) {
@@ -4579,240 +4713,236 @@ bool ViewerControllerMaxMovieIdxResponse::IsInitialized() const {
 
 void ViewerControllerMaxMovieIdxResponse::InternalSwap(ViewerControllerMaxMovieIdxResponse* other) {
   using std::swap;
-  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(ViewerControllerMaxMovieIdxResponse, max_movie_idx_)
-      + sizeof(ViewerControllerMaxMovieIdxResponse::max_movie_idx_)
-      - PROTOBUF_FIELD_OFFSET(ViewerControllerMaxMovieIdxResponse, status_)>(
-          reinterpret_cast<char*>(&status_),
-          reinterpret_cast<char*>(&other->status_));
+      PROTOBUF_FIELD_OFFSET(ViewerControllerMaxMovieIdxResponse, _impl_.max_movie_idx_)
+      + sizeof(ViewerControllerMaxMovieIdxResponse::_impl_.max_movie_idx_)
+      - PROTOBUF_FIELD_OFFSET(ViewerControllerMaxMovieIdxResponse, _impl_.status_)>(
+          reinterpret_cast<char*>(&_impl_.status_),
+          reinterpret_cast<char*>(&other->_impl_.status_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata ViewerControllerMaxMovieIdxResponse::GetMetadata() const {
-  return GetMetadataStatic();
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_viewercontroller_2eproto_getter, &descriptor_table_viewercontroller_2eproto_once,
+      file_level_metadata_viewercontroller_2eproto[13]);
 }
-
-
 // ===================================================================
 
 class ViewerControllerIdxResponse::_Internal {
  public:
+  using HasBits = decltype(std::declval<ViewerControllerIdxResponse>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+    8 * PROTOBUF_FIELD_OFFSET(ViewerControllerIdxResponse, _impl_._has_bits_);
   static const ::osirixgrpc::Status& status(const ViewerControllerIdxResponse* msg);
+  static void set_has_status(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
 };
 
 const ::osirixgrpc::Status&
 ViewerControllerIdxResponse::_Internal::status(const ViewerControllerIdxResponse* msg) {
-  return *msg->status_;
+  return *msg->_impl_.status_;
 }
 void ViewerControllerIdxResponse::clear_status() {
-  if (GetArena() == nullptr && status_ != nullptr) {
-    delete status_;
-  }
-  status_ = nullptr;
+  if (_impl_.status_ != nullptr) _impl_.status_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000001u;
 }
 ViewerControllerIdxResponse::ViewerControllerIdxResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
-  SharedCtor();
-  RegisterArenaDtor(arena);
+  SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.ViewerControllerIdxResponse)
 }
 ViewerControllerIdxResponse::ViewerControllerIdxResponse(const ViewerControllerIdxResponse& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
+  ViewerControllerIdxResponse* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.status_){nullptr}
+    , decltype(_impl_.idx_) {}
+  };
+
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if (from._internal_has_status()) {
-    status_ = new ::osirixgrpc::Status(*from.status_);
-  } else {
-    status_ = nullptr;
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_impl_.status_ = new ::osirixgrpc::Status(*from._impl_.status_);
   }
-  idx_ = from.idx_;
+  _this->_impl_.idx_ = from._impl_.idx_;
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.ViewerControllerIdxResponse)
 }
 
-void ViewerControllerIdxResponse::SharedCtor() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_ViewerControllerIdxResponse_viewercontroller_2eproto.base);
-  ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-      reinterpret_cast<char*>(&status_) - reinterpret_cast<char*>(this)),
-      0, static_cast<size_t>(reinterpret_cast<char*>(&idx_) -
-      reinterpret_cast<char*>(&status_)) + sizeof(idx_));
+inline void ViewerControllerIdxResponse::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.status_){nullptr}
+    , decltype(_impl_.idx_) { 0 }
+
+  };
 }
 
 ViewerControllerIdxResponse::~ViewerControllerIdxResponse() {
   // @@protoc_insertion_point(destructor:osirixgrpc.ViewerControllerIdxResponse)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-void ViewerControllerIdxResponse::SharedDtor() {
-  GOOGLE_DCHECK(GetArena() == nullptr);
-  if (this != internal_default_instance()) delete status_;
+inline void ViewerControllerIdxResponse::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  if (this != internal_default_instance()) delete _impl_.status_;
 }
 
-void ViewerControllerIdxResponse::ArenaDtor(void* object) {
-  ViewerControllerIdxResponse* _this = reinterpret_cast< ViewerControllerIdxResponse* >(object);
-  (void)_this;
-}
-void ViewerControllerIdxResponse::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void ViewerControllerIdxResponse::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
-const ViewerControllerIdxResponse& ViewerControllerIdxResponse::default_instance() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_ViewerControllerIdxResponse_viewercontroller_2eproto.base);
-  return *internal_default_instance();
-}
-
 
 void ViewerControllerIdxResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.ViewerControllerIdxResponse)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  if (GetArena() == nullptr && status_ != nullptr) {
-    delete status_;
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    ABSL_DCHECK(_impl_.status_ != nullptr);
+    _impl_.status_->Clear();
   }
-  status_ = nullptr;
-  idx_ = 0;
+  _impl_.idx_ = 0;
+  _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* ViewerControllerIdxResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* ViewerControllerIdxResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
-    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-    CHK_(ptr);
+    ::uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // .osirixgrpc.Status status = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
           ptr = ctx->ParseMessage(_internal_mutable_status(), ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
+        } else {
+          goto handle_unusual;
+        }
         continue;
       // int32 idx = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
-          idx_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 16)) {
+          _impl_.idx_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
-        continue;
-      default: {
-      handle_unusual:
-        if ((tag & 7) == 4 || tag == 0) {
-          ctx->SetLastTag(tag);
-          goto success;
+        } else {
+          goto handle_unusual;
         }
-        ptr = UnknownFieldParse(tag,
-            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-            ptr, ctx);
-        CHK_(ptr != nullptr);
         continue;
-      }
+      default:
+        goto handle_unusual;
     }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
   }  // while
-success:
+message_done:
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
-  goto success;
+  goto message_done;
 #undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* ViewerControllerIdxResponse::_InternalSerialize(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+::uint8_t* ViewerControllerIdxResponse::_InternalSerialize(
+    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.ViewerControllerIdxResponse)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
+  cached_has_bits = _impl_._has_bits_[0];
   // .osirixgrpc.Status status = 1;
-  if (this->has_status()) {
-    target = stream->EnsureSpace(target);
+  if (cached_has_bits & 0x00000001u) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::status(this), target, stream);
+      InternalWriteMessage(1, _Internal::status(this),
+        _Internal::status(this).GetCachedSize(), target, stream);
   }
 
   // int32 idx = 2;
-  if (this->idx() != 0) {
+  if (this->_internal_idx() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(2, this->_internal_idx(), target);
+    target = ::_pbi::WireFormatLite::WriteInt32ToArray(
+        2, this->_internal_idx(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.ViewerControllerIdxResponse)
   return target;
 }
 
-size_t ViewerControllerIdxResponse::ByteSizeLong() const {
+::size_t ViewerControllerIdxResponse::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:osirixgrpc.ViewerControllerIdxResponse)
-  size_t total_size = 0;
+  ::size_t total_size = 0;
 
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // .osirixgrpc.Status status = 1;
-  if (this->has_status()) {
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *status_);
+        *_impl_.status_);
   }
 
   // int32 idx = 2;
-  if (this->idx() != 0) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+  if (this->_internal_idx() != 0) {
+    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
         this->_internal_idx());
   }
 
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
-        _internal_metadata_, total_size, &_cached_size_);
-  }
-  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-void ViewerControllerIdxResponse::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:osirixgrpc.ViewerControllerIdxResponse)
-  GOOGLE_DCHECK_NE(&from, this);
-  const ViewerControllerIdxResponse* source =
-      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<ViewerControllerIdxResponse>(
-          &from);
-  if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:osirixgrpc.ViewerControllerIdxResponse)
-    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:osirixgrpc.ViewerControllerIdxResponse)
-    MergeFrom(*source);
-  }
-}
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ViewerControllerIdxResponse::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    ViewerControllerIdxResponse::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ViewerControllerIdxResponse::GetClassData() const { return &_class_data_; }
 
-void ViewerControllerIdxResponse::MergeFrom(const ViewerControllerIdxResponse& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ViewerControllerIdxResponse)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+
+void ViewerControllerIdxResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<ViewerControllerIdxResponse*>(&to_msg);
+  auto& from = static_cast<const ViewerControllerIdxResponse&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ViewerControllerIdxResponse)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.has_status()) {
-    _internal_mutable_status()->::osirixgrpc::Status::MergeFrom(from._internal_status());
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_internal_mutable_status()->::osirixgrpc::Status::MergeFrom(
+        from._internal_status());
   }
-  if (from.idx() != 0) {
-    _internal_set_idx(from._internal_idx());
+  if (from._internal_idx() != 0) {
+    _this->_internal_set_idx(from._internal_idx());
   }
-}
-
-void ViewerControllerIdxResponse::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:osirixgrpc.ViewerControllerIdxResponse)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void ViewerControllerIdxResponse::CopyFrom(const ViewerControllerIdxResponse& from) {
@@ -4828,263 +4958,291 @@ bool ViewerControllerIdxResponse::IsInitialized() const {
 
 void ViewerControllerIdxResponse::InternalSwap(ViewerControllerIdxResponse* other) {
   using std::swap;
-  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(ViewerControllerIdxResponse, idx_)
-      + sizeof(ViewerControllerIdxResponse::idx_)
-      - PROTOBUF_FIELD_OFFSET(ViewerControllerIdxResponse, status_)>(
-          reinterpret_cast<char*>(&status_),
-          reinterpret_cast<char*>(&other->status_));
+      PROTOBUF_FIELD_OFFSET(ViewerControllerIdxResponse, _impl_.idx_)
+      + sizeof(ViewerControllerIdxResponse::_impl_.idx_)
+      - PROTOBUF_FIELD_OFFSET(ViewerControllerIdxResponse, _impl_.status_)>(
+          reinterpret_cast<char*>(&_impl_.status_),
+          reinterpret_cast<char*>(&other->_impl_.status_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata ViewerControllerIdxResponse::GetMetadata() const {
-  return GetMetadataStatic();
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_viewercontroller_2eproto_getter, &descriptor_table_viewercontroller_2eproto_once,
+      file_level_metadata_viewercontroller_2eproto[14]);
 }
-
-
 // ===================================================================
 
 class ViewerControllerWLWWResponse::_Internal {
  public:
+  using HasBits = decltype(std::declval<ViewerControllerWLWWResponse>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+    8 * PROTOBUF_FIELD_OFFSET(ViewerControllerWLWWResponse, _impl_._has_bits_);
   static const ::osirixgrpc::Status& status(const ViewerControllerWLWWResponse* msg);
+  static void set_has_status(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
 };
 
 const ::osirixgrpc::Status&
 ViewerControllerWLWWResponse::_Internal::status(const ViewerControllerWLWWResponse* msg) {
-  return *msg->status_;
+  return *msg->_impl_.status_;
 }
 void ViewerControllerWLWWResponse::clear_status() {
-  if (GetArena() == nullptr && status_ != nullptr) {
-    delete status_;
-  }
-  status_ = nullptr;
+  if (_impl_.status_ != nullptr) _impl_.status_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000001u;
 }
 ViewerControllerWLWWResponse::ViewerControllerWLWWResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
-  SharedCtor();
-  RegisterArenaDtor(arena);
+  SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.ViewerControllerWLWWResponse)
 }
 ViewerControllerWLWWResponse::ViewerControllerWLWWResponse(const ViewerControllerWLWWResponse& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
+  ViewerControllerWLWWResponse* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.status_){nullptr}
+    , decltype(_impl_.wl_) {}
+
+    , decltype(_impl_.ww_) {}
+  };
+
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if (from._internal_has_status()) {
-    status_ = new ::osirixgrpc::Status(*from.status_);
-  } else {
-    status_ = nullptr;
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_impl_.status_ = new ::osirixgrpc::Status(*from._impl_.status_);
   }
-  ::memcpy(&wl_, &from.wl_,
-    static_cast<size_t>(reinterpret_cast<char*>(&ww_) -
-    reinterpret_cast<char*>(&wl_)) + sizeof(ww_));
+  ::memcpy(&_impl_.wl_, &from._impl_.wl_,
+    static_cast<::size_t>(reinterpret_cast<char*>(&_impl_.ww_) -
+    reinterpret_cast<char*>(&_impl_.wl_)) + sizeof(_impl_.ww_));
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.ViewerControllerWLWWResponse)
 }
 
-void ViewerControllerWLWWResponse::SharedCtor() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_ViewerControllerWLWWResponse_viewercontroller_2eproto.base);
-  ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-      reinterpret_cast<char*>(&status_) - reinterpret_cast<char*>(this)),
-      0, static_cast<size_t>(reinterpret_cast<char*>(&ww_) -
-      reinterpret_cast<char*>(&status_)) + sizeof(ww_));
+inline void ViewerControllerWLWWResponse::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.status_){nullptr}
+    , decltype(_impl_.wl_) { 0 }
+
+    , decltype(_impl_.ww_) { 0 }
+
+  };
 }
 
 ViewerControllerWLWWResponse::~ViewerControllerWLWWResponse() {
   // @@protoc_insertion_point(destructor:osirixgrpc.ViewerControllerWLWWResponse)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-void ViewerControllerWLWWResponse::SharedDtor() {
-  GOOGLE_DCHECK(GetArena() == nullptr);
-  if (this != internal_default_instance()) delete status_;
+inline void ViewerControllerWLWWResponse::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  if (this != internal_default_instance()) delete _impl_.status_;
 }
 
-void ViewerControllerWLWWResponse::ArenaDtor(void* object) {
-  ViewerControllerWLWWResponse* _this = reinterpret_cast< ViewerControllerWLWWResponse* >(object);
-  (void)_this;
-}
-void ViewerControllerWLWWResponse::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void ViewerControllerWLWWResponse::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
-const ViewerControllerWLWWResponse& ViewerControllerWLWWResponse::default_instance() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_ViewerControllerWLWWResponse_viewercontroller_2eproto.base);
-  return *internal_default_instance();
-}
-
 
 void ViewerControllerWLWWResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.ViewerControllerWLWWResponse)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  if (GetArena() == nullptr && status_ != nullptr) {
-    delete status_;
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    ABSL_DCHECK(_impl_.status_ != nullptr);
+    _impl_.status_->Clear();
   }
-  status_ = nullptr;
-  ::memset(&wl_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&ww_) -
-      reinterpret_cast<char*>(&wl_)) + sizeof(ww_));
+  ::memset(&_impl_.wl_, 0, static_cast<::size_t>(
+      reinterpret_cast<char*>(&_impl_.ww_) -
+      reinterpret_cast<char*>(&_impl_.wl_)) + sizeof(_impl_.ww_));
+  _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* ViewerControllerWLWWResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* ViewerControllerWLWWResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
-    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-    CHK_(ptr);
+    ::uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // .osirixgrpc.Status status = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
           ptr = ctx->ParseMessage(_internal_mutable_status(), ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
+        } else {
+          goto handle_unusual;
+        }
         continue;
       // float wl = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 21)) {
-          wl_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 21)) {
+          _impl_.wl_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
           ptr += sizeof(float);
-        } else goto handle_unusual;
+        } else {
+          goto handle_unusual;
+        }
         continue;
       // float ww = 3;
       case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 29)) {
-          ww_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 29)) {
+          _impl_.ww_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
           ptr += sizeof(float);
-        } else goto handle_unusual;
-        continue;
-      default: {
-      handle_unusual:
-        if ((tag & 7) == 4 || tag == 0) {
-          ctx->SetLastTag(tag);
-          goto success;
+        } else {
+          goto handle_unusual;
         }
-        ptr = UnknownFieldParse(tag,
-            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-            ptr, ctx);
-        CHK_(ptr != nullptr);
         continue;
-      }
+      default:
+        goto handle_unusual;
     }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
   }  // while
-success:
+message_done:
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
-  goto success;
+  goto message_done;
 #undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* ViewerControllerWLWWResponse::_InternalSerialize(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+::uint8_t* ViewerControllerWLWWResponse::_InternalSerialize(
+    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.ViewerControllerWLWWResponse)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
+  cached_has_bits = _impl_._has_bits_[0];
   // .osirixgrpc.Status status = 1;
-  if (this->has_status()) {
-    target = stream->EnsureSpace(target);
+  if (cached_has_bits & 0x00000001u) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::status(this), target, stream);
+      InternalWriteMessage(1, _Internal::status(this),
+        _Internal::status(this).GetCachedSize(), target, stream);
   }
 
   // float wl = 2;
-  if (!(this->wl() <= 0 && this->wl() >= 0)) {
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  float tmp_wl = this->_internal_wl();
+  ::uint32_t raw_wl;
+  memcpy(&raw_wl, &tmp_wl, sizeof(tmp_wl));
+  if (raw_wl != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(2, this->_internal_wl(), target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(
+        2, this->_internal_wl(), target);
   }
 
   // float ww = 3;
-  if (!(this->ww() <= 0 && this->ww() >= 0)) {
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  float tmp_ww = this->_internal_ww();
+  ::uint32_t raw_ww;
+  memcpy(&raw_ww, &tmp_ww, sizeof(tmp_ww));
+  if (raw_ww != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(3, this->_internal_ww(), target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(
+        3, this->_internal_ww(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.ViewerControllerWLWWResponse)
   return target;
 }
 
-size_t ViewerControllerWLWWResponse::ByteSizeLong() const {
+::size_t ViewerControllerWLWWResponse::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:osirixgrpc.ViewerControllerWLWWResponse)
-  size_t total_size = 0;
+  ::size_t total_size = 0;
 
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // .osirixgrpc.Status status = 1;
-  if (this->has_status()) {
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *status_);
+        *_impl_.status_);
   }
 
   // float wl = 2;
-  if (!(this->wl() <= 0 && this->wl() >= 0)) {
-    total_size += 1 + 4;
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  float tmp_wl = this->_internal_wl();
+  ::uint32_t raw_wl;
+  memcpy(&raw_wl, &tmp_wl, sizeof(tmp_wl));
+  if (raw_wl != 0) {
+    total_size += 5;
   }
 
   // float ww = 3;
-  if (!(this->ww() <= 0 && this->ww() >= 0)) {
-    total_size += 1 + 4;
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  float tmp_ww = this->_internal_ww();
+  ::uint32_t raw_ww;
+  memcpy(&raw_ww, &tmp_ww, sizeof(tmp_ww));
+  if (raw_ww != 0) {
+    total_size += 5;
   }
 
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
-        _internal_metadata_, total_size, &_cached_size_);
-  }
-  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-void ViewerControllerWLWWResponse::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:osirixgrpc.ViewerControllerWLWWResponse)
-  GOOGLE_DCHECK_NE(&from, this);
-  const ViewerControllerWLWWResponse* source =
-      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<ViewerControllerWLWWResponse>(
-          &from);
-  if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:osirixgrpc.ViewerControllerWLWWResponse)
-    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:osirixgrpc.ViewerControllerWLWWResponse)
-    MergeFrom(*source);
-  }
-}
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ViewerControllerWLWWResponse::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    ViewerControllerWLWWResponse::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ViewerControllerWLWWResponse::GetClassData() const { return &_class_data_; }
 
-void ViewerControllerWLWWResponse::MergeFrom(const ViewerControllerWLWWResponse& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ViewerControllerWLWWResponse)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+
+void ViewerControllerWLWWResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<ViewerControllerWLWWResponse*>(&to_msg);
+  auto& from = static_cast<const ViewerControllerWLWWResponse&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ViewerControllerWLWWResponse)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.has_status()) {
-    _internal_mutable_status()->::osirixgrpc::Status::MergeFrom(from._internal_status());
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_internal_mutable_status()->::osirixgrpc::Status::MergeFrom(
+        from._internal_status());
   }
-  if (!(from.wl() <= 0 && from.wl() >= 0)) {
-    _internal_set_wl(from._internal_wl());
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  float tmp_wl = from._internal_wl();
+  ::uint32_t raw_wl;
+  memcpy(&raw_wl, &tmp_wl, sizeof(tmp_wl));
+  if (raw_wl != 0) {
+    _this->_internal_set_wl(from._internal_wl());
   }
-  if (!(from.ww() <= 0 && from.ww() >= 0)) {
-    _internal_set_ww(from._internal_ww());
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  float tmp_ww = from._internal_ww();
+  ::uint32_t raw_ww;
+  memcpy(&raw_ww, &tmp_ww, sizeof(tmp_ww));
+  if (raw_ww != 0) {
+    _this->_internal_set_ww(from._internal_ww());
   }
-}
-
-void ViewerControllerWLWWResponse::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:osirixgrpc.ViewerControllerWLWWResponse)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void ViewerControllerWLWWResponse::CopyFrom(const ViewerControllerWLWWResponse& from) {
@@ -5100,261 +5258,261 @@ bool ViewerControllerWLWWResponse::IsInitialized() const {
 
 void ViewerControllerWLWWResponse::InternalSwap(ViewerControllerWLWWResponse* other) {
   using std::swap;
-  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(ViewerControllerWLWWResponse, ww_)
-      + sizeof(ViewerControllerWLWWResponse::ww_)
-      - PROTOBUF_FIELD_OFFSET(ViewerControllerWLWWResponse, status_)>(
-          reinterpret_cast<char*>(&status_),
-          reinterpret_cast<char*>(&other->status_));
+      PROTOBUF_FIELD_OFFSET(ViewerControllerWLWWResponse, _impl_.ww_)
+      + sizeof(ViewerControllerWLWWResponse::_impl_.ww_)
+      - PROTOBUF_FIELD_OFFSET(ViewerControllerWLWWResponse, _impl_.status_)>(
+          reinterpret_cast<char*>(&_impl_.status_),
+          reinterpret_cast<char*>(&other->_impl_.status_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata ViewerControllerWLWWResponse::GetMetadata() const {
-  return GetMetadataStatic();
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_viewercontroller_2eproto_getter, &descriptor_table_viewercontroller_2eproto_once,
+      file_level_metadata_viewercontroller_2eproto[15]);
 }
-
-
 // ===================================================================
 
 class ViewerControllerOpenVRViewerForModeResponse::_Internal {
  public:
+  using HasBits = decltype(std::declval<ViewerControllerOpenVRViewerForModeResponse>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+    8 * PROTOBUF_FIELD_OFFSET(ViewerControllerOpenVRViewerForModeResponse, _impl_._has_bits_);
   static const ::osirixgrpc::Status& status(const ViewerControllerOpenVRViewerForModeResponse* msg);
+  static void set_has_status(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
   static const ::osirixgrpc::VRController& vr_controller(const ViewerControllerOpenVRViewerForModeResponse* msg);
+  static void set_has_vr_controller(HasBits* has_bits) {
+    (*has_bits)[0] |= 2u;
+  }
 };
 
 const ::osirixgrpc::Status&
 ViewerControllerOpenVRViewerForModeResponse::_Internal::status(const ViewerControllerOpenVRViewerForModeResponse* msg) {
-  return *msg->status_;
+  return *msg->_impl_.status_;
 }
 const ::osirixgrpc::VRController&
 ViewerControllerOpenVRViewerForModeResponse::_Internal::vr_controller(const ViewerControllerOpenVRViewerForModeResponse* msg) {
-  return *msg->vr_controller_;
+  return *msg->_impl_.vr_controller_;
 }
 void ViewerControllerOpenVRViewerForModeResponse::clear_status() {
-  if (GetArena() == nullptr && status_ != nullptr) {
-    delete status_;
-  }
-  status_ = nullptr;
+  if (_impl_.status_ != nullptr) _impl_.status_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000001u;
 }
 void ViewerControllerOpenVRViewerForModeResponse::clear_vr_controller() {
-  if (GetArena() == nullptr && vr_controller_ != nullptr) {
-    delete vr_controller_;
-  }
-  vr_controller_ = nullptr;
+  if (_impl_.vr_controller_ != nullptr) _impl_.vr_controller_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000002u;
 }
 ViewerControllerOpenVRViewerForModeResponse::ViewerControllerOpenVRViewerForModeResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
-  SharedCtor();
-  RegisterArenaDtor(arena);
+  SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.ViewerControllerOpenVRViewerForModeResponse)
 }
 ViewerControllerOpenVRViewerForModeResponse::ViewerControllerOpenVRViewerForModeResponse(const ViewerControllerOpenVRViewerForModeResponse& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
+  ViewerControllerOpenVRViewerForModeResponse* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.status_){nullptr}
+    , decltype(_impl_.vr_controller_){nullptr}};
+
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if (from._internal_has_status()) {
-    status_ = new ::osirixgrpc::Status(*from.status_);
-  } else {
-    status_ = nullptr;
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_impl_.status_ = new ::osirixgrpc::Status(*from._impl_.status_);
   }
-  if (from._internal_has_vr_controller()) {
-    vr_controller_ = new ::osirixgrpc::VRController(*from.vr_controller_);
-  } else {
-    vr_controller_ = nullptr;
+  if ((from._impl_._has_bits_[0] & 0x00000002u) != 0) {
+    _this->_impl_.vr_controller_ = new ::osirixgrpc::VRController(*from._impl_.vr_controller_);
   }
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.ViewerControllerOpenVRViewerForModeResponse)
 }
 
-void ViewerControllerOpenVRViewerForModeResponse::SharedCtor() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_ViewerControllerOpenVRViewerForModeResponse_viewercontroller_2eproto.base);
-  ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-      reinterpret_cast<char*>(&status_) - reinterpret_cast<char*>(this)),
-      0, static_cast<size_t>(reinterpret_cast<char*>(&vr_controller_) -
-      reinterpret_cast<char*>(&status_)) + sizeof(vr_controller_));
+inline void ViewerControllerOpenVRViewerForModeResponse::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.status_){nullptr}
+    , decltype(_impl_.vr_controller_){nullptr}
+  };
 }
 
 ViewerControllerOpenVRViewerForModeResponse::~ViewerControllerOpenVRViewerForModeResponse() {
   // @@protoc_insertion_point(destructor:osirixgrpc.ViewerControllerOpenVRViewerForModeResponse)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-void ViewerControllerOpenVRViewerForModeResponse::SharedDtor() {
-  GOOGLE_DCHECK(GetArena() == nullptr);
-  if (this != internal_default_instance()) delete status_;
-  if (this != internal_default_instance()) delete vr_controller_;
+inline void ViewerControllerOpenVRViewerForModeResponse::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  if (this != internal_default_instance()) delete _impl_.status_;
+  if (this != internal_default_instance()) delete _impl_.vr_controller_;
 }
 
-void ViewerControllerOpenVRViewerForModeResponse::ArenaDtor(void* object) {
-  ViewerControllerOpenVRViewerForModeResponse* _this = reinterpret_cast< ViewerControllerOpenVRViewerForModeResponse* >(object);
-  (void)_this;
-}
-void ViewerControllerOpenVRViewerForModeResponse::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void ViewerControllerOpenVRViewerForModeResponse::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
-const ViewerControllerOpenVRViewerForModeResponse& ViewerControllerOpenVRViewerForModeResponse::default_instance() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_ViewerControllerOpenVRViewerForModeResponse_viewercontroller_2eproto.base);
-  return *internal_default_instance();
-}
-
 
 void ViewerControllerOpenVRViewerForModeResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.ViewerControllerOpenVRViewerForModeResponse)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  if (GetArena() == nullptr && status_ != nullptr) {
-    delete status_;
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000003u) {
+    if (cached_has_bits & 0x00000001u) {
+      ABSL_DCHECK(_impl_.status_ != nullptr);
+      _impl_.status_->Clear();
+    }
+    if (cached_has_bits & 0x00000002u) {
+      ABSL_DCHECK(_impl_.vr_controller_ != nullptr);
+      _impl_.vr_controller_->Clear();
+    }
   }
-  status_ = nullptr;
-  if (GetArena() == nullptr && vr_controller_ != nullptr) {
-    delete vr_controller_;
-  }
-  vr_controller_ = nullptr;
+  _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* ViewerControllerOpenVRViewerForModeResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* ViewerControllerOpenVRViewerForModeResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
-    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-    CHK_(ptr);
+    ::uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // .osirixgrpc.Status status = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
           ptr = ctx->ParseMessage(_internal_mutable_status(), ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
+        } else {
+          goto handle_unusual;
+        }
         continue;
       // .osirixgrpc.VRController vr_controller = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 18)) {
           ptr = ctx->ParseMessage(_internal_mutable_vr_controller(), ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
-        continue;
-      default: {
-      handle_unusual:
-        if ((tag & 7) == 4 || tag == 0) {
-          ctx->SetLastTag(tag);
-          goto success;
+        } else {
+          goto handle_unusual;
         }
-        ptr = UnknownFieldParse(tag,
-            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-            ptr, ctx);
-        CHK_(ptr != nullptr);
         continue;
-      }
+      default:
+        goto handle_unusual;
     }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
   }  // while
-success:
+message_done:
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
-  goto success;
+  goto message_done;
 #undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* ViewerControllerOpenVRViewerForModeResponse::_InternalSerialize(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+::uint8_t* ViewerControllerOpenVRViewerForModeResponse::_InternalSerialize(
+    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.ViewerControllerOpenVRViewerForModeResponse)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
+  cached_has_bits = _impl_._has_bits_[0];
   // .osirixgrpc.Status status = 1;
-  if (this->has_status()) {
-    target = stream->EnsureSpace(target);
+  if (cached_has_bits & 0x00000001u) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::status(this), target, stream);
+      InternalWriteMessage(1, _Internal::status(this),
+        _Internal::status(this).GetCachedSize(), target, stream);
   }
 
   // .osirixgrpc.VRController vr_controller = 2;
-  if (this->has_vr_controller()) {
-    target = stream->EnsureSpace(target);
+  if (cached_has_bits & 0x00000002u) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        2, _Internal::vr_controller(this), target, stream);
+      InternalWriteMessage(2, _Internal::vr_controller(this),
+        _Internal::vr_controller(this).GetCachedSize(), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.ViewerControllerOpenVRViewerForModeResponse)
   return target;
 }
 
-size_t ViewerControllerOpenVRViewerForModeResponse::ByteSizeLong() const {
+::size_t ViewerControllerOpenVRViewerForModeResponse::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:osirixgrpc.ViewerControllerOpenVRViewerForModeResponse)
-  size_t total_size = 0;
+  ::size_t total_size = 0;
 
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // .osirixgrpc.Status status = 1;
-  if (this->has_status()) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *status_);
-  }
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000003u) {
+    // .osirixgrpc.Status status = 1;
+    if (cached_has_bits & 0x00000001u) {
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+          *_impl_.status_);
+    }
 
-  // .osirixgrpc.VRController vr_controller = 2;
-  if (this->has_vr_controller()) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *vr_controller_);
-  }
+    // .osirixgrpc.VRController vr_controller = 2;
+    if (cached_has_bits & 0x00000002u) {
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+          *_impl_.vr_controller_);
+    }
 
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
-        _internal_metadata_, total_size, &_cached_size_);
   }
-  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-void ViewerControllerOpenVRViewerForModeResponse::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:osirixgrpc.ViewerControllerOpenVRViewerForModeResponse)
-  GOOGLE_DCHECK_NE(&from, this);
-  const ViewerControllerOpenVRViewerForModeResponse* source =
-      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<ViewerControllerOpenVRViewerForModeResponse>(
-          &from);
-  if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:osirixgrpc.ViewerControllerOpenVRViewerForModeResponse)
-    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:osirixgrpc.ViewerControllerOpenVRViewerForModeResponse)
-    MergeFrom(*source);
-  }
-}
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ViewerControllerOpenVRViewerForModeResponse::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    ViewerControllerOpenVRViewerForModeResponse::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ViewerControllerOpenVRViewerForModeResponse::GetClassData() const { return &_class_data_; }
 
-void ViewerControllerOpenVRViewerForModeResponse::MergeFrom(const ViewerControllerOpenVRViewerForModeResponse& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ViewerControllerOpenVRViewerForModeResponse)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+
+void ViewerControllerOpenVRViewerForModeResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<ViewerControllerOpenVRViewerForModeResponse*>(&to_msg);
+  auto& from = static_cast<const ViewerControllerOpenVRViewerForModeResponse&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ViewerControllerOpenVRViewerForModeResponse)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.has_status()) {
-    _internal_mutable_status()->::osirixgrpc::Status::MergeFrom(from._internal_status());
+  cached_has_bits = from._impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000003u) {
+    if (cached_has_bits & 0x00000001u) {
+      _this->_internal_mutable_status()->::osirixgrpc::Status::MergeFrom(
+          from._internal_status());
+    }
+    if (cached_has_bits & 0x00000002u) {
+      _this->_internal_mutable_vr_controller()->::osirixgrpc::VRController::MergeFrom(
+          from._internal_vr_controller());
+    }
   }
-  if (from.has_vr_controller()) {
-    _internal_mutable_vr_controller()->::osirixgrpc::VRController::MergeFrom(from._internal_vr_controller());
-  }
-}
-
-void ViewerControllerOpenVRViewerForModeResponse::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:osirixgrpc.ViewerControllerOpenVRViewerForModeResponse)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void ViewerControllerOpenVRViewerForModeResponse::CopyFrom(const ViewerControllerOpenVRViewerForModeResponse& from) {
@@ -5370,240 +5528,236 @@ bool ViewerControllerOpenVRViewerForModeResponse::IsInitialized() const {
 
 void ViewerControllerOpenVRViewerForModeResponse::InternalSwap(ViewerControllerOpenVRViewerForModeResponse* other) {
   using std::swap;
-  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(ViewerControllerOpenVRViewerForModeResponse, vr_controller_)
-      + sizeof(ViewerControllerOpenVRViewerForModeResponse::vr_controller_)
-      - PROTOBUF_FIELD_OFFSET(ViewerControllerOpenVRViewerForModeResponse, status_)>(
-          reinterpret_cast<char*>(&status_),
-          reinterpret_cast<char*>(&other->status_));
+      PROTOBUF_FIELD_OFFSET(ViewerControllerOpenVRViewerForModeResponse, _impl_.vr_controller_)
+      + sizeof(ViewerControllerOpenVRViewerForModeResponse::_impl_.vr_controller_)
+      - PROTOBUF_FIELD_OFFSET(ViewerControllerOpenVRViewerForModeResponse, _impl_.status_)>(
+          reinterpret_cast<char*>(&_impl_.status_),
+          reinterpret_cast<char*>(&other->_impl_.status_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata ViewerControllerOpenVRViewerForModeResponse::GetMetadata() const {
-  return GetMetadataStatic();
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_viewercontroller_2eproto_getter, &descriptor_table_viewercontroller_2eproto_once,
+      file_level_metadata_viewercontroller_2eproto[16]);
 }
-
-
 // ===================================================================
 
 class ViewerControllerPixListRequest::_Internal {
  public:
+  using HasBits = decltype(std::declval<ViewerControllerPixListRequest>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+    8 * PROTOBUF_FIELD_OFFSET(ViewerControllerPixListRequest, _impl_._has_bits_);
   static const ::osirixgrpc::ViewerController& viewer_controller(const ViewerControllerPixListRequest* msg);
+  static void set_has_viewer_controller(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
 };
 
 const ::osirixgrpc::ViewerController&
 ViewerControllerPixListRequest::_Internal::viewer_controller(const ViewerControllerPixListRequest* msg) {
-  return *msg->viewer_controller_;
+  return *msg->_impl_.viewer_controller_;
 }
 void ViewerControllerPixListRequest::clear_viewer_controller() {
-  if (GetArena() == nullptr && viewer_controller_ != nullptr) {
-    delete viewer_controller_;
-  }
-  viewer_controller_ = nullptr;
+  if (_impl_.viewer_controller_ != nullptr) _impl_.viewer_controller_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000001u;
 }
 ViewerControllerPixListRequest::ViewerControllerPixListRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
-  SharedCtor();
-  RegisterArenaDtor(arena);
+  SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.ViewerControllerPixListRequest)
 }
 ViewerControllerPixListRequest::ViewerControllerPixListRequest(const ViewerControllerPixListRequest& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
+  ViewerControllerPixListRequest* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.viewer_controller_){nullptr}
+    , decltype(_impl_.movie_idx_) {}
+  };
+
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if (from._internal_has_viewer_controller()) {
-    viewer_controller_ = new ::osirixgrpc::ViewerController(*from.viewer_controller_);
-  } else {
-    viewer_controller_ = nullptr;
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_impl_.viewer_controller_ = new ::osirixgrpc::ViewerController(*from._impl_.viewer_controller_);
   }
-  movie_idx_ = from.movie_idx_;
+  _this->_impl_.movie_idx_ = from._impl_.movie_idx_;
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.ViewerControllerPixListRequest)
 }
 
-void ViewerControllerPixListRequest::SharedCtor() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_ViewerControllerPixListRequest_viewercontroller_2eproto.base);
-  ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-      reinterpret_cast<char*>(&viewer_controller_) - reinterpret_cast<char*>(this)),
-      0, static_cast<size_t>(reinterpret_cast<char*>(&movie_idx_) -
-      reinterpret_cast<char*>(&viewer_controller_)) + sizeof(movie_idx_));
+inline void ViewerControllerPixListRequest::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.viewer_controller_){nullptr}
+    , decltype(_impl_.movie_idx_) { 0 }
+
+  };
 }
 
 ViewerControllerPixListRequest::~ViewerControllerPixListRequest() {
   // @@protoc_insertion_point(destructor:osirixgrpc.ViewerControllerPixListRequest)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-void ViewerControllerPixListRequest::SharedDtor() {
-  GOOGLE_DCHECK(GetArena() == nullptr);
-  if (this != internal_default_instance()) delete viewer_controller_;
+inline void ViewerControllerPixListRequest::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  if (this != internal_default_instance()) delete _impl_.viewer_controller_;
 }
 
-void ViewerControllerPixListRequest::ArenaDtor(void* object) {
-  ViewerControllerPixListRequest* _this = reinterpret_cast< ViewerControllerPixListRequest* >(object);
-  (void)_this;
-}
-void ViewerControllerPixListRequest::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void ViewerControllerPixListRequest::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
-const ViewerControllerPixListRequest& ViewerControllerPixListRequest::default_instance() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_ViewerControllerPixListRequest_viewercontroller_2eproto.base);
-  return *internal_default_instance();
-}
-
 
 void ViewerControllerPixListRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.ViewerControllerPixListRequest)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  if (GetArena() == nullptr && viewer_controller_ != nullptr) {
-    delete viewer_controller_;
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    ABSL_DCHECK(_impl_.viewer_controller_ != nullptr);
+    _impl_.viewer_controller_->Clear();
   }
-  viewer_controller_ = nullptr;
-  movie_idx_ = 0;
+  _impl_.movie_idx_ = 0;
+  _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* ViewerControllerPixListRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* ViewerControllerPixListRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
-    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-    CHK_(ptr);
+    ::uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // .osirixgrpc.ViewerController viewer_controller = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
           ptr = ctx->ParseMessage(_internal_mutable_viewer_controller(), ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
+        } else {
+          goto handle_unusual;
+        }
         continue;
       // int32 movie_idx = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
-          movie_idx_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 16)) {
+          _impl_.movie_idx_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
-        continue;
-      default: {
-      handle_unusual:
-        if ((tag & 7) == 4 || tag == 0) {
-          ctx->SetLastTag(tag);
-          goto success;
+        } else {
+          goto handle_unusual;
         }
-        ptr = UnknownFieldParse(tag,
-            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-            ptr, ctx);
-        CHK_(ptr != nullptr);
         continue;
-      }
+      default:
+        goto handle_unusual;
     }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
   }  // while
-success:
+message_done:
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
-  goto success;
+  goto message_done;
 #undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* ViewerControllerPixListRequest::_InternalSerialize(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+::uint8_t* ViewerControllerPixListRequest::_InternalSerialize(
+    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.ViewerControllerPixListRequest)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
+  cached_has_bits = _impl_._has_bits_[0];
   // .osirixgrpc.ViewerController viewer_controller = 1;
-  if (this->has_viewer_controller()) {
-    target = stream->EnsureSpace(target);
+  if (cached_has_bits & 0x00000001u) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::viewer_controller(this), target, stream);
+      InternalWriteMessage(1, _Internal::viewer_controller(this),
+        _Internal::viewer_controller(this).GetCachedSize(), target, stream);
   }
 
   // int32 movie_idx = 2;
-  if (this->movie_idx() != 0) {
+  if (this->_internal_movie_idx() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(2, this->_internal_movie_idx(), target);
+    target = ::_pbi::WireFormatLite::WriteInt32ToArray(
+        2, this->_internal_movie_idx(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.ViewerControllerPixListRequest)
   return target;
 }
 
-size_t ViewerControllerPixListRequest::ByteSizeLong() const {
+::size_t ViewerControllerPixListRequest::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:osirixgrpc.ViewerControllerPixListRequest)
-  size_t total_size = 0;
+  ::size_t total_size = 0;
 
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // .osirixgrpc.ViewerController viewer_controller = 1;
-  if (this->has_viewer_controller()) {
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *viewer_controller_);
+        *_impl_.viewer_controller_);
   }
 
   // int32 movie_idx = 2;
-  if (this->movie_idx() != 0) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+  if (this->_internal_movie_idx() != 0) {
+    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
         this->_internal_movie_idx());
   }
 
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
-        _internal_metadata_, total_size, &_cached_size_);
-  }
-  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-void ViewerControllerPixListRequest::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:osirixgrpc.ViewerControllerPixListRequest)
-  GOOGLE_DCHECK_NE(&from, this);
-  const ViewerControllerPixListRequest* source =
-      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<ViewerControllerPixListRequest>(
-          &from);
-  if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:osirixgrpc.ViewerControllerPixListRequest)
-    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:osirixgrpc.ViewerControllerPixListRequest)
-    MergeFrom(*source);
-  }
-}
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ViewerControllerPixListRequest::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    ViewerControllerPixListRequest::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ViewerControllerPixListRequest::GetClassData() const { return &_class_data_; }
 
-void ViewerControllerPixListRequest::MergeFrom(const ViewerControllerPixListRequest& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ViewerControllerPixListRequest)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+
+void ViewerControllerPixListRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<ViewerControllerPixListRequest*>(&to_msg);
+  auto& from = static_cast<const ViewerControllerPixListRequest&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ViewerControllerPixListRequest)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.has_viewer_controller()) {
-    _internal_mutable_viewer_controller()->::osirixgrpc::ViewerController::MergeFrom(from._internal_viewer_controller());
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_internal_mutable_viewer_controller()->::osirixgrpc::ViewerController::MergeFrom(
+        from._internal_viewer_controller());
   }
-  if (from.movie_idx() != 0) {
-    _internal_set_movie_idx(from._internal_movie_idx());
+  if (from._internal_movie_idx() != 0) {
+    _this->_internal_set_movie_idx(from._internal_movie_idx());
   }
-}
-
-void ViewerControllerPixListRequest::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:osirixgrpc.ViewerControllerPixListRequest)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void ViewerControllerPixListRequest::CopyFrom(const ViewerControllerPixListRequest& from) {
@@ -5619,240 +5773,236 @@ bool ViewerControllerPixListRequest::IsInitialized() const {
 
 void ViewerControllerPixListRequest::InternalSwap(ViewerControllerPixListRequest* other) {
   using std::swap;
-  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(ViewerControllerPixListRequest, movie_idx_)
-      + sizeof(ViewerControllerPixListRequest::movie_idx_)
-      - PROTOBUF_FIELD_OFFSET(ViewerControllerPixListRequest, viewer_controller_)>(
-          reinterpret_cast<char*>(&viewer_controller_),
-          reinterpret_cast<char*>(&other->viewer_controller_));
+      PROTOBUF_FIELD_OFFSET(ViewerControllerPixListRequest, _impl_.movie_idx_)
+      + sizeof(ViewerControllerPixListRequest::_impl_.movie_idx_)
+      - PROTOBUF_FIELD_OFFSET(ViewerControllerPixListRequest, _impl_.viewer_controller_)>(
+          reinterpret_cast<char*>(&_impl_.viewer_controller_),
+          reinterpret_cast<char*>(&other->_impl_.viewer_controller_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata ViewerControllerPixListRequest::GetMetadata() const {
-  return GetMetadataStatic();
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_viewercontroller_2eproto_getter, &descriptor_table_viewercontroller_2eproto_once,
+      file_level_metadata_viewercontroller_2eproto[17]);
 }
-
-
 // ===================================================================
 
 class ViewerControllerROIListRequest::_Internal {
  public:
+  using HasBits = decltype(std::declval<ViewerControllerROIListRequest>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+    8 * PROTOBUF_FIELD_OFFSET(ViewerControllerROIListRequest, _impl_._has_bits_);
   static const ::osirixgrpc::ViewerController& viewer_controller(const ViewerControllerROIListRequest* msg);
+  static void set_has_viewer_controller(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
 };
 
 const ::osirixgrpc::ViewerController&
 ViewerControllerROIListRequest::_Internal::viewer_controller(const ViewerControllerROIListRequest* msg) {
-  return *msg->viewer_controller_;
+  return *msg->_impl_.viewer_controller_;
 }
 void ViewerControllerROIListRequest::clear_viewer_controller() {
-  if (GetArena() == nullptr && viewer_controller_ != nullptr) {
-    delete viewer_controller_;
-  }
-  viewer_controller_ = nullptr;
+  if (_impl_.viewer_controller_ != nullptr) _impl_.viewer_controller_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000001u;
 }
 ViewerControllerROIListRequest::ViewerControllerROIListRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
-  SharedCtor();
-  RegisterArenaDtor(arena);
+  SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.ViewerControllerROIListRequest)
 }
 ViewerControllerROIListRequest::ViewerControllerROIListRequest(const ViewerControllerROIListRequest& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
+  ViewerControllerROIListRequest* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.viewer_controller_){nullptr}
+    , decltype(_impl_.movie_idx_) {}
+  };
+
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if (from._internal_has_viewer_controller()) {
-    viewer_controller_ = new ::osirixgrpc::ViewerController(*from.viewer_controller_);
-  } else {
-    viewer_controller_ = nullptr;
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_impl_.viewer_controller_ = new ::osirixgrpc::ViewerController(*from._impl_.viewer_controller_);
   }
-  movie_idx_ = from.movie_idx_;
+  _this->_impl_.movie_idx_ = from._impl_.movie_idx_;
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.ViewerControllerROIListRequest)
 }
 
-void ViewerControllerROIListRequest::SharedCtor() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_ViewerControllerROIListRequest_viewercontroller_2eproto.base);
-  ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-      reinterpret_cast<char*>(&viewer_controller_) - reinterpret_cast<char*>(this)),
-      0, static_cast<size_t>(reinterpret_cast<char*>(&movie_idx_) -
-      reinterpret_cast<char*>(&viewer_controller_)) + sizeof(movie_idx_));
+inline void ViewerControllerROIListRequest::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.viewer_controller_){nullptr}
+    , decltype(_impl_.movie_idx_) { 0 }
+
+  };
 }
 
 ViewerControllerROIListRequest::~ViewerControllerROIListRequest() {
   // @@protoc_insertion_point(destructor:osirixgrpc.ViewerControllerROIListRequest)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-void ViewerControllerROIListRequest::SharedDtor() {
-  GOOGLE_DCHECK(GetArena() == nullptr);
-  if (this != internal_default_instance()) delete viewer_controller_;
+inline void ViewerControllerROIListRequest::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  if (this != internal_default_instance()) delete _impl_.viewer_controller_;
 }
 
-void ViewerControllerROIListRequest::ArenaDtor(void* object) {
-  ViewerControllerROIListRequest* _this = reinterpret_cast< ViewerControllerROIListRequest* >(object);
-  (void)_this;
-}
-void ViewerControllerROIListRequest::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void ViewerControllerROIListRequest::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
-const ViewerControllerROIListRequest& ViewerControllerROIListRequest::default_instance() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_ViewerControllerROIListRequest_viewercontroller_2eproto.base);
-  return *internal_default_instance();
-}
-
 
 void ViewerControllerROIListRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.ViewerControllerROIListRequest)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  if (GetArena() == nullptr && viewer_controller_ != nullptr) {
-    delete viewer_controller_;
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    ABSL_DCHECK(_impl_.viewer_controller_ != nullptr);
+    _impl_.viewer_controller_->Clear();
   }
-  viewer_controller_ = nullptr;
-  movie_idx_ = 0;
+  _impl_.movie_idx_ = 0;
+  _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* ViewerControllerROIListRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* ViewerControllerROIListRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
-    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-    CHK_(ptr);
+    ::uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // .osirixgrpc.ViewerController viewer_controller = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
           ptr = ctx->ParseMessage(_internal_mutable_viewer_controller(), ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
+        } else {
+          goto handle_unusual;
+        }
         continue;
       // int32 movie_idx = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
-          movie_idx_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 16)) {
+          _impl_.movie_idx_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
-        continue;
-      default: {
-      handle_unusual:
-        if ((tag & 7) == 4 || tag == 0) {
-          ctx->SetLastTag(tag);
-          goto success;
+        } else {
+          goto handle_unusual;
         }
-        ptr = UnknownFieldParse(tag,
-            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-            ptr, ctx);
-        CHK_(ptr != nullptr);
         continue;
-      }
+      default:
+        goto handle_unusual;
     }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
   }  // while
-success:
+message_done:
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
-  goto success;
+  goto message_done;
 #undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* ViewerControllerROIListRequest::_InternalSerialize(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+::uint8_t* ViewerControllerROIListRequest::_InternalSerialize(
+    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.ViewerControllerROIListRequest)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
+  cached_has_bits = _impl_._has_bits_[0];
   // .osirixgrpc.ViewerController viewer_controller = 1;
-  if (this->has_viewer_controller()) {
-    target = stream->EnsureSpace(target);
+  if (cached_has_bits & 0x00000001u) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::viewer_controller(this), target, stream);
+      InternalWriteMessage(1, _Internal::viewer_controller(this),
+        _Internal::viewer_controller(this).GetCachedSize(), target, stream);
   }
 
   // int32 movie_idx = 2;
-  if (this->movie_idx() != 0) {
+  if (this->_internal_movie_idx() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(2, this->_internal_movie_idx(), target);
+    target = ::_pbi::WireFormatLite::WriteInt32ToArray(
+        2, this->_internal_movie_idx(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.ViewerControllerROIListRequest)
   return target;
 }
 
-size_t ViewerControllerROIListRequest::ByteSizeLong() const {
+::size_t ViewerControllerROIListRequest::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:osirixgrpc.ViewerControllerROIListRequest)
-  size_t total_size = 0;
+  ::size_t total_size = 0;
 
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // .osirixgrpc.ViewerController viewer_controller = 1;
-  if (this->has_viewer_controller()) {
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *viewer_controller_);
+        *_impl_.viewer_controller_);
   }
 
   // int32 movie_idx = 2;
-  if (this->movie_idx() != 0) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+  if (this->_internal_movie_idx() != 0) {
+    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
         this->_internal_movie_idx());
   }
 
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
-        _internal_metadata_, total_size, &_cached_size_);
-  }
-  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-void ViewerControllerROIListRequest::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:osirixgrpc.ViewerControllerROIListRequest)
-  GOOGLE_DCHECK_NE(&from, this);
-  const ViewerControllerROIListRequest* source =
-      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<ViewerControllerROIListRequest>(
-          &from);
-  if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:osirixgrpc.ViewerControllerROIListRequest)
-    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:osirixgrpc.ViewerControllerROIListRequest)
-    MergeFrom(*source);
-  }
-}
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ViewerControllerROIListRequest::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    ViewerControllerROIListRequest::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ViewerControllerROIListRequest::GetClassData() const { return &_class_data_; }
 
-void ViewerControllerROIListRequest::MergeFrom(const ViewerControllerROIListRequest& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ViewerControllerROIListRequest)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+
+void ViewerControllerROIListRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<ViewerControllerROIListRequest*>(&to_msg);
+  auto& from = static_cast<const ViewerControllerROIListRequest&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ViewerControllerROIListRequest)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.has_viewer_controller()) {
-    _internal_mutable_viewer_controller()->::osirixgrpc::ViewerController::MergeFrom(from._internal_viewer_controller());
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_internal_mutable_viewer_controller()->::osirixgrpc::ViewerController::MergeFrom(
+        from._internal_viewer_controller());
   }
-  if (from.movie_idx() != 0) {
-    _internal_set_movie_idx(from._internal_movie_idx());
+  if (from._internal_movie_idx() != 0) {
+    _this->_internal_set_movie_idx(from._internal_movie_idx());
   }
-}
-
-void ViewerControllerROIListRequest::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:osirixgrpc.ViewerControllerROIListRequest)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void ViewerControllerROIListRequest::CopyFrom(const ViewerControllerROIListRequest& from) {
@@ -5868,20 +6018,21 @@ bool ViewerControllerROIListRequest::IsInitialized() const {
 
 void ViewerControllerROIListRequest::InternalSwap(ViewerControllerROIListRequest* other) {
   using std::swap;
-  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(ViewerControllerROIListRequest, movie_idx_)
-      + sizeof(ViewerControllerROIListRequest::movie_idx_)
-      - PROTOBUF_FIELD_OFFSET(ViewerControllerROIListRequest, viewer_controller_)>(
-          reinterpret_cast<char*>(&viewer_controller_),
-          reinterpret_cast<char*>(&other->viewer_controller_));
+      PROTOBUF_FIELD_OFFSET(ViewerControllerROIListRequest, _impl_.movie_idx_)
+      + sizeof(ViewerControllerROIListRequest::_impl_.movie_idx_)
+      - PROTOBUF_FIELD_OFFSET(ViewerControllerROIListRequest, _impl_.viewer_controller_)>(
+          reinterpret_cast<char*>(&_impl_.viewer_controller_),
+          reinterpret_cast<char*>(&other->_impl_.viewer_controller_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata ViewerControllerROIListRequest::GetMetadata() const {
-  return GetMetadataStatic();
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_viewercontroller_2eproto_getter, &descriptor_table_viewercontroller_2eproto_once,
+      file_level_metadata_viewercontroller_2eproto[18]);
 }
-
-
 // ===================================================================
 
 class ViewerControllerNewROIRequest_Buffer::_Internal {
@@ -5889,124 +6040,136 @@ class ViewerControllerNewROIRequest_Buffer::_Internal {
 };
 
 ViewerControllerNewROIRequest_Buffer::ViewerControllerNewROIRequest_Buffer(::PROTOBUF_NAMESPACE_ID::Arena* arena)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena),
-  buffer_(arena) {
-  SharedCtor();
-  RegisterArenaDtor(arena);
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
+  SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.ViewerControllerNewROIRequest.Buffer)
 }
 ViewerControllerNewROIRequest_Buffer::ViewerControllerNewROIRequest_Buffer(const ViewerControllerNewROIRequest_Buffer& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      buffer_(from.buffer_) {
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  ViewerControllerNewROIRequest_Buffer* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.buffer_) { from._impl_.buffer_ }
+
+    , decltype(_impl_.rows_) {}
+
+    , decltype(_impl_.columns_) {}
+
+    , /*decltype(_impl_._cached_size_)*/{}};
+
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  ::memcpy(&rows_, &from.rows_,
-    static_cast<size_t>(reinterpret_cast<char*>(&columns_) -
-    reinterpret_cast<char*>(&rows_)) + sizeof(columns_));
+  ::memcpy(&_impl_.rows_, &from._impl_.rows_,
+    static_cast<::size_t>(reinterpret_cast<char*>(&_impl_.columns_) -
+    reinterpret_cast<char*>(&_impl_.rows_)) + sizeof(_impl_.columns_));
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.ViewerControllerNewROIRequest.Buffer)
 }
 
-void ViewerControllerNewROIRequest_Buffer::SharedCtor() {
-  ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-      reinterpret_cast<char*>(&rows_) - reinterpret_cast<char*>(this)),
-      0, static_cast<size_t>(reinterpret_cast<char*>(&columns_) -
-      reinterpret_cast<char*>(&rows_)) + sizeof(columns_));
+inline void ViewerControllerNewROIRequest_Buffer::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_.buffer_) { arena }
+
+    , decltype(_impl_.rows_) { 0 }
+
+    , decltype(_impl_.columns_) { 0 }
+
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
 }
 
 ViewerControllerNewROIRequest_Buffer::~ViewerControllerNewROIRequest_Buffer() {
   // @@protoc_insertion_point(destructor:osirixgrpc.ViewerControllerNewROIRequest.Buffer)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-void ViewerControllerNewROIRequest_Buffer::SharedDtor() {
-  GOOGLE_DCHECK(GetArena() == nullptr);
+inline void ViewerControllerNewROIRequest_Buffer::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.buffer_.~RepeatedField();
 }
 
-void ViewerControllerNewROIRequest_Buffer::ArenaDtor(void* object) {
-  ViewerControllerNewROIRequest_Buffer* _this = reinterpret_cast< ViewerControllerNewROIRequest_Buffer* >(object);
-  (void)_this;
-}
-void ViewerControllerNewROIRequest_Buffer::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void ViewerControllerNewROIRequest_Buffer::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
-const ViewerControllerNewROIRequest_Buffer& ViewerControllerNewROIRequest_Buffer::default_instance() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_ViewerControllerNewROIRequest_Buffer_viewercontroller_2eproto.base);
-  return *internal_default_instance();
-}
-
 
 void ViewerControllerNewROIRequest_Buffer::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.ViewerControllerNewROIRequest.Buffer)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  buffer_.Clear();
-  ::memset(&rows_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&columns_) -
-      reinterpret_cast<char*>(&rows_)) + sizeof(columns_));
+  _internal_mutable_buffer()->Clear();
+  ::memset(&_impl_.rows_, 0, static_cast<::size_t>(
+      reinterpret_cast<char*>(&_impl_.columns_) -
+      reinterpret_cast<char*>(&_impl_.rows_)) + sizeof(_impl_.columns_));
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* ViewerControllerNewROIRequest_Buffer::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* ViewerControllerNewROIRequest_Buffer::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
-    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-    CHK_(ptr);
+    ::uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // repeated bool buffer = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
           ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedBoolParser(_internal_mutable_buffer(), ptr, ctx);
           CHK_(ptr);
-        } else if (static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8) {
+        } else if (static_cast<::uint8_t>(tag) == 8) {
           _internal_add_buffer(::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr));
           CHK_(ptr);
-        } else goto handle_unusual;
+        } else {
+          goto handle_unusual;
+        }
         continue;
       // int32 rows = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
-          rows_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 16)) {
+          _impl_.rows_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
+        } else {
+          goto handle_unusual;
+        }
         continue;
       // int32 columns = 3;
       case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 24)) {
-          columns_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 24)) {
+          _impl_.columns_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
-        continue;
-      default: {
-      handle_unusual:
-        if ((tag & 7) == 4 || tag == 0) {
-          ctx->SetLastTag(tag);
-          goto success;
+        } else {
+          goto handle_unusual;
         }
-        ptr = UnknownFieldParse(tag,
-            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-            ptr, ctx);
-        CHK_(ptr != nullptr);
         continue;
-      }
+      default:
+        goto handle_unusual;
     }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
   }  // while
-success:
+message_done:
   return ptr;
 failure:
   ptr = nullptr;
-  goto success;
+  goto message_done;
 #undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* ViewerControllerNewROIRequest_Buffer::_InternalSerialize(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+::uint8_t* ViewerControllerNewROIRequest_Buffer::_InternalSerialize(
+    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.ViewerControllerNewROIRequest.Buffer)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
   // repeated bool buffer = 1;
@@ -6015,107 +6178,86 @@ failure:
   }
 
   // int32 rows = 2;
-  if (this->rows() != 0) {
+  if (this->_internal_rows() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(2, this->_internal_rows(), target);
+    target = ::_pbi::WireFormatLite::WriteInt32ToArray(
+        2, this->_internal_rows(), target);
   }
 
   // int32 columns = 3;
-  if (this->columns() != 0) {
+  if (this->_internal_columns() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(3, this->_internal_columns(), target);
+    target = ::_pbi::WireFormatLite::WriteInt32ToArray(
+        3, this->_internal_columns(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.ViewerControllerNewROIRequest.Buffer)
   return target;
 }
 
-size_t ViewerControllerNewROIRequest_Buffer::ByteSizeLong() const {
+::size_t ViewerControllerNewROIRequest_Buffer::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:osirixgrpc.ViewerControllerNewROIRequest.Buffer)
-  size_t total_size = 0;
+  ::size_t total_size = 0;
 
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // repeated bool buffer = 1;
   {
-    unsigned int count = static_cast<unsigned int>(this->_internal_buffer_size());
-    size_t data_size = 1UL * count;
-    if (data_size > 0) {
-      total_size += 1 +
-        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
-            static_cast<::PROTOBUF_NAMESPACE_ID::int32>(data_size));
-    }
-    int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(data_size);
-    _buffer_cached_byte_size_.store(cached_size,
-                                    std::memory_order_relaxed);
-    total_size += data_size;
+    std::size_t data_size = std::size_t{1} *
+        ::_pbi::FromIntSize(this->_internal_buffer_size())
+    ;
+    std::size_t tag_size = data_size == 0
+        ? 0
+        : 1 + ::_pbi::WireFormatLite::Int32Size(
+                            static_cast<int32_t>(data_size))
+    ;
+    total_size += tag_size + data_size;
   }
 
   // int32 rows = 2;
-  if (this->rows() != 0) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+  if (this->_internal_rows() != 0) {
+    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
         this->_internal_rows());
   }
 
   // int32 columns = 3;
-  if (this->columns() != 0) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+  if (this->_internal_columns() != 0) {
+    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
         this->_internal_columns());
   }
 
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
-        _internal_metadata_, total_size, &_cached_size_);
-  }
-  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-void ViewerControllerNewROIRequest_Buffer::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:osirixgrpc.ViewerControllerNewROIRequest.Buffer)
-  GOOGLE_DCHECK_NE(&from, this);
-  const ViewerControllerNewROIRequest_Buffer* source =
-      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<ViewerControllerNewROIRequest_Buffer>(
-          &from);
-  if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:osirixgrpc.ViewerControllerNewROIRequest.Buffer)
-    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:osirixgrpc.ViewerControllerNewROIRequest.Buffer)
-    MergeFrom(*source);
-  }
-}
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ViewerControllerNewROIRequest_Buffer::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    ViewerControllerNewROIRequest_Buffer::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ViewerControllerNewROIRequest_Buffer::GetClassData() const { return &_class_data_; }
 
-void ViewerControllerNewROIRequest_Buffer::MergeFrom(const ViewerControllerNewROIRequest_Buffer& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ViewerControllerNewROIRequest.Buffer)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+
+void ViewerControllerNewROIRequest_Buffer::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<ViewerControllerNewROIRequest_Buffer*>(&to_msg);
+  auto& from = static_cast<const ViewerControllerNewROIRequest_Buffer&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ViewerControllerNewROIRequest.Buffer)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  buffer_.MergeFrom(from.buffer_);
-  if (from.rows() != 0) {
-    _internal_set_rows(from._internal_rows());
+  _this->_impl_.buffer_.MergeFrom(from._impl_.buffer_);
+  if (from._internal_rows() != 0) {
+    _this->_internal_set_rows(from._internal_rows());
   }
-  if (from.columns() != 0) {
-    _internal_set_columns(from._internal_columns());
+  if (from._internal_columns() != 0) {
+    _this->_internal_set_columns(from._internal_columns());
   }
-}
-
-void ViewerControllerNewROIRequest_Buffer::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:osirixgrpc.ViewerControllerNewROIRequest.Buffer)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void ViewerControllerNewROIRequest_Buffer::CopyFrom(const ViewerControllerNewROIRequest_Buffer& from) {
@@ -6131,21 +6273,21 @@ bool ViewerControllerNewROIRequest_Buffer::IsInitialized() const {
 
 void ViewerControllerNewROIRequest_Buffer::InternalSwap(ViewerControllerNewROIRequest_Buffer* other) {
   using std::swap;
-  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
-  buffer_.InternalSwap(&other->buffer_);
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  _impl_.buffer_.InternalSwap(&other->_impl_.buffer_);
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(ViewerControllerNewROIRequest_Buffer, columns_)
-      + sizeof(ViewerControllerNewROIRequest_Buffer::columns_)
-      - PROTOBUF_FIELD_OFFSET(ViewerControllerNewROIRequest_Buffer, rows_)>(
-          reinterpret_cast<char*>(&rows_),
-          reinterpret_cast<char*>(&other->rows_));
+      PROTOBUF_FIELD_OFFSET(ViewerControllerNewROIRequest_Buffer, _impl_.columns_)
+      + sizeof(ViewerControllerNewROIRequest_Buffer::_impl_.columns_)
+      - PROTOBUF_FIELD_OFFSET(ViewerControllerNewROIRequest_Buffer, _impl_.rows_)>(
+          reinterpret_cast<char*>(&_impl_.rows_),
+          reinterpret_cast<char*>(&other->_impl_.rows_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata ViewerControllerNewROIRequest_Buffer::GetMetadata() const {
-  return GetMetadataStatic();
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_viewercontroller_2eproto_getter, &descriptor_table_viewercontroller_2eproto_once,
+      file_level_metadata_viewercontroller_2eproto[19]);
 }
-
-
 // ===================================================================
 
 class ViewerControllerNewROIRequest_Point2D::_Internal {
@@ -6154,194 +6296,198 @@ class ViewerControllerNewROIRequest_Point2D::_Internal {
 
 ViewerControllerNewROIRequest_Point2D::ViewerControllerNewROIRequest_Point2D(::PROTOBUF_NAMESPACE_ID::Arena* arena)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
-  SharedCtor();
-  RegisterArenaDtor(arena);
+  SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.ViewerControllerNewROIRequest.Point2D)
 }
 ViewerControllerNewROIRequest_Point2D::ViewerControllerNewROIRequest_Point2D(const ViewerControllerNewROIRequest_Point2D& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message() {
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  ::memcpy(&x_, &from.x_,
-    static_cast<size_t>(reinterpret_cast<char*>(&y_) -
-    reinterpret_cast<char*>(&x_)) + sizeof(y_));
+  : ::PROTOBUF_NAMESPACE_ID::Message(), _impl_(from._impl_) {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(
+      from._internal_metadata_);
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.ViewerControllerNewROIRequest.Point2D)
 }
 
-void ViewerControllerNewROIRequest_Point2D::SharedCtor() {
-  ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-      reinterpret_cast<char*>(&x_) - reinterpret_cast<char*>(this)),
-      0, static_cast<size_t>(reinterpret_cast<char*>(&y_) -
-      reinterpret_cast<char*>(&x_)) + sizeof(y_));
+inline void ViewerControllerNewROIRequest_Point2D::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_.x_) { 0 }
+
+    , decltype(_impl_.y_) { 0 }
+
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
 }
 
 ViewerControllerNewROIRequest_Point2D::~ViewerControllerNewROIRequest_Point2D() {
   // @@protoc_insertion_point(destructor:osirixgrpc.ViewerControllerNewROIRequest.Point2D)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-void ViewerControllerNewROIRequest_Point2D::SharedDtor() {
-  GOOGLE_DCHECK(GetArena() == nullptr);
+inline void ViewerControllerNewROIRequest_Point2D::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
 }
 
-void ViewerControllerNewROIRequest_Point2D::ArenaDtor(void* object) {
-  ViewerControllerNewROIRequest_Point2D* _this = reinterpret_cast< ViewerControllerNewROIRequest_Point2D* >(object);
-  (void)_this;
-}
-void ViewerControllerNewROIRequest_Point2D::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void ViewerControllerNewROIRequest_Point2D::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
-const ViewerControllerNewROIRequest_Point2D& ViewerControllerNewROIRequest_Point2D::default_instance() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_ViewerControllerNewROIRequest_Point2D_viewercontroller_2eproto.base);
-  return *internal_default_instance();
-}
-
 
 void ViewerControllerNewROIRequest_Point2D::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.ViewerControllerNewROIRequest.Point2D)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  ::memset(&x_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&y_) -
-      reinterpret_cast<char*>(&x_)) + sizeof(y_));
+  ::memset(&_impl_.x_, 0, static_cast<::size_t>(
+      reinterpret_cast<char*>(&_impl_.y_) -
+      reinterpret_cast<char*>(&_impl_.x_)) + sizeof(_impl_.y_));
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* ViewerControllerNewROIRequest_Point2D::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* ViewerControllerNewROIRequest_Point2D::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
-    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-    CHK_(ptr);
+    ::uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // float x = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 13)) {
-          x_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 13)) {
+          _impl_.x_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
           ptr += sizeof(float);
-        } else goto handle_unusual;
+        } else {
+          goto handle_unusual;
+        }
         continue;
       // float y = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 21)) {
-          y_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 21)) {
+          _impl_.y_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
           ptr += sizeof(float);
-        } else goto handle_unusual;
-        continue;
-      default: {
-      handle_unusual:
-        if ((tag & 7) == 4 || tag == 0) {
-          ctx->SetLastTag(tag);
-          goto success;
+        } else {
+          goto handle_unusual;
         }
-        ptr = UnknownFieldParse(tag,
-            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-            ptr, ctx);
-        CHK_(ptr != nullptr);
         continue;
-      }
+      default:
+        goto handle_unusual;
     }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
   }  // while
-success:
+message_done:
   return ptr;
 failure:
   ptr = nullptr;
-  goto success;
+  goto message_done;
 #undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* ViewerControllerNewROIRequest_Point2D::_InternalSerialize(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+::uint8_t* ViewerControllerNewROIRequest_Point2D::_InternalSerialize(
+    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.ViewerControllerNewROIRequest.Point2D)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
   // float x = 1;
-  if (!(this->x() <= 0 && this->x() >= 0)) {
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  float tmp_x = this->_internal_x();
+  ::uint32_t raw_x;
+  memcpy(&raw_x, &tmp_x, sizeof(tmp_x));
+  if (raw_x != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(1, this->_internal_x(), target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(
+        1, this->_internal_x(), target);
   }
 
   // float y = 2;
-  if (!(this->y() <= 0 && this->y() >= 0)) {
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  float tmp_y = this->_internal_y();
+  ::uint32_t raw_y;
+  memcpy(&raw_y, &tmp_y, sizeof(tmp_y));
+  if (raw_y != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(2, this->_internal_y(), target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(
+        2, this->_internal_y(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.ViewerControllerNewROIRequest.Point2D)
   return target;
 }
 
-size_t ViewerControllerNewROIRequest_Point2D::ByteSizeLong() const {
+::size_t ViewerControllerNewROIRequest_Point2D::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:osirixgrpc.ViewerControllerNewROIRequest.Point2D)
-  size_t total_size = 0;
+  ::size_t total_size = 0;
 
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // float x = 1;
-  if (!(this->x() <= 0 && this->x() >= 0)) {
-    total_size += 1 + 4;
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  float tmp_x = this->_internal_x();
+  ::uint32_t raw_x;
+  memcpy(&raw_x, &tmp_x, sizeof(tmp_x));
+  if (raw_x != 0) {
+    total_size += 5;
   }
 
   // float y = 2;
-  if (!(this->y() <= 0 && this->y() >= 0)) {
-    total_size += 1 + 4;
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  float tmp_y = this->_internal_y();
+  ::uint32_t raw_y;
+  memcpy(&raw_y, &tmp_y, sizeof(tmp_y));
+  if (raw_y != 0) {
+    total_size += 5;
   }
 
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
-        _internal_metadata_, total_size, &_cached_size_);
-  }
-  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-void ViewerControllerNewROIRequest_Point2D::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:osirixgrpc.ViewerControllerNewROIRequest.Point2D)
-  GOOGLE_DCHECK_NE(&from, this);
-  const ViewerControllerNewROIRequest_Point2D* source =
-      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<ViewerControllerNewROIRequest_Point2D>(
-          &from);
-  if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:osirixgrpc.ViewerControllerNewROIRequest.Point2D)
-    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:osirixgrpc.ViewerControllerNewROIRequest.Point2D)
-    MergeFrom(*source);
-  }
-}
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ViewerControllerNewROIRequest_Point2D::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    ViewerControllerNewROIRequest_Point2D::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ViewerControllerNewROIRequest_Point2D::GetClassData() const { return &_class_data_; }
 
-void ViewerControllerNewROIRequest_Point2D::MergeFrom(const ViewerControllerNewROIRequest_Point2D& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ViewerControllerNewROIRequest.Point2D)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+
+void ViewerControllerNewROIRequest_Point2D::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<ViewerControllerNewROIRequest_Point2D*>(&to_msg);
+  auto& from = static_cast<const ViewerControllerNewROIRequest_Point2D&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ViewerControllerNewROIRequest.Point2D)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (!(from.x() <= 0 && from.x() >= 0)) {
-    _internal_set_x(from._internal_x());
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  float tmp_x = from._internal_x();
+  ::uint32_t raw_x;
+  memcpy(&raw_x, &tmp_x, sizeof(tmp_x));
+  if (raw_x != 0) {
+    _this->_internal_set_x(from._internal_x());
   }
-  if (!(from.y() <= 0 && from.y() >= 0)) {
-    _internal_set_y(from._internal_y());
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  float tmp_y = from._internal_y();
+  ::uint32_t raw_y;
+  memcpy(&raw_y, &tmp_y, sizeof(tmp_y));
+  if (raw_y != 0) {
+    _this->_internal_set_y(from._internal_y());
   }
-}
-
-void ViewerControllerNewROIRequest_Point2D::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:osirixgrpc.ViewerControllerNewROIRequest.Point2D)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void ViewerControllerNewROIRequest_Point2D::CopyFrom(const ViewerControllerNewROIRequest_Point2D& from) {
@@ -6357,20 +6503,20 @@ bool ViewerControllerNewROIRequest_Point2D::IsInitialized() const {
 
 void ViewerControllerNewROIRequest_Point2D::InternalSwap(ViewerControllerNewROIRequest_Point2D* other) {
   using std::swap;
-  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(ViewerControllerNewROIRequest_Point2D, y_)
-      + sizeof(ViewerControllerNewROIRequest_Point2D::y_)
-      - PROTOBUF_FIELD_OFFSET(ViewerControllerNewROIRequest_Point2D, x_)>(
-          reinterpret_cast<char*>(&x_),
-          reinterpret_cast<char*>(&other->x_));
+      PROTOBUF_FIELD_OFFSET(ViewerControllerNewROIRequest_Point2D, _impl_.y_)
+      + sizeof(ViewerControllerNewROIRequest_Point2D::_impl_.y_)
+      - PROTOBUF_FIELD_OFFSET(ViewerControllerNewROIRequest_Point2D, _impl_.x_)>(
+          reinterpret_cast<char*>(&_impl_.x_),
+          reinterpret_cast<char*>(&other->_impl_.x_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata ViewerControllerNewROIRequest_Point2D::GetMetadata() const {
-  return GetMetadataStatic();
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_viewercontroller_2eproto_getter, &descriptor_table_viewercontroller_2eproto_once,
+      file_level_metadata_viewercontroller_2eproto[20]);
 }
-
-
 // ===================================================================
 
 class ViewerControllerNewROIRequest_Color::_Internal {
@@ -6379,221 +6525,203 @@ class ViewerControllerNewROIRequest_Color::_Internal {
 
 ViewerControllerNewROIRequest_Color::ViewerControllerNewROIRequest_Color(::PROTOBUF_NAMESPACE_ID::Arena* arena)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
-  SharedCtor();
-  RegisterArenaDtor(arena);
+  SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.ViewerControllerNewROIRequest.Color)
 }
 ViewerControllerNewROIRequest_Color::ViewerControllerNewROIRequest_Color(const ViewerControllerNewROIRequest_Color& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message() {
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  ::memcpy(&r_, &from.r_,
-    static_cast<size_t>(reinterpret_cast<char*>(&b_) -
-    reinterpret_cast<char*>(&r_)) + sizeof(b_));
+  : ::PROTOBUF_NAMESPACE_ID::Message(), _impl_(from._impl_) {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(
+      from._internal_metadata_);
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.ViewerControllerNewROIRequest.Color)
 }
 
-void ViewerControllerNewROIRequest_Color::SharedCtor() {
-  ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-      reinterpret_cast<char*>(&r_) - reinterpret_cast<char*>(this)),
-      0, static_cast<size_t>(reinterpret_cast<char*>(&b_) -
-      reinterpret_cast<char*>(&r_)) + sizeof(b_));
+inline void ViewerControllerNewROIRequest_Color::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_.r_) { 0 }
+
+    , decltype(_impl_.g_) { 0 }
+
+    , decltype(_impl_.b_) { 0 }
+
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
 }
 
 ViewerControllerNewROIRequest_Color::~ViewerControllerNewROIRequest_Color() {
   // @@protoc_insertion_point(destructor:osirixgrpc.ViewerControllerNewROIRequest.Color)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-void ViewerControllerNewROIRequest_Color::SharedDtor() {
-  GOOGLE_DCHECK(GetArena() == nullptr);
+inline void ViewerControllerNewROIRequest_Color::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
 }
 
-void ViewerControllerNewROIRequest_Color::ArenaDtor(void* object) {
-  ViewerControllerNewROIRequest_Color* _this = reinterpret_cast< ViewerControllerNewROIRequest_Color* >(object);
-  (void)_this;
-}
-void ViewerControllerNewROIRequest_Color::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void ViewerControllerNewROIRequest_Color::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
-const ViewerControllerNewROIRequest_Color& ViewerControllerNewROIRequest_Color::default_instance() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_ViewerControllerNewROIRequest_Color_viewercontroller_2eproto.base);
-  return *internal_default_instance();
-}
-
 
 void ViewerControllerNewROIRequest_Color::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.ViewerControllerNewROIRequest.Color)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  ::memset(&r_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&b_) -
-      reinterpret_cast<char*>(&r_)) + sizeof(b_));
+  ::memset(&_impl_.r_, 0, static_cast<::size_t>(
+      reinterpret_cast<char*>(&_impl_.b_) -
+      reinterpret_cast<char*>(&_impl_.r_)) + sizeof(_impl_.b_));
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* ViewerControllerNewROIRequest_Color::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* ViewerControllerNewROIRequest_Color::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
-    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-    CHK_(ptr);
+    ::uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // int32 r = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
-          r_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 8)) {
+          _impl_.r_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
+        } else {
+          goto handle_unusual;
+        }
         continue;
       // int32 g = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
-          g_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 16)) {
+          _impl_.g_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
+        } else {
+          goto handle_unusual;
+        }
         continue;
       // int32 b = 3;
       case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 24)) {
-          b_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 24)) {
+          _impl_.b_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
-        continue;
-      default: {
-      handle_unusual:
-        if ((tag & 7) == 4 || tag == 0) {
-          ctx->SetLastTag(tag);
-          goto success;
+        } else {
+          goto handle_unusual;
         }
-        ptr = UnknownFieldParse(tag,
-            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-            ptr, ctx);
-        CHK_(ptr != nullptr);
         continue;
-      }
+      default:
+        goto handle_unusual;
     }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
   }  // while
-success:
+message_done:
   return ptr;
 failure:
   ptr = nullptr;
-  goto success;
+  goto message_done;
 #undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* ViewerControllerNewROIRequest_Color::_InternalSerialize(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+::uint8_t* ViewerControllerNewROIRequest_Color::_InternalSerialize(
+    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.ViewerControllerNewROIRequest.Color)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
   // int32 r = 1;
-  if (this->r() != 0) {
+  if (this->_internal_r() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(1, this->_internal_r(), target);
+    target = ::_pbi::WireFormatLite::WriteInt32ToArray(
+        1, this->_internal_r(), target);
   }
 
   // int32 g = 2;
-  if (this->g() != 0) {
+  if (this->_internal_g() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(2, this->_internal_g(), target);
+    target = ::_pbi::WireFormatLite::WriteInt32ToArray(
+        2, this->_internal_g(), target);
   }
 
   // int32 b = 3;
-  if (this->b() != 0) {
+  if (this->_internal_b() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(3, this->_internal_b(), target);
+    target = ::_pbi::WireFormatLite::WriteInt32ToArray(
+        3, this->_internal_b(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.ViewerControllerNewROIRequest.Color)
   return target;
 }
 
-size_t ViewerControllerNewROIRequest_Color::ByteSizeLong() const {
+::size_t ViewerControllerNewROIRequest_Color::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:osirixgrpc.ViewerControllerNewROIRequest.Color)
-  size_t total_size = 0;
+  ::size_t total_size = 0;
 
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // int32 r = 1;
-  if (this->r() != 0) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+  if (this->_internal_r() != 0) {
+    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
         this->_internal_r());
   }
 
   // int32 g = 2;
-  if (this->g() != 0) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+  if (this->_internal_g() != 0) {
+    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
         this->_internal_g());
   }
 
   // int32 b = 3;
-  if (this->b() != 0) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+  if (this->_internal_b() != 0) {
+    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
         this->_internal_b());
   }
 
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
-        _internal_metadata_, total_size, &_cached_size_);
-  }
-  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-void ViewerControllerNewROIRequest_Color::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:osirixgrpc.ViewerControllerNewROIRequest.Color)
-  GOOGLE_DCHECK_NE(&from, this);
-  const ViewerControllerNewROIRequest_Color* source =
-      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<ViewerControllerNewROIRequest_Color>(
-          &from);
-  if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:osirixgrpc.ViewerControllerNewROIRequest.Color)
-    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:osirixgrpc.ViewerControllerNewROIRequest.Color)
-    MergeFrom(*source);
-  }
-}
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ViewerControllerNewROIRequest_Color::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    ViewerControllerNewROIRequest_Color::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ViewerControllerNewROIRequest_Color::GetClassData() const { return &_class_data_; }
 
-void ViewerControllerNewROIRequest_Color::MergeFrom(const ViewerControllerNewROIRequest_Color& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ViewerControllerNewROIRequest.Color)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+
+void ViewerControllerNewROIRequest_Color::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<ViewerControllerNewROIRequest_Color*>(&to_msg);
+  auto& from = static_cast<const ViewerControllerNewROIRequest_Color&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ViewerControllerNewROIRequest.Color)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.r() != 0) {
-    _internal_set_r(from._internal_r());
+  if (from._internal_r() != 0) {
+    _this->_internal_set_r(from._internal_r());
   }
-  if (from.g() != 0) {
-    _internal_set_g(from._internal_g());
+  if (from._internal_g() != 0) {
+    _this->_internal_set_g(from._internal_g());
   }
-  if (from.b() != 0) {
-    _internal_set_b(from._internal_b());
+  if (from._internal_b() != 0) {
+    _this->_internal_set_b(from._internal_b());
   }
-}
-
-void ViewerControllerNewROIRequest_Color::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:osirixgrpc.ViewerControllerNewROIRequest.Color)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void ViewerControllerNewROIRequest_Color::CopyFrom(const ViewerControllerNewROIRequest_Color& from) {
@@ -6609,20 +6737,20 @@ bool ViewerControllerNewROIRequest_Color::IsInitialized() const {
 
 void ViewerControllerNewROIRequest_Color::InternalSwap(ViewerControllerNewROIRequest_Color* other) {
   using std::swap;
-  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(ViewerControllerNewROIRequest_Color, b_)
-      + sizeof(ViewerControllerNewROIRequest_Color::b_)
-      - PROTOBUF_FIELD_OFFSET(ViewerControllerNewROIRequest_Color, r_)>(
-          reinterpret_cast<char*>(&r_),
-          reinterpret_cast<char*>(&other->r_));
+      PROTOBUF_FIELD_OFFSET(ViewerControllerNewROIRequest_Color, _impl_.b_)
+      + sizeof(ViewerControllerNewROIRequest_Color::_impl_.b_)
+      - PROTOBUF_FIELD_OFFSET(ViewerControllerNewROIRequest_Color, _impl_.r_)>(
+          reinterpret_cast<char*>(&_impl_.r_),
+          reinterpret_cast<char*>(&other->_impl_.r_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata ViewerControllerNewROIRequest_Color::GetMetadata() const {
-  return GetMetadataStatic();
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_viewercontroller_2eproto_getter, &descriptor_table_viewercontroller_2eproto_once,
+      file_level_metadata_viewercontroller_2eproto[21]);
 }
-
-
 // ===================================================================
 
 class ViewerControllerNewROIRequest_Rect::_Internal {
@@ -6631,236 +6759,274 @@ class ViewerControllerNewROIRequest_Rect::_Internal {
 
 ViewerControllerNewROIRequest_Rect::ViewerControllerNewROIRequest_Rect(::PROTOBUF_NAMESPACE_ID::Arena* arena)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
-  SharedCtor();
-  RegisterArenaDtor(arena);
+  SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.ViewerControllerNewROIRequest.Rect)
 }
 ViewerControllerNewROIRequest_Rect::ViewerControllerNewROIRequest_Rect(const ViewerControllerNewROIRequest_Rect& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message() {
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  ::memcpy(&origin_x_, &from.origin_x_,
-    static_cast<size_t>(reinterpret_cast<char*>(&width_) -
-    reinterpret_cast<char*>(&origin_x_)) + sizeof(width_));
+  : ::PROTOBUF_NAMESPACE_ID::Message(), _impl_(from._impl_) {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(
+      from._internal_metadata_);
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.ViewerControllerNewROIRequest.Rect)
 }
 
-void ViewerControllerNewROIRequest_Rect::SharedCtor() {
-  ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-      reinterpret_cast<char*>(&origin_x_) - reinterpret_cast<char*>(this)),
-      0, static_cast<size_t>(reinterpret_cast<char*>(&width_) -
-      reinterpret_cast<char*>(&origin_x_)) + sizeof(width_));
+inline void ViewerControllerNewROIRequest_Rect::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_.origin_x_) { 0 }
+
+    , decltype(_impl_.origin_y_) { 0 }
+
+    , decltype(_impl_.height_) { 0 }
+
+    , decltype(_impl_.width_) { 0 }
+
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
 }
 
 ViewerControllerNewROIRequest_Rect::~ViewerControllerNewROIRequest_Rect() {
   // @@protoc_insertion_point(destructor:osirixgrpc.ViewerControllerNewROIRequest.Rect)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-void ViewerControllerNewROIRequest_Rect::SharedDtor() {
-  GOOGLE_DCHECK(GetArena() == nullptr);
+inline void ViewerControllerNewROIRequest_Rect::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
 }
 
-void ViewerControllerNewROIRequest_Rect::ArenaDtor(void* object) {
-  ViewerControllerNewROIRequest_Rect* _this = reinterpret_cast< ViewerControllerNewROIRequest_Rect* >(object);
-  (void)_this;
-}
-void ViewerControllerNewROIRequest_Rect::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void ViewerControllerNewROIRequest_Rect::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
-const ViewerControllerNewROIRequest_Rect& ViewerControllerNewROIRequest_Rect::default_instance() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_ViewerControllerNewROIRequest_Rect_viewercontroller_2eproto.base);
-  return *internal_default_instance();
-}
-
 
 void ViewerControllerNewROIRequest_Rect::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.ViewerControllerNewROIRequest.Rect)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  ::memset(&origin_x_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&width_) -
-      reinterpret_cast<char*>(&origin_x_)) + sizeof(width_));
+  ::memset(&_impl_.origin_x_, 0, static_cast<::size_t>(
+      reinterpret_cast<char*>(&_impl_.width_) -
+      reinterpret_cast<char*>(&_impl_.origin_x_)) + sizeof(_impl_.width_));
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* ViewerControllerNewROIRequest_Rect::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* ViewerControllerNewROIRequest_Rect::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
-    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-    CHK_(ptr);
+    ::uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // float origin_x = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 13)) {
-          origin_x_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 13)) {
+          _impl_.origin_x_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
           ptr += sizeof(float);
-        } else goto handle_unusual;
+        } else {
+          goto handle_unusual;
+        }
         continue;
       // float origin_y = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 21)) {
-          origin_y_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 21)) {
+          _impl_.origin_y_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
           ptr += sizeof(float);
-        } else goto handle_unusual;
+        } else {
+          goto handle_unusual;
+        }
         continue;
       // float height = 3;
       case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 29)) {
-          height_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 29)) {
+          _impl_.height_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
           ptr += sizeof(float);
-        } else goto handle_unusual;
+        } else {
+          goto handle_unusual;
+        }
         continue;
       // float width = 4;
       case 4:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 37)) {
-          width_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 37)) {
+          _impl_.width_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
           ptr += sizeof(float);
-        } else goto handle_unusual;
-        continue;
-      default: {
-      handle_unusual:
-        if ((tag & 7) == 4 || tag == 0) {
-          ctx->SetLastTag(tag);
-          goto success;
+        } else {
+          goto handle_unusual;
         }
-        ptr = UnknownFieldParse(tag,
-            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-            ptr, ctx);
-        CHK_(ptr != nullptr);
         continue;
-      }
+      default:
+        goto handle_unusual;
     }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
   }  // while
-success:
+message_done:
   return ptr;
 failure:
   ptr = nullptr;
-  goto success;
+  goto message_done;
 #undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* ViewerControllerNewROIRequest_Rect::_InternalSerialize(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+::uint8_t* ViewerControllerNewROIRequest_Rect::_InternalSerialize(
+    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.ViewerControllerNewROIRequest.Rect)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
   // float origin_x = 1;
-  if (!(this->origin_x() <= 0 && this->origin_x() >= 0)) {
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  float tmp_origin_x = this->_internal_origin_x();
+  ::uint32_t raw_origin_x;
+  memcpy(&raw_origin_x, &tmp_origin_x, sizeof(tmp_origin_x));
+  if (raw_origin_x != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(1, this->_internal_origin_x(), target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(
+        1, this->_internal_origin_x(), target);
   }
 
   // float origin_y = 2;
-  if (!(this->origin_y() <= 0 && this->origin_y() >= 0)) {
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  float tmp_origin_y = this->_internal_origin_y();
+  ::uint32_t raw_origin_y;
+  memcpy(&raw_origin_y, &tmp_origin_y, sizeof(tmp_origin_y));
+  if (raw_origin_y != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(2, this->_internal_origin_y(), target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(
+        2, this->_internal_origin_y(), target);
   }
 
   // float height = 3;
-  if (!(this->height() <= 0 && this->height() >= 0)) {
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  float tmp_height = this->_internal_height();
+  ::uint32_t raw_height;
+  memcpy(&raw_height, &tmp_height, sizeof(tmp_height));
+  if (raw_height != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(3, this->_internal_height(), target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(
+        3, this->_internal_height(), target);
   }
 
   // float width = 4;
-  if (!(this->width() <= 0 && this->width() >= 0)) {
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  float tmp_width = this->_internal_width();
+  ::uint32_t raw_width;
+  memcpy(&raw_width, &tmp_width, sizeof(tmp_width));
+  if (raw_width != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(4, this->_internal_width(), target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(
+        4, this->_internal_width(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.ViewerControllerNewROIRequest.Rect)
   return target;
 }
 
-size_t ViewerControllerNewROIRequest_Rect::ByteSizeLong() const {
+::size_t ViewerControllerNewROIRequest_Rect::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:osirixgrpc.ViewerControllerNewROIRequest.Rect)
-  size_t total_size = 0;
+  ::size_t total_size = 0;
 
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // float origin_x = 1;
-  if (!(this->origin_x() <= 0 && this->origin_x() >= 0)) {
-    total_size += 1 + 4;
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  float tmp_origin_x = this->_internal_origin_x();
+  ::uint32_t raw_origin_x;
+  memcpy(&raw_origin_x, &tmp_origin_x, sizeof(tmp_origin_x));
+  if (raw_origin_x != 0) {
+    total_size += 5;
   }
 
   // float origin_y = 2;
-  if (!(this->origin_y() <= 0 && this->origin_y() >= 0)) {
-    total_size += 1 + 4;
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  float tmp_origin_y = this->_internal_origin_y();
+  ::uint32_t raw_origin_y;
+  memcpy(&raw_origin_y, &tmp_origin_y, sizeof(tmp_origin_y));
+  if (raw_origin_y != 0) {
+    total_size += 5;
   }
 
   // float height = 3;
-  if (!(this->height() <= 0 && this->height() >= 0)) {
-    total_size += 1 + 4;
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  float tmp_height = this->_internal_height();
+  ::uint32_t raw_height;
+  memcpy(&raw_height, &tmp_height, sizeof(tmp_height));
+  if (raw_height != 0) {
+    total_size += 5;
   }
 
   // float width = 4;
-  if (!(this->width() <= 0 && this->width() >= 0)) {
-    total_size += 1 + 4;
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  float tmp_width = this->_internal_width();
+  ::uint32_t raw_width;
+  memcpy(&raw_width, &tmp_width, sizeof(tmp_width));
+  if (raw_width != 0) {
+    total_size += 5;
   }
 
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
-        _internal_metadata_, total_size, &_cached_size_);
-  }
-  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-void ViewerControllerNewROIRequest_Rect::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:osirixgrpc.ViewerControllerNewROIRequest.Rect)
-  GOOGLE_DCHECK_NE(&from, this);
-  const ViewerControllerNewROIRequest_Rect* source =
-      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<ViewerControllerNewROIRequest_Rect>(
-          &from);
-  if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:osirixgrpc.ViewerControllerNewROIRequest.Rect)
-    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:osirixgrpc.ViewerControllerNewROIRequest.Rect)
-    MergeFrom(*source);
-  }
-}
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ViewerControllerNewROIRequest_Rect::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    ViewerControllerNewROIRequest_Rect::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ViewerControllerNewROIRequest_Rect::GetClassData() const { return &_class_data_; }
 
-void ViewerControllerNewROIRequest_Rect::MergeFrom(const ViewerControllerNewROIRequest_Rect& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ViewerControllerNewROIRequest.Rect)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+
+void ViewerControllerNewROIRequest_Rect::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<ViewerControllerNewROIRequest_Rect*>(&to_msg);
+  auto& from = static_cast<const ViewerControllerNewROIRequest_Rect&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ViewerControllerNewROIRequest.Rect)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (!(from.origin_x() <= 0 && from.origin_x() >= 0)) {
-    _internal_set_origin_x(from._internal_origin_x());
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  float tmp_origin_x = from._internal_origin_x();
+  ::uint32_t raw_origin_x;
+  memcpy(&raw_origin_x, &tmp_origin_x, sizeof(tmp_origin_x));
+  if (raw_origin_x != 0) {
+    _this->_internal_set_origin_x(from._internal_origin_x());
   }
-  if (!(from.origin_y() <= 0 && from.origin_y() >= 0)) {
-    _internal_set_origin_y(from._internal_origin_y());
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  float tmp_origin_y = from._internal_origin_y();
+  ::uint32_t raw_origin_y;
+  memcpy(&raw_origin_y, &tmp_origin_y, sizeof(tmp_origin_y));
+  if (raw_origin_y != 0) {
+    _this->_internal_set_origin_y(from._internal_origin_y());
   }
-  if (!(from.height() <= 0 && from.height() >= 0)) {
-    _internal_set_height(from._internal_height());
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  float tmp_height = from._internal_height();
+  ::uint32_t raw_height;
+  memcpy(&raw_height, &tmp_height, sizeof(tmp_height));
+  if (raw_height != 0) {
+    _this->_internal_set_height(from._internal_height());
   }
-  if (!(from.width() <= 0 && from.width() >= 0)) {
-    _internal_set_width(from._internal_width());
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  float tmp_width = from._internal_width();
+  ::uint32_t raw_width;
+  memcpy(&raw_width, &tmp_width, sizeof(tmp_width));
+  if (raw_width != 0) {
+    _this->_internal_set_width(from._internal_width());
   }
-}
-
-void ViewerControllerNewROIRequest_Rect::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:osirixgrpc.ViewerControllerNewROIRequest.Rect)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void ViewerControllerNewROIRequest_Rect::CopyFrom(const ViewerControllerNewROIRequest_Rect& from) {
@@ -6876,252 +7042,325 @@ bool ViewerControllerNewROIRequest_Rect::IsInitialized() const {
 
 void ViewerControllerNewROIRequest_Rect::InternalSwap(ViewerControllerNewROIRequest_Rect* other) {
   using std::swap;
-  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(ViewerControllerNewROIRequest_Rect, width_)
-      + sizeof(ViewerControllerNewROIRequest_Rect::width_)
-      - PROTOBUF_FIELD_OFFSET(ViewerControllerNewROIRequest_Rect, origin_x_)>(
-          reinterpret_cast<char*>(&origin_x_),
-          reinterpret_cast<char*>(&other->origin_x_));
+      PROTOBUF_FIELD_OFFSET(ViewerControllerNewROIRequest_Rect, _impl_.width_)
+      + sizeof(ViewerControllerNewROIRequest_Rect::_impl_.width_)
+      - PROTOBUF_FIELD_OFFSET(ViewerControllerNewROIRequest_Rect, _impl_.origin_x_)>(
+          reinterpret_cast<char*>(&_impl_.origin_x_),
+          reinterpret_cast<char*>(&other->_impl_.origin_x_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata ViewerControllerNewROIRequest_Rect::GetMetadata() const {
-  return GetMetadataStatic();
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_viewercontroller_2eproto_getter, &descriptor_table_viewercontroller_2eproto_once,
+      file_level_metadata_viewercontroller_2eproto[22]);
 }
-
-
 // ===================================================================
 
 class ViewerControllerNewROIRequest::_Internal {
  public:
+  using HasBits = decltype(std::declval<ViewerControllerNewROIRequest>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+    8 * PROTOBUF_FIELD_OFFSET(ViewerControllerNewROIRequest, _impl_._has_bits_);
   static const ::osirixgrpc::ViewerController& viewer_controller(const ViewerControllerNewROIRequest* msg);
+  static void set_has_viewer_controller(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
   static const ::osirixgrpc::ViewerControllerNewROIRequest_Color& color(const ViewerControllerNewROIRequest* msg);
+  static void set_has_color(HasBits* has_bits) {
+    (*has_bits)[0] |= 2u;
+  }
   static const ::osirixgrpc::ViewerControllerNewROIRequest_Buffer& buffer(const ViewerControllerNewROIRequest* msg);
+  static void set_has_buffer(HasBits* has_bits) {
+    (*has_bits)[0] |= 4u;
+  }
   static const ::osirixgrpc::ViewerControllerNewROIRequest_Rect& rectangle(const ViewerControllerNewROIRequest* msg);
+  static void set_has_rectangle(HasBits* has_bits) {
+    (*has_bits)[0] |= 8u;
+  }
 };
 
 const ::osirixgrpc::ViewerController&
 ViewerControllerNewROIRequest::_Internal::viewer_controller(const ViewerControllerNewROIRequest* msg) {
-  return *msg->viewer_controller_;
+  return *msg->_impl_.viewer_controller_;
 }
 const ::osirixgrpc::ViewerControllerNewROIRequest_Color&
 ViewerControllerNewROIRequest::_Internal::color(const ViewerControllerNewROIRequest* msg) {
-  return *msg->color_;
+  return *msg->_impl_.color_;
 }
 const ::osirixgrpc::ViewerControllerNewROIRequest_Buffer&
 ViewerControllerNewROIRequest::_Internal::buffer(const ViewerControllerNewROIRequest* msg) {
-  return *msg->buffer_;
+  return *msg->_impl_.buffer_;
 }
 const ::osirixgrpc::ViewerControllerNewROIRequest_Rect&
 ViewerControllerNewROIRequest::_Internal::rectangle(const ViewerControllerNewROIRequest* msg) {
-  return *msg->rectangle_;
+  return *msg->_impl_.rectangle_;
 }
 void ViewerControllerNewROIRequest::clear_viewer_controller() {
-  if (GetArena() == nullptr && viewer_controller_ != nullptr) {
-    delete viewer_controller_;
-  }
-  viewer_controller_ = nullptr;
+  if (_impl_.viewer_controller_ != nullptr) _impl_.viewer_controller_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000001u;
 }
 ViewerControllerNewROIRequest::ViewerControllerNewROIRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena),
-  points_(arena) {
-  SharedCtor();
-  RegisterArenaDtor(arena);
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
+  SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.ViewerControllerNewROIRequest)
 }
 ViewerControllerNewROIRequest::ViewerControllerNewROIRequest(const ViewerControllerNewROIRequest& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      points_(from.points_) {
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  ViewerControllerNewROIRequest* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.points_){from._impl_.points_}
+    , decltype(_impl_.name_) {}
+
+    , decltype(_impl_.viewer_controller_){nullptr}
+    , decltype(_impl_.color_){nullptr}
+    , decltype(_impl_.buffer_){nullptr}
+    , decltype(_impl_.rectangle_){nullptr}
+    , decltype(_impl_.itype_) {}
+
+    , decltype(_impl_.position_) {}
+
+    , decltype(_impl_.movie_idx_) {}
+
+    , decltype(_impl_.buffer_position_x_) {}
+
+    , decltype(_impl_.buffer_position_y_) {}
+
+    , decltype(_impl_.thickness_) {}
+
+    , decltype(_impl_.opacity_) {}
+  };
+
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  _impl_.name_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.name_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_name().empty()) {
-    name_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_name(), 
-      GetArena());
+    _this->_impl_.name_.Set(from._internal_name(), _this->GetArenaForAllocation());
   }
-  if (from._internal_has_viewer_controller()) {
-    viewer_controller_ = new ::osirixgrpc::ViewerController(*from.viewer_controller_);
-  } else {
-    viewer_controller_ = nullptr;
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_impl_.viewer_controller_ = new ::osirixgrpc::ViewerController(*from._impl_.viewer_controller_);
   }
-  if (from._internal_has_color()) {
-    color_ = new ::osirixgrpc::ViewerControllerNewROIRequest_Color(*from.color_);
-  } else {
-    color_ = nullptr;
+  if ((from._impl_._has_bits_[0] & 0x00000002u) != 0) {
+    _this->_impl_.color_ = new ::osirixgrpc::ViewerControllerNewROIRequest_Color(*from._impl_.color_);
   }
-  if (from._internal_has_buffer()) {
-    buffer_ = new ::osirixgrpc::ViewerControllerNewROIRequest_Buffer(*from.buffer_);
-  } else {
-    buffer_ = nullptr;
+  if ((from._impl_._has_bits_[0] & 0x00000004u) != 0) {
+    _this->_impl_.buffer_ = new ::osirixgrpc::ViewerControllerNewROIRequest_Buffer(*from._impl_.buffer_);
   }
-  if (from._internal_has_rectangle()) {
-    rectangle_ = new ::osirixgrpc::ViewerControllerNewROIRequest_Rect(*from.rectangle_);
-  } else {
-    rectangle_ = nullptr;
+  if ((from._impl_._has_bits_[0] & 0x00000008u) != 0) {
+    _this->_impl_.rectangle_ = new ::osirixgrpc::ViewerControllerNewROIRequest_Rect(*from._impl_.rectangle_);
   }
-  ::memcpy(&itype_, &from.itype_,
-    static_cast<size_t>(reinterpret_cast<char*>(&opacity_) -
-    reinterpret_cast<char*>(&itype_)) + sizeof(opacity_));
+  ::memcpy(&_impl_.itype_, &from._impl_.itype_,
+    static_cast<::size_t>(reinterpret_cast<char*>(&_impl_.opacity_) -
+    reinterpret_cast<char*>(&_impl_.itype_)) + sizeof(_impl_.opacity_));
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.ViewerControllerNewROIRequest)
 }
 
-void ViewerControllerNewROIRequest::SharedCtor() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_ViewerControllerNewROIRequest_viewercontroller_2eproto.base);
-  name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-      reinterpret_cast<char*>(&viewer_controller_) - reinterpret_cast<char*>(this)),
-      0, static_cast<size_t>(reinterpret_cast<char*>(&opacity_) -
-      reinterpret_cast<char*>(&viewer_controller_)) + sizeof(opacity_));
+inline void ViewerControllerNewROIRequest::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.points_){arena}
+    , decltype(_impl_.name_) {}
+
+    , decltype(_impl_.viewer_controller_){nullptr}
+    , decltype(_impl_.color_){nullptr}
+    , decltype(_impl_.buffer_){nullptr}
+    , decltype(_impl_.rectangle_){nullptr}
+    , decltype(_impl_.itype_) { 0 }
+
+    , decltype(_impl_.position_) { 0 }
+
+    , decltype(_impl_.movie_idx_) { 0 }
+
+    , decltype(_impl_.buffer_position_x_) { 0 }
+
+    , decltype(_impl_.buffer_position_y_) { 0 }
+
+    , decltype(_impl_.thickness_) { 0 }
+
+    , decltype(_impl_.opacity_) { 0 }
+
+  };
+  _impl_.name_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.name_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
 
 ViewerControllerNewROIRequest::~ViewerControllerNewROIRequest() {
   // @@protoc_insertion_point(destructor:osirixgrpc.ViewerControllerNewROIRequest)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-void ViewerControllerNewROIRequest::SharedDtor() {
-  GOOGLE_DCHECK(GetArena() == nullptr);
-  name_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (this != internal_default_instance()) delete viewer_controller_;
-  if (this != internal_default_instance()) delete color_;
-  if (this != internal_default_instance()) delete buffer_;
-  if (this != internal_default_instance()) delete rectangle_;
+inline void ViewerControllerNewROIRequest::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  _internal_mutable_points()->~RepeatedPtrField();
+  _impl_.name_.Destroy();
+  if (this != internal_default_instance()) delete _impl_.viewer_controller_;
+  if (this != internal_default_instance()) delete _impl_.color_;
+  if (this != internal_default_instance()) delete _impl_.buffer_;
+  if (this != internal_default_instance()) delete _impl_.rectangle_;
 }
 
-void ViewerControllerNewROIRequest::ArenaDtor(void* object) {
-  ViewerControllerNewROIRequest* _this = reinterpret_cast< ViewerControllerNewROIRequest* >(object);
-  (void)_this;
-}
-void ViewerControllerNewROIRequest::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void ViewerControllerNewROIRequest::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
-const ViewerControllerNewROIRequest& ViewerControllerNewROIRequest::default_instance() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_ViewerControllerNewROIRequest_viewercontroller_2eproto.base);
-  return *internal_default_instance();
-}
-
 
 void ViewerControllerNewROIRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.ViewerControllerNewROIRequest)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  points_.Clear();
-  name_.ClearToEmpty();
-  if (GetArena() == nullptr && viewer_controller_ != nullptr) {
-    delete viewer_controller_;
+  _internal_mutable_points()->Clear();
+  _impl_.name_.ClearToEmpty();
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x0000000fu) {
+    if (cached_has_bits & 0x00000001u) {
+      ABSL_DCHECK(_impl_.viewer_controller_ != nullptr);
+      _impl_.viewer_controller_->Clear();
+    }
+    if (cached_has_bits & 0x00000002u) {
+      ABSL_DCHECK(_impl_.color_ != nullptr);
+      _impl_.color_->Clear();
+    }
+    if (cached_has_bits & 0x00000004u) {
+      ABSL_DCHECK(_impl_.buffer_ != nullptr);
+      _impl_.buffer_->Clear();
+    }
+    if (cached_has_bits & 0x00000008u) {
+      ABSL_DCHECK(_impl_.rectangle_ != nullptr);
+      _impl_.rectangle_->Clear();
+    }
   }
-  viewer_controller_ = nullptr;
-  if (GetArena() == nullptr && color_ != nullptr) {
-    delete color_;
-  }
-  color_ = nullptr;
-  if (GetArena() == nullptr && buffer_ != nullptr) {
-    delete buffer_;
-  }
-  buffer_ = nullptr;
-  if (GetArena() == nullptr && rectangle_ != nullptr) {
-    delete rectangle_;
-  }
-  rectangle_ = nullptr;
-  ::memset(&itype_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&opacity_) -
-      reinterpret_cast<char*>(&itype_)) + sizeof(opacity_));
+  ::memset(&_impl_.itype_, 0, static_cast<::size_t>(
+      reinterpret_cast<char*>(&_impl_.opacity_) -
+      reinterpret_cast<char*>(&_impl_.itype_)) + sizeof(_impl_.opacity_));
+  _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* ViewerControllerNewROIRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* ViewerControllerNewROIRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
-    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-    CHK_(ptr);
+    ::uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // .osirixgrpc.ViewerController viewer_controller = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
           ptr = ctx->ParseMessage(_internal_mutable_viewer_controller(), ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
+        } else {
+          goto handle_unusual;
+        }
         continue;
       // int32 itype = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
-          itype_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 16)) {
+          _impl_.itype_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
+        } else {
+          goto handle_unusual;
+        }
         continue;
       // string name = 3;
       case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 26)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 26)) {
           auto str = _internal_mutable_name();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "osirixgrpc.ViewerControllerNewROIRequest.name"));
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
-        } else goto handle_unusual;
+          CHK_(::_pbi::VerifyUTF8(str, "osirixgrpc.ViewerControllerNewROIRequest.name"));
+        } else {
+          goto handle_unusual;
+        }
         continue;
       // int32 position = 4;
       case 4:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 32)) {
-          position_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 32)) {
+          _impl_.position_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
+        } else {
+          goto handle_unusual;
+        }
         continue;
       // int32 movie_idx = 5;
       case 5:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 40)) {
-          movie_idx_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 40)) {
+          _impl_.movie_idx_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
+        } else {
+          goto handle_unusual;
+        }
         continue;
       // int32 buffer_position_x = 6;
       case 6:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 48)) {
-          buffer_position_x_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 48)) {
+          _impl_.buffer_position_x_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
+        } else {
+          goto handle_unusual;
+        }
         continue;
       // int32 buffer_position_y = 7;
       case 7:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 56)) {
-          buffer_position_y_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 56)) {
+          _impl_.buffer_position_y_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
+        } else {
+          goto handle_unusual;
+        }
         continue;
       // .osirixgrpc.ViewerControllerNewROIRequest.Color color = 8;
       case 8:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 66)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 66)) {
           ptr = ctx->ParseMessage(_internal_mutable_color(), ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
+        } else {
+          goto handle_unusual;
+        }
         continue;
       // float thickness = 9;
       case 9:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 77)) {
-          thickness_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 77)) {
+          _impl_.thickness_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
           ptr += sizeof(float);
-        } else goto handle_unusual;
+        } else {
+          goto handle_unusual;
+        }
         continue;
       // float opacity = 10;
       case 10:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 85)) {
-          opacity_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 85)) {
+          _impl_.opacity_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
           ptr += sizeof(float);
-        } else goto handle_unusual;
+        } else {
+          goto handle_unusual;
+        }
         continue;
       // .osirixgrpc.ViewerControllerNewROIRequest.Buffer buffer = 11;
       case 11:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 90)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 90)) {
           ptr = ctx->ParseMessage(_internal_mutable_buffer(), ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
+        } else {
+          goto handle_unusual;
+        }
         continue;
       // repeated .osirixgrpc.ViewerControllerNewROIRequest.Point2D points = 12;
       case 12:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 98)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 98)) {
           ptr -= 1;
           do {
             ptr += 1;
@@ -7129,313 +7368,330 @@ const char* ViewerControllerNewROIRequest::_InternalParse(const char* ptr, ::PRO
             CHK_(ptr);
             if (!ctx->DataAvailable(ptr)) break;
           } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<98>(ptr));
-        } else goto handle_unusual;
+        } else {
+          goto handle_unusual;
+        }
         continue;
       // .osirixgrpc.ViewerControllerNewROIRequest.Rect rectangle = 13;
       case 13:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 106)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 106)) {
           ptr = ctx->ParseMessage(_internal_mutable_rectangle(), ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
-        continue;
-      default: {
-      handle_unusual:
-        if ((tag & 7) == 4 || tag == 0) {
-          ctx->SetLastTag(tag);
-          goto success;
+        } else {
+          goto handle_unusual;
         }
-        ptr = UnknownFieldParse(tag,
-            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-            ptr, ctx);
-        CHK_(ptr != nullptr);
         continue;
-      }
+      default:
+        goto handle_unusual;
     }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
   }  // while
-success:
+message_done:
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
-  goto success;
+  goto message_done;
 #undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* ViewerControllerNewROIRequest::_InternalSerialize(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+::uint8_t* ViewerControllerNewROIRequest::_InternalSerialize(
+    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.ViewerControllerNewROIRequest)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
+  cached_has_bits = _impl_._has_bits_[0];
   // .osirixgrpc.ViewerController viewer_controller = 1;
-  if (this->has_viewer_controller()) {
-    target = stream->EnsureSpace(target);
+  if (cached_has_bits & 0x00000001u) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::viewer_controller(this), target, stream);
+      InternalWriteMessage(1, _Internal::viewer_controller(this),
+        _Internal::viewer_controller(this).GetCachedSize(), target, stream);
   }
 
   // int32 itype = 2;
-  if (this->itype() != 0) {
+  if (this->_internal_itype() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(2, this->_internal_itype(), target);
+    target = ::_pbi::WireFormatLite::WriteInt32ToArray(
+        2, this->_internal_itype(), target);
   }
 
   // string name = 3;
-  if (this->name().size() > 0) {
+  if (!this->_internal_name().empty()) {
+    const std::string& _s = this->_internal_name();
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_name().data(), static_cast<int>(this->_internal_name().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "osirixgrpc.ViewerControllerNewROIRequest.name");
-    target = stream->WriteStringMaybeAliased(
-        3, this->_internal_name(), target);
+        _s.data(), static_cast<int>(_s.length()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE, "osirixgrpc.ViewerControllerNewROIRequest.name");
+    target = stream->WriteStringMaybeAliased(3, _s, target);
   }
 
   // int32 position = 4;
-  if (this->position() != 0) {
+  if (this->_internal_position() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(4, this->_internal_position(), target);
+    target = ::_pbi::WireFormatLite::WriteInt32ToArray(
+        4, this->_internal_position(), target);
   }
 
   // int32 movie_idx = 5;
-  if (this->movie_idx() != 0) {
+  if (this->_internal_movie_idx() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(5, this->_internal_movie_idx(), target);
+    target = ::_pbi::WireFormatLite::WriteInt32ToArray(
+        5, this->_internal_movie_idx(), target);
   }
 
   // int32 buffer_position_x = 6;
-  if (this->buffer_position_x() != 0) {
+  if (this->_internal_buffer_position_x() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(6, this->_internal_buffer_position_x(), target);
+    target = ::_pbi::WireFormatLite::WriteInt32ToArray(
+        6, this->_internal_buffer_position_x(), target);
   }
 
   // int32 buffer_position_y = 7;
-  if (this->buffer_position_y() != 0) {
+  if (this->_internal_buffer_position_y() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(7, this->_internal_buffer_position_y(), target);
+    target = ::_pbi::WireFormatLite::WriteInt32ToArray(
+        7, this->_internal_buffer_position_y(), target);
   }
 
   // .osirixgrpc.ViewerControllerNewROIRequest.Color color = 8;
-  if (this->has_color()) {
-    target = stream->EnsureSpace(target);
+  if (cached_has_bits & 0x00000002u) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        8, _Internal::color(this), target, stream);
+      InternalWriteMessage(8, _Internal::color(this),
+        _Internal::color(this).GetCachedSize(), target, stream);
   }
 
   // float thickness = 9;
-  if (!(this->thickness() <= 0 && this->thickness() >= 0)) {
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  float tmp_thickness = this->_internal_thickness();
+  ::uint32_t raw_thickness;
+  memcpy(&raw_thickness, &tmp_thickness, sizeof(tmp_thickness));
+  if (raw_thickness != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(9, this->_internal_thickness(), target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(
+        9, this->_internal_thickness(), target);
   }
 
   // float opacity = 10;
-  if (!(this->opacity() <= 0 && this->opacity() >= 0)) {
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  float tmp_opacity = this->_internal_opacity();
+  ::uint32_t raw_opacity;
+  memcpy(&raw_opacity, &tmp_opacity, sizeof(tmp_opacity));
+  if (raw_opacity != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(10, this->_internal_opacity(), target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(
+        10, this->_internal_opacity(), target);
   }
 
   // .osirixgrpc.ViewerControllerNewROIRequest.Buffer buffer = 11;
-  if (this->has_buffer()) {
-    target = stream->EnsureSpace(target);
+  if (cached_has_bits & 0x00000004u) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        11, _Internal::buffer(this), target, stream);
+      InternalWriteMessage(11, _Internal::buffer(this),
+        _Internal::buffer(this).GetCachedSize(), target, stream);
   }
 
   // repeated .osirixgrpc.ViewerControllerNewROIRequest.Point2D points = 12;
-  for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->_internal_points_size()); i < n; i++) {
-    target = stream->EnsureSpace(target);
+  for (unsigned i = 0,
+      n = static_cast<unsigned>(this->_internal_points_size()); i < n; i++) {
+    const auto& repfield = this->_internal_points(i);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(12, this->_internal_points(i), target, stream);
+        InternalWriteMessage(12, repfield, repfield.GetCachedSize(), target, stream);
   }
 
   // .osirixgrpc.ViewerControllerNewROIRequest.Rect rectangle = 13;
-  if (this->has_rectangle()) {
-    target = stream->EnsureSpace(target);
+  if (cached_has_bits & 0x00000008u) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        13, _Internal::rectangle(this), target, stream);
+      InternalWriteMessage(13, _Internal::rectangle(this),
+        _Internal::rectangle(this).GetCachedSize(), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.ViewerControllerNewROIRequest)
   return target;
 }
 
-size_t ViewerControllerNewROIRequest::ByteSizeLong() const {
+::size_t ViewerControllerNewROIRequest::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:osirixgrpc.ViewerControllerNewROIRequest)
-  size_t total_size = 0;
+  ::size_t total_size = 0;
 
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // repeated .osirixgrpc.ViewerControllerNewROIRequest.Point2D points = 12;
   total_size += 1UL * this->_internal_points_size();
-  for (const auto& msg : this->points_) {
+  for (const auto& msg : this->_internal_points()) {
     total_size +=
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
 
   // string name = 3;
-  if (this->name().size() > 0) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_name());
+  if (!this->_internal_name().empty()) {
+    total_size += 1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+                                    this->_internal_name());
   }
 
-  // .osirixgrpc.ViewerController viewer_controller = 1;
-  if (this->has_viewer_controller()) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *viewer_controller_);
-  }
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x0000000fu) {
+    // .osirixgrpc.ViewerController viewer_controller = 1;
+    if (cached_has_bits & 0x00000001u) {
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+          *_impl_.viewer_controller_);
+    }
 
-  // .osirixgrpc.ViewerControllerNewROIRequest.Color color = 8;
-  if (this->has_color()) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *color_);
-  }
+    // .osirixgrpc.ViewerControllerNewROIRequest.Color color = 8;
+    if (cached_has_bits & 0x00000002u) {
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+          *_impl_.color_);
+    }
 
-  // .osirixgrpc.ViewerControllerNewROIRequest.Buffer buffer = 11;
-  if (this->has_buffer()) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *buffer_);
-  }
+    // .osirixgrpc.ViewerControllerNewROIRequest.Buffer buffer = 11;
+    if (cached_has_bits & 0x00000004u) {
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+          *_impl_.buffer_);
+    }
 
-  // .osirixgrpc.ViewerControllerNewROIRequest.Rect rectangle = 13;
-  if (this->has_rectangle()) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *rectangle_);
-  }
+    // .osirixgrpc.ViewerControllerNewROIRequest.Rect rectangle = 13;
+    if (cached_has_bits & 0x00000008u) {
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+          *_impl_.rectangle_);
+    }
 
+  }
   // int32 itype = 2;
-  if (this->itype() != 0) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+  if (this->_internal_itype() != 0) {
+    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
         this->_internal_itype());
   }
 
   // int32 position = 4;
-  if (this->position() != 0) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+  if (this->_internal_position() != 0) {
+    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
         this->_internal_position());
   }
 
   // int32 movie_idx = 5;
-  if (this->movie_idx() != 0) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+  if (this->_internal_movie_idx() != 0) {
+    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
         this->_internal_movie_idx());
   }
 
   // int32 buffer_position_x = 6;
-  if (this->buffer_position_x() != 0) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+  if (this->_internal_buffer_position_x() != 0) {
+    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
         this->_internal_buffer_position_x());
   }
 
   // int32 buffer_position_y = 7;
-  if (this->buffer_position_y() != 0) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+  if (this->_internal_buffer_position_y() != 0) {
+    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
         this->_internal_buffer_position_y());
   }
 
   // float thickness = 9;
-  if (!(this->thickness() <= 0 && this->thickness() >= 0)) {
-    total_size += 1 + 4;
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  float tmp_thickness = this->_internal_thickness();
+  ::uint32_t raw_thickness;
+  memcpy(&raw_thickness, &tmp_thickness, sizeof(tmp_thickness));
+  if (raw_thickness != 0) {
+    total_size += 5;
   }
 
   // float opacity = 10;
-  if (!(this->opacity() <= 0 && this->opacity() >= 0)) {
-    total_size += 1 + 4;
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  float tmp_opacity = this->_internal_opacity();
+  ::uint32_t raw_opacity;
+  memcpy(&raw_opacity, &tmp_opacity, sizeof(tmp_opacity));
+  if (raw_opacity != 0) {
+    total_size += 5;
   }
 
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
-        _internal_metadata_, total_size, &_cached_size_);
-  }
-  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-void ViewerControllerNewROIRequest::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:osirixgrpc.ViewerControllerNewROIRequest)
-  GOOGLE_DCHECK_NE(&from, this);
-  const ViewerControllerNewROIRequest* source =
-      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<ViewerControllerNewROIRequest>(
-          &from);
-  if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:osirixgrpc.ViewerControllerNewROIRequest)
-    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:osirixgrpc.ViewerControllerNewROIRequest)
-    MergeFrom(*source);
-  }
-}
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ViewerControllerNewROIRequest::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    ViewerControllerNewROIRequest::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ViewerControllerNewROIRequest::GetClassData() const { return &_class_data_; }
 
-void ViewerControllerNewROIRequest::MergeFrom(const ViewerControllerNewROIRequest& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ViewerControllerNewROIRequest)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+
+void ViewerControllerNewROIRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<ViewerControllerNewROIRequest*>(&to_msg);
+  auto& from = static_cast<const ViewerControllerNewROIRequest&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ViewerControllerNewROIRequest)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  points_.MergeFrom(from.points_);
-  if (from.name().size() > 0) {
-    _internal_set_name(from._internal_name());
+  _this->_internal_mutable_points()->MergeFrom(from._internal_points());
+  if (!from._internal_name().empty()) {
+    _this->_internal_set_name(from._internal_name());
   }
-  if (from.has_viewer_controller()) {
-    _internal_mutable_viewer_controller()->::osirixgrpc::ViewerController::MergeFrom(from._internal_viewer_controller());
+  cached_has_bits = from._impl_._has_bits_[0];
+  if (cached_has_bits & 0x0000000fu) {
+    if (cached_has_bits & 0x00000001u) {
+      _this->_internal_mutable_viewer_controller()->::osirixgrpc::ViewerController::MergeFrom(
+          from._internal_viewer_controller());
+    }
+    if (cached_has_bits & 0x00000002u) {
+      _this->_internal_mutable_color()->::osirixgrpc::ViewerControllerNewROIRequest_Color::MergeFrom(
+          from._internal_color());
+    }
+    if (cached_has_bits & 0x00000004u) {
+      _this->_internal_mutable_buffer()->::osirixgrpc::ViewerControllerNewROIRequest_Buffer::MergeFrom(
+          from._internal_buffer());
+    }
+    if (cached_has_bits & 0x00000008u) {
+      _this->_internal_mutable_rectangle()->::osirixgrpc::ViewerControllerNewROIRequest_Rect::MergeFrom(
+          from._internal_rectangle());
+    }
   }
-  if (from.has_color()) {
-    _internal_mutable_color()->::osirixgrpc::ViewerControllerNewROIRequest_Color::MergeFrom(from._internal_color());
+  if (from._internal_itype() != 0) {
+    _this->_internal_set_itype(from._internal_itype());
   }
-  if (from.has_buffer()) {
-    _internal_mutable_buffer()->::osirixgrpc::ViewerControllerNewROIRequest_Buffer::MergeFrom(from._internal_buffer());
+  if (from._internal_position() != 0) {
+    _this->_internal_set_position(from._internal_position());
   }
-  if (from.has_rectangle()) {
-    _internal_mutable_rectangle()->::osirixgrpc::ViewerControllerNewROIRequest_Rect::MergeFrom(from._internal_rectangle());
+  if (from._internal_movie_idx() != 0) {
+    _this->_internal_set_movie_idx(from._internal_movie_idx());
   }
-  if (from.itype() != 0) {
-    _internal_set_itype(from._internal_itype());
+  if (from._internal_buffer_position_x() != 0) {
+    _this->_internal_set_buffer_position_x(from._internal_buffer_position_x());
   }
-  if (from.position() != 0) {
-    _internal_set_position(from._internal_position());
+  if (from._internal_buffer_position_y() != 0) {
+    _this->_internal_set_buffer_position_y(from._internal_buffer_position_y());
   }
-  if (from.movie_idx() != 0) {
-    _internal_set_movie_idx(from._internal_movie_idx());
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  float tmp_thickness = from._internal_thickness();
+  ::uint32_t raw_thickness;
+  memcpy(&raw_thickness, &tmp_thickness, sizeof(tmp_thickness));
+  if (raw_thickness != 0) {
+    _this->_internal_set_thickness(from._internal_thickness());
   }
-  if (from.buffer_position_x() != 0) {
-    _internal_set_buffer_position_x(from._internal_buffer_position_x());
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  float tmp_opacity = from._internal_opacity();
+  ::uint32_t raw_opacity;
+  memcpy(&raw_opacity, &tmp_opacity, sizeof(tmp_opacity));
+  if (raw_opacity != 0) {
+    _this->_internal_set_opacity(from._internal_opacity());
   }
-  if (from.buffer_position_y() != 0) {
-    _internal_set_buffer_position_y(from._internal_buffer_position_y());
-  }
-  if (!(from.thickness() <= 0 && from.thickness() >= 0)) {
-    _internal_set_thickness(from._internal_thickness());
-  }
-  if (!(from.opacity() <= 0 && from.opacity() >= 0)) {
-    _internal_set_opacity(from._internal_opacity());
-  }
-}
-
-void ViewerControllerNewROIRequest::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:osirixgrpc.ViewerControllerNewROIRequest)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void ViewerControllerNewROIRequest::CopyFrom(const ViewerControllerNewROIRequest& from) {
@@ -7451,304 +7707,318 @@ bool ViewerControllerNewROIRequest::IsInitialized() const {
 
 void ViewerControllerNewROIRequest::InternalSwap(ViewerControllerNewROIRequest* other) {
   using std::swap;
-  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
-  points_.InternalSwap(&other->points_);
-  name_.Swap(&other->name_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  _internal_mutable_points()->InternalSwap(other->_internal_mutable_points());
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.name_, lhs_arena,
+                                       &other->_impl_.name_, rhs_arena);
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(ViewerControllerNewROIRequest, opacity_)
-      + sizeof(ViewerControllerNewROIRequest::opacity_)
-      - PROTOBUF_FIELD_OFFSET(ViewerControllerNewROIRequest, viewer_controller_)>(
-          reinterpret_cast<char*>(&viewer_controller_),
-          reinterpret_cast<char*>(&other->viewer_controller_));
+      PROTOBUF_FIELD_OFFSET(ViewerControllerNewROIRequest, _impl_.opacity_)
+      + sizeof(ViewerControllerNewROIRequest::_impl_.opacity_)
+      - PROTOBUF_FIELD_OFFSET(ViewerControllerNewROIRequest, _impl_.viewer_controller_)>(
+          reinterpret_cast<char*>(&_impl_.viewer_controller_),
+          reinterpret_cast<char*>(&other->_impl_.viewer_controller_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata ViewerControllerNewROIRequest::GetMetadata() const {
-  return GetMetadataStatic();
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_viewercontroller_2eproto_getter, &descriptor_table_viewercontroller_2eproto_once,
+      file_level_metadata_viewercontroller_2eproto[23]);
 }
-
-
 // ===================================================================
 
 class ViewerControllerROIsWithNameRequest::_Internal {
  public:
+  using HasBits = decltype(std::declval<ViewerControllerROIsWithNameRequest>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+    8 * PROTOBUF_FIELD_OFFSET(ViewerControllerROIsWithNameRequest, _impl_._has_bits_);
   static const ::osirixgrpc::ViewerController& viewer_controller(const ViewerControllerROIsWithNameRequest* msg);
+  static void set_has_viewer_controller(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
 };
 
 const ::osirixgrpc::ViewerController&
 ViewerControllerROIsWithNameRequest::_Internal::viewer_controller(const ViewerControllerROIsWithNameRequest* msg) {
-  return *msg->viewer_controller_;
+  return *msg->_impl_.viewer_controller_;
 }
 void ViewerControllerROIsWithNameRequest::clear_viewer_controller() {
-  if (GetArena() == nullptr && viewer_controller_ != nullptr) {
-    delete viewer_controller_;
-  }
-  viewer_controller_ = nullptr;
+  if (_impl_.viewer_controller_ != nullptr) _impl_.viewer_controller_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000001u;
 }
 ViewerControllerROIsWithNameRequest::ViewerControllerROIsWithNameRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
-  SharedCtor();
-  RegisterArenaDtor(arena);
+  SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.ViewerControllerROIsWithNameRequest)
 }
 ViewerControllerROIsWithNameRequest::ViewerControllerROIsWithNameRequest(const ViewerControllerROIsWithNameRequest& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
+  ViewerControllerROIsWithNameRequest* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.name_) {}
+
+    , decltype(_impl_.viewer_controller_){nullptr}
+    , decltype(_impl_.movie_idx_) {}
+
+    , decltype(_impl_.in_4d_) {}
+  };
+
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  _impl_.name_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.name_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_name().empty()) {
-    name_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_name(), 
-      GetArena());
+    _this->_impl_.name_.Set(from._internal_name(), _this->GetArenaForAllocation());
   }
-  if (from._internal_has_viewer_controller()) {
-    viewer_controller_ = new ::osirixgrpc::ViewerController(*from.viewer_controller_);
-  } else {
-    viewer_controller_ = nullptr;
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_impl_.viewer_controller_ = new ::osirixgrpc::ViewerController(*from._impl_.viewer_controller_);
   }
-  ::memcpy(&movie_idx_, &from.movie_idx_,
-    static_cast<size_t>(reinterpret_cast<char*>(&in_4d_) -
-    reinterpret_cast<char*>(&movie_idx_)) + sizeof(in_4d_));
+  ::memcpy(&_impl_.movie_idx_, &from._impl_.movie_idx_,
+    static_cast<::size_t>(reinterpret_cast<char*>(&_impl_.in_4d_) -
+    reinterpret_cast<char*>(&_impl_.movie_idx_)) + sizeof(_impl_.in_4d_));
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.ViewerControllerROIsWithNameRequest)
 }
 
-void ViewerControllerROIsWithNameRequest::SharedCtor() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_ViewerControllerROIsWithNameRequest_viewercontroller_2eproto.base);
-  name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-      reinterpret_cast<char*>(&viewer_controller_) - reinterpret_cast<char*>(this)),
-      0, static_cast<size_t>(reinterpret_cast<char*>(&in_4d_) -
-      reinterpret_cast<char*>(&viewer_controller_)) + sizeof(in_4d_));
+inline void ViewerControllerROIsWithNameRequest::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.name_) {}
+
+    , decltype(_impl_.viewer_controller_){nullptr}
+    , decltype(_impl_.movie_idx_) { 0 }
+
+    , decltype(_impl_.in_4d_) { false }
+
+  };
+  _impl_.name_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.name_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
 
 ViewerControllerROIsWithNameRequest::~ViewerControllerROIsWithNameRequest() {
   // @@protoc_insertion_point(destructor:osirixgrpc.ViewerControllerROIsWithNameRequest)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-void ViewerControllerROIsWithNameRequest::SharedDtor() {
-  GOOGLE_DCHECK(GetArena() == nullptr);
-  name_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (this != internal_default_instance()) delete viewer_controller_;
+inline void ViewerControllerROIsWithNameRequest::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.name_.Destroy();
+  if (this != internal_default_instance()) delete _impl_.viewer_controller_;
 }
 
-void ViewerControllerROIsWithNameRequest::ArenaDtor(void* object) {
-  ViewerControllerROIsWithNameRequest* _this = reinterpret_cast< ViewerControllerROIsWithNameRequest* >(object);
-  (void)_this;
-}
-void ViewerControllerROIsWithNameRequest::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void ViewerControllerROIsWithNameRequest::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
-const ViewerControllerROIsWithNameRequest& ViewerControllerROIsWithNameRequest::default_instance() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_ViewerControllerROIsWithNameRequest_viewercontroller_2eproto.base);
-  return *internal_default_instance();
-}
-
 
 void ViewerControllerROIsWithNameRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.ViewerControllerROIsWithNameRequest)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  name_.ClearToEmpty();
-  if (GetArena() == nullptr && viewer_controller_ != nullptr) {
-    delete viewer_controller_;
+  _impl_.name_.ClearToEmpty();
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    ABSL_DCHECK(_impl_.viewer_controller_ != nullptr);
+    _impl_.viewer_controller_->Clear();
   }
-  viewer_controller_ = nullptr;
-  ::memset(&movie_idx_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&in_4d_) -
-      reinterpret_cast<char*>(&movie_idx_)) + sizeof(in_4d_));
+  ::memset(&_impl_.movie_idx_, 0, static_cast<::size_t>(
+      reinterpret_cast<char*>(&_impl_.in_4d_) -
+      reinterpret_cast<char*>(&_impl_.movie_idx_)) + sizeof(_impl_.in_4d_));
+  _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* ViewerControllerROIsWithNameRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* ViewerControllerROIsWithNameRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
-    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-    CHK_(ptr);
+    ::uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // .osirixgrpc.ViewerController viewer_controller = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
           ptr = ctx->ParseMessage(_internal_mutable_viewer_controller(), ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
+        } else {
+          goto handle_unusual;
+        }
         continue;
       // string name = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 18)) {
           auto str = _internal_mutable_name();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "osirixgrpc.ViewerControllerROIsWithNameRequest.name"));
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
-        } else goto handle_unusual;
+          CHK_(::_pbi::VerifyUTF8(str, "osirixgrpc.ViewerControllerROIsWithNameRequest.name"));
+        } else {
+          goto handle_unusual;
+        }
         continue;
       // int32 movie_idx = 3;
       case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 24)) {
-          movie_idx_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 24)) {
+          _impl_.movie_idx_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
+        } else {
+          goto handle_unusual;
+        }
         continue;
       // bool in_4d = 4;
       case 4:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 32)) {
-          in_4d_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 32)) {
+          _impl_.in_4d_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
-        continue;
-      default: {
-      handle_unusual:
-        if ((tag & 7) == 4 || tag == 0) {
-          ctx->SetLastTag(tag);
-          goto success;
+        } else {
+          goto handle_unusual;
         }
-        ptr = UnknownFieldParse(tag,
-            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-            ptr, ctx);
-        CHK_(ptr != nullptr);
         continue;
-      }
+      default:
+        goto handle_unusual;
     }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
   }  // while
-success:
+message_done:
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
-  goto success;
+  goto message_done;
 #undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* ViewerControllerROIsWithNameRequest::_InternalSerialize(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+::uint8_t* ViewerControllerROIsWithNameRequest::_InternalSerialize(
+    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.ViewerControllerROIsWithNameRequest)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
+  cached_has_bits = _impl_._has_bits_[0];
   // .osirixgrpc.ViewerController viewer_controller = 1;
-  if (this->has_viewer_controller()) {
-    target = stream->EnsureSpace(target);
+  if (cached_has_bits & 0x00000001u) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::viewer_controller(this), target, stream);
+      InternalWriteMessage(1, _Internal::viewer_controller(this),
+        _Internal::viewer_controller(this).GetCachedSize(), target, stream);
   }
 
   // string name = 2;
-  if (this->name().size() > 0) {
+  if (!this->_internal_name().empty()) {
+    const std::string& _s = this->_internal_name();
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_name().data(), static_cast<int>(this->_internal_name().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "osirixgrpc.ViewerControllerROIsWithNameRequest.name");
-    target = stream->WriteStringMaybeAliased(
-        2, this->_internal_name(), target);
+        _s.data(), static_cast<int>(_s.length()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE, "osirixgrpc.ViewerControllerROIsWithNameRequest.name");
+    target = stream->WriteStringMaybeAliased(2, _s, target);
   }
 
   // int32 movie_idx = 3;
-  if (this->movie_idx() != 0) {
+  if (this->_internal_movie_idx() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(3, this->_internal_movie_idx(), target);
+    target = ::_pbi::WireFormatLite::WriteInt32ToArray(
+        3, this->_internal_movie_idx(), target);
   }
 
   // bool in_4d = 4;
-  if (this->in_4d() != 0) {
+  if (this->_internal_in_4d() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteBoolToArray(4, this->_internal_in_4d(), target);
+    target = ::_pbi::WireFormatLite::WriteBoolToArray(
+        4, this->_internal_in_4d(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.ViewerControllerROIsWithNameRequest)
   return target;
 }
 
-size_t ViewerControllerROIsWithNameRequest::ByteSizeLong() const {
+::size_t ViewerControllerROIsWithNameRequest::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:osirixgrpc.ViewerControllerROIsWithNameRequest)
-  size_t total_size = 0;
+  ::size_t total_size = 0;
 
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // string name = 2;
-  if (this->name().size() > 0) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_name());
+  if (!this->_internal_name().empty()) {
+    total_size += 1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+                                    this->_internal_name());
   }
 
   // .osirixgrpc.ViewerController viewer_controller = 1;
-  if (this->has_viewer_controller()) {
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *viewer_controller_);
+        *_impl_.viewer_controller_);
   }
 
   // int32 movie_idx = 3;
-  if (this->movie_idx() != 0) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+  if (this->_internal_movie_idx() != 0) {
+    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
         this->_internal_movie_idx());
   }
 
   // bool in_4d = 4;
-  if (this->in_4d() != 0) {
-    total_size += 1 + 1;
+  if (this->_internal_in_4d() != 0) {
+    total_size += 2;
   }
 
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
-        _internal_metadata_, total_size, &_cached_size_);
-  }
-  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-void ViewerControllerROIsWithNameRequest::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:osirixgrpc.ViewerControllerROIsWithNameRequest)
-  GOOGLE_DCHECK_NE(&from, this);
-  const ViewerControllerROIsWithNameRequest* source =
-      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<ViewerControllerROIsWithNameRequest>(
-          &from);
-  if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:osirixgrpc.ViewerControllerROIsWithNameRequest)
-    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:osirixgrpc.ViewerControllerROIsWithNameRequest)
-    MergeFrom(*source);
-  }
-}
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ViewerControllerROIsWithNameRequest::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    ViewerControllerROIsWithNameRequest::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ViewerControllerROIsWithNameRequest::GetClassData() const { return &_class_data_; }
 
-void ViewerControllerROIsWithNameRequest::MergeFrom(const ViewerControllerROIsWithNameRequest& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ViewerControllerROIsWithNameRequest)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+
+void ViewerControllerROIsWithNameRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<ViewerControllerROIsWithNameRequest*>(&to_msg);
+  auto& from = static_cast<const ViewerControllerROIsWithNameRequest&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ViewerControllerROIsWithNameRequest)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.name().size() > 0) {
-    _internal_set_name(from._internal_name());
+  if (!from._internal_name().empty()) {
+    _this->_internal_set_name(from._internal_name());
   }
-  if (from.has_viewer_controller()) {
-    _internal_mutable_viewer_controller()->::osirixgrpc::ViewerController::MergeFrom(from._internal_viewer_controller());
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_internal_mutable_viewer_controller()->::osirixgrpc::ViewerController::MergeFrom(
+        from._internal_viewer_controller());
   }
-  if (from.movie_idx() != 0) {
-    _internal_set_movie_idx(from._internal_movie_idx());
+  if (from._internal_movie_idx() != 0) {
+    _this->_internal_set_movie_idx(from._internal_movie_idx());
   }
-  if (from.in_4d() != 0) {
-    _internal_set_in_4d(from._internal_in_4d());
+  if (from._internal_in_4d() != 0) {
+    _this->_internal_set_in_4d(from._internal_in_4d());
   }
-}
-
-void ViewerControllerROIsWithNameRequest::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:osirixgrpc.ViewerControllerROIsWithNameRequest)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void ViewerControllerROIsWithNameRequest::CopyFrom(const ViewerControllerROIsWithNameRequest& from) {
@@ -7764,262 +8034,265 @@ bool ViewerControllerROIsWithNameRequest::IsInitialized() const {
 
 void ViewerControllerROIsWithNameRequest::InternalSwap(ViewerControllerROIsWithNameRequest* other) {
   using std::swap;
-  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
-  name_.Swap(&other->name_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.name_, lhs_arena,
+                                       &other->_impl_.name_, rhs_arena);
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(ViewerControllerROIsWithNameRequest, in_4d_)
-      + sizeof(ViewerControllerROIsWithNameRequest::in_4d_)
-      - PROTOBUF_FIELD_OFFSET(ViewerControllerROIsWithNameRequest, viewer_controller_)>(
-          reinterpret_cast<char*>(&viewer_controller_),
-          reinterpret_cast<char*>(&other->viewer_controller_));
+      PROTOBUF_FIELD_OFFSET(ViewerControllerROIsWithNameRequest, _impl_.in_4d_)
+      + sizeof(ViewerControllerROIsWithNameRequest::_impl_.in_4d_)
+      - PROTOBUF_FIELD_OFFSET(ViewerControllerROIsWithNameRequest, _impl_.viewer_controller_)>(
+          reinterpret_cast<char*>(&_impl_.viewer_controller_),
+          reinterpret_cast<char*>(&other->_impl_.viewer_controller_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata ViewerControllerROIsWithNameRequest::GetMetadata() const {
-  return GetMetadataStatic();
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_viewercontroller_2eproto_getter, &descriptor_table_viewercontroller_2eproto_once,
+      file_level_metadata_viewercontroller_2eproto[24]);
 }
-
-
 // ===================================================================
 
 class ViewerControllerResampleViewerControllerRequest::_Internal {
  public:
+  using HasBits = decltype(std::declval<ViewerControllerResampleViewerControllerRequest>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+    8 * PROTOBUF_FIELD_OFFSET(ViewerControllerResampleViewerControllerRequest, _impl_._has_bits_);
   static const ::osirixgrpc::ViewerController& viewer_controller(const ViewerControllerResampleViewerControllerRequest* msg);
+  static void set_has_viewer_controller(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
   static const ::osirixgrpc::ViewerController& fixed_viewer_controller(const ViewerControllerResampleViewerControllerRequest* msg);
+  static void set_has_fixed_viewer_controller(HasBits* has_bits) {
+    (*has_bits)[0] |= 2u;
+  }
 };
 
 const ::osirixgrpc::ViewerController&
 ViewerControllerResampleViewerControllerRequest::_Internal::viewer_controller(const ViewerControllerResampleViewerControllerRequest* msg) {
-  return *msg->viewer_controller_;
+  return *msg->_impl_.viewer_controller_;
 }
 const ::osirixgrpc::ViewerController&
 ViewerControllerResampleViewerControllerRequest::_Internal::fixed_viewer_controller(const ViewerControllerResampleViewerControllerRequest* msg) {
-  return *msg->fixed_viewer_controller_;
+  return *msg->_impl_.fixed_viewer_controller_;
 }
 void ViewerControllerResampleViewerControllerRequest::clear_viewer_controller() {
-  if (GetArena() == nullptr && viewer_controller_ != nullptr) {
-    delete viewer_controller_;
-  }
-  viewer_controller_ = nullptr;
+  if (_impl_.viewer_controller_ != nullptr) _impl_.viewer_controller_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000001u;
 }
 void ViewerControllerResampleViewerControllerRequest::clear_fixed_viewer_controller() {
-  if (GetArena() == nullptr && fixed_viewer_controller_ != nullptr) {
-    delete fixed_viewer_controller_;
-  }
-  fixed_viewer_controller_ = nullptr;
+  if (_impl_.fixed_viewer_controller_ != nullptr) _impl_.fixed_viewer_controller_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000002u;
 }
 ViewerControllerResampleViewerControllerRequest::ViewerControllerResampleViewerControllerRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
-  SharedCtor();
-  RegisterArenaDtor(arena);
+  SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.ViewerControllerResampleViewerControllerRequest)
 }
 ViewerControllerResampleViewerControllerRequest::ViewerControllerResampleViewerControllerRequest(const ViewerControllerResampleViewerControllerRequest& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
+  ViewerControllerResampleViewerControllerRequest* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.viewer_controller_){nullptr}
+    , decltype(_impl_.fixed_viewer_controller_){nullptr}};
+
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if (from._internal_has_viewer_controller()) {
-    viewer_controller_ = new ::osirixgrpc::ViewerController(*from.viewer_controller_);
-  } else {
-    viewer_controller_ = nullptr;
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_impl_.viewer_controller_ = new ::osirixgrpc::ViewerController(*from._impl_.viewer_controller_);
   }
-  if (from._internal_has_fixed_viewer_controller()) {
-    fixed_viewer_controller_ = new ::osirixgrpc::ViewerController(*from.fixed_viewer_controller_);
-  } else {
-    fixed_viewer_controller_ = nullptr;
+  if ((from._impl_._has_bits_[0] & 0x00000002u) != 0) {
+    _this->_impl_.fixed_viewer_controller_ = new ::osirixgrpc::ViewerController(*from._impl_.fixed_viewer_controller_);
   }
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.ViewerControllerResampleViewerControllerRequest)
 }
 
-void ViewerControllerResampleViewerControllerRequest::SharedCtor() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_ViewerControllerResampleViewerControllerRequest_viewercontroller_2eproto.base);
-  ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-      reinterpret_cast<char*>(&viewer_controller_) - reinterpret_cast<char*>(this)),
-      0, static_cast<size_t>(reinterpret_cast<char*>(&fixed_viewer_controller_) -
-      reinterpret_cast<char*>(&viewer_controller_)) + sizeof(fixed_viewer_controller_));
+inline void ViewerControllerResampleViewerControllerRequest::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.viewer_controller_){nullptr}
+    , decltype(_impl_.fixed_viewer_controller_){nullptr}
+  };
 }
 
 ViewerControllerResampleViewerControllerRequest::~ViewerControllerResampleViewerControllerRequest() {
   // @@protoc_insertion_point(destructor:osirixgrpc.ViewerControllerResampleViewerControllerRequest)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-void ViewerControllerResampleViewerControllerRequest::SharedDtor() {
-  GOOGLE_DCHECK(GetArena() == nullptr);
-  if (this != internal_default_instance()) delete viewer_controller_;
-  if (this != internal_default_instance()) delete fixed_viewer_controller_;
+inline void ViewerControllerResampleViewerControllerRequest::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  if (this != internal_default_instance()) delete _impl_.viewer_controller_;
+  if (this != internal_default_instance()) delete _impl_.fixed_viewer_controller_;
 }
 
-void ViewerControllerResampleViewerControllerRequest::ArenaDtor(void* object) {
-  ViewerControllerResampleViewerControllerRequest* _this = reinterpret_cast< ViewerControllerResampleViewerControllerRequest* >(object);
-  (void)_this;
-}
-void ViewerControllerResampleViewerControllerRequest::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void ViewerControllerResampleViewerControllerRequest::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
-const ViewerControllerResampleViewerControllerRequest& ViewerControllerResampleViewerControllerRequest::default_instance() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_ViewerControllerResampleViewerControllerRequest_viewercontroller_2eproto.base);
-  return *internal_default_instance();
-}
-
 
 void ViewerControllerResampleViewerControllerRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.ViewerControllerResampleViewerControllerRequest)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  if (GetArena() == nullptr && viewer_controller_ != nullptr) {
-    delete viewer_controller_;
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000003u) {
+    if (cached_has_bits & 0x00000001u) {
+      ABSL_DCHECK(_impl_.viewer_controller_ != nullptr);
+      _impl_.viewer_controller_->Clear();
+    }
+    if (cached_has_bits & 0x00000002u) {
+      ABSL_DCHECK(_impl_.fixed_viewer_controller_ != nullptr);
+      _impl_.fixed_viewer_controller_->Clear();
+    }
   }
-  viewer_controller_ = nullptr;
-  if (GetArena() == nullptr && fixed_viewer_controller_ != nullptr) {
-    delete fixed_viewer_controller_;
-  }
-  fixed_viewer_controller_ = nullptr;
+  _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* ViewerControllerResampleViewerControllerRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* ViewerControllerResampleViewerControllerRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
-    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-    CHK_(ptr);
+    ::uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // .osirixgrpc.ViewerController viewer_controller = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
           ptr = ctx->ParseMessage(_internal_mutable_viewer_controller(), ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
+        } else {
+          goto handle_unusual;
+        }
         continue;
       // .osirixgrpc.ViewerController fixed_viewer_controller = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 18)) {
           ptr = ctx->ParseMessage(_internal_mutable_fixed_viewer_controller(), ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
-        continue;
-      default: {
-      handle_unusual:
-        if ((tag & 7) == 4 || tag == 0) {
-          ctx->SetLastTag(tag);
-          goto success;
+        } else {
+          goto handle_unusual;
         }
-        ptr = UnknownFieldParse(tag,
-            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-            ptr, ctx);
-        CHK_(ptr != nullptr);
         continue;
-      }
+      default:
+        goto handle_unusual;
     }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
   }  // while
-success:
+message_done:
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
-  goto success;
+  goto message_done;
 #undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* ViewerControllerResampleViewerControllerRequest::_InternalSerialize(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+::uint8_t* ViewerControllerResampleViewerControllerRequest::_InternalSerialize(
+    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.ViewerControllerResampleViewerControllerRequest)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
+  cached_has_bits = _impl_._has_bits_[0];
   // .osirixgrpc.ViewerController viewer_controller = 1;
-  if (this->has_viewer_controller()) {
-    target = stream->EnsureSpace(target);
+  if (cached_has_bits & 0x00000001u) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::viewer_controller(this), target, stream);
+      InternalWriteMessage(1, _Internal::viewer_controller(this),
+        _Internal::viewer_controller(this).GetCachedSize(), target, stream);
   }
 
   // .osirixgrpc.ViewerController fixed_viewer_controller = 2;
-  if (this->has_fixed_viewer_controller()) {
-    target = stream->EnsureSpace(target);
+  if (cached_has_bits & 0x00000002u) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        2, _Internal::fixed_viewer_controller(this), target, stream);
+      InternalWriteMessage(2, _Internal::fixed_viewer_controller(this),
+        _Internal::fixed_viewer_controller(this).GetCachedSize(), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.ViewerControllerResampleViewerControllerRequest)
   return target;
 }
 
-size_t ViewerControllerResampleViewerControllerRequest::ByteSizeLong() const {
+::size_t ViewerControllerResampleViewerControllerRequest::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:osirixgrpc.ViewerControllerResampleViewerControllerRequest)
-  size_t total_size = 0;
+  ::size_t total_size = 0;
 
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // .osirixgrpc.ViewerController viewer_controller = 1;
-  if (this->has_viewer_controller()) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *viewer_controller_);
-  }
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000003u) {
+    // .osirixgrpc.ViewerController viewer_controller = 1;
+    if (cached_has_bits & 0x00000001u) {
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+          *_impl_.viewer_controller_);
+    }
 
-  // .osirixgrpc.ViewerController fixed_viewer_controller = 2;
-  if (this->has_fixed_viewer_controller()) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *fixed_viewer_controller_);
-  }
+    // .osirixgrpc.ViewerController fixed_viewer_controller = 2;
+    if (cached_has_bits & 0x00000002u) {
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+          *_impl_.fixed_viewer_controller_);
+    }
 
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
-        _internal_metadata_, total_size, &_cached_size_);
   }
-  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-void ViewerControllerResampleViewerControllerRequest::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:osirixgrpc.ViewerControllerResampleViewerControllerRequest)
-  GOOGLE_DCHECK_NE(&from, this);
-  const ViewerControllerResampleViewerControllerRequest* source =
-      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<ViewerControllerResampleViewerControllerRequest>(
-          &from);
-  if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:osirixgrpc.ViewerControllerResampleViewerControllerRequest)
-    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:osirixgrpc.ViewerControllerResampleViewerControllerRequest)
-    MergeFrom(*source);
-  }
-}
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ViewerControllerResampleViewerControllerRequest::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    ViewerControllerResampleViewerControllerRequest::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ViewerControllerResampleViewerControllerRequest::GetClassData() const { return &_class_data_; }
 
-void ViewerControllerResampleViewerControllerRequest::MergeFrom(const ViewerControllerResampleViewerControllerRequest& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ViewerControllerResampleViewerControllerRequest)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+
+void ViewerControllerResampleViewerControllerRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<ViewerControllerResampleViewerControllerRequest*>(&to_msg);
+  auto& from = static_cast<const ViewerControllerResampleViewerControllerRequest&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ViewerControllerResampleViewerControllerRequest)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.has_viewer_controller()) {
-    _internal_mutable_viewer_controller()->::osirixgrpc::ViewerController::MergeFrom(from._internal_viewer_controller());
+  cached_has_bits = from._impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000003u) {
+    if (cached_has_bits & 0x00000001u) {
+      _this->_internal_mutable_viewer_controller()->::osirixgrpc::ViewerController::MergeFrom(
+          from._internal_viewer_controller());
+    }
+    if (cached_has_bits & 0x00000002u) {
+      _this->_internal_mutable_fixed_viewer_controller()->::osirixgrpc::ViewerController::MergeFrom(
+          from._internal_fixed_viewer_controller());
+    }
   }
-  if (from.has_fixed_viewer_controller()) {
-    _internal_mutable_fixed_viewer_controller()->::osirixgrpc::ViewerController::MergeFrom(from._internal_fixed_viewer_controller());
-  }
-}
-
-void ViewerControllerResampleViewerControllerRequest::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:osirixgrpc.ViewerControllerResampleViewerControllerRequest)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void ViewerControllerResampleViewerControllerRequest::CopyFrom(const ViewerControllerResampleViewerControllerRequest& from) {
@@ -8035,238 +8308,235 @@ bool ViewerControllerResampleViewerControllerRequest::IsInitialized() const {
 
 void ViewerControllerResampleViewerControllerRequest::InternalSwap(ViewerControllerResampleViewerControllerRequest* other) {
   using std::swap;
-  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(ViewerControllerResampleViewerControllerRequest, fixed_viewer_controller_)
-      + sizeof(ViewerControllerResampleViewerControllerRequest::fixed_viewer_controller_)
-      - PROTOBUF_FIELD_OFFSET(ViewerControllerResampleViewerControllerRequest, viewer_controller_)>(
-          reinterpret_cast<char*>(&viewer_controller_),
-          reinterpret_cast<char*>(&other->viewer_controller_));
+      PROTOBUF_FIELD_OFFSET(ViewerControllerResampleViewerControllerRequest, _impl_.fixed_viewer_controller_)
+      + sizeof(ViewerControllerResampleViewerControllerRequest::_impl_.fixed_viewer_controller_)
+      - PROTOBUF_FIELD_OFFSET(ViewerControllerResampleViewerControllerRequest, _impl_.viewer_controller_)>(
+          reinterpret_cast<char*>(&_impl_.viewer_controller_),
+          reinterpret_cast<char*>(&other->_impl_.viewer_controller_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata ViewerControllerResampleViewerControllerRequest::GetMetadata() const {
-  return GetMetadataStatic();
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_viewercontroller_2eproto_getter, &descriptor_table_viewercontroller_2eproto_once,
+      file_level_metadata_viewercontroller_2eproto[25]);
 }
-
-
 // ===================================================================
 
 class ViewerControllerCopyViewerWindowRequest::_Internal {
  public:
+  using HasBits = decltype(std::declval<ViewerControllerCopyViewerWindowRequest>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+    8 * PROTOBUF_FIELD_OFFSET(ViewerControllerCopyViewerWindowRequest, _impl_._has_bits_);
   static const ::osirixgrpc::ViewerController& viewer_controller(const ViewerControllerCopyViewerWindowRequest* msg);
+  static void set_has_viewer_controller(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
 };
 
 const ::osirixgrpc::ViewerController&
 ViewerControllerCopyViewerWindowRequest::_Internal::viewer_controller(const ViewerControllerCopyViewerWindowRequest* msg) {
-  return *msg->viewer_controller_;
+  return *msg->_impl_.viewer_controller_;
 }
 void ViewerControllerCopyViewerWindowRequest::clear_viewer_controller() {
-  if (GetArena() == nullptr && viewer_controller_ != nullptr) {
-    delete viewer_controller_;
-  }
-  viewer_controller_ = nullptr;
+  if (_impl_.viewer_controller_ != nullptr) _impl_.viewer_controller_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000001u;
 }
 ViewerControllerCopyViewerWindowRequest::ViewerControllerCopyViewerWindowRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
-  SharedCtor();
-  RegisterArenaDtor(arena);
+  SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.ViewerControllerCopyViewerWindowRequest)
 }
 ViewerControllerCopyViewerWindowRequest::ViewerControllerCopyViewerWindowRequest(const ViewerControllerCopyViewerWindowRequest& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
+  ViewerControllerCopyViewerWindowRequest* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.viewer_controller_){nullptr}
+    , decltype(_impl_.in_4d_) {}
+  };
+
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if (from._internal_has_viewer_controller()) {
-    viewer_controller_ = new ::osirixgrpc::ViewerController(*from.viewer_controller_);
-  } else {
-    viewer_controller_ = nullptr;
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_impl_.viewer_controller_ = new ::osirixgrpc::ViewerController(*from._impl_.viewer_controller_);
   }
-  in_4d_ = from.in_4d_;
+  _this->_impl_.in_4d_ = from._impl_.in_4d_;
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.ViewerControllerCopyViewerWindowRequest)
 }
 
-void ViewerControllerCopyViewerWindowRequest::SharedCtor() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_ViewerControllerCopyViewerWindowRequest_viewercontroller_2eproto.base);
-  ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-      reinterpret_cast<char*>(&viewer_controller_) - reinterpret_cast<char*>(this)),
-      0, static_cast<size_t>(reinterpret_cast<char*>(&in_4d_) -
-      reinterpret_cast<char*>(&viewer_controller_)) + sizeof(in_4d_));
+inline void ViewerControllerCopyViewerWindowRequest::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.viewer_controller_){nullptr}
+    , decltype(_impl_.in_4d_) { false }
+
+  };
 }
 
 ViewerControllerCopyViewerWindowRequest::~ViewerControllerCopyViewerWindowRequest() {
   // @@protoc_insertion_point(destructor:osirixgrpc.ViewerControllerCopyViewerWindowRequest)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-void ViewerControllerCopyViewerWindowRequest::SharedDtor() {
-  GOOGLE_DCHECK(GetArena() == nullptr);
-  if (this != internal_default_instance()) delete viewer_controller_;
+inline void ViewerControllerCopyViewerWindowRequest::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  if (this != internal_default_instance()) delete _impl_.viewer_controller_;
 }
 
-void ViewerControllerCopyViewerWindowRequest::ArenaDtor(void* object) {
-  ViewerControllerCopyViewerWindowRequest* _this = reinterpret_cast< ViewerControllerCopyViewerWindowRequest* >(object);
-  (void)_this;
-}
-void ViewerControllerCopyViewerWindowRequest::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void ViewerControllerCopyViewerWindowRequest::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
-const ViewerControllerCopyViewerWindowRequest& ViewerControllerCopyViewerWindowRequest::default_instance() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_ViewerControllerCopyViewerWindowRequest_viewercontroller_2eproto.base);
-  return *internal_default_instance();
-}
-
 
 void ViewerControllerCopyViewerWindowRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.ViewerControllerCopyViewerWindowRequest)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  if (GetArena() == nullptr && viewer_controller_ != nullptr) {
-    delete viewer_controller_;
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    ABSL_DCHECK(_impl_.viewer_controller_ != nullptr);
+    _impl_.viewer_controller_->Clear();
   }
-  viewer_controller_ = nullptr;
-  in_4d_ = false;
+  _impl_.in_4d_ = false;
+  _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* ViewerControllerCopyViewerWindowRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* ViewerControllerCopyViewerWindowRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
-    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-    CHK_(ptr);
+    ::uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // .osirixgrpc.ViewerController viewer_controller = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
           ptr = ctx->ParseMessage(_internal_mutable_viewer_controller(), ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
+        } else {
+          goto handle_unusual;
+        }
         continue;
       // bool in_4d = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
-          in_4d_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 16)) {
+          _impl_.in_4d_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
-        continue;
-      default: {
-      handle_unusual:
-        if ((tag & 7) == 4 || tag == 0) {
-          ctx->SetLastTag(tag);
-          goto success;
+        } else {
+          goto handle_unusual;
         }
-        ptr = UnknownFieldParse(tag,
-            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-            ptr, ctx);
-        CHK_(ptr != nullptr);
         continue;
-      }
+      default:
+        goto handle_unusual;
     }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
   }  // while
-success:
+message_done:
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
-  goto success;
+  goto message_done;
 #undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* ViewerControllerCopyViewerWindowRequest::_InternalSerialize(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+::uint8_t* ViewerControllerCopyViewerWindowRequest::_InternalSerialize(
+    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.ViewerControllerCopyViewerWindowRequest)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
+  cached_has_bits = _impl_._has_bits_[0];
   // .osirixgrpc.ViewerController viewer_controller = 1;
-  if (this->has_viewer_controller()) {
-    target = stream->EnsureSpace(target);
+  if (cached_has_bits & 0x00000001u) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::viewer_controller(this), target, stream);
+      InternalWriteMessage(1, _Internal::viewer_controller(this),
+        _Internal::viewer_controller(this).GetCachedSize(), target, stream);
   }
 
   // bool in_4d = 2;
-  if (this->in_4d() != 0) {
+  if (this->_internal_in_4d() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteBoolToArray(2, this->_internal_in_4d(), target);
+    target = ::_pbi::WireFormatLite::WriteBoolToArray(
+        2, this->_internal_in_4d(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.ViewerControllerCopyViewerWindowRequest)
   return target;
 }
 
-size_t ViewerControllerCopyViewerWindowRequest::ByteSizeLong() const {
+::size_t ViewerControllerCopyViewerWindowRequest::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:osirixgrpc.ViewerControllerCopyViewerWindowRequest)
-  size_t total_size = 0;
+  ::size_t total_size = 0;
 
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // .osirixgrpc.ViewerController viewer_controller = 1;
-  if (this->has_viewer_controller()) {
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *viewer_controller_);
+        *_impl_.viewer_controller_);
   }
 
   // bool in_4d = 2;
-  if (this->in_4d() != 0) {
-    total_size += 1 + 1;
+  if (this->_internal_in_4d() != 0) {
+    total_size += 2;
   }
 
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
-        _internal_metadata_, total_size, &_cached_size_);
-  }
-  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-void ViewerControllerCopyViewerWindowRequest::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:osirixgrpc.ViewerControllerCopyViewerWindowRequest)
-  GOOGLE_DCHECK_NE(&from, this);
-  const ViewerControllerCopyViewerWindowRequest* source =
-      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<ViewerControllerCopyViewerWindowRequest>(
-          &from);
-  if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:osirixgrpc.ViewerControllerCopyViewerWindowRequest)
-    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:osirixgrpc.ViewerControllerCopyViewerWindowRequest)
-    MergeFrom(*source);
-  }
-}
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ViewerControllerCopyViewerWindowRequest::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    ViewerControllerCopyViewerWindowRequest::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ViewerControllerCopyViewerWindowRequest::GetClassData() const { return &_class_data_; }
 
-void ViewerControllerCopyViewerWindowRequest::MergeFrom(const ViewerControllerCopyViewerWindowRequest& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ViewerControllerCopyViewerWindowRequest)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+
+void ViewerControllerCopyViewerWindowRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<ViewerControllerCopyViewerWindowRequest*>(&to_msg);
+  auto& from = static_cast<const ViewerControllerCopyViewerWindowRequest&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ViewerControllerCopyViewerWindowRequest)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.has_viewer_controller()) {
-    _internal_mutable_viewer_controller()->::osirixgrpc::ViewerController::MergeFrom(from._internal_viewer_controller());
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_internal_mutable_viewer_controller()->::osirixgrpc::ViewerController::MergeFrom(
+        from._internal_viewer_controller());
   }
-  if (from.in_4d() != 0) {
-    _internal_set_in_4d(from._internal_in_4d());
+  if (from._internal_in_4d() != 0) {
+    _this->_internal_set_in_4d(from._internal_in_4d());
   }
-}
-
-void ViewerControllerCopyViewerWindowRequest::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:osirixgrpc.ViewerControllerCopyViewerWindowRequest)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void ViewerControllerCopyViewerWindowRequest::CopyFrom(const ViewerControllerCopyViewerWindowRequest& from) {
@@ -8282,240 +8552,236 @@ bool ViewerControllerCopyViewerWindowRequest::IsInitialized() const {
 
 void ViewerControllerCopyViewerWindowRequest::InternalSwap(ViewerControllerCopyViewerWindowRequest* other) {
   using std::swap;
-  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(ViewerControllerCopyViewerWindowRequest, in_4d_)
-      + sizeof(ViewerControllerCopyViewerWindowRequest::in_4d_)
-      - PROTOBUF_FIELD_OFFSET(ViewerControllerCopyViewerWindowRequest, viewer_controller_)>(
-          reinterpret_cast<char*>(&viewer_controller_),
-          reinterpret_cast<char*>(&other->viewer_controller_));
+      PROTOBUF_FIELD_OFFSET(ViewerControllerCopyViewerWindowRequest, _impl_.in_4d_)
+      + sizeof(ViewerControllerCopyViewerWindowRequest::_impl_.in_4d_)
+      - PROTOBUF_FIELD_OFFSET(ViewerControllerCopyViewerWindowRequest, _impl_.viewer_controller_)>(
+          reinterpret_cast<char*>(&_impl_.viewer_controller_),
+          reinterpret_cast<char*>(&other->_impl_.viewer_controller_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata ViewerControllerCopyViewerWindowRequest::GetMetadata() const {
-  return GetMetadataStatic();
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_viewercontroller_2eproto_getter, &descriptor_table_viewercontroller_2eproto_once,
+      file_level_metadata_viewercontroller_2eproto[26]);
 }
-
-
 // ===================================================================
 
 class ViewerControllerSetMovieIdxRequest::_Internal {
  public:
+  using HasBits = decltype(std::declval<ViewerControllerSetMovieIdxRequest>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+    8 * PROTOBUF_FIELD_OFFSET(ViewerControllerSetMovieIdxRequest, _impl_._has_bits_);
   static const ::osirixgrpc::ViewerController& viewer_controller(const ViewerControllerSetMovieIdxRequest* msg);
+  static void set_has_viewer_controller(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
 };
 
 const ::osirixgrpc::ViewerController&
 ViewerControllerSetMovieIdxRequest::_Internal::viewer_controller(const ViewerControllerSetMovieIdxRequest* msg) {
-  return *msg->viewer_controller_;
+  return *msg->_impl_.viewer_controller_;
 }
 void ViewerControllerSetMovieIdxRequest::clear_viewer_controller() {
-  if (GetArena() == nullptr && viewer_controller_ != nullptr) {
-    delete viewer_controller_;
-  }
-  viewer_controller_ = nullptr;
+  if (_impl_.viewer_controller_ != nullptr) _impl_.viewer_controller_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000001u;
 }
 ViewerControllerSetMovieIdxRequest::ViewerControllerSetMovieIdxRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
-  SharedCtor();
-  RegisterArenaDtor(arena);
+  SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.ViewerControllerSetMovieIdxRequest)
 }
 ViewerControllerSetMovieIdxRequest::ViewerControllerSetMovieIdxRequest(const ViewerControllerSetMovieIdxRequest& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
+  ViewerControllerSetMovieIdxRequest* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.viewer_controller_){nullptr}
+    , decltype(_impl_.movie_idx_) {}
+  };
+
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if (from._internal_has_viewer_controller()) {
-    viewer_controller_ = new ::osirixgrpc::ViewerController(*from.viewer_controller_);
-  } else {
-    viewer_controller_ = nullptr;
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_impl_.viewer_controller_ = new ::osirixgrpc::ViewerController(*from._impl_.viewer_controller_);
   }
-  movie_idx_ = from.movie_idx_;
+  _this->_impl_.movie_idx_ = from._impl_.movie_idx_;
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.ViewerControllerSetMovieIdxRequest)
 }
 
-void ViewerControllerSetMovieIdxRequest::SharedCtor() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_ViewerControllerSetMovieIdxRequest_viewercontroller_2eproto.base);
-  ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-      reinterpret_cast<char*>(&viewer_controller_) - reinterpret_cast<char*>(this)),
-      0, static_cast<size_t>(reinterpret_cast<char*>(&movie_idx_) -
-      reinterpret_cast<char*>(&viewer_controller_)) + sizeof(movie_idx_));
+inline void ViewerControllerSetMovieIdxRequest::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.viewer_controller_){nullptr}
+    , decltype(_impl_.movie_idx_) { 0 }
+
+  };
 }
 
 ViewerControllerSetMovieIdxRequest::~ViewerControllerSetMovieIdxRequest() {
   // @@protoc_insertion_point(destructor:osirixgrpc.ViewerControllerSetMovieIdxRequest)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-void ViewerControllerSetMovieIdxRequest::SharedDtor() {
-  GOOGLE_DCHECK(GetArena() == nullptr);
-  if (this != internal_default_instance()) delete viewer_controller_;
+inline void ViewerControllerSetMovieIdxRequest::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  if (this != internal_default_instance()) delete _impl_.viewer_controller_;
 }
 
-void ViewerControllerSetMovieIdxRequest::ArenaDtor(void* object) {
-  ViewerControllerSetMovieIdxRequest* _this = reinterpret_cast< ViewerControllerSetMovieIdxRequest* >(object);
-  (void)_this;
-}
-void ViewerControllerSetMovieIdxRequest::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void ViewerControllerSetMovieIdxRequest::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
-const ViewerControllerSetMovieIdxRequest& ViewerControllerSetMovieIdxRequest::default_instance() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_ViewerControllerSetMovieIdxRequest_viewercontroller_2eproto.base);
-  return *internal_default_instance();
-}
-
 
 void ViewerControllerSetMovieIdxRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.ViewerControllerSetMovieIdxRequest)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  if (GetArena() == nullptr && viewer_controller_ != nullptr) {
-    delete viewer_controller_;
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    ABSL_DCHECK(_impl_.viewer_controller_ != nullptr);
+    _impl_.viewer_controller_->Clear();
   }
-  viewer_controller_ = nullptr;
-  movie_idx_ = 0;
+  _impl_.movie_idx_ = 0;
+  _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* ViewerControllerSetMovieIdxRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* ViewerControllerSetMovieIdxRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
-    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-    CHK_(ptr);
+    ::uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // .osirixgrpc.ViewerController viewer_controller = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
           ptr = ctx->ParseMessage(_internal_mutable_viewer_controller(), ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
+        } else {
+          goto handle_unusual;
+        }
         continue;
       // int32 movie_idx = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
-          movie_idx_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 16)) {
+          _impl_.movie_idx_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
-        continue;
-      default: {
-      handle_unusual:
-        if ((tag & 7) == 4 || tag == 0) {
-          ctx->SetLastTag(tag);
-          goto success;
+        } else {
+          goto handle_unusual;
         }
-        ptr = UnknownFieldParse(tag,
-            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-            ptr, ctx);
-        CHK_(ptr != nullptr);
         continue;
-      }
+      default:
+        goto handle_unusual;
     }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
   }  // while
-success:
+message_done:
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
-  goto success;
+  goto message_done;
 #undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* ViewerControllerSetMovieIdxRequest::_InternalSerialize(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+::uint8_t* ViewerControllerSetMovieIdxRequest::_InternalSerialize(
+    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.ViewerControllerSetMovieIdxRequest)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
+  cached_has_bits = _impl_._has_bits_[0];
   // .osirixgrpc.ViewerController viewer_controller = 1;
-  if (this->has_viewer_controller()) {
-    target = stream->EnsureSpace(target);
+  if (cached_has_bits & 0x00000001u) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::viewer_controller(this), target, stream);
+      InternalWriteMessage(1, _Internal::viewer_controller(this),
+        _Internal::viewer_controller(this).GetCachedSize(), target, stream);
   }
 
   // int32 movie_idx = 2;
-  if (this->movie_idx() != 0) {
+  if (this->_internal_movie_idx() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(2, this->_internal_movie_idx(), target);
+    target = ::_pbi::WireFormatLite::WriteInt32ToArray(
+        2, this->_internal_movie_idx(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.ViewerControllerSetMovieIdxRequest)
   return target;
 }
 
-size_t ViewerControllerSetMovieIdxRequest::ByteSizeLong() const {
+::size_t ViewerControllerSetMovieIdxRequest::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:osirixgrpc.ViewerControllerSetMovieIdxRequest)
-  size_t total_size = 0;
+  ::size_t total_size = 0;
 
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // .osirixgrpc.ViewerController viewer_controller = 1;
-  if (this->has_viewer_controller()) {
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *viewer_controller_);
+        *_impl_.viewer_controller_);
   }
 
   // int32 movie_idx = 2;
-  if (this->movie_idx() != 0) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+  if (this->_internal_movie_idx() != 0) {
+    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
         this->_internal_movie_idx());
   }
 
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
-        _internal_metadata_, total_size, &_cached_size_);
-  }
-  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-void ViewerControllerSetMovieIdxRequest::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:osirixgrpc.ViewerControllerSetMovieIdxRequest)
-  GOOGLE_DCHECK_NE(&from, this);
-  const ViewerControllerSetMovieIdxRequest* source =
-      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<ViewerControllerSetMovieIdxRequest>(
-          &from);
-  if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:osirixgrpc.ViewerControllerSetMovieIdxRequest)
-    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:osirixgrpc.ViewerControllerSetMovieIdxRequest)
-    MergeFrom(*source);
-  }
-}
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ViewerControllerSetMovieIdxRequest::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    ViewerControllerSetMovieIdxRequest::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ViewerControllerSetMovieIdxRequest::GetClassData() const { return &_class_data_; }
 
-void ViewerControllerSetMovieIdxRequest::MergeFrom(const ViewerControllerSetMovieIdxRequest& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ViewerControllerSetMovieIdxRequest)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+
+void ViewerControllerSetMovieIdxRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<ViewerControllerSetMovieIdxRequest*>(&to_msg);
+  auto& from = static_cast<const ViewerControllerSetMovieIdxRequest&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ViewerControllerSetMovieIdxRequest)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.has_viewer_controller()) {
-    _internal_mutable_viewer_controller()->::osirixgrpc::ViewerController::MergeFrom(from._internal_viewer_controller());
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_internal_mutable_viewer_controller()->::osirixgrpc::ViewerController::MergeFrom(
+        from._internal_viewer_controller());
   }
-  if (from.movie_idx() != 0) {
-    _internal_set_movie_idx(from._internal_movie_idx());
+  if (from._internal_movie_idx() != 0) {
+    _this->_internal_set_movie_idx(from._internal_movie_idx());
   }
-}
-
-void ViewerControllerSetMovieIdxRequest::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:osirixgrpc.ViewerControllerSetMovieIdxRequest)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void ViewerControllerSetMovieIdxRequest::CopyFrom(const ViewerControllerSetMovieIdxRequest& from) {
@@ -8531,238 +8797,235 @@ bool ViewerControllerSetMovieIdxRequest::IsInitialized() const {
 
 void ViewerControllerSetMovieIdxRequest::InternalSwap(ViewerControllerSetMovieIdxRequest* other) {
   using std::swap;
-  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(ViewerControllerSetMovieIdxRequest, movie_idx_)
-      + sizeof(ViewerControllerSetMovieIdxRequest::movie_idx_)
-      - PROTOBUF_FIELD_OFFSET(ViewerControllerSetMovieIdxRequest, viewer_controller_)>(
-          reinterpret_cast<char*>(&viewer_controller_),
-          reinterpret_cast<char*>(&other->viewer_controller_));
+      PROTOBUF_FIELD_OFFSET(ViewerControllerSetMovieIdxRequest, _impl_.movie_idx_)
+      + sizeof(ViewerControllerSetMovieIdxRequest::_impl_.movie_idx_)
+      - PROTOBUF_FIELD_OFFSET(ViewerControllerSetMovieIdxRequest, _impl_.viewer_controller_)>(
+          reinterpret_cast<char*>(&_impl_.viewer_controller_),
+          reinterpret_cast<char*>(&other->_impl_.viewer_controller_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata ViewerControllerSetMovieIdxRequest::GetMetadata() const {
-  return GetMetadataStatic();
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_viewercontroller_2eproto_getter, &descriptor_table_viewercontroller_2eproto_once,
+      file_level_metadata_viewercontroller_2eproto[27]);
 }
-
-
 // ===================================================================
 
 class ViewerControllerIsDataVolumicRequest::_Internal {
  public:
+  using HasBits = decltype(std::declval<ViewerControllerIsDataVolumicRequest>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+    8 * PROTOBUF_FIELD_OFFSET(ViewerControllerIsDataVolumicRequest, _impl_._has_bits_);
   static const ::osirixgrpc::ViewerController& viewer_controller(const ViewerControllerIsDataVolumicRequest* msg);
+  static void set_has_viewer_controller(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
 };
 
 const ::osirixgrpc::ViewerController&
 ViewerControllerIsDataVolumicRequest::_Internal::viewer_controller(const ViewerControllerIsDataVolumicRequest* msg) {
-  return *msg->viewer_controller_;
+  return *msg->_impl_.viewer_controller_;
 }
 void ViewerControllerIsDataVolumicRequest::clear_viewer_controller() {
-  if (GetArena() == nullptr && viewer_controller_ != nullptr) {
-    delete viewer_controller_;
-  }
-  viewer_controller_ = nullptr;
+  if (_impl_.viewer_controller_ != nullptr) _impl_.viewer_controller_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000001u;
 }
 ViewerControllerIsDataVolumicRequest::ViewerControllerIsDataVolumicRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
-  SharedCtor();
-  RegisterArenaDtor(arena);
+  SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.ViewerControllerIsDataVolumicRequest)
 }
 ViewerControllerIsDataVolumicRequest::ViewerControllerIsDataVolumicRequest(const ViewerControllerIsDataVolumicRequest& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
+  ViewerControllerIsDataVolumicRequest* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.viewer_controller_){nullptr}
+    , decltype(_impl_.in_4d_) {}
+  };
+
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if (from._internal_has_viewer_controller()) {
-    viewer_controller_ = new ::osirixgrpc::ViewerController(*from.viewer_controller_);
-  } else {
-    viewer_controller_ = nullptr;
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_impl_.viewer_controller_ = new ::osirixgrpc::ViewerController(*from._impl_.viewer_controller_);
   }
-  in_4d_ = from.in_4d_;
+  _this->_impl_.in_4d_ = from._impl_.in_4d_;
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.ViewerControllerIsDataVolumicRequest)
 }
 
-void ViewerControllerIsDataVolumicRequest::SharedCtor() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_ViewerControllerIsDataVolumicRequest_viewercontroller_2eproto.base);
-  ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-      reinterpret_cast<char*>(&viewer_controller_) - reinterpret_cast<char*>(this)),
-      0, static_cast<size_t>(reinterpret_cast<char*>(&in_4d_) -
-      reinterpret_cast<char*>(&viewer_controller_)) + sizeof(in_4d_));
+inline void ViewerControllerIsDataVolumicRequest::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.viewer_controller_){nullptr}
+    , decltype(_impl_.in_4d_) { false }
+
+  };
 }
 
 ViewerControllerIsDataVolumicRequest::~ViewerControllerIsDataVolumicRequest() {
   // @@protoc_insertion_point(destructor:osirixgrpc.ViewerControllerIsDataVolumicRequest)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-void ViewerControllerIsDataVolumicRequest::SharedDtor() {
-  GOOGLE_DCHECK(GetArena() == nullptr);
-  if (this != internal_default_instance()) delete viewer_controller_;
+inline void ViewerControllerIsDataVolumicRequest::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  if (this != internal_default_instance()) delete _impl_.viewer_controller_;
 }
 
-void ViewerControllerIsDataVolumicRequest::ArenaDtor(void* object) {
-  ViewerControllerIsDataVolumicRequest* _this = reinterpret_cast< ViewerControllerIsDataVolumicRequest* >(object);
-  (void)_this;
-}
-void ViewerControllerIsDataVolumicRequest::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void ViewerControllerIsDataVolumicRequest::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
-const ViewerControllerIsDataVolumicRequest& ViewerControllerIsDataVolumicRequest::default_instance() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_ViewerControllerIsDataVolumicRequest_viewercontroller_2eproto.base);
-  return *internal_default_instance();
-}
-
 
 void ViewerControllerIsDataVolumicRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.ViewerControllerIsDataVolumicRequest)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  if (GetArena() == nullptr && viewer_controller_ != nullptr) {
-    delete viewer_controller_;
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    ABSL_DCHECK(_impl_.viewer_controller_ != nullptr);
+    _impl_.viewer_controller_->Clear();
   }
-  viewer_controller_ = nullptr;
-  in_4d_ = false;
+  _impl_.in_4d_ = false;
+  _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* ViewerControllerIsDataVolumicRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* ViewerControllerIsDataVolumicRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
-    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-    CHK_(ptr);
+    ::uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // .osirixgrpc.ViewerController viewer_controller = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
           ptr = ctx->ParseMessage(_internal_mutable_viewer_controller(), ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
+        } else {
+          goto handle_unusual;
+        }
         continue;
       // bool in_4d = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
-          in_4d_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 16)) {
+          _impl_.in_4d_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
-        continue;
-      default: {
-      handle_unusual:
-        if ((tag & 7) == 4 || tag == 0) {
-          ctx->SetLastTag(tag);
-          goto success;
+        } else {
+          goto handle_unusual;
         }
-        ptr = UnknownFieldParse(tag,
-            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-            ptr, ctx);
-        CHK_(ptr != nullptr);
         continue;
-      }
+      default:
+        goto handle_unusual;
     }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
   }  // while
-success:
+message_done:
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
-  goto success;
+  goto message_done;
 #undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* ViewerControllerIsDataVolumicRequest::_InternalSerialize(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+::uint8_t* ViewerControllerIsDataVolumicRequest::_InternalSerialize(
+    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.ViewerControllerIsDataVolumicRequest)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
+  cached_has_bits = _impl_._has_bits_[0];
   // .osirixgrpc.ViewerController viewer_controller = 1;
-  if (this->has_viewer_controller()) {
-    target = stream->EnsureSpace(target);
+  if (cached_has_bits & 0x00000001u) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::viewer_controller(this), target, stream);
+      InternalWriteMessage(1, _Internal::viewer_controller(this),
+        _Internal::viewer_controller(this).GetCachedSize(), target, stream);
   }
 
   // bool in_4d = 2;
-  if (this->in_4d() != 0) {
+  if (this->_internal_in_4d() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteBoolToArray(2, this->_internal_in_4d(), target);
+    target = ::_pbi::WireFormatLite::WriteBoolToArray(
+        2, this->_internal_in_4d(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.ViewerControllerIsDataVolumicRequest)
   return target;
 }
 
-size_t ViewerControllerIsDataVolumicRequest::ByteSizeLong() const {
+::size_t ViewerControllerIsDataVolumicRequest::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:osirixgrpc.ViewerControllerIsDataVolumicRequest)
-  size_t total_size = 0;
+  ::size_t total_size = 0;
 
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // .osirixgrpc.ViewerController viewer_controller = 1;
-  if (this->has_viewer_controller()) {
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *viewer_controller_);
+        *_impl_.viewer_controller_);
   }
 
   // bool in_4d = 2;
-  if (this->in_4d() != 0) {
-    total_size += 1 + 1;
+  if (this->_internal_in_4d() != 0) {
+    total_size += 2;
   }
 
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
-        _internal_metadata_, total_size, &_cached_size_);
-  }
-  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-void ViewerControllerIsDataVolumicRequest::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:osirixgrpc.ViewerControllerIsDataVolumicRequest)
-  GOOGLE_DCHECK_NE(&from, this);
-  const ViewerControllerIsDataVolumicRequest* source =
-      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<ViewerControllerIsDataVolumicRequest>(
-          &from);
-  if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:osirixgrpc.ViewerControllerIsDataVolumicRequest)
-    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:osirixgrpc.ViewerControllerIsDataVolumicRequest)
-    MergeFrom(*source);
-  }
-}
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ViewerControllerIsDataVolumicRequest::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    ViewerControllerIsDataVolumicRequest::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ViewerControllerIsDataVolumicRequest::GetClassData() const { return &_class_data_; }
 
-void ViewerControllerIsDataVolumicRequest::MergeFrom(const ViewerControllerIsDataVolumicRequest& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ViewerControllerIsDataVolumicRequest)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+
+void ViewerControllerIsDataVolumicRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<ViewerControllerIsDataVolumicRequest*>(&to_msg);
+  auto& from = static_cast<const ViewerControllerIsDataVolumicRequest&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ViewerControllerIsDataVolumicRequest)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.has_viewer_controller()) {
-    _internal_mutable_viewer_controller()->::osirixgrpc::ViewerController::MergeFrom(from._internal_viewer_controller());
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_internal_mutable_viewer_controller()->::osirixgrpc::ViewerController::MergeFrom(
+        from._internal_viewer_controller());
   }
-  if (from.in_4d() != 0) {
-    _internal_set_in_4d(from._internal_in_4d());
+  if (from._internal_in_4d() != 0) {
+    _this->_internal_set_in_4d(from._internal_in_4d());
   }
-}
-
-void ViewerControllerIsDataVolumicRequest::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:osirixgrpc.ViewerControllerIsDataVolumicRequest)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void ViewerControllerIsDataVolumicRequest::CopyFrom(const ViewerControllerIsDataVolumicRequest& from) {
@@ -8778,240 +9041,236 @@ bool ViewerControllerIsDataVolumicRequest::IsInitialized() const {
 
 void ViewerControllerIsDataVolumicRequest::InternalSwap(ViewerControllerIsDataVolumicRequest* other) {
   using std::swap;
-  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(ViewerControllerIsDataVolumicRequest, in_4d_)
-      + sizeof(ViewerControllerIsDataVolumicRequest::in_4d_)
-      - PROTOBUF_FIELD_OFFSET(ViewerControllerIsDataVolumicRequest, viewer_controller_)>(
-          reinterpret_cast<char*>(&viewer_controller_),
-          reinterpret_cast<char*>(&other->viewer_controller_));
+      PROTOBUF_FIELD_OFFSET(ViewerControllerIsDataVolumicRequest, _impl_.in_4d_)
+      + sizeof(ViewerControllerIsDataVolumicRequest::_impl_.in_4d_)
+      - PROTOBUF_FIELD_OFFSET(ViewerControllerIsDataVolumicRequest, _impl_.viewer_controller_)>(
+          reinterpret_cast<char*>(&_impl_.viewer_controller_),
+          reinterpret_cast<char*>(&other->_impl_.viewer_controller_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata ViewerControllerIsDataVolumicRequest::GetMetadata() const {
-  return GetMetadataStatic();
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_viewercontroller_2eproto_getter, &descriptor_table_viewercontroller_2eproto_once,
+      file_level_metadata_viewercontroller_2eproto[28]);
 }
-
-
 // ===================================================================
 
 class ViewerControllerSetIdxRequest::_Internal {
  public:
+  using HasBits = decltype(std::declval<ViewerControllerSetIdxRequest>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+    8 * PROTOBUF_FIELD_OFFSET(ViewerControllerSetIdxRequest, _impl_._has_bits_);
   static const ::osirixgrpc::ViewerController& viewer_controller(const ViewerControllerSetIdxRequest* msg);
+  static void set_has_viewer_controller(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
 };
 
 const ::osirixgrpc::ViewerController&
 ViewerControllerSetIdxRequest::_Internal::viewer_controller(const ViewerControllerSetIdxRequest* msg) {
-  return *msg->viewer_controller_;
+  return *msg->_impl_.viewer_controller_;
 }
 void ViewerControllerSetIdxRequest::clear_viewer_controller() {
-  if (GetArena() == nullptr && viewer_controller_ != nullptr) {
-    delete viewer_controller_;
-  }
-  viewer_controller_ = nullptr;
+  if (_impl_.viewer_controller_ != nullptr) _impl_.viewer_controller_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000001u;
 }
 ViewerControllerSetIdxRequest::ViewerControllerSetIdxRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
-  SharedCtor();
-  RegisterArenaDtor(arena);
+  SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.ViewerControllerSetIdxRequest)
 }
 ViewerControllerSetIdxRequest::ViewerControllerSetIdxRequest(const ViewerControllerSetIdxRequest& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
+  ViewerControllerSetIdxRequest* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.viewer_controller_){nullptr}
+    , decltype(_impl_.idx_) {}
+  };
+
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if (from._internal_has_viewer_controller()) {
-    viewer_controller_ = new ::osirixgrpc::ViewerController(*from.viewer_controller_);
-  } else {
-    viewer_controller_ = nullptr;
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_impl_.viewer_controller_ = new ::osirixgrpc::ViewerController(*from._impl_.viewer_controller_);
   }
-  idx_ = from.idx_;
+  _this->_impl_.idx_ = from._impl_.idx_;
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.ViewerControllerSetIdxRequest)
 }
 
-void ViewerControllerSetIdxRequest::SharedCtor() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_ViewerControllerSetIdxRequest_viewercontroller_2eproto.base);
-  ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-      reinterpret_cast<char*>(&viewer_controller_) - reinterpret_cast<char*>(this)),
-      0, static_cast<size_t>(reinterpret_cast<char*>(&idx_) -
-      reinterpret_cast<char*>(&viewer_controller_)) + sizeof(idx_));
+inline void ViewerControllerSetIdxRequest::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.viewer_controller_){nullptr}
+    , decltype(_impl_.idx_) { 0 }
+
+  };
 }
 
 ViewerControllerSetIdxRequest::~ViewerControllerSetIdxRequest() {
   // @@protoc_insertion_point(destructor:osirixgrpc.ViewerControllerSetIdxRequest)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-void ViewerControllerSetIdxRequest::SharedDtor() {
-  GOOGLE_DCHECK(GetArena() == nullptr);
-  if (this != internal_default_instance()) delete viewer_controller_;
+inline void ViewerControllerSetIdxRequest::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  if (this != internal_default_instance()) delete _impl_.viewer_controller_;
 }
 
-void ViewerControllerSetIdxRequest::ArenaDtor(void* object) {
-  ViewerControllerSetIdxRequest* _this = reinterpret_cast< ViewerControllerSetIdxRequest* >(object);
-  (void)_this;
-}
-void ViewerControllerSetIdxRequest::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void ViewerControllerSetIdxRequest::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
-const ViewerControllerSetIdxRequest& ViewerControllerSetIdxRequest::default_instance() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_ViewerControllerSetIdxRequest_viewercontroller_2eproto.base);
-  return *internal_default_instance();
-}
-
 
 void ViewerControllerSetIdxRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.ViewerControllerSetIdxRequest)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  if (GetArena() == nullptr && viewer_controller_ != nullptr) {
-    delete viewer_controller_;
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    ABSL_DCHECK(_impl_.viewer_controller_ != nullptr);
+    _impl_.viewer_controller_->Clear();
   }
-  viewer_controller_ = nullptr;
-  idx_ = 0;
+  _impl_.idx_ = 0;
+  _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* ViewerControllerSetIdxRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* ViewerControllerSetIdxRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
-    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-    CHK_(ptr);
+    ::uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // .osirixgrpc.ViewerController viewer_controller = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
           ptr = ctx->ParseMessage(_internal_mutable_viewer_controller(), ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
+        } else {
+          goto handle_unusual;
+        }
         continue;
       // int32 idx = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
-          idx_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 16)) {
+          _impl_.idx_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
-        continue;
-      default: {
-      handle_unusual:
-        if ((tag & 7) == 4 || tag == 0) {
-          ctx->SetLastTag(tag);
-          goto success;
+        } else {
+          goto handle_unusual;
         }
-        ptr = UnknownFieldParse(tag,
-            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-            ptr, ctx);
-        CHK_(ptr != nullptr);
         continue;
-      }
+      default:
+        goto handle_unusual;
     }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
   }  // while
-success:
+message_done:
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
-  goto success;
+  goto message_done;
 #undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* ViewerControllerSetIdxRequest::_InternalSerialize(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+::uint8_t* ViewerControllerSetIdxRequest::_InternalSerialize(
+    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.ViewerControllerSetIdxRequest)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
+  cached_has_bits = _impl_._has_bits_[0];
   // .osirixgrpc.ViewerController viewer_controller = 1;
-  if (this->has_viewer_controller()) {
-    target = stream->EnsureSpace(target);
+  if (cached_has_bits & 0x00000001u) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::viewer_controller(this), target, stream);
+      InternalWriteMessage(1, _Internal::viewer_controller(this),
+        _Internal::viewer_controller(this).GetCachedSize(), target, stream);
   }
 
   // int32 idx = 2;
-  if (this->idx() != 0) {
+  if (this->_internal_idx() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(2, this->_internal_idx(), target);
+    target = ::_pbi::WireFormatLite::WriteInt32ToArray(
+        2, this->_internal_idx(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.ViewerControllerSetIdxRequest)
   return target;
 }
 
-size_t ViewerControllerSetIdxRequest::ByteSizeLong() const {
+::size_t ViewerControllerSetIdxRequest::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:osirixgrpc.ViewerControllerSetIdxRequest)
-  size_t total_size = 0;
+  ::size_t total_size = 0;
 
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // .osirixgrpc.ViewerController viewer_controller = 1;
-  if (this->has_viewer_controller()) {
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *viewer_controller_);
+        *_impl_.viewer_controller_);
   }
 
   // int32 idx = 2;
-  if (this->idx() != 0) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+  if (this->_internal_idx() != 0) {
+    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
         this->_internal_idx());
   }
 
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
-        _internal_metadata_, total_size, &_cached_size_);
-  }
-  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-void ViewerControllerSetIdxRequest::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:osirixgrpc.ViewerControllerSetIdxRequest)
-  GOOGLE_DCHECK_NE(&from, this);
-  const ViewerControllerSetIdxRequest* source =
-      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<ViewerControllerSetIdxRequest>(
-          &from);
-  if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:osirixgrpc.ViewerControllerSetIdxRequest)
-    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:osirixgrpc.ViewerControllerSetIdxRequest)
-    MergeFrom(*source);
-  }
-}
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ViewerControllerSetIdxRequest::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    ViewerControllerSetIdxRequest::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ViewerControllerSetIdxRequest::GetClassData() const { return &_class_data_; }
 
-void ViewerControllerSetIdxRequest::MergeFrom(const ViewerControllerSetIdxRequest& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ViewerControllerSetIdxRequest)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+
+void ViewerControllerSetIdxRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<ViewerControllerSetIdxRequest*>(&to_msg);
+  auto& from = static_cast<const ViewerControllerSetIdxRequest&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ViewerControllerSetIdxRequest)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.has_viewer_controller()) {
-    _internal_mutable_viewer_controller()->::osirixgrpc::ViewerController::MergeFrom(from._internal_viewer_controller());
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_internal_mutable_viewer_controller()->::osirixgrpc::ViewerController::MergeFrom(
+        from._internal_viewer_controller());
   }
-  if (from.idx() != 0) {
-    _internal_set_idx(from._internal_idx());
+  if (from._internal_idx() != 0) {
+    _this->_internal_set_idx(from._internal_idx());
   }
-}
-
-void ViewerControllerSetIdxRequest::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:osirixgrpc.ViewerControllerSetIdxRequest)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void ViewerControllerSetIdxRequest::CopyFrom(const ViewerControllerSetIdxRequest& from) {
@@ -9027,263 +9286,291 @@ bool ViewerControllerSetIdxRequest::IsInitialized() const {
 
 void ViewerControllerSetIdxRequest::InternalSwap(ViewerControllerSetIdxRequest* other) {
   using std::swap;
-  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(ViewerControllerSetIdxRequest, idx_)
-      + sizeof(ViewerControllerSetIdxRequest::idx_)
-      - PROTOBUF_FIELD_OFFSET(ViewerControllerSetIdxRequest, viewer_controller_)>(
-          reinterpret_cast<char*>(&viewer_controller_),
-          reinterpret_cast<char*>(&other->viewer_controller_));
+      PROTOBUF_FIELD_OFFSET(ViewerControllerSetIdxRequest, _impl_.idx_)
+      + sizeof(ViewerControllerSetIdxRequest::_impl_.idx_)
+      - PROTOBUF_FIELD_OFFSET(ViewerControllerSetIdxRequest, _impl_.viewer_controller_)>(
+          reinterpret_cast<char*>(&_impl_.viewer_controller_),
+          reinterpret_cast<char*>(&other->_impl_.viewer_controller_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata ViewerControllerSetIdxRequest::GetMetadata() const {
-  return GetMetadataStatic();
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_viewercontroller_2eproto_getter, &descriptor_table_viewercontroller_2eproto_once,
+      file_level_metadata_viewercontroller_2eproto[29]);
 }
-
-
 // ===================================================================
 
 class ViewerControllerSetWLWWRequest::_Internal {
  public:
+  using HasBits = decltype(std::declval<ViewerControllerSetWLWWRequest>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+    8 * PROTOBUF_FIELD_OFFSET(ViewerControllerSetWLWWRequest, _impl_._has_bits_);
   static const ::osirixgrpc::ViewerController& viewer_controller(const ViewerControllerSetWLWWRequest* msg);
+  static void set_has_viewer_controller(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
 };
 
 const ::osirixgrpc::ViewerController&
 ViewerControllerSetWLWWRequest::_Internal::viewer_controller(const ViewerControllerSetWLWWRequest* msg) {
-  return *msg->viewer_controller_;
+  return *msg->_impl_.viewer_controller_;
 }
 void ViewerControllerSetWLWWRequest::clear_viewer_controller() {
-  if (GetArena() == nullptr && viewer_controller_ != nullptr) {
-    delete viewer_controller_;
-  }
-  viewer_controller_ = nullptr;
+  if (_impl_.viewer_controller_ != nullptr) _impl_.viewer_controller_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000001u;
 }
 ViewerControllerSetWLWWRequest::ViewerControllerSetWLWWRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
-  SharedCtor();
-  RegisterArenaDtor(arena);
+  SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.ViewerControllerSetWLWWRequest)
 }
 ViewerControllerSetWLWWRequest::ViewerControllerSetWLWWRequest(const ViewerControllerSetWLWWRequest& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
+  ViewerControllerSetWLWWRequest* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.viewer_controller_){nullptr}
+    , decltype(_impl_.wl_) {}
+
+    , decltype(_impl_.ww_) {}
+  };
+
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if (from._internal_has_viewer_controller()) {
-    viewer_controller_ = new ::osirixgrpc::ViewerController(*from.viewer_controller_);
-  } else {
-    viewer_controller_ = nullptr;
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_impl_.viewer_controller_ = new ::osirixgrpc::ViewerController(*from._impl_.viewer_controller_);
   }
-  ::memcpy(&wl_, &from.wl_,
-    static_cast<size_t>(reinterpret_cast<char*>(&ww_) -
-    reinterpret_cast<char*>(&wl_)) + sizeof(ww_));
+  ::memcpy(&_impl_.wl_, &from._impl_.wl_,
+    static_cast<::size_t>(reinterpret_cast<char*>(&_impl_.ww_) -
+    reinterpret_cast<char*>(&_impl_.wl_)) + sizeof(_impl_.ww_));
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.ViewerControllerSetWLWWRequest)
 }
 
-void ViewerControllerSetWLWWRequest::SharedCtor() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_ViewerControllerSetWLWWRequest_viewercontroller_2eproto.base);
-  ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-      reinterpret_cast<char*>(&viewer_controller_) - reinterpret_cast<char*>(this)),
-      0, static_cast<size_t>(reinterpret_cast<char*>(&ww_) -
-      reinterpret_cast<char*>(&viewer_controller_)) + sizeof(ww_));
+inline void ViewerControllerSetWLWWRequest::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.viewer_controller_){nullptr}
+    , decltype(_impl_.wl_) { 0 }
+
+    , decltype(_impl_.ww_) { 0 }
+
+  };
 }
 
 ViewerControllerSetWLWWRequest::~ViewerControllerSetWLWWRequest() {
   // @@protoc_insertion_point(destructor:osirixgrpc.ViewerControllerSetWLWWRequest)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-void ViewerControllerSetWLWWRequest::SharedDtor() {
-  GOOGLE_DCHECK(GetArena() == nullptr);
-  if (this != internal_default_instance()) delete viewer_controller_;
+inline void ViewerControllerSetWLWWRequest::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  if (this != internal_default_instance()) delete _impl_.viewer_controller_;
 }
 
-void ViewerControllerSetWLWWRequest::ArenaDtor(void* object) {
-  ViewerControllerSetWLWWRequest* _this = reinterpret_cast< ViewerControllerSetWLWWRequest* >(object);
-  (void)_this;
-}
-void ViewerControllerSetWLWWRequest::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void ViewerControllerSetWLWWRequest::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
-const ViewerControllerSetWLWWRequest& ViewerControllerSetWLWWRequest::default_instance() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_ViewerControllerSetWLWWRequest_viewercontroller_2eproto.base);
-  return *internal_default_instance();
-}
-
 
 void ViewerControllerSetWLWWRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.ViewerControllerSetWLWWRequest)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  if (GetArena() == nullptr && viewer_controller_ != nullptr) {
-    delete viewer_controller_;
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    ABSL_DCHECK(_impl_.viewer_controller_ != nullptr);
+    _impl_.viewer_controller_->Clear();
   }
-  viewer_controller_ = nullptr;
-  ::memset(&wl_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&ww_) -
-      reinterpret_cast<char*>(&wl_)) + sizeof(ww_));
+  ::memset(&_impl_.wl_, 0, static_cast<::size_t>(
+      reinterpret_cast<char*>(&_impl_.ww_) -
+      reinterpret_cast<char*>(&_impl_.wl_)) + sizeof(_impl_.ww_));
+  _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* ViewerControllerSetWLWWRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* ViewerControllerSetWLWWRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
-    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-    CHK_(ptr);
+    ::uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // .osirixgrpc.ViewerController viewer_controller = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
           ptr = ctx->ParseMessage(_internal_mutable_viewer_controller(), ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
+        } else {
+          goto handle_unusual;
+        }
         continue;
       // float wl = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 21)) {
-          wl_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 21)) {
+          _impl_.wl_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
           ptr += sizeof(float);
-        } else goto handle_unusual;
+        } else {
+          goto handle_unusual;
+        }
         continue;
       // float ww = 3;
       case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 29)) {
-          ww_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 29)) {
+          _impl_.ww_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
           ptr += sizeof(float);
-        } else goto handle_unusual;
-        continue;
-      default: {
-      handle_unusual:
-        if ((tag & 7) == 4 || tag == 0) {
-          ctx->SetLastTag(tag);
-          goto success;
+        } else {
+          goto handle_unusual;
         }
-        ptr = UnknownFieldParse(tag,
-            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-            ptr, ctx);
-        CHK_(ptr != nullptr);
         continue;
-      }
+      default:
+        goto handle_unusual;
     }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
   }  // while
-success:
+message_done:
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
-  goto success;
+  goto message_done;
 #undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* ViewerControllerSetWLWWRequest::_InternalSerialize(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+::uint8_t* ViewerControllerSetWLWWRequest::_InternalSerialize(
+    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.ViewerControllerSetWLWWRequest)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
+  cached_has_bits = _impl_._has_bits_[0];
   // .osirixgrpc.ViewerController viewer_controller = 1;
-  if (this->has_viewer_controller()) {
-    target = stream->EnsureSpace(target);
+  if (cached_has_bits & 0x00000001u) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::viewer_controller(this), target, stream);
+      InternalWriteMessage(1, _Internal::viewer_controller(this),
+        _Internal::viewer_controller(this).GetCachedSize(), target, stream);
   }
 
   // float wl = 2;
-  if (!(this->wl() <= 0 && this->wl() >= 0)) {
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  float tmp_wl = this->_internal_wl();
+  ::uint32_t raw_wl;
+  memcpy(&raw_wl, &tmp_wl, sizeof(tmp_wl));
+  if (raw_wl != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(2, this->_internal_wl(), target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(
+        2, this->_internal_wl(), target);
   }
 
   // float ww = 3;
-  if (!(this->ww() <= 0 && this->ww() >= 0)) {
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  float tmp_ww = this->_internal_ww();
+  ::uint32_t raw_ww;
+  memcpy(&raw_ww, &tmp_ww, sizeof(tmp_ww));
+  if (raw_ww != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(3, this->_internal_ww(), target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(
+        3, this->_internal_ww(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.ViewerControllerSetWLWWRequest)
   return target;
 }
 
-size_t ViewerControllerSetWLWWRequest::ByteSizeLong() const {
+::size_t ViewerControllerSetWLWWRequest::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:osirixgrpc.ViewerControllerSetWLWWRequest)
-  size_t total_size = 0;
+  ::size_t total_size = 0;
 
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // .osirixgrpc.ViewerController viewer_controller = 1;
-  if (this->has_viewer_controller()) {
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *viewer_controller_);
+        *_impl_.viewer_controller_);
   }
 
   // float wl = 2;
-  if (!(this->wl() <= 0 && this->wl() >= 0)) {
-    total_size += 1 + 4;
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  float tmp_wl = this->_internal_wl();
+  ::uint32_t raw_wl;
+  memcpy(&raw_wl, &tmp_wl, sizeof(tmp_wl));
+  if (raw_wl != 0) {
+    total_size += 5;
   }
 
   // float ww = 3;
-  if (!(this->ww() <= 0 && this->ww() >= 0)) {
-    total_size += 1 + 4;
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  float tmp_ww = this->_internal_ww();
+  ::uint32_t raw_ww;
+  memcpy(&raw_ww, &tmp_ww, sizeof(tmp_ww));
+  if (raw_ww != 0) {
+    total_size += 5;
   }
 
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
-        _internal_metadata_, total_size, &_cached_size_);
-  }
-  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-void ViewerControllerSetWLWWRequest::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:osirixgrpc.ViewerControllerSetWLWWRequest)
-  GOOGLE_DCHECK_NE(&from, this);
-  const ViewerControllerSetWLWWRequest* source =
-      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<ViewerControllerSetWLWWRequest>(
-          &from);
-  if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:osirixgrpc.ViewerControllerSetWLWWRequest)
-    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:osirixgrpc.ViewerControllerSetWLWWRequest)
-    MergeFrom(*source);
-  }
-}
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ViewerControllerSetWLWWRequest::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    ViewerControllerSetWLWWRequest::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ViewerControllerSetWLWWRequest::GetClassData() const { return &_class_data_; }
 
-void ViewerControllerSetWLWWRequest::MergeFrom(const ViewerControllerSetWLWWRequest& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ViewerControllerSetWLWWRequest)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+
+void ViewerControllerSetWLWWRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<ViewerControllerSetWLWWRequest*>(&to_msg);
+  auto& from = static_cast<const ViewerControllerSetWLWWRequest&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ViewerControllerSetWLWWRequest)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.has_viewer_controller()) {
-    _internal_mutable_viewer_controller()->::osirixgrpc::ViewerController::MergeFrom(from._internal_viewer_controller());
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_internal_mutable_viewer_controller()->::osirixgrpc::ViewerController::MergeFrom(
+        from._internal_viewer_controller());
   }
-  if (!(from.wl() <= 0 && from.wl() >= 0)) {
-    _internal_set_wl(from._internal_wl());
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  float tmp_wl = from._internal_wl();
+  ::uint32_t raw_wl;
+  memcpy(&raw_wl, &tmp_wl, sizeof(tmp_wl));
+  if (raw_wl != 0) {
+    _this->_internal_set_wl(from._internal_wl());
   }
-  if (!(from.ww() <= 0 && from.ww() >= 0)) {
-    _internal_set_ww(from._internal_ww());
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  float tmp_ww = from._internal_ww();
+  ::uint32_t raw_ww;
+  memcpy(&raw_ww, &tmp_ww, sizeof(tmp_ww));
+  if (raw_ww != 0) {
+    _this->_internal_set_ww(from._internal_ww());
   }
-}
-
-void ViewerControllerSetWLWWRequest::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:osirixgrpc.ViewerControllerSetWLWWRequest)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void ViewerControllerSetWLWWRequest::CopyFrom(const ViewerControllerSetWLWWRequest& from) {
@@ -9299,249 +9586,250 @@ bool ViewerControllerSetWLWWRequest::IsInitialized() const {
 
 void ViewerControllerSetWLWWRequest::InternalSwap(ViewerControllerSetWLWWRequest* other) {
   using std::swap;
-  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(ViewerControllerSetWLWWRequest, ww_)
-      + sizeof(ViewerControllerSetWLWWRequest::ww_)
-      - PROTOBUF_FIELD_OFFSET(ViewerControllerSetWLWWRequest, viewer_controller_)>(
-          reinterpret_cast<char*>(&viewer_controller_),
-          reinterpret_cast<char*>(&other->viewer_controller_));
+      PROTOBUF_FIELD_OFFSET(ViewerControllerSetWLWWRequest, _impl_.ww_)
+      + sizeof(ViewerControllerSetWLWWRequest::_impl_.ww_)
+      - PROTOBUF_FIELD_OFFSET(ViewerControllerSetWLWWRequest, _impl_.viewer_controller_)>(
+          reinterpret_cast<char*>(&_impl_.viewer_controller_),
+          reinterpret_cast<char*>(&other->_impl_.viewer_controller_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata ViewerControllerSetWLWWRequest::GetMetadata() const {
-  return GetMetadataStatic();
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_viewercontroller_2eproto_getter, &descriptor_table_viewercontroller_2eproto_once,
+      file_level_metadata_viewercontroller_2eproto[30]);
 }
-
-
 // ===================================================================
 
 class ViewerControllerOpenVRViewerForModeRequest::_Internal {
  public:
+  using HasBits = decltype(std::declval<ViewerControllerOpenVRViewerForModeRequest>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+    8 * PROTOBUF_FIELD_OFFSET(ViewerControllerOpenVRViewerForModeRequest, _impl_._has_bits_);
   static const ::osirixgrpc::ViewerController& viewer_controller(const ViewerControllerOpenVRViewerForModeRequest* msg);
+  static void set_has_viewer_controller(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
 };
 
 const ::osirixgrpc::ViewerController&
 ViewerControllerOpenVRViewerForModeRequest::_Internal::viewer_controller(const ViewerControllerOpenVRViewerForModeRequest* msg) {
-  return *msg->viewer_controller_;
+  return *msg->_impl_.viewer_controller_;
 }
 void ViewerControllerOpenVRViewerForModeRequest::clear_viewer_controller() {
-  if (GetArena() == nullptr && viewer_controller_ != nullptr) {
-    delete viewer_controller_;
-  }
-  viewer_controller_ = nullptr;
+  if (_impl_.viewer_controller_ != nullptr) _impl_.viewer_controller_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000001u;
 }
 ViewerControllerOpenVRViewerForModeRequest::ViewerControllerOpenVRViewerForModeRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
-  SharedCtor();
-  RegisterArenaDtor(arena);
+  SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.ViewerControllerOpenVRViewerForModeRequest)
 }
 ViewerControllerOpenVRViewerForModeRequest::ViewerControllerOpenVRViewerForModeRequest(const ViewerControllerOpenVRViewerForModeRequest& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
+  ViewerControllerOpenVRViewerForModeRequest* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.mode_) {}
+
+    , decltype(_impl_.viewer_controller_){nullptr}};
+
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  mode_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  _impl_.mode_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.mode_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_mode().empty()) {
-    mode_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_mode(), 
-      GetArena());
+    _this->_impl_.mode_.Set(from._internal_mode(), _this->GetArenaForAllocation());
   }
-  if (from._internal_has_viewer_controller()) {
-    viewer_controller_ = new ::osirixgrpc::ViewerController(*from.viewer_controller_);
-  } else {
-    viewer_controller_ = nullptr;
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_impl_.viewer_controller_ = new ::osirixgrpc::ViewerController(*from._impl_.viewer_controller_);
   }
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.ViewerControllerOpenVRViewerForModeRequest)
 }
 
-void ViewerControllerOpenVRViewerForModeRequest::SharedCtor() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_ViewerControllerOpenVRViewerForModeRequest_viewercontroller_2eproto.base);
-  mode_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  viewer_controller_ = nullptr;
+inline void ViewerControllerOpenVRViewerForModeRequest::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.mode_) {}
+
+    , decltype(_impl_.viewer_controller_){nullptr}
+  };
+  _impl_.mode_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.mode_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
 
 ViewerControllerOpenVRViewerForModeRequest::~ViewerControllerOpenVRViewerForModeRequest() {
   // @@protoc_insertion_point(destructor:osirixgrpc.ViewerControllerOpenVRViewerForModeRequest)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-void ViewerControllerOpenVRViewerForModeRequest::SharedDtor() {
-  GOOGLE_DCHECK(GetArena() == nullptr);
-  mode_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (this != internal_default_instance()) delete viewer_controller_;
+inline void ViewerControllerOpenVRViewerForModeRequest::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.mode_.Destroy();
+  if (this != internal_default_instance()) delete _impl_.viewer_controller_;
 }
 
-void ViewerControllerOpenVRViewerForModeRequest::ArenaDtor(void* object) {
-  ViewerControllerOpenVRViewerForModeRequest* _this = reinterpret_cast< ViewerControllerOpenVRViewerForModeRequest* >(object);
-  (void)_this;
-}
-void ViewerControllerOpenVRViewerForModeRequest::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void ViewerControllerOpenVRViewerForModeRequest::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
-const ViewerControllerOpenVRViewerForModeRequest& ViewerControllerOpenVRViewerForModeRequest::default_instance() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_ViewerControllerOpenVRViewerForModeRequest_viewercontroller_2eproto.base);
-  return *internal_default_instance();
-}
-
 
 void ViewerControllerOpenVRViewerForModeRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.ViewerControllerOpenVRViewerForModeRequest)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  mode_.ClearToEmpty();
-  if (GetArena() == nullptr && viewer_controller_ != nullptr) {
-    delete viewer_controller_;
+  _impl_.mode_.ClearToEmpty();
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    ABSL_DCHECK(_impl_.viewer_controller_ != nullptr);
+    _impl_.viewer_controller_->Clear();
   }
-  viewer_controller_ = nullptr;
+  _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* ViewerControllerOpenVRViewerForModeRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* ViewerControllerOpenVRViewerForModeRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
-    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-    CHK_(ptr);
+    ::uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // .osirixgrpc.ViewerController viewer_controller = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
           ptr = ctx->ParseMessage(_internal_mutable_viewer_controller(), ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
+        } else {
+          goto handle_unusual;
+        }
         continue;
       // string mode = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 18)) {
           auto str = _internal_mutable_mode();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "osirixgrpc.ViewerControllerOpenVRViewerForModeRequest.mode"));
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
-        } else goto handle_unusual;
-        continue;
-      default: {
-      handle_unusual:
-        if ((tag & 7) == 4 || tag == 0) {
-          ctx->SetLastTag(tag);
-          goto success;
+          CHK_(::_pbi::VerifyUTF8(str, "osirixgrpc.ViewerControllerOpenVRViewerForModeRequest.mode"));
+        } else {
+          goto handle_unusual;
         }
-        ptr = UnknownFieldParse(tag,
-            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-            ptr, ctx);
-        CHK_(ptr != nullptr);
         continue;
-      }
+      default:
+        goto handle_unusual;
     }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
   }  // while
-success:
+message_done:
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
-  goto success;
+  goto message_done;
 #undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* ViewerControllerOpenVRViewerForModeRequest::_InternalSerialize(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+::uint8_t* ViewerControllerOpenVRViewerForModeRequest::_InternalSerialize(
+    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.ViewerControllerOpenVRViewerForModeRequest)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
+  cached_has_bits = _impl_._has_bits_[0];
   // .osirixgrpc.ViewerController viewer_controller = 1;
-  if (this->has_viewer_controller()) {
-    target = stream->EnsureSpace(target);
+  if (cached_has_bits & 0x00000001u) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::viewer_controller(this), target, stream);
+      InternalWriteMessage(1, _Internal::viewer_controller(this),
+        _Internal::viewer_controller(this).GetCachedSize(), target, stream);
   }
 
   // string mode = 2;
-  if (this->mode().size() > 0) {
+  if (!this->_internal_mode().empty()) {
+    const std::string& _s = this->_internal_mode();
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_mode().data(), static_cast<int>(this->_internal_mode().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "osirixgrpc.ViewerControllerOpenVRViewerForModeRequest.mode");
-    target = stream->WriteStringMaybeAliased(
-        2, this->_internal_mode(), target);
+        _s.data(), static_cast<int>(_s.length()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE, "osirixgrpc.ViewerControllerOpenVRViewerForModeRequest.mode");
+    target = stream->WriteStringMaybeAliased(2, _s, target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.ViewerControllerOpenVRViewerForModeRequest)
   return target;
 }
 
-size_t ViewerControllerOpenVRViewerForModeRequest::ByteSizeLong() const {
+::size_t ViewerControllerOpenVRViewerForModeRequest::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:osirixgrpc.ViewerControllerOpenVRViewerForModeRequest)
-  size_t total_size = 0;
+  ::size_t total_size = 0;
 
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // string mode = 2;
-  if (this->mode().size() > 0) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_mode());
+  if (!this->_internal_mode().empty()) {
+    total_size += 1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+                                    this->_internal_mode());
   }
 
   // .osirixgrpc.ViewerController viewer_controller = 1;
-  if (this->has_viewer_controller()) {
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *viewer_controller_);
+        *_impl_.viewer_controller_);
   }
 
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
-        _internal_metadata_, total_size, &_cached_size_);
-  }
-  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-void ViewerControllerOpenVRViewerForModeRequest::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:osirixgrpc.ViewerControllerOpenVRViewerForModeRequest)
-  GOOGLE_DCHECK_NE(&from, this);
-  const ViewerControllerOpenVRViewerForModeRequest* source =
-      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<ViewerControllerOpenVRViewerForModeRequest>(
-          &from);
-  if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:osirixgrpc.ViewerControllerOpenVRViewerForModeRequest)
-    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:osirixgrpc.ViewerControllerOpenVRViewerForModeRequest)
-    MergeFrom(*source);
-  }
-}
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ViewerControllerOpenVRViewerForModeRequest::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    ViewerControllerOpenVRViewerForModeRequest::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ViewerControllerOpenVRViewerForModeRequest::GetClassData() const { return &_class_data_; }
 
-void ViewerControllerOpenVRViewerForModeRequest::MergeFrom(const ViewerControllerOpenVRViewerForModeRequest& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ViewerControllerOpenVRViewerForModeRequest)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+
+void ViewerControllerOpenVRViewerForModeRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<ViewerControllerOpenVRViewerForModeRequest*>(&to_msg);
+  auto& from = static_cast<const ViewerControllerOpenVRViewerForModeRequest&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ViewerControllerOpenVRViewerForModeRequest)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.mode().size() > 0) {
-    _internal_set_mode(from._internal_mode());
+  if (!from._internal_mode().empty()) {
+    _this->_internal_set_mode(from._internal_mode());
   }
-  if (from.has_viewer_controller()) {
-    _internal_mutable_viewer_controller()->::osirixgrpc::ViewerController::MergeFrom(from._internal_viewer_controller());
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_internal_mutable_viewer_controller()->::osirixgrpc::ViewerController::MergeFrom(
+        from._internal_viewer_controller());
   }
-}
-
-void ViewerControllerOpenVRViewerForModeRequest::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:osirixgrpc.ViewerControllerOpenVRViewerForModeRequest)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void ViewerControllerOpenVRViewerForModeRequest::CopyFrom(const ViewerControllerOpenVRViewerForModeRequest& from) {
@@ -9557,116 +9845,151 @@ bool ViewerControllerOpenVRViewerForModeRequest::IsInitialized() const {
 
 void ViewerControllerOpenVRViewerForModeRequest::InternalSwap(ViewerControllerOpenVRViewerForModeRequest* other) {
   using std::swap;
-  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
-  mode_.Swap(&other->mode_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
-  swap(viewer_controller_, other->viewer_controller_);
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.mode_, lhs_arena,
+                                       &other->_impl_.mode_, rhs_arena);
+  swap(_impl_.viewer_controller_, other->_impl_.viewer_controller_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata ViewerControllerOpenVRViewerForModeRequest::GetMetadata() const {
-  return GetMetadataStatic();
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_viewercontroller_2eproto_getter, &descriptor_table_viewercontroller_2eproto_once,
+      file_level_metadata_viewercontroller_2eproto[31]);
 }
-
-
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace osirixgrpc
 PROTOBUF_NAMESPACE_OPEN
-template<> PROTOBUF_NOINLINE ::osirixgrpc::ViewerControllerPixListResponse* Arena::CreateMaybeMessage< ::osirixgrpc::ViewerControllerPixListResponse >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::osirixgrpc::ViewerControllerPixListResponse*
+Arena::CreateMaybeMessage< ::osirixgrpc::ViewerControllerPixListResponse >(Arena* arena) {
   return Arena::CreateMessageInternal< ::osirixgrpc::ViewerControllerPixListResponse >(arena);
 }
-template<> PROTOBUF_NOINLINE ::osirixgrpc::ViewerControllerROIListResponse_ROISlice* Arena::CreateMaybeMessage< ::osirixgrpc::ViewerControllerROIListResponse_ROISlice >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::osirixgrpc::ViewerControllerROIListResponse_ROISlice*
+Arena::CreateMaybeMessage< ::osirixgrpc::ViewerControllerROIListResponse_ROISlice >(Arena* arena) {
   return Arena::CreateMessageInternal< ::osirixgrpc::ViewerControllerROIListResponse_ROISlice >(arena);
 }
-template<> PROTOBUF_NOINLINE ::osirixgrpc::ViewerControllerROIListResponse* Arena::CreateMaybeMessage< ::osirixgrpc::ViewerControllerROIListResponse >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::osirixgrpc::ViewerControllerROIListResponse*
+Arena::CreateMaybeMessage< ::osirixgrpc::ViewerControllerROIListResponse >(Arena* arena) {
   return Arena::CreateMessageInternal< ::osirixgrpc::ViewerControllerROIListResponse >(arena);
 }
-template<> PROTOBUF_NOINLINE ::osirixgrpc::ViewerControllerNewROIResponse* Arena::CreateMaybeMessage< ::osirixgrpc::ViewerControllerNewROIResponse >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::osirixgrpc::ViewerControllerNewROIResponse*
+Arena::CreateMaybeMessage< ::osirixgrpc::ViewerControllerNewROIResponse >(Arena* arena) {
   return Arena::CreateMessageInternal< ::osirixgrpc::ViewerControllerNewROIResponse >(arena);
 }
-template<> PROTOBUF_NOINLINE ::osirixgrpc::ViewerControllerCurDCMResponse* Arena::CreateMaybeMessage< ::osirixgrpc::ViewerControllerCurDCMResponse >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::osirixgrpc::ViewerControllerCurDCMResponse*
+Arena::CreateMaybeMessage< ::osirixgrpc::ViewerControllerCurDCMResponse >(Arena* arena) {
   return Arena::CreateMessageInternal< ::osirixgrpc::ViewerControllerCurDCMResponse >(arena);
 }
-template<> PROTOBUF_NOINLINE ::osirixgrpc::ViewerControllerROIsWithNameResponse* Arena::CreateMaybeMessage< ::osirixgrpc::ViewerControllerROIsWithNameResponse >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::osirixgrpc::ViewerControllerROIsWithNameResponse*
+Arena::CreateMaybeMessage< ::osirixgrpc::ViewerControllerROIsWithNameResponse >(Arena* arena) {
   return Arena::CreateMessageInternal< ::osirixgrpc::ViewerControllerROIsWithNameResponse >(arena);
 }
-template<> PROTOBUF_NOINLINE ::osirixgrpc::ViewerControllerSelectedROIsResponse* Arena::CreateMaybeMessage< ::osirixgrpc::ViewerControllerSelectedROIsResponse >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::osirixgrpc::ViewerControllerSelectedROIsResponse*
+Arena::CreateMaybeMessage< ::osirixgrpc::ViewerControllerSelectedROIsResponse >(Arena* arena) {
   return Arena::CreateMessageInternal< ::osirixgrpc::ViewerControllerSelectedROIsResponse >(arena);
 }
-template<> PROTOBUF_NOINLINE ::osirixgrpc::ViewerControllerIsDataVolumicResponse* Arena::CreateMaybeMessage< ::osirixgrpc::ViewerControllerIsDataVolumicResponse >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::osirixgrpc::ViewerControllerIsDataVolumicResponse*
+Arena::CreateMaybeMessage< ::osirixgrpc::ViewerControllerIsDataVolumicResponse >(Arena* arena) {
   return Arena::CreateMessageInternal< ::osirixgrpc::ViewerControllerIsDataVolumicResponse >(arena);
 }
-template<> PROTOBUF_NOINLINE ::osirixgrpc::ViewerControllerBlendingControllerResponse* Arena::CreateMaybeMessage< ::osirixgrpc::ViewerControllerBlendingControllerResponse >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::osirixgrpc::ViewerControllerBlendingControllerResponse*
+Arena::CreateMaybeMessage< ::osirixgrpc::ViewerControllerBlendingControllerResponse >(Arena* arena) {
   return Arena::CreateMessageInternal< ::osirixgrpc::ViewerControllerBlendingControllerResponse >(arena);
 }
-template<> PROTOBUF_NOINLINE ::osirixgrpc::ViewerControllerVRControllersResponse* Arena::CreateMaybeMessage< ::osirixgrpc::ViewerControllerVRControllersResponse >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::osirixgrpc::ViewerControllerVRControllersResponse*
+Arena::CreateMaybeMessage< ::osirixgrpc::ViewerControllerVRControllersResponse >(Arena* arena) {
   return Arena::CreateMessageInternal< ::osirixgrpc::ViewerControllerVRControllersResponse >(arena);
 }
-template<> PROTOBUF_NOINLINE ::osirixgrpc::ViewerControllerTitleResponse* Arena::CreateMaybeMessage< ::osirixgrpc::ViewerControllerTitleResponse >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::osirixgrpc::ViewerControllerTitleResponse*
+Arena::CreateMaybeMessage< ::osirixgrpc::ViewerControllerTitleResponse >(Arena* arena) {
   return Arena::CreateMessageInternal< ::osirixgrpc::ViewerControllerTitleResponse >(arena);
 }
-template<> PROTOBUF_NOINLINE ::osirixgrpc::ViewerControllerModalityResponse* Arena::CreateMaybeMessage< ::osirixgrpc::ViewerControllerModalityResponse >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::osirixgrpc::ViewerControllerModalityResponse*
+Arena::CreateMaybeMessage< ::osirixgrpc::ViewerControllerModalityResponse >(Arena* arena) {
   return Arena::CreateMessageInternal< ::osirixgrpc::ViewerControllerModalityResponse >(arena);
 }
-template<> PROTOBUF_NOINLINE ::osirixgrpc::ViewerControllerMovieIdxResponse* Arena::CreateMaybeMessage< ::osirixgrpc::ViewerControllerMovieIdxResponse >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::osirixgrpc::ViewerControllerMovieIdxResponse*
+Arena::CreateMaybeMessage< ::osirixgrpc::ViewerControllerMovieIdxResponse >(Arena* arena) {
   return Arena::CreateMessageInternal< ::osirixgrpc::ViewerControllerMovieIdxResponse >(arena);
 }
-template<> PROTOBUF_NOINLINE ::osirixgrpc::ViewerControllerMaxMovieIdxResponse* Arena::CreateMaybeMessage< ::osirixgrpc::ViewerControllerMaxMovieIdxResponse >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::osirixgrpc::ViewerControllerMaxMovieIdxResponse*
+Arena::CreateMaybeMessage< ::osirixgrpc::ViewerControllerMaxMovieIdxResponse >(Arena* arena) {
   return Arena::CreateMessageInternal< ::osirixgrpc::ViewerControllerMaxMovieIdxResponse >(arena);
 }
-template<> PROTOBUF_NOINLINE ::osirixgrpc::ViewerControllerIdxResponse* Arena::CreateMaybeMessage< ::osirixgrpc::ViewerControllerIdxResponse >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::osirixgrpc::ViewerControllerIdxResponse*
+Arena::CreateMaybeMessage< ::osirixgrpc::ViewerControllerIdxResponse >(Arena* arena) {
   return Arena::CreateMessageInternal< ::osirixgrpc::ViewerControllerIdxResponse >(arena);
 }
-template<> PROTOBUF_NOINLINE ::osirixgrpc::ViewerControllerWLWWResponse* Arena::CreateMaybeMessage< ::osirixgrpc::ViewerControllerWLWWResponse >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::osirixgrpc::ViewerControllerWLWWResponse*
+Arena::CreateMaybeMessage< ::osirixgrpc::ViewerControllerWLWWResponse >(Arena* arena) {
   return Arena::CreateMessageInternal< ::osirixgrpc::ViewerControllerWLWWResponse >(arena);
 }
-template<> PROTOBUF_NOINLINE ::osirixgrpc::ViewerControllerOpenVRViewerForModeResponse* Arena::CreateMaybeMessage< ::osirixgrpc::ViewerControllerOpenVRViewerForModeResponse >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::osirixgrpc::ViewerControllerOpenVRViewerForModeResponse*
+Arena::CreateMaybeMessage< ::osirixgrpc::ViewerControllerOpenVRViewerForModeResponse >(Arena* arena) {
   return Arena::CreateMessageInternal< ::osirixgrpc::ViewerControllerOpenVRViewerForModeResponse >(arena);
 }
-template<> PROTOBUF_NOINLINE ::osirixgrpc::ViewerControllerPixListRequest* Arena::CreateMaybeMessage< ::osirixgrpc::ViewerControllerPixListRequest >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::osirixgrpc::ViewerControllerPixListRequest*
+Arena::CreateMaybeMessage< ::osirixgrpc::ViewerControllerPixListRequest >(Arena* arena) {
   return Arena::CreateMessageInternal< ::osirixgrpc::ViewerControllerPixListRequest >(arena);
 }
-template<> PROTOBUF_NOINLINE ::osirixgrpc::ViewerControllerROIListRequest* Arena::CreateMaybeMessage< ::osirixgrpc::ViewerControllerROIListRequest >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::osirixgrpc::ViewerControllerROIListRequest*
+Arena::CreateMaybeMessage< ::osirixgrpc::ViewerControllerROIListRequest >(Arena* arena) {
   return Arena::CreateMessageInternal< ::osirixgrpc::ViewerControllerROIListRequest >(arena);
 }
-template<> PROTOBUF_NOINLINE ::osirixgrpc::ViewerControllerNewROIRequest_Buffer* Arena::CreateMaybeMessage< ::osirixgrpc::ViewerControllerNewROIRequest_Buffer >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::osirixgrpc::ViewerControllerNewROIRequest_Buffer*
+Arena::CreateMaybeMessage< ::osirixgrpc::ViewerControllerNewROIRequest_Buffer >(Arena* arena) {
   return Arena::CreateMessageInternal< ::osirixgrpc::ViewerControllerNewROIRequest_Buffer >(arena);
 }
-template<> PROTOBUF_NOINLINE ::osirixgrpc::ViewerControllerNewROIRequest_Point2D* Arena::CreateMaybeMessage< ::osirixgrpc::ViewerControllerNewROIRequest_Point2D >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::osirixgrpc::ViewerControllerNewROIRequest_Point2D*
+Arena::CreateMaybeMessage< ::osirixgrpc::ViewerControllerNewROIRequest_Point2D >(Arena* arena) {
   return Arena::CreateMessageInternal< ::osirixgrpc::ViewerControllerNewROIRequest_Point2D >(arena);
 }
-template<> PROTOBUF_NOINLINE ::osirixgrpc::ViewerControllerNewROIRequest_Color* Arena::CreateMaybeMessage< ::osirixgrpc::ViewerControllerNewROIRequest_Color >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::osirixgrpc::ViewerControllerNewROIRequest_Color*
+Arena::CreateMaybeMessage< ::osirixgrpc::ViewerControllerNewROIRequest_Color >(Arena* arena) {
   return Arena::CreateMessageInternal< ::osirixgrpc::ViewerControllerNewROIRequest_Color >(arena);
 }
-template<> PROTOBUF_NOINLINE ::osirixgrpc::ViewerControllerNewROIRequest_Rect* Arena::CreateMaybeMessage< ::osirixgrpc::ViewerControllerNewROIRequest_Rect >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::osirixgrpc::ViewerControllerNewROIRequest_Rect*
+Arena::CreateMaybeMessage< ::osirixgrpc::ViewerControllerNewROIRequest_Rect >(Arena* arena) {
   return Arena::CreateMessageInternal< ::osirixgrpc::ViewerControllerNewROIRequest_Rect >(arena);
 }
-template<> PROTOBUF_NOINLINE ::osirixgrpc::ViewerControllerNewROIRequest* Arena::CreateMaybeMessage< ::osirixgrpc::ViewerControllerNewROIRequest >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::osirixgrpc::ViewerControllerNewROIRequest*
+Arena::CreateMaybeMessage< ::osirixgrpc::ViewerControllerNewROIRequest >(Arena* arena) {
   return Arena::CreateMessageInternal< ::osirixgrpc::ViewerControllerNewROIRequest >(arena);
 }
-template<> PROTOBUF_NOINLINE ::osirixgrpc::ViewerControllerROIsWithNameRequest* Arena::CreateMaybeMessage< ::osirixgrpc::ViewerControllerROIsWithNameRequest >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::osirixgrpc::ViewerControllerROIsWithNameRequest*
+Arena::CreateMaybeMessage< ::osirixgrpc::ViewerControllerROIsWithNameRequest >(Arena* arena) {
   return Arena::CreateMessageInternal< ::osirixgrpc::ViewerControllerROIsWithNameRequest >(arena);
 }
-template<> PROTOBUF_NOINLINE ::osirixgrpc::ViewerControllerResampleViewerControllerRequest* Arena::CreateMaybeMessage< ::osirixgrpc::ViewerControllerResampleViewerControllerRequest >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::osirixgrpc::ViewerControllerResampleViewerControllerRequest*
+Arena::CreateMaybeMessage< ::osirixgrpc::ViewerControllerResampleViewerControllerRequest >(Arena* arena) {
   return Arena::CreateMessageInternal< ::osirixgrpc::ViewerControllerResampleViewerControllerRequest >(arena);
 }
-template<> PROTOBUF_NOINLINE ::osirixgrpc::ViewerControllerCopyViewerWindowRequest* Arena::CreateMaybeMessage< ::osirixgrpc::ViewerControllerCopyViewerWindowRequest >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::osirixgrpc::ViewerControllerCopyViewerWindowRequest*
+Arena::CreateMaybeMessage< ::osirixgrpc::ViewerControllerCopyViewerWindowRequest >(Arena* arena) {
   return Arena::CreateMessageInternal< ::osirixgrpc::ViewerControllerCopyViewerWindowRequest >(arena);
 }
-template<> PROTOBUF_NOINLINE ::osirixgrpc::ViewerControllerSetMovieIdxRequest* Arena::CreateMaybeMessage< ::osirixgrpc::ViewerControllerSetMovieIdxRequest >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::osirixgrpc::ViewerControllerSetMovieIdxRequest*
+Arena::CreateMaybeMessage< ::osirixgrpc::ViewerControllerSetMovieIdxRequest >(Arena* arena) {
   return Arena::CreateMessageInternal< ::osirixgrpc::ViewerControllerSetMovieIdxRequest >(arena);
 }
-template<> PROTOBUF_NOINLINE ::osirixgrpc::ViewerControllerIsDataVolumicRequest* Arena::CreateMaybeMessage< ::osirixgrpc::ViewerControllerIsDataVolumicRequest >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::osirixgrpc::ViewerControllerIsDataVolumicRequest*
+Arena::CreateMaybeMessage< ::osirixgrpc::ViewerControllerIsDataVolumicRequest >(Arena* arena) {
   return Arena::CreateMessageInternal< ::osirixgrpc::ViewerControllerIsDataVolumicRequest >(arena);
 }
-template<> PROTOBUF_NOINLINE ::osirixgrpc::ViewerControllerSetIdxRequest* Arena::CreateMaybeMessage< ::osirixgrpc::ViewerControllerSetIdxRequest >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::osirixgrpc::ViewerControllerSetIdxRequest*
+Arena::CreateMaybeMessage< ::osirixgrpc::ViewerControllerSetIdxRequest >(Arena* arena) {
   return Arena::CreateMessageInternal< ::osirixgrpc::ViewerControllerSetIdxRequest >(arena);
 }
-template<> PROTOBUF_NOINLINE ::osirixgrpc::ViewerControllerSetWLWWRequest* Arena::CreateMaybeMessage< ::osirixgrpc::ViewerControllerSetWLWWRequest >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::osirixgrpc::ViewerControllerSetWLWWRequest*
+Arena::CreateMaybeMessage< ::osirixgrpc::ViewerControllerSetWLWWRequest >(Arena* arena) {
   return Arena::CreateMessageInternal< ::osirixgrpc::ViewerControllerSetWLWWRequest >(arena);
 }
-template<> PROTOBUF_NOINLINE ::osirixgrpc::ViewerControllerOpenVRViewerForModeRequest* Arena::CreateMaybeMessage< ::osirixgrpc::ViewerControllerOpenVRViewerForModeRequest >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::osirixgrpc::ViewerControllerOpenVRViewerForModeRequest*
+Arena::CreateMaybeMessage< ::osirixgrpc::ViewerControllerOpenVRViewerForModeRequest >(Arena* arena) {
   return Arena::CreateMessageInternal< ::osirixgrpc::ViewerControllerOpenVRViewerForModeRequest >(arena);
 }
 PROTOBUF_NAMESPACE_CLOSE
-
 // @@protoc_insertion_point(global_scope)
-#include <google/protobuf/port_undef.inc>
+#include "google/protobuf/port_undef.inc"

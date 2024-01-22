@@ -4,822 +4,948 @@
 #include "roi.pb.h"
 
 #include <algorithm>
-
-#include <google/protobuf/io/coded_stream.h>
-#include <google/protobuf/extension_set.h>
-#include <google/protobuf/wire_format_lite.h>
-#include <google/protobuf/descriptor.h>
-#include <google/protobuf/generated_message_reflection.h>
-#include <google/protobuf/reflection_ops.h>
-#include <google/protobuf/wire_format.h>
+#include "google/protobuf/io/coded_stream.h"
+#include "google/protobuf/extension_set.h"
+#include "google/protobuf/wire_format_lite.h"
+#include "google/protobuf/descriptor.h"
+#include "google/protobuf/generated_message_reflection.h"
+#include "google/protobuf/reflection_ops.h"
+#include "google/protobuf/wire_format.h"
 // @@protoc_insertion_point(includes)
-#include <google/protobuf/port_def.inc>
-extern PROTOBUF_INTERNAL_EXPORT_types_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_DCMPix_types_2eproto;
-extern PROTOBUF_INTERNAL_EXPORT_types_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_ROI_types_2eproto;
-extern PROTOBUF_INTERNAL_EXPORT_roi_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_ROIPointsResponse_Point2D_roi_2eproto;
-extern PROTOBUF_INTERNAL_EXPORT_roi_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_ROISetPointsRequest_Point2D_roi_2eproto;
-extern PROTOBUF_INTERNAL_EXPORT_utilities_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_Status_utilities_2eproto;
+
+// Must be included last.
+#include "google/protobuf/port_def.inc"
+PROTOBUF_PRAGMA_INIT_SEG
+namespace _pb = ::PROTOBUF_NAMESPACE_ID;
+namespace _pbi = ::PROTOBUF_NAMESPACE_ID::internal;
 namespace osirixgrpc {
-class ROIAreaResponseDefaultTypeInternal {
- public:
-  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<ROIAreaResponse> _instance;
-} _ROIAreaResponse_default_instance_;
-class ROICentroidResponseDefaultTypeInternal {
- public:
-  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<ROICentroidResponse> _instance;
-} _ROICentroidResponse_default_instance_;
-class ROIPixResponseDefaultTypeInternal {
- public:
-  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<ROIPixResponse> _instance;
-} _ROIPixResponse_default_instance_;
-class ROINameResponseDefaultTypeInternal {
- public:
-  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<ROINameResponse> _instance;
-} _ROINameResponse_default_instance_;
-class ROIColorResponseDefaultTypeInternal {
- public:
-  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<ROIColorResponse> _instance;
-} _ROIColorResponse_default_instance_;
-class ROIOpacityResponseDefaultTypeInternal {
- public:
-  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<ROIOpacityResponse> _instance;
-} _ROIOpacityResponse_default_instance_;
-class ROIThicknessResponseDefaultTypeInternal {
- public:
-  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<ROIThicknessResponse> _instance;
-} _ROIThicknessResponse_default_instance_;
-class ROIPointsResponse_Point2DDefaultTypeInternal {
- public:
-  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<ROIPointsResponse_Point2D> _instance;
-} _ROIPointsResponse_Point2D_default_instance_;
-class ROIPointsResponseDefaultTypeInternal {
- public:
-  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<ROIPointsResponse> _instance;
-} _ROIPointsResponse_default_instance_;
-class ROIITypeResponseDefaultTypeInternal {
- public:
-  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<ROIITypeResponse> _instance;
-} _ROIITypeResponse_default_instance_;
-class ROIRotateRequestDefaultTypeInternal {
- public:
-  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<ROIRotateRequest> _instance;
-} _ROIRotateRequest_default_instance_;
-class ROIMoveRequestDefaultTypeInternal {
- public:
-  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<ROIMoveRequest> _instance;
-} _ROIMoveRequest_default_instance_;
-class ROISetNameRequestDefaultTypeInternal {
- public:
-  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<ROISetNameRequest> _instance;
-} _ROISetNameRequest_default_instance_;
-class ROISetColorRequestDefaultTypeInternal {
- public:
-  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<ROISetColorRequest> _instance;
-} _ROISetColorRequest_default_instance_;
-class ROISetOpacityRequestDefaultTypeInternal {
- public:
-  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<ROISetOpacityRequest> _instance;
-} _ROISetOpacityRequest_default_instance_;
-class ROISetThicknessRequestDefaultTypeInternal {
- public:
-  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<ROISetThicknessRequest> _instance;
-} _ROISetThicknessRequest_default_instance_;
-class ROISetPointsRequest_Point2DDefaultTypeInternal {
- public:
-  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<ROISetPointsRequest_Point2D> _instance;
-} _ROISetPointsRequest_Point2D_default_instance_;
-class ROISetPointsRequestDefaultTypeInternal {
- public:
-  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<ROISetPointsRequest> _instance;
-} _ROISetPointsRequest_default_instance_;
+template <typename>
+PROTOBUF_CONSTEXPR ROIAreaResponse::ROIAreaResponse(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.status_)*/nullptr
+  , /*decltype(_impl_.area_)*/ 0
+} {}
+struct ROIAreaResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ROIAreaResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ROIAreaResponseDefaultTypeInternal() {}
+  union {
+    ROIAreaResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ROIAreaResponseDefaultTypeInternal _ROIAreaResponse_default_instance_;
+template <typename>
+PROTOBUF_CONSTEXPR ROICentroidResponse::ROICentroidResponse(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.status_)*/nullptr
+  , /*decltype(_impl_.x_)*/ 0
+
+  , /*decltype(_impl_.y_)*/ 0
+} {}
+struct ROICentroidResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ROICentroidResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ROICentroidResponseDefaultTypeInternal() {}
+  union {
+    ROICentroidResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ROICentroidResponseDefaultTypeInternal _ROICentroidResponse_default_instance_;
+template <typename>
+PROTOBUF_CONSTEXPR ROIPixResponse::ROIPixResponse(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.status_)*/nullptr
+  , /*decltype(_impl_.pix_)*/nullptr} {}
+struct ROIPixResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ROIPixResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ROIPixResponseDefaultTypeInternal() {}
+  union {
+    ROIPixResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ROIPixResponseDefaultTypeInternal _ROIPixResponse_default_instance_;
+template <typename>
+PROTOBUF_CONSTEXPR ROINameResponse::ROINameResponse(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.name_)*/ {
+    &::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized {}
+  }
+
+  , /*decltype(_impl_.status_)*/nullptr} {}
+struct ROINameResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ROINameResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ROINameResponseDefaultTypeInternal() {}
+  union {
+    ROINameResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ROINameResponseDefaultTypeInternal _ROINameResponse_default_instance_;
+template <typename>
+PROTOBUF_CONSTEXPR ROIColorResponse::ROIColorResponse(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.status_)*/nullptr
+  , /*decltype(_impl_.r_)*/ 0
+
+  , /*decltype(_impl_.g_)*/ 0
+
+  , /*decltype(_impl_.b_)*/ 0
+} {}
+struct ROIColorResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ROIColorResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ROIColorResponseDefaultTypeInternal() {}
+  union {
+    ROIColorResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ROIColorResponseDefaultTypeInternal _ROIColorResponse_default_instance_;
+template <typename>
+PROTOBUF_CONSTEXPR ROIOpacityResponse::ROIOpacityResponse(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.status_)*/nullptr
+  , /*decltype(_impl_.opacity_)*/ 0
+} {}
+struct ROIOpacityResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ROIOpacityResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ROIOpacityResponseDefaultTypeInternal() {}
+  union {
+    ROIOpacityResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ROIOpacityResponseDefaultTypeInternal _ROIOpacityResponse_default_instance_;
+template <typename>
+PROTOBUF_CONSTEXPR ROIThicknessResponse::ROIThicknessResponse(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.status_)*/nullptr
+  , /*decltype(_impl_.thickness_)*/ 0
+} {}
+struct ROIThicknessResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ROIThicknessResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ROIThicknessResponseDefaultTypeInternal() {}
+  union {
+    ROIThicknessResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ROIThicknessResponseDefaultTypeInternal _ROIThicknessResponse_default_instance_;
+template <typename>
+PROTOBUF_CONSTEXPR ROIPointsResponse_Point2D::ROIPointsResponse_Point2D(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.x_)*/ 0
+
+  , /*decltype(_impl_.y_)*/ 0
+
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct ROIPointsResponse_Point2DDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ROIPointsResponse_Point2DDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ROIPointsResponse_Point2DDefaultTypeInternal() {}
+  union {
+    ROIPointsResponse_Point2D _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ROIPointsResponse_Point2DDefaultTypeInternal _ROIPointsResponse_Point2D_default_instance_;
+template <typename>
+PROTOBUF_CONSTEXPR ROIPointsResponse::ROIPointsResponse(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.points_)*/{}
+  , /*decltype(_impl_.status_)*/nullptr} {}
+struct ROIPointsResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ROIPointsResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ROIPointsResponseDefaultTypeInternal() {}
+  union {
+    ROIPointsResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ROIPointsResponseDefaultTypeInternal _ROIPointsResponse_default_instance_;
+template <typename>
+PROTOBUF_CONSTEXPR ROIITypeResponse::ROIITypeResponse(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.status_)*/nullptr
+  , /*decltype(_impl_.itype_)*/ 0
+} {}
+struct ROIITypeResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ROIITypeResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ROIITypeResponseDefaultTypeInternal() {}
+  union {
+    ROIITypeResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ROIITypeResponseDefaultTypeInternal _ROIITypeResponse_default_instance_;
+template <typename>
+PROTOBUF_CONSTEXPR ROIRotateRequest::ROIRotateRequest(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.roi_)*/nullptr
+  , /*decltype(_impl_.degrees_)*/ 0
+
+  , /*decltype(_impl_.x_)*/ 0
+
+  , /*decltype(_impl_.y_)*/ 0
+} {}
+struct ROIRotateRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ROIRotateRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ROIRotateRequestDefaultTypeInternal() {}
+  union {
+    ROIRotateRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ROIRotateRequestDefaultTypeInternal _ROIRotateRequest_default_instance_;
+template <typename>
+PROTOBUF_CONSTEXPR ROIMoveRequest::ROIMoveRequest(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.roi_)*/nullptr
+  , /*decltype(_impl_.columns_)*/ 0
+
+  , /*decltype(_impl_.rows_)*/ 0
+} {}
+struct ROIMoveRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ROIMoveRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ROIMoveRequestDefaultTypeInternal() {}
+  union {
+    ROIMoveRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ROIMoveRequestDefaultTypeInternal _ROIMoveRequest_default_instance_;
+template <typename>
+PROTOBUF_CONSTEXPR ROISetNameRequest::ROISetNameRequest(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.name_)*/ {
+    &::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized {}
+  }
+
+  , /*decltype(_impl_.roi_)*/nullptr} {}
+struct ROISetNameRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ROISetNameRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ROISetNameRequestDefaultTypeInternal() {}
+  union {
+    ROISetNameRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ROISetNameRequestDefaultTypeInternal _ROISetNameRequest_default_instance_;
+template <typename>
+PROTOBUF_CONSTEXPR ROISetColorRequest::ROISetColorRequest(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.roi_)*/nullptr
+  , /*decltype(_impl_.r_)*/ 0
+
+  , /*decltype(_impl_.g_)*/ 0
+
+  , /*decltype(_impl_.b_)*/ 0
+} {}
+struct ROISetColorRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ROISetColorRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ROISetColorRequestDefaultTypeInternal() {}
+  union {
+    ROISetColorRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ROISetColorRequestDefaultTypeInternal _ROISetColorRequest_default_instance_;
+template <typename>
+PROTOBUF_CONSTEXPR ROISetOpacityRequest::ROISetOpacityRequest(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.roi_)*/nullptr
+  , /*decltype(_impl_.opacity_)*/ 0
+} {}
+struct ROISetOpacityRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ROISetOpacityRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ROISetOpacityRequestDefaultTypeInternal() {}
+  union {
+    ROISetOpacityRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ROISetOpacityRequestDefaultTypeInternal _ROISetOpacityRequest_default_instance_;
+template <typename>
+PROTOBUF_CONSTEXPR ROISetThicknessRequest::ROISetThicknessRequest(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.roi_)*/nullptr
+  , /*decltype(_impl_.thickness_)*/ 0
+} {}
+struct ROISetThicknessRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ROISetThicknessRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ROISetThicknessRequestDefaultTypeInternal() {}
+  union {
+    ROISetThicknessRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ROISetThicknessRequestDefaultTypeInternal _ROISetThicknessRequest_default_instance_;
+template <typename>
+PROTOBUF_CONSTEXPR ROISetPointsRequest_Point2D::ROISetPointsRequest_Point2D(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.x_)*/ 0
+
+  , /*decltype(_impl_.y_)*/ 0
+
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct ROISetPointsRequest_Point2DDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ROISetPointsRequest_Point2DDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ROISetPointsRequest_Point2DDefaultTypeInternal() {}
+  union {
+    ROISetPointsRequest_Point2D _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ROISetPointsRequest_Point2DDefaultTypeInternal _ROISetPointsRequest_Point2D_default_instance_;
+template <typename>
+PROTOBUF_CONSTEXPR ROISetPointsRequest::ROISetPointsRequest(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.points_)*/{}
+  , /*decltype(_impl_.roi_)*/nullptr} {}
+struct ROISetPointsRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ROISetPointsRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ROISetPointsRequestDefaultTypeInternal() {}
+  union {
+    ROISetPointsRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ROISetPointsRequestDefaultTypeInternal _ROISetPointsRequest_default_instance_;
 }  // namespace osirixgrpc
-static void InitDefaultsscc_info_ROIAreaResponse_roi_2eproto() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::osirixgrpc::_ROIAreaResponse_default_instance_;
-    new (ptr) ::osirixgrpc::ROIAreaResponse();
-    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
-  }
-}
-
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_ROIAreaResponse_roi_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_ROIAreaResponse_roi_2eproto}, {
-      &scc_info_Status_utilities_2eproto.base,}};
-
-static void InitDefaultsscc_info_ROICentroidResponse_roi_2eproto() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::osirixgrpc::_ROICentroidResponse_default_instance_;
-    new (ptr) ::osirixgrpc::ROICentroidResponse();
-    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
-  }
-}
-
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_ROICentroidResponse_roi_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_ROICentroidResponse_roi_2eproto}, {
-      &scc_info_Status_utilities_2eproto.base,}};
-
-static void InitDefaultsscc_info_ROIColorResponse_roi_2eproto() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::osirixgrpc::_ROIColorResponse_default_instance_;
-    new (ptr) ::osirixgrpc::ROIColorResponse();
-    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
-  }
-}
-
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_ROIColorResponse_roi_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_ROIColorResponse_roi_2eproto}, {
-      &scc_info_Status_utilities_2eproto.base,}};
-
-static void InitDefaultsscc_info_ROIITypeResponse_roi_2eproto() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::osirixgrpc::_ROIITypeResponse_default_instance_;
-    new (ptr) ::osirixgrpc::ROIITypeResponse();
-    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
-  }
-}
-
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_ROIITypeResponse_roi_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_ROIITypeResponse_roi_2eproto}, {
-      &scc_info_Status_utilities_2eproto.base,}};
-
-static void InitDefaultsscc_info_ROIMoveRequest_roi_2eproto() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::osirixgrpc::_ROIMoveRequest_default_instance_;
-    new (ptr) ::osirixgrpc::ROIMoveRequest();
-    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
-  }
-}
-
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_ROIMoveRequest_roi_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_ROIMoveRequest_roi_2eproto}, {
-      &scc_info_ROI_types_2eproto.base,}};
-
-static void InitDefaultsscc_info_ROINameResponse_roi_2eproto() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::osirixgrpc::_ROINameResponse_default_instance_;
-    new (ptr) ::osirixgrpc::ROINameResponse();
-    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
-  }
-}
-
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_ROINameResponse_roi_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_ROINameResponse_roi_2eproto}, {
-      &scc_info_Status_utilities_2eproto.base,}};
-
-static void InitDefaultsscc_info_ROIOpacityResponse_roi_2eproto() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::osirixgrpc::_ROIOpacityResponse_default_instance_;
-    new (ptr) ::osirixgrpc::ROIOpacityResponse();
-    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
-  }
-}
-
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_ROIOpacityResponse_roi_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_ROIOpacityResponse_roi_2eproto}, {
-      &scc_info_Status_utilities_2eproto.base,}};
-
-static void InitDefaultsscc_info_ROIPixResponse_roi_2eproto() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::osirixgrpc::_ROIPixResponse_default_instance_;
-    new (ptr) ::osirixgrpc::ROIPixResponse();
-    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
-  }
-}
-
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<2> scc_info_ROIPixResponse_roi_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 2, 0, InitDefaultsscc_info_ROIPixResponse_roi_2eproto}, {
-      &scc_info_Status_utilities_2eproto.base,
-      &scc_info_DCMPix_types_2eproto.base,}};
-
-static void InitDefaultsscc_info_ROIPointsResponse_roi_2eproto() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::osirixgrpc::_ROIPointsResponse_default_instance_;
-    new (ptr) ::osirixgrpc::ROIPointsResponse();
-    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
-  }
-}
-
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<2> scc_info_ROIPointsResponse_roi_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 2, 0, InitDefaultsscc_info_ROIPointsResponse_roi_2eproto}, {
-      &scc_info_Status_utilities_2eproto.base,
-      &scc_info_ROIPointsResponse_Point2D_roi_2eproto.base,}};
-
-static void InitDefaultsscc_info_ROIPointsResponse_Point2D_roi_2eproto() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::osirixgrpc::_ROIPointsResponse_Point2D_default_instance_;
-    new (ptr) ::osirixgrpc::ROIPointsResponse_Point2D();
-    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
-  }
-}
-
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_ROIPointsResponse_Point2D_roi_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_ROIPointsResponse_Point2D_roi_2eproto}, {}};
-
-static void InitDefaultsscc_info_ROIRotateRequest_roi_2eproto() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::osirixgrpc::_ROIRotateRequest_default_instance_;
-    new (ptr) ::osirixgrpc::ROIRotateRequest();
-    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
-  }
-}
-
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_ROIRotateRequest_roi_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_ROIRotateRequest_roi_2eproto}, {
-      &scc_info_ROI_types_2eproto.base,}};
-
-static void InitDefaultsscc_info_ROISetColorRequest_roi_2eproto() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::osirixgrpc::_ROISetColorRequest_default_instance_;
-    new (ptr) ::osirixgrpc::ROISetColorRequest();
-    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
-  }
-}
-
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_ROISetColorRequest_roi_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_ROISetColorRequest_roi_2eproto}, {
-      &scc_info_ROI_types_2eproto.base,}};
-
-static void InitDefaultsscc_info_ROISetNameRequest_roi_2eproto() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::osirixgrpc::_ROISetNameRequest_default_instance_;
-    new (ptr) ::osirixgrpc::ROISetNameRequest();
-    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
-  }
-}
-
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_ROISetNameRequest_roi_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_ROISetNameRequest_roi_2eproto}, {
-      &scc_info_ROI_types_2eproto.base,}};
-
-static void InitDefaultsscc_info_ROISetOpacityRequest_roi_2eproto() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::osirixgrpc::_ROISetOpacityRequest_default_instance_;
-    new (ptr) ::osirixgrpc::ROISetOpacityRequest();
-    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
-  }
-}
-
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_ROISetOpacityRequest_roi_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_ROISetOpacityRequest_roi_2eproto}, {
-      &scc_info_ROI_types_2eproto.base,}};
-
-static void InitDefaultsscc_info_ROISetPointsRequest_roi_2eproto() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::osirixgrpc::_ROISetPointsRequest_default_instance_;
-    new (ptr) ::osirixgrpc::ROISetPointsRequest();
-    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
-  }
-}
-
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<2> scc_info_ROISetPointsRequest_roi_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 2, 0, InitDefaultsscc_info_ROISetPointsRequest_roi_2eproto}, {
-      &scc_info_ROI_types_2eproto.base,
-      &scc_info_ROISetPointsRequest_Point2D_roi_2eproto.base,}};
-
-static void InitDefaultsscc_info_ROISetPointsRequest_Point2D_roi_2eproto() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::osirixgrpc::_ROISetPointsRequest_Point2D_default_instance_;
-    new (ptr) ::osirixgrpc::ROISetPointsRequest_Point2D();
-    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
-  }
-}
-
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_ROISetPointsRequest_Point2D_roi_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_ROISetPointsRequest_Point2D_roi_2eproto}, {}};
-
-static void InitDefaultsscc_info_ROISetThicknessRequest_roi_2eproto() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::osirixgrpc::_ROISetThicknessRequest_default_instance_;
-    new (ptr) ::osirixgrpc::ROISetThicknessRequest();
-    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
-  }
-}
-
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_ROISetThicknessRequest_roi_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_ROISetThicknessRequest_roi_2eproto}, {
-      &scc_info_ROI_types_2eproto.base,}};
-
-static void InitDefaultsscc_info_ROIThicknessResponse_roi_2eproto() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::osirixgrpc::_ROIThicknessResponse_default_instance_;
-    new (ptr) ::osirixgrpc::ROIThicknessResponse();
-    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
-  }
-}
-
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_ROIThicknessResponse_roi_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_ROIThicknessResponse_roi_2eproto}, {
-      &scc_info_Status_utilities_2eproto.base,}};
-
-static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_roi_2eproto[18];
-static constexpr ::PROTOBUF_NAMESPACE_ID::EnumDescriptor const** file_level_enum_descriptors_roi_2eproto = nullptr;
-static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_roi_2eproto = nullptr;
-
-const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_roi_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROIAreaResponse, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROIAreaResponse, status_),
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROIAreaResponse, area_),
-  ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROICentroidResponse, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROICentroidResponse, status_),
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROICentroidResponse, x_),
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROICentroidResponse, y_),
-  ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROIPixResponse, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROIPixResponse, status_),
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROIPixResponse, pix_),
-  ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROINameResponse, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROINameResponse, status_),
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROINameResponse, name_),
-  ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROIColorResponse, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROIColorResponse, status_),
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROIColorResponse, r_),
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROIColorResponse, g_),
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROIColorResponse, b_),
-  ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROIOpacityResponse, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROIOpacityResponse, status_),
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROIOpacityResponse, opacity_),
-  ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROIThicknessResponse, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROIThicknessResponse, status_),
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROIThicknessResponse, thickness_),
-  ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROIPointsResponse_Point2D, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROIPointsResponse_Point2D, x_),
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROIPointsResponse_Point2D, y_),
-  ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROIPointsResponse, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROIPointsResponse, status_),
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROIPointsResponse, points_),
-  ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROIITypeResponse, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROIITypeResponse, status_),
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROIITypeResponse, itype_),
-  ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROIRotateRequest, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROIRotateRequest, roi_),
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROIRotateRequest, degrees_),
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROIRotateRequest, x_),
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROIRotateRequest, y_),
-  ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROIMoveRequest, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROIMoveRequest, roi_),
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROIMoveRequest, columns_),
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROIMoveRequest, rows_),
-  ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROISetNameRequest, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROISetNameRequest, roi_),
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROISetNameRequest, name_),
-  ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROISetColorRequest, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROISetColorRequest, roi_),
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROISetColorRequest, r_),
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROISetColorRequest, g_),
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROISetColorRequest, b_),
-  ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROISetOpacityRequest, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROISetOpacityRequest, roi_),
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROISetOpacityRequest, opacity_),
-  ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROISetThicknessRequest, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROISetThicknessRequest, roi_),
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROISetThicknessRequest, thickness_),
-  ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROISetPointsRequest_Point2D, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROISetPointsRequest_Point2D, x_),
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROISetPointsRequest_Point2D, y_),
-  ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROISetPointsRequest, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROISetPointsRequest, roi_),
-  PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROISetPointsRequest, points_),
-};
-static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  { 0, -1, sizeof(::osirixgrpc::ROIAreaResponse)},
-  { 7, -1, sizeof(::osirixgrpc::ROICentroidResponse)},
-  { 15, -1, sizeof(::osirixgrpc::ROIPixResponse)},
-  { 22, -1, sizeof(::osirixgrpc::ROINameResponse)},
-  { 29, -1, sizeof(::osirixgrpc::ROIColorResponse)},
-  { 38, -1, sizeof(::osirixgrpc::ROIOpacityResponse)},
-  { 45, -1, sizeof(::osirixgrpc::ROIThicknessResponse)},
-  { 52, -1, sizeof(::osirixgrpc::ROIPointsResponse_Point2D)},
-  { 59, -1, sizeof(::osirixgrpc::ROIPointsResponse)},
-  { 66, -1, sizeof(::osirixgrpc::ROIITypeResponse)},
-  { 73, -1, sizeof(::osirixgrpc::ROIRotateRequest)},
-  { 82, -1, sizeof(::osirixgrpc::ROIMoveRequest)},
-  { 90, -1, sizeof(::osirixgrpc::ROISetNameRequest)},
-  { 97, -1, sizeof(::osirixgrpc::ROISetColorRequest)},
-  { 106, -1, sizeof(::osirixgrpc::ROISetOpacityRequest)},
-  { 113, -1, sizeof(::osirixgrpc::ROISetThicknessRequest)},
-  { 120, -1, sizeof(::osirixgrpc::ROISetPointsRequest_Point2D)},
-  { 127, -1, sizeof(::osirixgrpc::ROISetPointsRequest)},
+static ::_pb::Metadata file_level_metadata_roi_2eproto[18];
+static constexpr const ::_pb::EnumDescriptor**
+    file_level_enum_descriptors_roi_2eproto = nullptr;
+static constexpr const ::_pb::ServiceDescriptor**
+    file_level_service_descriptors_roi_2eproto = nullptr;
+const ::uint32_t TableStruct_roi_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(
+    protodesc_cold) = {
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROIAreaResponse, _impl_._has_bits_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROIAreaResponse, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROIAreaResponse, _impl_.status_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROIAreaResponse, _impl_.area_),
+    0,
+    ~0u,
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROICentroidResponse, _impl_._has_bits_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROICentroidResponse, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROICentroidResponse, _impl_.status_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROICentroidResponse, _impl_.x_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROICentroidResponse, _impl_.y_),
+    0,
+    ~0u,
+    ~0u,
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROIPixResponse, _impl_._has_bits_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROIPixResponse, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROIPixResponse, _impl_.status_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROIPixResponse, _impl_.pix_),
+    0,
+    1,
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROINameResponse, _impl_._has_bits_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROINameResponse, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROINameResponse, _impl_.status_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROINameResponse, _impl_.name_),
+    0,
+    ~0u,
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROIColorResponse, _impl_._has_bits_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROIColorResponse, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROIColorResponse, _impl_.status_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROIColorResponse, _impl_.r_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROIColorResponse, _impl_.g_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROIColorResponse, _impl_.b_),
+    0,
+    ~0u,
+    ~0u,
+    ~0u,
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROIOpacityResponse, _impl_._has_bits_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROIOpacityResponse, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROIOpacityResponse, _impl_.status_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROIOpacityResponse, _impl_.opacity_),
+    0,
+    ~0u,
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROIThicknessResponse, _impl_._has_bits_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROIThicknessResponse, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROIThicknessResponse, _impl_.status_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROIThicknessResponse, _impl_.thickness_),
+    0,
+    ~0u,
+    ~0u,  // no _has_bits_
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROIPointsResponse_Point2D, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROIPointsResponse_Point2D, _impl_.x_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROIPointsResponse_Point2D, _impl_.y_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROIPointsResponse, _impl_._has_bits_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROIPointsResponse, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROIPointsResponse, _impl_.status_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROIPointsResponse, _impl_.points_),
+    0,
+    ~0u,
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROIITypeResponse, _impl_._has_bits_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROIITypeResponse, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROIITypeResponse, _impl_.status_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROIITypeResponse, _impl_.itype_),
+    0,
+    ~0u,
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROIRotateRequest, _impl_._has_bits_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROIRotateRequest, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROIRotateRequest, _impl_.roi_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROIRotateRequest, _impl_.degrees_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROIRotateRequest, _impl_.x_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROIRotateRequest, _impl_.y_),
+    0,
+    ~0u,
+    ~0u,
+    ~0u,
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROIMoveRequest, _impl_._has_bits_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROIMoveRequest, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROIMoveRequest, _impl_.roi_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROIMoveRequest, _impl_.columns_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROIMoveRequest, _impl_.rows_),
+    0,
+    ~0u,
+    ~0u,
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROISetNameRequest, _impl_._has_bits_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROISetNameRequest, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROISetNameRequest, _impl_.roi_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROISetNameRequest, _impl_.name_),
+    0,
+    ~0u,
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROISetColorRequest, _impl_._has_bits_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROISetColorRequest, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROISetColorRequest, _impl_.roi_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROISetColorRequest, _impl_.r_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROISetColorRequest, _impl_.g_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROISetColorRequest, _impl_.b_),
+    0,
+    ~0u,
+    ~0u,
+    ~0u,
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROISetOpacityRequest, _impl_._has_bits_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROISetOpacityRequest, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROISetOpacityRequest, _impl_.roi_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROISetOpacityRequest, _impl_.opacity_),
+    0,
+    ~0u,
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROISetThicknessRequest, _impl_._has_bits_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROISetThicknessRequest, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROISetThicknessRequest, _impl_.roi_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROISetThicknessRequest, _impl_.thickness_),
+    0,
+    ~0u,
+    ~0u,  // no _has_bits_
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROISetPointsRequest_Point2D, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROISetPointsRequest_Point2D, _impl_.x_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROISetPointsRequest_Point2D, _impl_.y_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROISetPointsRequest, _impl_._has_bits_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROISetPointsRequest, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROISetPointsRequest, _impl_.roi_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::ROISetPointsRequest, _impl_.points_),
+    0,
+    ~0u,
 };
 
-static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::osirixgrpc::_ROIAreaResponse_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::osirixgrpc::_ROICentroidResponse_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::osirixgrpc::_ROIPixResponse_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::osirixgrpc::_ROINameResponse_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::osirixgrpc::_ROIColorResponse_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::osirixgrpc::_ROIOpacityResponse_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::osirixgrpc::_ROIThicknessResponse_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::osirixgrpc::_ROIPointsResponse_Point2D_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::osirixgrpc::_ROIPointsResponse_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::osirixgrpc::_ROIITypeResponse_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::osirixgrpc::_ROIRotateRequest_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::osirixgrpc::_ROIMoveRequest_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::osirixgrpc::_ROISetNameRequest_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::osirixgrpc::_ROISetColorRequest_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::osirixgrpc::_ROISetOpacityRequest_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::osirixgrpc::_ROISetThicknessRequest_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::osirixgrpc::_ROISetPointsRequest_Point2D_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::osirixgrpc::_ROISetPointsRequest_default_instance_),
+static const ::_pbi::MigrationSchema
+    schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
+        { 0, 10, -1, sizeof(::osirixgrpc::ROIAreaResponse)},
+        { 12, 23, -1, sizeof(::osirixgrpc::ROICentroidResponse)},
+        { 26, 36, -1, sizeof(::osirixgrpc::ROIPixResponse)},
+        { 38, 48, -1, sizeof(::osirixgrpc::ROINameResponse)},
+        { 50, 62, -1, sizeof(::osirixgrpc::ROIColorResponse)},
+        { 66, 76, -1, sizeof(::osirixgrpc::ROIOpacityResponse)},
+        { 78, 88, -1, sizeof(::osirixgrpc::ROIThicknessResponse)},
+        { 90, -1, -1, sizeof(::osirixgrpc::ROIPointsResponse_Point2D)},
+        { 100, 110, -1, sizeof(::osirixgrpc::ROIPointsResponse)},
+        { 112, 122, -1, sizeof(::osirixgrpc::ROIITypeResponse)},
+        { 124, 136, -1, sizeof(::osirixgrpc::ROIRotateRequest)},
+        { 140, 151, -1, sizeof(::osirixgrpc::ROIMoveRequest)},
+        { 154, 164, -1, sizeof(::osirixgrpc::ROISetNameRequest)},
+        { 166, 178, -1, sizeof(::osirixgrpc::ROISetColorRequest)},
+        { 182, 192, -1, sizeof(::osirixgrpc::ROISetOpacityRequest)},
+        { 194, 204, -1, sizeof(::osirixgrpc::ROISetThicknessRequest)},
+        { 206, -1, -1, sizeof(::osirixgrpc::ROISetPointsRequest_Point2D)},
+        { 216, 226, -1, sizeof(::osirixgrpc::ROISetPointsRequest)},
 };
 
-const char descriptor_table_protodef_roi_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
-  "\n\troi.proto\022\nosirixgrpc\032\017utilities.proto"
-  "\032\013types.proto\"C\n\017ROIAreaResponse\022\"\n\006stat"
-  "us\030\001 \001(\0132\022.osirixgrpc.Status\022\014\n\004area\030\002 \001"
-  "(\002\"O\n\023ROICentroidResponse\022\"\n\006status\030\001 \001("
-  "\0132\022.osirixgrpc.Status\022\t\n\001x\030\002 \001(\002\022\t\n\001y\030\003 "
-  "\001(\002\"U\n\016ROIPixResponse\022\"\n\006status\030\001 \001(\0132\022."
-  "osirixgrpc.Status\022\037\n\003pix\030\002 \001(\0132\022.osirixg"
-  "rpc.DCMPix\"C\n\017ROINameResponse\022\"\n\006status\030"
-  "\001 \001(\0132\022.osirixgrpc.Status\022\014\n\004name\030\002 \001(\t\""
-  "W\n\020ROIColorResponse\022\"\n\006status\030\001 \001(\0132\022.os"
-  "irixgrpc.Status\022\t\n\001r\030\002 \001(\005\022\t\n\001g\030\003 \001(\005\022\t\n"
-  "\001b\030\004 \001(\005\"I\n\022ROIOpacityResponse\022\"\n\006status"
-  "\030\001 \001(\0132\022.osirixgrpc.Status\022\017\n\007opacity\030\002 "
-  "\001(\002\"M\n\024ROIThicknessResponse\022\"\n\006status\030\001 "
-  "\001(\0132\022.osirixgrpc.Status\022\021\n\tthickness\030\002 \001"
-  "(\002\"\217\001\n\021ROIPointsResponse\022\"\n\006status\030\001 \001(\013"
-  "2\022.osirixgrpc.Status\0225\n\006points\030\002 \003(\0132%.o"
-  "sirixgrpc.ROIPointsResponse.Point2D\032\037\n\007P"
-  "oint2D\022\t\n\001x\030\001 \001(\002\022\t\n\001y\030\002 \001(\002\"E\n\020ROIIType"
-  "Response\022\"\n\006status\030\001 \001(\0132\022.osirixgrpc.St"
-  "atus\022\r\n\005itype\030\002 \001(\005\"W\n\020ROIRotateRequest\022"
-  "\034\n\003roi\030\001 \001(\0132\017.osirixgrpc.ROI\022\017\n\007degrees"
-  "\030\002 \001(\002\022\t\n\001x\030\003 \001(\002\022\t\n\001y\030\004 \001(\002\"M\n\016ROIMoveR"
-  "equest\022\034\n\003roi\030\001 \001(\0132\017.osirixgrpc.ROI\022\017\n\007"
-  "columns\030\002 \001(\005\022\014\n\004rows\030\003 \001(\005\"\?\n\021ROISetNam"
-  "eRequest\022\034\n\003roi\030\001 \001(\0132\017.osirixgrpc.ROI\022\014"
-  "\n\004name\030\002 \001(\t\"S\n\022ROISetColorRequest\022\034\n\003ro"
-  "i\030\001 \001(\0132\017.osirixgrpc.ROI\022\t\n\001r\030\002 \001(\005\022\t\n\001g"
-  "\030\003 \001(\005\022\t\n\001b\030\004 \001(\005\"E\n\024ROISetOpacityReques"
-  "t\022\034\n\003roi\030\001 \001(\0132\017.osirixgrpc.ROI\022\017\n\007opaci"
-  "ty\030\002 \001(\002\"I\n\026ROISetThicknessRequest\022\034\n\003ro"
-  "i\030\001 \001(\0132\017.osirixgrpc.ROI\022\021\n\tthickness\030\002 "
-  "\001(\002\"\215\001\n\023ROISetPointsRequest\022\034\n\003roi\030\001 \001(\013"
-  "2\017.osirixgrpc.ROI\0227\n\006points\030\002 \003(\0132\'.osir"
-  "ixgrpc.ROISetPointsRequest.Point2D\032\037\n\007Po"
-  "int2D\022\t\n\001x\030\001 \001(\002\022\t\n\001y\030\002 \001(\002b\006proto3"
-  ;
-static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_roi_2eproto_deps[2] = {
-  &::descriptor_table_types_2eproto,
-  &::descriptor_table_utilities_2eproto,
+static const ::_pb::Message* const file_default_instances[] = {
+    &::osirixgrpc::_ROIAreaResponse_default_instance_._instance,
+    &::osirixgrpc::_ROICentroidResponse_default_instance_._instance,
+    &::osirixgrpc::_ROIPixResponse_default_instance_._instance,
+    &::osirixgrpc::_ROINameResponse_default_instance_._instance,
+    &::osirixgrpc::_ROIColorResponse_default_instance_._instance,
+    &::osirixgrpc::_ROIOpacityResponse_default_instance_._instance,
+    &::osirixgrpc::_ROIThicknessResponse_default_instance_._instance,
+    &::osirixgrpc::_ROIPointsResponse_Point2D_default_instance_._instance,
+    &::osirixgrpc::_ROIPointsResponse_default_instance_._instance,
+    &::osirixgrpc::_ROIITypeResponse_default_instance_._instance,
+    &::osirixgrpc::_ROIRotateRequest_default_instance_._instance,
+    &::osirixgrpc::_ROIMoveRequest_default_instance_._instance,
+    &::osirixgrpc::_ROISetNameRequest_default_instance_._instance,
+    &::osirixgrpc::_ROISetColorRequest_default_instance_._instance,
+    &::osirixgrpc::_ROISetOpacityRequest_default_instance_._instance,
+    &::osirixgrpc::_ROISetThicknessRequest_default_instance_._instance,
+    &::osirixgrpc::_ROISetPointsRequest_Point2D_default_instance_._instance,
+    &::osirixgrpc::_ROISetPointsRequest_default_instance_._instance,
 };
-static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_roi_2eproto_sccs[18] = {
-  &scc_info_ROIAreaResponse_roi_2eproto.base,
-  &scc_info_ROICentroidResponse_roi_2eproto.base,
-  &scc_info_ROIColorResponse_roi_2eproto.base,
-  &scc_info_ROIITypeResponse_roi_2eproto.base,
-  &scc_info_ROIMoveRequest_roi_2eproto.base,
-  &scc_info_ROINameResponse_roi_2eproto.base,
-  &scc_info_ROIOpacityResponse_roi_2eproto.base,
-  &scc_info_ROIPixResponse_roi_2eproto.base,
-  &scc_info_ROIPointsResponse_roi_2eproto.base,
-  &scc_info_ROIPointsResponse_Point2D_roi_2eproto.base,
-  &scc_info_ROIRotateRequest_roi_2eproto.base,
-  &scc_info_ROISetColorRequest_roi_2eproto.base,
-  &scc_info_ROISetNameRequest_roi_2eproto.base,
-  &scc_info_ROISetOpacityRequest_roi_2eproto.base,
-  &scc_info_ROISetPointsRequest_roi_2eproto.base,
-  &scc_info_ROISetPointsRequest_Point2D_roi_2eproto.base,
-  &scc_info_ROISetThicknessRequest_roi_2eproto.base,
-  &scc_info_ROIThicknessResponse_roi_2eproto.base,
+const char descriptor_table_protodef_roi_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
+    "\n\troi.proto\022\nosirixgrpc\032\017utilities.proto"
+    "\032\013types.proto\"C\n\017ROIAreaResponse\022\"\n\006stat"
+    "us\030\001 \001(\0132\022.osirixgrpc.Status\022\014\n\004area\030\002 \001"
+    "(\002\"O\n\023ROICentroidResponse\022\"\n\006status\030\001 \001("
+    "\0132\022.osirixgrpc.Status\022\t\n\001x\030\002 \001(\002\022\t\n\001y\030\003 "
+    "\001(\002\"U\n\016ROIPixResponse\022\"\n\006status\030\001 \001(\0132\022."
+    "osirixgrpc.Status\022\037\n\003pix\030\002 \001(\0132\022.osirixg"
+    "rpc.DCMPix\"C\n\017ROINameResponse\022\"\n\006status\030"
+    "\001 \001(\0132\022.osirixgrpc.Status\022\014\n\004name\030\002 \001(\t\""
+    "W\n\020ROIColorResponse\022\"\n\006status\030\001 \001(\0132\022.os"
+    "irixgrpc.Status\022\t\n\001r\030\002 \001(\005\022\t\n\001g\030\003 \001(\005\022\t\n"
+    "\001b\030\004 \001(\005\"I\n\022ROIOpacityResponse\022\"\n\006status"
+    "\030\001 \001(\0132\022.osirixgrpc.Status\022\017\n\007opacity\030\002 "
+    "\001(\002\"M\n\024ROIThicknessResponse\022\"\n\006status\030\001 "
+    "\001(\0132\022.osirixgrpc.Status\022\021\n\tthickness\030\002 \001"
+    "(\002\"\217\001\n\021ROIPointsResponse\022\"\n\006status\030\001 \001(\013"
+    "2\022.osirixgrpc.Status\0225\n\006points\030\002 \003(\0132%.o"
+    "sirixgrpc.ROIPointsResponse.Point2D\032\037\n\007P"
+    "oint2D\022\t\n\001x\030\001 \001(\002\022\t\n\001y\030\002 \001(\002\"E\n\020ROIIType"
+    "Response\022\"\n\006status\030\001 \001(\0132\022.osirixgrpc.St"
+    "atus\022\r\n\005itype\030\002 \001(\005\"W\n\020ROIRotateRequest\022"
+    "\034\n\003roi\030\001 \001(\0132\017.osirixgrpc.ROI\022\017\n\007degrees"
+    "\030\002 \001(\002\022\t\n\001x\030\003 \001(\002\022\t\n\001y\030\004 \001(\002\"M\n\016ROIMoveR"
+    "equest\022\034\n\003roi\030\001 \001(\0132\017.osirixgrpc.ROI\022\017\n\007"
+    "columns\030\002 \001(\005\022\014\n\004rows\030\003 \001(\005\"\?\n\021ROISetNam"
+    "eRequest\022\034\n\003roi\030\001 \001(\0132\017.osirixgrpc.ROI\022\014"
+    "\n\004name\030\002 \001(\t\"S\n\022ROISetColorRequest\022\034\n\003ro"
+    "i\030\001 \001(\0132\017.osirixgrpc.ROI\022\t\n\001r\030\002 \001(\005\022\t\n\001g"
+    "\030\003 \001(\005\022\t\n\001b\030\004 \001(\005\"E\n\024ROISetOpacityReques"
+    "t\022\034\n\003roi\030\001 \001(\0132\017.osirixgrpc.ROI\022\017\n\007opaci"
+    "ty\030\002 \001(\002\"I\n\026ROISetThicknessRequest\022\034\n\003ro"
+    "i\030\001 \001(\0132\017.osirixgrpc.ROI\022\021\n\tthickness\030\002 "
+    "\001(\002\"\215\001\n\023ROISetPointsRequest\022\034\n\003roi\030\001 \001(\013"
+    "2\017.osirixgrpc.ROI\0227\n\006points\030\002 \003(\0132\'.osir"
+    "ixgrpc.ROISetPointsRequest.Point2D\032\037\n\007Po"
+    "int2D\022\t\n\001x\030\001 \001(\002\022\t\n\001y\030\002 \001(\002b\006proto3"
 };
-static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_roi_2eproto_once;
-const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_roi_2eproto = {
-  false, false, descriptor_table_protodef_roi_2eproto, "roi.proto", 1435,
-  &descriptor_table_roi_2eproto_once, descriptor_table_roi_2eproto_sccs, descriptor_table_roi_2eproto_deps, 18, 2,
-  schemas, file_default_instances, TableStruct_roi_2eproto::offsets,
-  file_level_metadata_roi_2eproto, 18, file_level_enum_descriptors_roi_2eproto, file_level_service_descriptors_roi_2eproto,
+static const ::_pbi::DescriptorTable* const descriptor_table_roi_2eproto_deps[2] =
+    {
+        &::descriptor_table_types_2eproto,
+        &::descriptor_table_utilities_2eproto,
+};
+static ::absl::once_flag descriptor_table_roi_2eproto_once;
+const ::_pbi::DescriptorTable descriptor_table_roi_2eproto = {
+    false,
+    false,
+    1435,
+    descriptor_table_protodef_roi_2eproto,
+    "roi.proto",
+    &descriptor_table_roi_2eproto_once,
+    descriptor_table_roi_2eproto_deps,
+    2,
+    18,
+    schemas,
+    file_default_instances,
+    TableStruct_roi_2eproto::offsets,
+    file_level_metadata_roi_2eproto,
+    file_level_enum_descriptors_roi_2eproto,
+    file_level_service_descriptors_roi_2eproto,
 };
 
+// This function exists to be marked as weak.
+// It can significantly speed up compilation by breaking up LLVM's SCC
+// in the .pb.cc translation units. Large translation units see a
+// reduction of more than 35% of walltime for optimized builds. Without
+// the weak attribute all the messages in the file, including all the
+// vtables and everything they use become part of the same SCC through
+// a cycle like:
+// GetMetadata -> descriptor table -> default instances ->
+//   vtables -> GetMetadata
+// By adding a weak function here we break the connection from the
+// individual vtables back into the descriptor table.
+PROTOBUF_ATTRIBUTE_WEAK const ::_pbi::DescriptorTable* descriptor_table_roi_2eproto_getter() {
+  return &descriptor_table_roi_2eproto;
+}
 // Force running AddDescriptors() at dynamic initialization time.
-static bool dynamic_init_dummy_roi_2eproto = (static_cast<void>(::PROTOBUF_NAMESPACE_ID::internal::AddDescriptors(&descriptor_table_roi_2eproto)), true);
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY2
+static ::_pbi::AddDescriptorsRunner dynamic_init_dummy_roi_2eproto(&descriptor_table_roi_2eproto);
 namespace osirixgrpc {
-
 // ===================================================================
 
 class ROIAreaResponse::_Internal {
  public:
+  using HasBits = decltype(std::declval<ROIAreaResponse>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+    8 * PROTOBUF_FIELD_OFFSET(ROIAreaResponse, _impl_._has_bits_);
   static const ::osirixgrpc::Status& status(const ROIAreaResponse* msg);
+  static void set_has_status(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
 };
 
 const ::osirixgrpc::Status&
 ROIAreaResponse::_Internal::status(const ROIAreaResponse* msg) {
-  return *msg->status_;
+  return *msg->_impl_.status_;
 }
 void ROIAreaResponse::clear_status() {
-  if (GetArena() == nullptr && status_ != nullptr) {
-    delete status_;
-  }
-  status_ = nullptr;
+  if (_impl_.status_ != nullptr) _impl_.status_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000001u;
 }
 ROIAreaResponse::ROIAreaResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
-  SharedCtor();
-  RegisterArenaDtor(arena);
+  SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.ROIAreaResponse)
 }
 ROIAreaResponse::ROIAreaResponse(const ROIAreaResponse& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
+  ROIAreaResponse* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.status_){nullptr}
+    , decltype(_impl_.area_) {}
+  };
+
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if (from._internal_has_status()) {
-    status_ = new ::osirixgrpc::Status(*from.status_);
-  } else {
-    status_ = nullptr;
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_impl_.status_ = new ::osirixgrpc::Status(*from._impl_.status_);
   }
-  area_ = from.area_;
+  _this->_impl_.area_ = from._impl_.area_;
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.ROIAreaResponse)
 }
 
-void ROIAreaResponse::SharedCtor() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_ROIAreaResponse_roi_2eproto.base);
-  ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-      reinterpret_cast<char*>(&status_) - reinterpret_cast<char*>(this)),
-      0, static_cast<size_t>(reinterpret_cast<char*>(&area_) -
-      reinterpret_cast<char*>(&status_)) + sizeof(area_));
+inline void ROIAreaResponse::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.status_){nullptr}
+    , decltype(_impl_.area_) { 0 }
+
+  };
 }
 
 ROIAreaResponse::~ROIAreaResponse() {
   // @@protoc_insertion_point(destructor:osirixgrpc.ROIAreaResponse)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-void ROIAreaResponse::SharedDtor() {
-  GOOGLE_DCHECK(GetArena() == nullptr);
-  if (this != internal_default_instance()) delete status_;
+inline void ROIAreaResponse::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  if (this != internal_default_instance()) delete _impl_.status_;
 }
 
-void ROIAreaResponse::ArenaDtor(void* object) {
-  ROIAreaResponse* _this = reinterpret_cast< ROIAreaResponse* >(object);
-  (void)_this;
-}
-void ROIAreaResponse::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void ROIAreaResponse::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
-const ROIAreaResponse& ROIAreaResponse::default_instance() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_ROIAreaResponse_roi_2eproto.base);
-  return *internal_default_instance();
-}
-
 
 void ROIAreaResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.ROIAreaResponse)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  if (GetArena() == nullptr && status_ != nullptr) {
-    delete status_;
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    ABSL_DCHECK(_impl_.status_ != nullptr);
+    _impl_.status_->Clear();
   }
-  status_ = nullptr;
-  area_ = 0;
+  _impl_.area_ = 0;
+  _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* ROIAreaResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* ROIAreaResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
-    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-    CHK_(ptr);
+    ::uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // .osirixgrpc.Status status = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
           ptr = ctx->ParseMessage(_internal_mutable_status(), ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
+        } else {
+          goto handle_unusual;
+        }
         continue;
       // float area = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 21)) {
-          area_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 21)) {
+          _impl_.area_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
           ptr += sizeof(float);
-        } else goto handle_unusual;
-        continue;
-      default: {
-      handle_unusual:
-        if ((tag & 7) == 4 || tag == 0) {
-          ctx->SetLastTag(tag);
-          goto success;
+        } else {
+          goto handle_unusual;
         }
-        ptr = UnknownFieldParse(tag,
-            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-            ptr, ctx);
-        CHK_(ptr != nullptr);
         continue;
-      }
+      default:
+        goto handle_unusual;
     }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
   }  // while
-success:
+message_done:
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
-  goto success;
+  goto message_done;
 #undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* ROIAreaResponse::_InternalSerialize(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+::uint8_t* ROIAreaResponse::_InternalSerialize(
+    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.ROIAreaResponse)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
+  cached_has_bits = _impl_._has_bits_[0];
   // .osirixgrpc.Status status = 1;
-  if (this->has_status()) {
-    target = stream->EnsureSpace(target);
+  if (cached_has_bits & 0x00000001u) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::status(this), target, stream);
+      InternalWriteMessage(1, _Internal::status(this),
+        _Internal::status(this).GetCachedSize(), target, stream);
   }
 
   // float area = 2;
-  if (!(this->area() <= 0 && this->area() >= 0)) {
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  float tmp_area = this->_internal_area();
+  ::uint32_t raw_area;
+  memcpy(&raw_area, &tmp_area, sizeof(tmp_area));
+  if (raw_area != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(2, this->_internal_area(), target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(
+        2, this->_internal_area(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.ROIAreaResponse)
   return target;
 }
 
-size_t ROIAreaResponse::ByteSizeLong() const {
+::size_t ROIAreaResponse::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:osirixgrpc.ROIAreaResponse)
-  size_t total_size = 0;
+  ::size_t total_size = 0;
 
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // .osirixgrpc.Status status = 1;
-  if (this->has_status()) {
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *status_);
+        *_impl_.status_);
   }
 
   // float area = 2;
-  if (!(this->area() <= 0 && this->area() >= 0)) {
-    total_size += 1 + 4;
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  float tmp_area = this->_internal_area();
+  ::uint32_t raw_area;
+  memcpy(&raw_area, &tmp_area, sizeof(tmp_area));
+  if (raw_area != 0) {
+    total_size += 5;
   }
 
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
-        _internal_metadata_, total_size, &_cached_size_);
-  }
-  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-void ROIAreaResponse::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:osirixgrpc.ROIAreaResponse)
-  GOOGLE_DCHECK_NE(&from, this);
-  const ROIAreaResponse* source =
-      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<ROIAreaResponse>(
-          &from);
-  if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:osirixgrpc.ROIAreaResponse)
-    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:osirixgrpc.ROIAreaResponse)
-    MergeFrom(*source);
-  }
-}
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ROIAreaResponse::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    ROIAreaResponse::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ROIAreaResponse::GetClassData() const { return &_class_data_; }
 
-void ROIAreaResponse::MergeFrom(const ROIAreaResponse& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ROIAreaResponse)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+
+void ROIAreaResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<ROIAreaResponse*>(&to_msg);
+  auto& from = static_cast<const ROIAreaResponse&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ROIAreaResponse)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.has_status()) {
-    _internal_mutable_status()->::osirixgrpc::Status::MergeFrom(from._internal_status());
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_internal_mutable_status()->::osirixgrpc::Status::MergeFrom(
+        from._internal_status());
   }
-  if (!(from.area() <= 0 && from.area() >= 0)) {
-    _internal_set_area(from._internal_area());
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  float tmp_area = from._internal_area();
+  ::uint32_t raw_area;
+  memcpy(&raw_area, &tmp_area, sizeof(tmp_area));
+  if (raw_area != 0) {
+    _this->_internal_set_area(from._internal_area());
   }
-}
-
-void ROIAreaResponse::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:osirixgrpc.ROIAreaResponse)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void ROIAreaResponse::CopyFrom(const ROIAreaResponse& from) {
@@ -835,263 +961,291 @@ bool ROIAreaResponse::IsInitialized() const {
 
 void ROIAreaResponse::InternalSwap(ROIAreaResponse* other) {
   using std::swap;
-  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(ROIAreaResponse, area_)
-      + sizeof(ROIAreaResponse::area_)
-      - PROTOBUF_FIELD_OFFSET(ROIAreaResponse, status_)>(
-          reinterpret_cast<char*>(&status_),
-          reinterpret_cast<char*>(&other->status_));
+      PROTOBUF_FIELD_OFFSET(ROIAreaResponse, _impl_.area_)
+      + sizeof(ROIAreaResponse::_impl_.area_)
+      - PROTOBUF_FIELD_OFFSET(ROIAreaResponse, _impl_.status_)>(
+          reinterpret_cast<char*>(&_impl_.status_),
+          reinterpret_cast<char*>(&other->_impl_.status_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata ROIAreaResponse::GetMetadata() const {
-  return GetMetadataStatic();
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_roi_2eproto_getter, &descriptor_table_roi_2eproto_once,
+      file_level_metadata_roi_2eproto[0]);
 }
-
-
 // ===================================================================
 
 class ROICentroidResponse::_Internal {
  public:
+  using HasBits = decltype(std::declval<ROICentroidResponse>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+    8 * PROTOBUF_FIELD_OFFSET(ROICentroidResponse, _impl_._has_bits_);
   static const ::osirixgrpc::Status& status(const ROICentroidResponse* msg);
+  static void set_has_status(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
 };
 
 const ::osirixgrpc::Status&
 ROICentroidResponse::_Internal::status(const ROICentroidResponse* msg) {
-  return *msg->status_;
+  return *msg->_impl_.status_;
 }
 void ROICentroidResponse::clear_status() {
-  if (GetArena() == nullptr && status_ != nullptr) {
-    delete status_;
-  }
-  status_ = nullptr;
+  if (_impl_.status_ != nullptr) _impl_.status_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000001u;
 }
 ROICentroidResponse::ROICentroidResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
-  SharedCtor();
-  RegisterArenaDtor(arena);
+  SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.ROICentroidResponse)
 }
 ROICentroidResponse::ROICentroidResponse(const ROICentroidResponse& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
+  ROICentroidResponse* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.status_){nullptr}
+    , decltype(_impl_.x_) {}
+
+    , decltype(_impl_.y_) {}
+  };
+
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if (from._internal_has_status()) {
-    status_ = new ::osirixgrpc::Status(*from.status_);
-  } else {
-    status_ = nullptr;
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_impl_.status_ = new ::osirixgrpc::Status(*from._impl_.status_);
   }
-  ::memcpy(&x_, &from.x_,
-    static_cast<size_t>(reinterpret_cast<char*>(&y_) -
-    reinterpret_cast<char*>(&x_)) + sizeof(y_));
+  ::memcpy(&_impl_.x_, &from._impl_.x_,
+    static_cast<::size_t>(reinterpret_cast<char*>(&_impl_.y_) -
+    reinterpret_cast<char*>(&_impl_.x_)) + sizeof(_impl_.y_));
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.ROICentroidResponse)
 }
 
-void ROICentroidResponse::SharedCtor() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_ROICentroidResponse_roi_2eproto.base);
-  ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-      reinterpret_cast<char*>(&status_) - reinterpret_cast<char*>(this)),
-      0, static_cast<size_t>(reinterpret_cast<char*>(&y_) -
-      reinterpret_cast<char*>(&status_)) + sizeof(y_));
+inline void ROICentroidResponse::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.status_){nullptr}
+    , decltype(_impl_.x_) { 0 }
+
+    , decltype(_impl_.y_) { 0 }
+
+  };
 }
 
 ROICentroidResponse::~ROICentroidResponse() {
   // @@protoc_insertion_point(destructor:osirixgrpc.ROICentroidResponse)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-void ROICentroidResponse::SharedDtor() {
-  GOOGLE_DCHECK(GetArena() == nullptr);
-  if (this != internal_default_instance()) delete status_;
+inline void ROICentroidResponse::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  if (this != internal_default_instance()) delete _impl_.status_;
 }
 
-void ROICentroidResponse::ArenaDtor(void* object) {
-  ROICentroidResponse* _this = reinterpret_cast< ROICentroidResponse* >(object);
-  (void)_this;
-}
-void ROICentroidResponse::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void ROICentroidResponse::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
-const ROICentroidResponse& ROICentroidResponse::default_instance() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_ROICentroidResponse_roi_2eproto.base);
-  return *internal_default_instance();
-}
-
 
 void ROICentroidResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.ROICentroidResponse)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  if (GetArena() == nullptr && status_ != nullptr) {
-    delete status_;
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    ABSL_DCHECK(_impl_.status_ != nullptr);
+    _impl_.status_->Clear();
   }
-  status_ = nullptr;
-  ::memset(&x_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&y_) -
-      reinterpret_cast<char*>(&x_)) + sizeof(y_));
+  ::memset(&_impl_.x_, 0, static_cast<::size_t>(
+      reinterpret_cast<char*>(&_impl_.y_) -
+      reinterpret_cast<char*>(&_impl_.x_)) + sizeof(_impl_.y_));
+  _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* ROICentroidResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* ROICentroidResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
-    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-    CHK_(ptr);
+    ::uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // .osirixgrpc.Status status = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
           ptr = ctx->ParseMessage(_internal_mutable_status(), ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
+        } else {
+          goto handle_unusual;
+        }
         continue;
       // float x = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 21)) {
-          x_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 21)) {
+          _impl_.x_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
           ptr += sizeof(float);
-        } else goto handle_unusual;
+        } else {
+          goto handle_unusual;
+        }
         continue;
       // float y = 3;
       case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 29)) {
-          y_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 29)) {
+          _impl_.y_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
           ptr += sizeof(float);
-        } else goto handle_unusual;
-        continue;
-      default: {
-      handle_unusual:
-        if ((tag & 7) == 4 || tag == 0) {
-          ctx->SetLastTag(tag);
-          goto success;
+        } else {
+          goto handle_unusual;
         }
-        ptr = UnknownFieldParse(tag,
-            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-            ptr, ctx);
-        CHK_(ptr != nullptr);
         continue;
-      }
+      default:
+        goto handle_unusual;
     }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
   }  // while
-success:
+message_done:
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
-  goto success;
+  goto message_done;
 #undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* ROICentroidResponse::_InternalSerialize(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+::uint8_t* ROICentroidResponse::_InternalSerialize(
+    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.ROICentroidResponse)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
+  cached_has_bits = _impl_._has_bits_[0];
   // .osirixgrpc.Status status = 1;
-  if (this->has_status()) {
-    target = stream->EnsureSpace(target);
+  if (cached_has_bits & 0x00000001u) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::status(this), target, stream);
+      InternalWriteMessage(1, _Internal::status(this),
+        _Internal::status(this).GetCachedSize(), target, stream);
   }
 
   // float x = 2;
-  if (!(this->x() <= 0 && this->x() >= 0)) {
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  float tmp_x = this->_internal_x();
+  ::uint32_t raw_x;
+  memcpy(&raw_x, &tmp_x, sizeof(tmp_x));
+  if (raw_x != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(2, this->_internal_x(), target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(
+        2, this->_internal_x(), target);
   }
 
   // float y = 3;
-  if (!(this->y() <= 0 && this->y() >= 0)) {
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  float tmp_y = this->_internal_y();
+  ::uint32_t raw_y;
+  memcpy(&raw_y, &tmp_y, sizeof(tmp_y));
+  if (raw_y != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(3, this->_internal_y(), target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(
+        3, this->_internal_y(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.ROICentroidResponse)
   return target;
 }
 
-size_t ROICentroidResponse::ByteSizeLong() const {
+::size_t ROICentroidResponse::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:osirixgrpc.ROICentroidResponse)
-  size_t total_size = 0;
+  ::size_t total_size = 0;
 
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // .osirixgrpc.Status status = 1;
-  if (this->has_status()) {
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *status_);
+        *_impl_.status_);
   }
 
   // float x = 2;
-  if (!(this->x() <= 0 && this->x() >= 0)) {
-    total_size += 1 + 4;
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  float tmp_x = this->_internal_x();
+  ::uint32_t raw_x;
+  memcpy(&raw_x, &tmp_x, sizeof(tmp_x));
+  if (raw_x != 0) {
+    total_size += 5;
   }
 
   // float y = 3;
-  if (!(this->y() <= 0 && this->y() >= 0)) {
-    total_size += 1 + 4;
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  float tmp_y = this->_internal_y();
+  ::uint32_t raw_y;
+  memcpy(&raw_y, &tmp_y, sizeof(tmp_y));
+  if (raw_y != 0) {
+    total_size += 5;
   }
 
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
-        _internal_metadata_, total_size, &_cached_size_);
-  }
-  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-void ROICentroidResponse::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:osirixgrpc.ROICentroidResponse)
-  GOOGLE_DCHECK_NE(&from, this);
-  const ROICentroidResponse* source =
-      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<ROICentroidResponse>(
-          &from);
-  if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:osirixgrpc.ROICentroidResponse)
-    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:osirixgrpc.ROICentroidResponse)
-    MergeFrom(*source);
-  }
-}
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ROICentroidResponse::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    ROICentroidResponse::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ROICentroidResponse::GetClassData() const { return &_class_data_; }
 
-void ROICentroidResponse::MergeFrom(const ROICentroidResponse& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ROICentroidResponse)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+
+void ROICentroidResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<ROICentroidResponse*>(&to_msg);
+  auto& from = static_cast<const ROICentroidResponse&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ROICentroidResponse)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.has_status()) {
-    _internal_mutable_status()->::osirixgrpc::Status::MergeFrom(from._internal_status());
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_internal_mutable_status()->::osirixgrpc::Status::MergeFrom(
+        from._internal_status());
   }
-  if (!(from.x() <= 0 && from.x() >= 0)) {
-    _internal_set_x(from._internal_x());
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  float tmp_x = from._internal_x();
+  ::uint32_t raw_x;
+  memcpy(&raw_x, &tmp_x, sizeof(tmp_x));
+  if (raw_x != 0) {
+    _this->_internal_set_x(from._internal_x());
   }
-  if (!(from.y() <= 0 && from.y() >= 0)) {
-    _internal_set_y(from._internal_y());
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  float tmp_y = from._internal_y();
+  ::uint32_t raw_y;
+  memcpy(&raw_y, &tmp_y, sizeof(tmp_y));
+  if (raw_y != 0) {
+    _this->_internal_set_y(from._internal_y());
   }
-}
-
-void ROICentroidResponse::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:osirixgrpc.ROICentroidResponse)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void ROICentroidResponse::CopyFrom(const ROICentroidResponse& from) {
@@ -1107,261 +1261,261 @@ bool ROICentroidResponse::IsInitialized() const {
 
 void ROICentroidResponse::InternalSwap(ROICentroidResponse* other) {
   using std::swap;
-  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(ROICentroidResponse, y_)
-      + sizeof(ROICentroidResponse::y_)
-      - PROTOBUF_FIELD_OFFSET(ROICentroidResponse, status_)>(
-          reinterpret_cast<char*>(&status_),
-          reinterpret_cast<char*>(&other->status_));
+      PROTOBUF_FIELD_OFFSET(ROICentroidResponse, _impl_.y_)
+      + sizeof(ROICentroidResponse::_impl_.y_)
+      - PROTOBUF_FIELD_OFFSET(ROICentroidResponse, _impl_.status_)>(
+          reinterpret_cast<char*>(&_impl_.status_),
+          reinterpret_cast<char*>(&other->_impl_.status_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata ROICentroidResponse::GetMetadata() const {
-  return GetMetadataStatic();
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_roi_2eproto_getter, &descriptor_table_roi_2eproto_once,
+      file_level_metadata_roi_2eproto[1]);
 }
-
-
 // ===================================================================
 
 class ROIPixResponse::_Internal {
  public:
+  using HasBits = decltype(std::declval<ROIPixResponse>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+    8 * PROTOBUF_FIELD_OFFSET(ROIPixResponse, _impl_._has_bits_);
   static const ::osirixgrpc::Status& status(const ROIPixResponse* msg);
+  static void set_has_status(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
   static const ::osirixgrpc::DCMPix& pix(const ROIPixResponse* msg);
+  static void set_has_pix(HasBits* has_bits) {
+    (*has_bits)[0] |= 2u;
+  }
 };
 
 const ::osirixgrpc::Status&
 ROIPixResponse::_Internal::status(const ROIPixResponse* msg) {
-  return *msg->status_;
+  return *msg->_impl_.status_;
 }
 const ::osirixgrpc::DCMPix&
 ROIPixResponse::_Internal::pix(const ROIPixResponse* msg) {
-  return *msg->pix_;
+  return *msg->_impl_.pix_;
 }
 void ROIPixResponse::clear_status() {
-  if (GetArena() == nullptr && status_ != nullptr) {
-    delete status_;
-  }
-  status_ = nullptr;
+  if (_impl_.status_ != nullptr) _impl_.status_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000001u;
 }
 void ROIPixResponse::clear_pix() {
-  if (GetArena() == nullptr && pix_ != nullptr) {
-    delete pix_;
-  }
-  pix_ = nullptr;
+  if (_impl_.pix_ != nullptr) _impl_.pix_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000002u;
 }
 ROIPixResponse::ROIPixResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
-  SharedCtor();
-  RegisterArenaDtor(arena);
+  SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.ROIPixResponse)
 }
 ROIPixResponse::ROIPixResponse(const ROIPixResponse& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
+  ROIPixResponse* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.status_){nullptr}
+    , decltype(_impl_.pix_){nullptr}};
+
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if (from._internal_has_status()) {
-    status_ = new ::osirixgrpc::Status(*from.status_);
-  } else {
-    status_ = nullptr;
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_impl_.status_ = new ::osirixgrpc::Status(*from._impl_.status_);
   }
-  if (from._internal_has_pix()) {
-    pix_ = new ::osirixgrpc::DCMPix(*from.pix_);
-  } else {
-    pix_ = nullptr;
+  if ((from._impl_._has_bits_[0] & 0x00000002u) != 0) {
+    _this->_impl_.pix_ = new ::osirixgrpc::DCMPix(*from._impl_.pix_);
   }
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.ROIPixResponse)
 }
 
-void ROIPixResponse::SharedCtor() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_ROIPixResponse_roi_2eproto.base);
-  ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-      reinterpret_cast<char*>(&status_) - reinterpret_cast<char*>(this)),
-      0, static_cast<size_t>(reinterpret_cast<char*>(&pix_) -
-      reinterpret_cast<char*>(&status_)) + sizeof(pix_));
+inline void ROIPixResponse::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.status_){nullptr}
+    , decltype(_impl_.pix_){nullptr}
+  };
 }
 
 ROIPixResponse::~ROIPixResponse() {
   // @@protoc_insertion_point(destructor:osirixgrpc.ROIPixResponse)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-void ROIPixResponse::SharedDtor() {
-  GOOGLE_DCHECK(GetArena() == nullptr);
-  if (this != internal_default_instance()) delete status_;
-  if (this != internal_default_instance()) delete pix_;
+inline void ROIPixResponse::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  if (this != internal_default_instance()) delete _impl_.status_;
+  if (this != internal_default_instance()) delete _impl_.pix_;
 }
 
-void ROIPixResponse::ArenaDtor(void* object) {
-  ROIPixResponse* _this = reinterpret_cast< ROIPixResponse* >(object);
-  (void)_this;
-}
-void ROIPixResponse::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void ROIPixResponse::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
-const ROIPixResponse& ROIPixResponse::default_instance() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_ROIPixResponse_roi_2eproto.base);
-  return *internal_default_instance();
-}
-
 
 void ROIPixResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.ROIPixResponse)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  if (GetArena() == nullptr && status_ != nullptr) {
-    delete status_;
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000003u) {
+    if (cached_has_bits & 0x00000001u) {
+      ABSL_DCHECK(_impl_.status_ != nullptr);
+      _impl_.status_->Clear();
+    }
+    if (cached_has_bits & 0x00000002u) {
+      ABSL_DCHECK(_impl_.pix_ != nullptr);
+      _impl_.pix_->Clear();
+    }
   }
-  status_ = nullptr;
-  if (GetArena() == nullptr && pix_ != nullptr) {
-    delete pix_;
-  }
-  pix_ = nullptr;
+  _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* ROIPixResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* ROIPixResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
-    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-    CHK_(ptr);
+    ::uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // .osirixgrpc.Status status = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
           ptr = ctx->ParseMessage(_internal_mutable_status(), ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
+        } else {
+          goto handle_unusual;
+        }
         continue;
       // .osirixgrpc.DCMPix pix = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 18)) {
           ptr = ctx->ParseMessage(_internal_mutable_pix(), ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
-        continue;
-      default: {
-      handle_unusual:
-        if ((tag & 7) == 4 || tag == 0) {
-          ctx->SetLastTag(tag);
-          goto success;
+        } else {
+          goto handle_unusual;
         }
-        ptr = UnknownFieldParse(tag,
-            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-            ptr, ctx);
-        CHK_(ptr != nullptr);
         continue;
-      }
+      default:
+        goto handle_unusual;
     }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
   }  // while
-success:
+message_done:
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
-  goto success;
+  goto message_done;
 #undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* ROIPixResponse::_InternalSerialize(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+::uint8_t* ROIPixResponse::_InternalSerialize(
+    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.ROIPixResponse)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
+  cached_has_bits = _impl_._has_bits_[0];
   // .osirixgrpc.Status status = 1;
-  if (this->has_status()) {
-    target = stream->EnsureSpace(target);
+  if (cached_has_bits & 0x00000001u) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::status(this), target, stream);
+      InternalWriteMessage(1, _Internal::status(this),
+        _Internal::status(this).GetCachedSize(), target, stream);
   }
 
   // .osirixgrpc.DCMPix pix = 2;
-  if (this->has_pix()) {
-    target = stream->EnsureSpace(target);
+  if (cached_has_bits & 0x00000002u) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        2, _Internal::pix(this), target, stream);
+      InternalWriteMessage(2, _Internal::pix(this),
+        _Internal::pix(this).GetCachedSize(), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.ROIPixResponse)
   return target;
 }
 
-size_t ROIPixResponse::ByteSizeLong() const {
+::size_t ROIPixResponse::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:osirixgrpc.ROIPixResponse)
-  size_t total_size = 0;
+  ::size_t total_size = 0;
 
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // .osirixgrpc.Status status = 1;
-  if (this->has_status()) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *status_);
-  }
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000003u) {
+    // .osirixgrpc.Status status = 1;
+    if (cached_has_bits & 0x00000001u) {
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+          *_impl_.status_);
+    }
 
-  // .osirixgrpc.DCMPix pix = 2;
-  if (this->has_pix()) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *pix_);
-  }
+    // .osirixgrpc.DCMPix pix = 2;
+    if (cached_has_bits & 0x00000002u) {
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+          *_impl_.pix_);
+    }
 
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
-        _internal_metadata_, total_size, &_cached_size_);
   }
-  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-void ROIPixResponse::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:osirixgrpc.ROIPixResponse)
-  GOOGLE_DCHECK_NE(&from, this);
-  const ROIPixResponse* source =
-      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<ROIPixResponse>(
-          &from);
-  if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:osirixgrpc.ROIPixResponse)
-    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:osirixgrpc.ROIPixResponse)
-    MergeFrom(*source);
-  }
-}
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ROIPixResponse::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    ROIPixResponse::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ROIPixResponse::GetClassData() const { return &_class_data_; }
 
-void ROIPixResponse::MergeFrom(const ROIPixResponse& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ROIPixResponse)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+
+void ROIPixResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<ROIPixResponse*>(&to_msg);
+  auto& from = static_cast<const ROIPixResponse&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ROIPixResponse)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.has_status()) {
-    _internal_mutable_status()->::osirixgrpc::Status::MergeFrom(from._internal_status());
+  cached_has_bits = from._impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000003u) {
+    if (cached_has_bits & 0x00000001u) {
+      _this->_internal_mutable_status()->::osirixgrpc::Status::MergeFrom(
+          from._internal_status());
+    }
+    if (cached_has_bits & 0x00000002u) {
+      _this->_internal_mutable_pix()->::osirixgrpc::DCMPix::MergeFrom(
+          from._internal_pix());
+    }
   }
-  if (from.has_pix()) {
-    _internal_mutable_pix()->::osirixgrpc::DCMPix::MergeFrom(from._internal_pix());
-  }
-}
-
-void ROIPixResponse::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:osirixgrpc.ROIPixResponse)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void ROIPixResponse::CopyFrom(const ROIPixResponse& from) {
@@ -1377,249 +1531,250 @@ bool ROIPixResponse::IsInitialized() const {
 
 void ROIPixResponse::InternalSwap(ROIPixResponse* other) {
   using std::swap;
-  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(ROIPixResponse, pix_)
-      + sizeof(ROIPixResponse::pix_)
-      - PROTOBUF_FIELD_OFFSET(ROIPixResponse, status_)>(
-          reinterpret_cast<char*>(&status_),
-          reinterpret_cast<char*>(&other->status_));
+      PROTOBUF_FIELD_OFFSET(ROIPixResponse, _impl_.pix_)
+      + sizeof(ROIPixResponse::_impl_.pix_)
+      - PROTOBUF_FIELD_OFFSET(ROIPixResponse, _impl_.status_)>(
+          reinterpret_cast<char*>(&_impl_.status_),
+          reinterpret_cast<char*>(&other->_impl_.status_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata ROIPixResponse::GetMetadata() const {
-  return GetMetadataStatic();
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_roi_2eproto_getter, &descriptor_table_roi_2eproto_once,
+      file_level_metadata_roi_2eproto[2]);
 }
-
-
 // ===================================================================
 
 class ROINameResponse::_Internal {
  public:
+  using HasBits = decltype(std::declval<ROINameResponse>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+    8 * PROTOBUF_FIELD_OFFSET(ROINameResponse, _impl_._has_bits_);
   static const ::osirixgrpc::Status& status(const ROINameResponse* msg);
+  static void set_has_status(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
 };
 
 const ::osirixgrpc::Status&
 ROINameResponse::_Internal::status(const ROINameResponse* msg) {
-  return *msg->status_;
+  return *msg->_impl_.status_;
 }
 void ROINameResponse::clear_status() {
-  if (GetArena() == nullptr && status_ != nullptr) {
-    delete status_;
-  }
-  status_ = nullptr;
+  if (_impl_.status_ != nullptr) _impl_.status_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000001u;
 }
 ROINameResponse::ROINameResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
-  SharedCtor();
-  RegisterArenaDtor(arena);
+  SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.ROINameResponse)
 }
 ROINameResponse::ROINameResponse(const ROINameResponse& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
+  ROINameResponse* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.name_) {}
+
+    , decltype(_impl_.status_){nullptr}};
+
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  _impl_.name_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.name_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_name().empty()) {
-    name_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_name(), 
-      GetArena());
+    _this->_impl_.name_.Set(from._internal_name(), _this->GetArenaForAllocation());
   }
-  if (from._internal_has_status()) {
-    status_ = new ::osirixgrpc::Status(*from.status_);
-  } else {
-    status_ = nullptr;
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_impl_.status_ = new ::osirixgrpc::Status(*from._impl_.status_);
   }
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.ROINameResponse)
 }
 
-void ROINameResponse::SharedCtor() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_ROINameResponse_roi_2eproto.base);
-  name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  status_ = nullptr;
+inline void ROINameResponse::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.name_) {}
+
+    , decltype(_impl_.status_){nullptr}
+  };
+  _impl_.name_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.name_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
 
 ROINameResponse::~ROINameResponse() {
   // @@protoc_insertion_point(destructor:osirixgrpc.ROINameResponse)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-void ROINameResponse::SharedDtor() {
-  GOOGLE_DCHECK(GetArena() == nullptr);
-  name_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (this != internal_default_instance()) delete status_;
+inline void ROINameResponse::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.name_.Destroy();
+  if (this != internal_default_instance()) delete _impl_.status_;
 }
 
-void ROINameResponse::ArenaDtor(void* object) {
-  ROINameResponse* _this = reinterpret_cast< ROINameResponse* >(object);
-  (void)_this;
-}
-void ROINameResponse::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void ROINameResponse::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
-const ROINameResponse& ROINameResponse::default_instance() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_ROINameResponse_roi_2eproto.base);
-  return *internal_default_instance();
-}
-
 
 void ROINameResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.ROINameResponse)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  name_.ClearToEmpty();
-  if (GetArena() == nullptr && status_ != nullptr) {
-    delete status_;
+  _impl_.name_.ClearToEmpty();
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    ABSL_DCHECK(_impl_.status_ != nullptr);
+    _impl_.status_->Clear();
   }
-  status_ = nullptr;
+  _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* ROINameResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* ROINameResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
-    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-    CHK_(ptr);
+    ::uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // .osirixgrpc.Status status = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
           ptr = ctx->ParseMessage(_internal_mutable_status(), ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
+        } else {
+          goto handle_unusual;
+        }
         continue;
       // string name = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 18)) {
           auto str = _internal_mutable_name();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "osirixgrpc.ROINameResponse.name"));
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
-        } else goto handle_unusual;
-        continue;
-      default: {
-      handle_unusual:
-        if ((tag & 7) == 4 || tag == 0) {
-          ctx->SetLastTag(tag);
-          goto success;
+          CHK_(::_pbi::VerifyUTF8(str, "osirixgrpc.ROINameResponse.name"));
+        } else {
+          goto handle_unusual;
         }
-        ptr = UnknownFieldParse(tag,
-            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-            ptr, ctx);
-        CHK_(ptr != nullptr);
         continue;
-      }
+      default:
+        goto handle_unusual;
     }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
   }  // while
-success:
+message_done:
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
-  goto success;
+  goto message_done;
 #undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* ROINameResponse::_InternalSerialize(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+::uint8_t* ROINameResponse::_InternalSerialize(
+    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.ROINameResponse)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
+  cached_has_bits = _impl_._has_bits_[0];
   // .osirixgrpc.Status status = 1;
-  if (this->has_status()) {
-    target = stream->EnsureSpace(target);
+  if (cached_has_bits & 0x00000001u) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::status(this), target, stream);
+      InternalWriteMessage(1, _Internal::status(this),
+        _Internal::status(this).GetCachedSize(), target, stream);
   }
 
   // string name = 2;
-  if (this->name().size() > 0) {
+  if (!this->_internal_name().empty()) {
+    const std::string& _s = this->_internal_name();
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_name().data(), static_cast<int>(this->_internal_name().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "osirixgrpc.ROINameResponse.name");
-    target = stream->WriteStringMaybeAliased(
-        2, this->_internal_name(), target);
+        _s.data(), static_cast<int>(_s.length()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE, "osirixgrpc.ROINameResponse.name");
+    target = stream->WriteStringMaybeAliased(2, _s, target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.ROINameResponse)
   return target;
 }
 
-size_t ROINameResponse::ByteSizeLong() const {
+::size_t ROINameResponse::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:osirixgrpc.ROINameResponse)
-  size_t total_size = 0;
+  ::size_t total_size = 0;
 
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // string name = 2;
-  if (this->name().size() > 0) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_name());
+  if (!this->_internal_name().empty()) {
+    total_size += 1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+                                    this->_internal_name());
   }
 
   // .osirixgrpc.Status status = 1;
-  if (this->has_status()) {
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *status_);
+        *_impl_.status_);
   }
 
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
-        _internal_metadata_, total_size, &_cached_size_);
-  }
-  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-void ROINameResponse::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:osirixgrpc.ROINameResponse)
-  GOOGLE_DCHECK_NE(&from, this);
-  const ROINameResponse* source =
-      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<ROINameResponse>(
-          &from);
-  if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:osirixgrpc.ROINameResponse)
-    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:osirixgrpc.ROINameResponse)
-    MergeFrom(*source);
-  }
-}
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ROINameResponse::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    ROINameResponse::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ROINameResponse::GetClassData() const { return &_class_data_; }
 
-void ROINameResponse::MergeFrom(const ROINameResponse& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ROINameResponse)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+
+void ROINameResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<ROINameResponse*>(&to_msg);
+  auto& from = static_cast<const ROINameResponse&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ROINameResponse)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.name().size() > 0) {
-    _internal_set_name(from._internal_name());
+  if (!from._internal_name().empty()) {
+    _this->_internal_set_name(from._internal_name());
   }
-  if (from.has_status()) {
-    _internal_mutable_status()->::osirixgrpc::Status::MergeFrom(from._internal_status());
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_internal_mutable_status()->::osirixgrpc::Status::MergeFrom(
+        from._internal_status());
   }
-}
-
-void ROINameResponse::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:osirixgrpc.ROINameResponse)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void ROINameResponse::CopyFrom(const ROINameResponse& from) {
@@ -1635,286 +1790,297 @@ bool ROINameResponse::IsInitialized() const {
 
 void ROINameResponse::InternalSwap(ROINameResponse* other) {
   using std::swap;
-  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
-  name_.Swap(&other->name_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
-  swap(status_, other->status_);
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.name_, lhs_arena,
+                                       &other->_impl_.name_, rhs_arena);
+  swap(_impl_.status_, other->_impl_.status_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata ROINameResponse::GetMetadata() const {
-  return GetMetadataStatic();
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_roi_2eproto_getter, &descriptor_table_roi_2eproto_once,
+      file_level_metadata_roi_2eproto[3]);
 }
-
-
 // ===================================================================
 
 class ROIColorResponse::_Internal {
  public:
+  using HasBits = decltype(std::declval<ROIColorResponse>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+    8 * PROTOBUF_FIELD_OFFSET(ROIColorResponse, _impl_._has_bits_);
   static const ::osirixgrpc::Status& status(const ROIColorResponse* msg);
+  static void set_has_status(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
 };
 
 const ::osirixgrpc::Status&
 ROIColorResponse::_Internal::status(const ROIColorResponse* msg) {
-  return *msg->status_;
+  return *msg->_impl_.status_;
 }
 void ROIColorResponse::clear_status() {
-  if (GetArena() == nullptr && status_ != nullptr) {
-    delete status_;
-  }
-  status_ = nullptr;
+  if (_impl_.status_ != nullptr) _impl_.status_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000001u;
 }
 ROIColorResponse::ROIColorResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
-  SharedCtor();
-  RegisterArenaDtor(arena);
+  SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.ROIColorResponse)
 }
 ROIColorResponse::ROIColorResponse(const ROIColorResponse& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
+  ROIColorResponse* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.status_){nullptr}
+    , decltype(_impl_.r_) {}
+
+    , decltype(_impl_.g_) {}
+
+    , decltype(_impl_.b_) {}
+  };
+
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if (from._internal_has_status()) {
-    status_ = new ::osirixgrpc::Status(*from.status_);
-  } else {
-    status_ = nullptr;
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_impl_.status_ = new ::osirixgrpc::Status(*from._impl_.status_);
   }
-  ::memcpy(&r_, &from.r_,
-    static_cast<size_t>(reinterpret_cast<char*>(&b_) -
-    reinterpret_cast<char*>(&r_)) + sizeof(b_));
+  ::memcpy(&_impl_.r_, &from._impl_.r_,
+    static_cast<::size_t>(reinterpret_cast<char*>(&_impl_.b_) -
+    reinterpret_cast<char*>(&_impl_.r_)) + sizeof(_impl_.b_));
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.ROIColorResponse)
 }
 
-void ROIColorResponse::SharedCtor() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_ROIColorResponse_roi_2eproto.base);
-  ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-      reinterpret_cast<char*>(&status_) - reinterpret_cast<char*>(this)),
-      0, static_cast<size_t>(reinterpret_cast<char*>(&b_) -
-      reinterpret_cast<char*>(&status_)) + sizeof(b_));
+inline void ROIColorResponse::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.status_){nullptr}
+    , decltype(_impl_.r_) { 0 }
+
+    , decltype(_impl_.g_) { 0 }
+
+    , decltype(_impl_.b_) { 0 }
+
+  };
 }
 
 ROIColorResponse::~ROIColorResponse() {
   // @@protoc_insertion_point(destructor:osirixgrpc.ROIColorResponse)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-void ROIColorResponse::SharedDtor() {
-  GOOGLE_DCHECK(GetArena() == nullptr);
-  if (this != internal_default_instance()) delete status_;
+inline void ROIColorResponse::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  if (this != internal_default_instance()) delete _impl_.status_;
 }
 
-void ROIColorResponse::ArenaDtor(void* object) {
-  ROIColorResponse* _this = reinterpret_cast< ROIColorResponse* >(object);
-  (void)_this;
-}
-void ROIColorResponse::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void ROIColorResponse::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
-const ROIColorResponse& ROIColorResponse::default_instance() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_ROIColorResponse_roi_2eproto.base);
-  return *internal_default_instance();
-}
-
 
 void ROIColorResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.ROIColorResponse)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  if (GetArena() == nullptr && status_ != nullptr) {
-    delete status_;
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    ABSL_DCHECK(_impl_.status_ != nullptr);
+    _impl_.status_->Clear();
   }
-  status_ = nullptr;
-  ::memset(&r_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&b_) -
-      reinterpret_cast<char*>(&r_)) + sizeof(b_));
+  ::memset(&_impl_.r_, 0, static_cast<::size_t>(
+      reinterpret_cast<char*>(&_impl_.b_) -
+      reinterpret_cast<char*>(&_impl_.r_)) + sizeof(_impl_.b_));
+  _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* ROIColorResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* ROIColorResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
-    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-    CHK_(ptr);
+    ::uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // .osirixgrpc.Status status = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
           ptr = ctx->ParseMessage(_internal_mutable_status(), ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
+        } else {
+          goto handle_unusual;
+        }
         continue;
       // int32 r = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
-          r_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 16)) {
+          _impl_.r_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
+        } else {
+          goto handle_unusual;
+        }
         continue;
       // int32 g = 3;
       case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 24)) {
-          g_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 24)) {
+          _impl_.g_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
+        } else {
+          goto handle_unusual;
+        }
         continue;
       // int32 b = 4;
       case 4:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 32)) {
-          b_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 32)) {
+          _impl_.b_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
-        continue;
-      default: {
-      handle_unusual:
-        if ((tag & 7) == 4 || tag == 0) {
-          ctx->SetLastTag(tag);
-          goto success;
+        } else {
+          goto handle_unusual;
         }
-        ptr = UnknownFieldParse(tag,
-            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-            ptr, ctx);
-        CHK_(ptr != nullptr);
         continue;
-      }
+      default:
+        goto handle_unusual;
     }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
   }  // while
-success:
+message_done:
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
-  goto success;
+  goto message_done;
 #undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* ROIColorResponse::_InternalSerialize(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+::uint8_t* ROIColorResponse::_InternalSerialize(
+    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.ROIColorResponse)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
+  cached_has_bits = _impl_._has_bits_[0];
   // .osirixgrpc.Status status = 1;
-  if (this->has_status()) {
-    target = stream->EnsureSpace(target);
+  if (cached_has_bits & 0x00000001u) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::status(this), target, stream);
+      InternalWriteMessage(1, _Internal::status(this),
+        _Internal::status(this).GetCachedSize(), target, stream);
   }
 
   // int32 r = 2;
-  if (this->r() != 0) {
+  if (this->_internal_r() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(2, this->_internal_r(), target);
+    target = ::_pbi::WireFormatLite::WriteInt32ToArray(
+        2, this->_internal_r(), target);
   }
 
   // int32 g = 3;
-  if (this->g() != 0) {
+  if (this->_internal_g() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(3, this->_internal_g(), target);
+    target = ::_pbi::WireFormatLite::WriteInt32ToArray(
+        3, this->_internal_g(), target);
   }
 
   // int32 b = 4;
-  if (this->b() != 0) {
+  if (this->_internal_b() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(4, this->_internal_b(), target);
+    target = ::_pbi::WireFormatLite::WriteInt32ToArray(
+        4, this->_internal_b(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.ROIColorResponse)
   return target;
 }
 
-size_t ROIColorResponse::ByteSizeLong() const {
+::size_t ROIColorResponse::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:osirixgrpc.ROIColorResponse)
-  size_t total_size = 0;
+  ::size_t total_size = 0;
 
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // .osirixgrpc.Status status = 1;
-  if (this->has_status()) {
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *status_);
+        *_impl_.status_);
   }
 
   // int32 r = 2;
-  if (this->r() != 0) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+  if (this->_internal_r() != 0) {
+    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
         this->_internal_r());
   }
 
   // int32 g = 3;
-  if (this->g() != 0) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+  if (this->_internal_g() != 0) {
+    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
         this->_internal_g());
   }
 
   // int32 b = 4;
-  if (this->b() != 0) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+  if (this->_internal_b() != 0) {
+    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
         this->_internal_b());
   }
 
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
-        _internal_metadata_, total_size, &_cached_size_);
-  }
-  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-void ROIColorResponse::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:osirixgrpc.ROIColorResponse)
-  GOOGLE_DCHECK_NE(&from, this);
-  const ROIColorResponse* source =
-      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<ROIColorResponse>(
-          &from);
-  if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:osirixgrpc.ROIColorResponse)
-    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:osirixgrpc.ROIColorResponse)
-    MergeFrom(*source);
-  }
-}
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ROIColorResponse::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    ROIColorResponse::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ROIColorResponse::GetClassData() const { return &_class_data_; }
 
-void ROIColorResponse::MergeFrom(const ROIColorResponse& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ROIColorResponse)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+
+void ROIColorResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<ROIColorResponse*>(&to_msg);
+  auto& from = static_cast<const ROIColorResponse&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ROIColorResponse)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.has_status()) {
-    _internal_mutable_status()->::osirixgrpc::Status::MergeFrom(from._internal_status());
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_internal_mutable_status()->::osirixgrpc::Status::MergeFrom(
+        from._internal_status());
   }
-  if (from.r() != 0) {
-    _internal_set_r(from._internal_r());
+  if (from._internal_r() != 0) {
+    _this->_internal_set_r(from._internal_r());
   }
-  if (from.g() != 0) {
-    _internal_set_g(from._internal_g());
+  if (from._internal_g() != 0) {
+    _this->_internal_set_g(from._internal_g());
   }
-  if (from.b() != 0) {
-    _internal_set_b(from._internal_b());
+  if (from._internal_b() != 0) {
+    _this->_internal_set_b(from._internal_b());
   }
-}
-
-void ROIColorResponse::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:osirixgrpc.ROIColorResponse)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void ROIColorResponse::CopyFrom(const ROIColorResponse& from) {
@@ -1930,238 +2096,247 @@ bool ROIColorResponse::IsInitialized() const {
 
 void ROIColorResponse::InternalSwap(ROIColorResponse* other) {
   using std::swap;
-  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(ROIColorResponse, b_)
-      + sizeof(ROIColorResponse::b_)
-      - PROTOBUF_FIELD_OFFSET(ROIColorResponse, status_)>(
-          reinterpret_cast<char*>(&status_),
-          reinterpret_cast<char*>(&other->status_));
+      PROTOBUF_FIELD_OFFSET(ROIColorResponse, _impl_.b_)
+      + sizeof(ROIColorResponse::_impl_.b_)
+      - PROTOBUF_FIELD_OFFSET(ROIColorResponse, _impl_.status_)>(
+          reinterpret_cast<char*>(&_impl_.status_),
+          reinterpret_cast<char*>(&other->_impl_.status_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata ROIColorResponse::GetMetadata() const {
-  return GetMetadataStatic();
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_roi_2eproto_getter, &descriptor_table_roi_2eproto_once,
+      file_level_metadata_roi_2eproto[4]);
 }
-
-
 // ===================================================================
 
 class ROIOpacityResponse::_Internal {
  public:
+  using HasBits = decltype(std::declval<ROIOpacityResponse>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+    8 * PROTOBUF_FIELD_OFFSET(ROIOpacityResponse, _impl_._has_bits_);
   static const ::osirixgrpc::Status& status(const ROIOpacityResponse* msg);
+  static void set_has_status(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
 };
 
 const ::osirixgrpc::Status&
 ROIOpacityResponse::_Internal::status(const ROIOpacityResponse* msg) {
-  return *msg->status_;
+  return *msg->_impl_.status_;
 }
 void ROIOpacityResponse::clear_status() {
-  if (GetArena() == nullptr && status_ != nullptr) {
-    delete status_;
-  }
-  status_ = nullptr;
+  if (_impl_.status_ != nullptr) _impl_.status_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000001u;
 }
 ROIOpacityResponse::ROIOpacityResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
-  SharedCtor();
-  RegisterArenaDtor(arena);
+  SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.ROIOpacityResponse)
 }
 ROIOpacityResponse::ROIOpacityResponse(const ROIOpacityResponse& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
+  ROIOpacityResponse* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.status_){nullptr}
+    , decltype(_impl_.opacity_) {}
+  };
+
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if (from._internal_has_status()) {
-    status_ = new ::osirixgrpc::Status(*from.status_);
-  } else {
-    status_ = nullptr;
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_impl_.status_ = new ::osirixgrpc::Status(*from._impl_.status_);
   }
-  opacity_ = from.opacity_;
+  _this->_impl_.opacity_ = from._impl_.opacity_;
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.ROIOpacityResponse)
 }
 
-void ROIOpacityResponse::SharedCtor() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_ROIOpacityResponse_roi_2eproto.base);
-  ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-      reinterpret_cast<char*>(&status_) - reinterpret_cast<char*>(this)),
-      0, static_cast<size_t>(reinterpret_cast<char*>(&opacity_) -
-      reinterpret_cast<char*>(&status_)) + sizeof(opacity_));
+inline void ROIOpacityResponse::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.status_){nullptr}
+    , decltype(_impl_.opacity_) { 0 }
+
+  };
 }
 
 ROIOpacityResponse::~ROIOpacityResponse() {
   // @@protoc_insertion_point(destructor:osirixgrpc.ROIOpacityResponse)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-void ROIOpacityResponse::SharedDtor() {
-  GOOGLE_DCHECK(GetArena() == nullptr);
-  if (this != internal_default_instance()) delete status_;
+inline void ROIOpacityResponse::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  if (this != internal_default_instance()) delete _impl_.status_;
 }
 
-void ROIOpacityResponse::ArenaDtor(void* object) {
-  ROIOpacityResponse* _this = reinterpret_cast< ROIOpacityResponse* >(object);
-  (void)_this;
-}
-void ROIOpacityResponse::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void ROIOpacityResponse::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
-const ROIOpacityResponse& ROIOpacityResponse::default_instance() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_ROIOpacityResponse_roi_2eproto.base);
-  return *internal_default_instance();
-}
-
 
 void ROIOpacityResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.ROIOpacityResponse)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  if (GetArena() == nullptr && status_ != nullptr) {
-    delete status_;
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    ABSL_DCHECK(_impl_.status_ != nullptr);
+    _impl_.status_->Clear();
   }
-  status_ = nullptr;
-  opacity_ = 0;
+  _impl_.opacity_ = 0;
+  _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* ROIOpacityResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* ROIOpacityResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
-    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-    CHK_(ptr);
+    ::uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // .osirixgrpc.Status status = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
           ptr = ctx->ParseMessage(_internal_mutable_status(), ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
+        } else {
+          goto handle_unusual;
+        }
         continue;
       // float opacity = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 21)) {
-          opacity_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 21)) {
+          _impl_.opacity_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
           ptr += sizeof(float);
-        } else goto handle_unusual;
-        continue;
-      default: {
-      handle_unusual:
-        if ((tag & 7) == 4 || tag == 0) {
-          ctx->SetLastTag(tag);
-          goto success;
+        } else {
+          goto handle_unusual;
         }
-        ptr = UnknownFieldParse(tag,
-            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-            ptr, ctx);
-        CHK_(ptr != nullptr);
         continue;
-      }
+      default:
+        goto handle_unusual;
     }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
   }  // while
-success:
+message_done:
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
-  goto success;
+  goto message_done;
 #undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* ROIOpacityResponse::_InternalSerialize(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+::uint8_t* ROIOpacityResponse::_InternalSerialize(
+    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.ROIOpacityResponse)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
+  cached_has_bits = _impl_._has_bits_[0];
   // .osirixgrpc.Status status = 1;
-  if (this->has_status()) {
-    target = stream->EnsureSpace(target);
+  if (cached_has_bits & 0x00000001u) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::status(this), target, stream);
+      InternalWriteMessage(1, _Internal::status(this),
+        _Internal::status(this).GetCachedSize(), target, stream);
   }
 
   // float opacity = 2;
-  if (!(this->opacity() <= 0 && this->opacity() >= 0)) {
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  float tmp_opacity = this->_internal_opacity();
+  ::uint32_t raw_opacity;
+  memcpy(&raw_opacity, &tmp_opacity, sizeof(tmp_opacity));
+  if (raw_opacity != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(2, this->_internal_opacity(), target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(
+        2, this->_internal_opacity(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.ROIOpacityResponse)
   return target;
 }
 
-size_t ROIOpacityResponse::ByteSizeLong() const {
+::size_t ROIOpacityResponse::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:osirixgrpc.ROIOpacityResponse)
-  size_t total_size = 0;
+  ::size_t total_size = 0;
 
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // .osirixgrpc.Status status = 1;
-  if (this->has_status()) {
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *status_);
+        *_impl_.status_);
   }
 
   // float opacity = 2;
-  if (!(this->opacity() <= 0 && this->opacity() >= 0)) {
-    total_size += 1 + 4;
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  float tmp_opacity = this->_internal_opacity();
+  ::uint32_t raw_opacity;
+  memcpy(&raw_opacity, &tmp_opacity, sizeof(tmp_opacity));
+  if (raw_opacity != 0) {
+    total_size += 5;
   }
 
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
-        _internal_metadata_, total_size, &_cached_size_);
-  }
-  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-void ROIOpacityResponse::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:osirixgrpc.ROIOpacityResponse)
-  GOOGLE_DCHECK_NE(&from, this);
-  const ROIOpacityResponse* source =
-      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<ROIOpacityResponse>(
-          &from);
-  if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:osirixgrpc.ROIOpacityResponse)
-    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:osirixgrpc.ROIOpacityResponse)
-    MergeFrom(*source);
-  }
-}
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ROIOpacityResponse::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    ROIOpacityResponse::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ROIOpacityResponse::GetClassData() const { return &_class_data_; }
 
-void ROIOpacityResponse::MergeFrom(const ROIOpacityResponse& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ROIOpacityResponse)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+
+void ROIOpacityResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<ROIOpacityResponse*>(&to_msg);
+  auto& from = static_cast<const ROIOpacityResponse&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ROIOpacityResponse)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.has_status()) {
-    _internal_mutable_status()->::osirixgrpc::Status::MergeFrom(from._internal_status());
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_internal_mutable_status()->::osirixgrpc::Status::MergeFrom(
+        from._internal_status());
   }
-  if (!(from.opacity() <= 0 && from.opacity() >= 0)) {
-    _internal_set_opacity(from._internal_opacity());
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  float tmp_opacity = from._internal_opacity();
+  ::uint32_t raw_opacity;
+  memcpy(&raw_opacity, &tmp_opacity, sizeof(tmp_opacity));
+  if (raw_opacity != 0) {
+    _this->_internal_set_opacity(from._internal_opacity());
   }
-}
-
-void ROIOpacityResponse::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:osirixgrpc.ROIOpacityResponse)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void ROIOpacityResponse::CopyFrom(const ROIOpacityResponse& from) {
@@ -2177,238 +2352,247 @@ bool ROIOpacityResponse::IsInitialized() const {
 
 void ROIOpacityResponse::InternalSwap(ROIOpacityResponse* other) {
   using std::swap;
-  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(ROIOpacityResponse, opacity_)
-      + sizeof(ROIOpacityResponse::opacity_)
-      - PROTOBUF_FIELD_OFFSET(ROIOpacityResponse, status_)>(
-          reinterpret_cast<char*>(&status_),
-          reinterpret_cast<char*>(&other->status_));
+      PROTOBUF_FIELD_OFFSET(ROIOpacityResponse, _impl_.opacity_)
+      + sizeof(ROIOpacityResponse::_impl_.opacity_)
+      - PROTOBUF_FIELD_OFFSET(ROIOpacityResponse, _impl_.status_)>(
+          reinterpret_cast<char*>(&_impl_.status_),
+          reinterpret_cast<char*>(&other->_impl_.status_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata ROIOpacityResponse::GetMetadata() const {
-  return GetMetadataStatic();
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_roi_2eproto_getter, &descriptor_table_roi_2eproto_once,
+      file_level_metadata_roi_2eproto[5]);
 }
-
-
 // ===================================================================
 
 class ROIThicknessResponse::_Internal {
  public:
+  using HasBits = decltype(std::declval<ROIThicknessResponse>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+    8 * PROTOBUF_FIELD_OFFSET(ROIThicknessResponse, _impl_._has_bits_);
   static const ::osirixgrpc::Status& status(const ROIThicknessResponse* msg);
+  static void set_has_status(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
 };
 
 const ::osirixgrpc::Status&
 ROIThicknessResponse::_Internal::status(const ROIThicknessResponse* msg) {
-  return *msg->status_;
+  return *msg->_impl_.status_;
 }
 void ROIThicknessResponse::clear_status() {
-  if (GetArena() == nullptr && status_ != nullptr) {
-    delete status_;
-  }
-  status_ = nullptr;
+  if (_impl_.status_ != nullptr) _impl_.status_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000001u;
 }
 ROIThicknessResponse::ROIThicknessResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
-  SharedCtor();
-  RegisterArenaDtor(arena);
+  SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.ROIThicknessResponse)
 }
 ROIThicknessResponse::ROIThicknessResponse(const ROIThicknessResponse& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
+  ROIThicknessResponse* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.status_){nullptr}
+    , decltype(_impl_.thickness_) {}
+  };
+
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if (from._internal_has_status()) {
-    status_ = new ::osirixgrpc::Status(*from.status_);
-  } else {
-    status_ = nullptr;
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_impl_.status_ = new ::osirixgrpc::Status(*from._impl_.status_);
   }
-  thickness_ = from.thickness_;
+  _this->_impl_.thickness_ = from._impl_.thickness_;
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.ROIThicknessResponse)
 }
 
-void ROIThicknessResponse::SharedCtor() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_ROIThicknessResponse_roi_2eproto.base);
-  ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-      reinterpret_cast<char*>(&status_) - reinterpret_cast<char*>(this)),
-      0, static_cast<size_t>(reinterpret_cast<char*>(&thickness_) -
-      reinterpret_cast<char*>(&status_)) + sizeof(thickness_));
+inline void ROIThicknessResponse::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.status_){nullptr}
+    , decltype(_impl_.thickness_) { 0 }
+
+  };
 }
 
 ROIThicknessResponse::~ROIThicknessResponse() {
   // @@protoc_insertion_point(destructor:osirixgrpc.ROIThicknessResponse)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-void ROIThicknessResponse::SharedDtor() {
-  GOOGLE_DCHECK(GetArena() == nullptr);
-  if (this != internal_default_instance()) delete status_;
+inline void ROIThicknessResponse::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  if (this != internal_default_instance()) delete _impl_.status_;
 }
 
-void ROIThicknessResponse::ArenaDtor(void* object) {
-  ROIThicknessResponse* _this = reinterpret_cast< ROIThicknessResponse* >(object);
-  (void)_this;
-}
-void ROIThicknessResponse::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void ROIThicknessResponse::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
-const ROIThicknessResponse& ROIThicknessResponse::default_instance() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_ROIThicknessResponse_roi_2eproto.base);
-  return *internal_default_instance();
-}
-
 
 void ROIThicknessResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.ROIThicknessResponse)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  if (GetArena() == nullptr && status_ != nullptr) {
-    delete status_;
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    ABSL_DCHECK(_impl_.status_ != nullptr);
+    _impl_.status_->Clear();
   }
-  status_ = nullptr;
-  thickness_ = 0;
+  _impl_.thickness_ = 0;
+  _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* ROIThicknessResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* ROIThicknessResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
-    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-    CHK_(ptr);
+    ::uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // .osirixgrpc.Status status = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
           ptr = ctx->ParseMessage(_internal_mutable_status(), ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
+        } else {
+          goto handle_unusual;
+        }
         continue;
       // float thickness = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 21)) {
-          thickness_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 21)) {
+          _impl_.thickness_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
           ptr += sizeof(float);
-        } else goto handle_unusual;
-        continue;
-      default: {
-      handle_unusual:
-        if ((tag & 7) == 4 || tag == 0) {
-          ctx->SetLastTag(tag);
-          goto success;
+        } else {
+          goto handle_unusual;
         }
-        ptr = UnknownFieldParse(tag,
-            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-            ptr, ctx);
-        CHK_(ptr != nullptr);
         continue;
-      }
+      default:
+        goto handle_unusual;
     }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
   }  // while
-success:
+message_done:
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
-  goto success;
+  goto message_done;
 #undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* ROIThicknessResponse::_InternalSerialize(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+::uint8_t* ROIThicknessResponse::_InternalSerialize(
+    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.ROIThicknessResponse)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
+  cached_has_bits = _impl_._has_bits_[0];
   // .osirixgrpc.Status status = 1;
-  if (this->has_status()) {
-    target = stream->EnsureSpace(target);
+  if (cached_has_bits & 0x00000001u) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::status(this), target, stream);
+      InternalWriteMessage(1, _Internal::status(this),
+        _Internal::status(this).GetCachedSize(), target, stream);
   }
 
   // float thickness = 2;
-  if (!(this->thickness() <= 0 && this->thickness() >= 0)) {
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  float tmp_thickness = this->_internal_thickness();
+  ::uint32_t raw_thickness;
+  memcpy(&raw_thickness, &tmp_thickness, sizeof(tmp_thickness));
+  if (raw_thickness != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(2, this->_internal_thickness(), target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(
+        2, this->_internal_thickness(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.ROIThicknessResponse)
   return target;
 }
 
-size_t ROIThicknessResponse::ByteSizeLong() const {
+::size_t ROIThicknessResponse::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:osirixgrpc.ROIThicknessResponse)
-  size_t total_size = 0;
+  ::size_t total_size = 0;
 
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // .osirixgrpc.Status status = 1;
-  if (this->has_status()) {
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *status_);
+        *_impl_.status_);
   }
 
   // float thickness = 2;
-  if (!(this->thickness() <= 0 && this->thickness() >= 0)) {
-    total_size += 1 + 4;
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  float tmp_thickness = this->_internal_thickness();
+  ::uint32_t raw_thickness;
+  memcpy(&raw_thickness, &tmp_thickness, sizeof(tmp_thickness));
+  if (raw_thickness != 0) {
+    total_size += 5;
   }
 
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
-        _internal_metadata_, total_size, &_cached_size_);
-  }
-  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-void ROIThicknessResponse::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:osirixgrpc.ROIThicknessResponse)
-  GOOGLE_DCHECK_NE(&from, this);
-  const ROIThicknessResponse* source =
-      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<ROIThicknessResponse>(
-          &from);
-  if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:osirixgrpc.ROIThicknessResponse)
-    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:osirixgrpc.ROIThicknessResponse)
-    MergeFrom(*source);
-  }
-}
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ROIThicknessResponse::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    ROIThicknessResponse::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ROIThicknessResponse::GetClassData() const { return &_class_data_; }
 
-void ROIThicknessResponse::MergeFrom(const ROIThicknessResponse& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ROIThicknessResponse)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+
+void ROIThicknessResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<ROIThicknessResponse*>(&to_msg);
+  auto& from = static_cast<const ROIThicknessResponse&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ROIThicknessResponse)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.has_status()) {
-    _internal_mutable_status()->::osirixgrpc::Status::MergeFrom(from._internal_status());
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_internal_mutable_status()->::osirixgrpc::Status::MergeFrom(
+        from._internal_status());
   }
-  if (!(from.thickness() <= 0 && from.thickness() >= 0)) {
-    _internal_set_thickness(from._internal_thickness());
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  float tmp_thickness = from._internal_thickness();
+  ::uint32_t raw_thickness;
+  memcpy(&raw_thickness, &tmp_thickness, sizeof(tmp_thickness));
+  if (raw_thickness != 0) {
+    _this->_internal_set_thickness(from._internal_thickness());
   }
-}
-
-void ROIThicknessResponse::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:osirixgrpc.ROIThicknessResponse)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void ROIThicknessResponse::CopyFrom(const ROIThicknessResponse& from) {
@@ -2424,20 +2608,21 @@ bool ROIThicknessResponse::IsInitialized() const {
 
 void ROIThicknessResponse::InternalSwap(ROIThicknessResponse* other) {
   using std::swap;
-  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(ROIThicknessResponse, thickness_)
-      + sizeof(ROIThicknessResponse::thickness_)
-      - PROTOBUF_FIELD_OFFSET(ROIThicknessResponse, status_)>(
-          reinterpret_cast<char*>(&status_),
-          reinterpret_cast<char*>(&other->status_));
+      PROTOBUF_FIELD_OFFSET(ROIThicknessResponse, _impl_.thickness_)
+      + sizeof(ROIThicknessResponse::_impl_.thickness_)
+      - PROTOBUF_FIELD_OFFSET(ROIThicknessResponse, _impl_.status_)>(
+          reinterpret_cast<char*>(&_impl_.status_),
+          reinterpret_cast<char*>(&other->_impl_.status_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata ROIThicknessResponse::GetMetadata() const {
-  return GetMetadataStatic();
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_roi_2eproto_getter, &descriptor_table_roi_2eproto_once,
+      file_level_metadata_roi_2eproto[6]);
 }
-
-
 // ===================================================================
 
 class ROIPointsResponse_Point2D::_Internal {
@@ -2446,194 +2631,198 @@ class ROIPointsResponse_Point2D::_Internal {
 
 ROIPointsResponse_Point2D::ROIPointsResponse_Point2D(::PROTOBUF_NAMESPACE_ID::Arena* arena)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
-  SharedCtor();
-  RegisterArenaDtor(arena);
+  SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.ROIPointsResponse.Point2D)
 }
 ROIPointsResponse_Point2D::ROIPointsResponse_Point2D(const ROIPointsResponse_Point2D& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message() {
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  ::memcpy(&x_, &from.x_,
-    static_cast<size_t>(reinterpret_cast<char*>(&y_) -
-    reinterpret_cast<char*>(&x_)) + sizeof(y_));
+  : ::PROTOBUF_NAMESPACE_ID::Message(), _impl_(from._impl_) {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(
+      from._internal_metadata_);
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.ROIPointsResponse.Point2D)
 }
 
-void ROIPointsResponse_Point2D::SharedCtor() {
-  ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-      reinterpret_cast<char*>(&x_) - reinterpret_cast<char*>(this)),
-      0, static_cast<size_t>(reinterpret_cast<char*>(&y_) -
-      reinterpret_cast<char*>(&x_)) + sizeof(y_));
+inline void ROIPointsResponse_Point2D::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_.x_) { 0 }
+
+    , decltype(_impl_.y_) { 0 }
+
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
 }
 
 ROIPointsResponse_Point2D::~ROIPointsResponse_Point2D() {
   // @@protoc_insertion_point(destructor:osirixgrpc.ROIPointsResponse.Point2D)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-void ROIPointsResponse_Point2D::SharedDtor() {
-  GOOGLE_DCHECK(GetArena() == nullptr);
+inline void ROIPointsResponse_Point2D::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
 }
 
-void ROIPointsResponse_Point2D::ArenaDtor(void* object) {
-  ROIPointsResponse_Point2D* _this = reinterpret_cast< ROIPointsResponse_Point2D* >(object);
-  (void)_this;
-}
-void ROIPointsResponse_Point2D::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void ROIPointsResponse_Point2D::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
-const ROIPointsResponse_Point2D& ROIPointsResponse_Point2D::default_instance() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_ROIPointsResponse_Point2D_roi_2eproto.base);
-  return *internal_default_instance();
-}
-
 
 void ROIPointsResponse_Point2D::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.ROIPointsResponse.Point2D)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  ::memset(&x_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&y_) -
-      reinterpret_cast<char*>(&x_)) + sizeof(y_));
+  ::memset(&_impl_.x_, 0, static_cast<::size_t>(
+      reinterpret_cast<char*>(&_impl_.y_) -
+      reinterpret_cast<char*>(&_impl_.x_)) + sizeof(_impl_.y_));
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* ROIPointsResponse_Point2D::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* ROIPointsResponse_Point2D::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
-    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-    CHK_(ptr);
+    ::uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // float x = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 13)) {
-          x_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 13)) {
+          _impl_.x_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
           ptr += sizeof(float);
-        } else goto handle_unusual;
+        } else {
+          goto handle_unusual;
+        }
         continue;
       // float y = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 21)) {
-          y_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 21)) {
+          _impl_.y_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
           ptr += sizeof(float);
-        } else goto handle_unusual;
-        continue;
-      default: {
-      handle_unusual:
-        if ((tag & 7) == 4 || tag == 0) {
-          ctx->SetLastTag(tag);
-          goto success;
+        } else {
+          goto handle_unusual;
         }
-        ptr = UnknownFieldParse(tag,
-            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-            ptr, ctx);
-        CHK_(ptr != nullptr);
         continue;
-      }
+      default:
+        goto handle_unusual;
     }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
   }  // while
-success:
+message_done:
   return ptr;
 failure:
   ptr = nullptr;
-  goto success;
+  goto message_done;
 #undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* ROIPointsResponse_Point2D::_InternalSerialize(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+::uint8_t* ROIPointsResponse_Point2D::_InternalSerialize(
+    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.ROIPointsResponse.Point2D)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
   // float x = 1;
-  if (!(this->x() <= 0 && this->x() >= 0)) {
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  float tmp_x = this->_internal_x();
+  ::uint32_t raw_x;
+  memcpy(&raw_x, &tmp_x, sizeof(tmp_x));
+  if (raw_x != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(1, this->_internal_x(), target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(
+        1, this->_internal_x(), target);
   }
 
   // float y = 2;
-  if (!(this->y() <= 0 && this->y() >= 0)) {
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  float tmp_y = this->_internal_y();
+  ::uint32_t raw_y;
+  memcpy(&raw_y, &tmp_y, sizeof(tmp_y));
+  if (raw_y != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(2, this->_internal_y(), target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(
+        2, this->_internal_y(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.ROIPointsResponse.Point2D)
   return target;
 }
 
-size_t ROIPointsResponse_Point2D::ByteSizeLong() const {
+::size_t ROIPointsResponse_Point2D::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:osirixgrpc.ROIPointsResponse.Point2D)
-  size_t total_size = 0;
+  ::size_t total_size = 0;
 
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // float x = 1;
-  if (!(this->x() <= 0 && this->x() >= 0)) {
-    total_size += 1 + 4;
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  float tmp_x = this->_internal_x();
+  ::uint32_t raw_x;
+  memcpy(&raw_x, &tmp_x, sizeof(tmp_x));
+  if (raw_x != 0) {
+    total_size += 5;
   }
 
   // float y = 2;
-  if (!(this->y() <= 0 && this->y() >= 0)) {
-    total_size += 1 + 4;
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  float tmp_y = this->_internal_y();
+  ::uint32_t raw_y;
+  memcpy(&raw_y, &tmp_y, sizeof(tmp_y));
+  if (raw_y != 0) {
+    total_size += 5;
   }
 
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
-        _internal_metadata_, total_size, &_cached_size_);
-  }
-  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-void ROIPointsResponse_Point2D::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:osirixgrpc.ROIPointsResponse.Point2D)
-  GOOGLE_DCHECK_NE(&from, this);
-  const ROIPointsResponse_Point2D* source =
-      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<ROIPointsResponse_Point2D>(
-          &from);
-  if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:osirixgrpc.ROIPointsResponse.Point2D)
-    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:osirixgrpc.ROIPointsResponse.Point2D)
-    MergeFrom(*source);
-  }
-}
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ROIPointsResponse_Point2D::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    ROIPointsResponse_Point2D::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ROIPointsResponse_Point2D::GetClassData() const { return &_class_data_; }
 
-void ROIPointsResponse_Point2D::MergeFrom(const ROIPointsResponse_Point2D& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ROIPointsResponse.Point2D)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+
+void ROIPointsResponse_Point2D::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<ROIPointsResponse_Point2D*>(&to_msg);
+  auto& from = static_cast<const ROIPointsResponse_Point2D&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ROIPointsResponse.Point2D)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (!(from.x() <= 0 && from.x() >= 0)) {
-    _internal_set_x(from._internal_x());
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  float tmp_x = from._internal_x();
+  ::uint32_t raw_x;
+  memcpy(&raw_x, &tmp_x, sizeof(tmp_x));
+  if (raw_x != 0) {
+    _this->_internal_set_x(from._internal_x());
   }
-  if (!(from.y() <= 0 && from.y() >= 0)) {
-    _internal_set_y(from._internal_y());
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  float tmp_y = from._internal_y();
+  ::uint32_t raw_y;
+  memcpy(&raw_y, &tmp_y, sizeof(tmp_y));
+  if (raw_y != 0) {
+    _this->_internal_set_y(from._internal_y());
   }
-}
-
-void ROIPointsResponse_Point2D::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:osirixgrpc.ROIPointsResponse.Point2D)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void ROIPointsResponse_Point2D::CopyFrom(const ROIPointsResponse_Point2D& from) {
@@ -2649,118 +2838,126 @@ bool ROIPointsResponse_Point2D::IsInitialized() const {
 
 void ROIPointsResponse_Point2D::InternalSwap(ROIPointsResponse_Point2D* other) {
   using std::swap;
-  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(ROIPointsResponse_Point2D, y_)
-      + sizeof(ROIPointsResponse_Point2D::y_)
-      - PROTOBUF_FIELD_OFFSET(ROIPointsResponse_Point2D, x_)>(
-          reinterpret_cast<char*>(&x_),
-          reinterpret_cast<char*>(&other->x_));
+      PROTOBUF_FIELD_OFFSET(ROIPointsResponse_Point2D, _impl_.y_)
+      + sizeof(ROIPointsResponse_Point2D::_impl_.y_)
+      - PROTOBUF_FIELD_OFFSET(ROIPointsResponse_Point2D, _impl_.x_)>(
+          reinterpret_cast<char*>(&_impl_.x_),
+          reinterpret_cast<char*>(&other->_impl_.x_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata ROIPointsResponse_Point2D::GetMetadata() const {
-  return GetMetadataStatic();
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_roi_2eproto_getter, &descriptor_table_roi_2eproto_once,
+      file_level_metadata_roi_2eproto[7]);
 }
-
-
 // ===================================================================
 
 class ROIPointsResponse::_Internal {
  public:
+  using HasBits = decltype(std::declval<ROIPointsResponse>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+    8 * PROTOBUF_FIELD_OFFSET(ROIPointsResponse, _impl_._has_bits_);
   static const ::osirixgrpc::Status& status(const ROIPointsResponse* msg);
+  static void set_has_status(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
 };
 
 const ::osirixgrpc::Status&
 ROIPointsResponse::_Internal::status(const ROIPointsResponse* msg) {
-  return *msg->status_;
+  return *msg->_impl_.status_;
 }
 void ROIPointsResponse::clear_status() {
-  if (GetArena() == nullptr && status_ != nullptr) {
-    delete status_;
-  }
-  status_ = nullptr;
+  if (_impl_.status_ != nullptr) _impl_.status_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000001u;
 }
 ROIPointsResponse::ROIPointsResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena),
-  points_(arena) {
-  SharedCtor();
-  RegisterArenaDtor(arena);
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
+  SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.ROIPointsResponse)
 }
 ROIPointsResponse::ROIPointsResponse(const ROIPointsResponse& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      points_(from.points_) {
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  ROIPointsResponse* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.points_){from._impl_.points_}
+    , decltype(_impl_.status_){nullptr}};
+
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if (from._internal_has_status()) {
-    status_ = new ::osirixgrpc::Status(*from.status_);
-  } else {
-    status_ = nullptr;
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_impl_.status_ = new ::osirixgrpc::Status(*from._impl_.status_);
   }
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.ROIPointsResponse)
 }
 
-void ROIPointsResponse::SharedCtor() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_ROIPointsResponse_roi_2eproto.base);
-  status_ = nullptr;
+inline void ROIPointsResponse::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.points_){arena}
+    , decltype(_impl_.status_){nullptr}
+  };
 }
 
 ROIPointsResponse::~ROIPointsResponse() {
   // @@protoc_insertion_point(destructor:osirixgrpc.ROIPointsResponse)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-void ROIPointsResponse::SharedDtor() {
-  GOOGLE_DCHECK(GetArena() == nullptr);
-  if (this != internal_default_instance()) delete status_;
+inline void ROIPointsResponse::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  _internal_mutable_points()->~RepeatedPtrField();
+  if (this != internal_default_instance()) delete _impl_.status_;
 }
 
-void ROIPointsResponse::ArenaDtor(void* object) {
-  ROIPointsResponse* _this = reinterpret_cast< ROIPointsResponse* >(object);
-  (void)_this;
-}
-void ROIPointsResponse::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void ROIPointsResponse::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
-const ROIPointsResponse& ROIPointsResponse::default_instance() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_ROIPointsResponse_roi_2eproto.base);
-  return *internal_default_instance();
-}
-
 
 void ROIPointsResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.ROIPointsResponse)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  points_.Clear();
-  if (GetArena() == nullptr && status_ != nullptr) {
-    delete status_;
+  _internal_mutable_points()->Clear();
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    ABSL_DCHECK(_impl_.status_ != nullptr);
+    _impl_.status_->Clear();
   }
-  status_ = nullptr;
+  _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* ROIPointsResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* ROIPointsResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
-    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-    CHK_(ptr);
+    ::uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // .osirixgrpc.Status status = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
           ptr = ctx->ParseMessage(_internal_mutable_status(), ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
+        } else {
+          goto handle_unusual;
+        }
         continue;
       // repeated .osirixgrpc.ROIPointsResponse.Point2D points = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 18)) {
           ptr -= 1;
           do {
             ptr += 1;
@@ -2768,124 +2965,111 @@ const char* ROIPointsResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMESP
             CHK_(ptr);
             if (!ctx->DataAvailable(ptr)) break;
           } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<18>(ptr));
-        } else goto handle_unusual;
-        continue;
-      default: {
-      handle_unusual:
-        if ((tag & 7) == 4 || tag == 0) {
-          ctx->SetLastTag(tag);
-          goto success;
+        } else {
+          goto handle_unusual;
         }
-        ptr = UnknownFieldParse(tag,
-            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-            ptr, ctx);
-        CHK_(ptr != nullptr);
         continue;
-      }
+      default:
+        goto handle_unusual;
     }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
   }  // while
-success:
+message_done:
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
-  goto success;
+  goto message_done;
 #undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* ROIPointsResponse::_InternalSerialize(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+::uint8_t* ROIPointsResponse::_InternalSerialize(
+    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.ROIPointsResponse)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
+  cached_has_bits = _impl_._has_bits_[0];
   // .osirixgrpc.Status status = 1;
-  if (this->has_status()) {
-    target = stream->EnsureSpace(target);
+  if (cached_has_bits & 0x00000001u) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::status(this), target, stream);
+      InternalWriteMessage(1, _Internal::status(this),
+        _Internal::status(this).GetCachedSize(), target, stream);
   }
 
   // repeated .osirixgrpc.ROIPointsResponse.Point2D points = 2;
-  for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->_internal_points_size()); i < n; i++) {
-    target = stream->EnsureSpace(target);
+  for (unsigned i = 0,
+      n = static_cast<unsigned>(this->_internal_points_size()); i < n; i++) {
+    const auto& repfield = this->_internal_points(i);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(2, this->_internal_points(i), target, stream);
+        InternalWriteMessage(2, repfield, repfield.GetCachedSize(), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.ROIPointsResponse)
   return target;
 }
 
-size_t ROIPointsResponse::ByteSizeLong() const {
+::size_t ROIPointsResponse::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:osirixgrpc.ROIPointsResponse)
-  size_t total_size = 0;
+  ::size_t total_size = 0;
 
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // repeated .osirixgrpc.ROIPointsResponse.Point2D points = 2;
   total_size += 1UL * this->_internal_points_size();
-  for (const auto& msg : this->points_) {
+  for (const auto& msg : this->_internal_points()) {
     total_size +=
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
 
   // .osirixgrpc.Status status = 1;
-  if (this->has_status()) {
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *status_);
+        *_impl_.status_);
   }
 
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
-        _internal_metadata_, total_size, &_cached_size_);
-  }
-  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-void ROIPointsResponse::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:osirixgrpc.ROIPointsResponse)
-  GOOGLE_DCHECK_NE(&from, this);
-  const ROIPointsResponse* source =
-      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<ROIPointsResponse>(
-          &from);
-  if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:osirixgrpc.ROIPointsResponse)
-    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:osirixgrpc.ROIPointsResponse)
-    MergeFrom(*source);
-  }
-}
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ROIPointsResponse::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    ROIPointsResponse::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ROIPointsResponse::GetClassData() const { return &_class_data_; }
 
-void ROIPointsResponse::MergeFrom(const ROIPointsResponse& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ROIPointsResponse)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+
+void ROIPointsResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<ROIPointsResponse*>(&to_msg);
+  auto& from = static_cast<const ROIPointsResponse&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ROIPointsResponse)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  points_.MergeFrom(from.points_);
-  if (from.has_status()) {
-    _internal_mutable_status()->::osirixgrpc::Status::MergeFrom(from._internal_status());
+  _this->_internal_mutable_points()->MergeFrom(from._internal_points());
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_internal_mutable_status()->::osirixgrpc::Status::MergeFrom(
+        from._internal_status());
   }
-}
-
-void ROIPointsResponse::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:osirixgrpc.ROIPointsResponse)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void ROIPointsResponse::CopyFrom(const ROIPointsResponse& from) {
@@ -2901,236 +3085,232 @@ bool ROIPointsResponse::IsInitialized() const {
 
 void ROIPointsResponse::InternalSwap(ROIPointsResponse* other) {
   using std::swap;
-  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
-  points_.InternalSwap(&other->points_);
-  swap(status_, other->status_);
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  _internal_mutable_points()->InternalSwap(other->_internal_mutable_points());
+  swap(_impl_.status_, other->_impl_.status_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata ROIPointsResponse::GetMetadata() const {
-  return GetMetadataStatic();
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_roi_2eproto_getter, &descriptor_table_roi_2eproto_once,
+      file_level_metadata_roi_2eproto[8]);
 }
-
-
 // ===================================================================
 
 class ROIITypeResponse::_Internal {
  public:
+  using HasBits = decltype(std::declval<ROIITypeResponse>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+    8 * PROTOBUF_FIELD_OFFSET(ROIITypeResponse, _impl_._has_bits_);
   static const ::osirixgrpc::Status& status(const ROIITypeResponse* msg);
+  static void set_has_status(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
 };
 
 const ::osirixgrpc::Status&
 ROIITypeResponse::_Internal::status(const ROIITypeResponse* msg) {
-  return *msg->status_;
+  return *msg->_impl_.status_;
 }
 void ROIITypeResponse::clear_status() {
-  if (GetArena() == nullptr && status_ != nullptr) {
-    delete status_;
-  }
-  status_ = nullptr;
+  if (_impl_.status_ != nullptr) _impl_.status_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000001u;
 }
 ROIITypeResponse::ROIITypeResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
-  SharedCtor();
-  RegisterArenaDtor(arena);
+  SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.ROIITypeResponse)
 }
 ROIITypeResponse::ROIITypeResponse(const ROIITypeResponse& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
+  ROIITypeResponse* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.status_){nullptr}
+    , decltype(_impl_.itype_) {}
+  };
+
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if (from._internal_has_status()) {
-    status_ = new ::osirixgrpc::Status(*from.status_);
-  } else {
-    status_ = nullptr;
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_impl_.status_ = new ::osirixgrpc::Status(*from._impl_.status_);
   }
-  itype_ = from.itype_;
+  _this->_impl_.itype_ = from._impl_.itype_;
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.ROIITypeResponse)
 }
 
-void ROIITypeResponse::SharedCtor() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_ROIITypeResponse_roi_2eproto.base);
-  ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-      reinterpret_cast<char*>(&status_) - reinterpret_cast<char*>(this)),
-      0, static_cast<size_t>(reinterpret_cast<char*>(&itype_) -
-      reinterpret_cast<char*>(&status_)) + sizeof(itype_));
+inline void ROIITypeResponse::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.status_){nullptr}
+    , decltype(_impl_.itype_) { 0 }
+
+  };
 }
 
 ROIITypeResponse::~ROIITypeResponse() {
   // @@protoc_insertion_point(destructor:osirixgrpc.ROIITypeResponse)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-void ROIITypeResponse::SharedDtor() {
-  GOOGLE_DCHECK(GetArena() == nullptr);
-  if (this != internal_default_instance()) delete status_;
+inline void ROIITypeResponse::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  if (this != internal_default_instance()) delete _impl_.status_;
 }
 
-void ROIITypeResponse::ArenaDtor(void* object) {
-  ROIITypeResponse* _this = reinterpret_cast< ROIITypeResponse* >(object);
-  (void)_this;
-}
-void ROIITypeResponse::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void ROIITypeResponse::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
-const ROIITypeResponse& ROIITypeResponse::default_instance() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_ROIITypeResponse_roi_2eproto.base);
-  return *internal_default_instance();
-}
-
 
 void ROIITypeResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.ROIITypeResponse)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  if (GetArena() == nullptr && status_ != nullptr) {
-    delete status_;
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    ABSL_DCHECK(_impl_.status_ != nullptr);
+    _impl_.status_->Clear();
   }
-  status_ = nullptr;
-  itype_ = 0;
+  _impl_.itype_ = 0;
+  _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* ROIITypeResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* ROIITypeResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
-    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-    CHK_(ptr);
+    ::uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // .osirixgrpc.Status status = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
           ptr = ctx->ParseMessage(_internal_mutable_status(), ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
+        } else {
+          goto handle_unusual;
+        }
         continue;
       // int32 itype = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
-          itype_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 16)) {
+          _impl_.itype_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
-        continue;
-      default: {
-      handle_unusual:
-        if ((tag & 7) == 4 || tag == 0) {
-          ctx->SetLastTag(tag);
-          goto success;
+        } else {
+          goto handle_unusual;
         }
-        ptr = UnknownFieldParse(tag,
-            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-            ptr, ctx);
-        CHK_(ptr != nullptr);
         continue;
-      }
+      default:
+        goto handle_unusual;
     }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
   }  // while
-success:
+message_done:
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
-  goto success;
+  goto message_done;
 #undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* ROIITypeResponse::_InternalSerialize(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+::uint8_t* ROIITypeResponse::_InternalSerialize(
+    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.ROIITypeResponse)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
+  cached_has_bits = _impl_._has_bits_[0];
   // .osirixgrpc.Status status = 1;
-  if (this->has_status()) {
-    target = stream->EnsureSpace(target);
+  if (cached_has_bits & 0x00000001u) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::status(this), target, stream);
+      InternalWriteMessage(1, _Internal::status(this),
+        _Internal::status(this).GetCachedSize(), target, stream);
   }
 
   // int32 itype = 2;
-  if (this->itype() != 0) {
+  if (this->_internal_itype() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(2, this->_internal_itype(), target);
+    target = ::_pbi::WireFormatLite::WriteInt32ToArray(
+        2, this->_internal_itype(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.ROIITypeResponse)
   return target;
 }
 
-size_t ROIITypeResponse::ByteSizeLong() const {
+::size_t ROIITypeResponse::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:osirixgrpc.ROIITypeResponse)
-  size_t total_size = 0;
+  ::size_t total_size = 0;
 
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // .osirixgrpc.Status status = 1;
-  if (this->has_status()) {
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *status_);
+        *_impl_.status_);
   }
 
   // int32 itype = 2;
-  if (this->itype() != 0) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+  if (this->_internal_itype() != 0) {
+    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
         this->_internal_itype());
   }
 
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
-        _internal_metadata_, total_size, &_cached_size_);
-  }
-  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-void ROIITypeResponse::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:osirixgrpc.ROIITypeResponse)
-  GOOGLE_DCHECK_NE(&from, this);
-  const ROIITypeResponse* source =
-      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<ROIITypeResponse>(
-          &from);
-  if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:osirixgrpc.ROIITypeResponse)
-    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:osirixgrpc.ROIITypeResponse)
-    MergeFrom(*source);
-  }
-}
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ROIITypeResponse::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    ROIITypeResponse::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ROIITypeResponse::GetClassData() const { return &_class_data_; }
 
-void ROIITypeResponse::MergeFrom(const ROIITypeResponse& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ROIITypeResponse)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+
+void ROIITypeResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<ROIITypeResponse*>(&to_msg);
+  auto& from = static_cast<const ROIITypeResponse&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ROIITypeResponse)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.has_status()) {
-    _internal_mutable_status()->::osirixgrpc::Status::MergeFrom(from._internal_status());
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_internal_mutable_status()->::osirixgrpc::Status::MergeFrom(
+        from._internal_status());
   }
-  if (from.itype() != 0) {
-    _internal_set_itype(from._internal_itype());
+  if (from._internal_itype() != 0) {
+    _this->_internal_set_itype(from._internal_itype());
   }
-}
-
-void ROIITypeResponse::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:osirixgrpc.ROIITypeResponse)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void ROIITypeResponse::CopyFrom(const ROIITypeResponse& from) {
@@ -3146,284 +3326,331 @@ bool ROIITypeResponse::IsInitialized() const {
 
 void ROIITypeResponse::InternalSwap(ROIITypeResponse* other) {
   using std::swap;
-  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(ROIITypeResponse, itype_)
-      + sizeof(ROIITypeResponse::itype_)
-      - PROTOBUF_FIELD_OFFSET(ROIITypeResponse, status_)>(
-          reinterpret_cast<char*>(&status_),
-          reinterpret_cast<char*>(&other->status_));
+      PROTOBUF_FIELD_OFFSET(ROIITypeResponse, _impl_.itype_)
+      + sizeof(ROIITypeResponse::_impl_.itype_)
+      - PROTOBUF_FIELD_OFFSET(ROIITypeResponse, _impl_.status_)>(
+          reinterpret_cast<char*>(&_impl_.status_),
+          reinterpret_cast<char*>(&other->_impl_.status_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata ROIITypeResponse::GetMetadata() const {
-  return GetMetadataStatic();
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_roi_2eproto_getter, &descriptor_table_roi_2eproto_once,
+      file_level_metadata_roi_2eproto[9]);
 }
-
-
 // ===================================================================
 
 class ROIRotateRequest::_Internal {
  public:
+  using HasBits = decltype(std::declval<ROIRotateRequest>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+    8 * PROTOBUF_FIELD_OFFSET(ROIRotateRequest, _impl_._has_bits_);
   static const ::osirixgrpc::ROI& roi(const ROIRotateRequest* msg);
+  static void set_has_roi(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
 };
 
 const ::osirixgrpc::ROI&
 ROIRotateRequest::_Internal::roi(const ROIRotateRequest* msg) {
-  return *msg->roi_;
+  return *msg->_impl_.roi_;
 }
 void ROIRotateRequest::clear_roi() {
-  if (GetArena() == nullptr && roi_ != nullptr) {
-    delete roi_;
-  }
-  roi_ = nullptr;
+  if (_impl_.roi_ != nullptr) _impl_.roi_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000001u;
 }
 ROIRotateRequest::ROIRotateRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
-  SharedCtor();
-  RegisterArenaDtor(arena);
+  SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.ROIRotateRequest)
 }
 ROIRotateRequest::ROIRotateRequest(const ROIRotateRequest& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
+  ROIRotateRequest* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.roi_){nullptr}
+    , decltype(_impl_.degrees_) {}
+
+    , decltype(_impl_.x_) {}
+
+    , decltype(_impl_.y_) {}
+  };
+
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if (from._internal_has_roi()) {
-    roi_ = new ::osirixgrpc::ROI(*from.roi_);
-  } else {
-    roi_ = nullptr;
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_impl_.roi_ = new ::osirixgrpc::ROI(*from._impl_.roi_);
   }
-  ::memcpy(&degrees_, &from.degrees_,
-    static_cast<size_t>(reinterpret_cast<char*>(&y_) -
-    reinterpret_cast<char*>(&degrees_)) + sizeof(y_));
+  ::memcpy(&_impl_.degrees_, &from._impl_.degrees_,
+    static_cast<::size_t>(reinterpret_cast<char*>(&_impl_.y_) -
+    reinterpret_cast<char*>(&_impl_.degrees_)) + sizeof(_impl_.y_));
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.ROIRotateRequest)
 }
 
-void ROIRotateRequest::SharedCtor() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_ROIRotateRequest_roi_2eproto.base);
-  ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-      reinterpret_cast<char*>(&roi_) - reinterpret_cast<char*>(this)),
-      0, static_cast<size_t>(reinterpret_cast<char*>(&y_) -
-      reinterpret_cast<char*>(&roi_)) + sizeof(y_));
+inline void ROIRotateRequest::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.roi_){nullptr}
+    , decltype(_impl_.degrees_) { 0 }
+
+    , decltype(_impl_.x_) { 0 }
+
+    , decltype(_impl_.y_) { 0 }
+
+  };
 }
 
 ROIRotateRequest::~ROIRotateRequest() {
   // @@protoc_insertion_point(destructor:osirixgrpc.ROIRotateRequest)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-void ROIRotateRequest::SharedDtor() {
-  GOOGLE_DCHECK(GetArena() == nullptr);
-  if (this != internal_default_instance()) delete roi_;
+inline void ROIRotateRequest::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  if (this != internal_default_instance()) delete _impl_.roi_;
 }
 
-void ROIRotateRequest::ArenaDtor(void* object) {
-  ROIRotateRequest* _this = reinterpret_cast< ROIRotateRequest* >(object);
-  (void)_this;
-}
-void ROIRotateRequest::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void ROIRotateRequest::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
-const ROIRotateRequest& ROIRotateRequest::default_instance() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_ROIRotateRequest_roi_2eproto.base);
-  return *internal_default_instance();
-}
-
 
 void ROIRotateRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.ROIRotateRequest)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  if (GetArena() == nullptr && roi_ != nullptr) {
-    delete roi_;
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    ABSL_DCHECK(_impl_.roi_ != nullptr);
+    _impl_.roi_->Clear();
   }
-  roi_ = nullptr;
-  ::memset(&degrees_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&y_) -
-      reinterpret_cast<char*>(&degrees_)) + sizeof(y_));
+  ::memset(&_impl_.degrees_, 0, static_cast<::size_t>(
+      reinterpret_cast<char*>(&_impl_.y_) -
+      reinterpret_cast<char*>(&_impl_.degrees_)) + sizeof(_impl_.y_));
+  _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* ROIRotateRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* ROIRotateRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
-    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-    CHK_(ptr);
+    ::uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // .osirixgrpc.ROI roi = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
           ptr = ctx->ParseMessage(_internal_mutable_roi(), ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
+        } else {
+          goto handle_unusual;
+        }
         continue;
       // float degrees = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 21)) {
-          degrees_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 21)) {
+          _impl_.degrees_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
           ptr += sizeof(float);
-        } else goto handle_unusual;
+        } else {
+          goto handle_unusual;
+        }
         continue;
       // float x = 3;
       case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 29)) {
-          x_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 29)) {
+          _impl_.x_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
           ptr += sizeof(float);
-        } else goto handle_unusual;
+        } else {
+          goto handle_unusual;
+        }
         continue;
       // float y = 4;
       case 4:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 37)) {
-          y_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 37)) {
+          _impl_.y_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
           ptr += sizeof(float);
-        } else goto handle_unusual;
-        continue;
-      default: {
-      handle_unusual:
-        if ((tag & 7) == 4 || tag == 0) {
-          ctx->SetLastTag(tag);
-          goto success;
+        } else {
+          goto handle_unusual;
         }
-        ptr = UnknownFieldParse(tag,
-            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-            ptr, ctx);
-        CHK_(ptr != nullptr);
         continue;
-      }
+      default:
+        goto handle_unusual;
     }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
   }  // while
-success:
+message_done:
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
-  goto success;
+  goto message_done;
 #undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* ROIRotateRequest::_InternalSerialize(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+::uint8_t* ROIRotateRequest::_InternalSerialize(
+    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.ROIRotateRequest)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
+  cached_has_bits = _impl_._has_bits_[0];
   // .osirixgrpc.ROI roi = 1;
-  if (this->has_roi()) {
-    target = stream->EnsureSpace(target);
+  if (cached_has_bits & 0x00000001u) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::roi(this), target, stream);
+      InternalWriteMessage(1, _Internal::roi(this),
+        _Internal::roi(this).GetCachedSize(), target, stream);
   }
 
   // float degrees = 2;
-  if (!(this->degrees() <= 0 && this->degrees() >= 0)) {
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  float tmp_degrees = this->_internal_degrees();
+  ::uint32_t raw_degrees;
+  memcpy(&raw_degrees, &tmp_degrees, sizeof(tmp_degrees));
+  if (raw_degrees != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(2, this->_internal_degrees(), target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(
+        2, this->_internal_degrees(), target);
   }
 
   // float x = 3;
-  if (!(this->x() <= 0 && this->x() >= 0)) {
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  float tmp_x = this->_internal_x();
+  ::uint32_t raw_x;
+  memcpy(&raw_x, &tmp_x, sizeof(tmp_x));
+  if (raw_x != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(3, this->_internal_x(), target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(
+        3, this->_internal_x(), target);
   }
 
   // float y = 4;
-  if (!(this->y() <= 0 && this->y() >= 0)) {
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  float tmp_y = this->_internal_y();
+  ::uint32_t raw_y;
+  memcpy(&raw_y, &tmp_y, sizeof(tmp_y));
+  if (raw_y != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(4, this->_internal_y(), target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(
+        4, this->_internal_y(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.ROIRotateRequest)
   return target;
 }
 
-size_t ROIRotateRequest::ByteSizeLong() const {
+::size_t ROIRotateRequest::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:osirixgrpc.ROIRotateRequest)
-  size_t total_size = 0;
+  ::size_t total_size = 0;
 
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // .osirixgrpc.ROI roi = 1;
-  if (this->has_roi()) {
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *roi_);
+        *_impl_.roi_);
   }
 
   // float degrees = 2;
-  if (!(this->degrees() <= 0 && this->degrees() >= 0)) {
-    total_size += 1 + 4;
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  float tmp_degrees = this->_internal_degrees();
+  ::uint32_t raw_degrees;
+  memcpy(&raw_degrees, &tmp_degrees, sizeof(tmp_degrees));
+  if (raw_degrees != 0) {
+    total_size += 5;
   }
 
   // float x = 3;
-  if (!(this->x() <= 0 && this->x() >= 0)) {
-    total_size += 1 + 4;
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  float tmp_x = this->_internal_x();
+  ::uint32_t raw_x;
+  memcpy(&raw_x, &tmp_x, sizeof(tmp_x));
+  if (raw_x != 0) {
+    total_size += 5;
   }
 
   // float y = 4;
-  if (!(this->y() <= 0 && this->y() >= 0)) {
-    total_size += 1 + 4;
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  float tmp_y = this->_internal_y();
+  ::uint32_t raw_y;
+  memcpy(&raw_y, &tmp_y, sizeof(tmp_y));
+  if (raw_y != 0) {
+    total_size += 5;
   }
 
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
-        _internal_metadata_, total_size, &_cached_size_);
-  }
-  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-void ROIRotateRequest::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:osirixgrpc.ROIRotateRequest)
-  GOOGLE_DCHECK_NE(&from, this);
-  const ROIRotateRequest* source =
-      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<ROIRotateRequest>(
-          &from);
-  if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:osirixgrpc.ROIRotateRequest)
-    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:osirixgrpc.ROIRotateRequest)
-    MergeFrom(*source);
-  }
-}
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ROIRotateRequest::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    ROIRotateRequest::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ROIRotateRequest::GetClassData() const { return &_class_data_; }
 
-void ROIRotateRequest::MergeFrom(const ROIRotateRequest& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ROIRotateRequest)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+
+void ROIRotateRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<ROIRotateRequest*>(&to_msg);
+  auto& from = static_cast<const ROIRotateRequest&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ROIRotateRequest)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.has_roi()) {
-    _internal_mutable_roi()->::osirixgrpc::ROI::MergeFrom(from._internal_roi());
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_internal_mutable_roi()->::osirixgrpc::ROI::MergeFrom(
+        from._internal_roi());
   }
-  if (!(from.degrees() <= 0 && from.degrees() >= 0)) {
-    _internal_set_degrees(from._internal_degrees());
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  float tmp_degrees = from._internal_degrees();
+  ::uint32_t raw_degrees;
+  memcpy(&raw_degrees, &tmp_degrees, sizeof(tmp_degrees));
+  if (raw_degrees != 0) {
+    _this->_internal_set_degrees(from._internal_degrees());
   }
-  if (!(from.x() <= 0 && from.x() >= 0)) {
-    _internal_set_x(from._internal_x());
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  float tmp_x = from._internal_x();
+  ::uint32_t raw_x;
+  memcpy(&raw_x, &tmp_x, sizeof(tmp_x));
+  if (raw_x != 0) {
+    _this->_internal_set_x(from._internal_x());
   }
-  if (!(from.y() <= 0 && from.y() >= 0)) {
-    _internal_set_y(from._internal_y());
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  float tmp_y = from._internal_y();
+  ::uint32_t raw_y;
+  memcpy(&raw_y, &tmp_y, sizeof(tmp_y));
+  if (raw_y != 0) {
+    _this->_internal_set_y(from._internal_y());
   }
-}
-
-void ROIRotateRequest::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:osirixgrpc.ROIRotateRequest)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void ROIRotateRequest::CopyFrom(const ROIRotateRequest& from) {
@@ -3439,267 +3666,269 @@ bool ROIRotateRequest::IsInitialized() const {
 
 void ROIRotateRequest::InternalSwap(ROIRotateRequest* other) {
   using std::swap;
-  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(ROIRotateRequest, y_)
-      + sizeof(ROIRotateRequest::y_)
-      - PROTOBUF_FIELD_OFFSET(ROIRotateRequest, roi_)>(
-          reinterpret_cast<char*>(&roi_),
-          reinterpret_cast<char*>(&other->roi_));
+      PROTOBUF_FIELD_OFFSET(ROIRotateRequest, _impl_.y_)
+      + sizeof(ROIRotateRequest::_impl_.y_)
+      - PROTOBUF_FIELD_OFFSET(ROIRotateRequest, _impl_.roi_)>(
+          reinterpret_cast<char*>(&_impl_.roi_),
+          reinterpret_cast<char*>(&other->_impl_.roi_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata ROIRotateRequest::GetMetadata() const {
-  return GetMetadataStatic();
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_roi_2eproto_getter, &descriptor_table_roi_2eproto_once,
+      file_level_metadata_roi_2eproto[10]);
 }
-
-
 // ===================================================================
 
 class ROIMoveRequest::_Internal {
  public:
+  using HasBits = decltype(std::declval<ROIMoveRequest>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+    8 * PROTOBUF_FIELD_OFFSET(ROIMoveRequest, _impl_._has_bits_);
   static const ::osirixgrpc::ROI& roi(const ROIMoveRequest* msg);
+  static void set_has_roi(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
 };
 
 const ::osirixgrpc::ROI&
 ROIMoveRequest::_Internal::roi(const ROIMoveRequest* msg) {
-  return *msg->roi_;
+  return *msg->_impl_.roi_;
 }
 void ROIMoveRequest::clear_roi() {
-  if (GetArena() == nullptr && roi_ != nullptr) {
-    delete roi_;
-  }
-  roi_ = nullptr;
+  if (_impl_.roi_ != nullptr) _impl_.roi_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000001u;
 }
 ROIMoveRequest::ROIMoveRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
-  SharedCtor();
-  RegisterArenaDtor(arena);
+  SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.ROIMoveRequest)
 }
 ROIMoveRequest::ROIMoveRequest(const ROIMoveRequest& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
+  ROIMoveRequest* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.roi_){nullptr}
+    , decltype(_impl_.columns_) {}
+
+    , decltype(_impl_.rows_) {}
+  };
+
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if (from._internal_has_roi()) {
-    roi_ = new ::osirixgrpc::ROI(*from.roi_);
-  } else {
-    roi_ = nullptr;
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_impl_.roi_ = new ::osirixgrpc::ROI(*from._impl_.roi_);
   }
-  ::memcpy(&columns_, &from.columns_,
-    static_cast<size_t>(reinterpret_cast<char*>(&rows_) -
-    reinterpret_cast<char*>(&columns_)) + sizeof(rows_));
+  ::memcpy(&_impl_.columns_, &from._impl_.columns_,
+    static_cast<::size_t>(reinterpret_cast<char*>(&_impl_.rows_) -
+    reinterpret_cast<char*>(&_impl_.columns_)) + sizeof(_impl_.rows_));
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.ROIMoveRequest)
 }
 
-void ROIMoveRequest::SharedCtor() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_ROIMoveRequest_roi_2eproto.base);
-  ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-      reinterpret_cast<char*>(&roi_) - reinterpret_cast<char*>(this)),
-      0, static_cast<size_t>(reinterpret_cast<char*>(&rows_) -
-      reinterpret_cast<char*>(&roi_)) + sizeof(rows_));
+inline void ROIMoveRequest::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.roi_){nullptr}
+    , decltype(_impl_.columns_) { 0 }
+
+    , decltype(_impl_.rows_) { 0 }
+
+  };
 }
 
 ROIMoveRequest::~ROIMoveRequest() {
   // @@protoc_insertion_point(destructor:osirixgrpc.ROIMoveRequest)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-void ROIMoveRequest::SharedDtor() {
-  GOOGLE_DCHECK(GetArena() == nullptr);
-  if (this != internal_default_instance()) delete roi_;
+inline void ROIMoveRequest::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  if (this != internal_default_instance()) delete _impl_.roi_;
 }
 
-void ROIMoveRequest::ArenaDtor(void* object) {
-  ROIMoveRequest* _this = reinterpret_cast< ROIMoveRequest* >(object);
-  (void)_this;
-}
-void ROIMoveRequest::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void ROIMoveRequest::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
-const ROIMoveRequest& ROIMoveRequest::default_instance() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_ROIMoveRequest_roi_2eproto.base);
-  return *internal_default_instance();
-}
-
 
 void ROIMoveRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.ROIMoveRequest)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  if (GetArena() == nullptr && roi_ != nullptr) {
-    delete roi_;
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    ABSL_DCHECK(_impl_.roi_ != nullptr);
+    _impl_.roi_->Clear();
   }
-  roi_ = nullptr;
-  ::memset(&columns_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&rows_) -
-      reinterpret_cast<char*>(&columns_)) + sizeof(rows_));
+  ::memset(&_impl_.columns_, 0, static_cast<::size_t>(
+      reinterpret_cast<char*>(&_impl_.rows_) -
+      reinterpret_cast<char*>(&_impl_.columns_)) + sizeof(_impl_.rows_));
+  _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* ROIMoveRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* ROIMoveRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
-    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-    CHK_(ptr);
+    ::uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // .osirixgrpc.ROI roi = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
           ptr = ctx->ParseMessage(_internal_mutable_roi(), ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
+        } else {
+          goto handle_unusual;
+        }
         continue;
       // int32 columns = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
-          columns_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 16)) {
+          _impl_.columns_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
+        } else {
+          goto handle_unusual;
+        }
         continue;
       // int32 rows = 3;
       case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 24)) {
-          rows_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 24)) {
+          _impl_.rows_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
-        continue;
-      default: {
-      handle_unusual:
-        if ((tag & 7) == 4 || tag == 0) {
-          ctx->SetLastTag(tag);
-          goto success;
+        } else {
+          goto handle_unusual;
         }
-        ptr = UnknownFieldParse(tag,
-            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-            ptr, ctx);
-        CHK_(ptr != nullptr);
         continue;
-      }
+      default:
+        goto handle_unusual;
     }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
   }  // while
-success:
+message_done:
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
-  goto success;
+  goto message_done;
 #undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* ROIMoveRequest::_InternalSerialize(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+::uint8_t* ROIMoveRequest::_InternalSerialize(
+    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.ROIMoveRequest)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
+  cached_has_bits = _impl_._has_bits_[0];
   // .osirixgrpc.ROI roi = 1;
-  if (this->has_roi()) {
-    target = stream->EnsureSpace(target);
+  if (cached_has_bits & 0x00000001u) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::roi(this), target, stream);
+      InternalWriteMessage(1, _Internal::roi(this),
+        _Internal::roi(this).GetCachedSize(), target, stream);
   }
 
   // int32 columns = 2;
-  if (this->columns() != 0) {
+  if (this->_internal_columns() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(2, this->_internal_columns(), target);
+    target = ::_pbi::WireFormatLite::WriteInt32ToArray(
+        2, this->_internal_columns(), target);
   }
 
   // int32 rows = 3;
-  if (this->rows() != 0) {
+  if (this->_internal_rows() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(3, this->_internal_rows(), target);
+    target = ::_pbi::WireFormatLite::WriteInt32ToArray(
+        3, this->_internal_rows(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.ROIMoveRequest)
   return target;
 }
 
-size_t ROIMoveRequest::ByteSizeLong() const {
+::size_t ROIMoveRequest::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:osirixgrpc.ROIMoveRequest)
-  size_t total_size = 0;
+  ::size_t total_size = 0;
 
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // .osirixgrpc.ROI roi = 1;
-  if (this->has_roi()) {
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *roi_);
+        *_impl_.roi_);
   }
 
   // int32 columns = 2;
-  if (this->columns() != 0) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+  if (this->_internal_columns() != 0) {
+    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
         this->_internal_columns());
   }
 
   // int32 rows = 3;
-  if (this->rows() != 0) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+  if (this->_internal_rows() != 0) {
+    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
         this->_internal_rows());
   }
 
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
-        _internal_metadata_, total_size, &_cached_size_);
-  }
-  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-void ROIMoveRequest::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:osirixgrpc.ROIMoveRequest)
-  GOOGLE_DCHECK_NE(&from, this);
-  const ROIMoveRequest* source =
-      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<ROIMoveRequest>(
-          &from);
-  if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:osirixgrpc.ROIMoveRequest)
-    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:osirixgrpc.ROIMoveRequest)
-    MergeFrom(*source);
-  }
-}
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ROIMoveRequest::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    ROIMoveRequest::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ROIMoveRequest::GetClassData() const { return &_class_data_; }
 
-void ROIMoveRequest::MergeFrom(const ROIMoveRequest& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ROIMoveRequest)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+
+void ROIMoveRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<ROIMoveRequest*>(&to_msg);
+  auto& from = static_cast<const ROIMoveRequest&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ROIMoveRequest)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.has_roi()) {
-    _internal_mutable_roi()->::osirixgrpc::ROI::MergeFrom(from._internal_roi());
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_internal_mutable_roi()->::osirixgrpc::ROI::MergeFrom(
+        from._internal_roi());
   }
-  if (from.columns() != 0) {
-    _internal_set_columns(from._internal_columns());
+  if (from._internal_columns() != 0) {
+    _this->_internal_set_columns(from._internal_columns());
   }
-  if (from.rows() != 0) {
-    _internal_set_rows(from._internal_rows());
+  if (from._internal_rows() != 0) {
+    _this->_internal_set_rows(from._internal_rows());
   }
-}
-
-void ROIMoveRequest::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:osirixgrpc.ROIMoveRequest)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void ROIMoveRequest::CopyFrom(const ROIMoveRequest& from) {
@@ -3715,249 +3944,250 @@ bool ROIMoveRequest::IsInitialized() const {
 
 void ROIMoveRequest::InternalSwap(ROIMoveRequest* other) {
   using std::swap;
-  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(ROIMoveRequest, rows_)
-      + sizeof(ROIMoveRequest::rows_)
-      - PROTOBUF_FIELD_OFFSET(ROIMoveRequest, roi_)>(
-          reinterpret_cast<char*>(&roi_),
-          reinterpret_cast<char*>(&other->roi_));
+      PROTOBUF_FIELD_OFFSET(ROIMoveRequest, _impl_.rows_)
+      + sizeof(ROIMoveRequest::_impl_.rows_)
+      - PROTOBUF_FIELD_OFFSET(ROIMoveRequest, _impl_.roi_)>(
+          reinterpret_cast<char*>(&_impl_.roi_),
+          reinterpret_cast<char*>(&other->_impl_.roi_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata ROIMoveRequest::GetMetadata() const {
-  return GetMetadataStatic();
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_roi_2eproto_getter, &descriptor_table_roi_2eproto_once,
+      file_level_metadata_roi_2eproto[11]);
 }
-
-
 // ===================================================================
 
 class ROISetNameRequest::_Internal {
  public:
+  using HasBits = decltype(std::declval<ROISetNameRequest>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+    8 * PROTOBUF_FIELD_OFFSET(ROISetNameRequest, _impl_._has_bits_);
   static const ::osirixgrpc::ROI& roi(const ROISetNameRequest* msg);
+  static void set_has_roi(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
 };
 
 const ::osirixgrpc::ROI&
 ROISetNameRequest::_Internal::roi(const ROISetNameRequest* msg) {
-  return *msg->roi_;
+  return *msg->_impl_.roi_;
 }
 void ROISetNameRequest::clear_roi() {
-  if (GetArena() == nullptr && roi_ != nullptr) {
-    delete roi_;
-  }
-  roi_ = nullptr;
+  if (_impl_.roi_ != nullptr) _impl_.roi_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000001u;
 }
 ROISetNameRequest::ROISetNameRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
-  SharedCtor();
-  RegisterArenaDtor(arena);
+  SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.ROISetNameRequest)
 }
 ROISetNameRequest::ROISetNameRequest(const ROISetNameRequest& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
+  ROISetNameRequest* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.name_) {}
+
+    , decltype(_impl_.roi_){nullptr}};
+
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  _impl_.name_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.name_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_name().empty()) {
-    name_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_name(), 
-      GetArena());
+    _this->_impl_.name_.Set(from._internal_name(), _this->GetArenaForAllocation());
   }
-  if (from._internal_has_roi()) {
-    roi_ = new ::osirixgrpc::ROI(*from.roi_);
-  } else {
-    roi_ = nullptr;
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_impl_.roi_ = new ::osirixgrpc::ROI(*from._impl_.roi_);
   }
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.ROISetNameRequest)
 }
 
-void ROISetNameRequest::SharedCtor() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_ROISetNameRequest_roi_2eproto.base);
-  name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  roi_ = nullptr;
+inline void ROISetNameRequest::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.name_) {}
+
+    , decltype(_impl_.roi_){nullptr}
+  };
+  _impl_.name_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.name_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
 
 ROISetNameRequest::~ROISetNameRequest() {
   // @@protoc_insertion_point(destructor:osirixgrpc.ROISetNameRequest)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-void ROISetNameRequest::SharedDtor() {
-  GOOGLE_DCHECK(GetArena() == nullptr);
-  name_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (this != internal_default_instance()) delete roi_;
+inline void ROISetNameRequest::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.name_.Destroy();
+  if (this != internal_default_instance()) delete _impl_.roi_;
 }
 
-void ROISetNameRequest::ArenaDtor(void* object) {
-  ROISetNameRequest* _this = reinterpret_cast< ROISetNameRequest* >(object);
-  (void)_this;
-}
-void ROISetNameRequest::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void ROISetNameRequest::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
-const ROISetNameRequest& ROISetNameRequest::default_instance() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_ROISetNameRequest_roi_2eproto.base);
-  return *internal_default_instance();
-}
-
 
 void ROISetNameRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.ROISetNameRequest)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  name_.ClearToEmpty();
-  if (GetArena() == nullptr && roi_ != nullptr) {
-    delete roi_;
+  _impl_.name_.ClearToEmpty();
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    ABSL_DCHECK(_impl_.roi_ != nullptr);
+    _impl_.roi_->Clear();
   }
-  roi_ = nullptr;
+  _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* ROISetNameRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* ROISetNameRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
-    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-    CHK_(ptr);
+    ::uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // .osirixgrpc.ROI roi = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
           ptr = ctx->ParseMessage(_internal_mutable_roi(), ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
+        } else {
+          goto handle_unusual;
+        }
         continue;
       // string name = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 18)) {
           auto str = _internal_mutable_name();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "osirixgrpc.ROISetNameRequest.name"));
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
-        } else goto handle_unusual;
-        continue;
-      default: {
-      handle_unusual:
-        if ((tag & 7) == 4 || tag == 0) {
-          ctx->SetLastTag(tag);
-          goto success;
+          CHK_(::_pbi::VerifyUTF8(str, "osirixgrpc.ROISetNameRequest.name"));
+        } else {
+          goto handle_unusual;
         }
-        ptr = UnknownFieldParse(tag,
-            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-            ptr, ctx);
-        CHK_(ptr != nullptr);
         continue;
-      }
+      default:
+        goto handle_unusual;
     }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
   }  // while
-success:
+message_done:
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
-  goto success;
+  goto message_done;
 #undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* ROISetNameRequest::_InternalSerialize(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+::uint8_t* ROISetNameRequest::_InternalSerialize(
+    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.ROISetNameRequest)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
+  cached_has_bits = _impl_._has_bits_[0];
   // .osirixgrpc.ROI roi = 1;
-  if (this->has_roi()) {
-    target = stream->EnsureSpace(target);
+  if (cached_has_bits & 0x00000001u) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::roi(this), target, stream);
+      InternalWriteMessage(1, _Internal::roi(this),
+        _Internal::roi(this).GetCachedSize(), target, stream);
   }
 
   // string name = 2;
-  if (this->name().size() > 0) {
+  if (!this->_internal_name().empty()) {
+    const std::string& _s = this->_internal_name();
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_name().data(), static_cast<int>(this->_internal_name().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "osirixgrpc.ROISetNameRequest.name");
-    target = stream->WriteStringMaybeAliased(
-        2, this->_internal_name(), target);
+        _s.data(), static_cast<int>(_s.length()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE, "osirixgrpc.ROISetNameRequest.name");
+    target = stream->WriteStringMaybeAliased(2, _s, target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.ROISetNameRequest)
   return target;
 }
 
-size_t ROISetNameRequest::ByteSizeLong() const {
+::size_t ROISetNameRequest::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:osirixgrpc.ROISetNameRequest)
-  size_t total_size = 0;
+  ::size_t total_size = 0;
 
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // string name = 2;
-  if (this->name().size() > 0) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_name());
+  if (!this->_internal_name().empty()) {
+    total_size += 1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+                                    this->_internal_name());
   }
 
   // .osirixgrpc.ROI roi = 1;
-  if (this->has_roi()) {
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *roi_);
+        *_impl_.roi_);
   }
 
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
-        _internal_metadata_, total_size, &_cached_size_);
-  }
-  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-void ROISetNameRequest::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:osirixgrpc.ROISetNameRequest)
-  GOOGLE_DCHECK_NE(&from, this);
-  const ROISetNameRequest* source =
-      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<ROISetNameRequest>(
-          &from);
-  if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:osirixgrpc.ROISetNameRequest)
-    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:osirixgrpc.ROISetNameRequest)
-    MergeFrom(*source);
-  }
-}
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ROISetNameRequest::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    ROISetNameRequest::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ROISetNameRequest::GetClassData() const { return &_class_data_; }
 
-void ROISetNameRequest::MergeFrom(const ROISetNameRequest& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ROISetNameRequest)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+
+void ROISetNameRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<ROISetNameRequest*>(&to_msg);
+  auto& from = static_cast<const ROISetNameRequest&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ROISetNameRequest)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.name().size() > 0) {
-    _internal_set_name(from._internal_name());
+  if (!from._internal_name().empty()) {
+    _this->_internal_set_name(from._internal_name());
   }
-  if (from.has_roi()) {
-    _internal_mutable_roi()->::osirixgrpc::ROI::MergeFrom(from._internal_roi());
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_internal_mutable_roi()->::osirixgrpc::ROI::MergeFrom(
+        from._internal_roi());
   }
-}
-
-void ROISetNameRequest::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:osirixgrpc.ROISetNameRequest)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void ROISetNameRequest::CopyFrom(const ROISetNameRequest& from) {
@@ -3973,286 +4203,297 @@ bool ROISetNameRequest::IsInitialized() const {
 
 void ROISetNameRequest::InternalSwap(ROISetNameRequest* other) {
   using std::swap;
-  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
-  name_.Swap(&other->name_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
-  swap(roi_, other->roi_);
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.name_, lhs_arena,
+                                       &other->_impl_.name_, rhs_arena);
+  swap(_impl_.roi_, other->_impl_.roi_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata ROISetNameRequest::GetMetadata() const {
-  return GetMetadataStatic();
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_roi_2eproto_getter, &descriptor_table_roi_2eproto_once,
+      file_level_metadata_roi_2eproto[12]);
 }
-
-
 // ===================================================================
 
 class ROISetColorRequest::_Internal {
  public:
+  using HasBits = decltype(std::declval<ROISetColorRequest>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+    8 * PROTOBUF_FIELD_OFFSET(ROISetColorRequest, _impl_._has_bits_);
   static const ::osirixgrpc::ROI& roi(const ROISetColorRequest* msg);
+  static void set_has_roi(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
 };
 
 const ::osirixgrpc::ROI&
 ROISetColorRequest::_Internal::roi(const ROISetColorRequest* msg) {
-  return *msg->roi_;
+  return *msg->_impl_.roi_;
 }
 void ROISetColorRequest::clear_roi() {
-  if (GetArena() == nullptr && roi_ != nullptr) {
-    delete roi_;
-  }
-  roi_ = nullptr;
+  if (_impl_.roi_ != nullptr) _impl_.roi_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000001u;
 }
 ROISetColorRequest::ROISetColorRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
-  SharedCtor();
-  RegisterArenaDtor(arena);
+  SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.ROISetColorRequest)
 }
 ROISetColorRequest::ROISetColorRequest(const ROISetColorRequest& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
+  ROISetColorRequest* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.roi_){nullptr}
+    , decltype(_impl_.r_) {}
+
+    , decltype(_impl_.g_) {}
+
+    , decltype(_impl_.b_) {}
+  };
+
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if (from._internal_has_roi()) {
-    roi_ = new ::osirixgrpc::ROI(*from.roi_);
-  } else {
-    roi_ = nullptr;
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_impl_.roi_ = new ::osirixgrpc::ROI(*from._impl_.roi_);
   }
-  ::memcpy(&r_, &from.r_,
-    static_cast<size_t>(reinterpret_cast<char*>(&b_) -
-    reinterpret_cast<char*>(&r_)) + sizeof(b_));
+  ::memcpy(&_impl_.r_, &from._impl_.r_,
+    static_cast<::size_t>(reinterpret_cast<char*>(&_impl_.b_) -
+    reinterpret_cast<char*>(&_impl_.r_)) + sizeof(_impl_.b_));
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.ROISetColorRequest)
 }
 
-void ROISetColorRequest::SharedCtor() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_ROISetColorRequest_roi_2eproto.base);
-  ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-      reinterpret_cast<char*>(&roi_) - reinterpret_cast<char*>(this)),
-      0, static_cast<size_t>(reinterpret_cast<char*>(&b_) -
-      reinterpret_cast<char*>(&roi_)) + sizeof(b_));
+inline void ROISetColorRequest::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.roi_){nullptr}
+    , decltype(_impl_.r_) { 0 }
+
+    , decltype(_impl_.g_) { 0 }
+
+    , decltype(_impl_.b_) { 0 }
+
+  };
 }
 
 ROISetColorRequest::~ROISetColorRequest() {
   // @@protoc_insertion_point(destructor:osirixgrpc.ROISetColorRequest)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-void ROISetColorRequest::SharedDtor() {
-  GOOGLE_DCHECK(GetArena() == nullptr);
-  if (this != internal_default_instance()) delete roi_;
+inline void ROISetColorRequest::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  if (this != internal_default_instance()) delete _impl_.roi_;
 }
 
-void ROISetColorRequest::ArenaDtor(void* object) {
-  ROISetColorRequest* _this = reinterpret_cast< ROISetColorRequest* >(object);
-  (void)_this;
-}
-void ROISetColorRequest::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void ROISetColorRequest::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
-const ROISetColorRequest& ROISetColorRequest::default_instance() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_ROISetColorRequest_roi_2eproto.base);
-  return *internal_default_instance();
-}
-
 
 void ROISetColorRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.ROISetColorRequest)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  if (GetArena() == nullptr && roi_ != nullptr) {
-    delete roi_;
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    ABSL_DCHECK(_impl_.roi_ != nullptr);
+    _impl_.roi_->Clear();
   }
-  roi_ = nullptr;
-  ::memset(&r_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&b_) -
-      reinterpret_cast<char*>(&r_)) + sizeof(b_));
+  ::memset(&_impl_.r_, 0, static_cast<::size_t>(
+      reinterpret_cast<char*>(&_impl_.b_) -
+      reinterpret_cast<char*>(&_impl_.r_)) + sizeof(_impl_.b_));
+  _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* ROISetColorRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* ROISetColorRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
-    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-    CHK_(ptr);
+    ::uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // .osirixgrpc.ROI roi = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
           ptr = ctx->ParseMessage(_internal_mutable_roi(), ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
+        } else {
+          goto handle_unusual;
+        }
         continue;
       // int32 r = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
-          r_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 16)) {
+          _impl_.r_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
+        } else {
+          goto handle_unusual;
+        }
         continue;
       // int32 g = 3;
       case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 24)) {
-          g_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 24)) {
+          _impl_.g_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
+        } else {
+          goto handle_unusual;
+        }
         continue;
       // int32 b = 4;
       case 4:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 32)) {
-          b_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 32)) {
+          _impl_.b_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
-        continue;
-      default: {
-      handle_unusual:
-        if ((tag & 7) == 4 || tag == 0) {
-          ctx->SetLastTag(tag);
-          goto success;
+        } else {
+          goto handle_unusual;
         }
-        ptr = UnknownFieldParse(tag,
-            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-            ptr, ctx);
-        CHK_(ptr != nullptr);
         continue;
-      }
+      default:
+        goto handle_unusual;
     }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
   }  // while
-success:
+message_done:
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
-  goto success;
+  goto message_done;
 #undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* ROISetColorRequest::_InternalSerialize(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+::uint8_t* ROISetColorRequest::_InternalSerialize(
+    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.ROISetColorRequest)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
+  cached_has_bits = _impl_._has_bits_[0];
   // .osirixgrpc.ROI roi = 1;
-  if (this->has_roi()) {
-    target = stream->EnsureSpace(target);
+  if (cached_has_bits & 0x00000001u) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::roi(this), target, stream);
+      InternalWriteMessage(1, _Internal::roi(this),
+        _Internal::roi(this).GetCachedSize(), target, stream);
   }
 
   // int32 r = 2;
-  if (this->r() != 0) {
+  if (this->_internal_r() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(2, this->_internal_r(), target);
+    target = ::_pbi::WireFormatLite::WriteInt32ToArray(
+        2, this->_internal_r(), target);
   }
 
   // int32 g = 3;
-  if (this->g() != 0) {
+  if (this->_internal_g() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(3, this->_internal_g(), target);
+    target = ::_pbi::WireFormatLite::WriteInt32ToArray(
+        3, this->_internal_g(), target);
   }
 
   // int32 b = 4;
-  if (this->b() != 0) {
+  if (this->_internal_b() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(4, this->_internal_b(), target);
+    target = ::_pbi::WireFormatLite::WriteInt32ToArray(
+        4, this->_internal_b(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.ROISetColorRequest)
   return target;
 }
 
-size_t ROISetColorRequest::ByteSizeLong() const {
+::size_t ROISetColorRequest::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:osirixgrpc.ROISetColorRequest)
-  size_t total_size = 0;
+  ::size_t total_size = 0;
 
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // .osirixgrpc.ROI roi = 1;
-  if (this->has_roi()) {
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *roi_);
+        *_impl_.roi_);
   }
 
   // int32 r = 2;
-  if (this->r() != 0) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+  if (this->_internal_r() != 0) {
+    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
         this->_internal_r());
   }
 
   // int32 g = 3;
-  if (this->g() != 0) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+  if (this->_internal_g() != 0) {
+    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
         this->_internal_g());
   }
 
   // int32 b = 4;
-  if (this->b() != 0) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+  if (this->_internal_b() != 0) {
+    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
         this->_internal_b());
   }
 
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
-        _internal_metadata_, total_size, &_cached_size_);
-  }
-  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-void ROISetColorRequest::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:osirixgrpc.ROISetColorRequest)
-  GOOGLE_DCHECK_NE(&from, this);
-  const ROISetColorRequest* source =
-      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<ROISetColorRequest>(
-          &from);
-  if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:osirixgrpc.ROISetColorRequest)
-    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:osirixgrpc.ROISetColorRequest)
-    MergeFrom(*source);
-  }
-}
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ROISetColorRequest::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    ROISetColorRequest::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ROISetColorRequest::GetClassData() const { return &_class_data_; }
 
-void ROISetColorRequest::MergeFrom(const ROISetColorRequest& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ROISetColorRequest)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+
+void ROISetColorRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<ROISetColorRequest*>(&to_msg);
+  auto& from = static_cast<const ROISetColorRequest&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ROISetColorRequest)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.has_roi()) {
-    _internal_mutable_roi()->::osirixgrpc::ROI::MergeFrom(from._internal_roi());
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_internal_mutable_roi()->::osirixgrpc::ROI::MergeFrom(
+        from._internal_roi());
   }
-  if (from.r() != 0) {
-    _internal_set_r(from._internal_r());
+  if (from._internal_r() != 0) {
+    _this->_internal_set_r(from._internal_r());
   }
-  if (from.g() != 0) {
-    _internal_set_g(from._internal_g());
+  if (from._internal_g() != 0) {
+    _this->_internal_set_g(from._internal_g());
   }
-  if (from.b() != 0) {
-    _internal_set_b(from._internal_b());
+  if (from._internal_b() != 0) {
+    _this->_internal_set_b(from._internal_b());
   }
-}
-
-void ROISetColorRequest::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:osirixgrpc.ROISetColorRequest)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void ROISetColorRequest::CopyFrom(const ROISetColorRequest& from) {
@@ -4268,238 +4509,247 @@ bool ROISetColorRequest::IsInitialized() const {
 
 void ROISetColorRequest::InternalSwap(ROISetColorRequest* other) {
   using std::swap;
-  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(ROISetColorRequest, b_)
-      + sizeof(ROISetColorRequest::b_)
-      - PROTOBUF_FIELD_OFFSET(ROISetColorRequest, roi_)>(
-          reinterpret_cast<char*>(&roi_),
-          reinterpret_cast<char*>(&other->roi_));
+      PROTOBUF_FIELD_OFFSET(ROISetColorRequest, _impl_.b_)
+      + sizeof(ROISetColorRequest::_impl_.b_)
+      - PROTOBUF_FIELD_OFFSET(ROISetColorRequest, _impl_.roi_)>(
+          reinterpret_cast<char*>(&_impl_.roi_),
+          reinterpret_cast<char*>(&other->_impl_.roi_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata ROISetColorRequest::GetMetadata() const {
-  return GetMetadataStatic();
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_roi_2eproto_getter, &descriptor_table_roi_2eproto_once,
+      file_level_metadata_roi_2eproto[13]);
 }
-
-
 // ===================================================================
 
 class ROISetOpacityRequest::_Internal {
  public:
+  using HasBits = decltype(std::declval<ROISetOpacityRequest>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+    8 * PROTOBUF_FIELD_OFFSET(ROISetOpacityRequest, _impl_._has_bits_);
   static const ::osirixgrpc::ROI& roi(const ROISetOpacityRequest* msg);
+  static void set_has_roi(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
 };
 
 const ::osirixgrpc::ROI&
 ROISetOpacityRequest::_Internal::roi(const ROISetOpacityRequest* msg) {
-  return *msg->roi_;
+  return *msg->_impl_.roi_;
 }
 void ROISetOpacityRequest::clear_roi() {
-  if (GetArena() == nullptr && roi_ != nullptr) {
-    delete roi_;
-  }
-  roi_ = nullptr;
+  if (_impl_.roi_ != nullptr) _impl_.roi_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000001u;
 }
 ROISetOpacityRequest::ROISetOpacityRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
-  SharedCtor();
-  RegisterArenaDtor(arena);
+  SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.ROISetOpacityRequest)
 }
 ROISetOpacityRequest::ROISetOpacityRequest(const ROISetOpacityRequest& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
+  ROISetOpacityRequest* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.roi_){nullptr}
+    , decltype(_impl_.opacity_) {}
+  };
+
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if (from._internal_has_roi()) {
-    roi_ = new ::osirixgrpc::ROI(*from.roi_);
-  } else {
-    roi_ = nullptr;
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_impl_.roi_ = new ::osirixgrpc::ROI(*from._impl_.roi_);
   }
-  opacity_ = from.opacity_;
+  _this->_impl_.opacity_ = from._impl_.opacity_;
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.ROISetOpacityRequest)
 }
 
-void ROISetOpacityRequest::SharedCtor() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_ROISetOpacityRequest_roi_2eproto.base);
-  ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-      reinterpret_cast<char*>(&roi_) - reinterpret_cast<char*>(this)),
-      0, static_cast<size_t>(reinterpret_cast<char*>(&opacity_) -
-      reinterpret_cast<char*>(&roi_)) + sizeof(opacity_));
+inline void ROISetOpacityRequest::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.roi_){nullptr}
+    , decltype(_impl_.opacity_) { 0 }
+
+  };
 }
 
 ROISetOpacityRequest::~ROISetOpacityRequest() {
   // @@protoc_insertion_point(destructor:osirixgrpc.ROISetOpacityRequest)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-void ROISetOpacityRequest::SharedDtor() {
-  GOOGLE_DCHECK(GetArena() == nullptr);
-  if (this != internal_default_instance()) delete roi_;
+inline void ROISetOpacityRequest::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  if (this != internal_default_instance()) delete _impl_.roi_;
 }
 
-void ROISetOpacityRequest::ArenaDtor(void* object) {
-  ROISetOpacityRequest* _this = reinterpret_cast< ROISetOpacityRequest* >(object);
-  (void)_this;
-}
-void ROISetOpacityRequest::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void ROISetOpacityRequest::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
-const ROISetOpacityRequest& ROISetOpacityRequest::default_instance() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_ROISetOpacityRequest_roi_2eproto.base);
-  return *internal_default_instance();
-}
-
 
 void ROISetOpacityRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.ROISetOpacityRequest)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  if (GetArena() == nullptr && roi_ != nullptr) {
-    delete roi_;
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    ABSL_DCHECK(_impl_.roi_ != nullptr);
+    _impl_.roi_->Clear();
   }
-  roi_ = nullptr;
-  opacity_ = 0;
+  _impl_.opacity_ = 0;
+  _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* ROISetOpacityRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* ROISetOpacityRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
-    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-    CHK_(ptr);
+    ::uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // .osirixgrpc.ROI roi = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
           ptr = ctx->ParseMessage(_internal_mutable_roi(), ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
+        } else {
+          goto handle_unusual;
+        }
         continue;
       // float opacity = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 21)) {
-          opacity_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 21)) {
+          _impl_.opacity_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
           ptr += sizeof(float);
-        } else goto handle_unusual;
-        continue;
-      default: {
-      handle_unusual:
-        if ((tag & 7) == 4 || tag == 0) {
-          ctx->SetLastTag(tag);
-          goto success;
+        } else {
+          goto handle_unusual;
         }
-        ptr = UnknownFieldParse(tag,
-            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-            ptr, ctx);
-        CHK_(ptr != nullptr);
         continue;
-      }
+      default:
+        goto handle_unusual;
     }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
   }  // while
-success:
+message_done:
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
-  goto success;
+  goto message_done;
 #undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* ROISetOpacityRequest::_InternalSerialize(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+::uint8_t* ROISetOpacityRequest::_InternalSerialize(
+    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.ROISetOpacityRequest)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
+  cached_has_bits = _impl_._has_bits_[0];
   // .osirixgrpc.ROI roi = 1;
-  if (this->has_roi()) {
-    target = stream->EnsureSpace(target);
+  if (cached_has_bits & 0x00000001u) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::roi(this), target, stream);
+      InternalWriteMessage(1, _Internal::roi(this),
+        _Internal::roi(this).GetCachedSize(), target, stream);
   }
 
   // float opacity = 2;
-  if (!(this->opacity() <= 0 && this->opacity() >= 0)) {
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  float tmp_opacity = this->_internal_opacity();
+  ::uint32_t raw_opacity;
+  memcpy(&raw_opacity, &tmp_opacity, sizeof(tmp_opacity));
+  if (raw_opacity != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(2, this->_internal_opacity(), target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(
+        2, this->_internal_opacity(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.ROISetOpacityRequest)
   return target;
 }
 
-size_t ROISetOpacityRequest::ByteSizeLong() const {
+::size_t ROISetOpacityRequest::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:osirixgrpc.ROISetOpacityRequest)
-  size_t total_size = 0;
+  ::size_t total_size = 0;
 
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // .osirixgrpc.ROI roi = 1;
-  if (this->has_roi()) {
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *roi_);
+        *_impl_.roi_);
   }
 
   // float opacity = 2;
-  if (!(this->opacity() <= 0 && this->opacity() >= 0)) {
-    total_size += 1 + 4;
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  float tmp_opacity = this->_internal_opacity();
+  ::uint32_t raw_opacity;
+  memcpy(&raw_opacity, &tmp_opacity, sizeof(tmp_opacity));
+  if (raw_opacity != 0) {
+    total_size += 5;
   }
 
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
-        _internal_metadata_, total_size, &_cached_size_);
-  }
-  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-void ROISetOpacityRequest::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:osirixgrpc.ROISetOpacityRequest)
-  GOOGLE_DCHECK_NE(&from, this);
-  const ROISetOpacityRequest* source =
-      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<ROISetOpacityRequest>(
-          &from);
-  if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:osirixgrpc.ROISetOpacityRequest)
-    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:osirixgrpc.ROISetOpacityRequest)
-    MergeFrom(*source);
-  }
-}
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ROISetOpacityRequest::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    ROISetOpacityRequest::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ROISetOpacityRequest::GetClassData() const { return &_class_data_; }
 
-void ROISetOpacityRequest::MergeFrom(const ROISetOpacityRequest& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ROISetOpacityRequest)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+
+void ROISetOpacityRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<ROISetOpacityRequest*>(&to_msg);
+  auto& from = static_cast<const ROISetOpacityRequest&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ROISetOpacityRequest)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.has_roi()) {
-    _internal_mutable_roi()->::osirixgrpc::ROI::MergeFrom(from._internal_roi());
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_internal_mutable_roi()->::osirixgrpc::ROI::MergeFrom(
+        from._internal_roi());
   }
-  if (!(from.opacity() <= 0 && from.opacity() >= 0)) {
-    _internal_set_opacity(from._internal_opacity());
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  float tmp_opacity = from._internal_opacity();
+  ::uint32_t raw_opacity;
+  memcpy(&raw_opacity, &tmp_opacity, sizeof(tmp_opacity));
+  if (raw_opacity != 0) {
+    _this->_internal_set_opacity(from._internal_opacity());
   }
-}
-
-void ROISetOpacityRequest::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:osirixgrpc.ROISetOpacityRequest)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void ROISetOpacityRequest::CopyFrom(const ROISetOpacityRequest& from) {
@@ -4515,238 +4765,247 @@ bool ROISetOpacityRequest::IsInitialized() const {
 
 void ROISetOpacityRequest::InternalSwap(ROISetOpacityRequest* other) {
   using std::swap;
-  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(ROISetOpacityRequest, opacity_)
-      + sizeof(ROISetOpacityRequest::opacity_)
-      - PROTOBUF_FIELD_OFFSET(ROISetOpacityRequest, roi_)>(
-          reinterpret_cast<char*>(&roi_),
-          reinterpret_cast<char*>(&other->roi_));
+      PROTOBUF_FIELD_OFFSET(ROISetOpacityRequest, _impl_.opacity_)
+      + sizeof(ROISetOpacityRequest::_impl_.opacity_)
+      - PROTOBUF_FIELD_OFFSET(ROISetOpacityRequest, _impl_.roi_)>(
+          reinterpret_cast<char*>(&_impl_.roi_),
+          reinterpret_cast<char*>(&other->_impl_.roi_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata ROISetOpacityRequest::GetMetadata() const {
-  return GetMetadataStatic();
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_roi_2eproto_getter, &descriptor_table_roi_2eproto_once,
+      file_level_metadata_roi_2eproto[14]);
 }
-
-
 // ===================================================================
 
 class ROISetThicknessRequest::_Internal {
  public:
+  using HasBits = decltype(std::declval<ROISetThicknessRequest>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+    8 * PROTOBUF_FIELD_OFFSET(ROISetThicknessRequest, _impl_._has_bits_);
   static const ::osirixgrpc::ROI& roi(const ROISetThicknessRequest* msg);
+  static void set_has_roi(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
 };
 
 const ::osirixgrpc::ROI&
 ROISetThicknessRequest::_Internal::roi(const ROISetThicknessRequest* msg) {
-  return *msg->roi_;
+  return *msg->_impl_.roi_;
 }
 void ROISetThicknessRequest::clear_roi() {
-  if (GetArena() == nullptr && roi_ != nullptr) {
-    delete roi_;
-  }
-  roi_ = nullptr;
+  if (_impl_.roi_ != nullptr) _impl_.roi_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000001u;
 }
 ROISetThicknessRequest::ROISetThicknessRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
-  SharedCtor();
-  RegisterArenaDtor(arena);
+  SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.ROISetThicknessRequest)
 }
 ROISetThicknessRequest::ROISetThicknessRequest(const ROISetThicknessRequest& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
+  ROISetThicknessRequest* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.roi_){nullptr}
+    , decltype(_impl_.thickness_) {}
+  };
+
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if (from._internal_has_roi()) {
-    roi_ = new ::osirixgrpc::ROI(*from.roi_);
-  } else {
-    roi_ = nullptr;
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_impl_.roi_ = new ::osirixgrpc::ROI(*from._impl_.roi_);
   }
-  thickness_ = from.thickness_;
+  _this->_impl_.thickness_ = from._impl_.thickness_;
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.ROISetThicknessRequest)
 }
 
-void ROISetThicknessRequest::SharedCtor() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_ROISetThicknessRequest_roi_2eproto.base);
-  ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-      reinterpret_cast<char*>(&roi_) - reinterpret_cast<char*>(this)),
-      0, static_cast<size_t>(reinterpret_cast<char*>(&thickness_) -
-      reinterpret_cast<char*>(&roi_)) + sizeof(thickness_));
+inline void ROISetThicknessRequest::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.roi_){nullptr}
+    , decltype(_impl_.thickness_) { 0 }
+
+  };
 }
 
 ROISetThicknessRequest::~ROISetThicknessRequest() {
   // @@protoc_insertion_point(destructor:osirixgrpc.ROISetThicknessRequest)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-void ROISetThicknessRequest::SharedDtor() {
-  GOOGLE_DCHECK(GetArena() == nullptr);
-  if (this != internal_default_instance()) delete roi_;
+inline void ROISetThicknessRequest::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  if (this != internal_default_instance()) delete _impl_.roi_;
 }
 
-void ROISetThicknessRequest::ArenaDtor(void* object) {
-  ROISetThicknessRequest* _this = reinterpret_cast< ROISetThicknessRequest* >(object);
-  (void)_this;
-}
-void ROISetThicknessRequest::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void ROISetThicknessRequest::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
-const ROISetThicknessRequest& ROISetThicknessRequest::default_instance() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_ROISetThicknessRequest_roi_2eproto.base);
-  return *internal_default_instance();
-}
-
 
 void ROISetThicknessRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.ROISetThicknessRequest)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  if (GetArena() == nullptr && roi_ != nullptr) {
-    delete roi_;
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    ABSL_DCHECK(_impl_.roi_ != nullptr);
+    _impl_.roi_->Clear();
   }
-  roi_ = nullptr;
-  thickness_ = 0;
+  _impl_.thickness_ = 0;
+  _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* ROISetThicknessRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* ROISetThicknessRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
-    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-    CHK_(ptr);
+    ::uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // .osirixgrpc.ROI roi = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
           ptr = ctx->ParseMessage(_internal_mutable_roi(), ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
+        } else {
+          goto handle_unusual;
+        }
         continue;
       // float thickness = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 21)) {
-          thickness_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 21)) {
+          _impl_.thickness_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
           ptr += sizeof(float);
-        } else goto handle_unusual;
-        continue;
-      default: {
-      handle_unusual:
-        if ((tag & 7) == 4 || tag == 0) {
-          ctx->SetLastTag(tag);
-          goto success;
+        } else {
+          goto handle_unusual;
         }
-        ptr = UnknownFieldParse(tag,
-            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-            ptr, ctx);
-        CHK_(ptr != nullptr);
         continue;
-      }
+      default:
+        goto handle_unusual;
     }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
   }  // while
-success:
+message_done:
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
-  goto success;
+  goto message_done;
 #undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* ROISetThicknessRequest::_InternalSerialize(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+::uint8_t* ROISetThicknessRequest::_InternalSerialize(
+    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.ROISetThicknessRequest)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
+  cached_has_bits = _impl_._has_bits_[0];
   // .osirixgrpc.ROI roi = 1;
-  if (this->has_roi()) {
-    target = stream->EnsureSpace(target);
+  if (cached_has_bits & 0x00000001u) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::roi(this), target, stream);
+      InternalWriteMessage(1, _Internal::roi(this),
+        _Internal::roi(this).GetCachedSize(), target, stream);
   }
 
   // float thickness = 2;
-  if (!(this->thickness() <= 0 && this->thickness() >= 0)) {
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  float tmp_thickness = this->_internal_thickness();
+  ::uint32_t raw_thickness;
+  memcpy(&raw_thickness, &tmp_thickness, sizeof(tmp_thickness));
+  if (raw_thickness != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(2, this->_internal_thickness(), target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(
+        2, this->_internal_thickness(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.ROISetThicknessRequest)
   return target;
 }
 
-size_t ROISetThicknessRequest::ByteSizeLong() const {
+::size_t ROISetThicknessRequest::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:osirixgrpc.ROISetThicknessRequest)
-  size_t total_size = 0;
+  ::size_t total_size = 0;
 
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // .osirixgrpc.ROI roi = 1;
-  if (this->has_roi()) {
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *roi_);
+        *_impl_.roi_);
   }
 
   // float thickness = 2;
-  if (!(this->thickness() <= 0 && this->thickness() >= 0)) {
-    total_size += 1 + 4;
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  float tmp_thickness = this->_internal_thickness();
+  ::uint32_t raw_thickness;
+  memcpy(&raw_thickness, &tmp_thickness, sizeof(tmp_thickness));
+  if (raw_thickness != 0) {
+    total_size += 5;
   }
 
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
-        _internal_metadata_, total_size, &_cached_size_);
-  }
-  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-void ROISetThicknessRequest::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:osirixgrpc.ROISetThicknessRequest)
-  GOOGLE_DCHECK_NE(&from, this);
-  const ROISetThicknessRequest* source =
-      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<ROISetThicknessRequest>(
-          &from);
-  if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:osirixgrpc.ROISetThicknessRequest)
-    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:osirixgrpc.ROISetThicknessRequest)
-    MergeFrom(*source);
-  }
-}
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ROISetThicknessRequest::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    ROISetThicknessRequest::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ROISetThicknessRequest::GetClassData() const { return &_class_data_; }
 
-void ROISetThicknessRequest::MergeFrom(const ROISetThicknessRequest& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ROISetThicknessRequest)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+
+void ROISetThicknessRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<ROISetThicknessRequest*>(&to_msg);
+  auto& from = static_cast<const ROISetThicknessRequest&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ROISetThicknessRequest)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.has_roi()) {
-    _internal_mutable_roi()->::osirixgrpc::ROI::MergeFrom(from._internal_roi());
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_internal_mutable_roi()->::osirixgrpc::ROI::MergeFrom(
+        from._internal_roi());
   }
-  if (!(from.thickness() <= 0 && from.thickness() >= 0)) {
-    _internal_set_thickness(from._internal_thickness());
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  float tmp_thickness = from._internal_thickness();
+  ::uint32_t raw_thickness;
+  memcpy(&raw_thickness, &tmp_thickness, sizeof(tmp_thickness));
+  if (raw_thickness != 0) {
+    _this->_internal_set_thickness(from._internal_thickness());
   }
-}
-
-void ROISetThicknessRequest::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:osirixgrpc.ROISetThicknessRequest)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void ROISetThicknessRequest::CopyFrom(const ROISetThicknessRequest& from) {
@@ -4762,20 +5021,21 @@ bool ROISetThicknessRequest::IsInitialized() const {
 
 void ROISetThicknessRequest::InternalSwap(ROISetThicknessRequest* other) {
   using std::swap;
-  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(ROISetThicknessRequest, thickness_)
-      + sizeof(ROISetThicknessRequest::thickness_)
-      - PROTOBUF_FIELD_OFFSET(ROISetThicknessRequest, roi_)>(
-          reinterpret_cast<char*>(&roi_),
-          reinterpret_cast<char*>(&other->roi_));
+      PROTOBUF_FIELD_OFFSET(ROISetThicknessRequest, _impl_.thickness_)
+      + sizeof(ROISetThicknessRequest::_impl_.thickness_)
+      - PROTOBUF_FIELD_OFFSET(ROISetThicknessRequest, _impl_.roi_)>(
+          reinterpret_cast<char*>(&_impl_.roi_),
+          reinterpret_cast<char*>(&other->_impl_.roi_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata ROISetThicknessRequest::GetMetadata() const {
-  return GetMetadataStatic();
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_roi_2eproto_getter, &descriptor_table_roi_2eproto_once,
+      file_level_metadata_roi_2eproto[15]);
 }
-
-
 // ===================================================================
 
 class ROISetPointsRequest_Point2D::_Internal {
@@ -4784,194 +5044,198 @@ class ROISetPointsRequest_Point2D::_Internal {
 
 ROISetPointsRequest_Point2D::ROISetPointsRequest_Point2D(::PROTOBUF_NAMESPACE_ID::Arena* arena)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
-  SharedCtor();
-  RegisterArenaDtor(arena);
+  SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.ROISetPointsRequest.Point2D)
 }
 ROISetPointsRequest_Point2D::ROISetPointsRequest_Point2D(const ROISetPointsRequest_Point2D& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message() {
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  ::memcpy(&x_, &from.x_,
-    static_cast<size_t>(reinterpret_cast<char*>(&y_) -
-    reinterpret_cast<char*>(&x_)) + sizeof(y_));
+  : ::PROTOBUF_NAMESPACE_ID::Message(), _impl_(from._impl_) {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(
+      from._internal_metadata_);
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.ROISetPointsRequest.Point2D)
 }
 
-void ROISetPointsRequest_Point2D::SharedCtor() {
-  ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-      reinterpret_cast<char*>(&x_) - reinterpret_cast<char*>(this)),
-      0, static_cast<size_t>(reinterpret_cast<char*>(&y_) -
-      reinterpret_cast<char*>(&x_)) + sizeof(y_));
+inline void ROISetPointsRequest_Point2D::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_.x_) { 0 }
+
+    , decltype(_impl_.y_) { 0 }
+
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
 }
 
 ROISetPointsRequest_Point2D::~ROISetPointsRequest_Point2D() {
   // @@protoc_insertion_point(destructor:osirixgrpc.ROISetPointsRequest.Point2D)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-void ROISetPointsRequest_Point2D::SharedDtor() {
-  GOOGLE_DCHECK(GetArena() == nullptr);
+inline void ROISetPointsRequest_Point2D::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
 }
 
-void ROISetPointsRequest_Point2D::ArenaDtor(void* object) {
-  ROISetPointsRequest_Point2D* _this = reinterpret_cast< ROISetPointsRequest_Point2D* >(object);
-  (void)_this;
-}
-void ROISetPointsRequest_Point2D::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void ROISetPointsRequest_Point2D::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
-const ROISetPointsRequest_Point2D& ROISetPointsRequest_Point2D::default_instance() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_ROISetPointsRequest_Point2D_roi_2eproto.base);
-  return *internal_default_instance();
-}
-
 
 void ROISetPointsRequest_Point2D::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.ROISetPointsRequest.Point2D)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  ::memset(&x_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&y_) -
-      reinterpret_cast<char*>(&x_)) + sizeof(y_));
+  ::memset(&_impl_.x_, 0, static_cast<::size_t>(
+      reinterpret_cast<char*>(&_impl_.y_) -
+      reinterpret_cast<char*>(&_impl_.x_)) + sizeof(_impl_.y_));
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* ROISetPointsRequest_Point2D::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* ROISetPointsRequest_Point2D::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
-    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-    CHK_(ptr);
+    ::uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // float x = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 13)) {
-          x_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 13)) {
+          _impl_.x_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
           ptr += sizeof(float);
-        } else goto handle_unusual;
+        } else {
+          goto handle_unusual;
+        }
         continue;
       // float y = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 21)) {
-          y_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 21)) {
+          _impl_.y_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
           ptr += sizeof(float);
-        } else goto handle_unusual;
-        continue;
-      default: {
-      handle_unusual:
-        if ((tag & 7) == 4 || tag == 0) {
-          ctx->SetLastTag(tag);
-          goto success;
+        } else {
+          goto handle_unusual;
         }
-        ptr = UnknownFieldParse(tag,
-            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-            ptr, ctx);
-        CHK_(ptr != nullptr);
         continue;
-      }
+      default:
+        goto handle_unusual;
     }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
   }  // while
-success:
+message_done:
   return ptr;
 failure:
   ptr = nullptr;
-  goto success;
+  goto message_done;
 #undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* ROISetPointsRequest_Point2D::_InternalSerialize(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+::uint8_t* ROISetPointsRequest_Point2D::_InternalSerialize(
+    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.ROISetPointsRequest.Point2D)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
   // float x = 1;
-  if (!(this->x() <= 0 && this->x() >= 0)) {
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  float tmp_x = this->_internal_x();
+  ::uint32_t raw_x;
+  memcpy(&raw_x, &tmp_x, sizeof(tmp_x));
+  if (raw_x != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(1, this->_internal_x(), target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(
+        1, this->_internal_x(), target);
   }
 
   // float y = 2;
-  if (!(this->y() <= 0 && this->y() >= 0)) {
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  float tmp_y = this->_internal_y();
+  ::uint32_t raw_y;
+  memcpy(&raw_y, &tmp_y, sizeof(tmp_y));
+  if (raw_y != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(2, this->_internal_y(), target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(
+        2, this->_internal_y(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.ROISetPointsRequest.Point2D)
   return target;
 }
 
-size_t ROISetPointsRequest_Point2D::ByteSizeLong() const {
+::size_t ROISetPointsRequest_Point2D::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:osirixgrpc.ROISetPointsRequest.Point2D)
-  size_t total_size = 0;
+  ::size_t total_size = 0;
 
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // float x = 1;
-  if (!(this->x() <= 0 && this->x() >= 0)) {
-    total_size += 1 + 4;
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  float tmp_x = this->_internal_x();
+  ::uint32_t raw_x;
+  memcpy(&raw_x, &tmp_x, sizeof(tmp_x));
+  if (raw_x != 0) {
+    total_size += 5;
   }
 
   // float y = 2;
-  if (!(this->y() <= 0 && this->y() >= 0)) {
-    total_size += 1 + 4;
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  float tmp_y = this->_internal_y();
+  ::uint32_t raw_y;
+  memcpy(&raw_y, &tmp_y, sizeof(tmp_y));
+  if (raw_y != 0) {
+    total_size += 5;
   }
 
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
-        _internal_metadata_, total_size, &_cached_size_);
-  }
-  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-void ROISetPointsRequest_Point2D::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:osirixgrpc.ROISetPointsRequest.Point2D)
-  GOOGLE_DCHECK_NE(&from, this);
-  const ROISetPointsRequest_Point2D* source =
-      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<ROISetPointsRequest_Point2D>(
-          &from);
-  if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:osirixgrpc.ROISetPointsRequest.Point2D)
-    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:osirixgrpc.ROISetPointsRequest.Point2D)
-    MergeFrom(*source);
-  }
-}
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ROISetPointsRequest_Point2D::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    ROISetPointsRequest_Point2D::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ROISetPointsRequest_Point2D::GetClassData() const { return &_class_data_; }
 
-void ROISetPointsRequest_Point2D::MergeFrom(const ROISetPointsRequest_Point2D& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ROISetPointsRequest.Point2D)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+
+void ROISetPointsRequest_Point2D::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<ROISetPointsRequest_Point2D*>(&to_msg);
+  auto& from = static_cast<const ROISetPointsRequest_Point2D&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ROISetPointsRequest.Point2D)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (!(from.x() <= 0 && from.x() >= 0)) {
-    _internal_set_x(from._internal_x());
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  float tmp_x = from._internal_x();
+  ::uint32_t raw_x;
+  memcpy(&raw_x, &tmp_x, sizeof(tmp_x));
+  if (raw_x != 0) {
+    _this->_internal_set_x(from._internal_x());
   }
-  if (!(from.y() <= 0 && from.y() >= 0)) {
-    _internal_set_y(from._internal_y());
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  float tmp_y = from._internal_y();
+  ::uint32_t raw_y;
+  memcpy(&raw_y, &tmp_y, sizeof(tmp_y));
+  if (raw_y != 0) {
+    _this->_internal_set_y(from._internal_y());
   }
-}
-
-void ROISetPointsRequest_Point2D::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:osirixgrpc.ROISetPointsRequest.Point2D)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void ROISetPointsRequest_Point2D::CopyFrom(const ROISetPointsRequest_Point2D& from) {
@@ -4987,118 +5251,126 @@ bool ROISetPointsRequest_Point2D::IsInitialized() const {
 
 void ROISetPointsRequest_Point2D::InternalSwap(ROISetPointsRequest_Point2D* other) {
   using std::swap;
-  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(ROISetPointsRequest_Point2D, y_)
-      + sizeof(ROISetPointsRequest_Point2D::y_)
-      - PROTOBUF_FIELD_OFFSET(ROISetPointsRequest_Point2D, x_)>(
-          reinterpret_cast<char*>(&x_),
-          reinterpret_cast<char*>(&other->x_));
+      PROTOBUF_FIELD_OFFSET(ROISetPointsRequest_Point2D, _impl_.y_)
+      + sizeof(ROISetPointsRequest_Point2D::_impl_.y_)
+      - PROTOBUF_FIELD_OFFSET(ROISetPointsRequest_Point2D, _impl_.x_)>(
+          reinterpret_cast<char*>(&_impl_.x_),
+          reinterpret_cast<char*>(&other->_impl_.x_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata ROISetPointsRequest_Point2D::GetMetadata() const {
-  return GetMetadataStatic();
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_roi_2eproto_getter, &descriptor_table_roi_2eproto_once,
+      file_level_metadata_roi_2eproto[16]);
 }
-
-
 // ===================================================================
 
 class ROISetPointsRequest::_Internal {
  public:
+  using HasBits = decltype(std::declval<ROISetPointsRequest>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+    8 * PROTOBUF_FIELD_OFFSET(ROISetPointsRequest, _impl_._has_bits_);
   static const ::osirixgrpc::ROI& roi(const ROISetPointsRequest* msg);
+  static void set_has_roi(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
 };
 
 const ::osirixgrpc::ROI&
 ROISetPointsRequest::_Internal::roi(const ROISetPointsRequest* msg) {
-  return *msg->roi_;
+  return *msg->_impl_.roi_;
 }
 void ROISetPointsRequest::clear_roi() {
-  if (GetArena() == nullptr && roi_ != nullptr) {
-    delete roi_;
-  }
-  roi_ = nullptr;
+  if (_impl_.roi_ != nullptr) _impl_.roi_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000001u;
 }
 ROISetPointsRequest::ROISetPointsRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena),
-  points_(arena) {
-  SharedCtor();
-  RegisterArenaDtor(arena);
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
+  SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.ROISetPointsRequest)
 }
 ROISetPointsRequest::ROISetPointsRequest(const ROISetPointsRequest& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      points_(from.points_) {
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  ROISetPointsRequest* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.points_){from._impl_.points_}
+    , decltype(_impl_.roi_){nullptr}};
+
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if (from._internal_has_roi()) {
-    roi_ = new ::osirixgrpc::ROI(*from.roi_);
-  } else {
-    roi_ = nullptr;
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_impl_.roi_ = new ::osirixgrpc::ROI(*from._impl_.roi_);
   }
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.ROISetPointsRequest)
 }
 
-void ROISetPointsRequest::SharedCtor() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_ROISetPointsRequest_roi_2eproto.base);
-  roi_ = nullptr;
+inline void ROISetPointsRequest::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.points_){arena}
+    , decltype(_impl_.roi_){nullptr}
+  };
 }
 
 ROISetPointsRequest::~ROISetPointsRequest() {
   // @@protoc_insertion_point(destructor:osirixgrpc.ROISetPointsRequest)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-void ROISetPointsRequest::SharedDtor() {
-  GOOGLE_DCHECK(GetArena() == nullptr);
-  if (this != internal_default_instance()) delete roi_;
+inline void ROISetPointsRequest::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  _internal_mutable_points()->~RepeatedPtrField();
+  if (this != internal_default_instance()) delete _impl_.roi_;
 }
 
-void ROISetPointsRequest::ArenaDtor(void* object) {
-  ROISetPointsRequest* _this = reinterpret_cast< ROISetPointsRequest* >(object);
-  (void)_this;
-}
-void ROISetPointsRequest::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void ROISetPointsRequest::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
-const ROISetPointsRequest& ROISetPointsRequest::default_instance() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_ROISetPointsRequest_roi_2eproto.base);
-  return *internal_default_instance();
-}
-
 
 void ROISetPointsRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.ROISetPointsRequest)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  points_.Clear();
-  if (GetArena() == nullptr && roi_ != nullptr) {
-    delete roi_;
+  _internal_mutable_points()->Clear();
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    ABSL_DCHECK(_impl_.roi_ != nullptr);
+    _impl_.roi_->Clear();
   }
-  roi_ = nullptr;
+  _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* ROISetPointsRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* ROISetPointsRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
-    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-    CHK_(ptr);
+    ::uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // .osirixgrpc.ROI roi = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
           ptr = ctx->ParseMessage(_internal_mutable_roi(), ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
+        } else {
+          goto handle_unusual;
+        }
         continue;
       // repeated .osirixgrpc.ROISetPointsRequest.Point2D points = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 18)) {
           ptr -= 1;
           do {
             ptr += 1;
@@ -5106,124 +5378,111 @@ const char* ROISetPointsRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAME
             CHK_(ptr);
             if (!ctx->DataAvailable(ptr)) break;
           } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<18>(ptr));
-        } else goto handle_unusual;
-        continue;
-      default: {
-      handle_unusual:
-        if ((tag & 7) == 4 || tag == 0) {
-          ctx->SetLastTag(tag);
-          goto success;
+        } else {
+          goto handle_unusual;
         }
-        ptr = UnknownFieldParse(tag,
-            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-            ptr, ctx);
-        CHK_(ptr != nullptr);
         continue;
-      }
+      default:
+        goto handle_unusual;
     }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
   }  // while
-success:
+message_done:
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
-  goto success;
+  goto message_done;
 #undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* ROISetPointsRequest::_InternalSerialize(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+::uint8_t* ROISetPointsRequest::_InternalSerialize(
+    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.ROISetPointsRequest)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
+  cached_has_bits = _impl_._has_bits_[0];
   // .osirixgrpc.ROI roi = 1;
-  if (this->has_roi()) {
-    target = stream->EnsureSpace(target);
+  if (cached_has_bits & 0x00000001u) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::roi(this), target, stream);
+      InternalWriteMessage(1, _Internal::roi(this),
+        _Internal::roi(this).GetCachedSize(), target, stream);
   }
 
   // repeated .osirixgrpc.ROISetPointsRequest.Point2D points = 2;
-  for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->_internal_points_size()); i < n; i++) {
-    target = stream->EnsureSpace(target);
+  for (unsigned i = 0,
+      n = static_cast<unsigned>(this->_internal_points_size()); i < n; i++) {
+    const auto& repfield = this->_internal_points(i);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(2, this->_internal_points(i), target, stream);
+        InternalWriteMessage(2, repfield, repfield.GetCachedSize(), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.ROISetPointsRequest)
   return target;
 }
 
-size_t ROISetPointsRequest::ByteSizeLong() const {
+::size_t ROISetPointsRequest::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:osirixgrpc.ROISetPointsRequest)
-  size_t total_size = 0;
+  ::size_t total_size = 0;
 
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // repeated .osirixgrpc.ROISetPointsRequest.Point2D points = 2;
   total_size += 1UL * this->_internal_points_size();
-  for (const auto& msg : this->points_) {
+  for (const auto& msg : this->_internal_points()) {
     total_size +=
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
 
   // .osirixgrpc.ROI roi = 1;
-  if (this->has_roi()) {
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *roi_);
+        *_impl_.roi_);
   }
 
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
-        _internal_metadata_, total_size, &_cached_size_);
-  }
-  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-void ROISetPointsRequest::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:osirixgrpc.ROISetPointsRequest)
-  GOOGLE_DCHECK_NE(&from, this);
-  const ROISetPointsRequest* source =
-      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<ROISetPointsRequest>(
-          &from);
-  if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:osirixgrpc.ROISetPointsRequest)
-    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:osirixgrpc.ROISetPointsRequest)
-    MergeFrom(*source);
-  }
-}
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ROISetPointsRequest::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    ROISetPointsRequest::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ROISetPointsRequest::GetClassData() const { return &_class_data_; }
 
-void ROISetPointsRequest::MergeFrom(const ROISetPointsRequest& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ROISetPointsRequest)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+
+void ROISetPointsRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<ROISetPointsRequest*>(&to_msg);
+  auto& from = static_cast<const ROISetPointsRequest&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ROISetPointsRequest)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  points_.MergeFrom(from.points_);
-  if (from.has_roi()) {
-    _internal_mutable_roi()->::osirixgrpc::ROI::MergeFrom(from._internal_roi());
+  _this->_internal_mutable_points()->MergeFrom(from._internal_points());
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_internal_mutable_roi()->::osirixgrpc::ROI::MergeFrom(
+        from._internal_roi());
   }
-}
-
-void ROISetPointsRequest::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:osirixgrpc.ROISetPointsRequest)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void ROISetPointsRequest::CopyFrom(const ROISetPointsRequest& from) {
@@ -5239,74 +5498,92 @@ bool ROISetPointsRequest::IsInitialized() const {
 
 void ROISetPointsRequest::InternalSwap(ROISetPointsRequest* other) {
   using std::swap;
-  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
-  points_.InternalSwap(&other->points_);
-  swap(roi_, other->roi_);
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  _internal_mutable_points()->InternalSwap(other->_internal_mutable_points());
+  swap(_impl_.roi_, other->_impl_.roi_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata ROISetPointsRequest::GetMetadata() const {
-  return GetMetadataStatic();
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_roi_2eproto_getter, &descriptor_table_roi_2eproto_once,
+      file_level_metadata_roi_2eproto[17]);
 }
-
-
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace osirixgrpc
 PROTOBUF_NAMESPACE_OPEN
-template<> PROTOBUF_NOINLINE ::osirixgrpc::ROIAreaResponse* Arena::CreateMaybeMessage< ::osirixgrpc::ROIAreaResponse >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::osirixgrpc::ROIAreaResponse*
+Arena::CreateMaybeMessage< ::osirixgrpc::ROIAreaResponse >(Arena* arena) {
   return Arena::CreateMessageInternal< ::osirixgrpc::ROIAreaResponse >(arena);
 }
-template<> PROTOBUF_NOINLINE ::osirixgrpc::ROICentroidResponse* Arena::CreateMaybeMessage< ::osirixgrpc::ROICentroidResponse >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::osirixgrpc::ROICentroidResponse*
+Arena::CreateMaybeMessage< ::osirixgrpc::ROICentroidResponse >(Arena* arena) {
   return Arena::CreateMessageInternal< ::osirixgrpc::ROICentroidResponse >(arena);
 }
-template<> PROTOBUF_NOINLINE ::osirixgrpc::ROIPixResponse* Arena::CreateMaybeMessage< ::osirixgrpc::ROIPixResponse >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::osirixgrpc::ROIPixResponse*
+Arena::CreateMaybeMessage< ::osirixgrpc::ROIPixResponse >(Arena* arena) {
   return Arena::CreateMessageInternal< ::osirixgrpc::ROIPixResponse >(arena);
 }
-template<> PROTOBUF_NOINLINE ::osirixgrpc::ROINameResponse* Arena::CreateMaybeMessage< ::osirixgrpc::ROINameResponse >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::osirixgrpc::ROINameResponse*
+Arena::CreateMaybeMessage< ::osirixgrpc::ROINameResponse >(Arena* arena) {
   return Arena::CreateMessageInternal< ::osirixgrpc::ROINameResponse >(arena);
 }
-template<> PROTOBUF_NOINLINE ::osirixgrpc::ROIColorResponse* Arena::CreateMaybeMessage< ::osirixgrpc::ROIColorResponse >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::osirixgrpc::ROIColorResponse*
+Arena::CreateMaybeMessage< ::osirixgrpc::ROIColorResponse >(Arena* arena) {
   return Arena::CreateMessageInternal< ::osirixgrpc::ROIColorResponse >(arena);
 }
-template<> PROTOBUF_NOINLINE ::osirixgrpc::ROIOpacityResponse* Arena::CreateMaybeMessage< ::osirixgrpc::ROIOpacityResponse >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::osirixgrpc::ROIOpacityResponse*
+Arena::CreateMaybeMessage< ::osirixgrpc::ROIOpacityResponse >(Arena* arena) {
   return Arena::CreateMessageInternal< ::osirixgrpc::ROIOpacityResponse >(arena);
 }
-template<> PROTOBUF_NOINLINE ::osirixgrpc::ROIThicknessResponse* Arena::CreateMaybeMessage< ::osirixgrpc::ROIThicknessResponse >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::osirixgrpc::ROIThicknessResponse*
+Arena::CreateMaybeMessage< ::osirixgrpc::ROIThicknessResponse >(Arena* arena) {
   return Arena::CreateMessageInternal< ::osirixgrpc::ROIThicknessResponse >(arena);
 }
-template<> PROTOBUF_NOINLINE ::osirixgrpc::ROIPointsResponse_Point2D* Arena::CreateMaybeMessage< ::osirixgrpc::ROIPointsResponse_Point2D >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::osirixgrpc::ROIPointsResponse_Point2D*
+Arena::CreateMaybeMessage< ::osirixgrpc::ROIPointsResponse_Point2D >(Arena* arena) {
   return Arena::CreateMessageInternal< ::osirixgrpc::ROIPointsResponse_Point2D >(arena);
 }
-template<> PROTOBUF_NOINLINE ::osirixgrpc::ROIPointsResponse* Arena::CreateMaybeMessage< ::osirixgrpc::ROIPointsResponse >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::osirixgrpc::ROIPointsResponse*
+Arena::CreateMaybeMessage< ::osirixgrpc::ROIPointsResponse >(Arena* arena) {
   return Arena::CreateMessageInternal< ::osirixgrpc::ROIPointsResponse >(arena);
 }
-template<> PROTOBUF_NOINLINE ::osirixgrpc::ROIITypeResponse* Arena::CreateMaybeMessage< ::osirixgrpc::ROIITypeResponse >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::osirixgrpc::ROIITypeResponse*
+Arena::CreateMaybeMessage< ::osirixgrpc::ROIITypeResponse >(Arena* arena) {
   return Arena::CreateMessageInternal< ::osirixgrpc::ROIITypeResponse >(arena);
 }
-template<> PROTOBUF_NOINLINE ::osirixgrpc::ROIRotateRequest* Arena::CreateMaybeMessage< ::osirixgrpc::ROIRotateRequest >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::osirixgrpc::ROIRotateRequest*
+Arena::CreateMaybeMessage< ::osirixgrpc::ROIRotateRequest >(Arena* arena) {
   return Arena::CreateMessageInternal< ::osirixgrpc::ROIRotateRequest >(arena);
 }
-template<> PROTOBUF_NOINLINE ::osirixgrpc::ROIMoveRequest* Arena::CreateMaybeMessage< ::osirixgrpc::ROIMoveRequest >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::osirixgrpc::ROIMoveRequest*
+Arena::CreateMaybeMessage< ::osirixgrpc::ROIMoveRequest >(Arena* arena) {
   return Arena::CreateMessageInternal< ::osirixgrpc::ROIMoveRequest >(arena);
 }
-template<> PROTOBUF_NOINLINE ::osirixgrpc::ROISetNameRequest* Arena::CreateMaybeMessage< ::osirixgrpc::ROISetNameRequest >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::osirixgrpc::ROISetNameRequest*
+Arena::CreateMaybeMessage< ::osirixgrpc::ROISetNameRequest >(Arena* arena) {
   return Arena::CreateMessageInternal< ::osirixgrpc::ROISetNameRequest >(arena);
 }
-template<> PROTOBUF_NOINLINE ::osirixgrpc::ROISetColorRequest* Arena::CreateMaybeMessage< ::osirixgrpc::ROISetColorRequest >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::osirixgrpc::ROISetColorRequest*
+Arena::CreateMaybeMessage< ::osirixgrpc::ROISetColorRequest >(Arena* arena) {
   return Arena::CreateMessageInternal< ::osirixgrpc::ROISetColorRequest >(arena);
 }
-template<> PROTOBUF_NOINLINE ::osirixgrpc::ROISetOpacityRequest* Arena::CreateMaybeMessage< ::osirixgrpc::ROISetOpacityRequest >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::osirixgrpc::ROISetOpacityRequest*
+Arena::CreateMaybeMessage< ::osirixgrpc::ROISetOpacityRequest >(Arena* arena) {
   return Arena::CreateMessageInternal< ::osirixgrpc::ROISetOpacityRequest >(arena);
 }
-template<> PROTOBUF_NOINLINE ::osirixgrpc::ROISetThicknessRequest* Arena::CreateMaybeMessage< ::osirixgrpc::ROISetThicknessRequest >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::osirixgrpc::ROISetThicknessRequest*
+Arena::CreateMaybeMessage< ::osirixgrpc::ROISetThicknessRequest >(Arena* arena) {
   return Arena::CreateMessageInternal< ::osirixgrpc::ROISetThicknessRequest >(arena);
 }
-template<> PROTOBUF_NOINLINE ::osirixgrpc::ROISetPointsRequest_Point2D* Arena::CreateMaybeMessage< ::osirixgrpc::ROISetPointsRequest_Point2D >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::osirixgrpc::ROISetPointsRequest_Point2D*
+Arena::CreateMaybeMessage< ::osirixgrpc::ROISetPointsRequest_Point2D >(Arena* arena) {
   return Arena::CreateMessageInternal< ::osirixgrpc::ROISetPointsRequest_Point2D >(arena);
 }
-template<> PROTOBUF_NOINLINE ::osirixgrpc::ROISetPointsRequest* Arena::CreateMaybeMessage< ::osirixgrpc::ROISetPointsRequest >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::osirixgrpc::ROISetPointsRequest*
+Arena::CreateMaybeMessage< ::osirixgrpc::ROISetPointsRequest >(Arena* arena) {
   return Arena::CreateMessageInternal< ::osirixgrpc::ROISetPointsRequest >(arena);
 }
 PROTOBUF_NAMESPACE_CLOSE
-
 // @@protoc_insertion_point(global_scope)
-#include <google/protobuf/port_undef.inc>
+#include "google/protobuf/port_undef.inc"

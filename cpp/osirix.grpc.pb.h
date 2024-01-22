@@ -7,24 +7,23 @@
 #include "osirix.pb.h"
 
 #include <functional>
-#include <grpc/impl/codegen/port_platform.h>
-#include <grpcpp/impl/codegen/async_generic_service.h>
-#include <grpcpp/impl/codegen/async_stream.h>
-#include <grpcpp/impl/codegen/async_unary_call.h>
-#include <grpcpp/impl/codegen/client_callback.h>
-#include <grpcpp/impl/codegen/client_context.h>
-#include <grpcpp/impl/codegen/completion_queue.h>
-#include <grpcpp/impl/codegen/message_allocator.h>
-#include <grpcpp/impl/codegen/method_handler.h>
-#include <grpcpp/impl/codegen/proto_utils.h>
-#include <grpcpp/impl/codegen/rpc_method.h>
-#include <grpcpp/impl/codegen/server_callback.h>
-#include <grpcpp/impl/codegen/server_callback_handlers.h>
-#include <grpcpp/impl/codegen/server_context.h>
-#include <grpcpp/impl/codegen/service_type.h>
-#include <grpcpp/impl/codegen/status.h>
-#include <grpcpp/impl/codegen/stub_options.h>
-#include <grpcpp/impl/codegen/sync_stream.h>
+#include <grpcpp/generic/async_generic_service.h>
+#include <grpcpp/support/async_stream.h>
+#include <grpcpp/support/async_unary_call.h>
+#include <grpcpp/support/client_callback.h>
+#include <grpcpp/client_context.h>
+#include <grpcpp/completion_queue.h>
+#include <grpcpp/support/message_allocator.h>
+#include <grpcpp/support/method_handler.h>
+#include <grpcpp/impl/proto_utils.h>
+#include <grpcpp/impl/rpc_method.h>
+#include <grpcpp/support/server_callback.h>
+#include <grpcpp/impl/server_callback_handlers.h>
+#include <grpcpp/server_context.h>
+#include <grpcpp/impl/service_type.h>
+#include <grpcpp/support/status.h>
+#include <grpcpp/support/stub_options.h>
+#include <grpcpp/support/sync_stream.h>
 
 namespace osirixgrpc {
 
@@ -970,820 +969,288 @@ class OsiriXService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::osirixgrpc::DicomStudyStudyNameResponse>> PrepareAsyncDicomStudyStudyName(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::osirixgrpc::DicomStudyStudyNameResponse>>(PrepareAsyncDicomStudyStudyNameRaw(context, request, cq));
     }
-    class experimental_async_interface {
+    class async_interface {
      public:
-      virtual ~experimental_async_interface() {}
+      virtual ~async_interface() {}
       // OsiriX messages
       virtual void OsirixCurrentBrowser(::grpc::ClientContext* context, const ::osirixgrpc::Empty* request, ::osirixgrpc::OsirixCurrentBrowserResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void OsirixCurrentBrowser(::grpc::ClientContext* context, const ::osirixgrpc::Empty* request, ::osirixgrpc::OsirixCurrentBrowserResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void OsirixCurrentBrowser(::grpc::ClientContext* context, const ::osirixgrpc::Empty* request, ::osirixgrpc::OsirixCurrentBrowserResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void OsirixFrontmostViewer(::grpc::ClientContext* context, const ::osirixgrpc::Empty* request, ::osirixgrpc::OsirixFrontmostViewerResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void OsirixFrontmostViewer(::grpc::ClientContext* context, const ::osirixgrpc::Empty* request, ::osirixgrpc::OsirixFrontmostViewerResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void OsirixFrontmostViewer(::grpc::ClientContext* context, const ::osirixgrpc::Empty* request, ::osirixgrpc::OsirixFrontmostViewerResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void OsirixDisplayed2DViewers(::grpc::ClientContext* context, const ::osirixgrpc::Empty* request, ::osirixgrpc::OsirixDisplayed2DViewersResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void OsirixDisplayed2DViewers(::grpc::ClientContext* context, const ::osirixgrpc::Empty* request, ::osirixgrpc::OsirixDisplayed2DViewersResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void OsirixDisplayed2DViewers(::grpc::ClientContext* context, const ::osirixgrpc::Empty* request, ::osirixgrpc::OsirixDisplayed2DViewersResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void OsirixFrontmostVRController(::grpc::ClientContext* context, const ::osirixgrpc::Empty* request, ::osirixgrpc::OsirixFrontmostVRControllerResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void OsirixFrontmostVRController(::grpc::ClientContext* context, const ::osirixgrpc::Empty* request, ::osirixgrpc::OsirixFrontmostVRControllerResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void OsirixFrontmostVRController(::grpc::ClientContext* context, const ::osirixgrpc::Empty* request, ::osirixgrpc::OsirixFrontmostVRControllerResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void OsirixDisplayedVRControllers(::grpc::ClientContext* context, const ::osirixgrpc::Empty* request, ::osirixgrpc::OsirixDisplayedVRControllersResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void OsirixDisplayedVRControllers(::grpc::ClientContext* context, const ::osirixgrpc::Empty* request, ::osirixgrpc::OsirixDisplayedVRControllersResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void OsirixDisplayedVRControllers(::grpc::ClientContext* context, const ::osirixgrpc::Empty* request, ::osirixgrpc::OsirixDisplayedVRControllersResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       // ROI messages
       virtual void ROIFlipHorizontally(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void ROIFlipHorizontally(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::Response* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void ROIFlipHorizontally(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::Response* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void ROIFlipVertically(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void ROIFlipVertically(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::Response* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void ROIFlipVertically(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::Response* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void ROIArea(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROIAreaResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void ROIArea(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROIAreaResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void ROIArea(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROIAreaResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void ROICentroid(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROICentroidResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void ROICentroid(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROICentroidResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void ROICentroid(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROICentroidResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void ROIRotate(::grpc::ClientContext* context, const ::osirixgrpc::ROIRotateRequest* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void ROIRotate(::grpc::ClientContext* context, const ::osirixgrpc::ROIRotateRequest* request, ::osirixgrpc::Response* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void ROIRotate(::grpc::ClientContext* context, const ::osirixgrpc::ROIRotateRequest* request, ::osirixgrpc::Response* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void ROIMove(::grpc::ClientContext* context, const ::osirixgrpc::ROIMoveRequest* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void ROIMove(::grpc::ClientContext* context, const ::osirixgrpc::ROIMoveRequest* request, ::osirixgrpc::Response* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void ROIMove(::grpc::ClientContext* context, const ::osirixgrpc::ROIMoveRequest* request, ::osirixgrpc::Response* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void ROIPix(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROIPixResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void ROIPix(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROIPixResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void ROIPix(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROIPixResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void ROIName(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROINameResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void ROIName(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROINameResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void ROIName(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROINameResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void ROIIType(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROIITypeResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void ROIIType(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROIITypeResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void ROIIType(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROIITypeResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void ROISetName(::grpc::ClientContext* context, const ::osirixgrpc::ROISetNameRequest* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void ROISetName(::grpc::ClientContext* context, const ::osirixgrpc::ROISetNameRequest* request, ::osirixgrpc::Response* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void ROISetName(::grpc::ClientContext* context, const ::osirixgrpc::ROISetNameRequest* request, ::osirixgrpc::Response* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void ROIColor(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROIColorResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void ROIColor(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROIColorResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void ROIColor(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROIColorResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void ROISetColor(::grpc::ClientContext* context, const ::osirixgrpc::ROISetColorRequest* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void ROISetColor(::grpc::ClientContext* context, const ::osirixgrpc::ROISetColorRequest* request, ::osirixgrpc::Response* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void ROISetColor(::grpc::ClientContext* context, const ::osirixgrpc::ROISetColorRequest* request, ::osirixgrpc::Response* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void ROIOpacity(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROIOpacityResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void ROIOpacity(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROIOpacityResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void ROIOpacity(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROIOpacityResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void ROISetOpacity(::grpc::ClientContext* context, const ::osirixgrpc::ROISetOpacityRequest* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void ROISetOpacity(::grpc::ClientContext* context, const ::osirixgrpc::ROISetOpacityRequest* request, ::osirixgrpc::Response* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void ROISetOpacity(::grpc::ClientContext* context, const ::osirixgrpc::ROISetOpacityRequest* request, ::osirixgrpc::Response* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void ROIThickness(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROIThicknessResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void ROIThickness(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROIThicknessResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void ROIThickness(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROIThicknessResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void ROISetThickness(::grpc::ClientContext* context, const ::osirixgrpc::ROISetThicknessRequest* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void ROISetThickness(::grpc::ClientContext* context, const ::osirixgrpc::ROISetThicknessRequest* request, ::osirixgrpc::Response* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void ROISetThickness(::grpc::ClientContext* context, const ::osirixgrpc::ROISetThicknessRequest* request, ::osirixgrpc::Response* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void ROIPoints(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROIPointsResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void ROIPoints(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROIPointsResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void ROIPoints(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROIPointsResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void ROISetPoints(::grpc::ClientContext* context, const ::osirixgrpc::ROISetPointsRequest* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void ROISetPoints(::grpc::ClientContext* context, const ::osirixgrpc::ROISetPointsRequest* request, ::osirixgrpc::Response* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void ROISetPoints(::grpc::ClientContext* context, const ::osirixgrpc::ROISetPointsRequest* request, ::osirixgrpc::Response* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       // ROIVolume messages
       virtual void ROIVolumeTexture(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolume* request, ::osirixgrpc::ROIVolumeTextureResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void ROIVolumeTexture(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolume* request, ::osirixgrpc::ROIVolumeTextureResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void ROIVolumeTexture(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolume* request, ::osirixgrpc::ROIVolumeTextureResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void ROIVolumeSetTexture(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolumeSetTextureRequest* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void ROIVolumeSetTexture(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolumeSetTextureRequest* request, ::osirixgrpc::Response* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void ROIVolumeSetTexture(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolumeSetTextureRequest* request, ::osirixgrpc::Response* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void ROIVolumeVolume(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolume* request, ::osirixgrpc::ROIVolumeVolumeResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void ROIVolumeVolume(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolume* request, ::osirixgrpc::ROIVolumeVolumeResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void ROIVolumeVolume(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolume* request, ::osirixgrpc::ROIVolumeVolumeResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void ROIVolumeColor(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolume* request, ::osirixgrpc::ROIVolumeColorResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void ROIVolumeColor(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolume* request, ::osirixgrpc::ROIVolumeColorResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void ROIVolumeColor(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolume* request, ::osirixgrpc::ROIVolumeColorResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void ROIVolumeSetColor(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolumeSetColorRequest* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void ROIVolumeSetColor(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolumeSetColorRequest* request, ::osirixgrpc::Response* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void ROIVolumeSetColor(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolumeSetColorRequest* request, ::osirixgrpc::Response* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void ROIVolumeOpacity(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolume* request, ::osirixgrpc::ROIVolumeOpacityResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void ROIVolumeOpacity(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolume* request, ::osirixgrpc::ROIVolumeOpacityResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void ROIVolumeOpacity(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolume* request, ::osirixgrpc::ROIVolumeOpacityResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void ROIVolumeSetOpacity(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolumeSetOpacityRequest* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void ROIVolumeSetOpacity(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolumeSetOpacityRequest* request, ::osirixgrpc::Response* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void ROIVolumeSetOpacity(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolumeSetOpacityRequest* request, ::osirixgrpc::Response* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void ROIVolumeFactor(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolume* request, ::osirixgrpc::ROIVolumeFactorResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void ROIVolumeFactor(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolume* request, ::osirixgrpc::ROIVolumeFactorResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void ROIVolumeFactor(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolume* request, ::osirixgrpc::ROIVolumeFactorResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void ROIVolumeSetFactor(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolumeSetFactorRequest* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void ROIVolumeSetFactor(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolumeSetFactorRequest* request, ::osirixgrpc::Response* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void ROIVolumeSetFactor(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolumeSetFactorRequest* request, ::osirixgrpc::Response* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void ROIVolumeName(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolume* request, ::osirixgrpc::ROIVolumeNameResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void ROIVolumeName(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolume* request, ::osirixgrpc::ROIVolumeNameResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void ROIVolumeName(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolume* request, ::osirixgrpc::ROIVolumeNameResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void ROIVolumeVisible(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolume* request, ::osirixgrpc::ROIVolumeVisibleResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void ROIVolumeVisible(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolume* request, ::osirixgrpc::ROIVolumeVisibleResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void ROIVolumeVisible(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolume* request, ::osirixgrpc::ROIVolumeVisibleResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       // DCMPix messages
       virtual void DCMPixConvertToRGB(::grpc::ClientContext* context, const ::osirixgrpc::DCMPixConvertToRGBRequest* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void DCMPixConvertToRGB(::grpc::ClientContext* context, const ::osirixgrpc::DCMPixConvertToRGBRequest* request, ::osirixgrpc::Response* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void DCMPixConvertToRGB(::grpc::ClientContext* context, const ::osirixgrpc::DCMPixConvertToRGBRequest* request, ::osirixgrpc::Response* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void DCMPixConvertToBW(::grpc::ClientContext* context, const ::osirixgrpc::DCMPixConvertToBWRequest* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void DCMPixConvertToBW(::grpc::ClientContext* context, const ::osirixgrpc::DCMPixConvertToBWRequest* request, ::osirixgrpc::Response* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void DCMPixConvertToBW(::grpc::ClientContext* context, const ::osirixgrpc::DCMPixConvertToBWRequest* request, ::osirixgrpc::Response* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void DCMPixIsRGB(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixIsRGBResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void DCMPixIsRGB(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixIsRGBResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void DCMPixIsRGB(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixIsRGBResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void DCMPixComputeROI(::grpc::ClientContext* context, const ::osirixgrpc::DCMPixComputeROIRequest* request, ::osirixgrpc::DCMPixComputeROIResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void DCMPixComputeROI(::grpc::ClientContext* context, const ::osirixgrpc::DCMPixComputeROIRequest* request, ::osirixgrpc::DCMPixComputeROIResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void DCMPixComputeROI(::grpc::ClientContext* context, const ::osirixgrpc::DCMPixComputeROIRequest* request, ::osirixgrpc::DCMPixComputeROIResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void DCMPixROIValues(::grpc::ClientContext* context, const ::osirixgrpc::DCMPixROIValuesRequest* request, ::osirixgrpc::DCMPixROIValuesResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void DCMPixROIValues(::grpc::ClientContext* context, const ::osirixgrpc::DCMPixROIValuesRequest* request, ::osirixgrpc::DCMPixROIValuesResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void DCMPixROIValues(::grpc::ClientContext* context, const ::osirixgrpc::DCMPixROIValuesRequest* request, ::osirixgrpc::DCMPixROIValuesResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void DCMPixShape(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixShapeResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void DCMPixShape(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixShapeResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void DCMPixShape(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixShapeResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void DCMPixSpacing(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixSpacingResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void DCMPixSpacing(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixSpacingResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void DCMPixSpacing(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixSpacingResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void DCMPixOrigin(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixOriginResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void DCMPixOrigin(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixOriginResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void DCMPixOrigin(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixOriginResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void DCMPixOrientation(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixOrientationResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void DCMPixOrientation(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixOrientationResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void DCMPixOrientation(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixOrientationResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void DCMPixSliceLocation(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixSliceLocationResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void DCMPixSliceLocation(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixSliceLocationResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void DCMPixSliceLocation(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixSliceLocationResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void DCMPixSourceFile(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixSourceFileResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void DCMPixSourceFile(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixSourceFileResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void DCMPixSourceFile(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixSourceFileResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void DCMPixImage(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixImageResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void DCMPixImage(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixImageResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void DCMPixImage(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixImageResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void DCMPixSetImage(::grpc::ClientContext* context, const ::osirixgrpc::DCMPixSetImageRequest* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void DCMPixSetImage(::grpc::ClientContext* context, const ::osirixgrpc::DCMPixSetImageRequest* request, ::osirixgrpc::Response* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void DCMPixSetImage(::grpc::ClientContext* context, const ::osirixgrpc::DCMPixSetImageRequest* request, ::osirixgrpc::Response* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void DCMPixGetMapFromROI(::grpc::ClientContext* context, const ::osirixgrpc::DCMPixGetMapFromROIRequest* request, ::osirixgrpc::DCMPixGetMapFromROIResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void DCMPixGetMapFromROI(::grpc::ClientContext* context, const ::osirixgrpc::DCMPixGetMapFromROIRequest* request, ::osirixgrpc::DCMPixGetMapFromROIResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void DCMPixGetMapFromROI(::grpc::ClientContext* context, const ::osirixgrpc::DCMPixGetMapFromROIRequest* request, ::osirixgrpc::DCMPixGetMapFromROIResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void DCMPixDicomImage(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixDicomImageResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void DCMPixDicomImage(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixDicomImageResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void DCMPixDicomImage(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixDicomImageResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void DCMPixDicomSeries(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixDicomSeriesResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void DCMPixDicomSeries(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixDicomSeriesResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void DCMPixDicomSeries(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixDicomSeriesResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void DCMPixDicomStudy(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixDicomStudyResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void DCMPixDicomStudy(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixDicomStudyResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void DCMPixDicomStudy(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixDicomStudyResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       // VRController messages
       virtual void VRControllerViewer2D(::grpc::ClientContext* context, const ::osirixgrpc::VRController* request, ::osirixgrpc::VRControllerViewer2DResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void VRControllerViewer2D(::grpc::ClientContext* context, const ::osirixgrpc::VRController* request, ::osirixgrpc::VRControllerViewer2DResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void VRControllerViewer2D(::grpc::ClientContext* context, const ::osirixgrpc::VRController* request, ::osirixgrpc::VRControllerViewer2DResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void VRControllerBlendingController(::grpc::ClientContext* context, const ::osirixgrpc::VRController* request, ::osirixgrpc::VRControllerBlendingControllerResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void VRControllerBlendingController(::grpc::ClientContext* context, const ::osirixgrpc::VRController* request, ::osirixgrpc::VRControllerBlendingControllerResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void VRControllerBlendingController(::grpc::ClientContext* context, const ::osirixgrpc::VRController* request, ::osirixgrpc::VRControllerBlendingControllerResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void VRControllerStyle(::grpc::ClientContext* context, const ::osirixgrpc::VRController* request, ::osirixgrpc::VRControllerStyleResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void VRControllerStyle(::grpc::ClientContext* context, const ::osirixgrpc::VRController* request, ::osirixgrpc::VRControllerStyleResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void VRControllerStyle(::grpc::ClientContext* context, const ::osirixgrpc::VRController* request, ::osirixgrpc::VRControllerStyleResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void VRControllerTitle(::grpc::ClientContext* context, const ::osirixgrpc::VRController* request, ::osirixgrpc::VRControllerTitleResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void VRControllerTitle(::grpc::ClientContext* context, const ::osirixgrpc::VRController* request, ::osirixgrpc::VRControllerTitleResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void VRControllerTitle(::grpc::ClientContext* context, const ::osirixgrpc::VRController* request, ::osirixgrpc::VRControllerTitleResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void VRControllerROIVolumes(::grpc::ClientContext* context, const ::osirixgrpc::VRController* request, ::osirixgrpc::VRControllerROIVolumesResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void VRControllerROIVolumes(::grpc::ClientContext* context, const ::osirixgrpc::VRController* request, ::osirixgrpc::VRControllerROIVolumesResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void VRControllerROIVolumes(::grpc::ClientContext* context, const ::osirixgrpc::VRController* request, ::osirixgrpc::VRControllerROIVolumesResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void VRControllerRenderingMode(::grpc::ClientContext* context, const ::osirixgrpc::VRController* request, ::osirixgrpc::VRControllerRenderingModeResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void VRControllerRenderingMode(::grpc::ClientContext* context, const ::osirixgrpc::VRController* request, ::osirixgrpc::VRControllerRenderingModeResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void VRControllerRenderingMode(::grpc::ClientContext* context, const ::osirixgrpc::VRController* request, ::osirixgrpc::VRControllerRenderingModeResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void VRControllerSetRenderingMode(::grpc::ClientContext* context, const ::osirixgrpc::VRControllerSetRenderingModeRequest* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void VRControllerSetRenderingMode(::grpc::ClientContext* context, const ::osirixgrpc::VRControllerSetRenderingModeRequest* request, ::osirixgrpc::Response* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void VRControllerSetRenderingMode(::grpc::ClientContext* context, const ::osirixgrpc::VRControllerSetRenderingModeRequest* request, ::osirixgrpc::Response* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void VRControllerWLWW(::grpc::ClientContext* context, const ::osirixgrpc::VRController* request, ::osirixgrpc::VRControllerWLWWResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void VRControllerWLWW(::grpc::ClientContext* context, const ::osirixgrpc::VRController* request, ::osirixgrpc::VRControllerWLWWResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void VRControllerWLWW(::grpc::ClientContext* context, const ::osirixgrpc::VRController* request, ::osirixgrpc::VRControllerWLWWResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void VRControllerSetWLWW(::grpc::ClientContext* context, const ::osirixgrpc::VRControllerSetWLWWRequest* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void VRControllerSetWLWW(::grpc::ClientContext* context, const ::osirixgrpc::VRControllerSetWLWWRequest* request, ::osirixgrpc::Response* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void VRControllerSetWLWW(::grpc::ClientContext* context, const ::osirixgrpc::VRControllerSetWLWWRequest* request, ::osirixgrpc::Response* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void VRControllerHideROIVolume(::grpc::ClientContext* context, const ::osirixgrpc::VRControllerHideROIVolumeRequest* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void VRControllerHideROIVolume(::grpc::ClientContext* context, const ::osirixgrpc::VRControllerHideROIVolumeRequest* request, ::osirixgrpc::Response* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void VRControllerHideROIVolume(::grpc::ClientContext* context, const ::osirixgrpc::VRControllerHideROIVolumeRequest* request, ::osirixgrpc::Response* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void VRControllerDisplayROIVolume(::grpc::ClientContext* context, const ::osirixgrpc::VRControllerDisplayROIVolumeRequest* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void VRControllerDisplayROIVolume(::grpc::ClientContext* context, const ::osirixgrpc::VRControllerDisplayROIVolumeRequest* request, ::osirixgrpc::Response* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void VRControllerDisplayROIVolume(::grpc::ClientContext* context, const ::osirixgrpc::VRControllerDisplayROIVolumeRequest* request, ::osirixgrpc::Response* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void VRControllerNeedsDisplayUpdate(::grpc::ClientContext* context, const ::osirixgrpc::VRController* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void VRControllerNeedsDisplayUpdate(::grpc::ClientContext* context, const ::osirixgrpc::VRController* request, ::osirixgrpc::Response* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void VRControllerNeedsDisplayUpdate(::grpc::ClientContext* context, const ::osirixgrpc::VRController* request, ::osirixgrpc::Response* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       // ViewerController messages
       virtual void ViewerControllerCloseViewer(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void ViewerControllerCloseViewer(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::Response* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void ViewerControllerCloseViewer(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::Response* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void ViewerControllerPixList(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerPixListRequest* request, ::osirixgrpc::ViewerControllerPixListResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void ViewerControllerPixList(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerPixListRequest* request, ::osirixgrpc::ViewerControllerPixListResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void ViewerControllerPixList(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerPixListRequest* request, ::osirixgrpc::ViewerControllerPixListResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void ViewerControllerNeedsDisplayUpdate(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void ViewerControllerNeedsDisplayUpdate(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::Response* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void ViewerControllerNeedsDisplayUpdate(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::Response* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void ViewerControllerROIList(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerROIListRequest* request, ::osirixgrpc::ViewerControllerROIListResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void ViewerControllerROIList(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerROIListRequest* request, ::osirixgrpc::ViewerControllerROIListResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void ViewerControllerROIList(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerROIListRequest* request, ::osirixgrpc::ViewerControllerROIListResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void ViewerControllerNewROI(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerNewROIRequest* request, ::osirixgrpc::ViewerControllerNewROIResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void ViewerControllerNewROI(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerNewROIRequest* request, ::osirixgrpc::ViewerControllerNewROIResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void ViewerControllerNewROI(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerNewROIRequest* request, ::osirixgrpc::ViewerControllerNewROIResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void ViewerControllerCurDCM(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerCurDCMResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void ViewerControllerCurDCM(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerCurDCMResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void ViewerControllerCurDCM(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerCurDCMResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void ViewerControllerROIsWithName(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerROIsWithNameRequest* request, ::osirixgrpc::ViewerControllerROIsWithNameResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void ViewerControllerROIsWithName(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerROIsWithNameRequest* request, ::osirixgrpc::ViewerControllerROIsWithNameResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void ViewerControllerROIsWithName(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerROIsWithNameRequest* request, ::osirixgrpc::ViewerControllerROIsWithNameResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void ViewerControllerSelectedROIs(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerSelectedROIsResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void ViewerControllerSelectedROIs(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerSelectedROIsResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void ViewerControllerSelectedROIs(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerSelectedROIsResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void ViewerControllerIsDataVolumic(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerIsDataVolumicRequest* request, ::osirixgrpc::ViewerControllerIsDataVolumicResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void ViewerControllerIsDataVolumic(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerIsDataVolumicRequest* request, ::osirixgrpc::ViewerControllerIsDataVolumicResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void ViewerControllerIsDataVolumic(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerIsDataVolumicRequest* request, ::osirixgrpc::ViewerControllerIsDataVolumicResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void ViewerControllerCopyViewerWindow(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerCopyViewerWindowRequest* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void ViewerControllerCopyViewerWindow(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerCopyViewerWindowRequest* request, ::osirixgrpc::Response* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void ViewerControllerCopyViewerWindow(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerCopyViewerWindowRequest* request, ::osirixgrpc::Response* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void ViewerControllerResampleViewerController(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerResampleViewerControllerRequest* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void ViewerControllerResampleViewerController(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerResampleViewerControllerRequest* request, ::osirixgrpc::Response* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void ViewerControllerResampleViewerController(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerResampleViewerControllerRequest* request, ::osirixgrpc::Response* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void ViewerControllerBlendingController(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerBlendingControllerResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void ViewerControllerBlendingController(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerBlendingControllerResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void ViewerControllerBlendingController(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerBlendingControllerResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void ViewerControllerVRControllers(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerVRControllersResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void ViewerControllerVRControllers(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerVRControllersResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void ViewerControllerVRControllers(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerVRControllersResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void ViewerControllerTitle(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerTitleResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void ViewerControllerTitle(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerTitleResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void ViewerControllerTitle(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerTitleResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void ViewerControllerModality(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerModalityResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void ViewerControllerModality(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerModalityResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void ViewerControllerModality(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerModalityResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void ViewerControllerMovieIdx(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerMovieIdxResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void ViewerControllerMovieIdx(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerMovieIdxResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void ViewerControllerMovieIdx(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerMovieIdxResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void ViewerControllerSetMovieIdx(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerSetMovieIdxRequest* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void ViewerControllerSetMovieIdx(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerSetMovieIdxRequest* request, ::osirixgrpc::Response* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void ViewerControllerSetMovieIdx(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerSetMovieIdxRequest* request, ::osirixgrpc::Response* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void ViewerControllerMaxMovieIdx(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerMaxMovieIdxResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void ViewerControllerMaxMovieIdx(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerMaxMovieIdxResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void ViewerControllerMaxMovieIdx(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerMaxMovieIdxResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void ViewerControllerIdx(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerIdxResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void ViewerControllerIdx(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerIdxResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void ViewerControllerIdx(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerIdxResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void ViewerControllerSetIdx(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerSetIdxRequest* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void ViewerControllerSetIdx(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerSetIdxRequest* request, ::osirixgrpc::Response* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void ViewerControllerSetIdx(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerSetIdxRequest* request, ::osirixgrpc::Response* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void ViewerControllerWLWW(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerWLWWResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void ViewerControllerWLWW(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerWLWWResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void ViewerControllerWLWW(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerWLWWResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void ViewerControllerSetWLWW(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerSetWLWWRequest* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void ViewerControllerSetWLWW(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerSetWLWWRequest* request, ::osirixgrpc::Response* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void ViewerControllerSetWLWW(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerSetWLWWRequest* request, ::osirixgrpc::Response* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void ViewerControllerOpenVRViewerForMode(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerOpenVRViewerForModeRequest* request, ::osirixgrpc::ViewerControllerOpenVRViewerForModeResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void ViewerControllerOpenVRViewerForMode(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerOpenVRViewerForModeRequest* request, ::osirixgrpc::ViewerControllerOpenVRViewerForModeResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void ViewerControllerOpenVRViewerForMode(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerOpenVRViewerForModeRequest* request, ::osirixgrpc::ViewerControllerOpenVRViewerForModeResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       // BrowserController messages
       virtual void BrowserControllerDatabaseSelection(::grpc::ClientContext* context, const ::osirixgrpc::BrowserController* request, ::osirixgrpc::BrowserControllerDatabaseSelectionResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void BrowserControllerDatabaseSelection(::grpc::ClientContext* context, const ::osirixgrpc::BrowserController* request, ::osirixgrpc::BrowserControllerDatabaseSelectionResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void BrowserControllerDatabaseSelection(::grpc::ClientContext* context, const ::osirixgrpc::BrowserController* request, ::osirixgrpc::BrowserControllerDatabaseSelectionResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void BrowserControllerCopyFilesIfNeeded(::grpc::ClientContext* context, const ::osirixgrpc::BrowserControllerCopyFilesIfNeededRequest* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void BrowserControllerCopyFilesIfNeeded(::grpc::ClientContext* context, const ::osirixgrpc::BrowserControllerCopyFilesIfNeededRequest* request, ::osirixgrpc::Response* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void BrowserControllerCopyFilesIfNeeded(::grpc::ClientContext* context, const ::osirixgrpc::BrowserControllerCopyFilesIfNeededRequest* request, ::osirixgrpc::Response* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       // DicomImage messages
       virtual void DicomImageWidth(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageWidthResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void DicomImageWidth(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageWidthResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void DicomImageWidth(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageWidthResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void DicomImageHeight(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageHeightResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void DicomImageHeight(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageHeightResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void DicomImageHeight(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageHeightResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void DicomImageSOPInstanceUID(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageSOPInstanceUIDResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void DicomImageSOPInstanceUID(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageSOPInstanceUIDResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void DicomImageSOPInstanceUID(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageSOPInstanceUIDResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void DicomImageCompletePath(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageCompletePathResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void DicomImageCompletePath(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageCompletePathResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void DicomImageCompletePath(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageCompletePathResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void DicomImageDate(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageDateResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void DicomImageDate(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageDateResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void DicomImageDate(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageDateResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void DicomImageNumberOfFrames(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageNumberOfFramesResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void DicomImageNumberOfFrames(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageNumberOfFramesResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void DicomImageNumberOfFrames(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageNumberOfFramesResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void DicomImageModality(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageModalityResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void DicomImageModality(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageModalityResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void DicomImageModality(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageModalityResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void DicomImageSeries(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageSeriesResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void DicomImageSeries(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageSeriesResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void DicomImageSeries(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageSeriesResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void DicomImageSliceLocation(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageSliceLocationResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void DicomImageSliceLocation(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageSliceLocationResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void DicomImageSliceLocation(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageSliceLocationResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void DicomImageInstanceNumber(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageInstanceNumberResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void DicomImageInstanceNumber(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageInstanceNumberResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void DicomImageInstanceNumber(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageInstanceNumberResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       // DicomSeries messages
       virtual void DicomSeriesPaths(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesPathsResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void DicomSeriesPaths(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesPathsResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void DicomSeriesPaths(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesPathsResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void DicomSeriesPreviousSeries(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesPreviousSeriesResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void DicomSeriesPreviousSeries(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesPreviousSeriesResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void DicomSeriesPreviousSeries(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesPreviousSeriesResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void DicomSeriesNextSeries(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesNextSeriesResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void DicomSeriesNextSeries(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesNextSeriesResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void DicomSeriesNextSeries(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesNextSeriesResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void DicomSeriesSortedImages(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesSortedImagesResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void DicomSeriesSortedImages(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesSortedImagesResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void DicomSeriesSortedImages(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesSortedImagesResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void DicomSeriesStudy(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesStudyResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void DicomSeriesStudy(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesStudyResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void DicomSeriesStudy(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesStudyResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void DicomSeriesImages(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesImagesResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void DicomSeriesImages(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesImagesResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void DicomSeriesImages(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesImagesResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void DicomSeriesSeriesInstanceUID(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesSeriesInstanceUIDResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void DicomSeriesSeriesInstanceUID(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesSeriesInstanceUIDResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void DicomSeriesSeriesInstanceUID(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesSeriesInstanceUIDResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void DicomSeriesSeriesSOPClassUID(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesSeriesSOPClassUIDResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void DicomSeriesSeriesSOPClassUID(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesSeriesSOPClassUIDResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void DicomSeriesSeriesSOPClassUID(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesSeriesSOPClassUIDResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void DicomSeriesSeriesDescription(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesSeriesDescriptionResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void DicomSeriesSeriesDescription(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesSeriesDescriptionResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void DicomSeriesSeriesDescription(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesSeriesDescriptionResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void DicomSeriesModality(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesModalityResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void DicomSeriesModality(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesModalityResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void DicomSeriesModality(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesModalityResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void DicomSeriesName(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesNameResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void DicomSeriesName(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesNameResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void DicomSeriesName(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesNameResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void DicomSeriesDate(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesDateResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void DicomSeriesDate(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesDateResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void DicomSeriesDate(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesDateResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void DicomSeriesNumberOfImages(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesNumberOfImagesResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void DicomSeriesNumberOfImages(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesNumberOfImagesResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void DicomSeriesNumberOfImages(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesNumberOfImagesResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       // DicomStudy messages
       virtual void DicomStudyPaths(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyPathsResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void DicomStudyPaths(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyPathsResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void DicomStudyPaths(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyPathsResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void DicomStudyImages(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyImagesResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void DicomStudyImages(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyImagesResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void DicomStudyImages(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyImagesResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void DicomStudyModalities(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyModalitiesResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void DicomStudyModalities(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyModalitiesResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void DicomStudyModalities(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyModalitiesResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void DicomStudyNoFiles(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyNoFilesResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void DicomStudyNoFiles(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyNoFilesResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void DicomStudyNoFiles(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyNoFilesResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void DicomStudyRawNoFiles(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyRawNoFilesResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void DicomStudyRawNoFiles(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyRawNoFilesResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void DicomStudyRawNoFiles(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyRawNoFilesResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void DicomStudyNoFilesExcludingMultiFrames(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyNoFilesExcludingMultiFramesResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void DicomStudyNoFilesExcludingMultiFrames(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyNoFilesExcludingMultiFramesResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void DicomStudyNoFilesExcludingMultiFrames(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyNoFilesExcludingMultiFramesResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void DicomStudyNumberOfImages(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyNumberOfImagesResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void DicomStudyNumberOfImages(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyNumberOfImagesResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void DicomStudyNumberOfImages(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyNumberOfImagesResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void DicomStudySeries(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudySeriesResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void DicomStudySeries(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudySeriesResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void DicomStudySeries(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudySeriesResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void DicomStudyName(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyNameResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void DicomStudyName(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyNameResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void DicomStudyName(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyNameResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void DicomStudyDate(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyDateResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void DicomStudyDate(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyDateResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void DicomStudyDate(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyDateResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void DicomStudyDateAdded(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyDateAddedResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void DicomStudyDateAdded(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyDateAddedResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void DicomStudyDateAdded(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyDateAddedResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void DicomStudyDateOfBirth(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyDateOfBirthResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void DicomStudyDateOfBirth(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyDateOfBirthResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void DicomStudyDateOfBirth(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyDateOfBirthResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void DicomStudyInstitutionName(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyInstitutionNameResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void DicomStudyInstitutionName(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyInstitutionNameResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void DicomStudyInstitutionName(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyInstitutionNameResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void DicomStudyModality(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyModalityResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void DicomStudyModality(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyModalityResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void DicomStudyModality(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyModalityResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void DicomStudyPatientID(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyPatientIDResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void DicomStudyPatientID(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyPatientIDResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void DicomStudyPatientID(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyPatientIDResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void DicomStudyPatientUID(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyPatientUIDResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void DicomStudyPatientUID(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyPatientUIDResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void DicomStudyPatientUID(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyPatientUIDResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void DicomStudyPatientSex(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyPatientSexResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void DicomStudyPatientSex(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyPatientSexResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void DicomStudyPatientSex(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyPatientSexResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void DicomStudyPerformingPhysician(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyPerformingPhysicianResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void DicomStudyPerformingPhysician(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyPerformingPhysicianResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void DicomStudyPerformingPhysician(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyPerformingPhysicianResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void DicomStudyReferringPhysician(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyReferringPhysicianResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void DicomStudyReferringPhysician(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyReferringPhysicianResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void DicomStudyReferringPhysician(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyReferringPhysicianResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void DicomStudyStudyInstanceUID(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyStudyInstanceUIDResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void DicomStudyStudyInstanceUID(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyStudyInstanceUIDResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void DicomStudyStudyInstanceUID(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyStudyInstanceUIDResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       virtual void DicomStudyStudyName(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyStudyNameResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void DicomStudyStudyName(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyStudyNameResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void DicomStudyStudyName(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyStudyNameResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
     };
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-    typedef class experimental_async_interface async_interface;
-    #endif
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-    async_interface* async() { return experimental_async(); }
-    #endif
-    virtual class experimental_async_interface* experimental_async() { return nullptr; }
-  private:
+    typedef class async_interface experimental_async_interface;
+    virtual class async_interface* async() { return nullptr; }
+    class async_interface* experimental_async() { return async(); }
+   private:
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::osirixgrpc::OsirixCurrentBrowserResponse>* AsyncOsirixCurrentBrowserRaw(::grpc::ClientContext* context, const ::osirixgrpc::Empty& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::osirixgrpc::OsirixCurrentBrowserResponse>* PrepareAsyncOsirixCurrentBrowserRaw(::grpc::ClientContext* context, const ::osirixgrpc::Empty& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::osirixgrpc::OsirixFrontmostViewerResponse>* AsyncOsirixFrontmostViewerRaw(::grpc::ClientContext* context, const ::osirixgrpc::Empty& request, ::grpc::CompletionQueue* cq) = 0;
@@ -2051,7 +1518,7 @@ class OsiriXService final {
   };
   class Stub final : public StubInterface {
    public:
-    Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel);
+    Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
     ::grpc::Status OsirixCurrentBrowser(::grpc::ClientContext* context, const ::osirixgrpc::Empty& request, ::osirixgrpc::OsirixCurrentBrowserResponse* response) override;
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::osirixgrpc::OsirixCurrentBrowserResponse>> AsyncOsirixCurrentBrowser(::grpc::ClientContext* context, const ::osirixgrpc::Empty& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::osirixgrpc::OsirixCurrentBrowserResponse>>(AsyncOsirixCurrentBrowserRaw(context, request, cq));
@@ -2976,812 +2443,284 @@ class OsiriXService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::osirixgrpc::DicomStudyStudyNameResponse>> PrepareAsyncDicomStudyStudyName(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::osirixgrpc::DicomStudyStudyNameResponse>>(PrepareAsyncDicomStudyStudyNameRaw(context, request, cq));
     }
-    class experimental_async final :
-      public StubInterface::experimental_async_interface {
+    class async final :
+      public StubInterface::async_interface {
      public:
       void OsirixCurrentBrowser(::grpc::ClientContext* context, const ::osirixgrpc::Empty* request, ::osirixgrpc::OsirixCurrentBrowserResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void OsirixCurrentBrowser(::grpc::ClientContext* context, const ::osirixgrpc::Empty* request, ::osirixgrpc::OsirixCurrentBrowserResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void OsirixCurrentBrowser(::grpc::ClientContext* context, const ::osirixgrpc::Empty* request, ::osirixgrpc::OsirixCurrentBrowserResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void OsirixFrontmostViewer(::grpc::ClientContext* context, const ::osirixgrpc::Empty* request, ::osirixgrpc::OsirixFrontmostViewerResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void OsirixFrontmostViewer(::grpc::ClientContext* context, const ::osirixgrpc::Empty* request, ::osirixgrpc::OsirixFrontmostViewerResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void OsirixFrontmostViewer(::grpc::ClientContext* context, const ::osirixgrpc::Empty* request, ::osirixgrpc::OsirixFrontmostViewerResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void OsirixDisplayed2DViewers(::grpc::ClientContext* context, const ::osirixgrpc::Empty* request, ::osirixgrpc::OsirixDisplayed2DViewersResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void OsirixDisplayed2DViewers(::grpc::ClientContext* context, const ::osirixgrpc::Empty* request, ::osirixgrpc::OsirixDisplayed2DViewersResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void OsirixDisplayed2DViewers(::grpc::ClientContext* context, const ::osirixgrpc::Empty* request, ::osirixgrpc::OsirixDisplayed2DViewersResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void OsirixFrontmostVRController(::grpc::ClientContext* context, const ::osirixgrpc::Empty* request, ::osirixgrpc::OsirixFrontmostVRControllerResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void OsirixFrontmostVRController(::grpc::ClientContext* context, const ::osirixgrpc::Empty* request, ::osirixgrpc::OsirixFrontmostVRControllerResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void OsirixFrontmostVRController(::grpc::ClientContext* context, const ::osirixgrpc::Empty* request, ::osirixgrpc::OsirixFrontmostVRControllerResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void OsirixDisplayedVRControllers(::grpc::ClientContext* context, const ::osirixgrpc::Empty* request, ::osirixgrpc::OsirixDisplayedVRControllersResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void OsirixDisplayedVRControllers(::grpc::ClientContext* context, const ::osirixgrpc::Empty* request, ::osirixgrpc::OsirixDisplayedVRControllersResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void OsirixDisplayedVRControllers(::grpc::ClientContext* context, const ::osirixgrpc::Empty* request, ::osirixgrpc::OsirixDisplayedVRControllersResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void ROIFlipHorizontally(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void ROIFlipHorizontally(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::Response* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void ROIFlipHorizontally(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::Response* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void ROIFlipVertically(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void ROIFlipVertically(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::Response* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void ROIFlipVertically(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::Response* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void ROIArea(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROIAreaResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void ROIArea(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROIAreaResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void ROIArea(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROIAreaResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void ROICentroid(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROICentroidResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void ROICentroid(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROICentroidResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void ROICentroid(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROICentroidResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void ROIRotate(::grpc::ClientContext* context, const ::osirixgrpc::ROIRotateRequest* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void ROIRotate(::grpc::ClientContext* context, const ::osirixgrpc::ROIRotateRequest* request, ::osirixgrpc::Response* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void ROIRotate(::grpc::ClientContext* context, const ::osirixgrpc::ROIRotateRequest* request, ::osirixgrpc::Response* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void ROIMove(::grpc::ClientContext* context, const ::osirixgrpc::ROIMoveRequest* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void ROIMove(::grpc::ClientContext* context, const ::osirixgrpc::ROIMoveRequest* request, ::osirixgrpc::Response* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void ROIMove(::grpc::ClientContext* context, const ::osirixgrpc::ROIMoveRequest* request, ::osirixgrpc::Response* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void ROIPix(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROIPixResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void ROIPix(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROIPixResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void ROIPix(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROIPixResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void ROIName(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROINameResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void ROIName(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROINameResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void ROIName(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROINameResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void ROIIType(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROIITypeResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void ROIIType(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROIITypeResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void ROIIType(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROIITypeResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void ROISetName(::grpc::ClientContext* context, const ::osirixgrpc::ROISetNameRequest* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void ROISetName(::grpc::ClientContext* context, const ::osirixgrpc::ROISetNameRequest* request, ::osirixgrpc::Response* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void ROISetName(::grpc::ClientContext* context, const ::osirixgrpc::ROISetNameRequest* request, ::osirixgrpc::Response* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void ROIColor(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROIColorResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void ROIColor(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROIColorResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void ROIColor(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROIColorResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void ROISetColor(::grpc::ClientContext* context, const ::osirixgrpc::ROISetColorRequest* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void ROISetColor(::grpc::ClientContext* context, const ::osirixgrpc::ROISetColorRequest* request, ::osirixgrpc::Response* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void ROISetColor(::grpc::ClientContext* context, const ::osirixgrpc::ROISetColorRequest* request, ::osirixgrpc::Response* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void ROIOpacity(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROIOpacityResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void ROIOpacity(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROIOpacityResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void ROIOpacity(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROIOpacityResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void ROISetOpacity(::grpc::ClientContext* context, const ::osirixgrpc::ROISetOpacityRequest* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void ROISetOpacity(::grpc::ClientContext* context, const ::osirixgrpc::ROISetOpacityRequest* request, ::osirixgrpc::Response* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void ROISetOpacity(::grpc::ClientContext* context, const ::osirixgrpc::ROISetOpacityRequest* request, ::osirixgrpc::Response* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void ROIThickness(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROIThicknessResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void ROIThickness(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROIThicknessResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void ROIThickness(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROIThicknessResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void ROISetThickness(::grpc::ClientContext* context, const ::osirixgrpc::ROISetThicknessRequest* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void ROISetThickness(::grpc::ClientContext* context, const ::osirixgrpc::ROISetThicknessRequest* request, ::osirixgrpc::Response* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void ROISetThickness(::grpc::ClientContext* context, const ::osirixgrpc::ROISetThicknessRequest* request, ::osirixgrpc::Response* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void ROIPoints(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROIPointsResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void ROIPoints(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROIPointsResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void ROIPoints(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROIPointsResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void ROISetPoints(::grpc::ClientContext* context, const ::osirixgrpc::ROISetPointsRequest* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void ROISetPoints(::grpc::ClientContext* context, const ::osirixgrpc::ROISetPointsRequest* request, ::osirixgrpc::Response* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void ROISetPoints(::grpc::ClientContext* context, const ::osirixgrpc::ROISetPointsRequest* request, ::osirixgrpc::Response* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void ROIVolumeTexture(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolume* request, ::osirixgrpc::ROIVolumeTextureResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void ROIVolumeTexture(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolume* request, ::osirixgrpc::ROIVolumeTextureResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void ROIVolumeTexture(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolume* request, ::osirixgrpc::ROIVolumeTextureResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void ROIVolumeSetTexture(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolumeSetTextureRequest* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void ROIVolumeSetTexture(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolumeSetTextureRequest* request, ::osirixgrpc::Response* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void ROIVolumeSetTexture(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolumeSetTextureRequest* request, ::osirixgrpc::Response* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void ROIVolumeVolume(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolume* request, ::osirixgrpc::ROIVolumeVolumeResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void ROIVolumeVolume(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolume* request, ::osirixgrpc::ROIVolumeVolumeResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void ROIVolumeVolume(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolume* request, ::osirixgrpc::ROIVolumeVolumeResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void ROIVolumeColor(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolume* request, ::osirixgrpc::ROIVolumeColorResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void ROIVolumeColor(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolume* request, ::osirixgrpc::ROIVolumeColorResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void ROIVolumeColor(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolume* request, ::osirixgrpc::ROIVolumeColorResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void ROIVolumeSetColor(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolumeSetColorRequest* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void ROIVolumeSetColor(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolumeSetColorRequest* request, ::osirixgrpc::Response* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void ROIVolumeSetColor(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolumeSetColorRequest* request, ::osirixgrpc::Response* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void ROIVolumeOpacity(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolume* request, ::osirixgrpc::ROIVolumeOpacityResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void ROIVolumeOpacity(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolume* request, ::osirixgrpc::ROIVolumeOpacityResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void ROIVolumeOpacity(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolume* request, ::osirixgrpc::ROIVolumeOpacityResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void ROIVolumeSetOpacity(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolumeSetOpacityRequest* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void ROIVolumeSetOpacity(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolumeSetOpacityRequest* request, ::osirixgrpc::Response* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void ROIVolumeSetOpacity(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolumeSetOpacityRequest* request, ::osirixgrpc::Response* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void ROIVolumeFactor(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolume* request, ::osirixgrpc::ROIVolumeFactorResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void ROIVolumeFactor(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolume* request, ::osirixgrpc::ROIVolumeFactorResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void ROIVolumeFactor(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolume* request, ::osirixgrpc::ROIVolumeFactorResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void ROIVolumeSetFactor(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolumeSetFactorRequest* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void ROIVolumeSetFactor(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolumeSetFactorRequest* request, ::osirixgrpc::Response* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void ROIVolumeSetFactor(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolumeSetFactorRequest* request, ::osirixgrpc::Response* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void ROIVolumeName(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolume* request, ::osirixgrpc::ROIVolumeNameResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void ROIVolumeName(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolume* request, ::osirixgrpc::ROIVolumeNameResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void ROIVolumeName(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolume* request, ::osirixgrpc::ROIVolumeNameResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void ROIVolumeVisible(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolume* request, ::osirixgrpc::ROIVolumeVisibleResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void ROIVolumeVisible(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolume* request, ::osirixgrpc::ROIVolumeVisibleResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void ROIVolumeVisible(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolume* request, ::osirixgrpc::ROIVolumeVisibleResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void DCMPixConvertToRGB(::grpc::ClientContext* context, const ::osirixgrpc::DCMPixConvertToRGBRequest* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void DCMPixConvertToRGB(::grpc::ClientContext* context, const ::osirixgrpc::DCMPixConvertToRGBRequest* request, ::osirixgrpc::Response* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void DCMPixConvertToRGB(::grpc::ClientContext* context, const ::osirixgrpc::DCMPixConvertToRGBRequest* request, ::osirixgrpc::Response* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void DCMPixConvertToBW(::grpc::ClientContext* context, const ::osirixgrpc::DCMPixConvertToBWRequest* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void DCMPixConvertToBW(::grpc::ClientContext* context, const ::osirixgrpc::DCMPixConvertToBWRequest* request, ::osirixgrpc::Response* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void DCMPixConvertToBW(::grpc::ClientContext* context, const ::osirixgrpc::DCMPixConvertToBWRequest* request, ::osirixgrpc::Response* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void DCMPixIsRGB(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixIsRGBResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void DCMPixIsRGB(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixIsRGBResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void DCMPixIsRGB(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixIsRGBResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void DCMPixComputeROI(::grpc::ClientContext* context, const ::osirixgrpc::DCMPixComputeROIRequest* request, ::osirixgrpc::DCMPixComputeROIResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void DCMPixComputeROI(::grpc::ClientContext* context, const ::osirixgrpc::DCMPixComputeROIRequest* request, ::osirixgrpc::DCMPixComputeROIResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void DCMPixComputeROI(::grpc::ClientContext* context, const ::osirixgrpc::DCMPixComputeROIRequest* request, ::osirixgrpc::DCMPixComputeROIResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void DCMPixROIValues(::grpc::ClientContext* context, const ::osirixgrpc::DCMPixROIValuesRequest* request, ::osirixgrpc::DCMPixROIValuesResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void DCMPixROIValues(::grpc::ClientContext* context, const ::osirixgrpc::DCMPixROIValuesRequest* request, ::osirixgrpc::DCMPixROIValuesResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void DCMPixROIValues(::grpc::ClientContext* context, const ::osirixgrpc::DCMPixROIValuesRequest* request, ::osirixgrpc::DCMPixROIValuesResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void DCMPixShape(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixShapeResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void DCMPixShape(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixShapeResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void DCMPixShape(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixShapeResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void DCMPixSpacing(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixSpacingResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void DCMPixSpacing(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixSpacingResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void DCMPixSpacing(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixSpacingResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void DCMPixOrigin(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixOriginResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void DCMPixOrigin(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixOriginResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void DCMPixOrigin(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixOriginResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void DCMPixOrientation(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixOrientationResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void DCMPixOrientation(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixOrientationResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void DCMPixOrientation(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixOrientationResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void DCMPixSliceLocation(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixSliceLocationResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void DCMPixSliceLocation(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixSliceLocationResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void DCMPixSliceLocation(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixSliceLocationResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void DCMPixSourceFile(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixSourceFileResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void DCMPixSourceFile(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixSourceFileResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void DCMPixSourceFile(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixSourceFileResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void DCMPixImage(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixImageResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void DCMPixImage(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixImageResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void DCMPixImage(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixImageResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void DCMPixSetImage(::grpc::ClientContext* context, const ::osirixgrpc::DCMPixSetImageRequest* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void DCMPixSetImage(::grpc::ClientContext* context, const ::osirixgrpc::DCMPixSetImageRequest* request, ::osirixgrpc::Response* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void DCMPixSetImage(::grpc::ClientContext* context, const ::osirixgrpc::DCMPixSetImageRequest* request, ::osirixgrpc::Response* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void DCMPixGetMapFromROI(::grpc::ClientContext* context, const ::osirixgrpc::DCMPixGetMapFromROIRequest* request, ::osirixgrpc::DCMPixGetMapFromROIResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void DCMPixGetMapFromROI(::grpc::ClientContext* context, const ::osirixgrpc::DCMPixGetMapFromROIRequest* request, ::osirixgrpc::DCMPixGetMapFromROIResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void DCMPixGetMapFromROI(::grpc::ClientContext* context, const ::osirixgrpc::DCMPixGetMapFromROIRequest* request, ::osirixgrpc::DCMPixGetMapFromROIResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void DCMPixDicomImage(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixDicomImageResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void DCMPixDicomImage(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixDicomImageResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void DCMPixDicomImage(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixDicomImageResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void DCMPixDicomSeries(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixDicomSeriesResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void DCMPixDicomSeries(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixDicomSeriesResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void DCMPixDicomSeries(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixDicomSeriesResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void DCMPixDicomStudy(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixDicomStudyResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void DCMPixDicomStudy(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixDicomStudyResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void DCMPixDicomStudy(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixDicomStudyResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void VRControllerViewer2D(::grpc::ClientContext* context, const ::osirixgrpc::VRController* request, ::osirixgrpc::VRControllerViewer2DResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void VRControllerViewer2D(::grpc::ClientContext* context, const ::osirixgrpc::VRController* request, ::osirixgrpc::VRControllerViewer2DResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void VRControllerViewer2D(::grpc::ClientContext* context, const ::osirixgrpc::VRController* request, ::osirixgrpc::VRControllerViewer2DResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void VRControllerBlendingController(::grpc::ClientContext* context, const ::osirixgrpc::VRController* request, ::osirixgrpc::VRControllerBlendingControllerResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void VRControllerBlendingController(::grpc::ClientContext* context, const ::osirixgrpc::VRController* request, ::osirixgrpc::VRControllerBlendingControllerResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void VRControllerBlendingController(::grpc::ClientContext* context, const ::osirixgrpc::VRController* request, ::osirixgrpc::VRControllerBlendingControllerResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void VRControllerStyle(::grpc::ClientContext* context, const ::osirixgrpc::VRController* request, ::osirixgrpc::VRControllerStyleResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void VRControllerStyle(::grpc::ClientContext* context, const ::osirixgrpc::VRController* request, ::osirixgrpc::VRControllerStyleResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void VRControllerStyle(::grpc::ClientContext* context, const ::osirixgrpc::VRController* request, ::osirixgrpc::VRControllerStyleResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void VRControllerTitle(::grpc::ClientContext* context, const ::osirixgrpc::VRController* request, ::osirixgrpc::VRControllerTitleResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void VRControllerTitle(::grpc::ClientContext* context, const ::osirixgrpc::VRController* request, ::osirixgrpc::VRControllerTitleResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void VRControllerTitle(::grpc::ClientContext* context, const ::osirixgrpc::VRController* request, ::osirixgrpc::VRControllerTitleResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void VRControllerROIVolumes(::grpc::ClientContext* context, const ::osirixgrpc::VRController* request, ::osirixgrpc::VRControllerROIVolumesResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void VRControllerROIVolumes(::grpc::ClientContext* context, const ::osirixgrpc::VRController* request, ::osirixgrpc::VRControllerROIVolumesResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void VRControllerROIVolumes(::grpc::ClientContext* context, const ::osirixgrpc::VRController* request, ::osirixgrpc::VRControllerROIVolumesResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void VRControllerRenderingMode(::grpc::ClientContext* context, const ::osirixgrpc::VRController* request, ::osirixgrpc::VRControllerRenderingModeResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void VRControllerRenderingMode(::grpc::ClientContext* context, const ::osirixgrpc::VRController* request, ::osirixgrpc::VRControllerRenderingModeResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void VRControllerRenderingMode(::grpc::ClientContext* context, const ::osirixgrpc::VRController* request, ::osirixgrpc::VRControllerRenderingModeResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void VRControllerSetRenderingMode(::grpc::ClientContext* context, const ::osirixgrpc::VRControllerSetRenderingModeRequest* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void VRControllerSetRenderingMode(::grpc::ClientContext* context, const ::osirixgrpc::VRControllerSetRenderingModeRequest* request, ::osirixgrpc::Response* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void VRControllerSetRenderingMode(::grpc::ClientContext* context, const ::osirixgrpc::VRControllerSetRenderingModeRequest* request, ::osirixgrpc::Response* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void VRControllerWLWW(::grpc::ClientContext* context, const ::osirixgrpc::VRController* request, ::osirixgrpc::VRControllerWLWWResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void VRControllerWLWW(::grpc::ClientContext* context, const ::osirixgrpc::VRController* request, ::osirixgrpc::VRControllerWLWWResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void VRControllerWLWW(::grpc::ClientContext* context, const ::osirixgrpc::VRController* request, ::osirixgrpc::VRControllerWLWWResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void VRControllerSetWLWW(::grpc::ClientContext* context, const ::osirixgrpc::VRControllerSetWLWWRequest* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void VRControllerSetWLWW(::grpc::ClientContext* context, const ::osirixgrpc::VRControllerSetWLWWRequest* request, ::osirixgrpc::Response* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void VRControllerSetWLWW(::grpc::ClientContext* context, const ::osirixgrpc::VRControllerSetWLWWRequest* request, ::osirixgrpc::Response* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void VRControllerHideROIVolume(::grpc::ClientContext* context, const ::osirixgrpc::VRControllerHideROIVolumeRequest* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void VRControllerHideROIVolume(::grpc::ClientContext* context, const ::osirixgrpc::VRControllerHideROIVolumeRequest* request, ::osirixgrpc::Response* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void VRControllerHideROIVolume(::grpc::ClientContext* context, const ::osirixgrpc::VRControllerHideROIVolumeRequest* request, ::osirixgrpc::Response* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void VRControllerDisplayROIVolume(::grpc::ClientContext* context, const ::osirixgrpc::VRControllerDisplayROIVolumeRequest* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void VRControllerDisplayROIVolume(::grpc::ClientContext* context, const ::osirixgrpc::VRControllerDisplayROIVolumeRequest* request, ::osirixgrpc::Response* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void VRControllerDisplayROIVolume(::grpc::ClientContext* context, const ::osirixgrpc::VRControllerDisplayROIVolumeRequest* request, ::osirixgrpc::Response* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void VRControllerNeedsDisplayUpdate(::grpc::ClientContext* context, const ::osirixgrpc::VRController* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void VRControllerNeedsDisplayUpdate(::grpc::ClientContext* context, const ::osirixgrpc::VRController* request, ::osirixgrpc::Response* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void VRControllerNeedsDisplayUpdate(::grpc::ClientContext* context, const ::osirixgrpc::VRController* request, ::osirixgrpc::Response* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void ViewerControllerCloseViewer(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void ViewerControllerCloseViewer(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::Response* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void ViewerControllerCloseViewer(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::Response* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void ViewerControllerPixList(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerPixListRequest* request, ::osirixgrpc::ViewerControllerPixListResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void ViewerControllerPixList(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerPixListRequest* request, ::osirixgrpc::ViewerControllerPixListResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void ViewerControllerPixList(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerPixListRequest* request, ::osirixgrpc::ViewerControllerPixListResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void ViewerControllerNeedsDisplayUpdate(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void ViewerControllerNeedsDisplayUpdate(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::Response* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void ViewerControllerNeedsDisplayUpdate(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::Response* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void ViewerControllerROIList(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerROIListRequest* request, ::osirixgrpc::ViewerControllerROIListResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void ViewerControllerROIList(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerROIListRequest* request, ::osirixgrpc::ViewerControllerROIListResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void ViewerControllerROIList(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerROIListRequest* request, ::osirixgrpc::ViewerControllerROIListResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void ViewerControllerNewROI(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerNewROIRequest* request, ::osirixgrpc::ViewerControllerNewROIResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void ViewerControllerNewROI(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerNewROIRequest* request, ::osirixgrpc::ViewerControllerNewROIResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void ViewerControllerNewROI(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerNewROIRequest* request, ::osirixgrpc::ViewerControllerNewROIResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void ViewerControllerCurDCM(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerCurDCMResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void ViewerControllerCurDCM(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerCurDCMResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void ViewerControllerCurDCM(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerCurDCMResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void ViewerControllerROIsWithName(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerROIsWithNameRequest* request, ::osirixgrpc::ViewerControllerROIsWithNameResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void ViewerControllerROIsWithName(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerROIsWithNameRequest* request, ::osirixgrpc::ViewerControllerROIsWithNameResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void ViewerControllerROIsWithName(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerROIsWithNameRequest* request, ::osirixgrpc::ViewerControllerROIsWithNameResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void ViewerControllerSelectedROIs(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerSelectedROIsResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void ViewerControllerSelectedROIs(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerSelectedROIsResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void ViewerControllerSelectedROIs(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerSelectedROIsResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void ViewerControllerIsDataVolumic(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerIsDataVolumicRequest* request, ::osirixgrpc::ViewerControllerIsDataVolumicResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void ViewerControllerIsDataVolumic(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerIsDataVolumicRequest* request, ::osirixgrpc::ViewerControllerIsDataVolumicResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void ViewerControllerIsDataVolumic(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerIsDataVolumicRequest* request, ::osirixgrpc::ViewerControllerIsDataVolumicResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void ViewerControllerCopyViewerWindow(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerCopyViewerWindowRequest* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void ViewerControllerCopyViewerWindow(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerCopyViewerWindowRequest* request, ::osirixgrpc::Response* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void ViewerControllerCopyViewerWindow(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerCopyViewerWindowRequest* request, ::osirixgrpc::Response* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void ViewerControllerResampleViewerController(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerResampleViewerControllerRequest* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void ViewerControllerResampleViewerController(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerResampleViewerControllerRequest* request, ::osirixgrpc::Response* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void ViewerControllerResampleViewerController(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerResampleViewerControllerRequest* request, ::osirixgrpc::Response* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void ViewerControllerBlendingController(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerBlendingControllerResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void ViewerControllerBlendingController(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerBlendingControllerResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void ViewerControllerBlendingController(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerBlendingControllerResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void ViewerControllerVRControllers(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerVRControllersResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void ViewerControllerVRControllers(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerVRControllersResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void ViewerControllerVRControllers(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerVRControllersResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void ViewerControllerTitle(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerTitleResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void ViewerControllerTitle(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerTitleResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void ViewerControllerTitle(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerTitleResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void ViewerControllerModality(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerModalityResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void ViewerControllerModality(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerModalityResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void ViewerControllerModality(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerModalityResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void ViewerControllerMovieIdx(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerMovieIdxResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void ViewerControllerMovieIdx(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerMovieIdxResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void ViewerControllerMovieIdx(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerMovieIdxResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void ViewerControllerSetMovieIdx(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerSetMovieIdxRequest* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void ViewerControllerSetMovieIdx(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerSetMovieIdxRequest* request, ::osirixgrpc::Response* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void ViewerControllerSetMovieIdx(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerSetMovieIdxRequest* request, ::osirixgrpc::Response* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void ViewerControllerMaxMovieIdx(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerMaxMovieIdxResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void ViewerControllerMaxMovieIdx(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerMaxMovieIdxResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void ViewerControllerMaxMovieIdx(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerMaxMovieIdxResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void ViewerControllerIdx(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerIdxResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void ViewerControllerIdx(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerIdxResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void ViewerControllerIdx(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerIdxResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void ViewerControllerSetIdx(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerSetIdxRequest* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void ViewerControllerSetIdx(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerSetIdxRequest* request, ::osirixgrpc::Response* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void ViewerControllerSetIdx(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerSetIdxRequest* request, ::osirixgrpc::Response* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void ViewerControllerWLWW(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerWLWWResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void ViewerControllerWLWW(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerWLWWResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void ViewerControllerWLWW(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerWLWWResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void ViewerControllerSetWLWW(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerSetWLWWRequest* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void ViewerControllerSetWLWW(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerSetWLWWRequest* request, ::osirixgrpc::Response* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void ViewerControllerSetWLWW(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerSetWLWWRequest* request, ::osirixgrpc::Response* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void ViewerControllerOpenVRViewerForMode(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerOpenVRViewerForModeRequest* request, ::osirixgrpc::ViewerControllerOpenVRViewerForModeResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void ViewerControllerOpenVRViewerForMode(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerOpenVRViewerForModeRequest* request, ::osirixgrpc::ViewerControllerOpenVRViewerForModeResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void ViewerControllerOpenVRViewerForMode(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerOpenVRViewerForModeRequest* request, ::osirixgrpc::ViewerControllerOpenVRViewerForModeResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void BrowserControllerDatabaseSelection(::grpc::ClientContext* context, const ::osirixgrpc::BrowserController* request, ::osirixgrpc::BrowserControllerDatabaseSelectionResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void BrowserControllerDatabaseSelection(::grpc::ClientContext* context, const ::osirixgrpc::BrowserController* request, ::osirixgrpc::BrowserControllerDatabaseSelectionResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void BrowserControllerDatabaseSelection(::grpc::ClientContext* context, const ::osirixgrpc::BrowserController* request, ::osirixgrpc::BrowserControllerDatabaseSelectionResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void BrowserControllerCopyFilesIfNeeded(::grpc::ClientContext* context, const ::osirixgrpc::BrowserControllerCopyFilesIfNeededRequest* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void BrowserControllerCopyFilesIfNeeded(::grpc::ClientContext* context, const ::osirixgrpc::BrowserControllerCopyFilesIfNeededRequest* request, ::osirixgrpc::Response* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void BrowserControllerCopyFilesIfNeeded(::grpc::ClientContext* context, const ::osirixgrpc::BrowserControllerCopyFilesIfNeededRequest* request, ::osirixgrpc::Response* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void DicomImageWidth(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageWidthResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void DicomImageWidth(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageWidthResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void DicomImageWidth(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageWidthResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void DicomImageHeight(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageHeightResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void DicomImageHeight(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageHeightResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void DicomImageHeight(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageHeightResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void DicomImageSOPInstanceUID(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageSOPInstanceUIDResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void DicomImageSOPInstanceUID(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageSOPInstanceUIDResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void DicomImageSOPInstanceUID(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageSOPInstanceUIDResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void DicomImageCompletePath(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageCompletePathResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void DicomImageCompletePath(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageCompletePathResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void DicomImageCompletePath(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageCompletePathResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void DicomImageDate(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageDateResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void DicomImageDate(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageDateResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void DicomImageDate(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageDateResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void DicomImageNumberOfFrames(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageNumberOfFramesResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void DicomImageNumberOfFrames(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageNumberOfFramesResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void DicomImageNumberOfFrames(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageNumberOfFramesResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void DicomImageModality(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageModalityResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void DicomImageModality(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageModalityResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void DicomImageModality(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageModalityResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void DicomImageSeries(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageSeriesResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void DicomImageSeries(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageSeriesResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void DicomImageSeries(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageSeriesResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void DicomImageSliceLocation(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageSliceLocationResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void DicomImageSliceLocation(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageSliceLocationResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void DicomImageSliceLocation(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageSliceLocationResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void DicomImageInstanceNumber(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageInstanceNumberResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void DicomImageInstanceNumber(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageInstanceNumberResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void DicomImageInstanceNumber(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageInstanceNumberResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void DicomSeriesPaths(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesPathsResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void DicomSeriesPaths(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesPathsResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void DicomSeriesPaths(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesPathsResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void DicomSeriesPreviousSeries(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesPreviousSeriesResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void DicomSeriesPreviousSeries(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesPreviousSeriesResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void DicomSeriesPreviousSeries(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesPreviousSeriesResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void DicomSeriesNextSeries(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesNextSeriesResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void DicomSeriesNextSeries(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesNextSeriesResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void DicomSeriesNextSeries(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesNextSeriesResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void DicomSeriesSortedImages(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesSortedImagesResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void DicomSeriesSortedImages(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesSortedImagesResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void DicomSeriesSortedImages(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesSortedImagesResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void DicomSeriesStudy(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesStudyResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void DicomSeriesStudy(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesStudyResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void DicomSeriesStudy(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesStudyResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void DicomSeriesImages(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesImagesResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void DicomSeriesImages(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesImagesResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void DicomSeriesImages(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesImagesResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void DicomSeriesSeriesInstanceUID(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesSeriesInstanceUIDResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void DicomSeriesSeriesInstanceUID(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesSeriesInstanceUIDResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void DicomSeriesSeriesInstanceUID(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesSeriesInstanceUIDResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void DicomSeriesSeriesSOPClassUID(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesSeriesSOPClassUIDResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void DicomSeriesSeriesSOPClassUID(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesSeriesSOPClassUIDResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void DicomSeriesSeriesSOPClassUID(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesSeriesSOPClassUIDResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void DicomSeriesSeriesDescription(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesSeriesDescriptionResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void DicomSeriesSeriesDescription(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesSeriesDescriptionResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void DicomSeriesSeriesDescription(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesSeriesDescriptionResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void DicomSeriesModality(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesModalityResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void DicomSeriesModality(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesModalityResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void DicomSeriesModality(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesModalityResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void DicomSeriesName(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesNameResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void DicomSeriesName(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesNameResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void DicomSeriesName(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesNameResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void DicomSeriesDate(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesDateResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void DicomSeriesDate(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesDateResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void DicomSeriesDate(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesDateResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void DicomSeriesNumberOfImages(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesNumberOfImagesResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void DicomSeriesNumberOfImages(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesNumberOfImagesResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void DicomSeriesNumberOfImages(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesNumberOfImagesResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void DicomStudyPaths(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyPathsResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void DicomStudyPaths(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyPathsResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void DicomStudyPaths(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyPathsResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void DicomStudyImages(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyImagesResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void DicomStudyImages(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyImagesResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void DicomStudyImages(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyImagesResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void DicomStudyModalities(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyModalitiesResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void DicomStudyModalities(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyModalitiesResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void DicomStudyModalities(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyModalitiesResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void DicomStudyNoFiles(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyNoFilesResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void DicomStudyNoFiles(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyNoFilesResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void DicomStudyNoFiles(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyNoFilesResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void DicomStudyRawNoFiles(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyRawNoFilesResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void DicomStudyRawNoFiles(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyRawNoFilesResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void DicomStudyRawNoFiles(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyRawNoFilesResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void DicomStudyNoFilesExcludingMultiFrames(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyNoFilesExcludingMultiFramesResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void DicomStudyNoFilesExcludingMultiFrames(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyNoFilesExcludingMultiFramesResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void DicomStudyNoFilesExcludingMultiFrames(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyNoFilesExcludingMultiFramesResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void DicomStudyNumberOfImages(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyNumberOfImagesResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void DicomStudyNumberOfImages(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyNumberOfImagesResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void DicomStudyNumberOfImages(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyNumberOfImagesResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void DicomStudySeries(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudySeriesResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void DicomStudySeries(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudySeriesResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void DicomStudySeries(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudySeriesResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void DicomStudyName(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyNameResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void DicomStudyName(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyNameResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void DicomStudyName(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyNameResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void DicomStudyDate(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyDateResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void DicomStudyDate(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyDateResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void DicomStudyDate(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyDateResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void DicomStudyDateAdded(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyDateAddedResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void DicomStudyDateAdded(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyDateAddedResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void DicomStudyDateAdded(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyDateAddedResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void DicomStudyDateOfBirth(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyDateOfBirthResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void DicomStudyDateOfBirth(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyDateOfBirthResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void DicomStudyDateOfBirth(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyDateOfBirthResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void DicomStudyInstitutionName(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyInstitutionNameResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void DicomStudyInstitutionName(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyInstitutionNameResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void DicomStudyInstitutionName(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyInstitutionNameResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void DicomStudyModality(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyModalityResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void DicomStudyModality(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyModalityResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void DicomStudyModality(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyModalityResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void DicomStudyPatientID(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyPatientIDResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void DicomStudyPatientID(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyPatientIDResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void DicomStudyPatientID(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyPatientIDResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void DicomStudyPatientUID(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyPatientUIDResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void DicomStudyPatientUID(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyPatientUIDResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void DicomStudyPatientUID(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyPatientUIDResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void DicomStudyPatientSex(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyPatientSexResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void DicomStudyPatientSex(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyPatientSexResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void DicomStudyPatientSex(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyPatientSexResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void DicomStudyPerformingPhysician(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyPerformingPhysicianResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void DicomStudyPerformingPhysician(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyPerformingPhysicianResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void DicomStudyPerformingPhysician(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyPerformingPhysicianResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void DicomStudyReferringPhysician(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyReferringPhysicianResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void DicomStudyReferringPhysician(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyReferringPhysicianResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void DicomStudyReferringPhysician(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyReferringPhysicianResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void DicomStudyStudyInstanceUID(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyStudyInstanceUIDResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void DicomStudyStudyInstanceUID(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyStudyInstanceUIDResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void DicomStudyStudyInstanceUID(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyStudyInstanceUIDResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void DicomStudyStudyName(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyStudyNameResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void DicomStudyStudyName(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyStudyNameResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void DicomStudyStudyName(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyStudyNameResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
      private:
       friend class Stub;
-      explicit experimental_async(Stub* stub): stub_(stub) { }
+      explicit async(Stub* stub): stub_(stub) { }
       Stub* stub() { return stub_; }
       Stub* stub_;
     };
-    class experimental_async_interface* experimental_async() override { return &async_stub_; }
+    class async* async() override { return &async_stub_; }
 
    private:
     std::shared_ptr< ::grpc::ChannelInterface> channel_;
-    class experimental_async async_stub_{this};
+    class async async_stub_{this};
     ::grpc::ClientAsyncResponseReader< ::osirixgrpc::OsirixCurrentBrowserResponse>* AsyncOsirixCurrentBrowserRaw(::grpc::ClientContext* context, const ::osirixgrpc::Empty& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::osirixgrpc::OsirixCurrentBrowserResponse>* PrepareAsyncOsirixCurrentBrowserRaw(::grpc::ClientContext* context, const ::osirixgrpc::Empty& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::osirixgrpc::OsirixFrontmostViewerResponse>* AsyncOsirixFrontmostViewerRaw(::grpc::ClientContext* context, const ::osirixgrpc::Empty& request, ::grpc::CompletionQueue* cq) override;
@@ -6970,36 +5909,22 @@ class OsiriXService final {
   };
   typedef WithAsyncMethod_OsirixCurrentBrowser<WithAsyncMethod_OsirixFrontmostViewer<WithAsyncMethod_OsirixDisplayed2DViewers<WithAsyncMethod_OsirixFrontmostVRController<WithAsyncMethod_OsirixDisplayedVRControllers<WithAsyncMethod_ROIFlipHorizontally<WithAsyncMethod_ROIFlipVertically<WithAsyncMethod_ROIArea<WithAsyncMethod_ROICentroid<WithAsyncMethod_ROIRotate<WithAsyncMethod_ROIMove<WithAsyncMethod_ROIPix<WithAsyncMethod_ROIName<WithAsyncMethod_ROIIType<WithAsyncMethod_ROISetName<WithAsyncMethod_ROIColor<WithAsyncMethod_ROISetColor<WithAsyncMethod_ROIOpacity<WithAsyncMethod_ROISetOpacity<WithAsyncMethod_ROIThickness<WithAsyncMethod_ROISetThickness<WithAsyncMethod_ROIPoints<WithAsyncMethod_ROISetPoints<WithAsyncMethod_ROIVolumeTexture<WithAsyncMethod_ROIVolumeSetTexture<WithAsyncMethod_ROIVolumeVolume<WithAsyncMethod_ROIVolumeColor<WithAsyncMethod_ROIVolumeSetColor<WithAsyncMethod_ROIVolumeOpacity<WithAsyncMethod_ROIVolumeSetOpacity<WithAsyncMethod_ROIVolumeFactor<WithAsyncMethod_ROIVolumeSetFactor<WithAsyncMethod_ROIVolumeName<WithAsyncMethod_ROIVolumeVisible<WithAsyncMethod_DCMPixConvertToRGB<WithAsyncMethod_DCMPixConvertToBW<WithAsyncMethod_DCMPixIsRGB<WithAsyncMethod_DCMPixComputeROI<WithAsyncMethod_DCMPixROIValues<WithAsyncMethod_DCMPixShape<WithAsyncMethod_DCMPixSpacing<WithAsyncMethod_DCMPixOrigin<WithAsyncMethod_DCMPixOrientation<WithAsyncMethod_DCMPixSliceLocation<WithAsyncMethod_DCMPixSourceFile<WithAsyncMethod_DCMPixImage<WithAsyncMethod_DCMPixSetImage<WithAsyncMethod_DCMPixGetMapFromROI<WithAsyncMethod_DCMPixDicomImage<WithAsyncMethod_DCMPixDicomSeries<WithAsyncMethod_DCMPixDicomStudy<WithAsyncMethod_VRControllerViewer2D<WithAsyncMethod_VRControllerBlendingController<WithAsyncMethod_VRControllerStyle<WithAsyncMethod_VRControllerTitle<WithAsyncMethod_VRControllerROIVolumes<WithAsyncMethod_VRControllerRenderingMode<WithAsyncMethod_VRControllerSetRenderingMode<WithAsyncMethod_VRControllerWLWW<WithAsyncMethod_VRControllerSetWLWW<WithAsyncMethod_VRControllerHideROIVolume<WithAsyncMethod_VRControllerDisplayROIVolume<WithAsyncMethod_VRControllerNeedsDisplayUpdate<WithAsyncMethod_ViewerControllerCloseViewer<WithAsyncMethod_ViewerControllerPixList<WithAsyncMethod_ViewerControllerNeedsDisplayUpdate<WithAsyncMethod_ViewerControllerROIList<WithAsyncMethod_ViewerControllerNewROI<WithAsyncMethod_ViewerControllerCurDCM<WithAsyncMethod_ViewerControllerROIsWithName<WithAsyncMethod_ViewerControllerSelectedROIs<WithAsyncMethod_ViewerControllerIsDataVolumic<WithAsyncMethod_ViewerControllerCopyViewerWindow<WithAsyncMethod_ViewerControllerResampleViewerController<WithAsyncMethod_ViewerControllerBlendingController<WithAsyncMethod_ViewerControllerVRControllers<WithAsyncMethod_ViewerControllerTitle<WithAsyncMethod_ViewerControllerModality<WithAsyncMethod_ViewerControllerMovieIdx<WithAsyncMethod_ViewerControllerSetMovieIdx<WithAsyncMethod_ViewerControllerMaxMovieIdx<WithAsyncMethod_ViewerControllerIdx<WithAsyncMethod_ViewerControllerSetIdx<WithAsyncMethod_ViewerControllerWLWW<WithAsyncMethod_ViewerControllerSetWLWW<WithAsyncMethod_ViewerControllerOpenVRViewerForMode<WithAsyncMethod_BrowserControllerDatabaseSelection<WithAsyncMethod_BrowserControllerCopyFilesIfNeeded<WithAsyncMethod_DicomImageWidth<WithAsyncMethod_DicomImageHeight<WithAsyncMethod_DicomImageSOPInstanceUID<WithAsyncMethod_DicomImageCompletePath<WithAsyncMethod_DicomImageDate<WithAsyncMethod_DicomImageNumberOfFrames<WithAsyncMethod_DicomImageModality<WithAsyncMethod_DicomImageSeries<WithAsyncMethod_DicomImageSliceLocation<WithAsyncMethod_DicomImageInstanceNumber<WithAsyncMethod_DicomSeriesPaths<WithAsyncMethod_DicomSeriesPreviousSeries<WithAsyncMethod_DicomSeriesNextSeries<WithAsyncMethod_DicomSeriesSortedImages<WithAsyncMethod_DicomSeriesStudy<WithAsyncMethod_DicomSeriesImages<WithAsyncMethod_DicomSeriesSeriesInstanceUID<WithAsyncMethod_DicomSeriesSeriesSOPClassUID<WithAsyncMethod_DicomSeriesSeriesDescription<WithAsyncMethod_DicomSeriesModality<WithAsyncMethod_DicomSeriesName<WithAsyncMethod_DicomSeriesDate<WithAsyncMethod_DicomSeriesNumberOfImages<WithAsyncMethod_DicomStudyPaths<WithAsyncMethod_DicomStudyImages<WithAsyncMethod_DicomStudyModalities<WithAsyncMethod_DicomStudyNoFiles<WithAsyncMethod_DicomStudyRawNoFiles<WithAsyncMethod_DicomStudyNoFilesExcludingMultiFrames<WithAsyncMethod_DicomStudyNumberOfImages<WithAsyncMethod_DicomStudySeries<WithAsyncMethod_DicomStudyName<WithAsyncMethod_DicomStudyDate<WithAsyncMethod_DicomStudyDateAdded<WithAsyncMethod_DicomStudyDateOfBirth<WithAsyncMethod_DicomStudyInstitutionName<WithAsyncMethod_DicomStudyModality<WithAsyncMethod_DicomStudyPatientID<WithAsyncMethod_DicomStudyPatientUID<WithAsyncMethod_DicomStudyPatientSex<WithAsyncMethod_DicomStudyPerformingPhysician<WithAsyncMethod_DicomStudyReferringPhysician<WithAsyncMethod_DicomStudyStudyInstanceUID<WithAsyncMethod_DicomStudyStudyName<Service > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > AsyncService;
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_OsirixCurrentBrowser : public BaseClass {
+  class WithCallbackMethod_OsirixCurrentBrowser : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_OsirixCurrentBrowser() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(0,
+    WithCallbackMethod_OsirixCurrentBrowser() {
+      ::grpc::Service::MarkMethodCallback(0,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::Empty, ::osirixgrpc::OsirixCurrentBrowserResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::Empty* request, ::osirixgrpc::OsirixCurrentBrowserResponse* response) { return this->OsirixCurrentBrowser(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::Empty* request, ::osirixgrpc::OsirixCurrentBrowserResponse* response) { return this->OsirixCurrentBrowser(context, request, response); }));}
     void SetMessageAllocatorFor_OsirixCurrentBrowser(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::Empty, ::osirixgrpc::OsirixCurrentBrowserResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::Empty, ::osirixgrpc::OsirixCurrentBrowserResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(0);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(0);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::Empty, ::osirixgrpc::OsirixCurrentBrowserResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_OsirixCurrentBrowser() override {
+    ~WithCallbackMethod_OsirixCurrentBrowser() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -7007,46 +5932,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* OsirixCurrentBrowser(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::Empty* /*request*/, ::osirixgrpc::OsirixCurrentBrowserResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* OsirixCurrentBrowser(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::Empty* /*request*/, ::osirixgrpc::OsirixCurrentBrowserResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::Empty* /*request*/, ::osirixgrpc::OsirixCurrentBrowserResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_OsirixFrontmostViewer : public BaseClass {
+  class WithCallbackMethod_OsirixFrontmostViewer : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_OsirixFrontmostViewer() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(1,
+    WithCallbackMethod_OsirixFrontmostViewer() {
+      ::grpc::Service::MarkMethodCallback(1,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::Empty, ::osirixgrpc::OsirixFrontmostViewerResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::Empty* request, ::osirixgrpc::OsirixFrontmostViewerResponse* response) { return this->OsirixFrontmostViewer(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::Empty* request, ::osirixgrpc::OsirixFrontmostViewerResponse* response) { return this->OsirixFrontmostViewer(context, request, response); }));}
     void SetMessageAllocatorFor_OsirixFrontmostViewer(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::Empty, ::osirixgrpc::OsirixFrontmostViewerResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::Empty, ::osirixgrpc::OsirixFrontmostViewerResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(1);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(1);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::Empty, ::osirixgrpc::OsirixFrontmostViewerResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_OsirixFrontmostViewer() override {
+    ~WithCallbackMethod_OsirixFrontmostViewer() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -7054,46 +5959,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* OsirixFrontmostViewer(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::Empty* /*request*/, ::osirixgrpc::OsirixFrontmostViewerResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* OsirixFrontmostViewer(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::Empty* /*request*/, ::osirixgrpc::OsirixFrontmostViewerResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::Empty* /*request*/, ::osirixgrpc::OsirixFrontmostViewerResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_OsirixDisplayed2DViewers : public BaseClass {
+  class WithCallbackMethod_OsirixDisplayed2DViewers : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_OsirixDisplayed2DViewers() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(2,
+    WithCallbackMethod_OsirixDisplayed2DViewers() {
+      ::grpc::Service::MarkMethodCallback(2,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::Empty, ::osirixgrpc::OsirixDisplayed2DViewersResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::Empty* request, ::osirixgrpc::OsirixDisplayed2DViewersResponse* response) { return this->OsirixDisplayed2DViewers(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::Empty* request, ::osirixgrpc::OsirixDisplayed2DViewersResponse* response) { return this->OsirixDisplayed2DViewers(context, request, response); }));}
     void SetMessageAllocatorFor_OsirixDisplayed2DViewers(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::Empty, ::osirixgrpc::OsirixDisplayed2DViewersResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::Empty, ::osirixgrpc::OsirixDisplayed2DViewersResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(2);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(2);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::Empty, ::osirixgrpc::OsirixDisplayed2DViewersResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_OsirixDisplayed2DViewers() override {
+    ~WithCallbackMethod_OsirixDisplayed2DViewers() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -7101,46 +5986,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* OsirixDisplayed2DViewers(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::Empty* /*request*/, ::osirixgrpc::OsirixDisplayed2DViewersResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* OsirixDisplayed2DViewers(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::Empty* /*request*/, ::osirixgrpc::OsirixDisplayed2DViewersResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::Empty* /*request*/, ::osirixgrpc::OsirixDisplayed2DViewersResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_OsirixFrontmostVRController : public BaseClass {
+  class WithCallbackMethod_OsirixFrontmostVRController : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_OsirixFrontmostVRController() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(3,
+    WithCallbackMethod_OsirixFrontmostVRController() {
+      ::grpc::Service::MarkMethodCallback(3,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::Empty, ::osirixgrpc::OsirixFrontmostVRControllerResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::Empty* request, ::osirixgrpc::OsirixFrontmostVRControllerResponse* response) { return this->OsirixFrontmostVRController(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::Empty* request, ::osirixgrpc::OsirixFrontmostVRControllerResponse* response) { return this->OsirixFrontmostVRController(context, request, response); }));}
     void SetMessageAllocatorFor_OsirixFrontmostVRController(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::Empty, ::osirixgrpc::OsirixFrontmostVRControllerResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::Empty, ::osirixgrpc::OsirixFrontmostVRControllerResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(3);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(3);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::Empty, ::osirixgrpc::OsirixFrontmostVRControllerResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_OsirixFrontmostVRController() override {
+    ~WithCallbackMethod_OsirixFrontmostVRController() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -7148,46 +6013,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* OsirixFrontmostVRController(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::Empty* /*request*/, ::osirixgrpc::OsirixFrontmostVRControllerResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* OsirixFrontmostVRController(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::Empty* /*request*/, ::osirixgrpc::OsirixFrontmostVRControllerResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::Empty* /*request*/, ::osirixgrpc::OsirixFrontmostVRControllerResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_OsirixDisplayedVRControllers : public BaseClass {
+  class WithCallbackMethod_OsirixDisplayedVRControllers : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_OsirixDisplayedVRControllers() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(4,
+    WithCallbackMethod_OsirixDisplayedVRControllers() {
+      ::grpc::Service::MarkMethodCallback(4,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::Empty, ::osirixgrpc::OsirixDisplayedVRControllersResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::Empty* request, ::osirixgrpc::OsirixDisplayedVRControllersResponse* response) { return this->OsirixDisplayedVRControllers(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::Empty* request, ::osirixgrpc::OsirixDisplayedVRControllersResponse* response) { return this->OsirixDisplayedVRControllers(context, request, response); }));}
     void SetMessageAllocatorFor_OsirixDisplayedVRControllers(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::Empty, ::osirixgrpc::OsirixDisplayedVRControllersResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::Empty, ::osirixgrpc::OsirixDisplayedVRControllersResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(4);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(4);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::Empty, ::osirixgrpc::OsirixDisplayedVRControllersResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_OsirixDisplayedVRControllers() override {
+    ~WithCallbackMethod_OsirixDisplayedVRControllers() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -7195,46 +6040,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* OsirixDisplayedVRControllers(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::Empty* /*request*/, ::osirixgrpc::OsirixDisplayedVRControllersResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* OsirixDisplayedVRControllers(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::Empty* /*request*/, ::osirixgrpc::OsirixDisplayedVRControllersResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::Empty* /*request*/, ::osirixgrpc::OsirixDisplayedVRControllersResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_ROIFlipHorizontally : public BaseClass {
+  class WithCallbackMethod_ROIFlipHorizontally : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_ROIFlipHorizontally() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(5,
+    WithCallbackMethod_ROIFlipHorizontally() {
+      ::grpc::Service::MarkMethodCallback(5,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ROI, ::osirixgrpc::Response>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::ROI* request, ::osirixgrpc::Response* response) { return this->ROIFlipHorizontally(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::Response* response) { return this->ROIFlipHorizontally(context, request, response); }));}
     void SetMessageAllocatorFor_ROIFlipHorizontally(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::ROI, ::osirixgrpc::Response>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::ROI, ::osirixgrpc::Response>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(5);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(5);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ROI, ::osirixgrpc::Response>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_ROIFlipHorizontally() override {
+    ~WithCallbackMethod_ROIFlipHorizontally() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -7242,46 +6067,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ROIFlipHorizontally(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ROI* /*request*/, ::osirixgrpc::Response* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ROIFlipHorizontally(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::ROI* /*request*/, ::osirixgrpc::Response* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ROI* /*request*/, ::osirixgrpc::Response* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_ROIFlipVertically : public BaseClass {
+  class WithCallbackMethod_ROIFlipVertically : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_ROIFlipVertically() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(6,
+    WithCallbackMethod_ROIFlipVertically() {
+      ::grpc::Service::MarkMethodCallback(6,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ROI, ::osirixgrpc::Response>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::ROI* request, ::osirixgrpc::Response* response) { return this->ROIFlipVertically(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::Response* response) { return this->ROIFlipVertically(context, request, response); }));}
     void SetMessageAllocatorFor_ROIFlipVertically(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::ROI, ::osirixgrpc::Response>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::ROI, ::osirixgrpc::Response>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(6);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(6);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ROI, ::osirixgrpc::Response>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_ROIFlipVertically() override {
+    ~WithCallbackMethod_ROIFlipVertically() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -7289,46 +6094,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ROIFlipVertically(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ROI* /*request*/, ::osirixgrpc::Response* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ROIFlipVertically(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::ROI* /*request*/, ::osirixgrpc::Response* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ROI* /*request*/, ::osirixgrpc::Response* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_ROIArea : public BaseClass {
+  class WithCallbackMethod_ROIArea : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_ROIArea() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(7,
+    WithCallbackMethod_ROIArea() {
+      ::grpc::Service::MarkMethodCallback(7,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ROI, ::osirixgrpc::ROIAreaResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROIAreaResponse* response) { return this->ROIArea(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROIAreaResponse* response) { return this->ROIArea(context, request, response); }));}
     void SetMessageAllocatorFor_ROIArea(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::ROI, ::osirixgrpc::ROIAreaResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::ROI, ::osirixgrpc::ROIAreaResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(7);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(7);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ROI, ::osirixgrpc::ROIAreaResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_ROIArea() override {
+    ~WithCallbackMethod_ROIArea() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -7336,46 +6121,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ROIArea(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ROI* /*request*/, ::osirixgrpc::ROIAreaResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ROIArea(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::ROI* /*request*/, ::osirixgrpc::ROIAreaResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ROI* /*request*/, ::osirixgrpc::ROIAreaResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_ROICentroid : public BaseClass {
+  class WithCallbackMethod_ROICentroid : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_ROICentroid() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(8,
+    WithCallbackMethod_ROICentroid() {
+      ::grpc::Service::MarkMethodCallback(8,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ROI, ::osirixgrpc::ROICentroidResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROICentroidResponse* response) { return this->ROICentroid(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROICentroidResponse* response) { return this->ROICentroid(context, request, response); }));}
     void SetMessageAllocatorFor_ROICentroid(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::ROI, ::osirixgrpc::ROICentroidResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::ROI, ::osirixgrpc::ROICentroidResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(8);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(8);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ROI, ::osirixgrpc::ROICentroidResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_ROICentroid() override {
+    ~WithCallbackMethod_ROICentroid() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -7383,46 +6148,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ROICentroid(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ROI* /*request*/, ::osirixgrpc::ROICentroidResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ROICentroid(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::ROI* /*request*/, ::osirixgrpc::ROICentroidResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ROI* /*request*/, ::osirixgrpc::ROICentroidResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_ROIRotate : public BaseClass {
+  class WithCallbackMethod_ROIRotate : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_ROIRotate() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(9,
+    WithCallbackMethod_ROIRotate() {
+      ::grpc::Service::MarkMethodCallback(9,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ROIRotateRequest, ::osirixgrpc::Response>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::ROIRotateRequest* request, ::osirixgrpc::Response* response) { return this->ROIRotate(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::ROIRotateRequest* request, ::osirixgrpc::Response* response) { return this->ROIRotate(context, request, response); }));}
     void SetMessageAllocatorFor_ROIRotate(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::ROIRotateRequest, ::osirixgrpc::Response>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::ROIRotateRequest, ::osirixgrpc::Response>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(9);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(9);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ROIRotateRequest, ::osirixgrpc::Response>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_ROIRotate() override {
+    ~WithCallbackMethod_ROIRotate() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -7430,46 +6175,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ROIRotate(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ROIRotateRequest* /*request*/, ::osirixgrpc::Response* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ROIRotate(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::ROIRotateRequest* /*request*/, ::osirixgrpc::Response* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ROIRotateRequest* /*request*/, ::osirixgrpc::Response* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_ROIMove : public BaseClass {
+  class WithCallbackMethod_ROIMove : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_ROIMove() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(10,
+    WithCallbackMethod_ROIMove() {
+      ::grpc::Service::MarkMethodCallback(10,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ROIMoveRequest, ::osirixgrpc::Response>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::ROIMoveRequest* request, ::osirixgrpc::Response* response) { return this->ROIMove(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::ROIMoveRequest* request, ::osirixgrpc::Response* response) { return this->ROIMove(context, request, response); }));}
     void SetMessageAllocatorFor_ROIMove(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::ROIMoveRequest, ::osirixgrpc::Response>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::ROIMoveRequest, ::osirixgrpc::Response>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(10);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(10);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ROIMoveRequest, ::osirixgrpc::Response>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_ROIMove() override {
+    ~WithCallbackMethod_ROIMove() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -7477,46 +6202,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ROIMove(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ROIMoveRequest* /*request*/, ::osirixgrpc::Response* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ROIMove(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::ROIMoveRequest* /*request*/, ::osirixgrpc::Response* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ROIMoveRequest* /*request*/, ::osirixgrpc::Response* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_ROIPix : public BaseClass {
+  class WithCallbackMethod_ROIPix : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_ROIPix() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(11,
+    WithCallbackMethod_ROIPix() {
+      ::grpc::Service::MarkMethodCallback(11,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ROI, ::osirixgrpc::ROIPixResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROIPixResponse* response) { return this->ROIPix(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROIPixResponse* response) { return this->ROIPix(context, request, response); }));}
     void SetMessageAllocatorFor_ROIPix(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::ROI, ::osirixgrpc::ROIPixResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::ROI, ::osirixgrpc::ROIPixResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(11);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(11);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ROI, ::osirixgrpc::ROIPixResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_ROIPix() override {
+    ~WithCallbackMethod_ROIPix() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -7524,46 +6229,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ROIPix(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ROI* /*request*/, ::osirixgrpc::ROIPixResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ROIPix(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::ROI* /*request*/, ::osirixgrpc::ROIPixResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ROI* /*request*/, ::osirixgrpc::ROIPixResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_ROIName : public BaseClass {
+  class WithCallbackMethod_ROIName : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_ROIName() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(12,
+    WithCallbackMethod_ROIName() {
+      ::grpc::Service::MarkMethodCallback(12,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ROI, ::osirixgrpc::ROINameResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROINameResponse* response) { return this->ROIName(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROINameResponse* response) { return this->ROIName(context, request, response); }));}
     void SetMessageAllocatorFor_ROIName(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::ROI, ::osirixgrpc::ROINameResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::ROI, ::osirixgrpc::ROINameResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(12);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(12);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ROI, ::osirixgrpc::ROINameResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_ROIName() override {
+    ~WithCallbackMethod_ROIName() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -7571,46 +6256,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ROIName(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ROI* /*request*/, ::osirixgrpc::ROINameResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ROIName(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::ROI* /*request*/, ::osirixgrpc::ROINameResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ROI* /*request*/, ::osirixgrpc::ROINameResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_ROIIType : public BaseClass {
+  class WithCallbackMethod_ROIIType : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_ROIIType() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(13,
+    WithCallbackMethod_ROIIType() {
+      ::grpc::Service::MarkMethodCallback(13,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ROI, ::osirixgrpc::ROIITypeResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROIITypeResponse* response) { return this->ROIIType(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROIITypeResponse* response) { return this->ROIIType(context, request, response); }));}
     void SetMessageAllocatorFor_ROIIType(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::ROI, ::osirixgrpc::ROIITypeResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::ROI, ::osirixgrpc::ROIITypeResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(13);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(13);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ROI, ::osirixgrpc::ROIITypeResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_ROIIType() override {
+    ~WithCallbackMethod_ROIIType() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -7618,46 +6283,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ROIIType(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ROI* /*request*/, ::osirixgrpc::ROIITypeResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ROIIType(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::ROI* /*request*/, ::osirixgrpc::ROIITypeResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ROI* /*request*/, ::osirixgrpc::ROIITypeResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_ROISetName : public BaseClass {
+  class WithCallbackMethod_ROISetName : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_ROISetName() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(14,
+    WithCallbackMethod_ROISetName() {
+      ::grpc::Service::MarkMethodCallback(14,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ROISetNameRequest, ::osirixgrpc::Response>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::ROISetNameRequest* request, ::osirixgrpc::Response* response) { return this->ROISetName(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::ROISetNameRequest* request, ::osirixgrpc::Response* response) { return this->ROISetName(context, request, response); }));}
     void SetMessageAllocatorFor_ROISetName(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::ROISetNameRequest, ::osirixgrpc::Response>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::ROISetNameRequest, ::osirixgrpc::Response>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(14);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(14);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ROISetNameRequest, ::osirixgrpc::Response>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_ROISetName() override {
+    ~WithCallbackMethod_ROISetName() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -7665,46 +6310,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ROISetName(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ROISetNameRequest* /*request*/, ::osirixgrpc::Response* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ROISetName(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::ROISetNameRequest* /*request*/, ::osirixgrpc::Response* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ROISetNameRequest* /*request*/, ::osirixgrpc::Response* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_ROIColor : public BaseClass {
+  class WithCallbackMethod_ROIColor : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_ROIColor() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(15,
+    WithCallbackMethod_ROIColor() {
+      ::grpc::Service::MarkMethodCallback(15,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ROI, ::osirixgrpc::ROIColorResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROIColorResponse* response) { return this->ROIColor(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROIColorResponse* response) { return this->ROIColor(context, request, response); }));}
     void SetMessageAllocatorFor_ROIColor(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::ROI, ::osirixgrpc::ROIColorResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::ROI, ::osirixgrpc::ROIColorResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(15);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(15);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ROI, ::osirixgrpc::ROIColorResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_ROIColor() override {
+    ~WithCallbackMethod_ROIColor() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -7712,46 +6337,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ROIColor(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ROI* /*request*/, ::osirixgrpc::ROIColorResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ROIColor(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::ROI* /*request*/, ::osirixgrpc::ROIColorResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ROI* /*request*/, ::osirixgrpc::ROIColorResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_ROISetColor : public BaseClass {
+  class WithCallbackMethod_ROISetColor : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_ROISetColor() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(16,
+    WithCallbackMethod_ROISetColor() {
+      ::grpc::Service::MarkMethodCallback(16,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ROISetColorRequest, ::osirixgrpc::Response>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::ROISetColorRequest* request, ::osirixgrpc::Response* response) { return this->ROISetColor(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::ROISetColorRequest* request, ::osirixgrpc::Response* response) { return this->ROISetColor(context, request, response); }));}
     void SetMessageAllocatorFor_ROISetColor(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::ROISetColorRequest, ::osirixgrpc::Response>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::ROISetColorRequest, ::osirixgrpc::Response>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(16);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(16);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ROISetColorRequest, ::osirixgrpc::Response>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_ROISetColor() override {
+    ~WithCallbackMethod_ROISetColor() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -7759,46 +6364,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ROISetColor(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ROISetColorRequest* /*request*/, ::osirixgrpc::Response* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ROISetColor(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::ROISetColorRequest* /*request*/, ::osirixgrpc::Response* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ROISetColorRequest* /*request*/, ::osirixgrpc::Response* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_ROIOpacity : public BaseClass {
+  class WithCallbackMethod_ROIOpacity : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_ROIOpacity() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(17,
+    WithCallbackMethod_ROIOpacity() {
+      ::grpc::Service::MarkMethodCallback(17,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ROI, ::osirixgrpc::ROIOpacityResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROIOpacityResponse* response) { return this->ROIOpacity(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROIOpacityResponse* response) { return this->ROIOpacity(context, request, response); }));}
     void SetMessageAllocatorFor_ROIOpacity(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::ROI, ::osirixgrpc::ROIOpacityResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::ROI, ::osirixgrpc::ROIOpacityResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(17);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(17);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ROI, ::osirixgrpc::ROIOpacityResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_ROIOpacity() override {
+    ~WithCallbackMethod_ROIOpacity() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -7806,46 +6391,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ROIOpacity(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ROI* /*request*/, ::osirixgrpc::ROIOpacityResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ROIOpacity(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::ROI* /*request*/, ::osirixgrpc::ROIOpacityResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ROI* /*request*/, ::osirixgrpc::ROIOpacityResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_ROISetOpacity : public BaseClass {
+  class WithCallbackMethod_ROISetOpacity : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_ROISetOpacity() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(18,
+    WithCallbackMethod_ROISetOpacity() {
+      ::grpc::Service::MarkMethodCallback(18,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ROISetOpacityRequest, ::osirixgrpc::Response>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::ROISetOpacityRequest* request, ::osirixgrpc::Response* response) { return this->ROISetOpacity(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::ROISetOpacityRequest* request, ::osirixgrpc::Response* response) { return this->ROISetOpacity(context, request, response); }));}
     void SetMessageAllocatorFor_ROISetOpacity(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::ROISetOpacityRequest, ::osirixgrpc::Response>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::ROISetOpacityRequest, ::osirixgrpc::Response>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(18);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(18);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ROISetOpacityRequest, ::osirixgrpc::Response>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_ROISetOpacity() override {
+    ~WithCallbackMethod_ROISetOpacity() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -7853,46 +6418,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ROISetOpacity(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ROISetOpacityRequest* /*request*/, ::osirixgrpc::Response* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ROISetOpacity(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::ROISetOpacityRequest* /*request*/, ::osirixgrpc::Response* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ROISetOpacityRequest* /*request*/, ::osirixgrpc::Response* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_ROIThickness : public BaseClass {
+  class WithCallbackMethod_ROIThickness : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_ROIThickness() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(19,
+    WithCallbackMethod_ROIThickness() {
+      ::grpc::Service::MarkMethodCallback(19,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ROI, ::osirixgrpc::ROIThicknessResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROIThicknessResponse* response) { return this->ROIThickness(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROIThicknessResponse* response) { return this->ROIThickness(context, request, response); }));}
     void SetMessageAllocatorFor_ROIThickness(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::ROI, ::osirixgrpc::ROIThicknessResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::ROI, ::osirixgrpc::ROIThicknessResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(19);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(19);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ROI, ::osirixgrpc::ROIThicknessResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_ROIThickness() override {
+    ~WithCallbackMethod_ROIThickness() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -7900,46 +6445,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ROIThickness(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ROI* /*request*/, ::osirixgrpc::ROIThicknessResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ROIThickness(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::ROI* /*request*/, ::osirixgrpc::ROIThicknessResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ROI* /*request*/, ::osirixgrpc::ROIThicknessResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_ROISetThickness : public BaseClass {
+  class WithCallbackMethod_ROISetThickness : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_ROISetThickness() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(20,
+    WithCallbackMethod_ROISetThickness() {
+      ::grpc::Service::MarkMethodCallback(20,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ROISetThicknessRequest, ::osirixgrpc::Response>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::ROISetThicknessRequest* request, ::osirixgrpc::Response* response) { return this->ROISetThickness(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::ROISetThicknessRequest* request, ::osirixgrpc::Response* response) { return this->ROISetThickness(context, request, response); }));}
     void SetMessageAllocatorFor_ROISetThickness(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::ROISetThicknessRequest, ::osirixgrpc::Response>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::ROISetThicknessRequest, ::osirixgrpc::Response>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(20);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(20);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ROISetThicknessRequest, ::osirixgrpc::Response>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_ROISetThickness() override {
+    ~WithCallbackMethod_ROISetThickness() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -7947,46 +6472,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ROISetThickness(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ROISetThicknessRequest* /*request*/, ::osirixgrpc::Response* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ROISetThickness(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::ROISetThicknessRequest* /*request*/, ::osirixgrpc::Response* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ROISetThicknessRequest* /*request*/, ::osirixgrpc::Response* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_ROIPoints : public BaseClass {
+  class WithCallbackMethod_ROIPoints : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_ROIPoints() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(21,
+    WithCallbackMethod_ROIPoints() {
+      ::grpc::Service::MarkMethodCallback(21,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ROI, ::osirixgrpc::ROIPointsResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROIPointsResponse* response) { return this->ROIPoints(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROIPointsResponse* response) { return this->ROIPoints(context, request, response); }));}
     void SetMessageAllocatorFor_ROIPoints(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::ROI, ::osirixgrpc::ROIPointsResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::ROI, ::osirixgrpc::ROIPointsResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(21);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(21);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ROI, ::osirixgrpc::ROIPointsResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_ROIPoints() override {
+    ~WithCallbackMethod_ROIPoints() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -7994,46 +6499,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ROIPoints(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ROI* /*request*/, ::osirixgrpc::ROIPointsResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ROIPoints(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::ROI* /*request*/, ::osirixgrpc::ROIPointsResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ROI* /*request*/, ::osirixgrpc::ROIPointsResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_ROISetPoints : public BaseClass {
+  class WithCallbackMethod_ROISetPoints : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_ROISetPoints() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(22,
+    WithCallbackMethod_ROISetPoints() {
+      ::grpc::Service::MarkMethodCallback(22,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ROISetPointsRequest, ::osirixgrpc::Response>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::ROISetPointsRequest* request, ::osirixgrpc::Response* response) { return this->ROISetPoints(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::ROISetPointsRequest* request, ::osirixgrpc::Response* response) { return this->ROISetPoints(context, request, response); }));}
     void SetMessageAllocatorFor_ROISetPoints(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::ROISetPointsRequest, ::osirixgrpc::Response>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::ROISetPointsRequest, ::osirixgrpc::Response>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(22);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(22);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ROISetPointsRequest, ::osirixgrpc::Response>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_ROISetPoints() override {
+    ~WithCallbackMethod_ROISetPoints() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -8041,46 +6526,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ROISetPoints(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ROISetPointsRequest* /*request*/, ::osirixgrpc::Response* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ROISetPoints(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::ROISetPointsRequest* /*request*/, ::osirixgrpc::Response* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ROISetPointsRequest* /*request*/, ::osirixgrpc::Response* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_ROIVolumeTexture : public BaseClass {
+  class WithCallbackMethod_ROIVolumeTexture : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_ROIVolumeTexture() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(23,
+    WithCallbackMethod_ROIVolumeTexture() {
+      ::grpc::Service::MarkMethodCallback(23,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ROIVolume, ::osirixgrpc::ROIVolumeTextureResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::ROIVolume* request, ::osirixgrpc::ROIVolumeTextureResponse* response) { return this->ROIVolumeTexture(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::ROIVolume* request, ::osirixgrpc::ROIVolumeTextureResponse* response) { return this->ROIVolumeTexture(context, request, response); }));}
     void SetMessageAllocatorFor_ROIVolumeTexture(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::ROIVolume, ::osirixgrpc::ROIVolumeTextureResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::ROIVolume, ::osirixgrpc::ROIVolumeTextureResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(23);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(23);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ROIVolume, ::osirixgrpc::ROIVolumeTextureResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_ROIVolumeTexture() override {
+    ~WithCallbackMethod_ROIVolumeTexture() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -8088,46 +6553,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ROIVolumeTexture(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ROIVolume* /*request*/, ::osirixgrpc::ROIVolumeTextureResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ROIVolumeTexture(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::ROIVolume* /*request*/, ::osirixgrpc::ROIVolumeTextureResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ROIVolume* /*request*/, ::osirixgrpc::ROIVolumeTextureResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_ROIVolumeSetTexture : public BaseClass {
+  class WithCallbackMethod_ROIVolumeSetTexture : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_ROIVolumeSetTexture() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(24,
+    WithCallbackMethod_ROIVolumeSetTexture() {
+      ::grpc::Service::MarkMethodCallback(24,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ROIVolumeSetTextureRequest, ::osirixgrpc::Response>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::ROIVolumeSetTextureRequest* request, ::osirixgrpc::Response* response) { return this->ROIVolumeSetTexture(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::ROIVolumeSetTextureRequest* request, ::osirixgrpc::Response* response) { return this->ROIVolumeSetTexture(context, request, response); }));}
     void SetMessageAllocatorFor_ROIVolumeSetTexture(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::ROIVolumeSetTextureRequest, ::osirixgrpc::Response>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::ROIVolumeSetTextureRequest, ::osirixgrpc::Response>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(24);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(24);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ROIVolumeSetTextureRequest, ::osirixgrpc::Response>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_ROIVolumeSetTexture() override {
+    ~WithCallbackMethod_ROIVolumeSetTexture() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -8135,46 +6580,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ROIVolumeSetTexture(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ROIVolumeSetTextureRequest* /*request*/, ::osirixgrpc::Response* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ROIVolumeSetTexture(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::ROIVolumeSetTextureRequest* /*request*/, ::osirixgrpc::Response* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ROIVolumeSetTextureRequest* /*request*/, ::osirixgrpc::Response* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_ROIVolumeVolume : public BaseClass {
+  class WithCallbackMethod_ROIVolumeVolume : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_ROIVolumeVolume() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(25,
+    WithCallbackMethod_ROIVolumeVolume() {
+      ::grpc::Service::MarkMethodCallback(25,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ROIVolume, ::osirixgrpc::ROIVolumeVolumeResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::ROIVolume* request, ::osirixgrpc::ROIVolumeVolumeResponse* response) { return this->ROIVolumeVolume(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::ROIVolume* request, ::osirixgrpc::ROIVolumeVolumeResponse* response) { return this->ROIVolumeVolume(context, request, response); }));}
     void SetMessageAllocatorFor_ROIVolumeVolume(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::ROIVolume, ::osirixgrpc::ROIVolumeVolumeResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::ROIVolume, ::osirixgrpc::ROIVolumeVolumeResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(25);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(25);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ROIVolume, ::osirixgrpc::ROIVolumeVolumeResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_ROIVolumeVolume() override {
+    ~WithCallbackMethod_ROIVolumeVolume() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -8182,46 +6607,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ROIVolumeVolume(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ROIVolume* /*request*/, ::osirixgrpc::ROIVolumeVolumeResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ROIVolumeVolume(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::ROIVolume* /*request*/, ::osirixgrpc::ROIVolumeVolumeResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ROIVolume* /*request*/, ::osirixgrpc::ROIVolumeVolumeResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_ROIVolumeColor : public BaseClass {
+  class WithCallbackMethod_ROIVolumeColor : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_ROIVolumeColor() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(26,
+    WithCallbackMethod_ROIVolumeColor() {
+      ::grpc::Service::MarkMethodCallback(26,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ROIVolume, ::osirixgrpc::ROIVolumeColorResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::ROIVolume* request, ::osirixgrpc::ROIVolumeColorResponse* response) { return this->ROIVolumeColor(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::ROIVolume* request, ::osirixgrpc::ROIVolumeColorResponse* response) { return this->ROIVolumeColor(context, request, response); }));}
     void SetMessageAllocatorFor_ROIVolumeColor(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::ROIVolume, ::osirixgrpc::ROIVolumeColorResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::ROIVolume, ::osirixgrpc::ROIVolumeColorResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(26);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(26);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ROIVolume, ::osirixgrpc::ROIVolumeColorResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_ROIVolumeColor() override {
+    ~WithCallbackMethod_ROIVolumeColor() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -8229,46 +6634,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ROIVolumeColor(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ROIVolume* /*request*/, ::osirixgrpc::ROIVolumeColorResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ROIVolumeColor(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::ROIVolume* /*request*/, ::osirixgrpc::ROIVolumeColorResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ROIVolume* /*request*/, ::osirixgrpc::ROIVolumeColorResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_ROIVolumeSetColor : public BaseClass {
+  class WithCallbackMethod_ROIVolumeSetColor : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_ROIVolumeSetColor() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(27,
+    WithCallbackMethod_ROIVolumeSetColor() {
+      ::grpc::Service::MarkMethodCallback(27,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ROIVolumeSetColorRequest, ::osirixgrpc::Response>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::ROIVolumeSetColorRequest* request, ::osirixgrpc::Response* response) { return this->ROIVolumeSetColor(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::ROIVolumeSetColorRequest* request, ::osirixgrpc::Response* response) { return this->ROIVolumeSetColor(context, request, response); }));}
     void SetMessageAllocatorFor_ROIVolumeSetColor(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::ROIVolumeSetColorRequest, ::osirixgrpc::Response>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::ROIVolumeSetColorRequest, ::osirixgrpc::Response>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(27);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(27);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ROIVolumeSetColorRequest, ::osirixgrpc::Response>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_ROIVolumeSetColor() override {
+    ~WithCallbackMethod_ROIVolumeSetColor() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -8276,46 +6661,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ROIVolumeSetColor(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ROIVolumeSetColorRequest* /*request*/, ::osirixgrpc::Response* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ROIVolumeSetColor(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::ROIVolumeSetColorRequest* /*request*/, ::osirixgrpc::Response* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ROIVolumeSetColorRequest* /*request*/, ::osirixgrpc::Response* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_ROIVolumeOpacity : public BaseClass {
+  class WithCallbackMethod_ROIVolumeOpacity : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_ROIVolumeOpacity() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(28,
+    WithCallbackMethod_ROIVolumeOpacity() {
+      ::grpc::Service::MarkMethodCallback(28,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ROIVolume, ::osirixgrpc::ROIVolumeOpacityResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::ROIVolume* request, ::osirixgrpc::ROIVolumeOpacityResponse* response) { return this->ROIVolumeOpacity(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::ROIVolume* request, ::osirixgrpc::ROIVolumeOpacityResponse* response) { return this->ROIVolumeOpacity(context, request, response); }));}
     void SetMessageAllocatorFor_ROIVolumeOpacity(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::ROIVolume, ::osirixgrpc::ROIVolumeOpacityResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::ROIVolume, ::osirixgrpc::ROIVolumeOpacityResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(28);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(28);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ROIVolume, ::osirixgrpc::ROIVolumeOpacityResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_ROIVolumeOpacity() override {
+    ~WithCallbackMethod_ROIVolumeOpacity() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -8323,46 +6688,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ROIVolumeOpacity(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ROIVolume* /*request*/, ::osirixgrpc::ROIVolumeOpacityResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ROIVolumeOpacity(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::ROIVolume* /*request*/, ::osirixgrpc::ROIVolumeOpacityResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ROIVolume* /*request*/, ::osirixgrpc::ROIVolumeOpacityResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_ROIVolumeSetOpacity : public BaseClass {
+  class WithCallbackMethod_ROIVolumeSetOpacity : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_ROIVolumeSetOpacity() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(29,
+    WithCallbackMethod_ROIVolumeSetOpacity() {
+      ::grpc::Service::MarkMethodCallback(29,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ROIVolumeSetOpacityRequest, ::osirixgrpc::Response>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::ROIVolumeSetOpacityRequest* request, ::osirixgrpc::Response* response) { return this->ROIVolumeSetOpacity(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::ROIVolumeSetOpacityRequest* request, ::osirixgrpc::Response* response) { return this->ROIVolumeSetOpacity(context, request, response); }));}
     void SetMessageAllocatorFor_ROIVolumeSetOpacity(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::ROIVolumeSetOpacityRequest, ::osirixgrpc::Response>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::ROIVolumeSetOpacityRequest, ::osirixgrpc::Response>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(29);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(29);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ROIVolumeSetOpacityRequest, ::osirixgrpc::Response>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_ROIVolumeSetOpacity() override {
+    ~WithCallbackMethod_ROIVolumeSetOpacity() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -8370,46 +6715,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ROIVolumeSetOpacity(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ROIVolumeSetOpacityRequest* /*request*/, ::osirixgrpc::Response* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ROIVolumeSetOpacity(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::ROIVolumeSetOpacityRequest* /*request*/, ::osirixgrpc::Response* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ROIVolumeSetOpacityRequest* /*request*/, ::osirixgrpc::Response* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_ROIVolumeFactor : public BaseClass {
+  class WithCallbackMethod_ROIVolumeFactor : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_ROIVolumeFactor() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(30,
+    WithCallbackMethod_ROIVolumeFactor() {
+      ::grpc::Service::MarkMethodCallback(30,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ROIVolume, ::osirixgrpc::ROIVolumeFactorResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::ROIVolume* request, ::osirixgrpc::ROIVolumeFactorResponse* response) { return this->ROIVolumeFactor(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::ROIVolume* request, ::osirixgrpc::ROIVolumeFactorResponse* response) { return this->ROIVolumeFactor(context, request, response); }));}
     void SetMessageAllocatorFor_ROIVolumeFactor(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::ROIVolume, ::osirixgrpc::ROIVolumeFactorResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::ROIVolume, ::osirixgrpc::ROIVolumeFactorResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(30);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(30);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ROIVolume, ::osirixgrpc::ROIVolumeFactorResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_ROIVolumeFactor() override {
+    ~WithCallbackMethod_ROIVolumeFactor() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -8417,46 +6742,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ROIVolumeFactor(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ROIVolume* /*request*/, ::osirixgrpc::ROIVolumeFactorResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ROIVolumeFactor(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::ROIVolume* /*request*/, ::osirixgrpc::ROIVolumeFactorResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ROIVolume* /*request*/, ::osirixgrpc::ROIVolumeFactorResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_ROIVolumeSetFactor : public BaseClass {
+  class WithCallbackMethod_ROIVolumeSetFactor : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_ROIVolumeSetFactor() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(31,
+    WithCallbackMethod_ROIVolumeSetFactor() {
+      ::grpc::Service::MarkMethodCallback(31,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ROIVolumeSetFactorRequest, ::osirixgrpc::Response>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::ROIVolumeSetFactorRequest* request, ::osirixgrpc::Response* response) { return this->ROIVolumeSetFactor(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::ROIVolumeSetFactorRequest* request, ::osirixgrpc::Response* response) { return this->ROIVolumeSetFactor(context, request, response); }));}
     void SetMessageAllocatorFor_ROIVolumeSetFactor(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::ROIVolumeSetFactorRequest, ::osirixgrpc::Response>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::ROIVolumeSetFactorRequest, ::osirixgrpc::Response>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(31);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(31);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ROIVolumeSetFactorRequest, ::osirixgrpc::Response>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_ROIVolumeSetFactor() override {
+    ~WithCallbackMethod_ROIVolumeSetFactor() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -8464,46 +6769,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ROIVolumeSetFactor(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ROIVolumeSetFactorRequest* /*request*/, ::osirixgrpc::Response* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ROIVolumeSetFactor(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::ROIVolumeSetFactorRequest* /*request*/, ::osirixgrpc::Response* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ROIVolumeSetFactorRequest* /*request*/, ::osirixgrpc::Response* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_ROIVolumeName : public BaseClass {
+  class WithCallbackMethod_ROIVolumeName : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_ROIVolumeName() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(32,
+    WithCallbackMethod_ROIVolumeName() {
+      ::grpc::Service::MarkMethodCallback(32,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ROIVolume, ::osirixgrpc::ROIVolumeNameResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::ROIVolume* request, ::osirixgrpc::ROIVolumeNameResponse* response) { return this->ROIVolumeName(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::ROIVolume* request, ::osirixgrpc::ROIVolumeNameResponse* response) { return this->ROIVolumeName(context, request, response); }));}
     void SetMessageAllocatorFor_ROIVolumeName(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::ROIVolume, ::osirixgrpc::ROIVolumeNameResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::ROIVolume, ::osirixgrpc::ROIVolumeNameResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(32);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(32);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ROIVolume, ::osirixgrpc::ROIVolumeNameResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_ROIVolumeName() override {
+    ~WithCallbackMethod_ROIVolumeName() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -8511,46 +6796,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ROIVolumeName(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ROIVolume* /*request*/, ::osirixgrpc::ROIVolumeNameResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ROIVolumeName(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::ROIVolume* /*request*/, ::osirixgrpc::ROIVolumeNameResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ROIVolume* /*request*/, ::osirixgrpc::ROIVolumeNameResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_ROIVolumeVisible : public BaseClass {
+  class WithCallbackMethod_ROIVolumeVisible : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_ROIVolumeVisible() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(33,
+    WithCallbackMethod_ROIVolumeVisible() {
+      ::grpc::Service::MarkMethodCallback(33,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ROIVolume, ::osirixgrpc::ROIVolumeVisibleResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::ROIVolume* request, ::osirixgrpc::ROIVolumeVisibleResponse* response) { return this->ROIVolumeVisible(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::ROIVolume* request, ::osirixgrpc::ROIVolumeVisibleResponse* response) { return this->ROIVolumeVisible(context, request, response); }));}
     void SetMessageAllocatorFor_ROIVolumeVisible(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::ROIVolume, ::osirixgrpc::ROIVolumeVisibleResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::ROIVolume, ::osirixgrpc::ROIVolumeVisibleResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(33);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(33);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ROIVolume, ::osirixgrpc::ROIVolumeVisibleResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_ROIVolumeVisible() override {
+    ~WithCallbackMethod_ROIVolumeVisible() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -8558,46 +6823,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ROIVolumeVisible(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ROIVolume* /*request*/, ::osirixgrpc::ROIVolumeVisibleResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ROIVolumeVisible(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::ROIVolume* /*request*/, ::osirixgrpc::ROIVolumeVisibleResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ROIVolume* /*request*/, ::osirixgrpc::ROIVolumeVisibleResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_DCMPixConvertToRGB : public BaseClass {
+  class WithCallbackMethod_DCMPixConvertToRGB : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_DCMPixConvertToRGB() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(34,
+    WithCallbackMethod_DCMPixConvertToRGB() {
+      ::grpc::Service::MarkMethodCallback(34,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DCMPixConvertToRGBRequest, ::osirixgrpc::Response>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::DCMPixConvertToRGBRequest* request, ::osirixgrpc::Response* response) { return this->DCMPixConvertToRGB(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::DCMPixConvertToRGBRequest* request, ::osirixgrpc::Response* response) { return this->DCMPixConvertToRGB(context, request, response); }));}
     void SetMessageAllocatorFor_DCMPixConvertToRGB(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::DCMPixConvertToRGBRequest, ::osirixgrpc::Response>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::DCMPixConvertToRGBRequest, ::osirixgrpc::Response>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(34);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(34);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DCMPixConvertToRGBRequest, ::osirixgrpc::Response>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_DCMPixConvertToRGB() override {
+    ~WithCallbackMethod_DCMPixConvertToRGB() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -8605,46 +6850,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DCMPixConvertToRGB(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DCMPixConvertToRGBRequest* /*request*/, ::osirixgrpc::Response* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DCMPixConvertToRGB(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::DCMPixConvertToRGBRequest* /*request*/, ::osirixgrpc::Response* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DCMPixConvertToRGBRequest* /*request*/, ::osirixgrpc::Response* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_DCMPixConvertToBW : public BaseClass {
+  class WithCallbackMethod_DCMPixConvertToBW : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_DCMPixConvertToBW() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(35,
+    WithCallbackMethod_DCMPixConvertToBW() {
+      ::grpc::Service::MarkMethodCallback(35,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DCMPixConvertToBWRequest, ::osirixgrpc::Response>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::DCMPixConvertToBWRequest* request, ::osirixgrpc::Response* response) { return this->DCMPixConvertToBW(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::DCMPixConvertToBWRequest* request, ::osirixgrpc::Response* response) { return this->DCMPixConvertToBW(context, request, response); }));}
     void SetMessageAllocatorFor_DCMPixConvertToBW(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::DCMPixConvertToBWRequest, ::osirixgrpc::Response>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::DCMPixConvertToBWRequest, ::osirixgrpc::Response>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(35);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(35);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DCMPixConvertToBWRequest, ::osirixgrpc::Response>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_DCMPixConvertToBW() override {
+    ~WithCallbackMethod_DCMPixConvertToBW() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -8652,46 +6877,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DCMPixConvertToBW(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DCMPixConvertToBWRequest* /*request*/, ::osirixgrpc::Response* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DCMPixConvertToBW(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::DCMPixConvertToBWRequest* /*request*/, ::osirixgrpc::Response* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DCMPixConvertToBWRequest* /*request*/, ::osirixgrpc::Response* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_DCMPixIsRGB : public BaseClass {
+  class WithCallbackMethod_DCMPixIsRGB : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_DCMPixIsRGB() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(36,
+    WithCallbackMethod_DCMPixIsRGB() {
+      ::grpc::Service::MarkMethodCallback(36,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DCMPix, ::osirixgrpc::DCMPixIsRGBResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixIsRGBResponse* response) { return this->DCMPixIsRGB(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixIsRGBResponse* response) { return this->DCMPixIsRGB(context, request, response); }));}
     void SetMessageAllocatorFor_DCMPixIsRGB(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::DCMPix, ::osirixgrpc::DCMPixIsRGBResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::DCMPix, ::osirixgrpc::DCMPixIsRGBResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(36);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(36);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DCMPix, ::osirixgrpc::DCMPixIsRGBResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_DCMPixIsRGB() override {
+    ~WithCallbackMethod_DCMPixIsRGB() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -8699,46 +6904,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DCMPixIsRGB(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DCMPix* /*request*/, ::osirixgrpc::DCMPixIsRGBResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DCMPixIsRGB(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::DCMPix* /*request*/, ::osirixgrpc::DCMPixIsRGBResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DCMPix* /*request*/, ::osirixgrpc::DCMPixIsRGBResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_DCMPixComputeROI : public BaseClass {
+  class WithCallbackMethod_DCMPixComputeROI : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_DCMPixComputeROI() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(37,
+    WithCallbackMethod_DCMPixComputeROI() {
+      ::grpc::Service::MarkMethodCallback(37,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DCMPixComputeROIRequest, ::osirixgrpc::DCMPixComputeROIResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::DCMPixComputeROIRequest* request, ::osirixgrpc::DCMPixComputeROIResponse* response) { return this->DCMPixComputeROI(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::DCMPixComputeROIRequest* request, ::osirixgrpc::DCMPixComputeROIResponse* response) { return this->DCMPixComputeROI(context, request, response); }));}
     void SetMessageAllocatorFor_DCMPixComputeROI(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::DCMPixComputeROIRequest, ::osirixgrpc::DCMPixComputeROIResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::DCMPixComputeROIRequest, ::osirixgrpc::DCMPixComputeROIResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(37);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(37);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DCMPixComputeROIRequest, ::osirixgrpc::DCMPixComputeROIResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_DCMPixComputeROI() override {
+    ~WithCallbackMethod_DCMPixComputeROI() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -8746,46 +6931,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DCMPixComputeROI(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DCMPixComputeROIRequest* /*request*/, ::osirixgrpc::DCMPixComputeROIResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DCMPixComputeROI(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::DCMPixComputeROIRequest* /*request*/, ::osirixgrpc::DCMPixComputeROIResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DCMPixComputeROIRequest* /*request*/, ::osirixgrpc::DCMPixComputeROIResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_DCMPixROIValues : public BaseClass {
+  class WithCallbackMethod_DCMPixROIValues : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_DCMPixROIValues() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(38,
+    WithCallbackMethod_DCMPixROIValues() {
+      ::grpc::Service::MarkMethodCallback(38,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DCMPixROIValuesRequest, ::osirixgrpc::DCMPixROIValuesResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::DCMPixROIValuesRequest* request, ::osirixgrpc::DCMPixROIValuesResponse* response) { return this->DCMPixROIValues(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::DCMPixROIValuesRequest* request, ::osirixgrpc::DCMPixROIValuesResponse* response) { return this->DCMPixROIValues(context, request, response); }));}
     void SetMessageAllocatorFor_DCMPixROIValues(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::DCMPixROIValuesRequest, ::osirixgrpc::DCMPixROIValuesResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::DCMPixROIValuesRequest, ::osirixgrpc::DCMPixROIValuesResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(38);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(38);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DCMPixROIValuesRequest, ::osirixgrpc::DCMPixROIValuesResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_DCMPixROIValues() override {
+    ~WithCallbackMethod_DCMPixROIValues() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -8793,46 +6958,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DCMPixROIValues(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DCMPixROIValuesRequest* /*request*/, ::osirixgrpc::DCMPixROIValuesResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DCMPixROIValues(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::DCMPixROIValuesRequest* /*request*/, ::osirixgrpc::DCMPixROIValuesResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DCMPixROIValuesRequest* /*request*/, ::osirixgrpc::DCMPixROIValuesResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_DCMPixShape : public BaseClass {
+  class WithCallbackMethod_DCMPixShape : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_DCMPixShape() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(39,
+    WithCallbackMethod_DCMPixShape() {
+      ::grpc::Service::MarkMethodCallback(39,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DCMPix, ::osirixgrpc::DCMPixShapeResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixShapeResponse* response) { return this->DCMPixShape(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixShapeResponse* response) { return this->DCMPixShape(context, request, response); }));}
     void SetMessageAllocatorFor_DCMPixShape(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::DCMPix, ::osirixgrpc::DCMPixShapeResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::DCMPix, ::osirixgrpc::DCMPixShapeResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(39);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(39);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DCMPix, ::osirixgrpc::DCMPixShapeResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_DCMPixShape() override {
+    ~WithCallbackMethod_DCMPixShape() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -8840,46 +6985,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DCMPixShape(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DCMPix* /*request*/, ::osirixgrpc::DCMPixShapeResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DCMPixShape(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::DCMPix* /*request*/, ::osirixgrpc::DCMPixShapeResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DCMPix* /*request*/, ::osirixgrpc::DCMPixShapeResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_DCMPixSpacing : public BaseClass {
+  class WithCallbackMethod_DCMPixSpacing : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_DCMPixSpacing() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(40,
+    WithCallbackMethod_DCMPixSpacing() {
+      ::grpc::Service::MarkMethodCallback(40,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DCMPix, ::osirixgrpc::DCMPixSpacingResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixSpacingResponse* response) { return this->DCMPixSpacing(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixSpacingResponse* response) { return this->DCMPixSpacing(context, request, response); }));}
     void SetMessageAllocatorFor_DCMPixSpacing(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::DCMPix, ::osirixgrpc::DCMPixSpacingResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::DCMPix, ::osirixgrpc::DCMPixSpacingResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(40);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(40);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DCMPix, ::osirixgrpc::DCMPixSpacingResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_DCMPixSpacing() override {
+    ~WithCallbackMethod_DCMPixSpacing() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -8887,46 +7012,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DCMPixSpacing(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DCMPix* /*request*/, ::osirixgrpc::DCMPixSpacingResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DCMPixSpacing(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::DCMPix* /*request*/, ::osirixgrpc::DCMPixSpacingResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DCMPix* /*request*/, ::osirixgrpc::DCMPixSpacingResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_DCMPixOrigin : public BaseClass {
+  class WithCallbackMethod_DCMPixOrigin : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_DCMPixOrigin() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(41,
+    WithCallbackMethod_DCMPixOrigin() {
+      ::grpc::Service::MarkMethodCallback(41,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DCMPix, ::osirixgrpc::DCMPixOriginResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixOriginResponse* response) { return this->DCMPixOrigin(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixOriginResponse* response) { return this->DCMPixOrigin(context, request, response); }));}
     void SetMessageAllocatorFor_DCMPixOrigin(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::DCMPix, ::osirixgrpc::DCMPixOriginResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::DCMPix, ::osirixgrpc::DCMPixOriginResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(41);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(41);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DCMPix, ::osirixgrpc::DCMPixOriginResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_DCMPixOrigin() override {
+    ~WithCallbackMethod_DCMPixOrigin() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -8934,46 +7039,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DCMPixOrigin(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DCMPix* /*request*/, ::osirixgrpc::DCMPixOriginResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DCMPixOrigin(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::DCMPix* /*request*/, ::osirixgrpc::DCMPixOriginResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DCMPix* /*request*/, ::osirixgrpc::DCMPixOriginResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_DCMPixOrientation : public BaseClass {
+  class WithCallbackMethod_DCMPixOrientation : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_DCMPixOrientation() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(42,
+    WithCallbackMethod_DCMPixOrientation() {
+      ::grpc::Service::MarkMethodCallback(42,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DCMPix, ::osirixgrpc::DCMPixOrientationResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixOrientationResponse* response) { return this->DCMPixOrientation(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixOrientationResponse* response) { return this->DCMPixOrientation(context, request, response); }));}
     void SetMessageAllocatorFor_DCMPixOrientation(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::DCMPix, ::osirixgrpc::DCMPixOrientationResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::DCMPix, ::osirixgrpc::DCMPixOrientationResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(42);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(42);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DCMPix, ::osirixgrpc::DCMPixOrientationResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_DCMPixOrientation() override {
+    ~WithCallbackMethod_DCMPixOrientation() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -8981,46 +7066,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DCMPixOrientation(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DCMPix* /*request*/, ::osirixgrpc::DCMPixOrientationResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DCMPixOrientation(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::DCMPix* /*request*/, ::osirixgrpc::DCMPixOrientationResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DCMPix* /*request*/, ::osirixgrpc::DCMPixOrientationResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_DCMPixSliceLocation : public BaseClass {
+  class WithCallbackMethod_DCMPixSliceLocation : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_DCMPixSliceLocation() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(43,
+    WithCallbackMethod_DCMPixSliceLocation() {
+      ::grpc::Service::MarkMethodCallback(43,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DCMPix, ::osirixgrpc::DCMPixSliceLocationResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixSliceLocationResponse* response) { return this->DCMPixSliceLocation(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixSliceLocationResponse* response) { return this->DCMPixSliceLocation(context, request, response); }));}
     void SetMessageAllocatorFor_DCMPixSliceLocation(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::DCMPix, ::osirixgrpc::DCMPixSliceLocationResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::DCMPix, ::osirixgrpc::DCMPixSliceLocationResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(43);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(43);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DCMPix, ::osirixgrpc::DCMPixSliceLocationResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_DCMPixSliceLocation() override {
+    ~WithCallbackMethod_DCMPixSliceLocation() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -9028,46 +7093,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DCMPixSliceLocation(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DCMPix* /*request*/, ::osirixgrpc::DCMPixSliceLocationResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DCMPixSliceLocation(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::DCMPix* /*request*/, ::osirixgrpc::DCMPixSliceLocationResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DCMPix* /*request*/, ::osirixgrpc::DCMPixSliceLocationResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_DCMPixSourceFile : public BaseClass {
+  class WithCallbackMethod_DCMPixSourceFile : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_DCMPixSourceFile() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(44,
+    WithCallbackMethod_DCMPixSourceFile() {
+      ::grpc::Service::MarkMethodCallback(44,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DCMPix, ::osirixgrpc::DCMPixSourceFileResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixSourceFileResponse* response) { return this->DCMPixSourceFile(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixSourceFileResponse* response) { return this->DCMPixSourceFile(context, request, response); }));}
     void SetMessageAllocatorFor_DCMPixSourceFile(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::DCMPix, ::osirixgrpc::DCMPixSourceFileResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::DCMPix, ::osirixgrpc::DCMPixSourceFileResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(44);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(44);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DCMPix, ::osirixgrpc::DCMPixSourceFileResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_DCMPixSourceFile() override {
+    ~WithCallbackMethod_DCMPixSourceFile() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -9075,46 +7120,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DCMPixSourceFile(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DCMPix* /*request*/, ::osirixgrpc::DCMPixSourceFileResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DCMPixSourceFile(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::DCMPix* /*request*/, ::osirixgrpc::DCMPixSourceFileResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DCMPix* /*request*/, ::osirixgrpc::DCMPixSourceFileResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_DCMPixImage : public BaseClass {
+  class WithCallbackMethod_DCMPixImage : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_DCMPixImage() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(45,
+    WithCallbackMethod_DCMPixImage() {
+      ::grpc::Service::MarkMethodCallback(45,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DCMPix, ::osirixgrpc::DCMPixImageResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixImageResponse* response) { return this->DCMPixImage(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixImageResponse* response) { return this->DCMPixImage(context, request, response); }));}
     void SetMessageAllocatorFor_DCMPixImage(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::DCMPix, ::osirixgrpc::DCMPixImageResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::DCMPix, ::osirixgrpc::DCMPixImageResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(45);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(45);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DCMPix, ::osirixgrpc::DCMPixImageResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_DCMPixImage() override {
+    ~WithCallbackMethod_DCMPixImage() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -9122,46 +7147,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DCMPixImage(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DCMPix* /*request*/, ::osirixgrpc::DCMPixImageResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DCMPixImage(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::DCMPix* /*request*/, ::osirixgrpc::DCMPixImageResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DCMPix* /*request*/, ::osirixgrpc::DCMPixImageResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_DCMPixSetImage : public BaseClass {
+  class WithCallbackMethod_DCMPixSetImage : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_DCMPixSetImage() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(46,
+    WithCallbackMethod_DCMPixSetImage() {
+      ::grpc::Service::MarkMethodCallback(46,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DCMPixSetImageRequest, ::osirixgrpc::Response>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::DCMPixSetImageRequest* request, ::osirixgrpc::Response* response) { return this->DCMPixSetImage(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::DCMPixSetImageRequest* request, ::osirixgrpc::Response* response) { return this->DCMPixSetImage(context, request, response); }));}
     void SetMessageAllocatorFor_DCMPixSetImage(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::DCMPixSetImageRequest, ::osirixgrpc::Response>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::DCMPixSetImageRequest, ::osirixgrpc::Response>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(46);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(46);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DCMPixSetImageRequest, ::osirixgrpc::Response>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_DCMPixSetImage() override {
+    ~WithCallbackMethod_DCMPixSetImage() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -9169,46 +7174,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DCMPixSetImage(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DCMPixSetImageRequest* /*request*/, ::osirixgrpc::Response* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DCMPixSetImage(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::DCMPixSetImageRequest* /*request*/, ::osirixgrpc::Response* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DCMPixSetImageRequest* /*request*/, ::osirixgrpc::Response* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_DCMPixGetMapFromROI : public BaseClass {
+  class WithCallbackMethod_DCMPixGetMapFromROI : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_DCMPixGetMapFromROI() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(47,
+    WithCallbackMethod_DCMPixGetMapFromROI() {
+      ::grpc::Service::MarkMethodCallback(47,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DCMPixGetMapFromROIRequest, ::osirixgrpc::DCMPixGetMapFromROIResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::DCMPixGetMapFromROIRequest* request, ::osirixgrpc::DCMPixGetMapFromROIResponse* response) { return this->DCMPixGetMapFromROI(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::DCMPixGetMapFromROIRequest* request, ::osirixgrpc::DCMPixGetMapFromROIResponse* response) { return this->DCMPixGetMapFromROI(context, request, response); }));}
     void SetMessageAllocatorFor_DCMPixGetMapFromROI(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::DCMPixGetMapFromROIRequest, ::osirixgrpc::DCMPixGetMapFromROIResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::DCMPixGetMapFromROIRequest, ::osirixgrpc::DCMPixGetMapFromROIResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(47);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(47);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DCMPixGetMapFromROIRequest, ::osirixgrpc::DCMPixGetMapFromROIResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_DCMPixGetMapFromROI() override {
+    ~WithCallbackMethod_DCMPixGetMapFromROI() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -9216,46 +7201,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DCMPixGetMapFromROI(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DCMPixGetMapFromROIRequest* /*request*/, ::osirixgrpc::DCMPixGetMapFromROIResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DCMPixGetMapFromROI(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::DCMPixGetMapFromROIRequest* /*request*/, ::osirixgrpc::DCMPixGetMapFromROIResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DCMPixGetMapFromROIRequest* /*request*/, ::osirixgrpc::DCMPixGetMapFromROIResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_DCMPixDicomImage : public BaseClass {
+  class WithCallbackMethod_DCMPixDicomImage : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_DCMPixDicomImage() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(48,
+    WithCallbackMethod_DCMPixDicomImage() {
+      ::grpc::Service::MarkMethodCallback(48,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DCMPix, ::osirixgrpc::DCMPixDicomImageResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixDicomImageResponse* response) { return this->DCMPixDicomImage(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixDicomImageResponse* response) { return this->DCMPixDicomImage(context, request, response); }));}
     void SetMessageAllocatorFor_DCMPixDicomImage(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::DCMPix, ::osirixgrpc::DCMPixDicomImageResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::DCMPix, ::osirixgrpc::DCMPixDicomImageResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(48);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(48);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DCMPix, ::osirixgrpc::DCMPixDicomImageResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_DCMPixDicomImage() override {
+    ~WithCallbackMethod_DCMPixDicomImage() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -9263,46 +7228,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DCMPixDicomImage(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DCMPix* /*request*/, ::osirixgrpc::DCMPixDicomImageResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DCMPixDicomImage(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::DCMPix* /*request*/, ::osirixgrpc::DCMPixDicomImageResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DCMPix* /*request*/, ::osirixgrpc::DCMPixDicomImageResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_DCMPixDicomSeries : public BaseClass {
+  class WithCallbackMethod_DCMPixDicomSeries : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_DCMPixDicomSeries() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(49,
+    WithCallbackMethod_DCMPixDicomSeries() {
+      ::grpc::Service::MarkMethodCallback(49,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DCMPix, ::osirixgrpc::DCMPixDicomSeriesResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixDicomSeriesResponse* response) { return this->DCMPixDicomSeries(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixDicomSeriesResponse* response) { return this->DCMPixDicomSeries(context, request, response); }));}
     void SetMessageAllocatorFor_DCMPixDicomSeries(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::DCMPix, ::osirixgrpc::DCMPixDicomSeriesResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::DCMPix, ::osirixgrpc::DCMPixDicomSeriesResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(49);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(49);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DCMPix, ::osirixgrpc::DCMPixDicomSeriesResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_DCMPixDicomSeries() override {
+    ~WithCallbackMethod_DCMPixDicomSeries() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -9310,46 +7255,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DCMPixDicomSeries(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DCMPix* /*request*/, ::osirixgrpc::DCMPixDicomSeriesResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DCMPixDicomSeries(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::DCMPix* /*request*/, ::osirixgrpc::DCMPixDicomSeriesResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DCMPix* /*request*/, ::osirixgrpc::DCMPixDicomSeriesResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_DCMPixDicomStudy : public BaseClass {
+  class WithCallbackMethod_DCMPixDicomStudy : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_DCMPixDicomStudy() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(50,
+    WithCallbackMethod_DCMPixDicomStudy() {
+      ::grpc::Service::MarkMethodCallback(50,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DCMPix, ::osirixgrpc::DCMPixDicomStudyResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixDicomStudyResponse* response) { return this->DCMPixDicomStudy(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixDicomStudyResponse* response) { return this->DCMPixDicomStudy(context, request, response); }));}
     void SetMessageAllocatorFor_DCMPixDicomStudy(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::DCMPix, ::osirixgrpc::DCMPixDicomStudyResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::DCMPix, ::osirixgrpc::DCMPixDicomStudyResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(50);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(50);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DCMPix, ::osirixgrpc::DCMPixDicomStudyResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_DCMPixDicomStudy() override {
+    ~WithCallbackMethod_DCMPixDicomStudy() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -9357,46 +7282,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DCMPixDicomStudy(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DCMPix* /*request*/, ::osirixgrpc::DCMPixDicomStudyResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DCMPixDicomStudy(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::DCMPix* /*request*/, ::osirixgrpc::DCMPixDicomStudyResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DCMPix* /*request*/, ::osirixgrpc::DCMPixDicomStudyResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_VRControllerViewer2D : public BaseClass {
+  class WithCallbackMethod_VRControllerViewer2D : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_VRControllerViewer2D() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(51,
+    WithCallbackMethod_VRControllerViewer2D() {
+      ::grpc::Service::MarkMethodCallback(51,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::VRController, ::osirixgrpc::VRControllerViewer2DResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::VRController* request, ::osirixgrpc::VRControllerViewer2DResponse* response) { return this->VRControllerViewer2D(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::VRController* request, ::osirixgrpc::VRControllerViewer2DResponse* response) { return this->VRControllerViewer2D(context, request, response); }));}
     void SetMessageAllocatorFor_VRControllerViewer2D(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::VRController, ::osirixgrpc::VRControllerViewer2DResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::VRController, ::osirixgrpc::VRControllerViewer2DResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(51);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(51);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::VRController, ::osirixgrpc::VRControllerViewer2DResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_VRControllerViewer2D() override {
+    ~WithCallbackMethod_VRControllerViewer2D() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -9404,46 +7309,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* VRControllerViewer2D(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::VRController* /*request*/, ::osirixgrpc::VRControllerViewer2DResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* VRControllerViewer2D(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::VRController* /*request*/, ::osirixgrpc::VRControllerViewer2DResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::VRController* /*request*/, ::osirixgrpc::VRControllerViewer2DResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_VRControllerBlendingController : public BaseClass {
+  class WithCallbackMethod_VRControllerBlendingController : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_VRControllerBlendingController() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(52,
+    WithCallbackMethod_VRControllerBlendingController() {
+      ::grpc::Service::MarkMethodCallback(52,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::VRController, ::osirixgrpc::VRControllerBlendingControllerResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::VRController* request, ::osirixgrpc::VRControllerBlendingControllerResponse* response) { return this->VRControllerBlendingController(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::VRController* request, ::osirixgrpc::VRControllerBlendingControllerResponse* response) { return this->VRControllerBlendingController(context, request, response); }));}
     void SetMessageAllocatorFor_VRControllerBlendingController(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::VRController, ::osirixgrpc::VRControllerBlendingControllerResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::VRController, ::osirixgrpc::VRControllerBlendingControllerResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(52);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(52);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::VRController, ::osirixgrpc::VRControllerBlendingControllerResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_VRControllerBlendingController() override {
+    ~WithCallbackMethod_VRControllerBlendingController() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -9451,46 +7336,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* VRControllerBlendingController(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::VRController* /*request*/, ::osirixgrpc::VRControllerBlendingControllerResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* VRControllerBlendingController(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::VRController* /*request*/, ::osirixgrpc::VRControllerBlendingControllerResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::VRController* /*request*/, ::osirixgrpc::VRControllerBlendingControllerResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_VRControllerStyle : public BaseClass {
+  class WithCallbackMethod_VRControllerStyle : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_VRControllerStyle() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(53,
+    WithCallbackMethod_VRControllerStyle() {
+      ::grpc::Service::MarkMethodCallback(53,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::VRController, ::osirixgrpc::VRControllerStyleResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::VRController* request, ::osirixgrpc::VRControllerStyleResponse* response) { return this->VRControllerStyle(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::VRController* request, ::osirixgrpc::VRControllerStyleResponse* response) { return this->VRControllerStyle(context, request, response); }));}
     void SetMessageAllocatorFor_VRControllerStyle(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::VRController, ::osirixgrpc::VRControllerStyleResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::VRController, ::osirixgrpc::VRControllerStyleResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(53);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(53);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::VRController, ::osirixgrpc::VRControllerStyleResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_VRControllerStyle() override {
+    ~WithCallbackMethod_VRControllerStyle() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -9498,46 +7363,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* VRControllerStyle(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::VRController* /*request*/, ::osirixgrpc::VRControllerStyleResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* VRControllerStyle(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::VRController* /*request*/, ::osirixgrpc::VRControllerStyleResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::VRController* /*request*/, ::osirixgrpc::VRControllerStyleResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_VRControllerTitle : public BaseClass {
+  class WithCallbackMethod_VRControllerTitle : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_VRControllerTitle() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(54,
+    WithCallbackMethod_VRControllerTitle() {
+      ::grpc::Service::MarkMethodCallback(54,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::VRController, ::osirixgrpc::VRControllerTitleResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::VRController* request, ::osirixgrpc::VRControllerTitleResponse* response) { return this->VRControllerTitle(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::VRController* request, ::osirixgrpc::VRControllerTitleResponse* response) { return this->VRControllerTitle(context, request, response); }));}
     void SetMessageAllocatorFor_VRControllerTitle(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::VRController, ::osirixgrpc::VRControllerTitleResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::VRController, ::osirixgrpc::VRControllerTitleResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(54);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(54);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::VRController, ::osirixgrpc::VRControllerTitleResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_VRControllerTitle() override {
+    ~WithCallbackMethod_VRControllerTitle() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -9545,46 +7390,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* VRControllerTitle(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::VRController* /*request*/, ::osirixgrpc::VRControllerTitleResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* VRControllerTitle(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::VRController* /*request*/, ::osirixgrpc::VRControllerTitleResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::VRController* /*request*/, ::osirixgrpc::VRControllerTitleResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_VRControllerROIVolumes : public BaseClass {
+  class WithCallbackMethod_VRControllerROIVolumes : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_VRControllerROIVolumes() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(55,
+    WithCallbackMethod_VRControllerROIVolumes() {
+      ::grpc::Service::MarkMethodCallback(55,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::VRController, ::osirixgrpc::VRControllerROIVolumesResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::VRController* request, ::osirixgrpc::VRControllerROIVolumesResponse* response) { return this->VRControllerROIVolumes(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::VRController* request, ::osirixgrpc::VRControllerROIVolumesResponse* response) { return this->VRControllerROIVolumes(context, request, response); }));}
     void SetMessageAllocatorFor_VRControllerROIVolumes(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::VRController, ::osirixgrpc::VRControllerROIVolumesResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::VRController, ::osirixgrpc::VRControllerROIVolumesResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(55);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(55);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::VRController, ::osirixgrpc::VRControllerROIVolumesResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_VRControllerROIVolumes() override {
+    ~WithCallbackMethod_VRControllerROIVolumes() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -9592,46 +7417,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* VRControllerROIVolumes(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::VRController* /*request*/, ::osirixgrpc::VRControllerROIVolumesResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* VRControllerROIVolumes(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::VRController* /*request*/, ::osirixgrpc::VRControllerROIVolumesResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::VRController* /*request*/, ::osirixgrpc::VRControllerROIVolumesResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_VRControllerRenderingMode : public BaseClass {
+  class WithCallbackMethod_VRControllerRenderingMode : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_VRControllerRenderingMode() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(56,
+    WithCallbackMethod_VRControllerRenderingMode() {
+      ::grpc::Service::MarkMethodCallback(56,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::VRController, ::osirixgrpc::VRControllerRenderingModeResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::VRController* request, ::osirixgrpc::VRControllerRenderingModeResponse* response) { return this->VRControllerRenderingMode(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::VRController* request, ::osirixgrpc::VRControllerRenderingModeResponse* response) { return this->VRControllerRenderingMode(context, request, response); }));}
     void SetMessageAllocatorFor_VRControllerRenderingMode(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::VRController, ::osirixgrpc::VRControllerRenderingModeResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::VRController, ::osirixgrpc::VRControllerRenderingModeResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(56);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(56);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::VRController, ::osirixgrpc::VRControllerRenderingModeResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_VRControllerRenderingMode() override {
+    ~WithCallbackMethod_VRControllerRenderingMode() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -9639,46 +7444,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* VRControllerRenderingMode(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::VRController* /*request*/, ::osirixgrpc::VRControllerRenderingModeResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* VRControllerRenderingMode(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::VRController* /*request*/, ::osirixgrpc::VRControllerRenderingModeResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::VRController* /*request*/, ::osirixgrpc::VRControllerRenderingModeResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_VRControllerSetRenderingMode : public BaseClass {
+  class WithCallbackMethod_VRControllerSetRenderingMode : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_VRControllerSetRenderingMode() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(57,
+    WithCallbackMethod_VRControllerSetRenderingMode() {
+      ::grpc::Service::MarkMethodCallback(57,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::VRControllerSetRenderingModeRequest, ::osirixgrpc::Response>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::VRControllerSetRenderingModeRequest* request, ::osirixgrpc::Response* response) { return this->VRControllerSetRenderingMode(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::VRControllerSetRenderingModeRequest* request, ::osirixgrpc::Response* response) { return this->VRControllerSetRenderingMode(context, request, response); }));}
     void SetMessageAllocatorFor_VRControllerSetRenderingMode(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::VRControllerSetRenderingModeRequest, ::osirixgrpc::Response>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::VRControllerSetRenderingModeRequest, ::osirixgrpc::Response>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(57);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(57);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::VRControllerSetRenderingModeRequest, ::osirixgrpc::Response>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_VRControllerSetRenderingMode() override {
+    ~WithCallbackMethod_VRControllerSetRenderingMode() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -9686,46 +7471,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* VRControllerSetRenderingMode(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::VRControllerSetRenderingModeRequest* /*request*/, ::osirixgrpc::Response* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* VRControllerSetRenderingMode(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::VRControllerSetRenderingModeRequest* /*request*/, ::osirixgrpc::Response* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::VRControllerSetRenderingModeRequest* /*request*/, ::osirixgrpc::Response* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_VRControllerWLWW : public BaseClass {
+  class WithCallbackMethod_VRControllerWLWW : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_VRControllerWLWW() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(58,
+    WithCallbackMethod_VRControllerWLWW() {
+      ::grpc::Service::MarkMethodCallback(58,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::VRController, ::osirixgrpc::VRControllerWLWWResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::VRController* request, ::osirixgrpc::VRControllerWLWWResponse* response) { return this->VRControllerWLWW(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::VRController* request, ::osirixgrpc::VRControllerWLWWResponse* response) { return this->VRControllerWLWW(context, request, response); }));}
     void SetMessageAllocatorFor_VRControllerWLWW(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::VRController, ::osirixgrpc::VRControllerWLWWResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::VRController, ::osirixgrpc::VRControllerWLWWResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(58);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(58);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::VRController, ::osirixgrpc::VRControllerWLWWResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_VRControllerWLWW() override {
+    ~WithCallbackMethod_VRControllerWLWW() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -9733,46 +7498,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* VRControllerWLWW(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::VRController* /*request*/, ::osirixgrpc::VRControllerWLWWResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* VRControllerWLWW(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::VRController* /*request*/, ::osirixgrpc::VRControllerWLWWResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::VRController* /*request*/, ::osirixgrpc::VRControllerWLWWResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_VRControllerSetWLWW : public BaseClass {
+  class WithCallbackMethod_VRControllerSetWLWW : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_VRControllerSetWLWW() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(59,
+    WithCallbackMethod_VRControllerSetWLWW() {
+      ::grpc::Service::MarkMethodCallback(59,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::VRControllerSetWLWWRequest, ::osirixgrpc::Response>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::VRControllerSetWLWWRequest* request, ::osirixgrpc::Response* response) { return this->VRControllerSetWLWW(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::VRControllerSetWLWWRequest* request, ::osirixgrpc::Response* response) { return this->VRControllerSetWLWW(context, request, response); }));}
     void SetMessageAllocatorFor_VRControllerSetWLWW(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::VRControllerSetWLWWRequest, ::osirixgrpc::Response>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::VRControllerSetWLWWRequest, ::osirixgrpc::Response>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(59);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(59);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::VRControllerSetWLWWRequest, ::osirixgrpc::Response>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_VRControllerSetWLWW() override {
+    ~WithCallbackMethod_VRControllerSetWLWW() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -9780,46 +7525,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* VRControllerSetWLWW(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::VRControllerSetWLWWRequest* /*request*/, ::osirixgrpc::Response* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* VRControllerSetWLWW(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::VRControllerSetWLWWRequest* /*request*/, ::osirixgrpc::Response* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::VRControllerSetWLWWRequest* /*request*/, ::osirixgrpc::Response* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_VRControllerHideROIVolume : public BaseClass {
+  class WithCallbackMethod_VRControllerHideROIVolume : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_VRControllerHideROIVolume() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(60,
+    WithCallbackMethod_VRControllerHideROIVolume() {
+      ::grpc::Service::MarkMethodCallback(60,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::VRControllerHideROIVolumeRequest, ::osirixgrpc::Response>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::VRControllerHideROIVolumeRequest* request, ::osirixgrpc::Response* response) { return this->VRControllerHideROIVolume(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::VRControllerHideROIVolumeRequest* request, ::osirixgrpc::Response* response) { return this->VRControllerHideROIVolume(context, request, response); }));}
     void SetMessageAllocatorFor_VRControllerHideROIVolume(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::VRControllerHideROIVolumeRequest, ::osirixgrpc::Response>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::VRControllerHideROIVolumeRequest, ::osirixgrpc::Response>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(60);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(60);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::VRControllerHideROIVolumeRequest, ::osirixgrpc::Response>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_VRControllerHideROIVolume() override {
+    ~WithCallbackMethod_VRControllerHideROIVolume() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -9827,46 +7552,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* VRControllerHideROIVolume(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::VRControllerHideROIVolumeRequest* /*request*/, ::osirixgrpc::Response* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* VRControllerHideROIVolume(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::VRControllerHideROIVolumeRequest* /*request*/, ::osirixgrpc::Response* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::VRControllerHideROIVolumeRequest* /*request*/, ::osirixgrpc::Response* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_VRControllerDisplayROIVolume : public BaseClass {
+  class WithCallbackMethod_VRControllerDisplayROIVolume : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_VRControllerDisplayROIVolume() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(61,
+    WithCallbackMethod_VRControllerDisplayROIVolume() {
+      ::grpc::Service::MarkMethodCallback(61,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::VRControllerDisplayROIVolumeRequest, ::osirixgrpc::Response>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::VRControllerDisplayROIVolumeRequest* request, ::osirixgrpc::Response* response) { return this->VRControllerDisplayROIVolume(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::VRControllerDisplayROIVolumeRequest* request, ::osirixgrpc::Response* response) { return this->VRControllerDisplayROIVolume(context, request, response); }));}
     void SetMessageAllocatorFor_VRControllerDisplayROIVolume(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::VRControllerDisplayROIVolumeRequest, ::osirixgrpc::Response>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::VRControllerDisplayROIVolumeRequest, ::osirixgrpc::Response>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(61);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(61);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::VRControllerDisplayROIVolumeRequest, ::osirixgrpc::Response>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_VRControllerDisplayROIVolume() override {
+    ~WithCallbackMethod_VRControllerDisplayROIVolume() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -9874,46 +7579,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* VRControllerDisplayROIVolume(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::VRControllerDisplayROIVolumeRequest* /*request*/, ::osirixgrpc::Response* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* VRControllerDisplayROIVolume(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::VRControllerDisplayROIVolumeRequest* /*request*/, ::osirixgrpc::Response* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::VRControllerDisplayROIVolumeRequest* /*request*/, ::osirixgrpc::Response* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_VRControllerNeedsDisplayUpdate : public BaseClass {
+  class WithCallbackMethod_VRControllerNeedsDisplayUpdate : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_VRControllerNeedsDisplayUpdate() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(62,
+    WithCallbackMethod_VRControllerNeedsDisplayUpdate() {
+      ::grpc::Service::MarkMethodCallback(62,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::VRController, ::osirixgrpc::Response>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::VRController* request, ::osirixgrpc::Response* response) { return this->VRControllerNeedsDisplayUpdate(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::VRController* request, ::osirixgrpc::Response* response) { return this->VRControllerNeedsDisplayUpdate(context, request, response); }));}
     void SetMessageAllocatorFor_VRControllerNeedsDisplayUpdate(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::VRController, ::osirixgrpc::Response>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::VRController, ::osirixgrpc::Response>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(62);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(62);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::VRController, ::osirixgrpc::Response>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_VRControllerNeedsDisplayUpdate() override {
+    ~WithCallbackMethod_VRControllerNeedsDisplayUpdate() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -9921,46 +7606,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* VRControllerNeedsDisplayUpdate(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::VRController* /*request*/, ::osirixgrpc::Response* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* VRControllerNeedsDisplayUpdate(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::VRController* /*request*/, ::osirixgrpc::Response* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::VRController* /*request*/, ::osirixgrpc::Response* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_ViewerControllerCloseViewer : public BaseClass {
+  class WithCallbackMethod_ViewerControllerCloseViewer : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_ViewerControllerCloseViewer() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(63,
+    WithCallbackMethod_ViewerControllerCloseViewer() {
+      ::grpc::Service::MarkMethodCallback(63,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ViewerController, ::osirixgrpc::Response>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::Response* response) { return this->ViewerControllerCloseViewer(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::Response* response) { return this->ViewerControllerCloseViewer(context, request, response); }));}
     void SetMessageAllocatorFor_ViewerControllerCloseViewer(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::ViewerController, ::osirixgrpc::Response>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::ViewerController, ::osirixgrpc::Response>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(63);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(63);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ViewerController, ::osirixgrpc::Response>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_ViewerControllerCloseViewer() override {
+    ~WithCallbackMethod_ViewerControllerCloseViewer() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -9968,46 +7633,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ViewerControllerCloseViewer(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ViewerController* /*request*/, ::osirixgrpc::Response* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ViewerControllerCloseViewer(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::ViewerController* /*request*/, ::osirixgrpc::Response* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ViewerController* /*request*/, ::osirixgrpc::Response* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_ViewerControllerPixList : public BaseClass {
+  class WithCallbackMethod_ViewerControllerPixList : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_ViewerControllerPixList() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(64,
+    WithCallbackMethod_ViewerControllerPixList() {
+      ::grpc::Service::MarkMethodCallback(64,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ViewerControllerPixListRequest, ::osirixgrpc::ViewerControllerPixListResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::ViewerControllerPixListRequest* request, ::osirixgrpc::ViewerControllerPixListResponse* response) { return this->ViewerControllerPixList(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::ViewerControllerPixListRequest* request, ::osirixgrpc::ViewerControllerPixListResponse* response) { return this->ViewerControllerPixList(context, request, response); }));}
     void SetMessageAllocatorFor_ViewerControllerPixList(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::ViewerControllerPixListRequest, ::osirixgrpc::ViewerControllerPixListResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::ViewerControllerPixListRequest, ::osirixgrpc::ViewerControllerPixListResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(64);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(64);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ViewerControllerPixListRequest, ::osirixgrpc::ViewerControllerPixListResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_ViewerControllerPixList() override {
+    ~WithCallbackMethod_ViewerControllerPixList() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -10015,46 +7660,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ViewerControllerPixList(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ViewerControllerPixListRequest* /*request*/, ::osirixgrpc::ViewerControllerPixListResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ViewerControllerPixList(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::ViewerControllerPixListRequest* /*request*/, ::osirixgrpc::ViewerControllerPixListResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ViewerControllerPixListRequest* /*request*/, ::osirixgrpc::ViewerControllerPixListResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_ViewerControllerNeedsDisplayUpdate : public BaseClass {
+  class WithCallbackMethod_ViewerControllerNeedsDisplayUpdate : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_ViewerControllerNeedsDisplayUpdate() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(65,
+    WithCallbackMethod_ViewerControllerNeedsDisplayUpdate() {
+      ::grpc::Service::MarkMethodCallback(65,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ViewerController, ::osirixgrpc::Response>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::Response* response) { return this->ViewerControllerNeedsDisplayUpdate(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::Response* response) { return this->ViewerControllerNeedsDisplayUpdate(context, request, response); }));}
     void SetMessageAllocatorFor_ViewerControllerNeedsDisplayUpdate(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::ViewerController, ::osirixgrpc::Response>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::ViewerController, ::osirixgrpc::Response>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(65);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(65);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ViewerController, ::osirixgrpc::Response>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_ViewerControllerNeedsDisplayUpdate() override {
+    ~WithCallbackMethod_ViewerControllerNeedsDisplayUpdate() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -10062,46 +7687,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ViewerControllerNeedsDisplayUpdate(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ViewerController* /*request*/, ::osirixgrpc::Response* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ViewerControllerNeedsDisplayUpdate(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::ViewerController* /*request*/, ::osirixgrpc::Response* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ViewerController* /*request*/, ::osirixgrpc::Response* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_ViewerControllerROIList : public BaseClass {
+  class WithCallbackMethod_ViewerControllerROIList : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_ViewerControllerROIList() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(66,
+    WithCallbackMethod_ViewerControllerROIList() {
+      ::grpc::Service::MarkMethodCallback(66,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ViewerControllerROIListRequest, ::osirixgrpc::ViewerControllerROIListResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::ViewerControllerROIListRequest* request, ::osirixgrpc::ViewerControllerROIListResponse* response) { return this->ViewerControllerROIList(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::ViewerControllerROIListRequest* request, ::osirixgrpc::ViewerControllerROIListResponse* response) { return this->ViewerControllerROIList(context, request, response); }));}
     void SetMessageAllocatorFor_ViewerControllerROIList(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::ViewerControllerROIListRequest, ::osirixgrpc::ViewerControllerROIListResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::ViewerControllerROIListRequest, ::osirixgrpc::ViewerControllerROIListResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(66);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(66);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ViewerControllerROIListRequest, ::osirixgrpc::ViewerControllerROIListResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_ViewerControllerROIList() override {
+    ~WithCallbackMethod_ViewerControllerROIList() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -10109,46 +7714,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ViewerControllerROIList(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ViewerControllerROIListRequest* /*request*/, ::osirixgrpc::ViewerControllerROIListResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ViewerControllerROIList(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::ViewerControllerROIListRequest* /*request*/, ::osirixgrpc::ViewerControllerROIListResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ViewerControllerROIListRequest* /*request*/, ::osirixgrpc::ViewerControllerROIListResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_ViewerControllerNewROI : public BaseClass {
+  class WithCallbackMethod_ViewerControllerNewROI : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_ViewerControllerNewROI() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(67,
+    WithCallbackMethod_ViewerControllerNewROI() {
+      ::grpc::Service::MarkMethodCallback(67,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ViewerControllerNewROIRequest, ::osirixgrpc::ViewerControllerNewROIResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::ViewerControllerNewROIRequest* request, ::osirixgrpc::ViewerControllerNewROIResponse* response) { return this->ViewerControllerNewROI(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::ViewerControllerNewROIRequest* request, ::osirixgrpc::ViewerControllerNewROIResponse* response) { return this->ViewerControllerNewROI(context, request, response); }));}
     void SetMessageAllocatorFor_ViewerControllerNewROI(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::ViewerControllerNewROIRequest, ::osirixgrpc::ViewerControllerNewROIResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::ViewerControllerNewROIRequest, ::osirixgrpc::ViewerControllerNewROIResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(67);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(67);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ViewerControllerNewROIRequest, ::osirixgrpc::ViewerControllerNewROIResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_ViewerControllerNewROI() override {
+    ~WithCallbackMethod_ViewerControllerNewROI() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -10156,46 +7741,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ViewerControllerNewROI(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ViewerControllerNewROIRequest* /*request*/, ::osirixgrpc::ViewerControllerNewROIResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ViewerControllerNewROI(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::ViewerControllerNewROIRequest* /*request*/, ::osirixgrpc::ViewerControllerNewROIResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ViewerControllerNewROIRequest* /*request*/, ::osirixgrpc::ViewerControllerNewROIResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_ViewerControllerCurDCM : public BaseClass {
+  class WithCallbackMethod_ViewerControllerCurDCM : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_ViewerControllerCurDCM() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(68,
+    WithCallbackMethod_ViewerControllerCurDCM() {
+      ::grpc::Service::MarkMethodCallback(68,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ViewerController, ::osirixgrpc::ViewerControllerCurDCMResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerCurDCMResponse* response) { return this->ViewerControllerCurDCM(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerCurDCMResponse* response) { return this->ViewerControllerCurDCM(context, request, response); }));}
     void SetMessageAllocatorFor_ViewerControllerCurDCM(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::ViewerController, ::osirixgrpc::ViewerControllerCurDCMResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::ViewerController, ::osirixgrpc::ViewerControllerCurDCMResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(68);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(68);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ViewerController, ::osirixgrpc::ViewerControllerCurDCMResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_ViewerControllerCurDCM() override {
+    ~WithCallbackMethod_ViewerControllerCurDCM() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -10203,46 +7768,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ViewerControllerCurDCM(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ViewerController* /*request*/, ::osirixgrpc::ViewerControllerCurDCMResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ViewerControllerCurDCM(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::ViewerController* /*request*/, ::osirixgrpc::ViewerControllerCurDCMResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ViewerController* /*request*/, ::osirixgrpc::ViewerControllerCurDCMResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_ViewerControllerROIsWithName : public BaseClass {
+  class WithCallbackMethod_ViewerControllerROIsWithName : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_ViewerControllerROIsWithName() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(69,
+    WithCallbackMethod_ViewerControllerROIsWithName() {
+      ::grpc::Service::MarkMethodCallback(69,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ViewerControllerROIsWithNameRequest, ::osirixgrpc::ViewerControllerROIsWithNameResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::ViewerControllerROIsWithNameRequest* request, ::osirixgrpc::ViewerControllerROIsWithNameResponse* response) { return this->ViewerControllerROIsWithName(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::ViewerControllerROIsWithNameRequest* request, ::osirixgrpc::ViewerControllerROIsWithNameResponse* response) { return this->ViewerControllerROIsWithName(context, request, response); }));}
     void SetMessageAllocatorFor_ViewerControllerROIsWithName(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::ViewerControllerROIsWithNameRequest, ::osirixgrpc::ViewerControllerROIsWithNameResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::ViewerControllerROIsWithNameRequest, ::osirixgrpc::ViewerControllerROIsWithNameResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(69);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(69);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ViewerControllerROIsWithNameRequest, ::osirixgrpc::ViewerControllerROIsWithNameResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_ViewerControllerROIsWithName() override {
+    ~WithCallbackMethod_ViewerControllerROIsWithName() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -10250,46 +7795,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ViewerControllerROIsWithName(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ViewerControllerROIsWithNameRequest* /*request*/, ::osirixgrpc::ViewerControllerROIsWithNameResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ViewerControllerROIsWithName(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::ViewerControllerROIsWithNameRequest* /*request*/, ::osirixgrpc::ViewerControllerROIsWithNameResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ViewerControllerROIsWithNameRequest* /*request*/, ::osirixgrpc::ViewerControllerROIsWithNameResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_ViewerControllerSelectedROIs : public BaseClass {
+  class WithCallbackMethod_ViewerControllerSelectedROIs : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_ViewerControllerSelectedROIs() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(70,
+    WithCallbackMethod_ViewerControllerSelectedROIs() {
+      ::grpc::Service::MarkMethodCallback(70,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ViewerController, ::osirixgrpc::ViewerControllerSelectedROIsResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerSelectedROIsResponse* response) { return this->ViewerControllerSelectedROIs(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerSelectedROIsResponse* response) { return this->ViewerControllerSelectedROIs(context, request, response); }));}
     void SetMessageAllocatorFor_ViewerControllerSelectedROIs(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::ViewerController, ::osirixgrpc::ViewerControllerSelectedROIsResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::ViewerController, ::osirixgrpc::ViewerControllerSelectedROIsResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(70);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(70);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ViewerController, ::osirixgrpc::ViewerControllerSelectedROIsResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_ViewerControllerSelectedROIs() override {
+    ~WithCallbackMethod_ViewerControllerSelectedROIs() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -10297,46 +7822,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ViewerControllerSelectedROIs(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ViewerController* /*request*/, ::osirixgrpc::ViewerControllerSelectedROIsResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ViewerControllerSelectedROIs(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::ViewerController* /*request*/, ::osirixgrpc::ViewerControllerSelectedROIsResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ViewerController* /*request*/, ::osirixgrpc::ViewerControllerSelectedROIsResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_ViewerControllerIsDataVolumic : public BaseClass {
+  class WithCallbackMethod_ViewerControllerIsDataVolumic : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_ViewerControllerIsDataVolumic() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(71,
+    WithCallbackMethod_ViewerControllerIsDataVolumic() {
+      ::grpc::Service::MarkMethodCallback(71,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ViewerControllerIsDataVolumicRequest, ::osirixgrpc::ViewerControllerIsDataVolumicResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::ViewerControllerIsDataVolumicRequest* request, ::osirixgrpc::ViewerControllerIsDataVolumicResponse* response) { return this->ViewerControllerIsDataVolumic(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::ViewerControllerIsDataVolumicRequest* request, ::osirixgrpc::ViewerControllerIsDataVolumicResponse* response) { return this->ViewerControllerIsDataVolumic(context, request, response); }));}
     void SetMessageAllocatorFor_ViewerControllerIsDataVolumic(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::ViewerControllerIsDataVolumicRequest, ::osirixgrpc::ViewerControllerIsDataVolumicResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::ViewerControllerIsDataVolumicRequest, ::osirixgrpc::ViewerControllerIsDataVolumicResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(71);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(71);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ViewerControllerIsDataVolumicRequest, ::osirixgrpc::ViewerControllerIsDataVolumicResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_ViewerControllerIsDataVolumic() override {
+    ~WithCallbackMethod_ViewerControllerIsDataVolumic() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -10344,46 +7849,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ViewerControllerIsDataVolumic(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ViewerControllerIsDataVolumicRequest* /*request*/, ::osirixgrpc::ViewerControllerIsDataVolumicResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ViewerControllerIsDataVolumic(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::ViewerControllerIsDataVolumicRequest* /*request*/, ::osirixgrpc::ViewerControllerIsDataVolumicResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ViewerControllerIsDataVolumicRequest* /*request*/, ::osirixgrpc::ViewerControllerIsDataVolumicResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_ViewerControllerCopyViewerWindow : public BaseClass {
+  class WithCallbackMethod_ViewerControllerCopyViewerWindow : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_ViewerControllerCopyViewerWindow() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(72,
+    WithCallbackMethod_ViewerControllerCopyViewerWindow() {
+      ::grpc::Service::MarkMethodCallback(72,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ViewerControllerCopyViewerWindowRequest, ::osirixgrpc::Response>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::ViewerControllerCopyViewerWindowRequest* request, ::osirixgrpc::Response* response) { return this->ViewerControllerCopyViewerWindow(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::ViewerControllerCopyViewerWindowRequest* request, ::osirixgrpc::Response* response) { return this->ViewerControllerCopyViewerWindow(context, request, response); }));}
     void SetMessageAllocatorFor_ViewerControllerCopyViewerWindow(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::ViewerControllerCopyViewerWindowRequest, ::osirixgrpc::Response>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::ViewerControllerCopyViewerWindowRequest, ::osirixgrpc::Response>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(72);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(72);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ViewerControllerCopyViewerWindowRequest, ::osirixgrpc::Response>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_ViewerControllerCopyViewerWindow() override {
+    ~WithCallbackMethod_ViewerControllerCopyViewerWindow() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -10391,46 +7876,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ViewerControllerCopyViewerWindow(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ViewerControllerCopyViewerWindowRequest* /*request*/, ::osirixgrpc::Response* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ViewerControllerCopyViewerWindow(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::ViewerControllerCopyViewerWindowRequest* /*request*/, ::osirixgrpc::Response* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ViewerControllerCopyViewerWindowRequest* /*request*/, ::osirixgrpc::Response* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_ViewerControllerResampleViewerController : public BaseClass {
+  class WithCallbackMethod_ViewerControllerResampleViewerController : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_ViewerControllerResampleViewerController() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(73,
+    WithCallbackMethod_ViewerControllerResampleViewerController() {
+      ::grpc::Service::MarkMethodCallback(73,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ViewerControllerResampleViewerControllerRequest, ::osirixgrpc::Response>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::ViewerControllerResampleViewerControllerRequest* request, ::osirixgrpc::Response* response) { return this->ViewerControllerResampleViewerController(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::ViewerControllerResampleViewerControllerRequest* request, ::osirixgrpc::Response* response) { return this->ViewerControllerResampleViewerController(context, request, response); }));}
     void SetMessageAllocatorFor_ViewerControllerResampleViewerController(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::ViewerControllerResampleViewerControllerRequest, ::osirixgrpc::Response>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::ViewerControllerResampleViewerControllerRequest, ::osirixgrpc::Response>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(73);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(73);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ViewerControllerResampleViewerControllerRequest, ::osirixgrpc::Response>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_ViewerControllerResampleViewerController() override {
+    ~WithCallbackMethod_ViewerControllerResampleViewerController() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -10438,46 +7903,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ViewerControllerResampleViewerController(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ViewerControllerResampleViewerControllerRequest* /*request*/, ::osirixgrpc::Response* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ViewerControllerResampleViewerController(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::ViewerControllerResampleViewerControllerRequest* /*request*/, ::osirixgrpc::Response* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ViewerControllerResampleViewerControllerRequest* /*request*/, ::osirixgrpc::Response* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_ViewerControllerBlendingController : public BaseClass {
+  class WithCallbackMethod_ViewerControllerBlendingController : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_ViewerControllerBlendingController() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(74,
+    WithCallbackMethod_ViewerControllerBlendingController() {
+      ::grpc::Service::MarkMethodCallback(74,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ViewerController, ::osirixgrpc::ViewerControllerBlendingControllerResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerBlendingControllerResponse* response) { return this->ViewerControllerBlendingController(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerBlendingControllerResponse* response) { return this->ViewerControllerBlendingController(context, request, response); }));}
     void SetMessageAllocatorFor_ViewerControllerBlendingController(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::ViewerController, ::osirixgrpc::ViewerControllerBlendingControllerResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::ViewerController, ::osirixgrpc::ViewerControllerBlendingControllerResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(74);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(74);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ViewerController, ::osirixgrpc::ViewerControllerBlendingControllerResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_ViewerControllerBlendingController() override {
+    ~WithCallbackMethod_ViewerControllerBlendingController() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -10485,46 +7930,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ViewerControllerBlendingController(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ViewerController* /*request*/, ::osirixgrpc::ViewerControllerBlendingControllerResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ViewerControllerBlendingController(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::ViewerController* /*request*/, ::osirixgrpc::ViewerControllerBlendingControllerResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ViewerController* /*request*/, ::osirixgrpc::ViewerControllerBlendingControllerResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_ViewerControllerVRControllers : public BaseClass {
+  class WithCallbackMethod_ViewerControllerVRControllers : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_ViewerControllerVRControllers() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(75,
+    WithCallbackMethod_ViewerControllerVRControllers() {
+      ::grpc::Service::MarkMethodCallback(75,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ViewerController, ::osirixgrpc::ViewerControllerVRControllersResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerVRControllersResponse* response) { return this->ViewerControllerVRControllers(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerVRControllersResponse* response) { return this->ViewerControllerVRControllers(context, request, response); }));}
     void SetMessageAllocatorFor_ViewerControllerVRControllers(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::ViewerController, ::osirixgrpc::ViewerControllerVRControllersResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::ViewerController, ::osirixgrpc::ViewerControllerVRControllersResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(75);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(75);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ViewerController, ::osirixgrpc::ViewerControllerVRControllersResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_ViewerControllerVRControllers() override {
+    ~WithCallbackMethod_ViewerControllerVRControllers() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -10532,46 +7957,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ViewerControllerVRControllers(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ViewerController* /*request*/, ::osirixgrpc::ViewerControllerVRControllersResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ViewerControllerVRControllers(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::ViewerController* /*request*/, ::osirixgrpc::ViewerControllerVRControllersResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ViewerController* /*request*/, ::osirixgrpc::ViewerControllerVRControllersResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_ViewerControllerTitle : public BaseClass {
+  class WithCallbackMethod_ViewerControllerTitle : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_ViewerControllerTitle() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(76,
+    WithCallbackMethod_ViewerControllerTitle() {
+      ::grpc::Service::MarkMethodCallback(76,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ViewerController, ::osirixgrpc::ViewerControllerTitleResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerTitleResponse* response) { return this->ViewerControllerTitle(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerTitleResponse* response) { return this->ViewerControllerTitle(context, request, response); }));}
     void SetMessageAllocatorFor_ViewerControllerTitle(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::ViewerController, ::osirixgrpc::ViewerControllerTitleResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::ViewerController, ::osirixgrpc::ViewerControllerTitleResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(76);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(76);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ViewerController, ::osirixgrpc::ViewerControllerTitleResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_ViewerControllerTitle() override {
+    ~WithCallbackMethod_ViewerControllerTitle() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -10579,46 +7984,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ViewerControllerTitle(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ViewerController* /*request*/, ::osirixgrpc::ViewerControllerTitleResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ViewerControllerTitle(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::ViewerController* /*request*/, ::osirixgrpc::ViewerControllerTitleResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ViewerController* /*request*/, ::osirixgrpc::ViewerControllerTitleResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_ViewerControllerModality : public BaseClass {
+  class WithCallbackMethod_ViewerControllerModality : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_ViewerControllerModality() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(77,
+    WithCallbackMethod_ViewerControllerModality() {
+      ::grpc::Service::MarkMethodCallback(77,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ViewerController, ::osirixgrpc::ViewerControllerModalityResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerModalityResponse* response) { return this->ViewerControllerModality(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerModalityResponse* response) { return this->ViewerControllerModality(context, request, response); }));}
     void SetMessageAllocatorFor_ViewerControllerModality(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::ViewerController, ::osirixgrpc::ViewerControllerModalityResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::ViewerController, ::osirixgrpc::ViewerControllerModalityResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(77);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(77);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ViewerController, ::osirixgrpc::ViewerControllerModalityResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_ViewerControllerModality() override {
+    ~WithCallbackMethod_ViewerControllerModality() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -10626,46 +8011,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ViewerControllerModality(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ViewerController* /*request*/, ::osirixgrpc::ViewerControllerModalityResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ViewerControllerModality(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::ViewerController* /*request*/, ::osirixgrpc::ViewerControllerModalityResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ViewerController* /*request*/, ::osirixgrpc::ViewerControllerModalityResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_ViewerControllerMovieIdx : public BaseClass {
+  class WithCallbackMethod_ViewerControllerMovieIdx : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_ViewerControllerMovieIdx() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(78,
+    WithCallbackMethod_ViewerControllerMovieIdx() {
+      ::grpc::Service::MarkMethodCallback(78,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ViewerController, ::osirixgrpc::ViewerControllerMovieIdxResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerMovieIdxResponse* response) { return this->ViewerControllerMovieIdx(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerMovieIdxResponse* response) { return this->ViewerControllerMovieIdx(context, request, response); }));}
     void SetMessageAllocatorFor_ViewerControllerMovieIdx(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::ViewerController, ::osirixgrpc::ViewerControllerMovieIdxResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::ViewerController, ::osirixgrpc::ViewerControllerMovieIdxResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(78);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(78);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ViewerController, ::osirixgrpc::ViewerControllerMovieIdxResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_ViewerControllerMovieIdx() override {
+    ~WithCallbackMethod_ViewerControllerMovieIdx() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -10673,46 +8038,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ViewerControllerMovieIdx(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ViewerController* /*request*/, ::osirixgrpc::ViewerControllerMovieIdxResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ViewerControllerMovieIdx(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::ViewerController* /*request*/, ::osirixgrpc::ViewerControllerMovieIdxResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ViewerController* /*request*/, ::osirixgrpc::ViewerControllerMovieIdxResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_ViewerControllerSetMovieIdx : public BaseClass {
+  class WithCallbackMethod_ViewerControllerSetMovieIdx : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_ViewerControllerSetMovieIdx() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(79,
+    WithCallbackMethod_ViewerControllerSetMovieIdx() {
+      ::grpc::Service::MarkMethodCallback(79,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ViewerControllerSetMovieIdxRequest, ::osirixgrpc::Response>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::ViewerControllerSetMovieIdxRequest* request, ::osirixgrpc::Response* response) { return this->ViewerControllerSetMovieIdx(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::ViewerControllerSetMovieIdxRequest* request, ::osirixgrpc::Response* response) { return this->ViewerControllerSetMovieIdx(context, request, response); }));}
     void SetMessageAllocatorFor_ViewerControllerSetMovieIdx(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::ViewerControllerSetMovieIdxRequest, ::osirixgrpc::Response>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::ViewerControllerSetMovieIdxRequest, ::osirixgrpc::Response>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(79);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(79);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ViewerControllerSetMovieIdxRequest, ::osirixgrpc::Response>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_ViewerControllerSetMovieIdx() override {
+    ~WithCallbackMethod_ViewerControllerSetMovieIdx() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -10720,46 +8065,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ViewerControllerSetMovieIdx(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ViewerControllerSetMovieIdxRequest* /*request*/, ::osirixgrpc::Response* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ViewerControllerSetMovieIdx(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::ViewerControllerSetMovieIdxRequest* /*request*/, ::osirixgrpc::Response* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ViewerControllerSetMovieIdxRequest* /*request*/, ::osirixgrpc::Response* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_ViewerControllerMaxMovieIdx : public BaseClass {
+  class WithCallbackMethod_ViewerControllerMaxMovieIdx : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_ViewerControllerMaxMovieIdx() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(80,
+    WithCallbackMethod_ViewerControllerMaxMovieIdx() {
+      ::grpc::Service::MarkMethodCallback(80,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ViewerController, ::osirixgrpc::ViewerControllerMaxMovieIdxResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerMaxMovieIdxResponse* response) { return this->ViewerControllerMaxMovieIdx(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerMaxMovieIdxResponse* response) { return this->ViewerControllerMaxMovieIdx(context, request, response); }));}
     void SetMessageAllocatorFor_ViewerControllerMaxMovieIdx(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::ViewerController, ::osirixgrpc::ViewerControllerMaxMovieIdxResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::ViewerController, ::osirixgrpc::ViewerControllerMaxMovieIdxResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(80);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(80);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ViewerController, ::osirixgrpc::ViewerControllerMaxMovieIdxResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_ViewerControllerMaxMovieIdx() override {
+    ~WithCallbackMethod_ViewerControllerMaxMovieIdx() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -10767,46 +8092,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ViewerControllerMaxMovieIdx(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ViewerController* /*request*/, ::osirixgrpc::ViewerControllerMaxMovieIdxResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ViewerControllerMaxMovieIdx(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::ViewerController* /*request*/, ::osirixgrpc::ViewerControllerMaxMovieIdxResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ViewerController* /*request*/, ::osirixgrpc::ViewerControllerMaxMovieIdxResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_ViewerControllerIdx : public BaseClass {
+  class WithCallbackMethod_ViewerControllerIdx : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_ViewerControllerIdx() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(81,
+    WithCallbackMethod_ViewerControllerIdx() {
+      ::grpc::Service::MarkMethodCallback(81,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ViewerController, ::osirixgrpc::ViewerControllerIdxResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerIdxResponse* response) { return this->ViewerControllerIdx(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerIdxResponse* response) { return this->ViewerControllerIdx(context, request, response); }));}
     void SetMessageAllocatorFor_ViewerControllerIdx(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::ViewerController, ::osirixgrpc::ViewerControllerIdxResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::ViewerController, ::osirixgrpc::ViewerControllerIdxResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(81);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(81);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ViewerController, ::osirixgrpc::ViewerControllerIdxResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_ViewerControllerIdx() override {
+    ~WithCallbackMethod_ViewerControllerIdx() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -10814,46 +8119,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ViewerControllerIdx(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ViewerController* /*request*/, ::osirixgrpc::ViewerControllerIdxResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ViewerControllerIdx(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::ViewerController* /*request*/, ::osirixgrpc::ViewerControllerIdxResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ViewerController* /*request*/, ::osirixgrpc::ViewerControllerIdxResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_ViewerControllerSetIdx : public BaseClass {
+  class WithCallbackMethod_ViewerControllerSetIdx : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_ViewerControllerSetIdx() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(82,
+    WithCallbackMethod_ViewerControllerSetIdx() {
+      ::grpc::Service::MarkMethodCallback(82,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ViewerControllerSetIdxRequest, ::osirixgrpc::Response>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::ViewerControllerSetIdxRequest* request, ::osirixgrpc::Response* response) { return this->ViewerControllerSetIdx(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::ViewerControllerSetIdxRequest* request, ::osirixgrpc::Response* response) { return this->ViewerControllerSetIdx(context, request, response); }));}
     void SetMessageAllocatorFor_ViewerControllerSetIdx(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::ViewerControllerSetIdxRequest, ::osirixgrpc::Response>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::ViewerControllerSetIdxRequest, ::osirixgrpc::Response>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(82);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(82);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ViewerControllerSetIdxRequest, ::osirixgrpc::Response>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_ViewerControllerSetIdx() override {
+    ~WithCallbackMethod_ViewerControllerSetIdx() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -10861,46 +8146,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ViewerControllerSetIdx(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ViewerControllerSetIdxRequest* /*request*/, ::osirixgrpc::Response* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ViewerControllerSetIdx(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::ViewerControllerSetIdxRequest* /*request*/, ::osirixgrpc::Response* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ViewerControllerSetIdxRequest* /*request*/, ::osirixgrpc::Response* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_ViewerControllerWLWW : public BaseClass {
+  class WithCallbackMethod_ViewerControllerWLWW : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_ViewerControllerWLWW() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(83,
+    WithCallbackMethod_ViewerControllerWLWW() {
+      ::grpc::Service::MarkMethodCallback(83,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ViewerController, ::osirixgrpc::ViewerControllerWLWWResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerWLWWResponse* response) { return this->ViewerControllerWLWW(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerWLWWResponse* response) { return this->ViewerControllerWLWW(context, request, response); }));}
     void SetMessageAllocatorFor_ViewerControllerWLWW(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::ViewerController, ::osirixgrpc::ViewerControllerWLWWResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::ViewerController, ::osirixgrpc::ViewerControllerWLWWResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(83);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(83);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ViewerController, ::osirixgrpc::ViewerControllerWLWWResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_ViewerControllerWLWW() override {
+    ~WithCallbackMethod_ViewerControllerWLWW() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -10908,46 +8173,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ViewerControllerWLWW(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ViewerController* /*request*/, ::osirixgrpc::ViewerControllerWLWWResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ViewerControllerWLWW(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::ViewerController* /*request*/, ::osirixgrpc::ViewerControllerWLWWResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ViewerController* /*request*/, ::osirixgrpc::ViewerControllerWLWWResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_ViewerControllerSetWLWW : public BaseClass {
+  class WithCallbackMethod_ViewerControllerSetWLWW : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_ViewerControllerSetWLWW() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(84,
+    WithCallbackMethod_ViewerControllerSetWLWW() {
+      ::grpc::Service::MarkMethodCallback(84,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ViewerControllerSetWLWWRequest, ::osirixgrpc::Response>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::ViewerControllerSetWLWWRequest* request, ::osirixgrpc::Response* response) { return this->ViewerControllerSetWLWW(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::ViewerControllerSetWLWWRequest* request, ::osirixgrpc::Response* response) { return this->ViewerControllerSetWLWW(context, request, response); }));}
     void SetMessageAllocatorFor_ViewerControllerSetWLWW(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::ViewerControllerSetWLWWRequest, ::osirixgrpc::Response>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::ViewerControllerSetWLWWRequest, ::osirixgrpc::Response>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(84);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(84);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ViewerControllerSetWLWWRequest, ::osirixgrpc::Response>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_ViewerControllerSetWLWW() override {
+    ~WithCallbackMethod_ViewerControllerSetWLWW() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -10955,46 +8200,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ViewerControllerSetWLWW(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ViewerControllerSetWLWWRequest* /*request*/, ::osirixgrpc::Response* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ViewerControllerSetWLWW(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::ViewerControllerSetWLWWRequest* /*request*/, ::osirixgrpc::Response* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ViewerControllerSetWLWWRequest* /*request*/, ::osirixgrpc::Response* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_ViewerControllerOpenVRViewerForMode : public BaseClass {
+  class WithCallbackMethod_ViewerControllerOpenVRViewerForMode : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_ViewerControllerOpenVRViewerForMode() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(85,
+    WithCallbackMethod_ViewerControllerOpenVRViewerForMode() {
+      ::grpc::Service::MarkMethodCallback(85,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ViewerControllerOpenVRViewerForModeRequest, ::osirixgrpc::ViewerControllerOpenVRViewerForModeResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::ViewerControllerOpenVRViewerForModeRequest* request, ::osirixgrpc::ViewerControllerOpenVRViewerForModeResponse* response) { return this->ViewerControllerOpenVRViewerForMode(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::ViewerControllerOpenVRViewerForModeRequest* request, ::osirixgrpc::ViewerControllerOpenVRViewerForModeResponse* response) { return this->ViewerControllerOpenVRViewerForMode(context, request, response); }));}
     void SetMessageAllocatorFor_ViewerControllerOpenVRViewerForMode(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::ViewerControllerOpenVRViewerForModeRequest, ::osirixgrpc::ViewerControllerOpenVRViewerForModeResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::ViewerControllerOpenVRViewerForModeRequest, ::osirixgrpc::ViewerControllerOpenVRViewerForModeResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(85);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(85);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::ViewerControllerOpenVRViewerForModeRequest, ::osirixgrpc::ViewerControllerOpenVRViewerForModeResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_ViewerControllerOpenVRViewerForMode() override {
+    ~WithCallbackMethod_ViewerControllerOpenVRViewerForMode() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -11002,46 +8227,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ViewerControllerOpenVRViewerForMode(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ViewerControllerOpenVRViewerForModeRequest* /*request*/, ::osirixgrpc::ViewerControllerOpenVRViewerForModeResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ViewerControllerOpenVRViewerForMode(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::ViewerControllerOpenVRViewerForModeRequest* /*request*/, ::osirixgrpc::ViewerControllerOpenVRViewerForModeResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::ViewerControllerOpenVRViewerForModeRequest* /*request*/, ::osirixgrpc::ViewerControllerOpenVRViewerForModeResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_BrowserControllerDatabaseSelection : public BaseClass {
+  class WithCallbackMethod_BrowserControllerDatabaseSelection : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_BrowserControllerDatabaseSelection() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(86,
+    WithCallbackMethod_BrowserControllerDatabaseSelection() {
+      ::grpc::Service::MarkMethodCallback(86,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::BrowserController, ::osirixgrpc::BrowserControllerDatabaseSelectionResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::BrowserController* request, ::osirixgrpc::BrowserControllerDatabaseSelectionResponse* response) { return this->BrowserControllerDatabaseSelection(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::BrowserController* request, ::osirixgrpc::BrowserControllerDatabaseSelectionResponse* response) { return this->BrowserControllerDatabaseSelection(context, request, response); }));}
     void SetMessageAllocatorFor_BrowserControllerDatabaseSelection(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::BrowserController, ::osirixgrpc::BrowserControllerDatabaseSelectionResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::BrowserController, ::osirixgrpc::BrowserControllerDatabaseSelectionResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(86);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(86);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::BrowserController, ::osirixgrpc::BrowserControllerDatabaseSelectionResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_BrowserControllerDatabaseSelection() override {
+    ~WithCallbackMethod_BrowserControllerDatabaseSelection() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -11049,46 +8254,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* BrowserControllerDatabaseSelection(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::BrowserController* /*request*/, ::osirixgrpc::BrowserControllerDatabaseSelectionResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* BrowserControllerDatabaseSelection(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::BrowserController* /*request*/, ::osirixgrpc::BrowserControllerDatabaseSelectionResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::BrowserController* /*request*/, ::osirixgrpc::BrowserControllerDatabaseSelectionResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_BrowserControllerCopyFilesIfNeeded : public BaseClass {
+  class WithCallbackMethod_BrowserControllerCopyFilesIfNeeded : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_BrowserControllerCopyFilesIfNeeded() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(87,
+    WithCallbackMethod_BrowserControllerCopyFilesIfNeeded() {
+      ::grpc::Service::MarkMethodCallback(87,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::BrowserControllerCopyFilesIfNeededRequest, ::osirixgrpc::Response>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::BrowserControllerCopyFilesIfNeededRequest* request, ::osirixgrpc::Response* response) { return this->BrowserControllerCopyFilesIfNeeded(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::BrowserControllerCopyFilesIfNeededRequest* request, ::osirixgrpc::Response* response) { return this->BrowserControllerCopyFilesIfNeeded(context, request, response); }));}
     void SetMessageAllocatorFor_BrowserControllerCopyFilesIfNeeded(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::BrowserControllerCopyFilesIfNeededRequest, ::osirixgrpc::Response>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::BrowserControllerCopyFilesIfNeededRequest, ::osirixgrpc::Response>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(87);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(87);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::BrowserControllerCopyFilesIfNeededRequest, ::osirixgrpc::Response>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_BrowserControllerCopyFilesIfNeeded() override {
+    ~WithCallbackMethod_BrowserControllerCopyFilesIfNeeded() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -11096,46 +8281,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* BrowserControllerCopyFilesIfNeeded(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::BrowserControllerCopyFilesIfNeededRequest* /*request*/, ::osirixgrpc::Response* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* BrowserControllerCopyFilesIfNeeded(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::BrowserControllerCopyFilesIfNeededRequest* /*request*/, ::osirixgrpc::Response* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::BrowserControllerCopyFilesIfNeededRequest* /*request*/, ::osirixgrpc::Response* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_DicomImageWidth : public BaseClass {
+  class WithCallbackMethod_DicomImageWidth : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_DicomImageWidth() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(88,
+    WithCallbackMethod_DicomImageWidth() {
+      ::grpc::Service::MarkMethodCallback(88,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DicomImage, ::osirixgrpc::DicomImageWidthResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageWidthResponse* response) { return this->DicomImageWidth(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageWidthResponse* response) { return this->DicomImageWidth(context, request, response); }));}
     void SetMessageAllocatorFor_DicomImageWidth(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::DicomImage, ::osirixgrpc::DicomImageWidthResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::DicomImage, ::osirixgrpc::DicomImageWidthResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(88);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(88);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DicomImage, ::osirixgrpc::DicomImageWidthResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_DicomImageWidth() override {
+    ~WithCallbackMethod_DicomImageWidth() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -11143,46 +8308,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DicomImageWidth(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomImage* /*request*/, ::osirixgrpc::DicomImageWidthResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DicomImageWidth(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomImage* /*request*/, ::osirixgrpc::DicomImageWidthResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomImage* /*request*/, ::osirixgrpc::DicomImageWidthResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_DicomImageHeight : public BaseClass {
+  class WithCallbackMethod_DicomImageHeight : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_DicomImageHeight() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(89,
+    WithCallbackMethod_DicomImageHeight() {
+      ::grpc::Service::MarkMethodCallback(89,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DicomImage, ::osirixgrpc::DicomImageHeightResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageHeightResponse* response) { return this->DicomImageHeight(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageHeightResponse* response) { return this->DicomImageHeight(context, request, response); }));}
     void SetMessageAllocatorFor_DicomImageHeight(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::DicomImage, ::osirixgrpc::DicomImageHeightResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::DicomImage, ::osirixgrpc::DicomImageHeightResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(89);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(89);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DicomImage, ::osirixgrpc::DicomImageHeightResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_DicomImageHeight() override {
+    ~WithCallbackMethod_DicomImageHeight() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -11190,46 +8335,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DicomImageHeight(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomImage* /*request*/, ::osirixgrpc::DicomImageHeightResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DicomImageHeight(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomImage* /*request*/, ::osirixgrpc::DicomImageHeightResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomImage* /*request*/, ::osirixgrpc::DicomImageHeightResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_DicomImageSOPInstanceUID : public BaseClass {
+  class WithCallbackMethod_DicomImageSOPInstanceUID : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_DicomImageSOPInstanceUID() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(90,
+    WithCallbackMethod_DicomImageSOPInstanceUID() {
+      ::grpc::Service::MarkMethodCallback(90,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DicomImage, ::osirixgrpc::DicomImageSOPInstanceUIDResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageSOPInstanceUIDResponse* response) { return this->DicomImageSOPInstanceUID(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageSOPInstanceUIDResponse* response) { return this->DicomImageSOPInstanceUID(context, request, response); }));}
     void SetMessageAllocatorFor_DicomImageSOPInstanceUID(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::DicomImage, ::osirixgrpc::DicomImageSOPInstanceUIDResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::DicomImage, ::osirixgrpc::DicomImageSOPInstanceUIDResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(90);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(90);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DicomImage, ::osirixgrpc::DicomImageSOPInstanceUIDResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_DicomImageSOPInstanceUID() override {
+    ~WithCallbackMethod_DicomImageSOPInstanceUID() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -11237,46 +8362,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DicomImageSOPInstanceUID(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomImage* /*request*/, ::osirixgrpc::DicomImageSOPInstanceUIDResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DicomImageSOPInstanceUID(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomImage* /*request*/, ::osirixgrpc::DicomImageSOPInstanceUIDResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomImage* /*request*/, ::osirixgrpc::DicomImageSOPInstanceUIDResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_DicomImageCompletePath : public BaseClass {
+  class WithCallbackMethod_DicomImageCompletePath : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_DicomImageCompletePath() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(91,
+    WithCallbackMethod_DicomImageCompletePath() {
+      ::grpc::Service::MarkMethodCallback(91,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DicomImage, ::osirixgrpc::DicomImageCompletePathResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageCompletePathResponse* response) { return this->DicomImageCompletePath(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageCompletePathResponse* response) { return this->DicomImageCompletePath(context, request, response); }));}
     void SetMessageAllocatorFor_DicomImageCompletePath(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::DicomImage, ::osirixgrpc::DicomImageCompletePathResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::DicomImage, ::osirixgrpc::DicomImageCompletePathResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(91);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(91);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DicomImage, ::osirixgrpc::DicomImageCompletePathResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_DicomImageCompletePath() override {
+    ~WithCallbackMethod_DicomImageCompletePath() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -11284,46 +8389,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DicomImageCompletePath(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomImage* /*request*/, ::osirixgrpc::DicomImageCompletePathResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DicomImageCompletePath(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomImage* /*request*/, ::osirixgrpc::DicomImageCompletePathResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomImage* /*request*/, ::osirixgrpc::DicomImageCompletePathResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_DicomImageDate : public BaseClass {
+  class WithCallbackMethod_DicomImageDate : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_DicomImageDate() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(92,
+    WithCallbackMethod_DicomImageDate() {
+      ::grpc::Service::MarkMethodCallback(92,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DicomImage, ::osirixgrpc::DicomImageDateResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageDateResponse* response) { return this->DicomImageDate(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageDateResponse* response) { return this->DicomImageDate(context, request, response); }));}
     void SetMessageAllocatorFor_DicomImageDate(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::DicomImage, ::osirixgrpc::DicomImageDateResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::DicomImage, ::osirixgrpc::DicomImageDateResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(92);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(92);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DicomImage, ::osirixgrpc::DicomImageDateResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_DicomImageDate() override {
+    ~WithCallbackMethod_DicomImageDate() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -11331,46 +8416,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DicomImageDate(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomImage* /*request*/, ::osirixgrpc::DicomImageDateResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DicomImageDate(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomImage* /*request*/, ::osirixgrpc::DicomImageDateResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomImage* /*request*/, ::osirixgrpc::DicomImageDateResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_DicomImageNumberOfFrames : public BaseClass {
+  class WithCallbackMethod_DicomImageNumberOfFrames : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_DicomImageNumberOfFrames() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(93,
+    WithCallbackMethod_DicomImageNumberOfFrames() {
+      ::grpc::Service::MarkMethodCallback(93,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DicomImage, ::osirixgrpc::DicomImageNumberOfFramesResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageNumberOfFramesResponse* response) { return this->DicomImageNumberOfFrames(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageNumberOfFramesResponse* response) { return this->DicomImageNumberOfFrames(context, request, response); }));}
     void SetMessageAllocatorFor_DicomImageNumberOfFrames(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::DicomImage, ::osirixgrpc::DicomImageNumberOfFramesResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::DicomImage, ::osirixgrpc::DicomImageNumberOfFramesResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(93);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(93);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DicomImage, ::osirixgrpc::DicomImageNumberOfFramesResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_DicomImageNumberOfFrames() override {
+    ~WithCallbackMethod_DicomImageNumberOfFrames() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -11378,46 +8443,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DicomImageNumberOfFrames(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomImage* /*request*/, ::osirixgrpc::DicomImageNumberOfFramesResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DicomImageNumberOfFrames(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomImage* /*request*/, ::osirixgrpc::DicomImageNumberOfFramesResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomImage* /*request*/, ::osirixgrpc::DicomImageNumberOfFramesResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_DicomImageModality : public BaseClass {
+  class WithCallbackMethod_DicomImageModality : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_DicomImageModality() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(94,
+    WithCallbackMethod_DicomImageModality() {
+      ::grpc::Service::MarkMethodCallback(94,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DicomImage, ::osirixgrpc::DicomImageModalityResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageModalityResponse* response) { return this->DicomImageModality(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageModalityResponse* response) { return this->DicomImageModality(context, request, response); }));}
     void SetMessageAllocatorFor_DicomImageModality(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::DicomImage, ::osirixgrpc::DicomImageModalityResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::DicomImage, ::osirixgrpc::DicomImageModalityResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(94);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(94);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DicomImage, ::osirixgrpc::DicomImageModalityResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_DicomImageModality() override {
+    ~WithCallbackMethod_DicomImageModality() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -11425,46 +8470,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DicomImageModality(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomImage* /*request*/, ::osirixgrpc::DicomImageModalityResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DicomImageModality(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomImage* /*request*/, ::osirixgrpc::DicomImageModalityResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomImage* /*request*/, ::osirixgrpc::DicomImageModalityResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_DicomImageSeries : public BaseClass {
+  class WithCallbackMethod_DicomImageSeries : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_DicomImageSeries() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(95,
+    WithCallbackMethod_DicomImageSeries() {
+      ::grpc::Service::MarkMethodCallback(95,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DicomImage, ::osirixgrpc::DicomImageSeriesResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageSeriesResponse* response) { return this->DicomImageSeries(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageSeriesResponse* response) { return this->DicomImageSeries(context, request, response); }));}
     void SetMessageAllocatorFor_DicomImageSeries(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::DicomImage, ::osirixgrpc::DicomImageSeriesResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::DicomImage, ::osirixgrpc::DicomImageSeriesResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(95);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(95);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DicomImage, ::osirixgrpc::DicomImageSeriesResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_DicomImageSeries() override {
+    ~WithCallbackMethod_DicomImageSeries() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -11472,46 +8497,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DicomImageSeries(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomImage* /*request*/, ::osirixgrpc::DicomImageSeriesResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DicomImageSeries(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomImage* /*request*/, ::osirixgrpc::DicomImageSeriesResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomImage* /*request*/, ::osirixgrpc::DicomImageSeriesResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_DicomImageSliceLocation : public BaseClass {
+  class WithCallbackMethod_DicomImageSliceLocation : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_DicomImageSliceLocation() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(96,
+    WithCallbackMethod_DicomImageSliceLocation() {
+      ::grpc::Service::MarkMethodCallback(96,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DicomImage, ::osirixgrpc::DicomImageSliceLocationResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageSliceLocationResponse* response) { return this->DicomImageSliceLocation(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageSliceLocationResponse* response) { return this->DicomImageSliceLocation(context, request, response); }));}
     void SetMessageAllocatorFor_DicomImageSliceLocation(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::DicomImage, ::osirixgrpc::DicomImageSliceLocationResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::DicomImage, ::osirixgrpc::DicomImageSliceLocationResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(96);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(96);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DicomImage, ::osirixgrpc::DicomImageSliceLocationResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_DicomImageSliceLocation() override {
+    ~WithCallbackMethod_DicomImageSliceLocation() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -11519,46 +8524,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DicomImageSliceLocation(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomImage* /*request*/, ::osirixgrpc::DicomImageSliceLocationResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DicomImageSliceLocation(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomImage* /*request*/, ::osirixgrpc::DicomImageSliceLocationResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomImage* /*request*/, ::osirixgrpc::DicomImageSliceLocationResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_DicomImageInstanceNumber : public BaseClass {
+  class WithCallbackMethod_DicomImageInstanceNumber : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_DicomImageInstanceNumber() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(97,
+    WithCallbackMethod_DicomImageInstanceNumber() {
+      ::grpc::Service::MarkMethodCallback(97,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DicomImage, ::osirixgrpc::DicomImageInstanceNumberResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageInstanceNumberResponse* response) { return this->DicomImageInstanceNumber(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageInstanceNumberResponse* response) { return this->DicomImageInstanceNumber(context, request, response); }));}
     void SetMessageAllocatorFor_DicomImageInstanceNumber(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::DicomImage, ::osirixgrpc::DicomImageInstanceNumberResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::DicomImage, ::osirixgrpc::DicomImageInstanceNumberResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(97);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(97);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DicomImage, ::osirixgrpc::DicomImageInstanceNumberResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_DicomImageInstanceNumber() override {
+    ~WithCallbackMethod_DicomImageInstanceNumber() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -11566,46 +8551,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DicomImageInstanceNumber(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomImage* /*request*/, ::osirixgrpc::DicomImageInstanceNumberResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DicomImageInstanceNumber(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomImage* /*request*/, ::osirixgrpc::DicomImageInstanceNumberResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomImage* /*request*/, ::osirixgrpc::DicomImageInstanceNumberResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_DicomSeriesPaths : public BaseClass {
+  class WithCallbackMethod_DicomSeriesPaths : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_DicomSeriesPaths() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(98,
+    WithCallbackMethod_DicomSeriesPaths() {
+      ::grpc::Service::MarkMethodCallback(98,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DicomSeries, ::osirixgrpc::DicomSeriesPathsResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesPathsResponse* response) { return this->DicomSeriesPaths(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesPathsResponse* response) { return this->DicomSeriesPaths(context, request, response); }));}
     void SetMessageAllocatorFor_DicomSeriesPaths(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::DicomSeries, ::osirixgrpc::DicomSeriesPathsResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::DicomSeries, ::osirixgrpc::DicomSeriesPathsResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(98);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(98);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DicomSeries, ::osirixgrpc::DicomSeriesPathsResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_DicomSeriesPaths() override {
+    ~WithCallbackMethod_DicomSeriesPaths() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -11613,46 +8578,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DicomSeriesPaths(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomSeries* /*request*/, ::osirixgrpc::DicomSeriesPathsResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DicomSeriesPaths(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomSeries* /*request*/, ::osirixgrpc::DicomSeriesPathsResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomSeries* /*request*/, ::osirixgrpc::DicomSeriesPathsResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_DicomSeriesPreviousSeries : public BaseClass {
+  class WithCallbackMethod_DicomSeriesPreviousSeries : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_DicomSeriesPreviousSeries() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(99,
+    WithCallbackMethod_DicomSeriesPreviousSeries() {
+      ::grpc::Service::MarkMethodCallback(99,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DicomSeries, ::osirixgrpc::DicomSeriesPreviousSeriesResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesPreviousSeriesResponse* response) { return this->DicomSeriesPreviousSeries(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesPreviousSeriesResponse* response) { return this->DicomSeriesPreviousSeries(context, request, response); }));}
     void SetMessageAllocatorFor_DicomSeriesPreviousSeries(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::DicomSeries, ::osirixgrpc::DicomSeriesPreviousSeriesResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::DicomSeries, ::osirixgrpc::DicomSeriesPreviousSeriesResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(99);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(99);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DicomSeries, ::osirixgrpc::DicomSeriesPreviousSeriesResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_DicomSeriesPreviousSeries() override {
+    ~WithCallbackMethod_DicomSeriesPreviousSeries() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -11660,46 +8605,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DicomSeriesPreviousSeries(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomSeries* /*request*/, ::osirixgrpc::DicomSeriesPreviousSeriesResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DicomSeriesPreviousSeries(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomSeries* /*request*/, ::osirixgrpc::DicomSeriesPreviousSeriesResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomSeries* /*request*/, ::osirixgrpc::DicomSeriesPreviousSeriesResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_DicomSeriesNextSeries : public BaseClass {
+  class WithCallbackMethod_DicomSeriesNextSeries : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_DicomSeriesNextSeries() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(100,
+    WithCallbackMethod_DicomSeriesNextSeries() {
+      ::grpc::Service::MarkMethodCallback(100,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DicomSeries, ::osirixgrpc::DicomSeriesNextSeriesResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesNextSeriesResponse* response) { return this->DicomSeriesNextSeries(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesNextSeriesResponse* response) { return this->DicomSeriesNextSeries(context, request, response); }));}
     void SetMessageAllocatorFor_DicomSeriesNextSeries(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::DicomSeries, ::osirixgrpc::DicomSeriesNextSeriesResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::DicomSeries, ::osirixgrpc::DicomSeriesNextSeriesResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(100);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(100);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DicomSeries, ::osirixgrpc::DicomSeriesNextSeriesResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_DicomSeriesNextSeries() override {
+    ~WithCallbackMethod_DicomSeriesNextSeries() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -11707,46 +8632,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DicomSeriesNextSeries(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomSeries* /*request*/, ::osirixgrpc::DicomSeriesNextSeriesResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DicomSeriesNextSeries(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomSeries* /*request*/, ::osirixgrpc::DicomSeriesNextSeriesResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomSeries* /*request*/, ::osirixgrpc::DicomSeriesNextSeriesResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_DicomSeriesSortedImages : public BaseClass {
+  class WithCallbackMethod_DicomSeriesSortedImages : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_DicomSeriesSortedImages() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(101,
+    WithCallbackMethod_DicomSeriesSortedImages() {
+      ::grpc::Service::MarkMethodCallback(101,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DicomSeries, ::osirixgrpc::DicomSeriesSortedImagesResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesSortedImagesResponse* response) { return this->DicomSeriesSortedImages(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesSortedImagesResponse* response) { return this->DicomSeriesSortedImages(context, request, response); }));}
     void SetMessageAllocatorFor_DicomSeriesSortedImages(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::DicomSeries, ::osirixgrpc::DicomSeriesSortedImagesResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::DicomSeries, ::osirixgrpc::DicomSeriesSortedImagesResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(101);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(101);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DicomSeries, ::osirixgrpc::DicomSeriesSortedImagesResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_DicomSeriesSortedImages() override {
+    ~WithCallbackMethod_DicomSeriesSortedImages() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -11754,46 +8659,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DicomSeriesSortedImages(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomSeries* /*request*/, ::osirixgrpc::DicomSeriesSortedImagesResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DicomSeriesSortedImages(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomSeries* /*request*/, ::osirixgrpc::DicomSeriesSortedImagesResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomSeries* /*request*/, ::osirixgrpc::DicomSeriesSortedImagesResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_DicomSeriesStudy : public BaseClass {
+  class WithCallbackMethod_DicomSeriesStudy : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_DicomSeriesStudy() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(102,
+    WithCallbackMethod_DicomSeriesStudy() {
+      ::grpc::Service::MarkMethodCallback(102,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DicomSeries, ::osirixgrpc::DicomSeriesStudyResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesStudyResponse* response) { return this->DicomSeriesStudy(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesStudyResponse* response) { return this->DicomSeriesStudy(context, request, response); }));}
     void SetMessageAllocatorFor_DicomSeriesStudy(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::DicomSeries, ::osirixgrpc::DicomSeriesStudyResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::DicomSeries, ::osirixgrpc::DicomSeriesStudyResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(102);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(102);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DicomSeries, ::osirixgrpc::DicomSeriesStudyResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_DicomSeriesStudy() override {
+    ~WithCallbackMethod_DicomSeriesStudy() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -11801,46 +8686,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DicomSeriesStudy(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomSeries* /*request*/, ::osirixgrpc::DicomSeriesStudyResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DicomSeriesStudy(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomSeries* /*request*/, ::osirixgrpc::DicomSeriesStudyResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomSeries* /*request*/, ::osirixgrpc::DicomSeriesStudyResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_DicomSeriesImages : public BaseClass {
+  class WithCallbackMethod_DicomSeriesImages : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_DicomSeriesImages() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(103,
+    WithCallbackMethod_DicomSeriesImages() {
+      ::grpc::Service::MarkMethodCallback(103,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DicomSeries, ::osirixgrpc::DicomSeriesImagesResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesImagesResponse* response) { return this->DicomSeriesImages(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesImagesResponse* response) { return this->DicomSeriesImages(context, request, response); }));}
     void SetMessageAllocatorFor_DicomSeriesImages(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::DicomSeries, ::osirixgrpc::DicomSeriesImagesResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::DicomSeries, ::osirixgrpc::DicomSeriesImagesResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(103);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(103);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DicomSeries, ::osirixgrpc::DicomSeriesImagesResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_DicomSeriesImages() override {
+    ~WithCallbackMethod_DicomSeriesImages() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -11848,46 +8713,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DicomSeriesImages(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomSeries* /*request*/, ::osirixgrpc::DicomSeriesImagesResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DicomSeriesImages(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomSeries* /*request*/, ::osirixgrpc::DicomSeriesImagesResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomSeries* /*request*/, ::osirixgrpc::DicomSeriesImagesResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_DicomSeriesSeriesInstanceUID : public BaseClass {
+  class WithCallbackMethod_DicomSeriesSeriesInstanceUID : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_DicomSeriesSeriesInstanceUID() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(104,
+    WithCallbackMethod_DicomSeriesSeriesInstanceUID() {
+      ::grpc::Service::MarkMethodCallback(104,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DicomSeries, ::osirixgrpc::DicomSeriesSeriesInstanceUIDResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesSeriesInstanceUIDResponse* response) { return this->DicomSeriesSeriesInstanceUID(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesSeriesInstanceUIDResponse* response) { return this->DicomSeriesSeriesInstanceUID(context, request, response); }));}
     void SetMessageAllocatorFor_DicomSeriesSeriesInstanceUID(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::DicomSeries, ::osirixgrpc::DicomSeriesSeriesInstanceUIDResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::DicomSeries, ::osirixgrpc::DicomSeriesSeriesInstanceUIDResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(104);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(104);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DicomSeries, ::osirixgrpc::DicomSeriesSeriesInstanceUIDResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_DicomSeriesSeriesInstanceUID() override {
+    ~WithCallbackMethod_DicomSeriesSeriesInstanceUID() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -11895,46 +8740,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DicomSeriesSeriesInstanceUID(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomSeries* /*request*/, ::osirixgrpc::DicomSeriesSeriesInstanceUIDResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DicomSeriesSeriesInstanceUID(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomSeries* /*request*/, ::osirixgrpc::DicomSeriesSeriesInstanceUIDResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomSeries* /*request*/, ::osirixgrpc::DicomSeriesSeriesInstanceUIDResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_DicomSeriesSeriesSOPClassUID : public BaseClass {
+  class WithCallbackMethod_DicomSeriesSeriesSOPClassUID : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_DicomSeriesSeriesSOPClassUID() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(105,
+    WithCallbackMethod_DicomSeriesSeriesSOPClassUID() {
+      ::grpc::Service::MarkMethodCallback(105,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DicomSeries, ::osirixgrpc::DicomSeriesSeriesSOPClassUIDResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesSeriesSOPClassUIDResponse* response) { return this->DicomSeriesSeriesSOPClassUID(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesSeriesSOPClassUIDResponse* response) { return this->DicomSeriesSeriesSOPClassUID(context, request, response); }));}
     void SetMessageAllocatorFor_DicomSeriesSeriesSOPClassUID(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::DicomSeries, ::osirixgrpc::DicomSeriesSeriesSOPClassUIDResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::DicomSeries, ::osirixgrpc::DicomSeriesSeriesSOPClassUIDResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(105);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(105);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DicomSeries, ::osirixgrpc::DicomSeriesSeriesSOPClassUIDResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_DicomSeriesSeriesSOPClassUID() override {
+    ~WithCallbackMethod_DicomSeriesSeriesSOPClassUID() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -11942,46 +8767,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DicomSeriesSeriesSOPClassUID(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomSeries* /*request*/, ::osirixgrpc::DicomSeriesSeriesSOPClassUIDResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DicomSeriesSeriesSOPClassUID(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomSeries* /*request*/, ::osirixgrpc::DicomSeriesSeriesSOPClassUIDResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomSeries* /*request*/, ::osirixgrpc::DicomSeriesSeriesSOPClassUIDResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_DicomSeriesSeriesDescription : public BaseClass {
+  class WithCallbackMethod_DicomSeriesSeriesDescription : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_DicomSeriesSeriesDescription() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(106,
+    WithCallbackMethod_DicomSeriesSeriesDescription() {
+      ::grpc::Service::MarkMethodCallback(106,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DicomSeries, ::osirixgrpc::DicomSeriesSeriesDescriptionResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesSeriesDescriptionResponse* response) { return this->DicomSeriesSeriesDescription(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesSeriesDescriptionResponse* response) { return this->DicomSeriesSeriesDescription(context, request, response); }));}
     void SetMessageAllocatorFor_DicomSeriesSeriesDescription(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::DicomSeries, ::osirixgrpc::DicomSeriesSeriesDescriptionResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::DicomSeries, ::osirixgrpc::DicomSeriesSeriesDescriptionResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(106);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(106);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DicomSeries, ::osirixgrpc::DicomSeriesSeriesDescriptionResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_DicomSeriesSeriesDescription() override {
+    ~WithCallbackMethod_DicomSeriesSeriesDescription() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -11989,46 +8794,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DicomSeriesSeriesDescription(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomSeries* /*request*/, ::osirixgrpc::DicomSeriesSeriesDescriptionResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DicomSeriesSeriesDescription(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomSeries* /*request*/, ::osirixgrpc::DicomSeriesSeriesDescriptionResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomSeries* /*request*/, ::osirixgrpc::DicomSeriesSeriesDescriptionResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_DicomSeriesModality : public BaseClass {
+  class WithCallbackMethod_DicomSeriesModality : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_DicomSeriesModality() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(107,
+    WithCallbackMethod_DicomSeriesModality() {
+      ::grpc::Service::MarkMethodCallback(107,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DicomSeries, ::osirixgrpc::DicomSeriesModalityResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesModalityResponse* response) { return this->DicomSeriesModality(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesModalityResponse* response) { return this->DicomSeriesModality(context, request, response); }));}
     void SetMessageAllocatorFor_DicomSeriesModality(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::DicomSeries, ::osirixgrpc::DicomSeriesModalityResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::DicomSeries, ::osirixgrpc::DicomSeriesModalityResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(107);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(107);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DicomSeries, ::osirixgrpc::DicomSeriesModalityResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_DicomSeriesModality() override {
+    ~WithCallbackMethod_DicomSeriesModality() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -12036,46 +8821,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DicomSeriesModality(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomSeries* /*request*/, ::osirixgrpc::DicomSeriesModalityResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DicomSeriesModality(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomSeries* /*request*/, ::osirixgrpc::DicomSeriesModalityResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomSeries* /*request*/, ::osirixgrpc::DicomSeriesModalityResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_DicomSeriesName : public BaseClass {
+  class WithCallbackMethod_DicomSeriesName : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_DicomSeriesName() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(108,
+    WithCallbackMethod_DicomSeriesName() {
+      ::grpc::Service::MarkMethodCallback(108,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DicomSeries, ::osirixgrpc::DicomSeriesNameResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesNameResponse* response) { return this->DicomSeriesName(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesNameResponse* response) { return this->DicomSeriesName(context, request, response); }));}
     void SetMessageAllocatorFor_DicomSeriesName(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::DicomSeries, ::osirixgrpc::DicomSeriesNameResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::DicomSeries, ::osirixgrpc::DicomSeriesNameResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(108);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(108);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DicomSeries, ::osirixgrpc::DicomSeriesNameResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_DicomSeriesName() override {
+    ~WithCallbackMethod_DicomSeriesName() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -12083,46 +8848,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DicomSeriesName(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomSeries* /*request*/, ::osirixgrpc::DicomSeriesNameResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DicomSeriesName(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomSeries* /*request*/, ::osirixgrpc::DicomSeriesNameResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomSeries* /*request*/, ::osirixgrpc::DicomSeriesNameResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_DicomSeriesDate : public BaseClass {
+  class WithCallbackMethod_DicomSeriesDate : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_DicomSeriesDate() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(109,
+    WithCallbackMethod_DicomSeriesDate() {
+      ::grpc::Service::MarkMethodCallback(109,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DicomSeries, ::osirixgrpc::DicomSeriesDateResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesDateResponse* response) { return this->DicomSeriesDate(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesDateResponse* response) { return this->DicomSeriesDate(context, request, response); }));}
     void SetMessageAllocatorFor_DicomSeriesDate(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::DicomSeries, ::osirixgrpc::DicomSeriesDateResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::DicomSeries, ::osirixgrpc::DicomSeriesDateResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(109);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(109);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DicomSeries, ::osirixgrpc::DicomSeriesDateResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_DicomSeriesDate() override {
+    ~WithCallbackMethod_DicomSeriesDate() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -12130,46 +8875,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DicomSeriesDate(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomSeries* /*request*/, ::osirixgrpc::DicomSeriesDateResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DicomSeriesDate(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomSeries* /*request*/, ::osirixgrpc::DicomSeriesDateResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomSeries* /*request*/, ::osirixgrpc::DicomSeriesDateResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_DicomSeriesNumberOfImages : public BaseClass {
+  class WithCallbackMethod_DicomSeriesNumberOfImages : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_DicomSeriesNumberOfImages() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(110,
+    WithCallbackMethod_DicomSeriesNumberOfImages() {
+      ::grpc::Service::MarkMethodCallback(110,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DicomSeries, ::osirixgrpc::DicomSeriesNumberOfImagesResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesNumberOfImagesResponse* response) { return this->DicomSeriesNumberOfImages(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesNumberOfImagesResponse* response) { return this->DicomSeriesNumberOfImages(context, request, response); }));}
     void SetMessageAllocatorFor_DicomSeriesNumberOfImages(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::DicomSeries, ::osirixgrpc::DicomSeriesNumberOfImagesResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::DicomSeries, ::osirixgrpc::DicomSeriesNumberOfImagesResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(110);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(110);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DicomSeries, ::osirixgrpc::DicomSeriesNumberOfImagesResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_DicomSeriesNumberOfImages() override {
+    ~WithCallbackMethod_DicomSeriesNumberOfImages() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -12177,46 +8902,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DicomSeriesNumberOfImages(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomSeries* /*request*/, ::osirixgrpc::DicomSeriesNumberOfImagesResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DicomSeriesNumberOfImages(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomSeries* /*request*/, ::osirixgrpc::DicomSeriesNumberOfImagesResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomSeries* /*request*/, ::osirixgrpc::DicomSeriesNumberOfImagesResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_DicomStudyPaths : public BaseClass {
+  class WithCallbackMethod_DicomStudyPaths : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_DicomStudyPaths() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(111,
+    WithCallbackMethod_DicomStudyPaths() {
+      ::grpc::Service::MarkMethodCallback(111,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyPathsResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyPathsResponse* response) { return this->DicomStudyPaths(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyPathsResponse* response) { return this->DicomStudyPaths(context, request, response); }));}
     void SetMessageAllocatorFor_DicomStudyPaths(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyPathsResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyPathsResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(111);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(111);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyPathsResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_DicomStudyPaths() override {
+    ~WithCallbackMethod_DicomStudyPaths() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -12224,46 +8929,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DicomStudyPaths(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomStudy* /*request*/, ::osirixgrpc::DicomStudyPathsResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DicomStudyPaths(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomStudy* /*request*/, ::osirixgrpc::DicomStudyPathsResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomStudy* /*request*/, ::osirixgrpc::DicomStudyPathsResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_DicomStudyImages : public BaseClass {
+  class WithCallbackMethod_DicomStudyImages : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_DicomStudyImages() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(112,
+    WithCallbackMethod_DicomStudyImages() {
+      ::grpc::Service::MarkMethodCallback(112,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyImagesResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyImagesResponse* response) { return this->DicomStudyImages(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyImagesResponse* response) { return this->DicomStudyImages(context, request, response); }));}
     void SetMessageAllocatorFor_DicomStudyImages(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyImagesResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyImagesResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(112);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(112);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyImagesResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_DicomStudyImages() override {
+    ~WithCallbackMethod_DicomStudyImages() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -12271,46 +8956,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DicomStudyImages(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomStudy* /*request*/, ::osirixgrpc::DicomStudyImagesResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DicomStudyImages(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomStudy* /*request*/, ::osirixgrpc::DicomStudyImagesResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomStudy* /*request*/, ::osirixgrpc::DicomStudyImagesResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_DicomStudyModalities : public BaseClass {
+  class WithCallbackMethod_DicomStudyModalities : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_DicomStudyModalities() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(113,
+    WithCallbackMethod_DicomStudyModalities() {
+      ::grpc::Service::MarkMethodCallback(113,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyModalitiesResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyModalitiesResponse* response) { return this->DicomStudyModalities(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyModalitiesResponse* response) { return this->DicomStudyModalities(context, request, response); }));}
     void SetMessageAllocatorFor_DicomStudyModalities(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyModalitiesResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyModalitiesResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(113);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(113);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyModalitiesResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_DicomStudyModalities() override {
+    ~WithCallbackMethod_DicomStudyModalities() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -12318,46 +8983,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DicomStudyModalities(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomStudy* /*request*/, ::osirixgrpc::DicomStudyModalitiesResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DicomStudyModalities(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomStudy* /*request*/, ::osirixgrpc::DicomStudyModalitiesResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomStudy* /*request*/, ::osirixgrpc::DicomStudyModalitiesResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_DicomStudyNoFiles : public BaseClass {
+  class WithCallbackMethod_DicomStudyNoFiles : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_DicomStudyNoFiles() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(114,
+    WithCallbackMethod_DicomStudyNoFiles() {
+      ::grpc::Service::MarkMethodCallback(114,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyNoFilesResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyNoFilesResponse* response) { return this->DicomStudyNoFiles(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyNoFilesResponse* response) { return this->DicomStudyNoFiles(context, request, response); }));}
     void SetMessageAllocatorFor_DicomStudyNoFiles(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyNoFilesResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyNoFilesResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(114);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(114);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyNoFilesResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_DicomStudyNoFiles() override {
+    ~WithCallbackMethod_DicomStudyNoFiles() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -12365,46 +9010,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DicomStudyNoFiles(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomStudy* /*request*/, ::osirixgrpc::DicomStudyNoFilesResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DicomStudyNoFiles(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomStudy* /*request*/, ::osirixgrpc::DicomStudyNoFilesResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomStudy* /*request*/, ::osirixgrpc::DicomStudyNoFilesResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_DicomStudyRawNoFiles : public BaseClass {
+  class WithCallbackMethod_DicomStudyRawNoFiles : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_DicomStudyRawNoFiles() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(115,
+    WithCallbackMethod_DicomStudyRawNoFiles() {
+      ::grpc::Service::MarkMethodCallback(115,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyRawNoFilesResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyRawNoFilesResponse* response) { return this->DicomStudyRawNoFiles(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyRawNoFilesResponse* response) { return this->DicomStudyRawNoFiles(context, request, response); }));}
     void SetMessageAllocatorFor_DicomStudyRawNoFiles(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyRawNoFilesResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyRawNoFilesResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(115);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(115);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyRawNoFilesResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_DicomStudyRawNoFiles() override {
+    ~WithCallbackMethod_DicomStudyRawNoFiles() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -12412,46 +9037,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DicomStudyRawNoFiles(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomStudy* /*request*/, ::osirixgrpc::DicomStudyRawNoFilesResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DicomStudyRawNoFiles(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomStudy* /*request*/, ::osirixgrpc::DicomStudyRawNoFilesResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomStudy* /*request*/, ::osirixgrpc::DicomStudyRawNoFilesResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_DicomStudyNoFilesExcludingMultiFrames : public BaseClass {
+  class WithCallbackMethod_DicomStudyNoFilesExcludingMultiFrames : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_DicomStudyNoFilesExcludingMultiFrames() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(116,
+    WithCallbackMethod_DicomStudyNoFilesExcludingMultiFrames() {
+      ::grpc::Service::MarkMethodCallback(116,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyNoFilesExcludingMultiFramesResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyNoFilesExcludingMultiFramesResponse* response) { return this->DicomStudyNoFilesExcludingMultiFrames(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyNoFilesExcludingMultiFramesResponse* response) { return this->DicomStudyNoFilesExcludingMultiFrames(context, request, response); }));}
     void SetMessageAllocatorFor_DicomStudyNoFilesExcludingMultiFrames(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyNoFilesExcludingMultiFramesResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyNoFilesExcludingMultiFramesResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(116);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(116);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyNoFilesExcludingMultiFramesResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_DicomStudyNoFilesExcludingMultiFrames() override {
+    ~WithCallbackMethod_DicomStudyNoFilesExcludingMultiFrames() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -12459,46 +9064,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DicomStudyNoFilesExcludingMultiFrames(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomStudy* /*request*/, ::osirixgrpc::DicomStudyNoFilesExcludingMultiFramesResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DicomStudyNoFilesExcludingMultiFrames(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomStudy* /*request*/, ::osirixgrpc::DicomStudyNoFilesExcludingMultiFramesResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomStudy* /*request*/, ::osirixgrpc::DicomStudyNoFilesExcludingMultiFramesResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_DicomStudyNumberOfImages : public BaseClass {
+  class WithCallbackMethod_DicomStudyNumberOfImages : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_DicomStudyNumberOfImages() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(117,
+    WithCallbackMethod_DicomStudyNumberOfImages() {
+      ::grpc::Service::MarkMethodCallback(117,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyNumberOfImagesResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyNumberOfImagesResponse* response) { return this->DicomStudyNumberOfImages(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyNumberOfImagesResponse* response) { return this->DicomStudyNumberOfImages(context, request, response); }));}
     void SetMessageAllocatorFor_DicomStudyNumberOfImages(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyNumberOfImagesResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyNumberOfImagesResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(117);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(117);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyNumberOfImagesResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_DicomStudyNumberOfImages() override {
+    ~WithCallbackMethod_DicomStudyNumberOfImages() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -12506,46 +9091,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DicomStudyNumberOfImages(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomStudy* /*request*/, ::osirixgrpc::DicomStudyNumberOfImagesResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DicomStudyNumberOfImages(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomStudy* /*request*/, ::osirixgrpc::DicomStudyNumberOfImagesResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomStudy* /*request*/, ::osirixgrpc::DicomStudyNumberOfImagesResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_DicomStudySeries : public BaseClass {
+  class WithCallbackMethod_DicomStudySeries : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_DicomStudySeries() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(118,
+    WithCallbackMethod_DicomStudySeries() {
+      ::grpc::Service::MarkMethodCallback(118,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudySeriesResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudySeriesResponse* response) { return this->DicomStudySeries(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudySeriesResponse* response) { return this->DicomStudySeries(context, request, response); }));}
     void SetMessageAllocatorFor_DicomStudySeries(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudySeriesResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudySeriesResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(118);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(118);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudySeriesResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_DicomStudySeries() override {
+    ~WithCallbackMethod_DicomStudySeries() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -12553,46 +9118,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DicomStudySeries(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomStudy* /*request*/, ::osirixgrpc::DicomStudySeriesResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DicomStudySeries(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomStudy* /*request*/, ::osirixgrpc::DicomStudySeriesResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomStudy* /*request*/, ::osirixgrpc::DicomStudySeriesResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_DicomStudyName : public BaseClass {
+  class WithCallbackMethod_DicomStudyName : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_DicomStudyName() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(119,
+    WithCallbackMethod_DicomStudyName() {
+      ::grpc::Service::MarkMethodCallback(119,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyNameResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyNameResponse* response) { return this->DicomStudyName(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyNameResponse* response) { return this->DicomStudyName(context, request, response); }));}
     void SetMessageAllocatorFor_DicomStudyName(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyNameResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyNameResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(119);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(119);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyNameResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_DicomStudyName() override {
+    ~WithCallbackMethod_DicomStudyName() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -12600,46 +9145,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DicomStudyName(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomStudy* /*request*/, ::osirixgrpc::DicomStudyNameResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DicomStudyName(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomStudy* /*request*/, ::osirixgrpc::DicomStudyNameResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomStudy* /*request*/, ::osirixgrpc::DicomStudyNameResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_DicomStudyDate : public BaseClass {
+  class WithCallbackMethod_DicomStudyDate : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_DicomStudyDate() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(120,
+    WithCallbackMethod_DicomStudyDate() {
+      ::grpc::Service::MarkMethodCallback(120,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyDateResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyDateResponse* response) { return this->DicomStudyDate(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyDateResponse* response) { return this->DicomStudyDate(context, request, response); }));}
     void SetMessageAllocatorFor_DicomStudyDate(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyDateResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyDateResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(120);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(120);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyDateResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_DicomStudyDate() override {
+    ~WithCallbackMethod_DicomStudyDate() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -12647,46 +9172,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DicomStudyDate(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomStudy* /*request*/, ::osirixgrpc::DicomStudyDateResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DicomStudyDate(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomStudy* /*request*/, ::osirixgrpc::DicomStudyDateResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomStudy* /*request*/, ::osirixgrpc::DicomStudyDateResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_DicomStudyDateAdded : public BaseClass {
+  class WithCallbackMethod_DicomStudyDateAdded : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_DicomStudyDateAdded() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(121,
+    WithCallbackMethod_DicomStudyDateAdded() {
+      ::grpc::Service::MarkMethodCallback(121,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyDateAddedResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyDateAddedResponse* response) { return this->DicomStudyDateAdded(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyDateAddedResponse* response) { return this->DicomStudyDateAdded(context, request, response); }));}
     void SetMessageAllocatorFor_DicomStudyDateAdded(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyDateAddedResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyDateAddedResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(121);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(121);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyDateAddedResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_DicomStudyDateAdded() override {
+    ~WithCallbackMethod_DicomStudyDateAdded() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -12694,46 +9199,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DicomStudyDateAdded(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomStudy* /*request*/, ::osirixgrpc::DicomStudyDateAddedResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DicomStudyDateAdded(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomStudy* /*request*/, ::osirixgrpc::DicomStudyDateAddedResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomStudy* /*request*/, ::osirixgrpc::DicomStudyDateAddedResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_DicomStudyDateOfBirth : public BaseClass {
+  class WithCallbackMethod_DicomStudyDateOfBirth : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_DicomStudyDateOfBirth() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(122,
+    WithCallbackMethod_DicomStudyDateOfBirth() {
+      ::grpc::Service::MarkMethodCallback(122,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyDateOfBirthResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyDateOfBirthResponse* response) { return this->DicomStudyDateOfBirth(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyDateOfBirthResponse* response) { return this->DicomStudyDateOfBirth(context, request, response); }));}
     void SetMessageAllocatorFor_DicomStudyDateOfBirth(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyDateOfBirthResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyDateOfBirthResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(122);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(122);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyDateOfBirthResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_DicomStudyDateOfBirth() override {
+    ~WithCallbackMethod_DicomStudyDateOfBirth() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -12741,46 +9226,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DicomStudyDateOfBirth(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomStudy* /*request*/, ::osirixgrpc::DicomStudyDateOfBirthResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DicomStudyDateOfBirth(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomStudy* /*request*/, ::osirixgrpc::DicomStudyDateOfBirthResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomStudy* /*request*/, ::osirixgrpc::DicomStudyDateOfBirthResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_DicomStudyInstitutionName : public BaseClass {
+  class WithCallbackMethod_DicomStudyInstitutionName : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_DicomStudyInstitutionName() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(123,
+    WithCallbackMethod_DicomStudyInstitutionName() {
+      ::grpc::Service::MarkMethodCallback(123,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyInstitutionNameResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyInstitutionNameResponse* response) { return this->DicomStudyInstitutionName(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyInstitutionNameResponse* response) { return this->DicomStudyInstitutionName(context, request, response); }));}
     void SetMessageAllocatorFor_DicomStudyInstitutionName(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyInstitutionNameResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyInstitutionNameResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(123);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(123);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyInstitutionNameResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_DicomStudyInstitutionName() override {
+    ~WithCallbackMethod_DicomStudyInstitutionName() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -12788,46 +9253,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DicomStudyInstitutionName(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomStudy* /*request*/, ::osirixgrpc::DicomStudyInstitutionNameResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DicomStudyInstitutionName(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomStudy* /*request*/, ::osirixgrpc::DicomStudyInstitutionNameResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomStudy* /*request*/, ::osirixgrpc::DicomStudyInstitutionNameResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_DicomStudyModality : public BaseClass {
+  class WithCallbackMethod_DicomStudyModality : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_DicomStudyModality() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(124,
+    WithCallbackMethod_DicomStudyModality() {
+      ::grpc::Service::MarkMethodCallback(124,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyModalityResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyModalityResponse* response) { return this->DicomStudyModality(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyModalityResponse* response) { return this->DicomStudyModality(context, request, response); }));}
     void SetMessageAllocatorFor_DicomStudyModality(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyModalityResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyModalityResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(124);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(124);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyModalityResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_DicomStudyModality() override {
+    ~WithCallbackMethod_DicomStudyModality() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -12835,46 +9280,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DicomStudyModality(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomStudy* /*request*/, ::osirixgrpc::DicomStudyModalityResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DicomStudyModality(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomStudy* /*request*/, ::osirixgrpc::DicomStudyModalityResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomStudy* /*request*/, ::osirixgrpc::DicomStudyModalityResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_DicomStudyPatientID : public BaseClass {
+  class WithCallbackMethod_DicomStudyPatientID : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_DicomStudyPatientID() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(125,
+    WithCallbackMethod_DicomStudyPatientID() {
+      ::grpc::Service::MarkMethodCallback(125,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyPatientIDResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyPatientIDResponse* response) { return this->DicomStudyPatientID(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyPatientIDResponse* response) { return this->DicomStudyPatientID(context, request, response); }));}
     void SetMessageAllocatorFor_DicomStudyPatientID(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyPatientIDResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyPatientIDResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(125);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(125);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyPatientIDResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_DicomStudyPatientID() override {
+    ~WithCallbackMethod_DicomStudyPatientID() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -12882,46 +9307,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DicomStudyPatientID(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomStudy* /*request*/, ::osirixgrpc::DicomStudyPatientIDResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DicomStudyPatientID(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomStudy* /*request*/, ::osirixgrpc::DicomStudyPatientIDResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomStudy* /*request*/, ::osirixgrpc::DicomStudyPatientIDResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_DicomStudyPatientUID : public BaseClass {
+  class WithCallbackMethod_DicomStudyPatientUID : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_DicomStudyPatientUID() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(126,
+    WithCallbackMethod_DicomStudyPatientUID() {
+      ::grpc::Service::MarkMethodCallback(126,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyPatientUIDResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyPatientUIDResponse* response) { return this->DicomStudyPatientUID(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyPatientUIDResponse* response) { return this->DicomStudyPatientUID(context, request, response); }));}
     void SetMessageAllocatorFor_DicomStudyPatientUID(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyPatientUIDResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyPatientUIDResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(126);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(126);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyPatientUIDResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_DicomStudyPatientUID() override {
+    ~WithCallbackMethod_DicomStudyPatientUID() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -12929,46 +9334,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DicomStudyPatientUID(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomStudy* /*request*/, ::osirixgrpc::DicomStudyPatientUIDResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DicomStudyPatientUID(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomStudy* /*request*/, ::osirixgrpc::DicomStudyPatientUIDResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomStudy* /*request*/, ::osirixgrpc::DicomStudyPatientUIDResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_DicomStudyPatientSex : public BaseClass {
+  class WithCallbackMethod_DicomStudyPatientSex : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_DicomStudyPatientSex() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(127,
+    WithCallbackMethod_DicomStudyPatientSex() {
+      ::grpc::Service::MarkMethodCallback(127,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyPatientSexResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyPatientSexResponse* response) { return this->DicomStudyPatientSex(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyPatientSexResponse* response) { return this->DicomStudyPatientSex(context, request, response); }));}
     void SetMessageAllocatorFor_DicomStudyPatientSex(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyPatientSexResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyPatientSexResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(127);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(127);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyPatientSexResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_DicomStudyPatientSex() override {
+    ~WithCallbackMethod_DicomStudyPatientSex() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -12976,46 +9361,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DicomStudyPatientSex(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomStudy* /*request*/, ::osirixgrpc::DicomStudyPatientSexResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DicomStudyPatientSex(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomStudy* /*request*/, ::osirixgrpc::DicomStudyPatientSexResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomStudy* /*request*/, ::osirixgrpc::DicomStudyPatientSexResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_DicomStudyPerformingPhysician : public BaseClass {
+  class WithCallbackMethod_DicomStudyPerformingPhysician : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_DicomStudyPerformingPhysician() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(128,
+    WithCallbackMethod_DicomStudyPerformingPhysician() {
+      ::grpc::Service::MarkMethodCallback(128,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyPerformingPhysicianResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyPerformingPhysicianResponse* response) { return this->DicomStudyPerformingPhysician(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyPerformingPhysicianResponse* response) { return this->DicomStudyPerformingPhysician(context, request, response); }));}
     void SetMessageAllocatorFor_DicomStudyPerformingPhysician(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyPerformingPhysicianResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyPerformingPhysicianResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(128);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(128);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyPerformingPhysicianResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_DicomStudyPerformingPhysician() override {
+    ~WithCallbackMethod_DicomStudyPerformingPhysician() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -13023,46 +9388,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DicomStudyPerformingPhysician(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomStudy* /*request*/, ::osirixgrpc::DicomStudyPerformingPhysicianResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DicomStudyPerformingPhysician(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomStudy* /*request*/, ::osirixgrpc::DicomStudyPerformingPhysicianResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomStudy* /*request*/, ::osirixgrpc::DicomStudyPerformingPhysicianResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_DicomStudyReferringPhysician : public BaseClass {
+  class WithCallbackMethod_DicomStudyReferringPhysician : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_DicomStudyReferringPhysician() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(129,
+    WithCallbackMethod_DicomStudyReferringPhysician() {
+      ::grpc::Service::MarkMethodCallback(129,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyReferringPhysicianResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyReferringPhysicianResponse* response) { return this->DicomStudyReferringPhysician(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyReferringPhysicianResponse* response) { return this->DicomStudyReferringPhysician(context, request, response); }));}
     void SetMessageAllocatorFor_DicomStudyReferringPhysician(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyReferringPhysicianResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyReferringPhysicianResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(129);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(129);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyReferringPhysicianResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_DicomStudyReferringPhysician() override {
+    ~WithCallbackMethod_DicomStudyReferringPhysician() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -13070,46 +9415,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DicomStudyReferringPhysician(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomStudy* /*request*/, ::osirixgrpc::DicomStudyReferringPhysicianResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DicomStudyReferringPhysician(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomStudy* /*request*/, ::osirixgrpc::DicomStudyReferringPhysicianResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomStudy* /*request*/, ::osirixgrpc::DicomStudyReferringPhysicianResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_DicomStudyStudyInstanceUID : public BaseClass {
+  class WithCallbackMethod_DicomStudyStudyInstanceUID : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_DicomStudyStudyInstanceUID() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(130,
+    WithCallbackMethod_DicomStudyStudyInstanceUID() {
+      ::grpc::Service::MarkMethodCallback(130,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyStudyInstanceUIDResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyStudyInstanceUIDResponse* response) { return this->DicomStudyStudyInstanceUID(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyStudyInstanceUIDResponse* response) { return this->DicomStudyStudyInstanceUID(context, request, response); }));}
     void SetMessageAllocatorFor_DicomStudyStudyInstanceUID(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyStudyInstanceUIDResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyStudyInstanceUIDResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(130);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(130);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyStudyInstanceUIDResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_DicomStudyStudyInstanceUID() override {
+    ~WithCallbackMethod_DicomStudyStudyInstanceUID() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -13117,46 +9442,26 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DicomStudyStudyInstanceUID(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomStudy* /*request*/, ::osirixgrpc::DicomStudyStudyInstanceUIDResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DicomStudyStudyInstanceUID(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomStudy* /*request*/, ::osirixgrpc::DicomStudyStudyInstanceUIDResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomStudy* /*request*/, ::osirixgrpc::DicomStudyStudyInstanceUIDResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_DicomStudyStudyName : public BaseClass {
+  class WithCallbackMethod_DicomStudyStudyName : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_DicomStudyStudyName() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(131,
+    WithCallbackMethod_DicomStudyStudyName() {
+      ::grpc::Service::MarkMethodCallback(131,
           new ::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyStudyNameResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyStudyNameResponse* response) { return this->DicomStudyStudyName(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyStudyNameResponse* response) { return this->DicomStudyStudyName(context, request, response); }));}
     void SetMessageAllocatorFor_DicomStudyStudyName(
-        ::grpc::experimental::MessageAllocator< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyStudyNameResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyStudyNameResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(131);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(131);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::osirixgrpc::DicomStudy, ::osirixgrpc::DicomStudyStudyNameResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_DicomStudyStudyName() override {
+    ~WithCallbackMethod_DicomStudyStudyName() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -13164,20 +9469,11 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DicomStudyStudyName(
-      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomStudy* /*request*/, ::osirixgrpc::DicomStudyStudyNameResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DicomStudyStudyName(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomStudy* /*request*/, ::osirixgrpc::DicomStudyStudyNameResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::osirixgrpc::DicomStudy* /*request*/, ::osirixgrpc::DicomStudyStudyNameResponse* /*response*/)  { return nullptr; }
   };
-  #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-  typedef ExperimentalWithCallbackMethod_OsirixCurrentBrowser<ExperimentalWithCallbackMethod_OsirixFrontmostViewer<ExperimentalWithCallbackMethod_OsirixDisplayed2DViewers<ExperimentalWithCallbackMethod_OsirixFrontmostVRController<ExperimentalWithCallbackMethod_OsirixDisplayedVRControllers<ExperimentalWithCallbackMethod_ROIFlipHorizontally<ExperimentalWithCallbackMethod_ROIFlipVertically<ExperimentalWithCallbackMethod_ROIArea<ExperimentalWithCallbackMethod_ROICentroid<ExperimentalWithCallbackMethod_ROIRotate<ExperimentalWithCallbackMethod_ROIMove<ExperimentalWithCallbackMethod_ROIPix<ExperimentalWithCallbackMethod_ROIName<ExperimentalWithCallbackMethod_ROIIType<ExperimentalWithCallbackMethod_ROISetName<ExperimentalWithCallbackMethod_ROIColor<ExperimentalWithCallbackMethod_ROISetColor<ExperimentalWithCallbackMethod_ROIOpacity<ExperimentalWithCallbackMethod_ROISetOpacity<ExperimentalWithCallbackMethod_ROIThickness<ExperimentalWithCallbackMethod_ROISetThickness<ExperimentalWithCallbackMethod_ROIPoints<ExperimentalWithCallbackMethod_ROISetPoints<ExperimentalWithCallbackMethod_ROIVolumeTexture<ExperimentalWithCallbackMethod_ROIVolumeSetTexture<ExperimentalWithCallbackMethod_ROIVolumeVolume<ExperimentalWithCallbackMethod_ROIVolumeColor<ExperimentalWithCallbackMethod_ROIVolumeSetColor<ExperimentalWithCallbackMethod_ROIVolumeOpacity<ExperimentalWithCallbackMethod_ROIVolumeSetOpacity<ExperimentalWithCallbackMethod_ROIVolumeFactor<ExperimentalWithCallbackMethod_ROIVolumeSetFactor<ExperimentalWithCallbackMethod_ROIVolumeName<ExperimentalWithCallbackMethod_ROIVolumeVisible<ExperimentalWithCallbackMethod_DCMPixConvertToRGB<ExperimentalWithCallbackMethod_DCMPixConvertToBW<ExperimentalWithCallbackMethod_DCMPixIsRGB<ExperimentalWithCallbackMethod_DCMPixComputeROI<ExperimentalWithCallbackMethod_DCMPixROIValues<ExperimentalWithCallbackMethod_DCMPixShape<ExperimentalWithCallbackMethod_DCMPixSpacing<ExperimentalWithCallbackMethod_DCMPixOrigin<ExperimentalWithCallbackMethod_DCMPixOrientation<ExperimentalWithCallbackMethod_DCMPixSliceLocation<ExperimentalWithCallbackMethod_DCMPixSourceFile<ExperimentalWithCallbackMethod_DCMPixImage<ExperimentalWithCallbackMethod_DCMPixSetImage<ExperimentalWithCallbackMethod_DCMPixGetMapFromROI<ExperimentalWithCallbackMethod_DCMPixDicomImage<ExperimentalWithCallbackMethod_DCMPixDicomSeries<ExperimentalWithCallbackMethod_DCMPixDicomStudy<ExperimentalWithCallbackMethod_VRControllerViewer2D<ExperimentalWithCallbackMethod_VRControllerBlendingController<ExperimentalWithCallbackMethod_VRControllerStyle<ExperimentalWithCallbackMethod_VRControllerTitle<ExperimentalWithCallbackMethod_VRControllerROIVolumes<ExperimentalWithCallbackMethod_VRControllerRenderingMode<ExperimentalWithCallbackMethod_VRControllerSetRenderingMode<ExperimentalWithCallbackMethod_VRControllerWLWW<ExperimentalWithCallbackMethod_VRControllerSetWLWW<ExperimentalWithCallbackMethod_VRControllerHideROIVolume<ExperimentalWithCallbackMethod_VRControllerDisplayROIVolume<ExperimentalWithCallbackMethod_VRControllerNeedsDisplayUpdate<ExperimentalWithCallbackMethod_ViewerControllerCloseViewer<ExperimentalWithCallbackMethod_ViewerControllerPixList<ExperimentalWithCallbackMethod_ViewerControllerNeedsDisplayUpdate<ExperimentalWithCallbackMethod_ViewerControllerROIList<ExperimentalWithCallbackMethod_ViewerControllerNewROI<ExperimentalWithCallbackMethod_ViewerControllerCurDCM<ExperimentalWithCallbackMethod_ViewerControllerROIsWithName<ExperimentalWithCallbackMethod_ViewerControllerSelectedROIs<ExperimentalWithCallbackMethod_ViewerControllerIsDataVolumic<ExperimentalWithCallbackMethod_ViewerControllerCopyViewerWindow<ExperimentalWithCallbackMethod_ViewerControllerResampleViewerController<ExperimentalWithCallbackMethod_ViewerControllerBlendingController<ExperimentalWithCallbackMethod_ViewerControllerVRControllers<ExperimentalWithCallbackMethod_ViewerControllerTitle<ExperimentalWithCallbackMethod_ViewerControllerModality<ExperimentalWithCallbackMethod_ViewerControllerMovieIdx<ExperimentalWithCallbackMethod_ViewerControllerSetMovieIdx<ExperimentalWithCallbackMethod_ViewerControllerMaxMovieIdx<ExperimentalWithCallbackMethod_ViewerControllerIdx<ExperimentalWithCallbackMethod_ViewerControllerSetIdx<ExperimentalWithCallbackMethod_ViewerControllerWLWW<ExperimentalWithCallbackMethod_ViewerControllerSetWLWW<ExperimentalWithCallbackMethod_ViewerControllerOpenVRViewerForMode<ExperimentalWithCallbackMethod_BrowserControllerDatabaseSelection<ExperimentalWithCallbackMethod_BrowserControllerCopyFilesIfNeeded<ExperimentalWithCallbackMethod_DicomImageWidth<ExperimentalWithCallbackMethod_DicomImageHeight<ExperimentalWithCallbackMethod_DicomImageSOPInstanceUID<ExperimentalWithCallbackMethod_DicomImageCompletePath<ExperimentalWithCallbackMethod_DicomImageDate<ExperimentalWithCallbackMethod_DicomImageNumberOfFrames<ExperimentalWithCallbackMethod_DicomImageModality<ExperimentalWithCallbackMethod_DicomImageSeries<ExperimentalWithCallbackMethod_DicomImageSliceLocation<ExperimentalWithCallbackMethod_DicomImageInstanceNumber<ExperimentalWithCallbackMethod_DicomSeriesPaths<ExperimentalWithCallbackMethod_DicomSeriesPreviousSeries<ExperimentalWithCallbackMethod_DicomSeriesNextSeries<ExperimentalWithCallbackMethod_DicomSeriesSortedImages<ExperimentalWithCallbackMethod_DicomSeriesStudy<ExperimentalWithCallbackMethod_DicomSeriesImages<ExperimentalWithCallbackMethod_DicomSeriesSeriesInstanceUID<ExperimentalWithCallbackMethod_DicomSeriesSeriesSOPClassUID<ExperimentalWithCallbackMethod_DicomSeriesSeriesDescription<ExperimentalWithCallbackMethod_DicomSeriesModality<ExperimentalWithCallbackMethod_DicomSeriesName<ExperimentalWithCallbackMethod_DicomSeriesDate<ExperimentalWithCallbackMethod_DicomSeriesNumberOfImages<ExperimentalWithCallbackMethod_DicomStudyPaths<ExperimentalWithCallbackMethod_DicomStudyImages<ExperimentalWithCallbackMethod_DicomStudyModalities<ExperimentalWithCallbackMethod_DicomStudyNoFiles<ExperimentalWithCallbackMethod_DicomStudyRawNoFiles<ExperimentalWithCallbackMethod_DicomStudyNoFilesExcludingMultiFrames<ExperimentalWithCallbackMethod_DicomStudyNumberOfImages<ExperimentalWithCallbackMethod_DicomStudySeries<ExperimentalWithCallbackMethod_DicomStudyName<ExperimentalWithCallbackMethod_DicomStudyDate<ExperimentalWithCallbackMethod_DicomStudyDateAdded<ExperimentalWithCallbackMethod_DicomStudyDateOfBirth<ExperimentalWithCallbackMethod_DicomStudyInstitutionName<ExperimentalWithCallbackMethod_DicomStudyModality<ExperimentalWithCallbackMethod_DicomStudyPatientID<ExperimentalWithCallbackMethod_DicomStudyPatientUID<ExperimentalWithCallbackMethod_DicomStudyPatientSex<ExperimentalWithCallbackMethod_DicomStudyPerformingPhysician<ExperimentalWithCallbackMethod_DicomStudyReferringPhysician<ExperimentalWithCallbackMethod_DicomStudyStudyInstanceUID<ExperimentalWithCallbackMethod_DicomStudyStudyName<Service > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > CallbackService;
-  #endif
-
-  typedef ExperimentalWithCallbackMethod_OsirixCurrentBrowser<ExperimentalWithCallbackMethod_OsirixFrontmostViewer<ExperimentalWithCallbackMethod_OsirixDisplayed2DViewers<ExperimentalWithCallbackMethod_OsirixFrontmostVRController<ExperimentalWithCallbackMethod_OsirixDisplayedVRControllers<ExperimentalWithCallbackMethod_ROIFlipHorizontally<ExperimentalWithCallbackMethod_ROIFlipVertically<ExperimentalWithCallbackMethod_ROIArea<ExperimentalWithCallbackMethod_ROICentroid<ExperimentalWithCallbackMethod_ROIRotate<ExperimentalWithCallbackMethod_ROIMove<ExperimentalWithCallbackMethod_ROIPix<ExperimentalWithCallbackMethod_ROIName<ExperimentalWithCallbackMethod_ROIIType<ExperimentalWithCallbackMethod_ROISetName<ExperimentalWithCallbackMethod_ROIColor<ExperimentalWithCallbackMethod_ROISetColor<ExperimentalWithCallbackMethod_ROIOpacity<ExperimentalWithCallbackMethod_ROISetOpacity<ExperimentalWithCallbackMethod_ROIThickness<ExperimentalWithCallbackMethod_ROISetThickness<ExperimentalWithCallbackMethod_ROIPoints<ExperimentalWithCallbackMethod_ROISetPoints<ExperimentalWithCallbackMethod_ROIVolumeTexture<ExperimentalWithCallbackMethod_ROIVolumeSetTexture<ExperimentalWithCallbackMethod_ROIVolumeVolume<ExperimentalWithCallbackMethod_ROIVolumeColor<ExperimentalWithCallbackMethod_ROIVolumeSetColor<ExperimentalWithCallbackMethod_ROIVolumeOpacity<ExperimentalWithCallbackMethod_ROIVolumeSetOpacity<ExperimentalWithCallbackMethod_ROIVolumeFactor<ExperimentalWithCallbackMethod_ROIVolumeSetFactor<ExperimentalWithCallbackMethod_ROIVolumeName<ExperimentalWithCallbackMethod_ROIVolumeVisible<ExperimentalWithCallbackMethod_DCMPixConvertToRGB<ExperimentalWithCallbackMethod_DCMPixConvertToBW<ExperimentalWithCallbackMethod_DCMPixIsRGB<ExperimentalWithCallbackMethod_DCMPixComputeROI<ExperimentalWithCallbackMethod_DCMPixROIValues<ExperimentalWithCallbackMethod_DCMPixShape<ExperimentalWithCallbackMethod_DCMPixSpacing<ExperimentalWithCallbackMethod_DCMPixOrigin<ExperimentalWithCallbackMethod_DCMPixOrientation<ExperimentalWithCallbackMethod_DCMPixSliceLocation<ExperimentalWithCallbackMethod_DCMPixSourceFile<ExperimentalWithCallbackMethod_DCMPixImage<ExperimentalWithCallbackMethod_DCMPixSetImage<ExperimentalWithCallbackMethod_DCMPixGetMapFromROI<ExperimentalWithCallbackMethod_DCMPixDicomImage<ExperimentalWithCallbackMethod_DCMPixDicomSeries<ExperimentalWithCallbackMethod_DCMPixDicomStudy<ExperimentalWithCallbackMethod_VRControllerViewer2D<ExperimentalWithCallbackMethod_VRControllerBlendingController<ExperimentalWithCallbackMethod_VRControllerStyle<ExperimentalWithCallbackMethod_VRControllerTitle<ExperimentalWithCallbackMethod_VRControllerROIVolumes<ExperimentalWithCallbackMethod_VRControllerRenderingMode<ExperimentalWithCallbackMethod_VRControllerSetRenderingMode<ExperimentalWithCallbackMethod_VRControllerWLWW<ExperimentalWithCallbackMethod_VRControllerSetWLWW<ExperimentalWithCallbackMethod_VRControllerHideROIVolume<ExperimentalWithCallbackMethod_VRControllerDisplayROIVolume<ExperimentalWithCallbackMethod_VRControllerNeedsDisplayUpdate<ExperimentalWithCallbackMethod_ViewerControllerCloseViewer<ExperimentalWithCallbackMethod_ViewerControllerPixList<ExperimentalWithCallbackMethod_ViewerControllerNeedsDisplayUpdate<ExperimentalWithCallbackMethod_ViewerControllerROIList<ExperimentalWithCallbackMethod_ViewerControllerNewROI<ExperimentalWithCallbackMethod_ViewerControllerCurDCM<ExperimentalWithCallbackMethod_ViewerControllerROIsWithName<ExperimentalWithCallbackMethod_ViewerControllerSelectedROIs<ExperimentalWithCallbackMethod_ViewerControllerIsDataVolumic<ExperimentalWithCallbackMethod_ViewerControllerCopyViewerWindow<ExperimentalWithCallbackMethod_ViewerControllerResampleViewerController<ExperimentalWithCallbackMethod_ViewerControllerBlendingController<ExperimentalWithCallbackMethod_ViewerControllerVRControllers<ExperimentalWithCallbackMethod_ViewerControllerTitle<ExperimentalWithCallbackMethod_ViewerControllerModality<ExperimentalWithCallbackMethod_ViewerControllerMovieIdx<ExperimentalWithCallbackMethod_ViewerControllerSetMovieIdx<ExperimentalWithCallbackMethod_ViewerControllerMaxMovieIdx<ExperimentalWithCallbackMethod_ViewerControllerIdx<ExperimentalWithCallbackMethod_ViewerControllerSetIdx<ExperimentalWithCallbackMethod_ViewerControllerWLWW<ExperimentalWithCallbackMethod_ViewerControllerSetWLWW<ExperimentalWithCallbackMethod_ViewerControllerOpenVRViewerForMode<ExperimentalWithCallbackMethod_BrowserControllerDatabaseSelection<ExperimentalWithCallbackMethod_BrowserControllerCopyFilesIfNeeded<ExperimentalWithCallbackMethod_DicomImageWidth<ExperimentalWithCallbackMethod_DicomImageHeight<ExperimentalWithCallbackMethod_DicomImageSOPInstanceUID<ExperimentalWithCallbackMethod_DicomImageCompletePath<ExperimentalWithCallbackMethod_DicomImageDate<ExperimentalWithCallbackMethod_DicomImageNumberOfFrames<ExperimentalWithCallbackMethod_DicomImageModality<ExperimentalWithCallbackMethod_DicomImageSeries<ExperimentalWithCallbackMethod_DicomImageSliceLocation<ExperimentalWithCallbackMethod_DicomImageInstanceNumber<ExperimentalWithCallbackMethod_DicomSeriesPaths<ExperimentalWithCallbackMethod_DicomSeriesPreviousSeries<ExperimentalWithCallbackMethod_DicomSeriesNextSeries<ExperimentalWithCallbackMethod_DicomSeriesSortedImages<ExperimentalWithCallbackMethod_DicomSeriesStudy<ExperimentalWithCallbackMethod_DicomSeriesImages<ExperimentalWithCallbackMethod_DicomSeriesSeriesInstanceUID<ExperimentalWithCallbackMethod_DicomSeriesSeriesSOPClassUID<ExperimentalWithCallbackMethod_DicomSeriesSeriesDescription<ExperimentalWithCallbackMethod_DicomSeriesModality<ExperimentalWithCallbackMethod_DicomSeriesName<ExperimentalWithCallbackMethod_DicomSeriesDate<ExperimentalWithCallbackMethod_DicomSeriesNumberOfImages<ExperimentalWithCallbackMethod_DicomStudyPaths<ExperimentalWithCallbackMethod_DicomStudyImages<ExperimentalWithCallbackMethod_DicomStudyModalities<ExperimentalWithCallbackMethod_DicomStudyNoFiles<ExperimentalWithCallbackMethod_DicomStudyRawNoFiles<ExperimentalWithCallbackMethod_DicomStudyNoFilesExcludingMultiFrames<ExperimentalWithCallbackMethod_DicomStudyNumberOfImages<ExperimentalWithCallbackMethod_DicomStudySeries<ExperimentalWithCallbackMethod_DicomStudyName<ExperimentalWithCallbackMethod_DicomStudyDate<ExperimentalWithCallbackMethod_DicomStudyDateAdded<ExperimentalWithCallbackMethod_DicomStudyDateOfBirth<ExperimentalWithCallbackMethod_DicomStudyInstitutionName<ExperimentalWithCallbackMethod_DicomStudyModality<ExperimentalWithCallbackMethod_DicomStudyPatientID<ExperimentalWithCallbackMethod_DicomStudyPatientUID<ExperimentalWithCallbackMethod_DicomStudyPatientSex<ExperimentalWithCallbackMethod_DicomStudyPerformingPhysician<ExperimentalWithCallbackMethod_DicomStudyReferringPhysician<ExperimentalWithCallbackMethod_DicomStudyStudyInstanceUID<ExperimentalWithCallbackMethod_DicomStudyStudyName<Service > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > ExperimentalCallbackService;
+  typedef WithCallbackMethod_OsirixCurrentBrowser<WithCallbackMethod_OsirixFrontmostViewer<WithCallbackMethod_OsirixDisplayed2DViewers<WithCallbackMethod_OsirixFrontmostVRController<WithCallbackMethod_OsirixDisplayedVRControllers<WithCallbackMethod_ROIFlipHorizontally<WithCallbackMethod_ROIFlipVertically<WithCallbackMethod_ROIArea<WithCallbackMethod_ROICentroid<WithCallbackMethod_ROIRotate<WithCallbackMethod_ROIMove<WithCallbackMethod_ROIPix<WithCallbackMethod_ROIName<WithCallbackMethod_ROIIType<WithCallbackMethod_ROISetName<WithCallbackMethod_ROIColor<WithCallbackMethod_ROISetColor<WithCallbackMethod_ROIOpacity<WithCallbackMethod_ROISetOpacity<WithCallbackMethod_ROIThickness<WithCallbackMethod_ROISetThickness<WithCallbackMethod_ROIPoints<WithCallbackMethod_ROISetPoints<WithCallbackMethod_ROIVolumeTexture<WithCallbackMethod_ROIVolumeSetTexture<WithCallbackMethod_ROIVolumeVolume<WithCallbackMethod_ROIVolumeColor<WithCallbackMethod_ROIVolumeSetColor<WithCallbackMethod_ROIVolumeOpacity<WithCallbackMethod_ROIVolumeSetOpacity<WithCallbackMethod_ROIVolumeFactor<WithCallbackMethod_ROIVolumeSetFactor<WithCallbackMethod_ROIVolumeName<WithCallbackMethod_ROIVolumeVisible<WithCallbackMethod_DCMPixConvertToRGB<WithCallbackMethod_DCMPixConvertToBW<WithCallbackMethod_DCMPixIsRGB<WithCallbackMethod_DCMPixComputeROI<WithCallbackMethod_DCMPixROIValues<WithCallbackMethod_DCMPixShape<WithCallbackMethod_DCMPixSpacing<WithCallbackMethod_DCMPixOrigin<WithCallbackMethod_DCMPixOrientation<WithCallbackMethod_DCMPixSliceLocation<WithCallbackMethod_DCMPixSourceFile<WithCallbackMethod_DCMPixImage<WithCallbackMethod_DCMPixSetImage<WithCallbackMethod_DCMPixGetMapFromROI<WithCallbackMethod_DCMPixDicomImage<WithCallbackMethod_DCMPixDicomSeries<WithCallbackMethod_DCMPixDicomStudy<WithCallbackMethod_VRControllerViewer2D<WithCallbackMethod_VRControllerBlendingController<WithCallbackMethod_VRControllerStyle<WithCallbackMethod_VRControllerTitle<WithCallbackMethod_VRControllerROIVolumes<WithCallbackMethod_VRControllerRenderingMode<WithCallbackMethod_VRControllerSetRenderingMode<WithCallbackMethod_VRControllerWLWW<WithCallbackMethod_VRControllerSetWLWW<WithCallbackMethod_VRControllerHideROIVolume<WithCallbackMethod_VRControllerDisplayROIVolume<WithCallbackMethod_VRControllerNeedsDisplayUpdate<WithCallbackMethod_ViewerControllerCloseViewer<WithCallbackMethod_ViewerControllerPixList<WithCallbackMethod_ViewerControllerNeedsDisplayUpdate<WithCallbackMethod_ViewerControllerROIList<WithCallbackMethod_ViewerControllerNewROI<WithCallbackMethod_ViewerControllerCurDCM<WithCallbackMethod_ViewerControllerROIsWithName<WithCallbackMethod_ViewerControllerSelectedROIs<WithCallbackMethod_ViewerControllerIsDataVolumic<WithCallbackMethod_ViewerControllerCopyViewerWindow<WithCallbackMethod_ViewerControllerResampleViewerController<WithCallbackMethod_ViewerControllerBlendingController<WithCallbackMethod_ViewerControllerVRControllers<WithCallbackMethod_ViewerControllerTitle<WithCallbackMethod_ViewerControllerModality<WithCallbackMethod_ViewerControllerMovieIdx<WithCallbackMethod_ViewerControllerSetMovieIdx<WithCallbackMethod_ViewerControllerMaxMovieIdx<WithCallbackMethod_ViewerControllerIdx<WithCallbackMethod_ViewerControllerSetIdx<WithCallbackMethod_ViewerControllerWLWW<WithCallbackMethod_ViewerControllerSetWLWW<WithCallbackMethod_ViewerControllerOpenVRViewerForMode<WithCallbackMethod_BrowserControllerDatabaseSelection<WithCallbackMethod_BrowserControllerCopyFilesIfNeeded<WithCallbackMethod_DicomImageWidth<WithCallbackMethod_DicomImageHeight<WithCallbackMethod_DicomImageSOPInstanceUID<WithCallbackMethod_DicomImageCompletePath<WithCallbackMethod_DicomImageDate<WithCallbackMethod_DicomImageNumberOfFrames<WithCallbackMethod_DicomImageModality<WithCallbackMethod_DicomImageSeries<WithCallbackMethod_DicomImageSliceLocation<WithCallbackMethod_DicomImageInstanceNumber<WithCallbackMethod_DicomSeriesPaths<WithCallbackMethod_DicomSeriesPreviousSeries<WithCallbackMethod_DicomSeriesNextSeries<WithCallbackMethod_DicomSeriesSortedImages<WithCallbackMethod_DicomSeriesStudy<WithCallbackMethod_DicomSeriesImages<WithCallbackMethod_DicomSeriesSeriesInstanceUID<WithCallbackMethod_DicomSeriesSeriesSOPClassUID<WithCallbackMethod_DicomSeriesSeriesDescription<WithCallbackMethod_DicomSeriesModality<WithCallbackMethod_DicomSeriesName<WithCallbackMethod_DicomSeriesDate<WithCallbackMethod_DicomSeriesNumberOfImages<WithCallbackMethod_DicomStudyPaths<WithCallbackMethod_DicomStudyImages<WithCallbackMethod_DicomStudyModalities<WithCallbackMethod_DicomStudyNoFiles<WithCallbackMethod_DicomStudyRawNoFiles<WithCallbackMethod_DicomStudyNoFilesExcludingMultiFrames<WithCallbackMethod_DicomStudyNumberOfImages<WithCallbackMethod_DicomStudySeries<WithCallbackMethod_DicomStudyName<WithCallbackMethod_DicomStudyDate<WithCallbackMethod_DicomStudyDateAdded<WithCallbackMethod_DicomStudyDateOfBirth<WithCallbackMethod_DicomStudyInstitutionName<WithCallbackMethod_DicomStudyModality<WithCallbackMethod_DicomStudyPatientID<WithCallbackMethod_DicomStudyPatientUID<WithCallbackMethod_DicomStudyPatientSex<WithCallbackMethod_DicomStudyPerformingPhysician<WithCallbackMethod_DicomStudyReferringPhysician<WithCallbackMethod_DicomStudyStudyInstanceUID<WithCallbackMethod_DicomStudyStudyName<Service > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > CallbackService;
+  typedef CallbackService ExperimentalCallbackService;
   template <class BaseClass>
   class WithGenericMethod_OsirixCurrentBrowser : public BaseClass {
    private:
@@ -18063,27 +14359,17 @@ class OsiriXService final {
     }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_OsirixCurrentBrowser : public BaseClass {
+  class WithRawCallbackMethod_OsirixCurrentBrowser : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_OsirixCurrentBrowser() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(0,
+    WithRawCallbackMethod_OsirixCurrentBrowser() {
+      ::grpc::Service::MarkMethodRawCallback(0,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->OsirixCurrentBrowser(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->OsirixCurrentBrowser(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_OsirixCurrentBrowser() override {
+    ~WithRawCallbackMethod_OsirixCurrentBrowser() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -18091,37 +14377,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* OsirixCurrentBrowser(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* OsirixCurrentBrowser(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_OsirixFrontmostViewer : public BaseClass {
+  class WithRawCallbackMethod_OsirixFrontmostViewer : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_OsirixFrontmostViewer() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(1,
+    WithRawCallbackMethod_OsirixFrontmostViewer() {
+      ::grpc::Service::MarkMethodRawCallback(1,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->OsirixFrontmostViewer(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->OsirixFrontmostViewer(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_OsirixFrontmostViewer() override {
+    ~WithRawCallbackMethod_OsirixFrontmostViewer() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -18129,37 +14399,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* OsirixFrontmostViewer(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* OsirixFrontmostViewer(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_OsirixDisplayed2DViewers : public BaseClass {
+  class WithRawCallbackMethod_OsirixDisplayed2DViewers : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_OsirixDisplayed2DViewers() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(2,
+    WithRawCallbackMethod_OsirixDisplayed2DViewers() {
+      ::grpc::Service::MarkMethodRawCallback(2,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->OsirixDisplayed2DViewers(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->OsirixDisplayed2DViewers(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_OsirixDisplayed2DViewers() override {
+    ~WithRawCallbackMethod_OsirixDisplayed2DViewers() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -18167,37 +14421,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* OsirixDisplayed2DViewers(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* OsirixDisplayed2DViewers(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_OsirixFrontmostVRController : public BaseClass {
+  class WithRawCallbackMethod_OsirixFrontmostVRController : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_OsirixFrontmostVRController() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(3,
+    WithRawCallbackMethod_OsirixFrontmostVRController() {
+      ::grpc::Service::MarkMethodRawCallback(3,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->OsirixFrontmostVRController(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->OsirixFrontmostVRController(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_OsirixFrontmostVRController() override {
+    ~WithRawCallbackMethod_OsirixFrontmostVRController() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -18205,37 +14443,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* OsirixFrontmostVRController(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* OsirixFrontmostVRController(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_OsirixDisplayedVRControllers : public BaseClass {
+  class WithRawCallbackMethod_OsirixDisplayedVRControllers : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_OsirixDisplayedVRControllers() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(4,
+    WithRawCallbackMethod_OsirixDisplayedVRControllers() {
+      ::grpc::Service::MarkMethodRawCallback(4,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->OsirixDisplayedVRControllers(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->OsirixDisplayedVRControllers(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_OsirixDisplayedVRControllers() override {
+    ~WithRawCallbackMethod_OsirixDisplayedVRControllers() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -18243,37 +14465,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* OsirixDisplayedVRControllers(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* OsirixDisplayedVRControllers(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_ROIFlipHorizontally : public BaseClass {
+  class WithRawCallbackMethod_ROIFlipHorizontally : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_ROIFlipHorizontally() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(5,
+    WithRawCallbackMethod_ROIFlipHorizontally() {
+      ::grpc::Service::MarkMethodRawCallback(5,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ROIFlipHorizontally(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ROIFlipHorizontally(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_ROIFlipHorizontally() override {
+    ~WithRawCallbackMethod_ROIFlipHorizontally() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -18281,37 +14487,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ROIFlipHorizontally(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ROIFlipHorizontally(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_ROIFlipVertically : public BaseClass {
+  class WithRawCallbackMethod_ROIFlipVertically : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_ROIFlipVertically() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(6,
+    WithRawCallbackMethod_ROIFlipVertically() {
+      ::grpc::Service::MarkMethodRawCallback(6,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ROIFlipVertically(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ROIFlipVertically(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_ROIFlipVertically() override {
+    ~WithRawCallbackMethod_ROIFlipVertically() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -18319,37 +14509,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ROIFlipVertically(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ROIFlipVertically(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_ROIArea : public BaseClass {
+  class WithRawCallbackMethod_ROIArea : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_ROIArea() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(7,
+    WithRawCallbackMethod_ROIArea() {
+      ::grpc::Service::MarkMethodRawCallback(7,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ROIArea(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ROIArea(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_ROIArea() override {
+    ~WithRawCallbackMethod_ROIArea() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -18357,37 +14531,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ROIArea(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ROIArea(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_ROICentroid : public BaseClass {
+  class WithRawCallbackMethod_ROICentroid : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_ROICentroid() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(8,
+    WithRawCallbackMethod_ROICentroid() {
+      ::grpc::Service::MarkMethodRawCallback(8,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ROICentroid(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ROICentroid(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_ROICentroid() override {
+    ~WithRawCallbackMethod_ROICentroid() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -18395,37 +14553,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ROICentroid(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ROICentroid(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_ROIRotate : public BaseClass {
+  class WithRawCallbackMethod_ROIRotate : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_ROIRotate() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(9,
+    WithRawCallbackMethod_ROIRotate() {
+      ::grpc::Service::MarkMethodRawCallback(9,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ROIRotate(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ROIRotate(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_ROIRotate() override {
+    ~WithRawCallbackMethod_ROIRotate() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -18433,37 +14575,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ROIRotate(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ROIRotate(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_ROIMove : public BaseClass {
+  class WithRawCallbackMethod_ROIMove : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_ROIMove() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(10,
+    WithRawCallbackMethod_ROIMove() {
+      ::grpc::Service::MarkMethodRawCallback(10,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ROIMove(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ROIMove(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_ROIMove() override {
+    ~WithRawCallbackMethod_ROIMove() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -18471,37 +14597,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ROIMove(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ROIMove(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_ROIPix : public BaseClass {
+  class WithRawCallbackMethod_ROIPix : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_ROIPix() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(11,
+    WithRawCallbackMethod_ROIPix() {
+      ::grpc::Service::MarkMethodRawCallback(11,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ROIPix(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ROIPix(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_ROIPix() override {
+    ~WithRawCallbackMethod_ROIPix() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -18509,37 +14619,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ROIPix(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ROIPix(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_ROIName : public BaseClass {
+  class WithRawCallbackMethod_ROIName : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_ROIName() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(12,
+    WithRawCallbackMethod_ROIName() {
+      ::grpc::Service::MarkMethodRawCallback(12,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ROIName(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ROIName(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_ROIName() override {
+    ~WithRawCallbackMethod_ROIName() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -18547,37 +14641,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ROIName(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ROIName(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_ROIIType : public BaseClass {
+  class WithRawCallbackMethod_ROIIType : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_ROIIType() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(13,
+    WithRawCallbackMethod_ROIIType() {
+      ::grpc::Service::MarkMethodRawCallback(13,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ROIIType(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ROIIType(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_ROIIType() override {
+    ~WithRawCallbackMethod_ROIIType() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -18585,37 +14663,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ROIIType(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ROIIType(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_ROISetName : public BaseClass {
+  class WithRawCallbackMethod_ROISetName : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_ROISetName() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(14,
+    WithRawCallbackMethod_ROISetName() {
+      ::grpc::Service::MarkMethodRawCallback(14,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ROISetName(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ROISetName(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_ROISetName() override {
+    ~WithRawCallbackMethod_ROISetName() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -18623,37 +14685,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ROISetName(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ROISetName(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_ROIColor : public BaseClass {
+  class WithRawCallbackMethod_ROIColor : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_ROIColor() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(15,
+    WithRawCallbackMethod_ROIColor() {
+      ::grpc::Service::MarkMethodRawCallback(15,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ROIColor(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ROIColor(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_ROIColor() override {
+    ~WithRawCallbackMethod_ROIColor() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -18661,37 +14707,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ROIColor(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ROIColor(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_ROISetColor : public BaseClass {
+  class WithRawCallbackMethod_ROISetColor : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_ROISetColor() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(16,
+    WithRawCallbackMethod_ROISetColor() {
+      ::grpc::Service::MarkMethodRawCallback(16,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ROISetColor(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ROISetColor(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_ROISetColor() override {
+    ~WithRawCallbackMethod_ROISetColor() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -18699,37 +14729,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ROISetColor(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ROISetColor(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_ROIOpacity : public BaseClass {
+  class WithRawCallbackMethod_ROIOpacity : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_ROIOpacity() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(17,
+    WithRawCallbackMethod_ROIOpacity() {
+      ::grpc::Service::MarkMethodRawCallback(17,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ROIOpacity(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ROIOpacity(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_ROIOpacity() override {
+    ~WithRawCallbackMethod_ROIOpacity() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -18737,37 +14751,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ROIOpacity(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ROIOpacity(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_ROISetOpacity : public BaseClass {
+  class WithRawCallbackMethod_ROISetOpacity : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_ROISetOpacity() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(18,
+    WithRawCallbackMethod_ROISetOpacity() {
+      ::grpc::Service::MarkMethodRawCallback(18,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ROISetOpacity(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ROISetOpacity(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_ROISetOpacity() override {
+    ~WithRawCallbackMethod_ROISetOpacity() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -18775,37 +14773,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ROISetOpacity(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ROISetOpacity(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_ROIThickness : public BaseClass {
+  class WithRawCallbackMethod_ROIThickness : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_ROIThickness() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(19,
+    WithRawCallbackMethod_ROIThickness() {
+      ::grpc::Service::MarkMethodRawCallback(19,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ROIThickness(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ROIThickness(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_ROIThickness() override {
+    ~WithRawCallbackMethod_ROIThickness() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -18813,37 +14795,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ROIThickness(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ROIThickness(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_ROISetThickness : public BaseClass {
+  class WithRawCallbackMethod_ROISetThickness : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_ROISetThickness() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(20,
+    WithRawCallbackMethod_ROISetThickness() {
+      ::grpc::Service::MarkMethodRawCallback(20,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ROISetThickness(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ROISetThickness(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_ROISetThickness() override {
+    ~WithRawCallbackMethod_ROISetThickness() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -18851,37 +14817,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ROISetThickness(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ROISetThickness(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_ROIPoints : public BaseClass {
+  class WithRawCallbackMethod_ROIPoints : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_ROIPoints() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(21,
+    WithRawCallbackMethod_ROIPoints() {
+      ::grpc::Service::MarkMethodRawCallback(21,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ROIPoints(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ROIPoints(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_ROIPoints() override {
+    ~WithRawCallbackMethod_ROIPoints() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -18889,37 +14839,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ROIPoints(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ROIPoints(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_ROISetPoints : public BaseClass {
+  class WithRawCallbackMethod_ROISetPoints : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_ROISetPoints() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(22,
+    WithRawCallbackMethod_ROISetPoints() {
+      ::grpc::Service::MarkMethodRawCallback(22,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ROISetPoints(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ROISetPoints(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_ROISetPoints() override {
+    ~WithRawCallbackMethod_ROISetPoints() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -18927,37 +14861,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ROISetPoints(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ROISetPoints(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_ROIVolumeTexture : public BaseClass {
+  class WithRawCallbackMethod_ROIVolumeTexture : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_ROIVolumeTexture() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(23,
+    WithRawCallbackMethod_ROIVolumeTexture() {
+      ::grpc::Service::MarkMethodRawCallback(23,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ROIVolumeTexture(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ROIVolumeTexture(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_ROIVolumeTexture() override {
+    ~WithRawCallbackMethod_ROIVolumeTexture() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -18965,37 +14883,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ROIVolumeTexture(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ROIVolumeTexture(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_ROIVolumeSetTexture : public BaseClass {
+  class WithRawCallbackMethod_ROIVolumeSetTexture : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_ROIVolumeSetTexture() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(24,
+    WithRawCallbackMethod_ROIVolumeSetTexture() {
+      ::grpc::Service::MarkMethodRawCallback(24,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ROIVolumeSetTexture(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ROIVolumeSetTexture(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_ROIVolumeSetTexture() override {
+    ~WithRawCallbackMethod_ROIVolumeSetTexture() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -19003,37 +14905,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ROIVolumeSetTexture(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ROIVolumeSetTexture(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_ROIVolumeVolume : public BaseClass {
+  class WithRawCallbackMethod_ROIVolumeVolume : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_ROIVolumeVolume() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(25,
+    WithRawCallbackMethod_ROIVolumeVolume() {
+      ::grpc::Service::MarkMethodRawCallback(25,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ROIVolumeVolume(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ROIVolumeVolume(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_ROIVolumeVolume() override {
+    ~WithRawCallbackMethod_ROIVolumeVolume() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -19041,37 +14927,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ROIVolumeVolume(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ROIVolumeVolume(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_ROIVolumeColor : public BaseClass {
+  class WithRawCallbackMethod_ROIVolumeColor : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_ROIVolumeColor() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(26,
+    WithRawCallbackMethod_ROIVolumeColor() {
+      ::grpc::Service::MarkMethodRawCallback(26,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ROIVolumeColor(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ROIVolumeColor(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_ROIVolumeColor() override {
+    ~WithRawCallbackMethod_ROIVolumeColor() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -19079,37 +14949,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ROIVolumeColor(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ROIVolumeColor(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_ROIVolumeSetColor : public BaseClass {
+  class WithRawCallbackMethod_ROIVolumeSetColor : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_ROIVolumeSetColor() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(27,
+    WithRawCallbackMethod_ROIVolumeSetColor() {
+      ::grpc::Service::MarkMethodRawCallback(27,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ROIVolumeSetColor(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ROIVolumeSetColor(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_ROIVolumeSetColor() override {
+    ~WithRawCallbackMethod_ROIVolumeSetColor() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -19117,37 +14971,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ROIVolumeSetColor(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ROIVolumeSetColor(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_ROIVolumeOpacity : public BaseClass {
+  class WithRawCallbackMethod_ROIVolumeOpacity : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_ROIVolumeOpacity() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(28,
+    WithRawCallbackMethod_ROIVolumeOpacity() {
+      ::grpc::Service::MarkMethodRawCallback(28,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ROIVolumeOpacity(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ROIVolumeOpacity(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_ROIVolumeOpacity() override {
+    ~WithRawCallbackMethod_ROIVolumeOpacity() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -19155,37 +14993,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ROIVolumeOpacity(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ROIVolumeOpacity(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_ROIVolumeSetOpacity : public BaseClass {
+  class WithRawCallbackMethod_ROIVolumeSetOpacity : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_ROIVolumeSetOpacity() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(29,
+    WithRawCallbackMethod_ROIVolumeSetOpacity() {
+      ::grpc::Service::MarkMethodRawCallback(29,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ROIVolumeSetOpacity(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ROIVolumeSetOpacity(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_ROIVolumeSetOpacity() override {
+    ~WithRawCallbackMethod_ROIVolumeSetOpacity() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -19193,37 +15015,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ROIVolumeSetOpacity(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ROIVolumeSetOpacity(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_ROIVolumeFactor : public BaseClass {
+  class WithRawCallbackMethod_ROIVolumeFactor : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_ROIVolumeFactor() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(30,
+    WithRawCallbackMethod_ROIVolumeFactor() {
+      ::grpc::Service::MarkMethodRawCallback(30,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ROIVolumeFactor(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ROIVolumeFactor(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_ROIVolumeFactor() override {
+    ~WithRawCallbackMethod_ROIVolumeFactor() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -19231,37 +15037,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ROIVolumeFactor(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ROIVolumeFactor(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_ROIVolumeSetFactor : public BaseClass {
+  class WithRawCallbackMethod_ROIVolumeSetFactor : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_ROIVolumeSetFactor() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(31,
+    WithRawCallbackMethod_ROIVolumeSetFactor() {
+      ::grpc::Service::MarkMethodRawCallback(31,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ROIVolumeSetFactor(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ROIVolumeSetFactor(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_ROIVolumeSetFactor() override {
+    ~WithRawCallbackMethod_ROIVolumeSetFactor() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -19269,37 +15059,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ROIVolumeSetFactor(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ROIVolumeSetFactor(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_ROIVolumeName : public BaseClass {
+  class WithRawCallbackMethod_ROIVolumeName : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_ROIVolumeName() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(32,
+    WithRawCallbackMethod_ROIVolumeName() {
+      ::grpc::Service::MarkMethodRawCallback(32,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ROIVolumeName(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ROIVolumeName(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_ROIVolumeName() override {
+    ~WithRawCallbackMethod_ROIVolumeName() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -19307,37 +15081,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ROIVolumeName(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ROIVolumeName(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_ROIVolumeVisible : public BaseClass {
+  class WithRawCallbackMethod_ROIVolumeVisible : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_ROIVolumeVisible() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(33,
+    WithRawCallbackMethod_ROIVolumeVisible() {
+      ::grpc::Service::MarkMethodRawCallback(33,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ROIVolumeVisible(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ROIVolumeVisible(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_ROIVolumeVisible() override {
+    ~WithRawCallbackMethod_ROIVolumeVisible() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -19345,37 +15103,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ROIVolumeVisible(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ROIVolumeVisible(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_DCMPixConvertToRGB : public BaseClass {
+  class WithRawCallbackMethod_DCMPixConvertToRGB : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_DCMPixConvertToRGB() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(34,
+    WithRawCallbackMethod_DCMPixConvertToRGB() {
+      ::grpc::Service::MarkMethodRawCallback(34,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DCMPixConvertToRGB(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DCMPixConvertToRGB(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_DCMPixConvertToRGB() override {
+    ~WithRawCallbackMethod_DCMPixConvertToRGB() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -19383,37 +15125,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DCMPixConvertToRGB(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DCMPixConvertToRGB(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_DCMPixConvertToBW : public BaseClass {
+  class WithRawCallbackMethod_DCMPixConvertToBW : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_DCMPixConvertToBW() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(35,
+    WithRawCallbackMethod_DCMPixConvertToBW() {
+      ::grpc::Service::MarkMethodRawCallback(35,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DCMPixConvertToBW(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DCMPixConvertToBW(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_DCMPixConvertToBW() override {
+    ~WithRawCallbackMethod_DCMPixConvertToBW() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -19421,37 +15147,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DCMPixConvertToBW(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DCMPixConvertToBW(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_DCMPixIsRGB : public BaseClass {
+  class WithRawCallbackMethod_DCMPixIsRGB : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_DCMPixIsRGB() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(36,
+    WithRawCallbackMethod_DCMPixIsRGB() {
+      ::grpc::Service::MarkMethodRawCallback(36,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DCMPixIsRGB(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DCMPixIsRGB(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_DCMPixIsRGB() override {
+    ~WithRawCallbackMethod_DCMPixIsRGB() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -19459,37 +15169,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DCMPixIsRGB(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DCMPixIsRGB(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_DCMPixComputeROI : public BaseClass {
+  class WithRawCallbackMethod_DCMPixComputeROI : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_DCMPixComputeROI() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(37,
+    WithRawCallbackMethod_DCMPixComputeROI() {
+      ::grpc::Service::MarkMethodRawCallback(37,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DCMPixComputeROI(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DCMPixComputeROI(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_DCMPixComputeROI() override {
+    ~WithRawCallbackMethod_DCMPixComputeROI() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -19497,37 +15191,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DCMPixComputeROI(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DCMPixComputeROI(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_DCMPixROIValues : public BaseClass {
+  class WithRawCallbackMethod_DCMPixROIValues : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_DCMPixROIValues() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(38,
+    WithRawCallbackMethod_DCMPixROIValues() {
+      ::grpc::Service::MarkMethodRawCallback(38,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DCMPixROIValues(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DCMPixROIValues(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_DCMPixROIValues() override {
+    ~WithRawCallbackMethod_DCMPixROIValues() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -19535,37 +15213,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DCMPixROIValues(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DCMPixROIValues(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_DCMPixShape : public BaseClass {
+  class WithRawCallbackMethod_DCMPixShape : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_DCMPixShape() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(39,
+    WithRawCallbackMethod_DCMPixShape() {
+      ::grpc::Service::MarkMethodRawCallback(39,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DCMPixShape(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DCMPixShape(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_DCMPixShape() override {
+    ~WithRawCallbackMethod_DCMPixShape() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -19573,37 +15235,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DCMPixShape(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DCMPixShape(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_DCMPixSpacing : public BaseClass {
+  class WithRawCallbackMethod_DCMPixSpacing : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_DCMPixSpacing() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(40,
+    WithRawCallbackMethod_DCMPixSpacing() {
+      ::grpc::Service::MarkMethodRawCallback(40,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DCMPixSpacing(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DCMPixSpacing(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_DCMPixSpacing() override {
+    ~WithRawCallbackMethod_DCMPixSpacing() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -19611,37 +15257,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DCMPixSpacing(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DCMPixSpacing(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_DCMPixOrigin : public BaseClass {
+  class WithRawCallbackMethod_DCMPixOrigin : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_DCMPixOrigin() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(41,
+    WithRawCallbackMethod_DCMPixOrigin() {
+      ::grpc::Service::MarkMethodRawCallback(41,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DCMPixOrigin(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DCMPixOrigin(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_DCMPixOrigin() override {
+    ~WithRawCallbackMethod_DCMPixOrigin() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -19649,37 +15279,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DCMPixOrigin(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DCMPixOrigin(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_DCMPixOrientation : public BaseClass {
+  class WithRawCallbackMethod_DCMPixOrientation : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_DCMPixOrientation() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(42,
+    WithRawCallbackMethod_DCMPixOrientation() {
+      ::grpc::Service::MarkMethodRawCallback(42,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DCMPixOrientation(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DCMPixOrientation(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_DCMPixOrientation() override {
+    ~WithRawCallbackMethod_DCMPixOrientation() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -19687,37 +15301,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DCMPixOrientation(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DCMPixOrientation(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_DCMPixSliceLocation : public BaseClass {
+  class WithRawCallbackMethod_DCMPixSliceLocation : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_DCMPixSliceLocation() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(43,
+    WithRawCallbackMethod_DCMPixSliceLocation() {
+      ::grpc::Service::MarkMethodRawCallback(43,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DCMPixSliceLocation(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DCMPixSliceLocation(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_DCMPixSliceLocation() override {
+    ~WithRawCallbackMethod_DCMPixSliceLocation() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -19725,37 +15323,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DCMPixSliceLocation(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DCMPixSliceLocation(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_DCMPixSourceFile : public BaseClass {
+  class WithRawCallbackMethod_DCMPixSourceFile : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_DCMPixSourceFile() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(44,
+    WithRawCallbackMethod_DCMPixSourceFile() {
+      ::grpc::Service::MarkMethodRawCallback(44,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DCMPixSourceFile(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DCMPixSourceFile(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_DCMPixSourceFile() override {
+    ~WithRawCallbackMethod_DCMPixSourceFile() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -19763,37 +15345,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DCMPixSourceFile(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DCMPixSourceFile(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_DCMPixImage : public BaseClass {
+  class WithRawCallbackMethod_DCMPixImage : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_DCMPixImage() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(45,
+    WithRawCallbackMethod_DCMPixImage() {
+      ::grpc::Service::MarkMethodRawCallback(45,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DCMPixImage(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DCMPixImage(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_DCMPixImage() override {
+    ~WithRawCallbackMethod_DCMPixImage() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -19801,37 +15367,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DCMPixImage(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DCMPixImage(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_DCMPixSetImage : public BaseClass {
+  class WithRawCallbackMethod_DCMPixSetImage : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_DCMPixSetImage() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(46,
+    WithRawCallbackMethod_DCMPixSetImage() {
+      ::grpc::Service::MarkMethodRawCallback(46,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DCMPixSetImage(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DCMPixSetImage(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_DCMPixSetImage() override {
+    ~WithRawCallbackMethod_DCMPixSetImage() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -19839,37 +15389,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DCMPixSetImage(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DCMPixSetImage(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_DCMPixGetMapFromROI : public BaseClass {
+  class WithRawCallbackMethod_DCMPixGetMapFromROI : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_DCMPixGetMapFromROI() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(47,
+    WithRawCallbackMethod_DCMPixGetMapFromROI() {
+      ::grpc::Service::MarkMethodRawCallback(47,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DCMPixGetMapFromROI(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DCMPixGetMapFromROI(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_DCMPixGetMapFromROI() override {
+    ~WithRawCallbackMethod_DCMPixGetMapFromROI() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -19877,37 +15411,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DCMPixGetMapFromROI(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DCMPixGetMapFromROI(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_DCMPixDicomImage : public BaseClass {
+  class WithRawCallbackMethod_DCMPixDicomImage : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_DCMPixDicomImage() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(48,
+    WithRawCallbackMethod_DCMPixDicomImage() {
+      ::grpc::Service::MarkMethodRawCallback(48,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DCMPixDicomImage(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DCMPixDicomImage(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_DCMPixDicomImage() override {
+    ~WithRawCallbackMethod_DCMPixDicomImage() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -19915,37 +15433,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DCMPixDicomImage(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DCMPixDicomImage(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_DCMPixDicomSeries : public BaseClass {
+  class WithRawCallbackMethod_DCMPixDicomSeries : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_DCMPixDicomSeries() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(49,
+    WithRawCallbackMethod_DCMPixDicomSeries() {
+      ::grpc::Service::MarkMethodRawCallback(49,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DCMPixDicomSeries(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DCMPixDicomSeries(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_DCMPixDicomSeries() override {
+    ~WithRawCallbackMethod_DCMPixDicomSeries() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -19953,37 +15455,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DCMPixDicomSeries(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DCMPixDicomSeries(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_DCMPixDicomStudy : public BaseClass {
+  class WithRawCallbackMethod_DCMPixDicomStudy : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_DCMPixDicomStudy() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(50,
+    WithRawCallbackMethod_DCMPixDicomStudy() {
+      ::grpc::Service::MarkMethodRawCallback(50,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DCMPixDicomStudy(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DCMPixDicomStudy(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_DCMPixDicomStudy() override {
+    ~WithRawCallbackMethod_DCMPixDicomStudy() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -19991,37 +15477,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DCMPixDicomStudy(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DCMPixDicomStudy(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_VRControllerViewer2D : public BaseClass {
+  class WithRawCallbackMethod_VRControllerViewer2D : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_VRControllerViewer2D() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(51,
+    WithRawCallbackMethod_VRControllerViewer2D() {
+      ::grpc::Service::MarkMethodRawCallback(51,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->VRControllerViewer2D(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->VRControllerViewer2D(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_VRControllerViewer2D() override {
+    ~WithRawCallbackMethod_VRControllerViewer2D() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -20029,37 +15499,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* VRControllerViewer2D(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* VRControllerViewer2D(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_VRControllerBlendingController : public BaseClass {
+  class WithRawCallbackMethod_VRControllerBlendingController : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_VRControllerBlendingController() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(52,
+    WithRawCallbackMethod_VRControllerBlendingController() {
+      ::grpc::Service::MarkMethodRawCallback(52,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->VRControllerBlendingController(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->VRControllerBlendingController(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_VRControllerBlendingController() override {
+    ~WithRawCallbackMethod_VRControllerBlendingController() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -20067,37 +15521,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* VRControllerBlendingController(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* VRControllerBlendingController(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_VRControllerStyle : public BaseClass {
+  class WithRawCallbackMethod_VRControllerStyle : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_VRControllerStyle() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(53,
+    WithRawCallbackMethod_VRControllerStyle() {
+      ::grpc::Service::MarkMethodRawCallback(53,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->VRControllerStyle(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->VRControllerStyle(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_VRControllerStyle() override {
+    ~WithRawCallbackMethod_VRControllerStyle() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -20105,37 +15543,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* VRControllerStyle(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* VRControllerStyle(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_VRControllerTitle : public BaseClass {
+  class WithRawCallbackMethod_VRControllerTitle : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_VRControllerTitle() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(54,
+    WithRawCallbackMethod_VRControllerTitle() {
+      ::grpc::Service::MarkMethodRawCallback(54,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->VRControllerTitle(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->VRControllerTitle(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_VRControllerTitle() override {
+    ~WithRawCallbackMethod_VRControllerTitle() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -20143,37 +15565,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* VRControllerTitle(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* VRControllerTitle(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_VRControllerROIVolumes : public BaseClass {
+  class WithRawCallbackMethod_VRControllerROIVolumes : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_VRControllerROIVolumes() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(55,
+    WithRawCallbackMethod_VRControllerROIVolumes() {
+      ::grpc::Service::MarkMethodRawCallback(55,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->VRControllerROIVolumes(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->VRControllerROIVolumes(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_VRControllerROIVolumes() override {
+    ~WithRawCallbackMethod_VRControllerROIVolumes() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -20181,37 +15587,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* VRControllerROIVolumes(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* VRControllerROIVolumes(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_VRControllerRenderingMode : public BaseClass {
+  class WithRawCallbackMethod_VRControllerRenderingMode : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_VRControllerRenderingMode() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(56,
+    WithRawCallbackMethod_VRControllerRenderingMode() {
+      ::grpc::Service::MarkMethodRawCallback(56,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->VRControllerRenderingMode(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->VRControllerRenderingMode(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_VRControllerRenderingMode() override {
+    ~WithRawCallbackMethod_VRControllerRenderingMode() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -20219,37 +15609,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* VRControllerRenderingMode(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* VRControllerRenderingMode(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_VRControllerSetRenderingMode : public BaseClass {
+  class WithRawCallbackMethod_VRControllerSetRenderingMode : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_VRControllerSetRenderingMode() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(57,
+    WithRawCallbackMethod_VRControllerSetRenderingMode() {
+      ::grpc::Service::MarkMethodRawCallback(57,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->VRControllerSetRenderingMode(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->VRControllerSetRenderingMode(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_VRControllerSetRenderingMode() override {
+    ~WithRawCallbackMethod_VRControllerSetRenderingMode() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -20257,37 +15631,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* VRControllerSetRenderingMode(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* VRControllerSetRenderingMode(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_VRControllerWLWW : public BaseClass {
+  class WithRawCallbackMethod_VRControllerWLWW : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_VRControllerWLWW() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(58,
+    WithRawCallbackMethod_VRControllerWLWW() {
+      ::grpc::Service::MarkMethodRawCallback(58,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->VRControllerWLWW(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->VRControllerWLWW(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_VRControllerWLWW() override {
+    ~WithRawCallbackMethod_VRControllerWLWW() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -20295,37 +15653,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* VRControllerWLWW(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* VRControllerWLWW(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_VRControllerSetWLWW : public BaseClass {
+  class WithRawCallbackMethod_VRControllerSetWLWW : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_VRControllerSetWLWW() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(59,
+    WithRawCallbackMethod_VRControllerSetWLWW() {
+      ::grpc::Service::MarkMethodRawCallback(59,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->VRControllerSetWLWW(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->VRControllerSetWLWW(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_VRControllerSetWLWW() override {
+    ~WithRawCallbackMethod_VRControllerSetWLWW() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -20333,37 +15675,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* VRControllerSetWLWW(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* VRControllerSetWLWW(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_VRControllerHideROIVolume : public BaseClass {
+  class WithRawCallbackMethod_VRControllerHideROIVolume : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_VRControllerHideROIVolume() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(60,
+    WithRawCallbackMethod_VRControllerHideROIVolume() {
+      ::grpc::Service::MarkMethodRawCallback(60,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->VRControllerHideROIVolume(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->VRControllerHideROIVolume(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_VRControllerHideROIVolume() override {
+    ~WithRawCallbackMethod_VRControllerHideROIVolume() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -20371,37 +15697,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* VRControllerHideROIVolume(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* VRControllerHideROIVolume(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_VRControllerDisplayROIVolume : public BaseClass {
+  class WithRawCallbackMethod_VRControllerDisplayROIVolume : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_VRControllerDisplayROIVolume() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(61,
+    WithRawCallbackMethod_VRControllerDisplayROIVolume() {
+      ::grpc::Service::MarkMethodRawCallback(61,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->VRControllerDisplayROIVolume(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->VRControllerDisplayROIVolume(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_VRControllerDisplayROIVolume() override {
+    ~WithRawCallbackMethod_VRControllerDisplayROIVolume() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -20409,37 +15719,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* VRControllerDisplayROIVolume(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* VRControllerDisplayROIVolume(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_VRControllerNeedsDisplayUpdate : public BaseClass {
+  class WithRawCallbackMethod_VRControllerNeedsDisplayUpdate : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_VRControllerNeedsDisplayUpdate() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(62,
+    WithRawCallbackMethod_VRControllerNeedsDisplayUpdate() {
+      ::grpc::Service::MarkMethodRawCallback(62,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->VRControllerNeedsDisplayUpdate(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->VRControllerNeedsDisplayUpdate(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_VRControllerNeedsDisplayUpdate() override {
+    ~WithRawCallbackMethod_VRControllerNeedsDisplayUpdate() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -20447,37 +15741,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* VRControllerNeedsDisplayUpdate(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* VRControllerNeedsDisplayUpdate(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_ViewerControllerCloseViewer : public BaseClass {
+  class WithRawCallbackMethod_ViewerControllerCloseViewer : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_ViewerControllerCloseViewer() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(63,
+    WithRawCallbackMethod_ViewerControllerCloseViewer() {
+      ::grpc::Service::MarkMethodRawCallback(63,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ViewerControllerCloseViewer(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ViewerControllerCloseViewer(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_ViewerControllerCloseViewer() override {
+    ~WithRawCallbackMethod_ViewerControllerCloseViewer() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -20485,37 +15763,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ViewerControllerCloseViewer(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ViewerControllerCloseViewer(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_ViewerControllerPixList : public BaseClass {
+  class WithRawCallbackMethod_ViewerControllerPixList : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_ViewerControllerPixList() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(64,
+    WithRawCallbackMethod_ViewerControllerPixList() {
+      ::grpc::Service::MarkMethodRawCallback(64,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ViewerControllerPixList(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ViewerControllerPixList(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_ViewerControllerPixList() override {
+    ~WithRawCallbackMethod_ViewerControllerPixList() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -20523,37 +15785,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ViewerControllerPixList(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ViewerControllerPixList(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_ViewerControllerNeedsDisplayUpdate : public BaseClass {
+  class WithRawCallbackMethod_ViewerControllerNeedsDisplayUpdate : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_ViewerControllerNeedsDisplayUpdate() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(65,
+    WithRawCallbackMethod_ViewerControllerNeedsDisplayUpdate() {
+      ::grpc::Service::MarkMethodRawCallback(65,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ViewerControllerNeedsDisplayUpdate(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ViewerControllerNeedsDisplayUpdate(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_ViewerControllerNeedsDisplayUpdate() override {
+    ~WithRawCallbackMethod_ViewerControllerNeedsDisplayUpdate() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -20561,37 +15807,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ViewerControllerNeedsDisplayUpdate(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ViewerControllerNeedsDisplayUpdate(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_ViewerControllerROIList : public BaseClass {
+  class WithRawCallbackMethod_ViewerControllerROIList : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_ViewerControllerROIList() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(66,
+    WithRawCallbackMethod_ViewerControllerROIList() {
+      ::grpc::Service::MarkMethodRawCallback(66,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ViewerControllerROIList(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ViewerControllerROIList(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_ViewerControllerROIList() override {
+    ~WithRawCallbackMethod_ViewerControllerROIList() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -20599,37 +15829,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ViewerControllerROIList(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ViewerControllerROIList(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_ViewerControllerNewROI : public BaseClass {
+  class WithRawCallbackMethod_ViewerControllerNewROI : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_ViewerControllerNewROI() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(67,
+    WithRawCallbackMethod_ViewerControllerNewROI() {
+      ::grpc::Service::MarkMethodRawCallback(67,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ViewerControllerNewROI(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ViewerControllerNewROI(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_ViewerControllerNewROI() override {
+    ~WithRawCallbackMethod_ViewerControllerNewROI() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -20637,37 +15851,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ViewerControllerNewROI(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ViewerControllerNewROI(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_ViewerControllerCurDCM : public BaseClass {
+  class WithRawCallbackMethod_ViewerControllerCurDCM : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_ViewerControllerCurDCM() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(68,
+    WithRawCallbackMethod_ViewerControllerCurDCM() {
+      ::grpc::Service::MarkMethodRawCallback(68,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ViewerControllerCurDCM(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ViewerControllerCurDCM(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_ViewerControllerCurDCM() override {
+    ~WithRawCallbackMethod_ViewerControllerCurDCM() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -20675,37 +15873,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ViewerControllerCurDCM(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ViewerControllerCurDCM(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_ViewerControllerROIsWithName : public BaseClass {
+  class WithRawCallbackMethod_ViewerControllerROIsWithName : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_ViewerControllerROIsWithName() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(69,
+    WithRawCallbackMethod_ViewerControllerROIsWithName() {
+      ::grpc::Service::MarkMethodRawCallback(69,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ViewerControllerROIsWithName(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ViewerControllerROIsWithName(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_ViewerControllerROIsWithName() override {
+    ~WithRawCallbackMethod_ViewerControllerROIsWithName() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -20713,37 +15895,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ViewerControllerROIsWithName(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ViewerControllerROIsWithName(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_ViewerControllerSelectedROIs : public BaseClass {
+  class WithRawCallbackMethod_ViewerControllerSelectedROIs : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_ViewerControllerSelectedROIs() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(70,
+    WithRawCallbackMethod_ViewerControllerSelectedROIs() {
+      ::grpc::Service::MarkMethodRawCallback(70,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ViewerControllerSelectedROIs(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ViewerControllerSelectedROIs(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_ViewerControllerSelectedROIs() override {
+    ~WithRawCallbackMethod_ViewerControllerSelectedROIs() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -20751,37 +15917,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ViewerControllerSelectedROIs(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ViewerControllerSelectedROIs(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_ViewerControllerIsDataVolumic : public BaseClass {
+  class WithRawCallbackMethod_ViewerControllerIsDataVolumic : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_ViewerControllerIsDataVolumic() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(71,
+    WithRawCallbackMethod_ViewerControllerIsDataVolumic() {
+      ::grpc::Service::MarkMethodRawCallback(71,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ViewerControllerIsDataVolumic(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ViewerControllerIsDataVolumic(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_ViewerControllerIsDataVolumic() override {
+    ~WithRawCallbackMethod_ViewerControllerIsDataVolumic() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -20789,37 +15939,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ViewerControllerIsDataVolumic(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ViewerControllerIsDataVolumic(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_ViewerControllerCopyViewerWindow : public BaseClass {
+  class WithRawCallbackMethod_ViewerControllerCopyViewerWindow : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_ViewerControllerCopyViewerWindow() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(72,
+    WithRawCallbackMethod_ViewerControllerCopyViewerWindow() {
+      ::grpc::Service::MarkMethodRawCallback(72,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ViewerControllerCopyViewerWindow(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ViewerControllerCopyViewerWindow(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_ViewerControllerCopyViewerWindow() override {
+    ~WithRawCallbackMethod_ViewerControllerCopyViewerWindow() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -20827,37 +15961,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ViewerControllerCopyViewerWindow(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ViewerControllerCopyViewerWindow(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_ViewerControllerResampleViewerController : public BaseClass {
+  class WithRawCallbackMethod_ViewerControllerResampleViewerController : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_ViewerControllerResampleViewerController() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(73,
+    WithRawCallbackMethod_ViewerControllerResampleViewerController() {
+      ::grpc::Service::MarkMethodRawCallback(73,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ViewerControllerResampleViewerController(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ViewerControllerResampleViewerController(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_ViewerControllerResampleViewerController() override {
+    ~WithRawCallbackMethod_ViewerControllerResampleViewerController() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -20865,37 +15983,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ViewerControllerResampleViewerController(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ViewerControllerResampleViewerController(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_ViewerControllerBlendingController : public BaseClass {
+  class WithRawCallbackMethod_ViewerControllerBlendingController : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_ViewerControllerBlendingController() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(74,
+    WithRawCallbackMethod_ViewerControllerBlendingController() {
+      ::grpc::Service::MarkMethodRawCallback(74,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ViewerControllerBlendingController(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ViewerControllerBlendingController(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_ViewerControllerBlendingController() override {
+    ~WithRawCallbackMethod_ViewerControllerBlendingController() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -20903,37 +16005,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ViewerControllerBlendingController(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ViewerControllerBlendingController(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_ViewerControllerVRControllers : public BaseClass {
+  class WithRawCallbackMethod_ViewerControllerVRControllers : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_ViewerControllerVRControllers() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(75,
+    WithRawCallbackMethod_ViewerControllerVRControllers() {
+      ::grpc::Service::MarkMethodRawCallback(75,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ViewerControllerVRControllers(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ViewerControllerVRControllers(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_ViewerControllerVRControllers() override {
+    ~WithRawCallbackMethod_ViewerControllerVRControllers() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -20941,37 +16027,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ViewerControllerVRControllers(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ViewerControllerVRControllers(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_ViewerControllerTitle : public BaseClass {
+  class WithRawCallbackMethod_ViewerControllerTitle : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_ViewerControllerTitle() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(76,
+    WithRawCallbackMethod_ViewerControllerTitle() {
+      ::grpc::Service::MarkMethodRawCallback(76,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ViewerControllerTitle(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ViewerControllerTitle(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_ViewerControllerTitle() override {
+    ~WithRawCallbackMethod_ViewerControllerTitle() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -20979,37 +16049,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ViewerControllerTitle(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ViewerControllerTitle(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_ViewerControllerModality : public BaseClass {
+  class WithRawCallbackMethod_ViewerControllerModality : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_ViewerControllerModality() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(77,
+    WithRawCallbackMethod_ViewerControllerModality() {
+      ::grpc::Service::MarkMethodRawCallback(77,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ViewerControllerModality(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ViewerControllerModality(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_ViewerControllerModality() override {
+    ~WithRawCallbackMethod_ViewerControllerModality() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -21017,37 +16071,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ViewerControllerModality(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ViewerControllerModality(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_ViewerControllerMovieIdx : public BaseClass {
+  class WithRawCallbackMethod_ViewerControllerMovieIdx : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_ViewerControllerMovieIdx() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(78,
+    WithRawCallbackMethod_ViewerControllerMovieIdx() {
+      ::grpc::Service::MarkMethodRawCallback(78,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ViewerControllerMovieIdx(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ViewerControllerMovieIdx(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_ViewerControllerMovieIdx() override {
+    ~WithRawCallbackMethod_ViewerControllerMovieIdx() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -21055,37 +16093,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ViewerControllerMovieIdx(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ViewerControllerMovieIdx(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_ViewerControllerSetMovieIdx : public BaseClass {
+  class WithRawCallbackMethod_ViewerControllerSetMovieIdx : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_ViewerControllerSetMovieIdx() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(79,
+    WithRawCallbackMethod_ViewerControllerSetMovieIdx() {
+      ::grpc::Service::MarkMethodRawCallback(79,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ViewerControllerSetMovieIdx(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ViewerControllerSetMovieIdx(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_ViewerControllerSetMovieIdx() override {
+    ~WithRawCallbackMethod_ViewerControllerSetMovieIdx() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -21093,37 +16115,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ViewerControllerSetMovieIdx(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ViewerControllerSetMovieIdx(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_ViewerControllerMaxMovieIdx : public BaseClass {
+  class WithRawCallbackMethod_ViewerControllerMaxMovieIdx : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_ViewerControllerMaxMovieIdx() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(80,
+    WithRawCallbackMethod_ViewerControllerMaxMovieIdx() {
+      ::grpc::Service::MarkMethodRawCallback(80,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ViewerControllerMaxMovieIdx(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ViewerControllerMaxMovieIdx(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_ViewerControllerMaxMovieIdx() override {
+    ~WithRawCallbackMethod_ViewerControllerMaxMovieIdx() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -21131,37 +16137,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ViewerControllerMaxMovieIdx(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ViewerControllerMaxMovieIdx(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_ViewerControllerIdx : public BaseClass {
+  class WithRawCallbackMethod_ViewerControllerIdx : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_ViewerControllerIdx() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(81,
+    WithRawCallbackMethod_ViewerControllerIdx() {
+      ::grpc::Service::MarkMethodRawCallback(81,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ViewerControllerIdx(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ViewerControllerIdx(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_ViewerControllerIdx() override {
+    ~WithRawCallbackMethod_ViewerControllerIdx() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -21169,37 +16159,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ViewerControllerIdx(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ViewerControllerIdx(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_ViewerControllerSetIdx : public BaseClass {
+  class WithRawCallbackMethod_ViewerControllerSetIdx : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_ViewerControllerSetIdx() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(82,
+    WithRawCallbackMethod_ViewerControllerSetIdx() {
+      ::grpc::Service::MarkMethodRawCallback(82,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ViewerControllerSetIdx(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ViewerControllerSetIdx(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_ViewerControllerSetIdx() override {
+    ~WithRawCallbackMethod_ViewerControllerSetIdx() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -21207,37 +16181,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ViewerControllerSetIdx(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ViewerControllerSetIdx(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_ViewerControllerWLWW : public BaseClass {
+  class WithRawCallbackMethod_ViewerControllerWLWW : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_ViewerControllerWLWW() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(83,
+    WithRawCallbackMethod_ViewerControllerWLWW() {
+      ::grpc::Service::MarkMethodRawCallback(83,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ViewerControllerWLWW(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ViewerControllerWLWW(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_ViewerControllerWLWW() override {
+    ~WithRawCallbackMethod_ViewerControllerWLWW() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -21245,37 +16203,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ViewerControllerWLWW(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ViewerControllerWLWW(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_ViewerControllerSetWLWW : public BaseClass {
+  class WithRawCallbackMethod_ViewerControllerSetWLWW : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_ViewerControllerSetWLWW() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(84,
+    WithRawCallbackMethod_ViewerControllerSetWLWW() {
+      ::grpc::Service::MarkMethodRawCallback(84,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ViewerControllerSetWLWW(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ViewerControllerSetWLWW(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_ViewerControllerSetWLWW() override {
+    ~WithRawCallbackMethod_ViewerControllerSetWLWW() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -21283,37 +16225,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ViewerControllerSetWLWW(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ViewerControllerSetWLWW(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_ViewerControllerOpenVRViewerForMode : public BaseClass {
+  class WithRawCallbackMethod_ViewerControllerOpenVRViewerForMode : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_ViewerControllerOpenVRViewerForMode() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(85,
+    WithRawCallbackMethod_ViewerControllerOpenVRViewerForMode() {
+      ::grpc::Service::MarkMethodRawCallback(85,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ViewerControllerOpenVRViewerForMode(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ViewerControllerOpenVRViewerForMode(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_ViewerControllerOpenVRViewerForMode() override {
+    ~WithRawCallbackMethod_ViewerControllerOpenVRViewerForMode() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -21321,37 +16247,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ViewerControllerOpenVRViewerForMode(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* ViewerControllerOpenVRViewerForMode(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_BrowserControllerDatabaseSelection : public BaseClass {
+  class WithRawCallbackMethod_BrowserControllerDatabaseSelection : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_BrowserControllerDatabaseSelection() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(86,
+    WithRawCallbackMethod_BrowserControllerDatabaseSelection() {
+      ::grpc::Service::MarkMethodRawCallback(86,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->BrowserControllerDatabaseSelection(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->BrowserControllerDatabaseSelection(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_BrowserControllerDatabaseSelection() override {
+    ~WithRawCallbackMethod_BrowserControllerDatabaseSelection() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -21359,37 +16269,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* BrowserControllerDatabaseSelection(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* BrowserControllerDatabaseSelection(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_BrowserControllerCopyFilesIfNeeded : public BaseClass {
+  class WithRawCallbackMethod_BrowserControllerCopyFilesIfNeeded : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_BrowserControllerCopyFilesIfNeeded() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(87,
+    WithRawCallbackMethod_BrowserControllerCopyFilesIfNeeded() {
+      ::grpc::Service::MarkMethodRawCallback(87,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->BrowserControllerCopyFilesIfNeeded(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->BrowserControllerCopyFilesIfNeeded(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_BrowserControllerCopyFilesIfNeeded() override {
+    ~WithRawCallbackMethod_BrowserControllerCopyFilesIfNeeded() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -21397,37 +16291,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* BrowserControllerCopyFilesIfNeeded(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* BrowserControllerCopyFilesIfNeeded(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_DicomImageWidth : public BaseClass {
+  class WithRawCallbackMethod_DicomImageWidth : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_DicomImageWidth() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(88,
+    WithRawCallbackMethod_DicomImageWidth() {
+      ::grpc::Service::MarkMethodRawCallback(88,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DicomImageWidth(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DicomImageWidth(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_DicomImageWidth() override {
+    ~WithRawCallbackMethod_DicomImageWidth() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -21435,37 +16313,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DicomImageWidth(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DicomImageWidth(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_DicomImageHeight : public BaseClass {
+  class WithRawCallbackMethod_DicomImageHeight : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_DicomImageHeight() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(89,
+    WithRawCallbackMethod_DicomImageHeight() {
+      ::grpc::Service::MarkMethodRawCallback(89,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DicomImageHeight(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DicomImageHeight(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_DicomImageHeight() override {
+    ~WithRawCallbackMethod_DicomImageHeight() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -21473,37 +16335,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DicomImageHeight(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DicomImageHeight(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_DicomImageSOPInstanceUID : public BaseClass {
+  class WithRawCallbackMethod_DicomImageSOPInstanceUID : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_DicomImageSOPInstanceUID() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(90,
+    WithRawCallbackMethod_DicomImageSOPInstanceUID() {
+      ::grpc::Service::MarkMethodRawCallback(90,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DicomImageSOPInstanceUID(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DicomImageSOPInstanceUID(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_DicomImageSOPInstanceUID() override {
+    ~WithRawCallbackMethod_DicomImageSOPInstanceUID() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -21511,37 +16357,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DicomImageSOPInstanceUID(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DicomImageSOPInstanceUID(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_DicomImageCompletePath : public BaseClass {
+  class WithRawCallbackMethod_DicomImageCompletePath : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_DicomImageCompletePath() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(91,
+    WithRawCallbackMethod_DicomImageCompletePath() {
+      ::grpc::Service::MarkMethodRawCallback(91,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DicomImageCompletePath(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DicomImageCompletePath(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_DicomImageCompletePath() override {
+    ~WithRawCallbackMethod_DicomImageCompletePath() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -21549,37 +16379,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DicomImageCompletePath(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DicomImageCompletePath(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_DicomImageDate : public BaseClass {
+  class WithRawCallbackMethod_DicomImageDate : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_DicomImageDate() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(92,
+    WithRawCallbackMethod_DicomImageDate() {
+      ::grpc::Service::MarkMethodRawCallback(92,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DicomImageDate(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DicomImageDate(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_DicomImageDate() override {
+    ~WithRawCallbackMethod_DicomImageDate() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -21587,37 +16401,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DicomImageDate(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DicomImageDate(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_DicomImageNumberOfFrames : public BaseClass {
+  class WithRawCallbackMethod_DicomImageNumberOfFrames : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_DicomImageNumberOfFrames() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(93,
+    WithRawCallbackMethod_DicomImageNumberOfFrames() {
+      ::grpc::Service::MarkMethodRawCallback(93,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DicomImageNumberOfFrames(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DicomImageNumberOfFrames(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_DicomImageNumberOfFrames() override {
+    ~WithRawCallbackMethod_DicomImageNumberOfFrames() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -21625,37 +16423,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DicomImageNumberOfFrames(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DicomImageNumberOfFrames(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_DicomImageModality : public BaseClass {
+  class WithRawCallbackMethod_DicomImageModality : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_DicomImageModality() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(94,
+    WithRawCallbackMethod_DicomImageModality() {
+      ::grpc::Service::MarkMethodRawCallback(94,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DicomImageModality(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DicomImageModality(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_DicomImageModality() override {
+    ~WithRawCallbackMethod_DicomImageModality() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -21663,37 +16445,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DicomImageModality(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DicomImageModality(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_DicomImageSeries : public BaseClass {
+  class WithRawCallbackMethod_DicomImageSeries : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_DicomImageSeries() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(95,
+    WithRawCallbackMethod_DicomImageSeries() {
+      ::grpc::Service::MarkMethodRawCallback(95,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DicomImageSeries(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DicomImageSeries(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_DicomImageSeries() override {
+    ~WithRawCallbackMethod_DicomImageSeries() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -21701,37 +16467,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DicomImageSeries(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DicomImageSeries(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_DicomImageSliceLocation : public BaseClass {
+  class WithRawCallbackMethod_DicomImageSliceLocation : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_DicomImageSliceLocation() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(96,
+    WithRawCallbackMethod_DicomImageSliceLocation() {
+      ::grpc::Service::MarkMethodRawCallback(96,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DicomImageSliceLocation(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DicomImageSliceLocation(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_DicomImageSliceLocation() override {
+    ~WithRawCallbackMethod_DicomImageSliceLocation() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -21739,37 +16489,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DicomImageSliceLocation(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DicomImageSliceLocation(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_DicomImageInstanceNumber : public BaseClass {
+  class WithRawCallbackMethod_DicomImageInstanceNumber : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_DicomImageInstanceNumber() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(97,
+    WithRawCallbackMethod_DicomImageInstanceNumber() {
+      ::grpc::Service::MarkMethodRawCallback(97,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DicomImageInstanceNumber(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DicomImageInstanceNumber(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_DicomImageInstanceNumber() override {
+    ~WithRawCallbackMethod_DicomImageInstanceNumber() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -21777,37 +16511,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DicomImageInstanceNumber(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DicomImageInstanceNumber(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_DicomSeriesPaths : public BaseClass {
+  class WithRawCallbackMethod_DicomSeriesPaths : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_DicomSeriesPaths() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(98,
+    WithRawCallbackMethod_DicomSeriesPaths() {
+      ::grpc::Service::MarkMethodRawCallback(98,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DicomSeriesPaths(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DicomSeriesPaths(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_DicomSeriesPaths() override {
+    ~WithRawCallbackMethod_DicomSeriesPaths() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -21815,37 +16533,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DicomSeriesPaths(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DicomSeriesPaths(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_DicomSeriesPreviousSeries : public BaseClass {
+  class WithRawCallbackMethod_DicomSeriesPreviousSeries : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_DicomSeriesPreviousSeries() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(99,
+    WithRawCallbackMethod_DicomSeriesPreviousSeries() {
+      ::grpc::Service::MarkMethodRawCallback(99,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DicomSeriesPreviousSeries(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DicomSeriesPreviousSeries(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_DicomSeriesPreviousSeries() override {
+    ~WithRawCallbackMethod_DicomSeriesPreviousSeries() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -21853,37 +16555,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DicomSeriesPreviousSeries(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DicomSeriesPreviousSeries(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_DicomSeriesNextSeries : public BaseClass {
+  class WithRawCallbackMethod_DicomSeriesNextSeries : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_DicomSeriesNextSeries() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(100,
+    WithRawCallbackMethod_DicomSeriesNextSeries() {
+      ::grpc::Service::MarkMethodRawCallback(100,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DicomSeriesNextSeries(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DicomSeriesNextSeries(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_DicomSeriesNextSeries() override {
+    ~WithRawCallbackMethod_DicomSeriesNextSeries() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -21891,37 +16577,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DicomSeriesNextSeries(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DicomSeriesNextSeries(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_DicomSeriesSortedImages : public BaseClass {
+  class WithRawCallbackMethod_DicomSeriesSortedImages : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_DicomSeriesSortedImages() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(101,
+    WithRawCallbackMethod_DicomSeriesSortedImages() {
+      ::grpc::Service::MarkMethodRawCallback(101,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DicomSeriesSortedImages(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DicomSeriesSortedImages(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_DicomSeriesSortedImages() override {
+    ~WithRawCallbackMethod_DicomSeriesSortedImages() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -21929,37 +16599,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DicomSeriesSortedImages(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DicomSeriesSortedImages(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_DicomSeriesStudy : public BaseClass {
+  class WithRawCallbackMethod_DicomSeriesStudy : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_DicomSeriesStudy() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(102,
+    WithRawCallbackMethod_DicomSeriesStudy() {
+      ::grpc::Service::MarkMethodRawCallback(102,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DicomSeriesStudy(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DicomSeriesStudy(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_DicomSeriesStudy() override {
+    ~WithRawCallbackMethod_DicomSeriesStudy() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -21967,37 +16621,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DicomSeriesStudy(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DicomSeriesStudy(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_DicomSeriesImages : public BaseClass {
+  class WithRawCallbackMethod_DicomSeriesImages : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_DicomSeriesImages() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(103,
+    WithRawCallbackMethod_DicomSeriesImages() {
+      ::grpc::Service::MarkMethodRawCallback(103,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DicomSeriesImages(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DicomSeriesImages(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_DicomSeriesImages() override {
+    ~WithRawCallbackMethod_DicomSeriesImages() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -22005,37 +16643,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DicomSeriesImages(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DicomSeriesImages(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_DicomSeriesSeriesInstanceUID : public BaseClass {
+  class WithRawCallbackMethod_DicomSeriesSeriesInstanceUID : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_DicomSeriesSeriesInstanceUID() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(104,
+    WithRawCallbackMethod_DicomSeriesSeriesInstanceUID() {
+      ::grpc::Service::MarkMethodRawCallback(104,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DicomSeriesSeriesInstanceUID(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DicomSeriesSeriesInstanceUID(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_DicomSeriesSeriesInstanceUID() override {
+    ~WithRawCallbackMethod_DicomSeriesSeriesInstanceUID() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -22043,37 +16665,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DicomSeriesSeriesInstanceUID(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DicomSeriesSeriesInstanceUID(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_DicomSeriesSeriesSOPClassUID : public BaseClass {
+  class WithRawCallbackMethod_DicomSeriesSeriesSOPClassUID : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_DicomSeriesSeriesSOPClassUID() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(105,
+    WithRawCallbackMethod_DicomSeriesSeriesSOPClassUID() {
+      ::grpc::Service::MarkMethodRawCallback(105,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DicomSeriesSeriesSOPClassUID(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DicomSeriesSeriesSOPClassUID(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_DicomSeriesSeriesSOPClassUID() override {
+    ~WithRawCallbackMethod_DicomSeriesSeriesSOPClassUID() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -22081,37 +16687,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DicomSeriesSeriesSOPClassUID(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DicomSeriesSeriesSOPClassUID(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_DicomSeriesSeriesDescription : public BaseClass {
+  class WithRawCallbackMethod_DicomSeriesSeriesDescription : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_DicomSeriesSeriesDescription() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(106,
+    WithRawCallbackMethod_DicomSeriesSeriesDescription() {
+      ::grpc::Service::MarkMethodRawCallback(106,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DicomSeriesSeriesDescription(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DicomSeriesSeriesDescription(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_DicomSeriesSeriesDescription() override {
+    ~WithRawCallbackMethod_DicomSeriesSeriesDescription() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -22119,37 +16709,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DicomSeriesSeriesDescription(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DicomSeriesSeriesDescription(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_DicomSeriesModality : public BaseClass {
+  class WithRawCallbackMethod_DicomSeriesModality : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_DicomSeriesModality() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(107,
+    WithRawCallbackMethod_DicomSeriesModality() {
+      ::grpc::Service::MarkMethodRawCallback(107,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DicomSeriesModality(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DicomSeriesModality(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_DicomSeriesModality() override {
+    ~WithRawCallbackMethod_DicomSeriesModality() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -22157,37 +16731,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DicomSeriesModality(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DicomSeriesModality(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_DicomSeriesName : public BaseClass {
+  class WithRawCallbackMethod_DicomSeriesName : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_DicomSeriesName() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(108,
+    WithRawCallbackMethod_DicomSeriesName() {
+      ::grpc::Service::MarkMethodRawCallback(108,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DicomSeriesName(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DicomSeriesName(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_DicomSeriesName() override {
+    ~WithRawCallbackMethod_DicomSeriesName() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -22195,37 +16753,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DicomSeriesName(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DicomSeriesName(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_DicomSeriesDate : public BaseClass {
+  class WithRawCallbackMethod_DicomSeriesDate : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_DicomSeriesDate() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(109,
+    WithRawCallbackMethod_DicomSeriesDate() {
+      ::grpc::Service::MarkMethodRawCallback(109,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DicomSeriesDate(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DicomSeriesDate(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_DicomSeriesDate() override {
+    ~WithRawCallbackMethod_DicomSeriesDate() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -22233,37 +16775,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DicomSeriesDate(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DicomSeriesDate(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_DicomSeriesNumberOfImages : public BaseClass {
+  class WithRawCallbackMethod_DicomSeriesNumberOfImages : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_DicomSeriesNumberOfImages() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(110,
+    WithRawCallbackMethod_DicomSeriesNumberOfImages() {
+      ::grpc::Service::MarkMethodRawCallback(110,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DicomSeriesNumberOfImages(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DicomSeriesNumberOfImages(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_DicomSeriesNumberOfImages() override {
+    ~WithRawCallbackMethod_DicomSeriesNumberOfImages() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -22271,37 +16797,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DicomSeriesNumberOfImages(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DicomSeriesNumberOfImages(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_DicomStudyPaths : public BaseClass {
+  class WithRawCallbackMethod_DicomStudyPaths : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_DicomStudyPaths() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(111,
+    WithRawCallbackMethod_DicomStudyPaths() {
+      ::grpc::Service::MarkMethodRawCallback(111,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DicomStudyPaths(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DicomStudyPaths(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_DicomStudyPaths() override {
+    ~WithRawCallbackMethod_DicomStudyPaths() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -22309,37 +16819,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DicomStudyPaths(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DicomStudyPaths(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_DicomStudyImages : public BaseClass {
+  class WithRawCallbackMethod_DicomStudyImages : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_DicomStudyImages() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(112,
+    WithRawCallbackMethod_DicomStudyImages() {
+      ::grpc::Service::MarkMethodRawCallback(112,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DicomStudyImages(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DicomStudyImages(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_DicomStudyImages() override {
+    ~WithRawCallbackMethod_DicomStudyImages() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -22347,37 +16841,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DicomStudyImages(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DicomStudyImages(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_DicomStudyModalities : public BaseClass {
+  class WithRawCallbackMethod_DicomStudyModalities : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_DicomStudyModalities() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(113,
+    WithRawCallbackMethod_DicomStudyModalities() {
+      ::grpc::Service::MarkMethodRawCallback(113,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DicomStudyModalities(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DicomStudyModalities(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_DicomStudyModalities() override {
+    ~WithRawCallbackMethod_DicomStudyModalities() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -22385,37 +16863,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DicomStudyModalities(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DicomStudyModalities(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_DicomStudyNoFiles : public BaseClass {
+  class WithRawCallbackMethod_DicomStudyNoFiles : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_DicomStudyNoFiles() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(114,
+    WithRawCallbackMethod_DicomStudyNoFiles() {
+      ::grpc::Service::MarkMethodRawCallback(114,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DicomStudyNoFiles(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DicomStudyNoFiles(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_DicomStudyNoFiles() override {
+    ~WithRawCallbackMethod_DicomStudyNoFiles() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -22423,37 +16885,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DicomStudyNoFiles(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DicomStudyNoFiles(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_DicomStudyRawNoFiles : public BaseClass {
+  class WithRawCallbackMethod_DicomStudyRawNoFiles : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_DicomStudyRawNoFiles() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(115,
+    WithRawCallbackMethod_DicomStudyRawNoFiles() {
+      ::grpc::Service::MarkMethodRawCallback(115,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DicomStudyRawNoFiles(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DicomStudyRawNoFiles(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_DicomStudyRawNoFiles() override {
+    ~WithRawCallbackMethod_DicomStudyRawNoFiles() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -22461,37 +16907,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DicomStudyRawNoFiles(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DicomStudyRawNoFiles(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_DicomStudyNoFilesExcludingMultiFrames : public BaseClass {
+  class WithRawCallbackMethod_DicomStudyNoFilesExcludingMultiFrames : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_DicomStudyNoFilesExcludingMultiFrames() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(116,
+    WithRawCallbackMethod_DicomStudyNoFilesExcludingMultiFrames() {
+      ::grpc::Service::MarkMethodRawCallback(116,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DicomStudyNoFilesExcludingMultiFrames(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DicomStudyNoFilesExcludingMultiFrames(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_DicomStudyNoFilesExcludingMultiFrames() override {
+    ~WithRawCallbackMethod_DicomStudyNoFilesExcludingMultiFrames() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -22499,37 +16929,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DicomStudyNoFilesExcludingMultiFrames(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DicomStudyNoFilesExcludingMultiFrames(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_DicomStudyNumberOfImages : public BaseClass {
+  class WithRawCallbackMethod_DicomStudyNumberOfImages : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_DicomStudyNumberOfImages() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(117,
+    WithRawCallbackMethod_DicomStudyNumberOfImages() {
+      ::grpc::Service::MarkMethodRawCallback(117,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DicomStudyNumberOfImages(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DicomStudyNumberOfImages(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_DicomStudyNumberOfImages() override {
+    ~WithRawCallbackMethod_DicomStudyNumberOfImages() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -22537,37 +16951,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DicomStudyNumberOfImages(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DicomStudyNumberOfImages(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_DicomStudySeries : public BaseClass {
+  class WithRawCallbackMethod_DicomStudySeries : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_DicomStudySeries() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(118,
+    WithRawCallbackMethod_DicomStudySeries() {
+      ::grpc::Service::MarkMethodRawCallback(118,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DicomStudySeries(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DicomStudySeries(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_DicomStudySeries() override {
+    ~WithRawCallbackMethod_DicomStudySeries() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -22575,37 +16973,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DicomStudySeries(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DicomStudySeries(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_DicomStudyName : public BaseClass {
+  class WithRawCallbackMethod_DicomStudyName : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_DicomStudyName() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(119,
+    WithRawCallbackMethod_DicomStudyName() {
+      ::grpc::Service::MarkMethodRawCallback(119,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DicomStudyName(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DicomStudyName(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_DicomStudyName() override {
+    ~WithRawCallbackMethod_DicomStudyName() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -22613,37 +16995,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DicomStudyName(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DicomStudyName(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_DicomStudyDate : public BaseClass {
+  class WithRawCallbackMethod_DicomStudyDate : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_DicomStudyDate() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(120,
+    WithRawCallbackMethod_DicomStudyDate() {
+      ::grpc::Service::MarkMethodRawCallback(120,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DicomStudyDate(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DicomStudyDate(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_DicomStudyDate() override {
+    ~WithRawCallbackMethod_DicomStudyDate() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -22651,37 +17017,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DicomStudyDate(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DicomStudyDate(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_DicomStudyDateAdded : public BaseClass {
+  class WithRawCallbackMethod_DicomStudyDateAdded : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_DicomStudyDateAdded() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(121,
+    WithRawCallbackMethod_DicomStudyDateAdded() {
+      ::grpc::Service::MarkMethodRawCallback(121,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DicomStudyDateAdded(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DicomStudyDateAdded(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_DicomStudyDateAdded() override {
+    ~WithRawCallbackMethod_DicomStudyDateAdded() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -22689,37 +17039,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DicomStudyDateAdded(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DicomStudyDateAdded(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_DicomStudyDateOfBirth : public BaseClass {
+  class WithRawCallbackMethod_DicomStudyDateOfBirth : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_DicomStudyDateOfBirth() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(122,
+    WithRawCallbackMethod_DicomStudyDateOfBirth() {
+      ::grpc::Service::MarkMethodRawCallback(122,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DicomStudyDateOfBirth(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DicomStudyDateOfBirth(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_DicomStudyDateOfBirth() override {
+    ~WithRawCallbackMethod_DicomStudyDateOfBirth() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -22727,37 +17061,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DicomStudyDateOfBirth(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DicomStudyDateOfBirth(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_DicomStudyInstitutionName : public BaseClass {
+  class WithRawCallbackMethod_DicomStudyInstitutionName : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_DicomStudyInstitutionName() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(123,
+    WithRawCallbackMethod_DicomStudyInstitutionName() {
+      ::grpc::Service::MarkMethodRawCallback(123,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DicomStudyInstitutionName(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DicomStudyInstitutionName(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_DicomStudyInstitutionName() override {
+    ~WithRawCallbackMethod_DicomStudyInstitutionName() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -22765,37 +17083,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DicomStudyInstitutionName(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DicomStudyInstitutionName(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_DicomStudyModality : public BaseClass {
+  class WithRawCallbackMethod_DicomStudyModality : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_DicomStudyModality() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(124,
+    WithRawCallbackMethod_DicomStudyModality() {
+      ::grpc::Service::MarkMethodRawCallback(124,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DicomStudyModality(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DicomStudyModality(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_DicomStudyModality() override {
+    ~WithRawCallbackMethod_DicomStudyModality() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -22803,37 +17105,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DicomStudyModality(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DicomStudyModality(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_DicomStudyPatientID : public BaseClass {
+  class WithRawCallbackMethod_DicomStudyPatientID : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_DicomStudyPatientID() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(125,
+    WithRawCallbackMethod_DicomStudyPatientID() {
+      ::grpc::Service::MarkMethodRawCallback(125,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DicomStudyPatientID(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DicomStudyPatientID(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_DicomStudyPatientID() override {
+    ~WithRawCallbackMethod_DicomStudyPatientID() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -22841,37 +17127,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DicomStudyPatientID(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DicomStudyPatientID(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_DicomStudyPatientUID : public BaseClass {
+  class WithRawCallbackMethod_DicomStudyPatientUID : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_DicomStudyPatientUID() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(126,
+    WithRawCallbackMethod_DicomStudyPatientUID() {
+      ::grpc::Service::MarkMethodRawCallback(126,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DicomStudyPatientUID(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DicomStudyPatientUID(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_DicomStudyPatientUID() override {
+    ~WithRawCallbackMethod_DicomStudyPatientUID() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -22879,37 +17149,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DicomStudyPatientUID(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DicomStudyPatientUID(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_DicomStudyPatientSex : public BaseClass {
+  class WithRawCallbackMethod_DicomStudyPatientSex : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_DicomStudyPatientSex() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(127,
+    WithRawCallbackMethod_DicomStudyPatientSex() {
+      ::grpc::Service::MarkMethodRawCallback(127,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DicomStudyPatientSex(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DicomStudyPatientSex(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_DicomStudyPatientSex() override {
+    ~WithRawCallbackMethod_DicomStudyPatientSex() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -22917,37 +17171,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DicomStudyPatientSex(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DicomStudyPatientSex(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_DicomStudyPerformingPhysician : public BaseClass {
+  class WithRawCallbackMethod_DicomStudyPerformingPhysician : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_DicomStudyPerformingPhysician() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(128,
+    WithRawCallbackMethod_DicomStudyPerformingPhysician() {
+      ::grpc::Service::MarkMethodRawCallback(128,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DicomStudyPerformingPhysician(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DicomStudyPerformingPhysician(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_DicomStudyPerformingPhysician() override {
+    ~WithRawCallbackMethod_DicomStudyPerformingPhysician() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -22955,37 +17193,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DicomStudyPerformingPhysician(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DicomStudyPerformingPhysician(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_DicomStudyReferringPhysician : public BaseClass {
+  class WithRawCallbackMethod_DicomStudyReferringPhysician : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_DicomStudyReferringPhysician() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(129,
+    WithRawCallbackMethod_DicomStudyReferringPhysician() {
+      ::grpc::Service::MarkMethodRawCallback(129,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DicomStudyReferringPhysician(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DicomStudyReferringPhysician(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_DicomStudyReferringPhysician() override {
+    ~WithRawCallbackMethod_DicomStudyReferringPhysician() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -22993,37 +17215,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DicomStudyReferringPhysician(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DicomStudyReferringPhysician(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_DicomStudyStudyInstanceUID : public BaseClass {
+  class WithRawCallbackMethod_DicomStudyStudyInstanceUID : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_DicomStudyStudyInstanceUID() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(130,
+    WithRawCallbackMethod_DicomStudyStudyInstanceUID() {
+      ::grpc::Service::MarkMethodRawCallback(130,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DicomStudyStudyInstanceUID(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DicomStudyStudyInstanceUID(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_DicomStudyStudyInstanceUID() override {
+    ~WithRawCallbackMethod_DicomStudyStudyInstanceUID() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -23031,37 +17237,21 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DicomStudyStudyInstanceUID(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DicomStudyStudyInstanceUID(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_DicomStudyStudyName : public BaseClass {
+  class WithRawCallbackMethod_DicomStudyStudyName : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_DicomStudyStudyName() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(131,
+    WithRawCallbackMethod_DicomStudyStudyName() {
+      ::grpc::Service::MarkMethodRawCallback(131,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DicomStudyStudyName(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DicomStudyStudyName(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_DicomStudyStudyName() override {
+    ~WithRawCallbackMethod_DicomStudyStudyName() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -23069,14 +17259,8 @@ class OsiriXService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* DicomStudyStudyName(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* DicomStudyStudyName(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
   class WithStreamedUnaryMethod_OsirixCurrentBrowser : public BaseClass {

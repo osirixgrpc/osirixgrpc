@@ -4,9 +4,8 @@
 """Generated protocol buffer code."""
 from google.protobuf import descriptor as _descriptor
 from google.protobuf import descriptor_pool as _descriptor_pool
-from google.protobuf import message as _message
-from google.protobuf import reflection as _reflection
 from google.protobuf import symbol_database as _symbol_database
+from google.protobuf.internal import builder as _builder
 # @@protoc_insertion_point(imports)
 
 _sym_db = _symbol_database.Default()
@@ -16,99 +15,28 @@ _sym_db = _symbol_database.Default()
 
 DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0btypes.proto\x12\nosirixgrpc\"*\n\x11\x42rowserController\x12\x15\n\rosirixrpc_uid\x18\x01 \x01(\t\")\n\x10ViewerController\x12\x15\n\rosirixrpc_uid\x18\x01 \x01(\t\"%\n\x0cVRController\x12\x15\n\rosirixrpc_uid\x18\x01 \x01(\t\"\x1f\n\x06\x44\x43MPix\x12\x15\n\rosirixrpc_uid\x18\x01 \x01(\t\"\x1c\n\x03ROI\x12\x15\n\rosirixrpc_uid\x18\x01 \x01(\t\"\"\n\tROIVolume\x12\x15\n\rosirixrpc_uid\x18\x01 \x01(\t\"#\n\nDicomImage\x12\x15\n\rosirixrpc_uid\x18\x01 \x01(\t\"$\n\x0b\x44icomSeries\x12\x15\n\rosirixrpc_uid\x18\x01 \x01(\t\"#\n\nDicomStudy\x12\x15\n\rosirixrpc_uid\x18\x01 \x01(\tb\x06proto3')
 
-
-
-_BROWSERCONTROLLER = DESCRIPTOR.message_types_by_name['BrowserController']
-_VIEWERCONTROLLER = DESCRIPTOR.message_types_by_name['ViewerController']
-_VRCONTROLLER = DESCRIPTOR.message_types_by_name['VRController']
-_DCMPIX = DESCRIPTOR.message_types_by_name['DCMPix']
-_ROI = DESCRIPTOR.message_types_by_name['ROI']
-_ROIVOLUME = DESCRIPTOR.message_types_by_name['ROIVolume']
-_DICOMIMAGE = DESCRIPTOR.message_types_by_name['DicomImage']
-_DICOMSERIES = DESCRIPTOR.message_types_by_name['DicomSeries']
-_DICOMSTUDY = DESCRIPTOR.message_types_by_name['DicomStudy']
-BrowserController = _reflection.GeneratedProtocolMessageType('BrowserController', (_message.Message,), {
-  'DESCRIPTOR' : _BROWSERCONTROLLER,
-  '__module__' : 'types_pb2'
-  # @@protoc_insertion_point(class_scope:osirixgrpc.BrowserController)
-  })
-_sym_db.RegisterMessage(BrowserController)
-
-ViewerController = _reflection.GeneratedProtocolMessageType('ViewerController', (_message.Message,), {
-  'DESCRIPTOR' : _VIEWERCONTROLLER,
-  '__module__' : 'types_pb2'
-  # @@protoc_insertion_point(class_scope:osirixgrpc.ViewerController)
-  })
-_sym_db.RegisterMessage(ViewerController)
-
-VRController = _reflection.GeneratedProtocolMessageType('VRController', (_message.Message,), {
-  'DESCRIPTOR' : _VRCONTROLLER,
-  '__module__' : 'types_pb2'
-  # @@protoc_insertion_point(class_scope:osirixgrpc.VRController)
-  })
-_sym_db.RegisterMessage(VRController)
-
-DCMPix = _reflection.GeneratedProtocolMessageType('DCMPix', (_message.Message,), {
-  'DESCRIPTOR' : _DCMPIX,
-  '__module__' : 'types_pb2'
-  # @@protoc_insertion_point(class_scope:osirixgrpc.DCMPix)
-  })
-_sym_db.RegisterMessage(DCMPix)
-
-ROI = _reflection.GeneratedProtocolMessageType('ROI', (_message.Message,), {
-  'DESCRIPTOR' : _ROI,
-  '__module__' : 'types_pb2'
-  # @@protoc_insertion_point(class_scope:osirixgrpc.ROI)
-  })
-_sym_db.RegisterMessage(ROI)
-
-ROIVolume = _reflection.GeneratedProtocolMessageType('ROIVolume', (_message.Message,), {
-  'DESCRIPTOR' : _ROIVOLUME,
-  '__module__' : 'types_pb2'
-  # @@protoc_insertion_point(class_scope:osirixgrpc.ROIVolume)
-  })
-_sym_db.RegisterMessage(ROIVolume)
-
-DicomImage = _reflection.GeneratedProtocolMessageType('DicomImage', (_message.Message,), {
-  'DESCRIPTOR' : _DICOMIMAGE,
-  '__module__' : 'types_pb2'
-  # @@protoc_insertion_point(class_scope:osirixgrpc.DicomImage)
-  })
-_sym_db.RegisterMessage(DicomImage)
-
-DicomSeries = _reflection.GeneratedProtocolMessageType('DicomSeries', (_message.Message,), {
-  'DESCRIPTOR' : _DICOMSERIES,
-  '__module__' : 'types_pb2'
-  # @@protoc_insertion_point(class_scope:osirixgrpc.DicomSeries)
-  })
-_sym_db.RegisterMessage(DicomSeries)
-
-DicomStudy = _reflection.GeneratedProtocolMessageType('DicomStudy', (_message.Message,), {
-  'DESCRIPTOR' : _DICOMSTUDY,
-  '__module__' : 'types_pb2'
-  # @@protoc_insertion_point(class_scope:osirixgrpc.DicomStudy)
-  })
-_sym_db.RegisterMessage(DicomStudy)
-
+_globals = globals()
+_builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
+_builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'types_pb2', _globals)
 if _descriptor._USE_C_DESCRIPTORS == False:
 
   DESCRIPTOR._options = None
-  _BROWSERCONTROLLER._serialized_start=27
-  _BROWSERCONTROLLER._serialized_end=69
-  _VIEWERCONTROLLER._serialized_start=71
-  _VIEWERCONTROLLER._serialized_end=112
-  _VRCONTROLLER._serialized_start=114
-  _VRCONTROLLER._serialized_end=151
-  _DCMPIX._serialized_start=153
-  _DCMPIX._serialized_end=184
-  _ROI._serialized_start=186
-  _ROI._serialized_end=214
-  _ROIVOLUME._serialized_start=216
-  _ROIVOLUME._serialized_end=250
-  _DICOMIMAGE._serialized_start=252
-  _DICOMIMAGE._serialized_end=287
-  _DICOMSERIES._serialized_start=289
-  _DICOMSERIES._serialized_end=325
-  _DICOMSTUDY._serialized_start=327
-  _DICOMSTUDY._serialized_end=362
+  _globals['_BROWSERCONTROLLER']._serialized_start=27
+  _globals['_BROWSERCONTROLLER']._serialized_end=69
+  _globals['_VIEWERCONTROLLER']._serialized_start=71
+  _globals['_VIEWERCONTROLLER']._serialized_end=112
+  _globals['_VRCONTROLLER']._serialized_start=114
+  _globals['_VRCONTROLLER']._serialized_end=151
+  _globals['_DCMPIX']._serialized_start=153
+  _globals['_DCMPIX']._serialized_end=184
+  _globals['_ROI']._serialized_start=186
+  _globals['_ROI']._serialized_end=214
+  _globals['_ROIVOLUME']._serialized_start=216
+  _globals['_ROIVOLUME']._serialized_end=250
+  _globals['_DICOMIMAGE']._serialized_start=252
+  _globals['_DICOMIMAGE']._serialized_end=287
+  _globals['_DICOMSERIES']._serialized_start=289
+  _globals['_DICOMSERIES']._serialized_end=325
+  _globals['_DICOMSTUDY']._serialized_start=327
+  _globals['_DICOMSTUDY']._serialized_end=362
 # @@protoc_insertion_point(module_scope)

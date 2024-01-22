@@ -2,7 +2,7 @@
 
 # Define the name of the temporary conda environment and grpc version
 env_name="temp_env"
-grpc_version="1.55.0"
+grpc_version="1.56.0"
 
 # Create the temporary conda environment
 conda create --name "$env_name" python=3.8

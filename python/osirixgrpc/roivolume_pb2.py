@@ -4,9 +4,8 @@
 """Generated protocol buffer code."""
 from google.protobuf import descriptor as _descriptor
 from google.protobuf import descriptor_pool as _descriptor_pool
-from google.protobuf import message as _message
-from google.protobuf import reflection as _reflection
 from google.protobuf import symbol_database as _symbol_database
+from google.protobuf.internal import builder as _builder
 # @@protoc_insertion_point(imports)
 
 _sym_db = _symbol_database.Default()
@@ -18,119 +17,32 @@ import types_pb2 as types__pb2
 
 DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0froivolume.proto\x12\nosirixgrpc\x1a\x0futilities.proto\x1a\x0btypes.proto\"O\n\x18ROIVolumeTextureResponse\x12\"\n\x06status\x18\x01 \x01(\x0b\x32\x12.osirixgrpc.Status\x12\x0f\n\x07texture\x18\x02 \x01(\x08\"M\n\x17ROIVolumeVolumeResponse\x12\"\n\x06status\x18\x01 \x01(\x0b\x32\x12.osirixgrpc.Status\x12\x0e\n\x06volume\x18\x02 \x01(\x02\"]\n\x16ROIVolumeColorResponse\x12\"\n\x06status\x18\x01 \x01(\x0b\x32\x12.osirixgrpc.Status\x12\t\n\x01r\x18\x02 \x01(\x02\x12\t\n\x01g\x18\x03 \x01(\x02\x12\t\n\x01\x62\x18\x04 \x01(\x02\"O\n\x18ROIVolumeOpacityResponse\x12\"\n\x06status\x18\x01 \x01(\x0b\x32\x12.osirixgrpc.Status\x12\x0f\n\x07opacity\x18\x02 \x01(\x02\"M\n\x17ROIVolumeFactorResponse\x12\"\n\x06status\x18\x01 \x01(\x0b\x32\x12.osirixgrpc.Status\x12\x0e\n\x06\x66\x61\x63tor\x18\x02 \x01(\x02\"O\n\x18ROIVolumeVisibleResponse\x12\"\n\x06status\x18\x01 \x01(\x0b\x32\x12.osirixgrpc.Status\x12\x0f\n\x07visible\x18\x02 \x01(\x08\"I\n\x15ROIVolumeNameResponse\x12\"\n\x06status\x18\x01 \x01(\x0b\x32\x12.osirixgrpc.Status\x12\x0c\n\x04name\x18\x02 \x01(\t\"Q\n\x1aROIVolumeSetTextureRequest\x12\"\n\x03roi\x18\x01 \x01(\x0b\x32\x15.osirixgrpc.ROIVolume\x12\x0f\n\x07texture\x18\x02 \x01(\x08\"_\n\x18ROIVolumeSetColorRequest\x12\"\n\x03roi\x18\x01 \x01(\x0b\x32\x15.osirixgrpc.ROIVolume\x12\t\n\x01r\x18\x02 \x01(\x02\x12\t\n\x01g\x18\x03 \x01(\x02\x12\t\n\x01\x62\x18\x04 \x01(\x02\"Q\n\x1aROIVolumeSetOpacityRequest\x12\"\n\x03roi\x18\x01 \x01(\x0b\x32\x15.osirixgrpc.ROIVolume\x12\x0f\n\x07opacity\x18\x02 \x01(\x02\"O\n\x19ROIVolumeSetFactorRequest\x12\"\n\x03roi\x18\x01 \x01(\x0b\x32\x15.osirixgrpc.ROIVolume\x12\x0e\n\x06\x66\x61\x63tor\x18\x02 \x01(\x02\x62\x06proto3')
 
-
-
-_ROIVOLUMETEXTURERESPONSE = DESCRIPTOR.message_types_by_name['ROIVolumeTextureResponse']
-_ROIVOLUMEVOLUMERESPONSE = DESCRIPTOR.message_types_by_name['ROIVolumeVolumeResponse']
-_ROIVOLUMECOLORRESPONSE = DESCRIPTOR.message_types_by_name['ROIVolumeColorResponse']
-_ROIVOLUMEOPACITYRESPONSE = DESCRIPTOR.message_types_by_name['ROIVolumeOpacityResponse']
-_ROIVOLUMEFACTORRESPONSE = DESCRIPTOR.message_types_by_name['ROIVolumeFactorResponse']
-_ROIVOLUMEVISIBLERESPONSE = DESCRIPTOR.message_types_by_name['ROIVolumeVisibleResponse']
-_ROIVOLUMENAMERESPONSE = DESCRIPTOR.message_types_by_name['ROIVolumeNameResponse']
-_ROIVOLUMESETTEXTUREREQUEST = DESCRIPTOR.message_types_by_name['ROIVolumeSetTextureRequest']
-_ROIVOLUMESETCOLORREQUEST = DESCRIPTOR.message_types_by_name['ROIVolumeSetColorRequest']
-_ROIVOLUMESETOPACITYREQUEST = DESCRIPTOR.message_types_by_name['ROIVolumeSetOpacityRequest']
-_ROIVOLUMESETFACTORREQUEST = DESCRIPTOR.message_types_by_name['ROIVolumeSetFactorRequest']
-ROIVolumeTextureResponse = _reflection.GeneratedProtocolMessageType('ROIVolumeTextureResponse', (_message.Message,), {
-  'DESCRIPTOR' : _ROIVOLUMETEXTURERESPONSE,
-  '__module__' : 'roivolume_pb2'
-  # @@protoc_insertion_point(class_scope:osirixgrpc.ROIVolumeTextureResponse)
-  })
-_sym_db.RegisterMessage(ROIVolumeTextureResponse)
-
-ROIVolumeVolumeResponse = _reflection.GeneratedProtocolMessageType('ROIVolumeVolumeResponse', (_message.Message,), {
-  'DESCRIPTOR' : _ROIVOLUMEVOLUMERESPONSE,
-  '__module__' : 'roivolume_pb2'
-  # @@protoc_insertion_point(class_scope:osirixgrpc.ROIVolumeVolumeResponse)
-  })
-_sym_db.RegisterMessage(ROIVolumeVolumeResponse)
-
-ROIVolumeColorResponse = _reflection.GeneratedProtocolMessageType('ROIVolumeColorResponse', (_message.Message,), {
-  'DESCRIPTOR' : _ROIVOLUMECOLORRESPONSE,
-  '__module__' : 'roivolume_pb2'
-  # @@protoc_insertion_point(class_scope:osirixgrpc.ROIVolumeColorResponse)
-  })
-_sym_db.RegisterMessage(ROIVolumeColorResponse)
-
-ROIVolumeOpacityResponse = _reflection.GeneratedProtocolMessageType('ROIVolumeOpacityResponse', (_message.Message,), {
-  'DESCRIPTOR' : _ROIVOLUMEOPACITYRESPONSE,
-  '__module__' : 'roivolume_pb2'
-  # @@protoc_insertion_point(class_scope:osirixgrpc.ROIVolumeOpacityResponse)
-  })
-_sym_db.RegisterMessage(ROIVolumeOpacityResponse)
-
-ROIVolumeFactorResponse = _reflection.GeneratedProtocolMessageType('ROIVolumeFactorResponse', (_message.Message,), {
-  'DESCRIPTOR' : _ROIVOLUMEFACTORRESPONSE,
-  '__module__' : 'roivolume_pb2'
-  # @@protoc_insertion_point(class_scope:osirixgrpc.ROIVolumeFactorResponse)
-  })
-_sym_db.RegisterMessage(ROIVolumeFactorResponse)
-
-ROIVolumeVisibleResponse = _reflection.GeneratedProtocolMessageType('ROIVolumeVisibleResponse', (_message.Message,), {
-  'DESCRIPTOR' : _ROIVOLUMEVISIBLERESPONSE,
-  '__module__' : 'roivolume_pb2'
-  # @@protoc_insertion_point(class_scope:osirixgrpc.ROIVolumeVisibleResponse)
-  })
-_sym_db.RegisterMessage(ROIVolumeVisibleResponse)
-
-ROIVolumeNameResponse = _reflection.GeneratedProtocolMessageType('ROIVolumeNameResponse', (_message.Message,), {
-  'DESCRIPTOR' : _ROIVOLUMENAMERESPONSE,
-  '__module__' : 'roivolume_pb2'
-  # @@protoc_insertion_point(class_scope:osirixgrpc.ROIVolumeNameResponse)
-  })
-_sym_db.RegisterMessage(ROIVolumeNameResponse)
-
-ROIVolumeSetTextureRequest = _reflection.GeneratedProtocolMessageType('ROIVolumeSetTextureRequest', (_message.Message,), {
-  'DESCRIPTOR' : _ROIVOLUMESETTEXTUREREQUEST,
-  '__module__' : 'roivolume_pb2'
-  # @@protoc_insertion_point(class_scope:osirixgrpc.ROIVolumeSetTextureRequest)
-  })
-_sym_db.RegisterMessage(ROIVolumeSetTextureRequest)
-
-ROIVolumeSetColorRequest = _reflection.GeneratedProtocolMessageType('ROIVolumeSetColorRequest', (_message.Message,), {
-  'DESCRIPTOR' : _ROIVOLUMESETCOLORREQUEST,
-  '__module__' : 'roivolume_pb2'
-  # @@protoc_insertion_point(class_scope:osirixgrpc.ROIVolumeSetColorRequest)
-  })
-_sym_db.RegisterMessage(ROIVolumeSetColorRequest)
-
-ROIVolumeSetOpacityRequest = _reflection.GeneratedProtocolMessageType('ROIVolumeSetOpacityRequest', (_message.Message,), {
-  'DESCRIPTOR' : _ROIVOLUMESETOPACITYREQUEST,
-  '__module__' : 'roivolume_pb2'
-  # @@protoc_insertion_point(class_scope:osirixgrpc.ROIVolumeSetOpacityRequest)
-  })
-_sym_db.RegisterMessage(ROIVolumeSetOpacityRequest)
-
-ROIVolumeSetFactorRequest = _reflection.GeneratedProtocolMessageType('ROIVolumeSetFactorRequest', (_message.Message,), {
-  'DESCRIPTOR' : _ROIVOLUMESETFACTORREQUEST,
-  '__module__' : 'roivolume_pb2'
-  # @@protoc_insertion_point(class_scope:osirixgrpc.ROIVolumeSetFactorRequest)
-  })
-_sym_db.RegisterMessage(ROIVolumeSetFactorRequest)
-
+_globals = globals()
+_builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
+_builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'roivolume_pb2', _globals)
 if _descriptor._USE_C_DESCRIPTORS == False:
 
   DESCRIPTOR._options = None
-  _ROIVOLUMETEXTURERESPONSE._serialized_start=61
-  _ROIVOLUMETEXTURERESPONSE._serialized_end=140
-  _ROIVOLUMEVOLUMERESPONSE._serialized_start=142
-  _ROIVOLUMEVOLUMERESPONSE._serialized_end=219
-  _ROIVOLUMECOLORRESPONSE._serialized_start=221
-  _ROIVOLUMECOLORRESPONSE._serialized_end=314
-  _ROIVOLUMEOPACITYRESPONSE._serialized_start=316
-  _ROIVOLUMEOPACITYRESPONSE._serialized_end=395
-  _ROIVOLUMEFACTORRESPONSE._serialized_start=397
-  _ROIVOLUMEFACTORRESPONSE._serialized_end=474
-  _ROIVOLUMEVISIBLERESPONSE._serialized_start=476
-  _ROIVOLUMEVISIBLERESPONSE._serialized_end=555
-  _ROIVOLUMENAMERESPONSE._serialized_start=557
-  _ROIVOLUMENAMERESPONSE._serialized_end=630
-  _ROIVOLUMESETTEXTUREREQUEST._serialized_start=632
-  _ROIVOLUMESETTEXTUREREQUEST._serialized_end=713
-  _ROIVOLUMESETCOLORREQUEST._serialized_start=715
-  _ROIVOLUMESETCOLORREQUEST._serialized_end=810
-  _ROIVOLUMESETOPACITYREQUEST._serialized_start=812
-  _ROIVOLUMESETOPACITYREQUEST._serialized_end=893
-  _ROIVOLUMESETFACTORREQUEST._serialized_start=895
-  _ROIVOLUMESETFACTORREQUEST._serialized_end=974
+  _globals['_ROIVOLUMETEXTURERESPONSE']._serialized_start=61
+  _globals['_ROIVOLUMETEXTURERESPONSE']._serialized_end=140
+  _globals['_ROIVOLUMEVOLUMERESPONSE']._serialized_start=142
+  _globals['_ROIVOLUMEVOLUMERESPONSE']._serialized_end=219
+  _globals['_ROIVOLUMECOLORRESPONSE']._serialized_start=221
+  _globals['_ROIVOLUMECOLORRESPONSE']._serialized_end=314
+  _globals['_ROIVOLUMEOPACITYRESPONSE']._serialized_start=316
+  _globals['_ROIVOLUMEOPACITYRESPONSE']._serialized_end=395
+  _globals['_ROIVOLUMEFACTORRESPONSE']._serialized_start=397
+  _globals['_ROIVOLUMEFACTORRESPONSE']._serialized_end=474
+  _globals['_ROIVOLUMEVISIBLERESPONSE']._serialized_start=476
+  _globals['_ROIVOLUMEVISIBLERESPONSE']._serialized_end=555
+  _globals['_ROIVOLUMENAMERESPONSE']._serialized_start=557
+  _globals['_ROIVOLUMENAMERESPONSE']._serialized_end=630
+  _globals['_ROIVOLUMESETTEXTUREREQUEST']._serialized_start=632
+  _globals['_ROIVOLUMESETTEXTUREREQUEST']._serialized_end=713
+  _globals['_ROIVOLUMESETCOLORREQUEST']._serialized_start=715
+  _globals['_ROIVOLUMESETCOLORREQUEST']._serialized_end=810
+  _globals['_ROIVOLUMESETOPACITYREQUEST']._serialized_start=812
+  _globals['_ROIVOLUMESETOPACITYREQUEST']._serialized_end=893
+  _globals['_ROIVOLUMESETFACTORREQUEST']._serialized_start=895
+  _globals['_ROIVOLUMESETFACTORREQUEST']._serialized_end=974
 # @@protoc_insertion_point(module_scope)
