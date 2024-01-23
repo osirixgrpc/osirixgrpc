@@ -89,7 +89,7 @@ grpc/install/bin/protoc -I protos --cpp_out=cpp osirix.proto roi.proto roivolume
 # ============================
 mkdir -p python/grpc
 
-# This fixes issues with grpc version 1.55.0 on M1 (see https://stackoverflow.com/questions/72620996/apple-m1-symbol-not-found-cfrelease-while-running-python-app)
+# see https://stackoverflow.com/questions/72620996/apple-m1-symbol-not-found-cfrelease-while-running-python-app)
 export GRPC_PYTHON_LDFLAGS=" -framework CoreFoundation"
 
 # Install packages or perform other actions in the environment
@@ -99,6 +99,10 @@ pip install grpcio=="$grpc_version" grpcio-tools=="$grpc_version" --no-binary :a
 python -m grpc_tools.protoc -I protos --python_out=python/osirixgrpc --grpc_python_out=python/osirixgrpc osirix.proto
 
 python -m grpc_tools.protoc -I protos --python_out=python/osirixgrpc roi.proto roivolume.proto dcmpix.proto vrcontroller.proto viewercontroller.proto browsercontroller.proto dicomimage.proto dicomstudy.proto dicomseries.proto utilities.proto types.proto
+
+# Update the requirements file
+echo "grpcio>=$grpc_version" > python/requirements.txt
+echo "grpcio-tools>=$grpc_version" >> python/requirements.txt
 
 # Deactivate the environment when done
 conda deactivate
