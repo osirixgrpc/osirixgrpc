@@ -1,6 +1,6 @@
 # This provides set up for mkdocs documentation generation.
 
-site_name: OsiriXgrpc
+site_name: OsiriXgrpc v0.2.1-dev0
 site_url: 
 repo_url: https://github.com/osirixgrpc/osirixgrpc
 docs_dir: docfiles
@@ -25,7 +25,7 @@ theme:
       - shell
       - sh
   palette:
-    - scheme: default  # The color scheme to use.  Defined in stylesheets/extra.css.
+    - scheme: default  # The color scheme to use.
 
 plugins:
   - search
@@ -40,7 +40,7 @@ markdown_extensions:
 nav:
   - Home: README.md  # Where the home page of the documentation will be stored.
   - Getting Started: getting_started.md
-  - Examples:
-    - Basics: examples/README.md
+  - API:
+    - Basics: api/README.md
   - Contributing:
-    - Home: contributing/welcome.md
+    - Home: contributing/README.md

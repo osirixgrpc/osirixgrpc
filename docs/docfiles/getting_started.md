@@ -82,12 +82,4 @@ interface. Outputs can be saved and the console can be cleared.
 ![Task Console](../assets/plugin/task_console.png)
 
 
-__Congratulations!__ You should now be ready to create client scripts to interact with OsiriX! 
-
-> ___Note___: This is the long-winded way to do things. We _strongly_ recommend using the [pyosirix](404.html) library\
-> for day-to-day development unless you want to do things the long way.
-
-Whilst GRPC support many [languages](https://grpc.io/docs/languages/), including C++, Java, Go, Node.js, and PHP, we
-currently only support use of Python. This is largely because the libraries available to Python for image processing
-and machine-learning are generally state-of-the-art and come with a relatively short learning curve. If you are 
-interested in generating the code for 
+__Congratulations!__ You should now be ready to create client scripts to interact with OsiriX!
