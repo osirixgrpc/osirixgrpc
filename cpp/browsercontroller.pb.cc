@@ -11,22 +11,27 @@
 #include "google/protobuf/generated_message_reflection.h"
 #include "google/protobuf/reflection_ops.h"
 #include "google/protobuf/wire_format.h"
+#include "google/protobuf/generated_message_tctable_impl.h"
 // @@protoc_insertion_point(includes)
 
 // Must be included last.
 #include "google/protobuf/port_def.inc"
 PROTOBUF_PRAGMA_INIT_SEG
-namespace _pb = ::PROTOBUF_NAMESPACE_ID;
-namespace _pbi = ::PROTOBUF_NAMESPACE_ID::internal;
+namespace _pb = ::google::protobuf;
+namespace _pbi = ::google::protobuf::internal;
+namespace _fl = ::google::protobuf::internal::field_layout;
 namespace osirixgrpc {
+
+inline constexpr BrowserControllerDatabaseSelectionResponse::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        series_{},
+        studies_{},
+        status_{nullptr} {}
+
 template <typename>
-PROTOBUF_CONSTEXPR BrowserControllerDatabaseSelectionResponse::BrowserControllerDatabaseSelectionResponse(
-    ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_._has_bits_)*/{}
-  , /*decltype(_impl_._cached_size_)*/{}
-  , /*decltype(_impl_.series_)*/{}
-  , /*decltype(_impl_.studies_)*/{}
-  , /*decltype(_impl_.status_)*/nullptr} {}
+PROTOBUF_CONSTEXPR BrowserControllerDatabaseSelectionResponse::BrowserControllerDatabaseSelectionResponse(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
 struct BrowserControllerDatabaseSelectionResponseDefaultTypeInternal {
   PROTOBUF_CONSTEXPR BrowserControllerDatabaseSelectionResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
   ~BrowserControllerDatabaseSelectionResponseDefaultTypeInternal() {}
@@ -37,13 +42,16 @@ struct BrowserControllerDatabaseSelectionResponseDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 BrowserControllerDatabaseSelectionResponseDefaultTypeInternal _BrowserControllerDatabaseSelectionResponse_default_instance_;
+
+inline constexpr BrowserControllerCopyFilesIfNeededRequest::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        paths_{},
+        browser_{nullptr} {}
+
 template <typename>
-PROTOBUF_CONSTEXPR BrowserControllerCopyFilesIfNeededRequest::BrowserControllerCopyFilesIfNeededRequest(
-    ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_._has_bits_)*/{}
-  , /*decltype(_impl_._cached_size_)*/{}
-  , /*decltype(_impl_.paths_)*/{}
-  , /*decltype(_impl_.browser_)*/nullptr} {}
+PROTOBUF_CONSTEXPR BrowserControllerCopyFilesIfNeededRequest::BrowserControllerCopyFilesIfNeededRequest(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
 struct BrowserControllerCopyFilesIfNeededRequestDefaultTypeInternal {
   PROTOBUF_CONSTEXPR BrowserControllerCopyFilesIfNeededRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
   ~BrowserControllerCopyFilesIfNeededRequestDefaultTypeInternal() {}
@@ -92,8 +100,8 @@ const ::uint32_t TableStruct_browsercontroller_2eproto::offsets[] PROTOBUF_SECTI
 
 static const ::_pbi::MigrationSchema
     schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-        { 0, 11, -1, sizeof(::osirixgrpc::BrowserControllerDatabaseSelectionResponse)},
-        { 14, 24, -1, sizeof(::osirixgrpc::BrowserControllerCopyFilesIfNeededRequest)},
+        {0, 11, -1, sizeof(::osirixgrpc::BrowserControllerDatabaseSelectionResponse)},
+        {14, 24, -1, sizeof(::osirixgrpc::BrowserControllerCopyFilesIfNeededRequest)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -166,191 +174,178 @@ class BrowserControllerDatabaseSelectionResponse::_Internal {
   }
 };
 
-const ::osirixgrpc::Status&
-BrowserControllerDatabaseSelectionResponse::_Internal::status(const BrowserControllerDatabaseSelectionResponse* msg) {
+const ::osirixgrpc::Status& BrowserControllerDatabaseSelectionResponse::_Internal::status(const BrowserControllerDatabaseSelectionResponse* msg) {
   return *msg->_impl_.status_;
 }
 void BrowserControllerDatabaseSelectionResponse::clear_status() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   if (_impl_.status_ != nullptr) _impl_.status_->Clear();
   _impl_._has_bits_[0] &= ~0x00000001u;
 }
 void BrowserControllerDatabaseSelectionResponse::clear_series() {
-  _internal_mutable_series()->Clear();
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.series_.Clear();
 }
 void BrowserControllerDatabaseSelectionResponse::clear_studies() {
-  _internal_mutable_studies()->Clear();
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.studies_.Clear();
 }
-BrowserControllerDatabaseSelectionResponse::BrowserControllerDatabaseSelectionResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
+BrowserControllerDatabaseSelectionResponse::BrowserControllerDatabaseSelectionResponse(::google::protobuf::Arena* arena)
+    : ::google::protobuf::Message(arena) {
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.BrowserControllerDatabaseSelectionResponse)
 }
-BrowserControllerDatabaseSelectionResponse::BrowserControllerDatabaseSelectionResponse(const BrowserControllerDatabaseSelectionResponse& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message() {
-  BrowserControllerDatabaseSelectionResponse* const _this = this; (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_}
-    , /*decltype(_impl_._cached_size_)*/{}
-    , decltype(_impl_.series_){from._impl_.series_}
-    , decltype(_impl_.studies_){from._impl_.studies_}
-    , decltype(_impl_.status_){nullptr}};
+inline PROTOBUF_NDEBUG_INLINE BrowserControllerDatabaseSelectionResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        series_{visibility, arena, from.series_},
+        studies_{visibility, arena, from.studies_} {}
 
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_impl_.status_ = new ::osirixgrpc::Status(*from._impl_.status_);
-  }
+BrowserControllerDatabaseSelectionResponse::BrowserControllerDatabaseSelectionResponse(
+    ::google::protobuf::Arena* arena,
+    const BrowserControllerDatabaseSelectionResponse& from)
+    : ::google::protobuf::Message(arena) {
+  BrowserControllerDatabaseSelectionResponse* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.status_ = (cached_has_bits & 0x00000001u)
+                ? CreateMaybeMessage<::osirixgrpc::Status>(arena, *from._impl_.status_)
+                : nullptr;
+
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.BrowserControllerDatabaseSelectionResponse)
 }
+inline PROTOBUF_NDEBUG_INLINE BrowserControllerDatabaseSelectionResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0},
+        series_{visibility, arena},
+        studies_{visibility, arena} {}
 
 inline void BrowserControllerDatabaseSelectionResponse::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){}
-    , /*decltype(_impl_._cached_size_)*/{}
-    , decltype(_impl_.series_){arena}
-    , decltype(_impl_.studies_){arena}
-    , decltype(_impl_.status_){nullptr}
-  };
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.status_ = {};
 }
-
 BrowserControllerDatabaseSelectionResponse::~BrowserControllerDatabaseSelectionResponse() {
   // @@protoc_insertion_point(destructor:osirixgrpc.BrowserControllerDatabaseSelectionResponse)
-  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
-  (void)arena;
-    return;
-  }
+  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
   SharedDtor();
 }
-
 inline void BrowserControllerDatabaseSelectionResponse::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
-  _internal_mutable_series()->~RepeatedPtrField();
-  _internal_mutable_studies()->~RepeatedPtrField();
-  if (this != internal_default_instance()) delete _impl_.status_;
+  ABSL_DCHECK(GetArena() == nullptr);
+  delete _impl_.status_;
+  _impl_.~Impl_();
 }
 
-void BrowserControllerDatabaseSelectionResponse::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
-}
-
-void BrowserControllerDatabaseSelectionResponse::Clear() {
+PROTOBUF_NOINLINE void BrowserControllerDatabaseSelectionResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.BrowserControllerDatabaseSelectionResponse)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _internal_mutable_series()->Clear();
-  _internal_mutable_studies()->Clear();
+  _impl_.series_.Clear();
+  _impl_.studies_.Clear();
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
     ABSL_DCHECK(_impl_.status_ != nullptr);
     _impl_.status_->Clear();
   }
   _impl_._has_bits_.Clear();
-  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
-const char* BrowserControllerDatabaseSelectionResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
-#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  _Internal::HasBits has_bits{};
-  while (!ctx->Done(&ptr)) {
-    ::uint32_t tag;
-    ptr = ::_pbi::ReadTag(ptr, &tag);
-    switch (tag >> 3) {
-      // .osirixgrpc.Status status = 1;
-      case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
-          ptr = ctx->ParseMessage(_internal_mutable_status(), ptr);
-          CHK_(ptr);
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      // repeated .osirixgrpc.DicomSeries series = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 18)) {
-          ptr -= 1;
-          do {
-            ptr += 1;
-            ptr = ctx->ParseMessage(_internal_add_series(), ptr);
-            CHK_(ptr);
-            if (!ctx->DataAvailable(ptr)) break;
-          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<18>(ptr));
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      // repeated .osirixgrpc.DicomStudy studies = 3;
-      case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 26)) {
-          ptr -= 1;
-          do {
-            ptr += 1;
-            ptr = ctx->ParseMessage(_internal_add_studies(), ptr);
-            CHK_(ptr);
-            if (!ctx->DataAvailable(ptr)) break;
-          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<26>(ptr));
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      default:
-        goto handle_unusual;
-    }  // switch
-  handle_unusual:
-    if ((tag == 0) || ((tag & 7) == 4)) {
-      CHK_(ptr);
-      ctx->SetLastTag(tag);
-      goto message_done;
-    }
-    ptr = UnknownFieldParse(
-        tag,
-        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-        ptr, ctx);
-    CHK_(ptr != nullptr);
-  }  // while
-message_done:
-  _impl_._has_bits_.Or(has_bits);
+const char* BrowserControllerDatabaseSelectionResponse::_InternalParse(
+    const char* ptr, ::_pbi::ParseContext* ctx) {
+  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
   return ptr;
-failure:
-  ptr = nullptr;
-  goto message_done;
-#undef CHK_
 }
+
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<2, 3, 3, 0, 2> BrowserControllerDatabaseSelectionResponse::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(BrowserControllerDatabaseSelectionResponse, _impl_._has_bits_),
+    0, // no _extensions_
+    3, 24,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967288,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    3,  // num_field_entries
+    3,  // num_aux_entries
+    offsetof(decltype(_table_), aux_entries),
+    &_BrowserControllerDatabaseSelectionResponse_default_instance_._instance,
+    ::_pbi::TcParser::GenericFallback,  // fallback
+  }, {{
+    {::_pbi::TcParser::MiniParse, {}},
+    // .osirixgrpc.Status status = 1;
+    {::_pbi::TcParser::FastMtS1,
+     {10, 0, 0, PROTOBUF_FIELD_OFFSET(BrowserControllerDatabaseSelectionResponse, _impl_.status_)}},
+    // repeated .osirixgrpc.DicomSeries series = 2;
+    {::_pbi::TcParser::FastMtR1,
+     {18, 63, 1, PROTOBUF_FIELD_OFFSET(BrowserControllerDatabaseSelectionResponse, _impl_.series_)}},
+    // repeated .osirixgrpc.DicomStudy studies = 3;
+    {::_pbi::TcParser::FastMtR1,
+     {26, 63, 2, PROTOBUF_FIELD_OFFSET(BrowserControllerDatabaseSelectionResponse, _impl_.studies_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // .osirixgrpc.Status status = 1;
+    {PROTOBUF_FIELD_OFFSET(BrowserControllerDatabaseSelectionResponse, _impl_.status_), _Internal::kHasBitsOffset + 0, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
+    // repeated .osirixgrpc.DicomSeries series = 2;
+    {PROTOBUF_FIELD_OFFSET(BrowserControllerDatabaseSelectionResponse, _impl_.series_), -1, 1,
+    (0 | ::_fl::kFcRepeated | ::_fl::kMessage | ::_fl::kTvTable)},
+    // repeated .osirixgrpc.DicomStudy studies = 3;
+    {PROTOBUF_FIELD_OFFSET(BrowserControllerDatabaseSelectionResponse, _impl_.studies_), -1, 2,
+    (0 | ::_fl::kFcRepeated | ::_fl::kMessage | ::_fl::kTvTable)},
+  }}, {{
+    {::_pbi::TcParser::GetTable<::osirixgrpc::Status>()},
+    {::_pbi::TcParser::GetTable<::osirixgrpc::DicomSeries>()},
+    {::_pbi::TcParser::GetTable<::osirixgrpc::DicomStudy>()},
+  }}, {{
+  }},
+};
 
 ::uint8_t* BrowserControllerDatabaseSelectionResponse::_InternalSerialize(
-    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+    ::uint8_t* target,
+    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.BrowserControllerDatabaseSelectionResponse)
   ::uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
+  (void)cached_has_bits;
 
   cached_has_bits = _impl_._has_bits_[0];
   // .osirixgrpc.Status status = 1;
   if (cached_has_bits & 0x00000001u) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(1, _Internal::status(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        1, _Internal::status(this),
         _Internal::status(this).GetCachedSize(), target, stream);
   }
 
   // repeated .osirixgrpc.DicomSeries series = 2;
   for (unsigned i = 0,
       n = static_cast<unsigned>(this->_internal_series_size()); i < n; i++) {
-    const auto& repfield = this->_internal_series(i);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+    const auto& repfield = this->_internal_series().Get(i);
+    target = ::google::protobuf::internal::WireFormatLite::
         InternalWriteMessage(2, repfield, repfield.GetCachedSize(), target, stream);
   }
 
   // repeated .osirixgrpc.DicomStudy studies = 3;
   for (unsigned i = 0,
       n = static_cast<unsigned>(this->_internal_studies_size()); i < n; i++) {
-    const auto& repfield = this->_internal_studies(i);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+    const auto& repfield = this->_internal_studies().Get(i);
+    target = ::google::protobuf::internal::WireFormatLite::
         InternalWriteMessage(3, repfield, repfield.GetCachedSize(), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.BrowserControllerDatabaseSelectionResponse)
   return target;
@@ -368,35 +363,33 @@ failure:
   total_size += 1UL * this->_internal_series_size();
   for (const auto& msg : this->_internal_series()) {
     total_size +=
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
+      ::google::protobuf::internal::WireFormatLite::MessageSize(msg);
   }
-
   // repeated .osirixgrpc.DicomStudy studies = 3;
   total_size += 1UL * this->_internal_studies_size();
   for (const auto& msg : this->_internal_studies()) {
     total_size +=
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
+      ::google::protobuf::internal::WireFormatLite::MessageSize(msg);
   }
-
   // .osirixgrpc.Status status = 1;
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *_impl_.status_);
+    total_size +=
+        1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.status_);
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData BrowserControllerDatabaseSelectionResponse::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
-    BrowserControllerDatabaseSelectionResponse::MergeImpl
+const ::google::protobuf::Message::ClassData BrowserControllerDatabaseSelectionResponse::_class_data_ = {
+    BrowserControllerDatabaseSelectionResponse::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*BrowserControllerDatabaseSelectionResponse::GetClassData() const { return &_class_data_; }
+const ::google::protobuf::Message::ClassData* BrowserControllerDatabaseSelectionResponse::GetClassData() const {
+  return &_class_data_;
+}
 
-
-void BrowserControllerDatabaseSelectionResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+void BrowserControllerDatabaseSelectionResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<BrowserControllerDatabaseSelectionResponse*>(&to_msg);
   auto& from = static_cast<const BrowserControllerDatabaseSelectionResponse&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.BrowserControllerDatabaseSelectionResponse)
@@ -404,13 +397,15 @@ void BrowserControllerDatabaseSelectionResponse::MergeImpl(::PROTOBUF_NAMESPACE_
   ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  _this->_internal_mutable_series()->MergeFrom(from._internal_series());
-  _this->_internal_mutable_studies()->MergeFrom(from._internal_studies());
+  _this->_internal_mutable_series()->MergeFrom(
+      from._internal_series());
+  _this->_internal_mutable_studies()->MergeFrom(
+      from._internal_studies());
   if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
     _this->_internal_mutable_status()->::osirixgrpc::Status::MergeFrom(
         from._internal_status());
   }
-  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void BrowserControllerDatabaseSelectionResponse::CopyFrom(const BrowserControllerDatabaseSelectionResponse& from) {
@@ -420,20 +415,23 @@ void BrowserControllerDatabaseSelectionResponse::CopyFrom(const BrowserControlle
   MergeFrom(from);
 }
 
-bool BrowserControllerDatabaseSelectionResponse::IsInitialized() const {
+PROTOBUF_NOINLINE bool BrowserControllerDatabaseSelectionResponse::IsInitialized() const {
   return true;
 }
 
-void BrowserControllerDatabaseSelectionResponse::InternalSwap(BrowserControllerDatabaseSelectionResponse* other) {
+::_pbi::CachedSize* BrowserControllerDatabaseSelectionResponse::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void BrowserControllerDatabaseSelectionResponse::InternalSwap(BrowserControllerDatabaseSelectionResponse* PROTOBUF_RESTRICT other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  _internal_mutable_series()->InternalSwap(other->_internal_mutable_series());
-  _internal_mutable_studies()->InternalSwap(other->_internal_mutable_studies());
+  _impl_.series_.InternalSwap(&other->_impl_.series_);
+  _impl_.studies_.InternalSwap(&other->_impl_.studies_);
   swap(_impl_.status_, other->_impl_.status_);
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata BrowserControllerDatabaseSelectionResponse::GetMetadata() const {
+::google::protobuf::Metadata BrowserControllerDatabaseSelectionResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_browsercontroller_2eproto_getter, &descriptor_table_browsercontroller_2eproto_once,
       file_level_metadata_browsercontroller_2eproto[0]);
@@ -451,161 +449,153 @@ class BrowserControllerCopyFilesIfNeededRequest::_Internal {
   }
 };
 
-const ::osirixgrpc::BrowserController&
-BrowserControllerCopyFilesIfNeededRequest::_Internal::browser(const BrowserControllerCopyFilesIfNeededRequest* msg) {
+const ::osirixgrpc::BrowserController& BrowserControllerCopyFilesIfNeededRequest::_Internal::browser(const BrowserControllerCopyFilesIfNeededRequest* msg) {
   return *msg->_impl_.browser_;
 }
 void BrowserControllerCopyFilesIfNeededRequest::clear_browser() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   if (_impl_.browser_ != nullptr) _impl_.browser_->Clear();
   _impl_._has_bits_[0] &= ~0x00000001u;
 }
-BrowserControllerCopyFilesIfNeededRequest::BrowserControllerCopyFilesIfNeededRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
+BrowserControllerCopyFilesIfNeededRequest::BrowserControllerCopyFilesIfNeededRequest(::google::protobuf::Arena* arena)
+    : ::google::protobuf::Message(arena) {
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.BrowserControllerCopyFilesIfNeededRequest)
 }
-BrowserControllerCopyFilesIfNeededRequest::BrowserControllerCopyFilesIfNeededRequest(const BrowserControllerCopyFilesIfNeededRequest& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message() {
-  BrowserControllerCopyFilesIfNeededRequest* const _this = this; (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_}
-    , /*decltype(_impl_._cached_size_)*/{}
-    , decltype(_impl_.paths_){from._impl_.paths_}
-    , decltype(_impl_.browser_){nullptr}};
+inline PROTOBUF_NDEBUG_INLINE BrowserControllerCopyFilesIfNeededRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        paths_{visibility, arena, from.paths_} {}
 
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_impl_.browser_ = new ::osirixgrpc::BrowserController(*from._impl_.browser_);
-  }
+BrowserControllerCopyFilesIfNeededRequest::BrowserControllerCopyFilesIfNeededRequest(
+    ::google::protobuf::Arena* arena,
+    const BrowserControllerCopyFilesIfNeededRequest& from)
+    : ::google::protobuf::Message(arena) {
+  BrowserControllerCopyFilesIfNeededRequest* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.browser_ = (cached_has_bits & 0x00000001u)
+                ? CreateMaybeMessage<::osirixgrpc::BrowserController>(arena, *from._impl_.browser_)
+                : nullptr;
+
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.BrowserControllerCopyFilesIfNeededRequest)
 }
+inline PROTOBUF_NDEBUG_INLINE BrowserControllerCopyFilesIfNeededRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0},
+        paths_{visibility, arena} {}
 
 inline void BrowserControllerCopyFilesIfNeededRequest::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){}
-    , /*decltype(_impl_._cached_size_)*/{}
-    , decltype(_impl_.paths_){arena}
-    , decltype(_impl_.browser_){nullptr}
-  };
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.browser_ = {};
 }
-
 BrowserControllerCopyFilesIfNeededRequest::~BrowserControllerCopyFilesIfNeededRequest() {
   // @@protoc_insertion_point(destructor:osirixgrpc.BrowserControllerCopyFilesIfNeededRequest)
-  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
-  (void)arena;
-    return;
-  }
+  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
   SharedDtor();
 }
-
 inline void BrowserControllerCopyFilesIfNeededRequest::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
-  _internal_mutable_paths()->~RepeatedPtrField();
-  if (this != internal_default_instance()) delete _impl_.browser_;
+  ABSL_DCHECK(GetArena() == nullptr);
+  delete _impl_.browser_;
+  _impl_.~Impl_();
 }
 
-void BrowserControllerCopyFilesIfNeededRequest::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
-}
-
-void BrowserControllerCopyFilesIfNeededRequest::Clear() {
+PROTOBUF_NOINLINE void BrowserControllerCopyFilesIfNeededRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.BrowserControllerCopyFilesIfNeededRequest)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _internal_mutable_paths()->Clear();
+  _impl_.paths_.Clear();
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
     ABSL_DCHECK(_impl_.browser_ != nullptr);
     _impl_.browser_->Clear();
   }
   _impl_._has_bits_.Clear();
-  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
-const char* BrowserControllerCopyFilesIfNeededRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
-#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  _Internal::HasBits has_bits{};
-  while (!ctx->Done(&ptr)) {
-    ::uint32_t tag;
-    ptr = ::_pbi::ReadTag(ptr, &tag);
-    switch (tag >> 3) {
-      // .osirixgrpc.BrowserController browser = 1;
-      case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
-          ptr = ctx->ParseMessage(_internal_mutable_browser(), ptr);
-          CHK_(ptr);
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      // repeated string paths = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 18)) {
-          ptr -= 1;
-          do {
-            ptr += 1;
-            auto str = _internal_add_paths();
-            ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
-            CHK_(ptr);
-            CHK_(::_pbi::VerifyUTF8(str, "osirixgrpc.BrowserControllerCopyFilesIfNeededRequest.paths"));
-            if (!ctx->DataAvailable(ptr)) break;
-          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<18>(ptr));
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      default:
-        goto handle_unusual;
-    }  // switch
-  handle_unusual:
-    if ((tag == 0) || ((tag & 7) == 4)) {
-      CHK_(ptr);
-      ctx->SetLastTag(tag);
-      goto message_done;
-    }
-    ptr = UnknownFieldParse(
-        tag,
-        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-        ptr, ctx);
-    CHK_(ptr != nullptr);
-  }  // while
-message_done:
-  _impl_._has_bits_.Or(has_bits);
+const char* BrowserControllerCopyFilesIfNeededRequest::_InternalParse(
+    const char* ptr, ::_pbi::ParseContext* ctx) {
+  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
   return ptr;
-failure:
-  ptr = nullptr;
-  goto message_done;
-#undef CHK_
 }
+
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<1, 2, 1, 66, 2> BrowserControllerCopyFilesIfNeededRequest::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(BrowserControllerCopyFilesIfNeededRequest, _impl_._has_bits_),
+    0, // no _extensions_
+    2, 8,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967292,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    2,  // num_field_entries
+    1,  // num_aux_entries
+    offsetof(decltype(_table_), aux_entries),
+    &_BrowserControllerCopyFilesIfNeededRequest_default_instance_._instance,
+    ::_pbi::TcParser::GenericFallback,  // fallback
+  }, {{
+    // repeated string paths = 2;
+    {::_pbi::TcParser::FastUR1,
+     {18, 63, 0, PROTOBUF_FIELD_OFFSET(BrowserControllerCopyFilesIfNeededRequest, _impl_.paths_)}},
+    // .osirixgrpc.BrowserController browser = 1;
+    {::_pbi::TcParser::FastMtS1,
+     {10, 0, 0, PROTOBUF_FIELD_OFFSET(BrowserControllerCopyFilesIfNeededRequest, _impl_.browser_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // .osirixgrpc.BrowserController browser = 1;
+    {PROTOBUF_FIELD_OFFSET(BrowserControllerCopyFilesIfNeededRequest, _impl_.browser_), _Internal::kHasBitsOffset + 0, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
+    // repeated string paths = 2;
+    {PROTOBUF_FIELD_OFFSET(BrowserControllerCopyFilesIfNeededRequest, _impl_.paths_), -1, 0,
+    (0 | ::_fl::kFcRepeated | ::_fl::kUtf8String | ::_fl::kRepSString)},
+  }}, {{
+    {::_pbi::TcParser::GetTable<::osirixgrpc::BrowserController>()},
+  }}, {{
+    "\64\0\5\0\0\0\0\0"
+    "osirixgrpc.BrowserControllerCopyFilesIfNeededRequest"
+    "paths"
+  }},
+};
 
 ::uint8_t* BrowserControllerCopyFilesIfNeededRequest::_InternalSerialize(
-    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+    ::uint8_t* target,
+    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.BrowserControllerCopyFilesIfNeededRequest)
   ::uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
+  (void)cached_has_bits;
 
   cached_has_bits = _impl_._has_bits_[0];
   // .osirixgrpc.BrowserController browser = 1;
   if (cached_has_bits & 0x00000001u) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(1, _Internal::browser(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        1, _Internal::browser(this),
         _Internal::browser(this).GetCachedSize(), target, stream);
   }
 
   // repeated string paths = 2;
   for (int i = 0, n = this->_internal_paths_size(); i < n; ++i) {
-    const auto& s = this->_internal_paths(i);
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-        s.data(), static_cast<int>(s.length()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE, "osirixgrpc.BrowserControllerCopyFilesIfNeededRequest.paths");
+    const auto& s = this->_internal_paths().Get(i);
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        s.data(), static_cast<int>(s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "osirixgrpc.BrowserControllerCopyFilesIfNeededRequest.paths");
     target = stream->WriteString(2, s, target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.BrowserControllerCopyFilesIfNeededRequest)
   return target;
@@ -620,31 +610,30 @@ failure:
   (void) cached_has_bits;
 
   // repeated string paths = 2;
-  total_size += 1 * ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(_internal_paths().size());
+  total_size += 1 * ::google::protobuf::internal::FromIntSize(_internal_paths().size());
   for (int i = 0, n = _internal_paths().size(); i < n; ++i) {
-    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+    total_size += ::google::protobuf::internal::WireFormatLite::StringSize(
         _internal_paths().Get(i));
   }
-
   // .osirixgrpc.BrowserController browser = 1;
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *_impl_.browser_);
+    total_size +=
+        1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.browser_);
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData BrowserControllerCopyFilesIfNeededRequest::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
-    BrowserControllerCopyFilesIfNeededRequest::MergeImpl
+const ::google::protobuf::Message::ClassData BrowserControllerCopyFilesIfNeededRequest::_class_data_ = {
+    BrowserControllerCopyFilesIfNeededRequest::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*BrowserControllerCopyFilesIfNeededRequest::GetClassData() const { return &_class_data_; }
+const ::google::protobuf::Message::ClassData* BrowserControllerCopyFilesIfNeededRequest::GetClassData() const {
+  return &_class_data_;
+}
 
-
-void BrowserControllerCopyFilesIfNeededRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+void BrowserControllerCopyFilesIfNeededRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<BrowserControllerCopyFilesIfNeededRequest*>(&to_msg);
   auto& from = static_cast<const BrowserControllerCopyFilesIfNeededRequest&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.BrowserControllerCopyFilesIfNeededRequest)
@@ -657,7 +646,7 @@ void BrowserControllerCopyFilesIfNeededRequest::MergeImpl(::PROTOBUF_NAMESPACE_I
     _this->_internal_mutable_browser()->::osirixgrpc::BrowserController::MergeFrom(
         from._internal_browser());
   }
-  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void BrowserControllerCopyFilesIfNeededRequest::CopyFrom(const BrowserControllerCopyFilesIfNeededRequest& from) {
@@ -667,35 +656,31 @@ void BrowserControllerCopyFilesIfNeededRequest::CopyFrom(const BrowserController
   MergeFrom(from);
 }
 
-bool BrowserControllerCopyFilesIfNeededRequest::IsInitialized() const {
+PROTOBUF_NOINLINE bool BrowserControllerCopyFilesIfNeededRequest::IsInitialized() const {
   return true;
 }
 
-void BrowserControllerCopyFilesIfNeededRequest::InternalSwap(BrowserControllerCopyFilesIfNeededRequest* other) {
+::_pbi::CachedSize* BrowserControllerCopyFilesIfNeededRequest::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void BrowserControllerCopyFilesIfNeededRequest::InternalSwap(BrowserControllerCopyFilesIfNeededRequest* PROTOBUF_RESTRICT other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  _internal_mutable_paths()->InternalSwap(
-      other->_internal_mutable_paths());
+  _impl_.paths_.InternalSwap(&other->_impl_.paths_);
   swap(_impl_.browser_, other->_impl_.browser_);
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata BrowserControllerCopyFilesIfNeededRequest::GetMetadata() const {
+::google::protobuf::Metadata BrowserControllerCopyFilesIfNeededRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_browsercontroller_2eproto_getter, &descriptor_table_browsercontroller_2eproto_once,
       file_level_metadata_browsercontroller_2eproto[1]);
 }
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace osirixgrpc
-PROTOBUF_NAMESPACE_OPEN
-template<> PROTOBUF_NOINLINE ::osirixgrpc::BrowserControllerDatabaseSelectionResponse*
-Arena::CreateMaybeMessage< ::osirixgrpc::BrowserControllerDatabaseSelectionResponse >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::osirixgrpc::BrowserControllerDatabaseSelectionResponse >(arena);
-}
-template<> PROTOBUF_NOINLINE ::osirixgrpc::BrowserControllerCopyFilesIfNeededRequest*
-Arena::CreateMaybeMessage< ::osirixgrpc::BrowserControllerCopyFilesIfNeededRequest >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::osirixgrpc::BrowserControllerCopyFilesIfNeededRequest >(arena);
-}
-PROTOBUF_NAMESPACE_CLOSE
+namespace google {
+namespace protobuf {
+}  // namespace protobuf
+}  // namespace google
 // @@protoc_insertion_point(global_scope)
 #include "google/protobuf/port_undef.inc"

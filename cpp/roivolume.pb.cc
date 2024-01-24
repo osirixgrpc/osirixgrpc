@@ -11,40 +11,26 @@
 #include "google/protobuf/generated_message_reflection.h"
 #include "google/protobuf/reflection_ops.h"
 #include "google/protobuf/wire_format.h"
+#include "google/protobuf/generated_message_tctable_impl.h"
 // @@protoc_insertion_point(includes)
 
 // Must be included last.
 #include "google/protobuf/port_def.inc"
 PROTOBUF_PRAGMA_INIT_SEG
-namespace _pb = ::PROTOBUF_NAMESPACE_ID;
-namespace _pbi = ::PROTOBUF_NAMESPACE_ID::internal;
+namespace _pb = ::google::protobuf;
+namespace _pbi = ::google::protobuf::internal;
+namespace _fl = ::google::protobuf::internal::field_layout;
 namespace osirixgrpc {
-template <typename>
-PROTOBUF_CONSTEXPR ROIVolumeTextureResponse::ROIVolumeTextureResponse(
-    ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_._has_bits_)*/{}
-  , /*decltype(_impl_._cached_size_)*/{}
-  , /*decltype(_impl_.status_)*/nullptr
-  , /*decltype(_impl_.texture_)*/ false
-} {}
-struct ROIVolumeTextureResponseDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR ROIVolumeTextureResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~ROIVolumeTextureResponseDefaultTypeInternal() {}
-  union {
-    ROIVolumeTextureResponse _instance;
-  };
-};
 
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ROIVolumeTextureResponseDefaultTypeInternal _ROIVolumeTextureResponse_default_instance_;
+inline constexpr ROIVolumeVolumeResponse::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        status_{nullptr},
+        volume_{0} {}
+
 template <typename>
-PROTOBUF_CONSTEXPR ROIVolumeVolumeResponse::ROIVolumeVolumeResponse(
-    ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_._has_bits_)*/{}
-  , /*decltype(_impl_._cached_size_)*/{}
-  , /*decltype(_impl_.status_)*/nullptr
-  , /*decltype(_impl_.volume_)*/ 0
-} {}
+PROTOBUF_CONSTEXPR ROIVolumeVolumeResponse::ROIVolumeVolumeResponse(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
 struct ROIVolumeVolumeResponseDefaultTypeInternal {
   PROTOBUF_CONSTEXPR ROIVolumeVolumeResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
   ~ROIVolumeVolumeResponseDefaultTypeInternal() {}
@@ -55,72 +41,16 @@ struct ROIVolumeVolumeResponseDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ROIVolumeVolumeResponseDefaultTypeInternal _ROIVolumeVolumeResponse_default_instance_;
+
+inline constexpr ROIVolumeVisibleResponse::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        status_{nullptr},
+        visible_{false} {}
+
 template <typename>
-PROTOBUF_CONSTEXPR ROIVolumeColorResponse::ROIVolumeColorResponse(
-    ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_._has_bits_)*/{}
-  , /*decltype(_impl_._cached_size_)*/{}
-  , /*decltype(_impl_.status_)*/nullptr
-  , /*decltype(_impl_.r_)*/ 0
-
-  , /*decltype(_impl_.g_)*/ 0
-
-  , /*decltype(_impl_.b_)*/ 0
-} {}
-struct ROIVolumeColorResponseDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR ROIVolumeColorResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~ROIVolumeColorResponseDefaultTypeInternal() {}
-  union {
-    ROIVolumeColorResponse _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ROIVolumeColorResponseDefaultTypeInternal _ROIVolumeColorResponse_default_instance_;
-template <typename>
-PROTOBUF_CONSTEXPR ROIVolumeOpacityResponse::ROIVolumeOpacityResponse(
-    ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_._has_bits_)*/{}
-  , /*decltype(_impl_._cached_size_)*/{}
-  , /*decltype(_impl_.status_)*/nullptr
-  , /*decltype(_impl_.opacity_)*/ 0
-} {}
-struct ROIVolumeOpacityResponseDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR ROIVolumeOpacityResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~ROIVolumeOpacityResponseDefaultTypeInternal() {}
-  union {
-    ROIVolumeOpacityResponse _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ROIVolumeOpacityResponseDefaultTypeInternal _ROIVolumeOpacityResponse_default_instance_;
-template <typename>
-PROTOBUF_CONSTEXPR ROIVolumeFactorResponse::ROIVolumeFactorResponse(
-    ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_._has_bits_)*/{}
-  , /*decltype(_impl_._cached_size_)*/{}
-  , /*decltype(_impl_.status_)*/nullptr
-  , /*decltype(_impl_.factor_)*/ 0
-} {}
-struct ROIVolumeFactorResponseDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR ROIVolumeFactorResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~ROIVolumeFactorResponseDefaultTypeInternal() {}
-  union {
-    ROIVolumeFactorResponse _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ROIVolumeFactorResponseDefaultTypeInternal _ROIVolumeFactorResponse_default_instance_;
-template <typename>
-PROTOBUF_CONSTEXPR ROIVolumeVisibleResponse::ROIVolumeVisibleResponse(
-    ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_._has_bits_)*/{}
-  , /*decltype(_impl_._cached_size_)*/{}
-  , /*decltype(_impl_.status_)*/nullptr
-  , /*decltype(_impl_.visible_)*/ false
-} {}
+PROTOBUF_CONSTEXPR ROIVolumeVisibleResponse::ROIVolumeVisibleResponse(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
 struct ROIVolumeVisibleResponseDefaultTypeInternal {
   PROTOBUF_CONSTEXPR ROIVolumeVisibleResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
   ~ROIVolumeVisibleResponseDefaultTypeInternal() {}
@@ -131,34 +61,36 @@ struct ROIVolumeVisibleResponseDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ROIVolumeVisibleResponseDefaultTypeInternal _ROIVolumeVisibleResponse_default_instance_;
-template <typename>
-PROTOBUF_CONSTEXPR ROIVolumeNameResponse::ROIVolumeNameResponse(
-    ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_._has_bits_)*/{}
-  , /*decltype(_impl_._cached_size_)*/{}
-  , /*decltype(_impl_.name_)*/ {
-    &::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized {}
-  }
 
-  , /*decltype(_impl_.status_)*/nullptr} {}
-struct ROIVolumeNameResponseDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR ROIVolumeNameResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~ROIVolumeNameResponseDefaultTypeInternal() {}
+inline constexpr ROIVolumeTextureResponse::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        status_{nullptr},
+        texture_{false} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR ROIVolumeTextureResponse::ROIVolumeTextureResponse(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct ROIVolumeTextureResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ROIVolumeTextureResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ROIVolumeTextureResponseDefaultTypeInternal() {}
   union {
-    ROIVolumeNameResponse _instance;
+    ROIVolumeTextureResponse _instance;
   };
 };
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ROIVolumeNameResponseDefaultTypeInternal _ROIVolumeNameResponse_default_instance_;
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ROIVolumeTextureResponseDefaultTypeInternal _ROIVolumeTextureResponse_default_instance_;
+
+inline constexpr ROIVolumeSetTextureRequest::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        roi_{nullptr},
+        texture_{false} {}
+
 template <typename>
-PROTOBUF_CONSTEXPR ROIVolumeSetTextureRequest::ROIVolumeSetTextureRequest(
-    ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_._has_bits_)*/{}
-  , /*decltype(_impl_._cached_size_)*/{}
-  , /*decltype(_impl_.roi_)*/nullptr
-  , /*decltype(_impl_.texture_)*/ false
-} {}
+PROTOBUF_CONSTEXPR ROIVolumeSetTextureRequest::ROIVolumeSetTextureRequest(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
 struct ROIVolumeSetTextureRequestDefaultTypeInternal {
   PROTOBUF_CONSTEXPR ROIVolumeSetTextureRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
   ~ROIVolumeSetTextureRequestDefaultTypeInternal() {}
@@ -169,36 +101,16 @@ struct ROIVolumeSetTextureRequestDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ROIVolumeSetTextureRequestDefaultTypeInternal _ROIVolumeSetTextureRequest_default_instance_;
+
+inline constexpr ROIVolumeSetOpacityRequest::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        roi_{nullptr},
+        opacity_{0} {}
+
 template <typename>
-PROTOBUF_CONSTEXPR ROIVolumeSetColorRequest::ROIVolumeSetColorRequest(
-    ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_._has_bits_)*/{}
-  , /*decltype(_impl_._cached_size_)*/{}
-  , /*decltype(_impl_.roi_)*/nullptr
-  , /*decltype(_impl_.r_)*/ 0
-
-  , /*decltype(_impl_.g_)*/ 0
-
-  , /*decltype(_impl_.b_)*/ 0
-} {}
-struct ROIVolumeSetColorRequestDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR ROIVolumeSetColorRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~ROIVolumeSetColorRequestDefaultTypeInternal() {}
-  union {
-    ROIVolumeSetColorRequest _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ROIVolumeSetColorRequestDefaultTypeInternal _ROIVolumeSetColorRequest_default_instance_;
-template <typename>
-PROTOBUF_CONSTEXPR ROIVolumeSetOpacityRequest::ROIVolumeSetOpacityRequest(
-    ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_._has_bits_)*/{}
-  , /*decltype(_impl_._cached_size_)*/{}
-  , /*decltype(_impl_.roi_)*/nullptr
-  , /*decltype(_impl_.opacity_)*/ 0
-} {}
+PROTOBUF_CONSTEXPR ROIVolumeSetOpacityRequest::ROIVolumeSetOpacityRequest(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
 struct ROIVolumeSetOpacityRequestDefaultTypeInternal {
   PROTOBUF_CONSTEXPR ROIVolumeSetOpacityRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
   ~ROIVolumeSetOpacityRequestDefaultTypeInternal() {}
@@ -209,14 +121,16 @@ struct ROIVolumeSetOpacityRequestDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ROIVolumeSetOpacityRequestDefaultTypeInternal _ROIVolumeSetOpacityRequest_default_instance_;
+
+inline constexpr ROIVolumeSetFactorRequest::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        roi_{nullptr},
+        factor_{0} {}
+
 template <typename>
-PROTOBUF_CONSTEXPR ROIVolumeSetFactorRequest::ROIVolumeSetFactorRequest(
-    ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_._has_bits_)*/{}
-  , /*decltype(_impl_._cached_size_)*/{}
-  , /*decltype(_impl_.roi_)*/nullptr
-  , /*decltype(_impl_.factor_)*/ 0
-} {}
+PROTOBUF_CONSTEXPR ROIVolumeSetFactorRequest::ROIVolumeSetFactorRequest(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
 struct ROIVolumeSetFactorRequestDefaultTypeInternal {
   PROTOBUF_CONSTEXPR ROIVolumeSetFactorRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
   ~ROIVolumeSetFactorRequestDefaultTypeInternal() {}
@@ -227,6 +141,112 @@ struct ROIVolumeSetFactorRequestDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ROIVolumeSetFactorRequestDefaultTypeInternal _ROIVolumeSetFactorRequest_default_instance_;
+
+inline constexpr ROIVolumeSetColorRequest::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        roi_{nullptr},
+        r_{0},
+        g_{0},
+        b_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR ROIVolumeSetColorRequest::ROIVolumeSetColorRequest(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct ROIVolumeSetColorRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ROIVolumeSetColorRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ROIVolumeSetColorRequestDefaultTypeInternal() {}
+  union {
+    ROIVolumeSetColorRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ROIVolumeSetColorRequestDefaultTypeInternal _ROIVolumeSetColorRequest_default_instance_;
+
+inline constexpr ROIVolumeOpacityResponse::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        status_{nullptr},
+        opacity_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR ROIVolumeOpacityResponse::ROIVolumeOpacityResponse(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct ROIVolumeOpacityResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ROIVolumeOpacityResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ROIVolumeOpacityResponseDefaultTypeInternal() {}
+  union {
+    ROIVolumeOpacityResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ROIVolumeOpacityResponseDefaultTypeInternal _ROIVolumeOpacityResponse_default_instance_;
+
+inline constexpr ROIVolumeNameResponse::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        name_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        status_{nullptr} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR ROIVolumeNameResponse::ROIVolumeNameResponse(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct ROIVolumeNameResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ROIVolumeNameResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ROIVolumeNameResponseDefaultTypeInternal() {}
+  union {
+    ROIVolumeNameResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ROIVolumeNameResponseDefaultTypeInternal _ROIVolumeNameResponse_default_instance_;
+
+inline constexpr ROIVolumeFactorResponse::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        status_{nullptr},
+        factor_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR ROIVolumeFactorResponse::ROIVolumeFactorResponse(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct ROIVolumeFactorResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ROIVolumeFactorResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ROIVolumeFactorResponseDefaultTypeInternal() {}
+  union {
+    ROIVolumeFactorResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ROIVolumeFactorResponseDefaultTypeInternal _ROIVolumeFactorResponse_default_instance_;
+
+inline constexpr ROIVolumeColorResponse::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        status_{nullptr},
+        r_{0},
+        g_{0},
+        b_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR ROIVolumeColorResponse::ROIVolumeColorResponse(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct ROIVolumeColorResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ROIVolumeColorResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ROIVolumeColorResponseDefaultTypeInternal() {}
+  union {
+    ROIVolumeColorResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ROIVolumeColorResponseDefaultTypeInternal _ROIVolumeColorResponse_default_instance_;
 }  // namespace osirixgrpc
 static ::_pb::Metadata file_level_metadata_roivolume_2eproto[11];
 static constexpr const ::_pb::EnumDescriptor**
@@ -379,17 +399,17 @@ const ::uint32_t TableStruct_roivolume_2eproto::offsets[] PROTOBUF_SECTION_VARIA
 
 static const ::_pbi::MigrationSchema
     schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-        { 0, 10, -1, sizeof(::osirixgrpc::ROIVolumeTextureResponse)},
-        { 12, 22, -1, sizeof(::osirixgrpc::ROIVolumeVolumeResponse)},
-        { 24, 36, -1, sizeof(::osirixgrpc::ROIVolumeColorResponse)},
-        { 40, 50, -1, sizeof(::osirixgrpc::ROIVolumeOpacityResponse)},
-        { 52, 62, -1, sizeof(::osirixgrpc::ROIVolumeFactorResponse)},
-        { 64, 74, -1, sizeof(::osirixgrpc::ROIVolumeVisibleResponse)},
-        { 76, 86, -1, sizeof(::osirixgrpc::ROIVolumeNameResponse)},
-        { 88, 98, -1, sizeof(::osirixgrpc::ROIVolumeSetTextureRequest)},
-        { 100, 112, -1, sizeof(::osirixgrpc::ROIVolumeSetColorRequest)},
-        { 116, 126, -1, sizeof(::osirixgrpc::ROIVolumeSetOpacityRequest)},
-        { 128, 138, -1, sizeof(::osirixgrpc::ROIVolumeSetFactorRequest)},
+        {0, 10, -1, sizeof(::osirixgrpc::ROIVolumeTextureResponse)},
+        {12, 22, -1, sizeof(::osirixgrpc::ROIVolumeVolumeResponse)},
+        {24, 36, -1, sizeof(::osirixgrpc::ROIVolumeColorResponse)},
+        {40, 50, -1, sizeof(::osirixgrpc::ROIVolumeOpacityResponse)},
+        {52, 62, -1, sizeof(::osirixgrpc::ROIVolumeFactorResponse)},
+        {64, 74, -1, sizeof(::osirixgrpc::ROIVolumeVisibleResponse)},
+        {76, 86, -1, sizeof(::osirixgrpc::ROIVolumeNameResponse)},
+        {88, 98, -1, sizeof(::osirixgrpc::ROIVolumeSetTextureRequest)},
+        {100, 112, -1, sizeof(::osirixgrpc::ROIVolumeSetColorRequest)},
+        {116, 126, -1, sizeof(::osirixgrpc::ROIVolumeSetOpacityRequest)},
+        {128, 138, -1, sizeof(::osirixgrpc::ROIVolumeSetFactorRequest)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -487,68 +507,70 @@ class ROIVolumeTextureResponse::_Internal {
   }
 };
 
-const ::osirixgrpc::Status&
-ROIVolumeTextureResponse::_Internal::status(const ROIVolumeTextureResponse* msg) {
+const ::osirixgrpc::Status& ROIVolumeTextureResponse::_Internal::status(const ROIVolumeTextureResponse* msg) {
   return *msg->_impl_.status_;
 }
 void ROIVolumeTextureResponse::clear_status() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   if (_impl_.status_ != nullptr) _impl_.status_->Clear();
   _impl_._has_bits_[0] &= ~0x00000001u;
 }
-ROIVolumeTextureResponse::ROIVolumeTextureResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
+ROIVolumeTextureResponse::ROIVolumeTextureResponse(::google::protobuf::Arena* arena)
+    : ::google::protobuf::Message(arena) {
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.ROIVolumeTextureResponse)
 }
-ROIVolumeTextureResponse::ROIVolumeTextureResponse(const ROIVolumeTextureResponse& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message() {
-  ROIVolumeTextureResponse* const _this = this; (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_}
-    , /*decltype(_impl_._cached_size_)*/{}
-    , decltype(_impl_.status_){nullptr}
-    , decltype(_impl_.texture_) {}
-  };
+inline PROTOBUF_NDEBUG_INLINE ROIVolumeTextureResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0} {}
 
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_impl_.status_ = new ::osirixgrpc::Status(*from._impl_.status_);
-  }
-  _this->_impl_.texture_ = from._impl_.texture_;
+ROIVolumeTextureResponse::ROIVolumeTextureResponse(
+    ::google::protobuf::Arena* arena,
+    const ROIVolumeTextureResponse& from)
+    : ::google::protobuf::Message(arena) {
+  ROIVolumeTextureResponse* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.status_ = (cached_has_bits & 0x00000001u)
+                ? CreateMaybeMessage<::osirixgrpc::Status>(arena, *from._impl_.status_)
+                : nullptr;
+  _impl_.texture_ = from._impl_.texture_;
+
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.ROIVolumeTextureResponse)
 }
+inline PROTOBUF_NDEBUG_INLINE ROIVolumeTextureResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0} {}
 
 inline void ROIVolumeTextureResponse::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){}
-    , /*decltype(_impl_._cached_size_)*/{}
-    , decltype(_impl_.status_){nullptr}
-    , decltype(_impl_.texture_) { false }
-
-  };
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, status_),
+           0,
+           offsetof(Impl_, texture_) -
+               offsetof(Impl_, status_) +
+               sizeof(Impl_::texture_));
 }
-
 ROIVolumeTextureResponse::~ROIVolumeTextureResponse() {
   // @@protoc_insertion_point(destructor:osirixgrpc.ROIVolumeTextureResponse)
-  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
-  (void)arena;
-    return;
-  }
+  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
   SharedDtor();
 }
-
 inline void ROIVolumeTextureResponse::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
-  if (this != internal_default_instance()) delete _impl_.status_;
+  ABSL_DCHECK(GetArena() == nullptr);
+  delete _impl_.status_;
+  _impl_.~Impl_();
 }
 
-void ROIVolumeTextureResponse::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
-}
-
-void ROIVolumeTextureResponse::Clear() {
+PROTOBUF_NOINLINE void ROIVolumeTextureResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.ROIVolumeTextureResponse)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -560,69 +582,64 @@ void ROIVolumeTextureResponse::Clear() {
   }
   _impl_.texture_ = false;
   _impl_._has_bits_.Clear();
-  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
-const char* ROIVolumeTextureResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
-#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  _Internal::HasBits has_bits{};
-  while (!ctx->Done(&ptr)) {
-    ::uint32_t tag;
-    ptr = ::_pbi::ReadTag(ptr, &tag);
-    switch (tag >> 3) {
-      // .osirixgrpc.Status status = 1;
-      case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
-          ptr = ctx->ParseMessage(_internal_mutable_status(), ptr);
-          CHK_(ptr);
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      // bool texture = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 16)) {
-          _impl_.texture_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
-          CHK_(ptr);
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      default:
-        goto handle_unusual;
-    }  // switch
-  handle_unusual:
-    if ((tag == 0) || ((tag & 7) == 4)) {
-      CHK_(ptr);
-      ctx->SetLastTag(tag);
-      goto message_done;
-    }
-    ptr = UnknownFieldParse(
-        tag,
-        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-        ptr, ctx);
-    CHK_(ptr != nullptr);
-  }  // while
-message_done:
-  _impl_._has_bits_.Or(has_bits);
+const char* ROIVolumeTextureResponse::_InternalParse(
+    const char* ptr, ::_pbi::ParseContext* ctx) {
+  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
   return ptr;
-failure:
-  ptr = nullptr;
-  goto message_done;
-#undef CHK_
 }
+
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<1, 2, 1, 0, 2> ROIVolumeTextureResponse::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(ROIVolumeTextureResponse, _impl_._has_bits_),
+    0, // no _extensions_
+    2, 8,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967292,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    2,  // num_field_entries
+    1,  // num_aux_entries
+    offsetof(decltype(_table_), aux_entries),
+    &_ROIVolumeTextureResponse_default_instance_._instance,
+    ::_pbi::TcParser::GenericFallback,  // fallback
+  }, {{
+    // bool texture = 2;
+    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(ROIVolumeTextureResponse, _impl_.texture_), 63>(),
+     {16, 63, 0, PROTOBUF_FIELD_OFFSET(ROIVolumeTextureResponse, _impl_.texture_)}},
+    // .osirixgrpc.Status status = 1;
+    {::_pbi::TcParser::FastMtS1,
+     {10, 0, 0, PROTOBUF_FIELD_OFFSET(ROIVolumeTextureResponse, _impl_.status_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // .osirixgrpc.Status status = 1;
+    {PROTOBUF_FIELD_OFFSET(ROIVolumeTextureResponse, _impl_.status_), _Internal::kHasBitsOffset + 0, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
+    // bool texture = 2;
+    {PROTOBUF_FIELD_OFFSET(ROIVolumeTextureResponse, _impl_.texture_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kBool)},
+  }}, {{
+    {::_pbi::TcParser::GetTable<::osirixgrpc::Status>()},
+  }}, {{
+  }},
+};
 
 ::uint8_t* ROIVolumeTextureResponse::_InternalSerialize(
-    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+    ::uint8_t* target,
+    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.ROIVolumeTextureResponse)
   ::uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
+  (void)cached_has_bits;
 
   cached_has_bits = _impl_._has_bits_[0];
   // .osirixgrpc.Status status = 1;
   if (cached_has_bits & 0x00000001u) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(1, _Internal::status(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        1, _Internal::status(this),
         _Internal::status(this).GetCachedSize(), target, stream);
   }
 
@@ -634,8 +651,9 @@ failure:
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.ROIVolumeTextureResponse)
   return target;
@@ -652,9 +670,8 @@ failure:
   // .osirixgrpc.Status status = 1;
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *_impl_.status_);
+    total_size +=
+        1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.status_);
   }
 
   // bool texture = 2;
@@ -665,14 +682,15 @@ failure:
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ROIVolumeTextureResponse::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
-    ROIVolumeTextureResponse::MergeImpl
+const ::google::protobuf::Message::ClassData ROIVolumeTextureResponse::_class_data_ = {
+    ROIVolumeTextureResponse::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ROIVolumeTextureResponse::GetClassData() const { return &_class_data_; }
+const ::google::protobuf::Message::ClassData* ROIVolumeTextureResponse::GetClassData() const {
+  return &_class_data_;
+}
 
-
-void ROIVolumeTextureResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+void ROIVolumeTextureResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<ROIVolumeTextureResponse*>(&to_msg);
   auto& from = static_cast<const ROIVolumeTextureResponse&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ROIVolumeTextureResponse)
@@ -687,7 +705,7 @@ void ROIVolumeTextureResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_ms
   if (from._internal_texture() != 0) {
     _this->_internal_set_texture(from._internal_texture());
   }
-  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void ROIVolumeTextureResponse::CopyFrom(const ROIVolumeTextureResponse& from) {
@@ -697,15 +715,18 @@ void ROIVolumeTextureResponse::CopyFrom(const ROIVolumeTextureResponse& from) {
   MergeFrom(from);
 }
 
-bool ROIVolumeTextureResponse::IsInitialized() const {
+PROTOBUF_NOINLINE bool ROIVolumeTextureResponse::IsInitialized() const {
   return true;
 }
 
-void ROIVolumeTextureResponse::InternalSwap(ROIVolumeTextureResponse* other) {
+::_pbi::CachedSize* ROIVolumeTextureResponse::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void ROIVolumeTextureResponse::InternalSwap(ROIVolumeTextureResponse* PROTOBUF_RESTRICT other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+  ::google::protobuf::internal::memswap<
       PROTOBUF_FIELD_OFFSET(ROIVolumeTextureResponse, _impl_.texture_)
       + sizeof(ROIVolumeTextureResponse::_impl_.texture_)
       - PROTOBUF_FIELD_OFFSET(ROIVolumeTextureResponse, _impl_.status_)>(
@@ -713,7 +734,7 @@ void ROIVolumeTextureResponse::InternalSwap(ROIVolumeTextureResponse* other) {
           reinterpret_cast<char*>(&other->_impl_.status_));
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata ROIVolumeTextureResponse::GetMetadata() const {
+::google::protobuf::Metadata ROIVolumeTextureResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_roivolume_2eproto_getter, &descriptor_table_roivolume_2eproto_once,
       file_level_metadata_roivolume_2eproto[0]);
@@ -731,68 +752,70 @@ class ROIVolumeVolumeResponse::_Internal {
   }
 };
 
-const ::osirixgrpc::Status&
-ROIVolumeVolumeResponse::_Internal::status(const ROIVolumeVolumeResponse* msg) {
+const ::osirixgrpc::Status& ROIVolumeVolumeResponse::_Internal::status(const ROIVolumeVolumeResponse* msg) {
   return *msg->_impl_.status_;
 }
 void ROIVolumeVolumeResponse::clear_status() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   if (_impl_.status_ != nullptr) _impl_.status_->Clear();
   _impl_._has_bits_[0] &= ~0x00000001u;
 }
-ROIVolumeVolumeResponse::ROIVolumeVolumeResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
+ROIVolumeVolumeResponse::ROIVolumeVolumeResponse(::google::protobuf::Arena* arena)
+    : ::google::protobuf::Message(arena) {
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.ROIVolumeVolumeResponse)
 }
-ROIVolumeVolumeResponse::ROIVolumeVolumeResponse(const ROIVolumeVolumeResponse& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message() {
-  ROIVolumeVolumeResponse* const _this = this; (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_}
-    , /*decltype(_impl_._cached_size_)*/{}
-    , decltype(_impl_.status_){nullptr}
-    , decltype(_impl_.volume_) {}
-  };
+inline PROTOBUF_NDEBUG_INLINE ROIVolumeVolumeResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0} {}
 
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_impl_.status_ = new ::osirixgrpc::Status(*from._impl_.status_);
-  }
-  _this->_impl_.volume_ = from._impl_.volume_;
+ROIVolumeVolumeResponse::ROIVolumeVolumeResponse(
+    ::google::protobuf::Arena* arena,
+    const ROIVolumeVolumeResponse& from)
+    : ::google::protobuf::Message(arena) {
+  ROIVolumeVolumeResponse* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.status_ = (cached_has_bits & 0x00000001u)
+                ? CreateMaybeMessage<::osirixgrpc::Status>(arena, *from._impl_.status_)
+                : nullptr;
+  _impl_.volume_ = from._impl_.volume_;
+
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.ROIVolumeVolumeResponse)
 }
+inline PROTOBUF_NDEBUG_INLINE ROIVolumeVolumeResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0} {}
 
 inline void ROIVolumeVolumeResponse::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){}
-    , /*decltype(_impl_._cached_size_)*/{}
-    , decltype(_impl_.status_){nullptr}
-    , decltype(_impl_.volume_) { 0 }
-
-  };
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, status_),
+           0,
+           offsetof(Impl_, volume_) -
+               offsetof(Impl_, status_) +
+               sizeof(Impl_::volume_));
 }
-
 ROIVolumeVolumeResponse::~ROIVolumeVolumeResponse() {
   // @@protoc_insertion_point(destructor:osirixgrpc.ROIVolumeVolumeResponse)
-  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
-  (void)arena;
-    return;
-  }
+  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
   SharedDtor();
 }
-
 inline void ROIVolumeVolumeResponse::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
-  if (this != internal_default_instance()) delete _impl_.status_;
+  ABSL_DCHECK(GetArena() == nullptr);
+  delete _impl_.status_;
+  _impl_.~Impl_();
 }
 
-void ROIVolumeVolumeResponse::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
-}
-
-void ROIVolumeVolumeResponse::Clear() {
+PROTOBUF_NOINLINE void ROIVolumeVolumeResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.ROIVolumeVolumeResponse)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -804,74 +827,70 @@ void ROIVolumeVolumeResponse::Clear() {
   }
   _impl_.volume_ = 0;
   _impl_._has_bits_.Clear();
-  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
-const char* ROIVolumeVolumeResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
-#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  _Internal::HasBits has_bits{};
-  while (!ctx->Done(&ptr)) {
-    ::uint32_t tag;
-    ptr = ::_pbi::ReadTag(ptr, &tag);
-    switch (tag >> 3) {
-      // .osirixgrpc.Status status = 1;
-      case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
-          ptr = ctx->ParseMessage(_internal_mutable_status(), ptr);
-          CHK_(ptr);
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      // float volume = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 21)) {
-          _impl_.volume_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
-          ptr += sizeof(float);
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      default:
-        goto handle_unusual;
-    }  // switch
-  handle_unusual:
-    if ((tag == 0) || ((tag & 7) == 4)) {
-      CHK_(ptr);
-      ctx->SetLastTag(tag);
-      goto message_done;
-    }
-    ptr = UnknownFieldParse(
-        tag,
-        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-        ptr, ctx);
-    CHK_(ptr != nullptr);
-  }  // while
-message_done:
-  _impl_._has_bits_.Or(has_bits);
+const char* ROIVolumeVolumeResponse::_InternalParse(
+    const char* ptr, ::_pbi::ParseContext* ctx) {
+  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
   return ptr;
-failure:
-  ptr = nullptr;
-  goto message_done;
-#undef CHK_
 }
+
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<1, 2, 1, 0, 2> ROIVolumeVolumeResponse::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(ROIVolumeVolumeResponse, _impl_._has_bits_),
+    0, // no _extensions_
+    2, 8,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967292,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    2,  // num_field_entries
+    1,  // num_aux_entries
+    offsetof(decltype(_table_), aux_entries),
+    &_ROIVolumeVolumeResponse_default_instance_._instance,
+    ::_pbi::TcParser::GenericFallback,  // fallback
+  }, {{
+    // float volume = 2;
+    {::_pbi::TcParser::FastF32S1,
+     {21, 63, 0, PROTOBUF_FIELD_OFFSET(ROIVolumeVolumeResponse, _impl_.volume_)}},
+    // .osirixgrpc.Status status = 1;
+    {::_pbi::TcParser::FastMtS1,
+     {10, 0, 0, PROTOBUF_FIELD_OFFSET(ROIVolumeVolumeResponse, _impl_.status_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // .osirixgrpc.Status status = 1;
+    {PROTOBUF_FIELD_OFFSET(ROIVolumeVolumeResponse, _impl_.status_), _Internal::kHasBitsOffset + 0, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
+    // float volume = 2;
+    {PROTOBUF_FIELD_OFFSET(ROIVolumeVolumeResponse, _impl_.volume_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kFloat)},
+  }}, {{
+    {::_pbi::TcParser::GetTable<::osirixgrpc::Status>()},
+  }}, {{
+  }},
+};
 
 ::uint8_t* ROIVolumeVolumeResponse::_InternalSerialize(
-    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+    ::uint8_t* target,
+    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.ROIVolumeVolumeResponse)
   ::uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
+  (void)cached_has_bits;
 
   cached_has_bits = _impl_._has_bits_[0];
   // .osirixgrpc.Status status = 1;
   if (cached_has_bits & 0x00000001u) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(1, _Internal::status(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        1, _Internal::status(this),
         _Internal::status(this).GetCachedSize(), target, stream);
   }
 
   // float volume = 2;
-  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  static_assert(sizeof(::uint32_t) == sizeof(float),
+                "Code assumes ::uint32_t and float are the same size.");
   float tmp_volume = this->_internal_volume();
   ::uint32_t raw_volume;
   memcpy(&raw_volume, &tmp_volume, sizeof(tmp_volume));
@@ -882,8 +901,9 @@ failure:
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.ROIVolumeVolumeResponse)
   return target;
@@ -900,13 +920,13 @@ failure:
   // .osirixgrpc.Status status = 1;
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *_impl_.status_);
+    total_size +=
+        1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.status_);
   }
 
   // float volume = 2;
-  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  static_assert(sizeof(::uint32_t) == sizeof(float),
+                "Code assumes ::uint32_t and float are the same size.");
   float tmp_volume = this->_internal_volume();
   ::uint32_t raw_volume;
   memcpy(&raw_volume, &tmp_volume, sizeof(tmp_volume));
@@ -917,14 +937,15 @@ failure:
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ROIVolumeVolumeResponse::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
-    ROIVolumeVolumeResponse::MergeImpl
+const ::google::protobuf::Message::ClassData ROIVolumeVolumeResponse::_class_data_ = {
+    ROIVolumeVolumeResponse::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ROIVolumeVolumeResponse::GetClassData() const { return &_class_data_; }
+const ::google::protobuf::Message::ClassData* ROIVolumeVolumeResponse::GetClassData() const {
+  return &_class_data_;
+}
 
-
-void ROIVolumeVolumeResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+void ROIVolumeVolumeResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<ROIVolumeVolumeResponse*>(&to_msg);
   auto& from = static_cast<const ROIVolumeVolumeResponse&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ROIVolumeVolumeResponse)
@@ -936,14 +957,15 @@ void ROIVolumeVolumeResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg
     _this->_internal_mutable_status()->::osirixgrpc::Status::MergeFrom(
         from._internal_status());
   }
-  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  static_assert(sizeof(::uint32_t) == sizeof(float),
+                "Code assumes ::uint32_t and float are the same size.");
   float tmp_volume = from._internal_volume();
   ::uint32_t raw_volume;
   memcpy(&raw_volume, &tmp_volume, sizeof(tmp_volume));
   if (raw_volume != 0) {
     _this->_internal_set_volume(from._internal_volume());
   }
-  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void ROIVolumeVolumeResponse::CopyFrom(const ROIVolumeVolumeResponse& from) {
@@ -953,15 +975,18 @@ void ROIVolumeVolumeResponse::CopyFrom(const ROIVolumeVolumeResponse& from) {
   MergeFrom(from);
 }
 
-bool ROIVolumeVolumeResponse::IsInitialized() const {
+PROTOBUF_NOINLINE bool ROIVolumeVolumeResponse::IsInitialized() const {
   return true;
 }
 
-void ROIVolumeVolumeResponse::InternalSwap(ROIVolumeVolumeResponse* other) {
+::_pbi::CachedSize* ROIVolumeVolumeResponse::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void ROIVolumeVolumeResponse::InternalSwap(ROIVolumeVolumeResponse* PROTOBUF_RESTRICT other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+  ::google::protobuf::internal::memswap<
       PROTOBUF_FIELD_OFFSET(ROIVolumeVolumeResponse, _impl_.volume_)
       + sizeof(ROIVolumeVolumeResponse::_impl_.volume_)
       - PROTOBUF_FIELD_OFFSET(ROIVolumeVolumeResponse, _impl_.status_)>(
@@ -969,7 +994,7 @@ void ROIVolumeVolumeResponse::InternalSwap(ROIVolumeVolumeResponse* other) {
           reinterpret_cast<char*>(&other->_impl_.status_));
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata ROIVolumeVolumeResponse::GetMetadata() const {
+::google::protobuf::Metadata ROIVolumeVolumeResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_roivolume_2eproto_getter, &descriptor_table_roivolume_2eproto_once,
       file_level_metadata_roivolume_2eproto[1]);
@@ -987,78 +1012,76 @@ class ROIVolumeColorResponse::_Internal {
   }
 };
 
-const ::osirixgrpc::Status&
-ROIVolumeColorResponse::_Internal::status(const ROIVolumeColorResponse* msg) {
+const ::osirixgrpc::Status& ROIVolumeColorResponse::_Internal::status(const ROIVolumeColorResponse* msg) {
   return *msg->_impl_.status_;
 }
 void ROIVolumeColorResponse::clear_status() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   if (_impl_.status_ != nullptr) _impl_.status_->Clear();
   _impl_._has_bits_[0] &= ~0x00000001u;
 }
-ROIVolumeColorResponse::ROIVolumeColorResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
+ROIVolumeColorResponse::ROIVolumeColorResponse(::google::protobuf::Arena* arena)
+    : ::google::protobuf::Message(arena) {
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.ROIVolumeColorResponse)
 }
-ROIVolumeColorResponse::ROIVolumeColorResponse(const ROIVolumeColorResponse& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message() {
-  ROIVolumeColorResponse* const _this = this; (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_}
-    , /*decltype(_impl_._cached_size_)*/{}
-    , decltype(_impl_.status_){nullptr}
-    , decltype(_impl_.r_) {}
+inline PROTOBUF_NDEBUG_INLINE ROIVolumeColorResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0} {}
 
-    , decltype(_impl_.g_) {}
+ROIVolumeColorResponse::ROIVolumeColorResponse(
+    ::google::protobuf::Arena* arena,
+    const ROIVolumeColorResponse& from)
+    : ::google::protobuf::Message(arena) {
+  ROIVolumeColorResponse* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.status_ = (cached_has_bits & 0x00000001u)
+                ? CreateMaybeMessage<::osirixgrpc::Status>(arena, *from._impl_.status_)
+                : nullptr;
+  ::memcpy(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, r_),
+           reinterpret_cast<const char *>(&from._impl_) +
+               offsetof(Impl_, r_),
+           offsetof(Impl_, b_) -
+               offsetof(Impl_, r_) +
+               sizeof(Impl_::b_));
 
-    , decltype(_impl_.b_) {}
-  };
-
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_impl_.status_ = new ::osirixgrpc::Status(*from._impl_.status_);
-  }
-  ::memcpy(&_impl_.r_, &from._impl_.r_,
-    static_cast<::size_t>(reinterpret_cast<char*>(&_impl_.b_) -
-    reinterpret_cast<char*>(&_impl_.r_)) + sizeof(_impl_.b_));
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.ROIVolumeColorResponse)
 }
+inline PROTOBUF_NDEBUG_INLINE ROIVolumeColorResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0} {}
 
 inline void ROIVolumeColorResponse::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){}
-    , /*decltype(_impl_._cached_size_)*/{}
-    , decltype(_impl_.status_){nullptr}
-    , decltype(_impl_.r_) { 0 }
-
-    , decltype(_impl_.g_) { 0 }
-
-    , decltype(_impl_.b_) { 0 }
-
-  };
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, status_),
+           0,
+           offsetof(Impl_, b_) -
+               offsetof(Impl_, status_) +
+               sizeof(Impl_::b_));
 }
-
 ROIVolumeColorResponse::~ROIVolumeColorResponse() {
   // @@protoc_insertion_point(destructor:osirixgrpc.ROIVolumeColorResponse)
-  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
-  (void)arena;
-    return;
-  }
+  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
   SharedDtor();
 }
-
 inline void ROIVolumeColorResponse::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
-  if (this != internal_default_instance()) delete _impl_.status_;
+  ABSL_DCHECK(GetArena() == nullptr);
+  delete _impl_.status_;
+  _impl_.~Impl_();
 }
 
-void ROIVolumeColorResponse::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
-}
-
-void ROIVolumeColorResponse::Clear() {
+PROTOBUF_NOINLINE void ROIVolumeColorResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.ROIVolumeColorResponse)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -1072,92 +1095,82 @@ void ROIVolumeColorResponse::Clear() {
       reinterpret_cast<char*>(&_impl_.b_) -
       reinterpret_cast<char*>(&_impl_.r_)) + sizeof(_impl_.b_));
   _impl_._has_bits_.Clear();
-  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
-const char* ROIVolumeColorResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
-#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  _Internal::HasBits has_bits{};
-  while (!ctx->Done(&ptr)) {
-    ::uint32_t tag;
-    ptr = ::_pbi::ReadTag(ptr, &tag);
-    switch (tag >> 3) {
-      // .osirixgrpc.Status status = 1;
-      case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
-          ptr = ctx->ParseMessage(_internal_mutable_status(), ptr);
-          CHK_(ptr);
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      // float r = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 21)) {
-          _impl_.r_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
-          ptr += sizeof(float);
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      // float g = 3;
-      case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 29)) {
-          _impl_.g_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
-          ptr += sizeof(float);
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      // float b = 4;
-      case 4:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 37)) {
-          _impl_.b_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
-          ptr += sizeof(float);
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      default:
-        goto handle_unusual;
-    }  // switch
-  handle_unusual:
-    if ((tag == 0) || ((tag & 7) == 4)) {
-      CHK_(ptr);
-      ctx->SetLastTag(tag);
-      goto message_done;
-    }
-    ptr = UnknownFieldParse(
-        tag,
-        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-        ptr, ctx);
-    CHK_(ptr != nullptr);
-  }  // while
-message_done:
-  _impl_._has_bits_.Or(has_bits);
+const char* ROIVolumeColorResponse::_InternalParse(
+    const char* ptr, ::_pbi::ParseContext* ctx) {
+  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
   return ptr;
-failure:
-  ptr = nullptr;
-  goto message_done;
-#undef CHK_
 }
+
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<2, 4, 1, 0, 2> ROIVolumeColorResponse::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(ROIVolumeColorResponse, _impl_._has_bits_),
+    0, // no _extensions_
+    4, 24,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967280,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    4,  // num_field_entries
+    1,  // num_aux_entries
+    offsetof(decltype(_table_), aux_entries),
+    &_ROIVolumeColorResponse_default_instance_._instance,
+    ::_pbi::TcParser::GenericFallback,  // fallback
+  }, {{
+    // float b = 4;
+    {::_pbi::TcParser::FastF32S1,
+     {37, 63, 0, PROTOBUF_FIELD_OFFSET(ROIVolumeColorResponse, _impl_.b_)}},
+    // .osirixgrpc.Status status = 1;
+    {::_pbi::TcParser::FastMtS1,
+     {10, 0, 0, PROTOBUF_FIELD_OFFSET(ROIVolumeColorResponse, _impl_.status_)}},
+    // float r = 2;
+    {::_pbi::TcParser::FastF32S1,
+     {21, 63, 0, PROTOBUF_FIELD_OFFSET(ROIVolumeColorResponse, _impl_.r_)}},
+    // float g = 3;
+    {::_pbi::TcParser::FastF32S1,
+     {29, 63, 0, PROTOBUF_FIELD_OFFSET(ROIVolumeColorResponse, _impl_.g_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // .osirixgrpc.Status status = 1;
+    {PROTOBUF_FIELD_OFFSET(ROIVolumeColorResponse, _impl_.status_), _Internal::kHasBitsOffset + 0, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
+    // float r = 2;
+    {PROTOBUF_FIELD_OFFSET(ROIVolumeColorResponse, _impl_.r_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kFloat)},
+    // float g = 3;
+    {PROTOBUF_FIELD_OFFSET(ROIVolumeColorResponse, _impl_.g_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kFloat)},
+    // float b = 4;
+    {PROTOBUF_FIELD_OFFSET(ROIVolumeColorResponse, _impl_.b_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kFloat)},
+  }}, {{
+    {::_pbi::TcParser::GetTable<::osirixgrpc::Status>()},
+  }}, {{
+  }},
+};
 
 ::uint8_t* ROIVolumeColorResponse::_InternalSerialize(
-    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+    ::uint8_t* target,
+    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.ROIVolumeColorResponse)
   ::uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
+  (void)cached_has_bits;
 
   cached_has_bits = _impl_._has_bits_[0];
   // .osirixgrpc.Status status = 1;
   if (cached_has_bits & 0x00000001u) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(1, _Internal::status(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        1, _Internal::status(this),
         _Internal::status(this).GetCachedSize(), target, stream);
   }
 
   // float r = 2;
-  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  static_assert(sizeof(::uint32_t) == sizeof(float),
+                "Code assumes ::uint32_t and float are the same size.");
   float tmp_r = this->_internal_r();
   ::uint32_t raw_r;
   memcpy(&raw_r, &tmp_r, sizeof(tmp_r));
@@ -1168,7 +1181,8 @@ failure:
   }
 
   // float g = 3;
-  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  static_assert(sizeof(::uint32_t) == sizeof(float),
+                "Code assumes ::uint32_t and float are the same size.");
   float tmp_g = this->_internal_g();
   ::uint32_t raw_g;
   memcpy(&raw_g, &tmp_g, sizeof(tmp_g));
@@ -1179,7 +1193,8 @@ failure:
   }
 
   // float b = 4;
-  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  static_assert(sizeof(::uint32_t) == sizeof(float),
+                "Code assumes ::uint32_t and float are the same size.");
   float tmp_b = this->_internal_b();
   ::uint32_t raw_b;
   memcpy(&raw_b, &tmp_b, sizeof(tmp_b));
@@ -1190,8 +1205,9 @@ failure:
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.ROIVolumeColorResponse)
   return target;
@@ -1208,13 +1224,13 @@ failure:
   // .osirixgrpc.Status status = 1;
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *_impl_.status_);
+    total_size +=
+        1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.status_);
   }
 
   // float r = 2;
-  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  static_assert(sizeof(::uint32_t) == sizeof(float),
+                "Code assumes ::uint32_t and float are the same size.");
   float tmp_r = this->_internal_r();
   ::uint32_t raw_r;
   memcpy(&raw_r, &tmp_r, sizeof(tmp_r));
@@ -1223,7 +1239,8 @@ failure:
   }
 
   // float g = 3;
-  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  static_assert(sizeof(::uint32_t) == sizeof(float),
+                "Code assumes ::uint32_t and float are the same size.");
   float tmp_g = this->_internal_g();
   ::uint32_t raw_g;
   memcpy(&raw_g, &tmp_g, sizeof(tmp_g));
@@ -1232,7 +1249,8 @@ failure:
   }
 
   // float b = 4;
-  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  static_assert(sizeof(::uint32_t) == sizeof(float),
+                "Code assumes ::uint32_t and float are the same size.");
   float tmp_b = this->_internal_b();
   ::uint32_t raw_b;
   memcpy(&raw_b, &tmp_b, sizeof(tmp_b));
@@ -1243,14 +1261,15 @@ failure:
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ROIVolumeColorResponse::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
-    ROIVolumeColorResponse::MergeImpl
+const ::google::protobuf::Message::ClassData ROIVolumeColorResponse::_class_data_ = {
+    ROIVolumeColorResponse::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ROIVolumeColorResponse::GetClassData() const { return &_class_data_; }
+const ::google::protobuf::Message::ClassData* ROIVolumeColorResponse::GetClassData() const {
+  return &_class_data_;
+}
 
-
-void ROIVolumeColorResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+void ROIVolumeColorResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<ROIVolumeColorResponse*>(&to_msg);
   auto& from = static_cast<const ROIVolumeColorResponse&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ROIVolumeColorResponse)
@@ -1262,28 +1281,31 @@ void ROIVolumeColorResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg,
     _this->_internal_mutable_status()->::osirixgrpc::Status::MergeFrom(
         from._internal_status());
   }
-  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  static_assert(sizeof(::uint32_t) == sizeof(float),
+                "Code assumes ::uint32_t and float are the same size.");
   float tmp_r = from._internal_r();
   ::uint32_t raw_r;
   memcpy(&raw_r, &tmp_r, sizeof(tmp_r));
   if (raw_r != 0) {
     _this->_internal_set_r(from._internal_r());
   }
-  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  static_assert(sizeof(::uint32_t) == sizeof(float),
+                "Code assumes ::uint32_t and float are the same size.");
   float tmp_g = from._internal_g();
   ::uint32_t raw_g;
   memcpy(&raw_g, &tmp_g, sizeof(tmp_g));
   if (raw_g != 0) {
     _this->_internal_set_g(from._internal_g());
   }
-  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  static_assert(sizeof(::uint32_t) == sizeof(float),
+                "Code assumes ::uint32_t and float are the same size.");
   float tmp_b = from._internal_b();
   ::uint32_t raw_b;
   memcpy(&raw_b, &tmp_b, sizeof(tmp_b));
   if (raw_b != 0) {
     _this->_internal_set_b(from._internal_b());
   }
-  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void ROIVolumeColorResponse::CopyFrom(const ROIVolumeColorResponse& from) {
@@ -1293,15 +1315,18 @@ void ROIVolumeColorResponse::CopyFrom(const ROIVolumeColorResponse& from) {
   MergeFrom(from);
 }
 
-bool ROIVolumeColorResponse::IsInitialized() const {
+PROTOBUF_NOINLINE bool ROIVolumeColorResponse::IsInitialized() const {
   return true;
 }
 
-void ROIVolumeColorResponse::InternalSwap(ROIVolumeColorResponse* other) {
+::_pbi::CachedSize* ROIVolumeColorResponse::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void ROIVolumeColorResponse::InternalSwap(ROIVolumeColorResponse* PROTOBUF_RESTRICT other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+  ::google::protobuf::internal::memswap<
       PROTOBUF_FIELD_OFFSET(ROIVolumeColorResponse, _impl_.b_)
       + sizeof(ROIVolumeColorResponse::_impl_.b_)
       - PROTOBUF_FIELD_OFFSET(ROIVolumeColorResponse, _impl_.status_)>(
@@ -1309,7 +1334,7 @@ void ROIVolumeColorResponse::InternalSwap(ROIVolumeColorResponse* other) {
           reinterpret_cast<char*>(&other->_impl_.status_));
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata ROIVolumeColorResponse::GetMetadata() const {
+::google::protobuf::Metadata ROIVolumeColorResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_roivolume_2eproto_getter, &descriptor_table_roivolume_2eproto_once,
       file_level_metadata_roivolume_2eproto[2]);
@@ -1327,68 +1352,70 @@ class ROIVolumeOpacityResponse::_Internal {
   }
 };
 
-const ::osirixgrpc::Status&
-ROIVolumeOpacityResponse::_Internal::status(const ROIVolumeOpacityResponse* msg) {
+const ::osirixgrpc::Status& ROIVolumeOpacityResponse::_Internal::status(const ROIVolumeOpacityResponse* msg) {
   return *msg->_impl_.status_;
 }
 void ROIVolumeOpacityResponse::clear_status() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   if (_impl_.status_ != nullptr) _impl_.status_->Clear();
   _impl_._has_bits_[0] &= ~0x00000001u;
 }
-ROIVolumeOpacityResponse::ROIVolumeOpacityResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
+ROIVolumeOpacityResponse::ROIVolumeOpacityResponse(::google::protobuf::Arena* arena)
+    : ::google::protobuf::Message(arena) {
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.ROIVolumeOpacityResponse)
 }
-ROIVolumeOpacityResponse::ROIVolumeOpacityResponse(const ROIVolumeOpacityResponse& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message() {
-  ROIVolumeOpacityResponse* const _this = this; (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_}
-    , /*decltype(_impl_._cached_size_)*/{}
-    , decltype(_impl_.status_){nullptr}
-    , decltype(_impl_.opacity_) {}
-  };
+inline PROTOBUF_NDEBUG_INLINE ROIVolumeOpacityResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0} {}
 
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_impl_.status_ = new ::osirixgrpc::Status(*from._impl_.status_);
-  }
-  _this->_impl_.opacity_ = from._impl_.opacity_;
+ROIVolumeOpacityResponse::ROIVolumeOpacityResponse(
+    ::google::protobuf::Arena* arena,
+    const ROIVolumeOpacityResponse& from)
+    : ::google::protobuf::Message(arena) {
+  ROIVolumeOpacityResponse* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.status_ = (cached_has_bits & 0x00000001u)
+                ? CreateMaybeMessage<::osirixgrpc::Status>(arena, *from._impl_.status_)
+                : nullptr;
+  _impl_.opacity_ = from._impl_.opacity_;
+
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.ROIVolumeOpacityResponse)
 }
+inline PROTOBUF_NDEBUG_INLINE ROIVolumeOpacityResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0} {}
 
 inline void ROIVolumeOpacityResponse::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){}
-    , /*decltype(_impl_._cached_size_)*/{}
-    , decltype(_impl_.status_){nullptr}
-    , decltype(_impl_.opacity_) { 0 }
-
-  };
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, status_),
+           0,
+           offsetof(Impl_, opacity_) -
+               offsetof(Impl_, status_) +
+               sizeof(Impl_::opacity_));
 }
-
 ROIVolumeOpacityResponse::~ROIVolumeOpacityResponse() {
   // @@protoc_insertion_point(destructor:osirixgrpc.ROIVolumeOpacityResponse)
-  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
-  (void)arena;
-    return;
-  }
+  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
   SharedDtor();
 }
-
 inline void ROIVolumeOpacityResponse::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
-  if (this != internal_default_instance()) delete _impl_.status_;
+  ABSL_DCHECK(GetArena() == nullptr);
+  delete _impl_.status_;
+  _impl_.~Impl_();
 }
 
-void ROIVolumeOpacityResponse::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
-}
-
-void ROIVolumeOpacityResponse::Clear() {
+PROTOBUF_NOINLINE void ROIVolumeOpacityResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.ROIVolumeOpacityResponse)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -1400,74 +1427,70 @@ void ROIVolumeOpacityResponse::Clear() {
   }
   _impl_.opacity_ = 0;
   _impl_._has_bits_.Clear();
-  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
-const char* ROIVolumeOpacityResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
-#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  _Internal::HasBits has_bits{};
-  while (!ctx->Done(&ptr)) {
-    ::uint32_t tag;
-    ptr = ::_pbi::ReadTag(ptr, &tag);
-    switch (tag >> 3) {
-      // .osirixgrpc.Status status = 1;
-      case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
-          ptr = ctx->ParseMessage(_internal_mutable_status(), ptr);
-          CHK_(ptr);
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      // float opacity = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 21)) {
-          _impl_.opacity_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
-          ptr += sizeof(float);
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      default:
-        goto handle_unusual;
-    }  // switch
-  handle_unusual:
-    if ((tag == 0) || ((tag & 7) == 4)) {
-      CHK_(ptr);
-      ctx->SetLastTag(tag);
-      goto message_done;
-    }
-    ptr = UnknownFieldParse(
-        tag,
-        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-        ptr, ctx);
-    CHK_(ptr != nullptr);
-  }  // while
-message_done:
-  _impl_._has_bits_.Or(has_bits);
+const char* ROIVolumeOpacityResponse::_InternalParse(
+    const char* ptr, ::_pbi::ParseContext* ctx) {
+  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
   return ptr;
-failure:
-  ptr = nullptr;
-  goto message_done;
-#undef CHK_
 }
+
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<1, 2, 1, 0, 2> ROIVolumeOpacityResponse::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(ROIVolumeOpacityResponse, _impl_._has_bits_),
+    0, // no _extensions_
+    2, 8,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967292,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    2,  // num_field_entries
+    1,  // num_aux_entries
+    offsetof(decltype(_table_), aux_entries),
+    &_ROIVolumeOpacityResponse_default_instance_._instance,
+    ::_pbi::TcParser::GenericFallback,  // fallback
+  }, {{
+    // float opacity = 2;
+    {::_pbi::TcParser::FastF32S1,
+     {21, 63, 0, PROTOBUF_FIELD_OFFSET(ROIVolumeOpacityResponse, _impl_.opacity_)}},
+    // .osirixgrpc.Status status = 1;
+    {::_pbi::TcParser::FastMtS1,
+     {10, 0, 0, PROTOBUF_FIELD_OFFSET(ROIVolumeOpacityResponse, _impl_.status_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // .osirixgrpc.Status status = 1;
+    {PROTOBUF_FIELD_OFFSET(ROIVolumeOpacityResponse, _impl_.status_), _Internal::kHasBitsOffset + 0, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
+    // float opacity = 2;
+    {PROTOBUF_FIELD_OFFSET(ROIVolumeOpacityResponse, _impl_.opacity_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kFloat)},
+  }}, {{
+    {::_pbi::TcParser::GetTable<::osirixgrpc::Status>()},
+  }}, {{
+  }},
+};
 
 ::uint8_t* ROIVolumeOpacityResponse::_InternalSerialize(
-    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+    ::uint8_t* target,
+    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.ROIVolumeOpacityResponse)
   ::uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
+  (void)cached_has_bits;
 
   cached_has_bits = _impl_._has_bits_[0];
   // .osirixgrpc.Status status = 1;
   if (cached_has_bits & 0x00000001u) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(1, _Internal::status(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        1, _Internal::status(this),
         _Internal::status(this).GetCachedSize(), target, stream);
   }
 
   // float opacity = 2;
-  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  static_assert(sizeof(::uint32_t) == sizeof(float),
+                "Code assumes ::uint32_t and float are the same size.");
   float tmp_opacity = this->_internal_opacity();
   ::uint32_t raw_opacity;
   memcpy(&raw_opacity, &tmp_opacity, sizeof(tmp_opacity));
@@ -1478,8 +1501,9 @@ failure:
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.ROIVolumeOpacityResponse)
   return target;
@@ -1496,13 +1520,13 @@ failure:
   // .osirixgrpc.Status status = 1;
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *_impl_.status_);
+    total_size +=
+        1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.status_);
   }
 
   // float opacity = 2;
-  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  static_assert(sizeof(::uint32_t) == sizeof(float),
+                "Code assumes ::uint32_t and float are the same size.");
   float tmp_opacity = this->_internal_opacity();
   ::uint32_t raw_opacity;
   memcpy(&raw_opacity, &tmp_opacity, sizeof(tmp_opacity));
@@ -1513,14 +1537,15 @@ failure:
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ROIVolumeOpacityResponse::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
-    ROIVolumeOpacityResponse::MergeImpl
+const ::google::protobuf::Message::ClassData ROIVolumeOpacityResponse::_class_data_ = {
+    ROIVolumeOpacityResponse::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ROIVolumeOpacityResponse::GetClassData() const { return &_class_data_; }
+const ::google::protobuf::Message::ClassData* ROIVolumeOpacityResponse::GetClassData() const {
+  return &_class_data_;
+}
 
-
-void ROIVolumeOpacityResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+void ROIVolumeOpacityResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<ROIVolumeOpacityResponse*>(&to_msg);
   auto& from = static_cast<const ROIVolumeOpacityResponse&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ROIVolumeOpacityResponse)
@@ -1532,14 +1557,15 @@ void ROIVolumeOpacityResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_ms
     _this->_internal_mutable_status()->::osirixgrpc::Status::MergeFrom(
         from._internal_status());
   }
-  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  static_assert(sizeof(::uint32_t) == sizeof(float),
+                "Code assumes ::uint32_t and float are the same size.");
   float tmp_opacity = from._internal_opacity();
   ::uint32_t raw_opacity;
   memcpy(&raw_opacity, &tmp_opacity, sizeof(tmp_opacity));
   if (raw_opacity != 0) {
     _this->_internal_set_opacity(from._internal_opacity());
   }
-  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void ROIVolumeOpacityResponse::CopyFrom(const ROIVolumeOpacityResponse& from) {
@@ -1549,15 +1575,18 @@ void ROIVolumeOpacityResponse::CopyFrom(const ROIVolumeOpacityResponse& from) {
   MergeFrom(from);
 }
 
-bool ROIVolumeOpacityResponse::IsInitialized() const {
+PROTOBUF_NOINLINE bool ROIVolumeOpacityResponse::IsInitialized() const {
   return true;
 }
 
-void ROIVolumeOpacityResponse::InternalSwap(ROIVolumeOpacityResponse* other) {
+::_pbi::CachedSize* ROIVolumeOpacityResponse::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void ROIVolumeOpacityResponse::InternalSwap(ROIVolumeOpacityResponse* PROTOBUF_RESTRICT other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+  ::google::protobuf::internal::memswap<
       PROTOBUF_FIELD_OFFSET(ROIVolumeOpacityResponse, _impl_.opacity_)
       + sizeof(ROIVolumeOpacityResponse::_impl_.opacity_)
       - PROTOBUF_FIELD_OFFSET(ROIVolumeOpacityResponse, _impl_.status_)>(
@@ -1565,7 +1594,7 @@ void ROIVolumeOpacityResponse::InternalSwap(ROIVolumeOpacityResponse* other) {
           reinterpret_cast<char*>(&other->_impl_.status_));
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata ROIVolumeOpacityResponse::GetMetadata() const {
+::google::protobuf::Metadata ROIVolumeOpacityResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_roivolume_2eproto_getter, &descriptor_table_roivolume_2eproto_once,
       file_level_metadata_roivolume_2eproto[3]);
@@ -1583,68 +1612,70 @@ class ROIVolumeFactorResponse::_Internal {
   }
 };
 
-const ::osirixgrpc::Status&
-ROIVolumeFactorResponse::_Internal::status(const ROIVolumeFactorResponse* msg) {
+const ::osirixgrpc::Status& ROIVolumeFactorResponse::_Internal::status(const ROIVolumeFactorResponse* msg) {
   return *msg->_impl_.status_;
 }
 void ROIVolumeFactorResponse::clear_status() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   if (_impl_.status_ != nullptr) _impl_.status_->Clear();
   _impl_._has_bits_[0] &= ~0x00000001u;
 }
-ROIVolumeFactorResponse::ROIVolumeFactorResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
+ROIVolumeFactorResponse::ROIVolumeFactorResponse(::google::protobuf::Arena* arena)
+    : ::google::protobuf::Message(arena) {
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.ROIVolumeFactorResponse)
 }
-ROIVolumeFactorResponse::ROIVolumeFactorResponse(const ROIVolumeFactorResponse& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message() {
-  ROIVolumeFactorResponse* const _this = this; (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_}
-    , /*decltype(_impl_._cached_size_)*/{}
-    , decltype(_impl_.status_){nullptr}
-    , decltype(_impl_.factor_) {}
-  };
+inline PROTOBUF_NDEBUG_INLINE ROIVolumeFactorResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0} {}
 
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_impl_.status_ = new ::osirixgrpc::Status(*from._impl_.status_);
-  }
-  _this->_impl_.factor_ = from._impl_.factor_;
+ROIVolumeFactorResponse::ROIVolumeFactorResponse(
+    ::google::protobuf::Arena* arena,
+    const ROIVolumeFactorResponse& from)
+    : ::google::protobuf::Message(arena) {
+  ROIVolumeFactorResponse* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.status_ = (cached_has_bits & 0x00000001u)
+                ? CreateMaybeMessage<::osirixgrpc::Status>(arena, *from._impl_.status_)
+                : nullptr;
+  _impl_.factor_ = from._impl_.factor_;
+
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.ROIVolumeFactorResponse)
 }
+inline PROTOBUF_NDEBUG_INLINE ROIVolumeFactorResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0} {}
 
 inline void ROIVolumeFactorResponse::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){}
-    , /*decltype(_impl_._cached_size_)*/{}
-    , decltype(_impl_.status_){nullptr}
-    , decltype(_impl_.factor_) { 0 }
-
-  };
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, status_),
+           0,
+           offsetof(Impl_, factor_) -
+               offsetof(Impl_, status_) +
+               sizeof(Impl_::factor_));
 }
-
 ROIVolumeFactorResponse::~ROIVolumeFactorResponse() {
   // @@protoc_insertion_point(destructor:osirixgrpc.ROIVolumeFactorResponse)
-  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
-  (void)arena;
-    return;
-  }
+  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
   SharedDtor();
 }
-
 inline void ROIVolumeFactorResponse::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
-  if (this != internal_default_instance()) delete _impl_.status_;
+  ABSL_DCHECK(GetArena() == nullptr);
+  delete _impl_.status_;
+  _impl_.~Impl_();
 }
 
-void ROIVolumeFactorResponse::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
-}
-
-void ROIVolumeFactorResponse::Clear() {
+PROTOBUF_NOINLINE void ROIVolumeFactorResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.ROIVolumeFactorResponse)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -1656,74 +1687,70 @@ void ROIVolumeFactorResponse::Clear() {
   }
   _impl_.factor_ = 0;
   _impl_._has_bits_.Clear();
-  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
-const char* ROIVolumeFactorResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
-#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  _Internal::HasBits has_bits{};
-  while (!ctx->Done(&ptr)) {
-    ::uint32_t tag;
-    ptr = ::_pbi::ReadTag(ptr, &tag);
-    switch (tag >> 3) {
-      // .osirixgrpc.Status status = 1;
-      case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
-          ptr = ctx->ParseMessage(_internal_mutable_status(), ptr);
-          CHK_(ptr);
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      // float factor = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 21)) {
-          _impl_.factor_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
-          ptr += sizeof(float);
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      default:
-        goto handle_unusual;
-    }  // switch
-  handle_unusual:
-    if ((tag == 0) || ((tag & 7) == 4)) {
-      CHK_(ptr);
-      ctx->SetLastTag(tag);
-      goto message_done;
-    }
-    ptr = UnknownFieldParse(
-        tag,
-        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-        ptr, ctx);
-    CHK_(ptr != nullptr);
-  }  // while
-message_done:
-  _impl_._has_bits_.Or(has_bits);
+const char* ROIVolumeFactorResponse::_InternalParse(
+    const char* ptr, ::_pbi::ParseContext* ctx) {
+  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
   return ptr;
-failure:
-  ptr = nullptr;
-  goto message_done;
-#undef CHK_
 }
+
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<1, 2, 1, 0, 2> ROIVolumeFactorResponse::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(ROIVolumeFactorResponse, _impl_._has_bits_),
+    0, // no _extensions_
+    2, 8,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967292,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    2,  // num_field_entries
+    1,  // num_aux_entries
+    offsetof(decltype(_table_), aux_entries),
+    &_ROIVolumeFactorResponse_default_instance_._instance,
+    ::_pbi::TcParser::GenericFallback,  // fallback
+  }, {{
+    // float factor = 2;
+    {::_pbi::TcParser::FastF32S1,
+     {21, 63, 0, PROTOBUF_FIELD_OFFSET(ROIVolumeFactorResponse, _impl_.factor_)}},
+    // .osirixgrpc.Status status = 1;
+    {::_pbi::TcParser::FastMtS1,
+     {10, 0, 0, PROTOBUF_FIELD_OFFSET(ROIVolumeFactorResponse, _impl_.status_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // .osirixgrpc.Status status = 1;
+    {PROTOBUF_FIELD_OFFSET(ROIVolumeFactorResponse, _impl_.status_), _Internal::kHasBitsOffset + 0, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
+    // float factor = 2;
+    {PROTOBUF_FIELD_OFFSET(ROIVolumeFactorResponse, _impl_.factor_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kFloat)},
+  }}, {{
+    {::_pbi::TcParser::GetTable<::osirixgrpc::Status>()},
+  }}, {{
+  }},
+};
 
 ::uint8_t* ROIVolumeFactorResponse::_InternalSerialize(
-    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+    ::uint8_t* target,
+    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.ROIVolumeFactorResponse)
   ::uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
+  (void)cached_has_bits;
 
   cached_has_bits = _impl_._has_bits_[0];
   // .osirixgrpc.Status status = 1;
   if (cached_has_bits & 0x00000001u) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(1, _Internal::status(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        1, _Internal::status(this),
         _Internal::status(this).GetCachedSize(), target, stream);
   }
 
   // float factor = 2;
-  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  static_assert(sizeof(::uint32_t) == sizeof(float),
+                "Code assumes ::uint32_t and float are the same size.");
   float tmp_factor = this->_internal_factor();
   ::uint32_t raw_factor;
   memcpy(&raw_factor, &tmp_factor, sizeof(tmp_factor));
@@ -1734,8 +1761,9 @@ failure:
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.ROIVolumeFactorResponse)
   return target;
@@ -1752,13 +1780,13 @@ failure:
   // .osirixgrpc.Status status = 1;
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *_impl_.status_);
+    total_size +=
+        1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.status_);
   }
 
   // float factor = 2;
-  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  static_assert(sizeof(::uint32_t) == sizeof(float),
+                "Code assumes ::uint32_t and float are the same size.");
   float tmp_factor = this->_internal_factor();
   ::uint32_t raw_factor;
   memcpy(&raw_factor, &tmp_factor, sizeof(tmp_factor));
@@ -1769,14 +1797,15 @@ failure:
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ROIVolumeFactorResponse::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
-    ROIVolumeFactorResponse::MergeImpl
+const ::google::protobuf::Message::ClassData ROIVolumeFactorResponse::_class_data_ = {
+    ROIVolumeFactorResponse::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ROIVolumeFactorResponse::GetClassData() const { return &_class_data_; }
+const ::google::protobuf::Message::ClassData* ROIVolumeFactorResponse::GetClassData() const {
+  return &_class_data_;
+}
 
-
-void ROIVolumeFactorResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+void ROIVolumeFactorResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<ROIVolumeFactorResponse*>(&to_msg);
   auto& from = static_cast<const ROIVolumeFactorResponse&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ROIVolumeFactorResponse)
@@ -1788,14 +1817,15 @@ void ROIVolumeFactorResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg
     _this->_internal_mutable_status()->::osirixgrpc::Status::MergeFrom(
         from._internal_status());
   }
-  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  static_assert(sizeof(::uint32_t) == sizeof(float),
+                "Code assumes ::uint32_t and float are the same size.");
   float tmp_factor = from._internal_factor();
   ::uint32_t raw_factor;
   memcpy(&raw_factor, &tmp_factor, sizeof(tmp_factor));
   if (raw_factor != 0) {
     _this->_internal_set_factor(from._internal_factor());
   }
-  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void ROIVolumeFactorResponse::CopyFrom(const ROIVolumeFactorResponse& from) {
@@ -1805,15 +1835,18 @@ void ROIVolumeFactorResponse::CopyFrom(const ROIVolumeFactorResponse& from) {
   MergeFrom(from);
 }
 
-bool ROIVolumeFactorResponse::IsInitialized() const {
+PROTOBUF_NOINLINE bool ROIVolumeFactorResponse::IsInitialized() const {
   return true;
 }
 
-void ROIVolumeFactorResponse::InternalSwap(ROIVolumeFactorResponse* other) {
+::_pbi::CachedSize* ROIVolumeFactorResponse::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void ROIVolumeFactorResponse::InternalSwap(ROIVolumeFactorResponse* PROTOBUF_RESTRICT other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+  ::google::protobuf::internal::memswap<
       PROTOBUF_FIELD_OFFSET(ROIVolumeFactorResponse, _impl_.factor_)
       + sizeof(ROIVolumeFactorResponse::_impl_.factor_)
       - PROTOBUF_FIELD_OFFSET(ROIVolumeFactorResponse, _impl_.status_)>(
@@ -1821,7 +1854,7 @@ void ROIVolumeFactorResponse::InternalSwap(ROIVolumeFactorResponse* other) {
           reinterpret_cast<char*>(&other->_impl_.status_));
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata ROIVolumeFactorResponse::GetMetadata() const {
+::google::protobuf::Metadata ROIVolumeFactorResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_roivolume_2eproto_getter, &descriptor_table_roivolume_2eproto_once,
       file_level_metadata_roivolume_2eproto[4]);
@@ -1839,68 +1872,70 @@ class ROIVolumeVisibleResponse::_Internal {
   }
 };
 
-const ::osirixgrpc::Status&
-ROIVolumeVisibleResponse::_Internal::status(const ROIVolumeVisibleResponse* msg) {
+const ::osirixgrpc::Status& ROIVolumeVisibleResponse::_Internal::status(const ROIVolumeVisibleResponse* msg) {
   return *msg->_impl_.status_;
 }
 void ROIVolumeVisibleResponse::clear_status() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   if (_impl_.status_ != nullptr) _impl_.status_->Clear();
   _impl_._has_bits_[0] &= ~0x00000001u;
 }
-ROIVolumeVisibleResponse::ROIVolumeVisibleResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
+ROIVolumeVisibleResponse::ROIVolumeVisibleResponse(::google::protobuf::Arena* arena)
+    : ::google::protobuf::Message(arena) {
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.ROIVolumeVisibleResponse)
 }
-ROIVolumeVisibleResponse::ROIVolumeVisibleResponse(const ROIVolumeVisibleResponse& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message() {
-  ROIVolumeVisibleResponse* const _this = this; (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_}
-    , /*decltype(_impl_._cached_size_)*/{}
-    , decltype(_impl_.status_){nullptr}
-    , decltype(_impl_.visible_) {}
-  };
+inline PROTOBUF_NDEBUG_INLINE ROIVolumeVisibleResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0} {}
 
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_impl_.status_ = new ::osirixgrpc::Status(*from._impl_.status_);
-  }
-  _this->_impl_.visible_ = from._impl_.visible_;
+ROIVolumeVisibleResponse::ROIVolumeVisibleResponse(
+    ::google::protobuf::Arena* arena,
+    const ROIVolumeVisibleResponse& from)
+    : ::google::protobuf::Message(arena) {
+  ROIVolumeVisibleResponse* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.status_ = (cached_has_bits & 0x00000001u)
+                ? CreateMaybeMessage<::osirixgrpc::Status>(arena, *from._impl_.status_)
+                : nullptr;
+  _impl_.visible_ = from._impl_.visible_;
+
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.ROIVolumeVisibleResponse)
 }
+inline PROTOBUF_NDEBUG_INLINE ROIVolumeVisibleResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0} {}
 
 inline void ROIVolumeVisibleResponse::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){}
-    , /*decltype(_impl_._cached_size_)*/{}
-    , decltype(_impl_.status_){nullptr}
-    , decltype(_impl_.visible_) { false }
-
-  };
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, status_),
+           0,
+           offsetof(Impl_, visible_) -
+               offsetof(Impl_, status_) +
+               sizeof(Impl_::visible_));
 }
-
 ROIVolumeVisibleResponse::~ROIVolumeVisibleResponse() {
   // @@protoc_insertion_point(destructor:osirixgrpc.ROIVolumeVisibleResponse)
-  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
-  (void)arena;
-    return;
-  }
+  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
   SharedDtor();
 }
-
 inline void ROIVolumeVisibleResponse::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
-  if (this != internal_default_instance()) delete _impl_.status_;
+  ABSL_DCHECK(GetArena() == nullptr);
+  delete _impl_.status_;
+  _impl_.~Impl_();
 }
 
-void ROIVolumeVisibleResponse::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
-}
-
-void ROIVolumeVisibleResponse::Clear() {
+PROTOBUF_NOINLINE void ROIVolumeVisibleResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.ROIVolumeVisibleResponse)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -1912,69 +1947,64 @@ void ROIVolumeVisibleResponse::Clear() {
   }
   _impl_.visible_ = false;
   _impl_._has_bits_.Clear();
-  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
-const char* ROIVolumeVisibleResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
-#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  _Internal::HasBits has_bits{};
-  while (!ctx->Done(&ptr)) {
-    ::uint32_t tag;
-    ptr = ::_pbi::ReadTag(ptr, &tag);
-    switch (tag >> 3) {
-      // .osirixgrpc.Status status = 1;
-      case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
-          ptr = ctx->ParseMessage(_internal_mutable_status(), ptr);
-          CHK_(ptr);
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      // bool visible = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 16)) {
-          _impl_.visible_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
-          CHK_(ptr);
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      default:
-        goto handle_unusual;
-    }  // switch
-  handle_unusual:
-    if ((tag == 0) || ((tag & 7) == 4)) {
-      CHK_(ptr);
-      ctx->SetLastTag(tag);
-      goto message_done;
-    }
-    ptr = UnknownFieldParse(
-        tag,
-        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-        ptr, ctx);
-    CHK_(ptr != nullptr);
-  }  // while
-message_done:
-  _impl_._has_bits_.Or(has_bits);
+const char* ROIVolumeVisibleResponse::_InternalParse(
+    const char* ptr, ::_pbi::ParseContext* ctx) {
+  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
   return ptr;
-failure:
-  ptr = nullptr;
-  goto message_done;
-#undef CHK_
 }
+
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<1, 2, 1, 0, 2> ROIVolumeVisibleResponse::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(ROIVolumeVisibleResponse, _impl_._has_bits_),
+    0, // no _extensions_
+    2, 8,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967292,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    2,  // num_field_entries
+    1,  // num_aux_entries
+    offsetof(decltype(_table_), aux_entries),
+    &_ROIVolumeVisibleResponse_default_instance_._instance,
+    ::_pbi::TcParser::GenericFallback,  // fallback
+  }, {{
+    // bool visible = 2;
+    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(ROIVolumeVisibleResponse, _impl_.visible_), 63>(),
+     {16, 63, 0, PROTOBUF_FIELD_OFFSET(ROIVolumeVisibleResponse, _impl_.visible_)}},
+    // .osirixgrpc.Status status = 1;
+    {::_pbi::TcParser::FastMtS1,
+     {10, 0, 0, PROTOBUF_FIELD_OFFSET(ROIVolumeVisibleResponse, _impl_.status_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // .osirixgrpc.Status status = 1;
+    {PROTOBUF_FIELD_OFFSET(ROIVolumeVisibleResponse, _impl_.status_), _Internal::kHasBitsOffset + 0, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
+    // bool visible = 2;
+    {PROTOBUF_FIELD_OFFSET(ROIVolumeVisibleResponse, _impl_.visible_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kBool)},
+  }}, {{
+    {::_pbi::TcParser::GetTable<::osirixgrpc::Status>()},
+  }}, {{
+  }},
+};
 
 ::uint8_t* ROIVolumeVisibleResponse::_InternalSerialize(
-    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+    ::uint8_t* target,
+    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.ROIVolumeVisibleResponse)
   ::uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
+  (void)cached_has_bits;
 
   cached_has_bits = _impl_._has_bits_[0];
   // .osirixgrpc.Status status = 1;
   if (cached_has_bits & 0x00000001u) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(1, _Internal::status(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        1, _Internal::status(this),
         _Internal::status(this).GetCachedSize(), target, stream);
   }
 
@@ -1986,8 +2016,9 @@ failure:
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.ROIVolumeVisibleResponse)
   return target;
@@ -2004,9 +2035,8 @@ failure:
   // .osirixgrpc.Status status = 1;
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *_impl_.status_);
+    total_size +=
+        1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.status_);
   }
 
   // bool visible = 2;
@@ -2017,14 +2047,15 @@ failure:
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ROIVolumeVisibleResponse::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
-    ROIVolumeVisibleResponse::MergeImpl
+const ::google::protobuf::Message::ClassData ROIVolumeVisibleResponse::_class_data_ = {
+    ROIVolumeVisibleResponse::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ROIVolumeVisibleResponse::GetClassData() const { return &_class_data_; }
+const ::google::protobuf::Message::ClassData* ROIVolumeVisibleResponse::GetClassData() const {
+  return &_class_data_;
+}
 
-
-void ROIVolumeVisibleResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+void ROIVolumeVisibleResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<ROIVolumeVisibleResponse*>(&to_msg);
   auto& from = static_cast<const ROIVolumeVisibleResponse&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ROIVolumeVisibleResponse)
@@ -2039,7 +2070,7 @@ void ROIVolumeVisibleResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_ms
   if (from._internal_visible() != 0) {
     _this->_internal_set_visible(from._internal_visible());
   }
-  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void ROIVolumeVisibleResponse::CopyFrom(const ROIVolumeVisibleResponse& from) {
@@ -2049,15 +2080,18 @@ void ROIVolumeVisibleResponse::CopyFrom(const ROIVolumeVisibleResponse& from) {
   MergeFrom(from);
 }
 
-bool ROIVolumeVisibleResponse::IsInitialized() const {
+PROTOBUF_NOINLINE bool ROIVolumeVisibleResponse::IsInitialized() const {
   return true;
 }
 
-void ROIVolumeVisibleResponse::InternalSwap(ROIVolumeVisibleResponse* other) {
+::_pbi::CachedSize* ROIVolumeVisibleResponse::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void ROIVolumeVisibleResponse::InternalSwap(ROIVolumeVisibleResponse* PROTOBUF_RESTRICT other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+  ::google::protobuf::internal::memswap<
       PROTOBUF_FIELD_OFFSET(ROIVolumeVisibleResponse, _impl_.visible_)
       + sizeof(ROIVolumeVisibleResponse::_impl_.visible_)
       - PROTOBUF_FIELD_OFFSET(ROIVolumeVisibleResponse, _impl_.status_)>(
@@ -2065,7 +2099,7 @@ void ROIVolumeVisibleResponse::InternalSwap(ROIVolumeVisibleResponse* other) {
           reinterpret_cast<char*>(&other->_impl_.status_));
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata ROIVolumeVisibleResponse::GetMetadata() const {
+::google::protobuf::Metadata ROIVolumeVisibleResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_roivolume_2eproto_getter, &descriptor_table_roivolume_2eproto_once,
       file_level_metadata_roivolume_2eproto[5]);
@@ -2083,79 +2117,67 @@ class ROIVolumeNameResponse::_Internal {
   }
 };
 
-const ::osirixgrpc::Status&
-ROIVolumeNameResponse::_Internal::status(const ROIVolumeNameResponse* msg) {
+const ::osirixgrpc::Status& ROIVolumeNameResponse::_Internal::status(const ROIVolumeNameResponse* msg) {
   return *msg->_impl_.status_;
 }
 void ROIVolumeNameResponse::clear_status() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   if (_impl_.status_ != nullptr) _impl_.status_->Clear();
   _impl_._has_bits_[0] &= ~0x00000001u;
 }
-ROIVolumeNameResponse::ROIVolumeNameResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
+ROIVolumeNameResponse::ROIVolumeNameResponse(::google::protobuf::Arena* arena)
+    : ::google::protobuf::Message(arena) {
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.ROIVolumeNameResponse)
 }
-ROIVolumeNameResponse::ROIVolumeNameResponse(const ROIVolumeNameResponse& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message() {
-  ROIVolumeNameResponse* const _this = this; (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_}
-    , /*decltype(_impl_._cached_size_)*/{}
-    , decltype(_impl_.name_) {}
+inline PROTOBUF_NDEBUG_INLINE ROIVolumeNameResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        name_(arena, from.name_) {}
 
-    , decltype(_impl_.status_){nullptr}};
+ROIVolumeNameResponse::ROIVolumeNameResponse(
+    ::google::protobuf::Arena* arena,
+    const ROIVolumeNameResponse& from)
+    : ::google::protobuf::Message(arena) {
+  ROIVolumeNameResponse* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.status_ = (cached_has_bits & 0x00000001u)
+                ? CreateMaybeMessage<::osirixgrpc::Status>(arena, *from._impl_.status_)
+                : nullptr;
 
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  _impl_.name_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.name_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_name().empty()) {
-    _this->_impl_.name_.Set(from._internal_name(), _this->GetArenaForAllocation());
-  }
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_impl_.status_ = new ::osirixgrpc::Status(*from._impl_.status_);
-  }
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.ROIVolumeNameResponse)
 }
+inline PROTOBUF_NDEBUG_INLINE ROIVolumeNameResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0},
+        name_(arena) {}
 
 inline void ROIVolumeNameResponse::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){}
-    , /*decltype(_impl_._cached_size_)*/{}
-    , decltype(_impl_.name_) {}
-
-    , decltype(_impl_.status_){nullptr}
-  };
-  _impl_.name_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.name_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.status_ = {};
 }
-
 ROIVolumeNameResponse::~ROIVolumeNameResponse() {
   // @@protoc_insertion_point(destructor:osirixgrpc.ROIVolumeNameResponse)
-  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
-  (void)arena;
-    return;
-  }
+  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
   SharedDtor();
 }
-
 inline void ROIVolumeNameResponse::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.name_.Destroy();
-  if (this != internal_default_instance()) delete _impl_.status_;
+  delete _impl_.status_;
+  _impl_.~Impl_();
 }
 
-void ROIVolumeNameResponse::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
-}
-
-void ROIVolumeNameResponse::Clear() {
+PROTOBUF_NOINLINE void ROIVolumeNameResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.ROIVolumeNameResponse)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -2167,85 +2189,82 @@ void ROIVolumeNameResponse::Clear() {
     _impl_.status_->Clear();
   }
   _impl_._has_bits_.Clear();
-  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
-const char* ROIVolumeNameResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
-#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  _Internal::HasBits has_bits{};
-  while (!ctx->Done(&ptr)) {
-    ::uint32_t tag;
-    ptr = ::_pbi::ReadTag(ptr, &tag);
-    switch (tag >> 3) {
-      // .osirixgrpc.Status status = 1;
-      case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
-          ptr = ctx->ParseMessage(_internal_mutable_status(), ptr);
-          CHK_(ptr);
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      // string name = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 18)) {
-          auto str = _internal_mutable_name();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "osirixgrpc.ROIVolumeNameResponse.name"));
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      default:
-        goto handle_unusual;
-    }  // switch
-  handle_unusual:
-    if ((tag == 0) || ((tag & 7) == 4)) {
-      CHK_(ptr);
-      ctx->SetLastTag(tag);
-      goto message_done;
-    }
-    ptr = UnknownFieldParse(
-        tag,
-        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-        ptr, ctx);
-    CHK_(ptr != nullptr);
-  }  // while
-message_done:
-  _impl_._has_bits_.Or(has_bits);
+const char* ROIVolumeNameResponse::_InternalParse(
+    const char* ptr, ::_pbi::ParseContext* ctx) {
+  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
   return ptr;
-failure:
-  ptr = nullptr;
-  goto message_done;
-#undef CHK_
 }
+
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<1, 2, 1, 45, 2> ROIVolumeNameResponse::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(ROIVolumeNameResponse, _impl_._has_bits_),
+    0, // no _extensions_
+    2, 8,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967292,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    2,  // num_field_entries
+    1,  // num_aux_entries
+    offsetof(decltype(_table_), aux_entries),
+    &_ROIVolumeNameResponse_default_instance_._instance,
+    ::_pbi::TcParser::GenericFallback,  // fallback
+  }, {{
+    // string name = 2;
+    {::_pbi::TcParser::FastUS1,
+     {18, 63, 0, PROTOBUF_FIELD_OFFSET(ROIVolumeNameResponse, _impl_.name_)}},
+    // .osirixgrpc.Status status = 1;
+    {::_pbi::TcParser::FastMtS1,
+     {10, 0, 0, PROTOBUF_FIELD_OFFSET(ROIVolumeNameResponse, _impl_.status_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // .osirixgrpc.Status status = 1;
+    {PROTOBUF_FIELD_OFFSET(ROIVolumeNameResponse, _impl_.status_), _Internal::kHasBitsOffset + 0, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
+    // string name = 2;
+    {PROTOBUF_FIELD_OFFSET(ROIVolumeNameResponse, _impl_.name_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+  }}, {{
+    {::_pbi::TcParser::GetTable<::osirixgrpc::Status>()},
+  }}, {{
+    "\40\0\4\0\0\0\0\0"
+    "osirixgrpc.ROIVolumeNameResponse"
+    "name"
+  }},
+};
 
 ::uint8_t* ROIVolumeNameResponse::_InternalSerialize(
-    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+    ::uint8_t* target,
+    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.ROIVolumeNameResponse)
   ::uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
+  (void)cached_has_bits;
 
   cached_has_bits = _impl_._has_bits_[0];
   // .osirixgrpc.Status status = 1;
   if (cached_has_bits & 0x00000001u) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(1, _Internal::status(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        1, _Internal::status(this),
         _Internal::status(this).GetCachedSize(), target, stream);
   }
 
   // string name = 2;
   if (!this->_internal_name().empty()) {
     const std::string& _s = this->_internal_name();
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE, "osirixgrpc.ROIVolumeNameResponse.name");
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "osirixgrpc.ROIVolumeNameResponse.name");
     target = stream->WriteStringMaybeAliased(2, _s, target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.ROIVolumeNameResponse)
   return target;
@@ -2261,29 +2280,29 @@ failure:
 
   // string name = 2;
   if (!this->_internal_name().empty()) {
-    total_size += 1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
                                     this->_internal_name());
   }
 
   // .osirixgrpc.Status status = 1;
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *_impl_.status_);
+    total_size +=
+        1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.status_);
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ROIVolumeNameResponse::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
-    ROIVolumeNameResponse::MergeImpl
+const ::google::protobuf::Message::ClassData ROIVolumeNameResponse::_class_data_ = {
+    ROIVolumeNameResponse::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ROIVolumeNameResponse::GetClassData() const { return &_class_data_; }
+const ::google::protobuf::Message::ClassData* ROIVolumeNameResponse::GetClassData() const {
+  return &_class_data_;
+}
 
-
-void ROIVolumeNameResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+void ROIVolumeNameResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<ROIVolumeNameResponse*>(&to_msg);
   auto& from = static_cast<const ROIVolumeNameResponse&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ROIVolumeNameResponse)
@@ -2298,7 +2317,7 @@ void ROIVolumeNameResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, 
     _this->_internal_mutable_status()->::osirixgrpc::Status::MergeFrom(
         from._internal_status());
   }
-  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void ROIVolumeNameResponse::CopyFrom(const ROIVolumeNameResponse& from) {
@@ -2308,22 +2327,24 @@ void ROIVolumeNameResponse::CopyFrom(const ROIVolumeNameResponse& from) {
   MergeFrom(from);
 }
 
-bool ROIVolumeNameResponse::IsInitialized() const {
+PROTOBUF_NOINLINE bool ROIVolumeNameResponse::IsInitialized() const {
   return true;
 }
 
-void ROIVolumeNameResponse::InternalSwap(ROIVolumeNameResponse* other) {
+::_pbi::CachedSize* ROIVolumeNameResponse::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void ROIVolumeNameResponse::InternalSwap(ROIVolumeNameResponse* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.name_, lhs_arena,
-                                       &other->_impl_.name_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.name_, &other->_impl_.name_, arena);
   swap(_impl_.status_, other->_impl_.status_);
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata ROIVolumeNameResponse::GetMetadata() const {
+::google::protobuf::Metadata ROIVolumeNameResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_roivolume_2eproto_getter, &descriptor_table_roivolume_2eproto_once,
       file_level_metadata_roivolume_2eproto[6]);
@@ -2341,68 +2362,70 @@ class ROIVolumeSetTextureRequest::_Internal {
   }
 };
 
-const ::osirixgrpc::ROIVolume&
-ROIVolumeSetTextureRequest::_Internal::roi(const ROIVolumeSetTextureRequest* msg) {
+const ::osirixgrpc::ROIVolume& ROIVolumeSetTextureRequest::_Internal::roi(const ROIVolumeSetTextureRequest* msg) {
   return *msg->_impl_.roi_;
 }
 void ROIVolumeSetTextureRequest::clear_roi() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   if (_impl_.roi_ != nullptr) _impl_.roi_->Clear();
   _impl_._has_bits_[0] &= ~0x00000001u;
 }
-ROIVolumeSetTextureRequest::ROIVolumeSetTextureRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
+ROIVolumeSetTextureRequest::ROIVolumeSetTextureRequest(::google::protobuf::Arena* arena)
+    : ::google::protobuf::Message(arena) {
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.ROIVolumeSetTextureRequest)
 }
-ROIVolumeSetTextureRequest::ROIVolumeSetTextureRequest(const ROIVolumeSetTextureRequest& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message() {
-  ROIVolumeSetTextureRequest* const _this = this; (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_}
-    , /*decltype(_impl_._cached_size_)*/{}
-    , decltype(_impl_.roi_){nullptr}
-    , decltype(_impl_.texture_) {}
-  };
+inline PROTOBUF_NDEBUG_INLINE ROIVolumeSetTextureRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0} {}
 
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_impl_.roi_ = new ::osirixgrpc::ROIVolume(*from._impl_.roi_);
-  }
-  _this->_impl_.texture_ = from._impl_.texture_;
+ROIVolumeSetTextureRequest::ROIVolumeSetTextureRequest(
+    ::google::protobuf::Arena* arena,
+    const ROIVolumeSetTextureRequest& from)
+    : ::google::protobuf::Message(arena) {
+  ROIVolumeSetTextureRequest* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.roi_ = (cached_has_bits & 0x00000001u)
+                ? CreateMaybeMessage<::osirixgrpc::ROIVolume>(arena, *from._impl_.roi_)
+                : nullptr;
+  _impl_.texture_ = from._impl_.texture_;
+
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.ROIVolumeSetTextureRequest)
 }
+inline PROTOBUF_NDEBUG_INLINE ROIVolumeSetTextureRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0} {}
 
 inline void ROIVolumeSetTextureRequest::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){}
-    , /*decltype(_impl_._cached_size_)*/{}
-    , decltype(_impl_.roi_){nullptr}
-    , decltype(_impl_.texture_) { false }
-
-  };
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, roi_),
+           0,
+           offsetof(Impl_, texture_) -
+               offsetof(Impl_, roi_) +
+               sizeof(Impl_::texture_));
 }
-
 ROIVolumeSetTextureRequest::~ROIVolumeSetTextureRequest() {
   // @@protoc_insertion_point(destructor:osirixgrpc.ROIVolumeSetTextureRequest)
-  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
-  (void)arena;
-    return;
-  }
+  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
   SharedDtor();
 }
-
 inline void ROIVolumeSetTextureRequest::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
-  if (this != internal_default_instance()) delete _impl_.roi_;
+  ABSL_DCHECK(GetArena() == nullptr);
+  delete _impl_.roi_;
+  _impl_.~Impl_();
 }
 
-void ROIVolumeSetTextureRequest::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
-}
-
-void ROIVolumeSetTextureRequest::Clear() {
+PROTOBUF_NOINLINE void ROIVolumeSetTextureRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.ROIVolumeSetTextureRequest)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -2414,69 +2437,64 @@ void ROIVolumeSetTextureRequest::Clear() {
   }
   _impl_.texture_ = false;
   _impl_._has_bits_.Clear();
-  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
-const char* ROIVolumeSetTextureRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
-#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  _Internal::HasBits has_bits{};
-  while (!ctx->Done(&ptr)) {
-    ::uint32_t tag;
-    ptr = ::_pbi::ReadTag(ptr, &tag);
-    switch (tag >> 3) {
-      // .osirixgrpc.ROIVolume roi = 1;
-      case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
-          ptr = ctx->ParseMessage(_internal_mutable_roi(), ptr);
-          CHK_(ptr);
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      // bool texture = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 16)) {
-          _impl_.texture_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
-          CHK_(ptr);
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      default:
-        goto handle_unusual;
-    }  // switch
-  handle_unusual:
-    if ((tag == 0) || ((tag & 7) == 4)) {
-      CHK_(ptr);
-      ctx->SetLastTag(tag);
-      goto message_done;
-    }
-    ptr = UnknownFieldParse(
-        tag,
-        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-        ptr, ctx);
-    CHK_(ptr != nullptr);
-  }  // while
-message_done:
-  _impl_._has_bits_.Or(has_bits);
+const char* ROIVolumeSetTextureRequest::_InternalParse(
+    const char* ptr, ::_pbi::ParseContext* ctx) {
+  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
   return ptr;
-failure:
-  ptr = nullptr;
-  goto message_done;
-#undef CHK_
 }
+
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<1, 2, 1, 0, 2> ROIVolumeSetTextureRequest::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(ROIVolumeSetTextureRequest, _impl_._has_bits_),
+    0, // no _extensions_
+    2, 8,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967292,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    2,  // num_field_entries
+    1,  // num_aux_entries
+    offsetof(decltype(_table_), aux_entries),
+    &_ROIVolumeSetTextureRequest_default_instance_._instance,
+    ::_pbi::TcParser::GenericFallback,  // fallback
+  }, {{
+    // bool texture = 2;
+    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(ROIVolumeSetTextureRequest, _impl_.texture_), 63>(),
+     {16, 63, 0, PROTOBUF_FIELD_OFFSET(ROIVolumeSetTextureRequest, _impl_.texture_)}},
+    // .osirixgrpc.ROIVolume roi = 1;
+    {::_pbi::TcParser::FastMtS1,
+     {10, 0, 0, PROTOBUF_FIELD_OFFSET(ROIVolumeSetTextureRequest, _impl_.roi_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // .osirixgrpc.ROIVolume roi = 1;
+    {PROTOBUF_FIELD_OFFSET(ROIVolumeSetTextureRequest, _impl_.roi_), _Internal::kHasBitsOffset + 0, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
+    // bool texture = 2;
+    {PROTOBUF_FIELD_OFFSET(ROIVolumeSetTextureRequest, _impl_.texture_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kBool)},
+  }}, {{
+    {::_pbi::TcParser::GetTable<::osirixgrpc::ROIVolume>()},
+  }}, {{
+  }},
+};
 
 ::uint8_t* ROIVolumeSetTextureRequest::_InternalSerialize(
-    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+    ::uint8_t* target,
+    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.ROIVolumeSetTextureRequest)
   ::uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
+  (void)cached_has_bits;
 
   cached_has_bits = _impl_._has_bits_[0];
   // .osirixgrpc.ROIVolume roi = 1;
   if (cached_has_bits & 0x00000001u) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(1, _Internal::roi(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        1, _Internal::roi(this),
         _Internal::roi(this).GetCachedSize(), target, stream);
   }
 
@@ -2488,8 +2506,9 @@ failure:
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.ROIVolumeSetTextureRequest)
   return target;
@@ -2506,9 +2525,8 @@ failure:
   // .osirixgrpc.ROIVolume roi = 1;
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *_impl_.roi_);
+    total_size +=
+        1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.roi_);
   }
 
   // bool texture = 2;
@@ -2519,14 +2537,15 @@ failure:
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ROIVolumeSetTextureRequest::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
-    ROIVolumeSetTextureRequest::MergeImpl
+const ::google::protobuf::Message::ClassData ROIVolumeSetTextureRequest::_class_data_ = {
+    ROIVolumeSetTextureRequest::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ROIVolumeSetTextureRequest::GetClassData() const { return &_class_data_; }
+const ::google::protobuf::Message::ClassData* ROIVolumeSetTextureRequest::GetClassData() const {
+  return &_class_data_;
+}
 
-
-void ROIVolumeSetTextureRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+void ROIVolumeSetTextureRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<ROIVolumeSetTextureRequest*>(&to_msg);
   auto& from = static_cast<const ROIVolumeSetTextureRequest&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ROIVolumeSetTextureRequest)
@@ -2541,7 +2560,7 @@ void ROIVolumeSetTextureRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_
   if (from._internal_texture() != 0) {
     _this->_internal_set_texture(from._internal_texture());
   }
-  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void ROIVolumeSetTextureRequest::CopyFrom(const ROIVolumeSetTextureRequest& from) {
@@ -2551,15 +2570,18 @@ void ROIVolumeSetTextureRequest::CopyFrom(const ROIVolumeSetTextureRequest& from
   MergeFrom(from);
 }
 
-bool ROIVolumeSetTextureRequest::IsInitialized() const {
+PROTOBUF_NOINLINE bool ROIVolumeSetTextureRequest::IsInitialized() const {
   return true;
 }
 
-void ROIVolumeSetTextureRequest::InternalSwap(ROIVolumeSetTextureRequest* other) {
+::_pbi::CachedSize* ROIVolumeSetTextureRequest::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void ROIVolumeSetTextureRequest::InternalSwap(ROIVolumeSetTextureRequest* PROTOBUF_RESTRICT other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+  ::google::protobuf::internal::memswap<
       PROTOBUF_FIELD_OFFSET(ROIVolumeSetTextureRequest, _impl_.texture_)
       + sizeof(ROIVolumeSetTextureRequest::_impl_.texture_)
       - PROTOBUF_FIELD_OFFSET(ROIVolumeSetTextureRequest, _impl_.roi_)>(
@@ -2567,7 +2589,7 @@ void ROIVolumeSetTextureRequest::InternalSwap(ROIVolumeSetTextureRequest* other)
           reinterpret_cast<char*>(&other->_impl_.roi_));
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata ROIVolumeSetTextureRequest::GetMetadata() const {
+::google::protobuf::Metadata ROIVolumeSetTextureRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_roivolume_2eproto_getter, &descriptor_table_roivolume_2eproto_once,
       file_level_metadata_roivolume_2eproto[7]);
@@ -2585,78 +2607,76 @@ class ROIVolumeSetColorRequest::_Internal {
   }
 };
 
-const ::osirixgrpc::ROIVolume&
-ROIVolumeSetColorRequest::_Internal::roi(const ROIVolumeSetColorRequest* msg) {
+const ::osirixgrpc::ROIVolume& ROIVolumeSetColorRequest::_Internal::roi(const ROIVolumeSetColorRequest* msg) {
   return *msg->_impl_.roi_;
 }
 void ROIVolumeSetColorRequest::clear_roi() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   if (_impl_.roi_ != nullptr) _impl_.roi_->Clear();
   _impl_._has_bits_[0] &= ~0x00000001u;
 }
-ROIVolumeSetColorRequest::ROIVolumeSetColorRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
+ROIVolumeSetColorRequest::ROIVolumeSetColorRequest(::google::protobuf::Arena* arena)
+    : ::google::protobuf::Message(arena) {
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.ROIVolumeSetColorRequest)
 }
-ROIVolumeSetColorRequest::ROIVolumeSetColorRequest(const ROIVolumeSetColorRequest& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message() {
-  ROIVolumeSetColorRequest* const _this = this; (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_}
-    , /*decltype(_impl_._cached_size_)*/{}
-    , decltype(_impl_.roi_){nullptr}
-    , decltype(_impl_.r_) {}
+inline PROTOBUF_NDEBUG_INLINE ROIVolumeSetColorRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0} {}
 
-    , decltype(_impl_.g_) {}
+ROIVolumeSetColorRequest::ROIVolumeSetColorRequest(
+    ::google::protobuf::Arena* arena,
+    const ROIVolumeSetColorRequest& from)
+    : ::google::protobuf::Message(arena) {
+  ROIVolumeSetColorRequest* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.roi_ = (cached_has_bits & 0x00000001u)
+                ? CreateMaybeMessage<::osirixgrpc::ROIVolume>(arena, *from._impl_.roi_)
+                : nullptr;
+  ::memcpy(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, r_),
+           reinterpret_cast<const char *>(&from._impl_) +
+               offsetof(Impl_, r_),
+           offsetof(Impl_, b_) -
+               offsetof(Impl_, r_) +
+               sizeof(Impl_::b_));
 
-    , decltype(_impl_.b_) {}
-  };
-
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_impl_.roi_ = new ::osirixgrpc::ROIVolume(*from._impl_.roi_);
-  }
-  ::memcpy(&_impl_.r_, &from._impl_.r_,
-    static_cast<::size_t>(reinterpret_cast<char*>(&_impl_.b_) -
-    reinterpret_cast<char*>(&_impl_.r_)) + sizeof(_impl_.b_));
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.ROIVolumeSetColorRequest)
 }
+inline PROTOBUF_NDEBUG_INLINE ROIVolumeSetColorRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0} {}
 
 inline void ROIVolumeSetColorRequest::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){}
-    , /*decltype(_impl_._cached_size_)*/{}
-    , decltype(_impl_.roi_){nullptr}
-    , decltype(_impl_.r_) { 0 }
-
-    , decltype(_impl_.g_) { 0 }
-
-    , decltype(_impl_.b_) { 0 }
-
-  };
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, roi_),
+           0,
+           offsetof(Impl_, b_) -
+               offsetof(Impl_, roi_) +
+               sizeof(Impl_::b_));
 }
-
 ROIVolumeSetColorRequest::~ROIVolumeSetColorRequest() {
   // @@protoc_insertion_point(destructor:osirixgrpc.ROIVolumeSetColorRequest)
-  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
-  (void)arena;
-    return;
-  }
+  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
   SharedDtor();
 }
-
 inline void ROIVolumeSetColorRequest::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
-  if (this != internal_default_instance()) delete _impl_.roi_;
+  ABSL_DCHECK(GetArena() == nullptr);
+  delete _impl_.roi_;
+  _impl_.~Impl_();
 }
 
-void ROIVolumeSetColorRequest::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
-}
-
-void ROIVolumeSetColorRequest::Clear() {
+PROTOBUF_NOINLINE void ROIVolumeSetColorRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.ROIVolumeSetColorRequest)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -2670,92 +2690,82 @@ void ROIVolumeSetColorRequest::Clear() {
       reinterpret_cast<char*>(&_impl_.b_) -
       reinterpret_cast<char*>(&_impl_.r_)) + sizeof(_impl_.b_));
   _impl_._has_bits_.Clear();
-  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
-const char* ROIVolumeSetColorRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
-#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  _Internal::HasBits has_bits{};
-  while (!ctx->Done(&ptr)) {
-    ::uint32_t tag;
-    ptr = ::_pbi::ReadTag(ptr, &tag);
-    switch (tag >> 3) {
-      // .osirixgrpc.ROIVolume roi = 1;
-      case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
-          ptr = ctx->ParseMessage(_internal_mutable_roi(), ptr);
-          CHK_(ptr);
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      // float r = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 21)) {
-          _impl_.r_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
-          ptr += sizeof(float);
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      // float g = 3;
-      case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 29)) {
-          _impl_.g_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
-          ptr += sizeof(float);
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      // float b = 4;
-      case 4:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 37)) {
-          _impl_.b_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
-          ptr += sizeof(float);
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      default:
-        goto handle_unusual;
-    }  // switch
-  handle_unusual:
-    if ((tag == 0) || ((tag & 7) == 4)) {
-      CHK_(ptr);
-      ctx->SetLastTag(tag);
-      goto message_done;
-    }
-    ptr = UnknownFieldParse(
-        tag,
-        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-        ptr, ctx);
-    CHK_(ptr != nullptr);
-  }  // while
-message_done:
-  _impl_._has_bits_.Or(has_bits);
+const char* ROIVolumeSetColorRequest::_InternalParse(
+    const char* ptr, ::_pbi::ParseContext* ctx) {
+  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
   return ptr;
-failure:
-  ptr = nullptr;
-  goto message_done;
-#undef CHK_
 }
+
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<2, 4, 1, 0, 2> ROIVolumeSetColorRequest::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(ROIVolumeSetColorRequest, _impl_._has_bits_),
+    0, // no _extensions_
+    4, 24,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967280,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    4,  // num_field_entries
+    1,  // num_aux_entries
+    offsetof(decltype(_table_), aux_entries),
+    &_ROIVolumeSetColorRequest_default_instance_._instance,
+    ::_pbi::TcParser::GenericFallback,  // fallback
+  }, {{
+    // float b = 4;
+    {::_pbi::TcParser::FastF32S1,
+     {37, 63, 0, PROTOBUF_FIELD_OFFSET(ROIVolumeSetColorRequest, _impl_.b_)}},
+    // .osirixgrpc.ROIVolume roi = 1;
+    {::_pbi::TcParser::FastMtS1,
+     {10, 0, 0, PROTOBUF_FIELD_OFFSET(ROIVolumeSetColorRequest, _impl_.roi_)}},
+    // float r = 2;
+    {::_pbi::TcParser::FastF32S1,
+     {21, 63, 0, PROTOBUF_FIELD_OFFSET(ROIVolumeSetColorRequest, _impl_.r_)}},
+    // float g = 3;
+    {::_pbi::TcParser::FastF32S1,
+     {29, 63, 0, PROTOBUF_FIELD_OFFSET(ROIVolumeSetColorRequest, _impl_.g_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // .osirixgrpc.ROIVolume roi = 1;
+    {PROTOBUF_FIELD_OFFSET(ROIVolumeSetColorRequest, _impl_.roi_), _Internal::kHasBitsOffset + 0, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
+    // float r = 2;
+    {PROTOBUF_FIELD_OFFSET(ROIVolumeSetColorRequest, _impl_.r_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kFloat)},
+    // float g = 3;
+    {PROTOBUF_FIELD_OFFSET(ROIVolumeSetColorRequest, _impl_.g_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kFloat)},
+    // float b = 4;
+    {PROTOBUF_FIELD_OFFSET(ROIVolumeSetColorRequest, _impl_.b_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kFloat)},
+  }}, {{
+    {::_pbi::TcParser::GetTable<::osirixgrpc::ROIVolume>()},
+  }}, {{
+  }},
+};
 
 ::uint8_t* ROIVolumeSetColorRequest::_InternalSerialize(
-    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+    ::uint8_t* target,
+    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.ROIVolumeSetColorRequest)
   ::uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
+  (void)cached_has_bits;
 
   cached_has_bits = _impl_._has_bits_[0];
   // .osirixgrpc.ROIVolume roi = 1;
   if (cached_has_bits & 0x00000001u) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(1, _Internal::roi(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        1, _Internal::roi(this),
         _Internal::roi(this).GetCachedSize(), target, stream);
   }
 
   // float r = 2;
-  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  static_assert(sizeof(::uint32_t) == sizeof(float),
+                "Code assumes ::uint32_t and float are the same size.");
   float tmp_r = this->_internal_r();
   ::uint32_t raw_r;
   memcpy(&raw_r, &tmp_r, sizeof(tmp_r));
@@ -2766,7 +2776,8 @@ failure:
   }
 
   // float g = 3;
-  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  static_assert(sizeof(::uint32_t) == sizeof(float),
+                "Code assumes ::uint32_t and float are the same size.");
   float tmp_g = this->_internal_g();
   ::uint32_t raw_g;
   memcpy(&raw_g, &tmp_g, sizeof(tmp_g));
@@ -2777,7 +2788,8 @@ failure:
   }
 
   // float b = 4;
-  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  static_assert(sizeof(::uint32_t) == sizeof(float),
+                "Code assumes ::uint32_t and float are the same size.");
   float tmp_b = this->_internal_b();
   ::uint32_t raw_b;
   memcpy(&raw_b, &tmp_b, sizeof(tmp_b));
@@ -2788,8 +2800,9 @@ failure:
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.ROIVolumeSetColorRequest)
   return target;
@@ -2806,13 +2819,13 @@ failure:
   // .osirixgrpc.ROIVolume roi = 1;
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *_impl_.roi_);
+    total_size +=
+        1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.roi_);
   }
 
   // float r = 2;
-  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  static_assert(sizeof(::uint32_t) == sizeof(float),
+                "Code assumes ::uint32_t and float are the same size.");
   float tmp_r = this->_internal_r();
   ::uint32_t raw_r;
   memcpy(&raw_r, &tmp_r, sizeof(tmp_r));
@@ -2821,7 +2834,8 @@ failure:
   }
 
   // float g = 3;
-  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  static_assert(sizeof(::uint32_t) == sizeof(float),
+                "Code assumes ::uint32_t and float are the same size.");
   float tmp_g = this->_internal_g();
   ::uint32_t raw_g;
   memcpy(&raw_g, &tmp_g, sizeof(tmp_g));
@@ -2830,7 +2844,8 @@ failure:
   }
 
   // float b = 4;
-  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  static_assert(sizeof(::uint32_t) == sizeof(float),
+                "Code assumes ::uint32_t and float are the same size.");
   float tmp_b = this->_internal_b();
   ::uint32_t raw_b;
   memcpy(&raw_b, &tmp_b, sizeof(tmp_b));
@@ -2841,14 +2856,15 @@ failure:
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ROIVolumeSetColorRequest::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
-    ROIVolumeSetColorRequest::MergeImpl
+const ::google::protobuf::Message::ClassData ROIVolumeSetColorRequest::_class_data_ = {
+    ROIVolumeSetColorRequest::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ROIVolumeSetColorRequest::GetClassData() const { return &_class_data_; }
+const ::google::protobuf::Message::ClassData* ROIVolumeSetColorRequest::GetClassData() const {
+  return &_class_data_;
+}
 
-
-void ROIVolumeSetColorRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+void ROIVolumeSetColorRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<ROIVolumeSetColorRequest*>(&to_msg);
   auto& from = static_cast<const ROIVolumeSetColorRequest&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ROIVolumeSetColorRequest)
@@ -2860,28 +2876,31 @@ void ROIVolumeSetColorRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_ms
     _this->_internal_mutable_roi()->::osirixgrpc::ROIVolume::MergeFrom(
         from._internal_roi());
   }
-  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  static_assert(sizeof(::uint32_t) == sizeof(float),
+                "Code assumes ::uint32_t and float are the same size.");
   float tmp_r = from._internal_r();
   ::uint32_t raw_r;
   memcpy(&raw_r, &tmp_r, sizeof(tmp_r));
   if (raw_r != 0) {
     _this->_internal_set_r(from._internal_r());
   }
-  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  static_assert(sizeof(::uint32_t) == sizeof(float),
+                "Code assumes ::uint32_t and float are the same size.");
   float tmp_g = from._internal_g();
   ::uint32_t raw_g;
   memcpy(&raw_g, &tmp_g, sizeof(tmp_g));
   if (raw_g != 0) {
     _this->_internal_set_g(from._internal_g());
   }
-  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  static_assert(sizeof(::uint32_t) == sizeof(float),
+                "Code assumes ::uint32_t and float are the same size.");
   float tmp_b = from._internal_b();
   ::uint32_t raw_b;
   memcpy(&raw_b, &tmp_b, sizeof(tmp_b));
   if (raw_b != 0) {
     _this->_internal_set_b(from._internal_b());
   }
-  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void ROIVolumeSetColorRequest::CopyFrom(const ROIVolumeSetColorRequest& from) {
@@ -2891,15 +2910,18 @@ void ROIVolumeSetColorRequest::CopyFrom(const ROIVolumeSetColorRequest& from) {
   MergeFrom(from);
 }
 
-bool ROIVolumeSetColorRequest::IsInitialized() const {
+PROTOBUF_NOINLINE bool ROIVolumeSetColorRequest::IsInitialized() const {
   return true;
 }
 
-void ROIVolumeSetColorRequest::InternalSwap(ROIVolumeSetColorRequest* other) {
+::_pbi::CachedSize* ROIVolumeSetColorRequest::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void ROIVolumeSetColorRequest::InternalSwap(ROIVolumeSetColorRequest* PROTOBUF_RESTRICT other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+  ::google::protobuf::internal::memswap<
       PROTOBUF_FIELD_OFFSET(ROIVolumeSetColorRequest, _impl_.b_)
       + sizeof(ROIVolumeSetColorRequest::_impl_.b_)
       - PROTOBUF_FIELD_OFFSET(ROIVolumeSetColorRequest, _impl_.roi_)>(
@@ -2907,7 +2929,7 @@ void ROIVolumeSetColorRequest::InternalSwap(ROIVolumeSetColorRequest* other) {
           reinterpret_cast<char*>(&other->_impl_.roi_));
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata ROIVolumeSetColorRequest::GetMetadata() const {
+::google::protobuf::Metadata ROIVolumeSetColorRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_roivolume_2eproto_getter, &descriptor_table_roivolume_2eproto_once,
       file_level_metadata_roivolume_2eproto[8]);
@@ -2925,68 +2947,70 @@ class ROIVolumeSetOpacityRequest::_Internal {
   }
 };
 
-const ::osirixgrpc::ROIVolume&
-ROIVolumeSetOpacityRequest::_Internal::roi(const ROIVolumeSetOpacityRequest* msg) {
+const ::osirixgrpc::ROIVolume& ROIVolumeSetOpacityRequest::_Internal::roi(const ROIVolumeSetOpacityRequest* msg) {
   return *msg->_impl_.roi_;
 }
 void ROIVolumeSetOpacityRequest::clear_roi() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   if (_impl_.roi_ != nullptr) _impl_.roi_->Clear();
   _impl_._has_bits_[0] &= ~0x00000001u;
 }
-ROIVolumeSetOpacityRequest::ROIVolumeSetOpacityRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
+ROIVolumeSetOpacityRequest::ROIVolumeSetOpacityRequest(::google::protobuf::Arena* arena)
+    : ::google::protobuf::Message(arena) {
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.ROIVolumeSetOpacityRequest)
 }
-ROIVolumeSetOpacityRequest::ROIVolumeSetOpacityRequest(const ROIVolumeSetOpacityRequest& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message() {
-  ROIVolumeSetOpacityRequest* const _this = this; (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_}
-    , /*decltype(_impl_._cached_size_)*/{}
-    , decltype(_impl_.roi_){nullptr}
-    , decltype(_impl_.opacity_) {}
-  };
+inline PROTOBUF_NDEBUG_INLINE ROIVolumeSetOpacityRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0} {}
 
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_impl_.roi_ = new ::osirixgrpc::ROIVolume(*from._impl_.roi_);
-  }
-  _this->_impl_.opacity_ = from._impl_.opacity_;
+ROIVolumeSetOpacityRequest::ROIVolumeSetOpacityRequest(
+    ::google::protobuf::Arena* arena,
+    const ROIVolumeSetOpacityRequest& from)
+    : ::google::protobuf::Message(arena) {
+  ROIVolumeSetOpacityRequest* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.roi_ = (cached_has_bits & 0x00000001u)
+                ? CreateMaybeMessage<::osirixgrpc::ROIVolume>(arena, *from._impl_.roi_)
+                : nullptr;
+  _impl_.opacity_ = from._impl_.opacity_;
+
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.ROIVolumeSetOpacityRequest)
 }
+inline PROTOBUF_NDEBUG_INLINE ROIVolumeSetOpacityRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0} {}
 
 inline void ROIVolumeSetOpacityRequest::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){}
-    , /*decltype(_impl_._cached_size_)*/{}
-    , decltype(_impl_.roi_){nullptr}
-    , decltype(_impl_.opacity_) { 0 }
-
-  };
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, roi_),
+           0,
+           offsetof(Impl_, opacity_) -
+               offsetof(Impl_, roi_) +
+               sizeof(Impl_::opacity_));
 }
-
 ROIVolumeSetOpacityRequest::~ROIVolumeSetOpacityRequest() {
   // @@protoc_insertion_point(destructor:osirixgrpc.ROIVolumeSetOpacityRequest)
-  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
-  (void)arena;
-    return;
-  }
+  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
   SharedDtor();
 }
-
 inline void ROIVolumeSetOpacityRequest::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
-  if (this != internal_default_instance()) delete _impl_.roi_;
+  ABSL_DCHECK(GetArena() == nullptr);
+  delete _impl_.roi_;
+  _impl_.~Impl_();
 }
 
-void ROIVolumeSetOpacityRequest::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
-}
-
-void ROIVolumeSetOpacityRequest::Clear() {
+PROTOBUF_NOINLINE void ROIVolumeSetOpacityRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.ROIVolumeSetOpacityRequest)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -2998,74 +3022,70 @@ void ROIVolumeSetOpacityRequest::Clear() {
   }
   _impl_.opacity_ = 0;
   _impl_._has_bits_.Clear();
-  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
-const char* ROIVolumeSetOpacityRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
-#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  _Internal::HasBits has_bits{};
-  while (!ctx->Done(&ptr)) {
-    ::uint32_t tag;
-    ptr = ::_pbi::ReadTag(ptr, &tag);
-    switch (tag >> 3) {
-      // .osirixgrpc.ROIVolume roi = 1;
-      case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
-          ptr = ctx->ParseMessage(_internal_mutable_roi(), ptr);
-          CHK_(ptr);
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      // float opacity = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 21)) {
-          _impl_.opacity_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
-          ptr += sizeof(float);
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      default:
-        goto handle_unusual;
-    }  // switch
-  handle_unusual:
-    if ((tag == 0) || ((tag & 7) == 4)) {
-      CHK_(ptr);
-      ctx->SetLastTag(tag);
-      goto message_done;
-    }
-    ptr = UnknownFieldParse(
-        tag,
-        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-        ptr, ctx);
-    CHK_(ptr != nullptr);
-  }  // while
-message_done:
-  _impl_._has_bits_.Or(has_bits);
+const char* ROIVolumeSetOpacityRequest::_InternalParse(
+    const char* ptr, ::_pbi::ParseContext* ctx) {
+  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
   return ptr;
-failure:
-  ptr = nullptr;
-  goto message_done;
-#undef CHK_
 }
+
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<1, 2, 1, 0, 2> ROIVolumeSetOpacityRequest::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(ROIVolumeSetOpacityRequest, _impl_._has_bits_),
+    0, // no _extensions_
+    2, 8,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967292,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    2,  // num_field_entries
+    1,  // num_aux_entries
+    offsetof(decltype(_table_), aux_entries),
+    &_ROIVolumeSetOpacityRequest_default_instance_._instance,
+    ::_pbi::TcParser::GenericFallback,  // fallback
+  }, {{
+    // float opacity = 2;
+    {::_pbi::TcParser::FastF32S1,
+     {21, 63, 0, PROTOBUF_FIELD_OFFSET(ROIVolumeSetOpacityRequest, _impl_.opacity_)}},
+    // .osirixgrpc.ROIVolume roi = 1;
+    {::_pbi::TcParser::FastMtS1,
+     {10, 0, 0, PROTOBUF_FIELD_OFFSET(ROIVolumeSetOpacityRequest, _impl_.roi_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // .osirixgrpc.ROIVolume roi = 1;
+    {PROTOBUF_FIELD_OFFSET(ROIVolumeSetOpacityRequest, _impl_.roi_), _Internal::kHasBitsOffset + 0, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
+    // float opacity = 2;
+    {PROTOBUF_FIELD_OFFSET(ROIVolumeSetOpacityRequest, _impl_.opacity_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kFloat)},
+  }}, {{
+    {::_pbi::TcParser::GetTable<::osirixgrpc::ROIVolume>()},
+  }}, {{
+  }},
+};
 
 ::uint8_t* ROIVolumeSetOpacityRequest::_InternalSerialize(
-    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+    ::uint8_t* target,
+    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.ROIVolumeSetOpacityRequest)
   ::uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
+  (void)cached_has_bits;
 
   cached_has_bits = _impl_._has_bits_[0];
   // .osirixgrpc.ROIVolume roi = 1;
   if (cached_has_bits & 0x00000001u) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(1, _Internal::roi(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        1, _Internal::roi(this),
         _Internal::roi(this).GetCachedSize(), target, stream);
   }
 
   // float opacity = 2;
-  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  static_assert(sizeof(::uint32_t) == sizeof(float),
+                "Code assumes ::uint32_t and float are the same size.");
   float tmp_opacity = this->_internal_opacity();
   ::uint32_t raw_opacity;
   memcpy(&raw_opacity, &tmp_opacity, sizeof(tmp_opacity));
@@ -3076,8 +3096,9 @@ failure:
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.ROIVolumeSetOpacityRequest)
   return target;
@@ -3094,13 +3115,13 @@ failure:
   // .osirixgrpc.ROIVolume roi = 1;
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *_impl_.roi_);
+    total_size +=
+        1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.roi_);
   }
 
   // float opacity = 2;
-  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  static_assert(sizeof(::uint32_t) == sizeof(float),
+                "Code assumes ::uint32_t and float are the same size.");
   float tmp_opacity = this->_internal_opacity();
   ::uint32_t raw_opacity;
   memcpy(&raw_opacity, &tmp_opacity, sizeof(tmp_opacity));
@@ -3111,14 +3132,15 @@ failure:
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ROIVolumeSetOpacityRequest::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
-    ROIVolumeSetOpacityRequest::MergeImpl
+const ::google::protobuf::Message::ClassData ROIVolumeSetOpacityRequest::_class_data_ = {
+    ROIVolumeSetOpacityRequest::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ROIVolumeSetOpacityRequest::GetClassData() const { return &_class_data_; }
+const ::google::protobuf::Message::ClassData* ROIVolumeSetOpacityRequest::GetClassData() const {
+  return &_class_data_;
+}
 
-
-void ROIVolumeSetOpacityRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+void ROIVolumeSetOpacityRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<ROIVolumeSetOpacityRequest*>(&to_msg);
   auto& from = static_cast<const ROIVolumeSetOpacityRequest&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ROIVolumeSetOpacityRequest)
@@ -3130,14 +3152,15 @@ void ROIVolumeSetOpacityRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_
     _this->_internal_mutable_roi()->::osirixgrpc::ROIVolume::MergeFrom(
         from._internal_roi());
   }
-  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  static_assert(sizeof(::uint32_t) == sizeof(float),
+                "Code assumes ::uint32_t and float are the same size.");
   float tmp_opacity = from._internal_opacity();
   ::uint32_t raw_opacity;
   memcpy(&raw_opacity, &tmp_opacity, sizeof(tmp_opacity));
   if (raw_opacity != 0) {
     _this->_internal_set_opacity(from._internal_opacity());
   }
-  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void ROIVolumeSetOpacityRequest::CopyFrom(const ROIVolumeSetOpacityRequest& from) {
@@ -3147,15 +3170,18 @@ void ROIVolumeSetOpacityRequest::CopyFrom(const ROIVolumeSetOpacityRequest& from
   MergeFrom(from);
 }
 
-bool ROIVolumeSetOpacityRequest::IsInitialized() const {
+PROTOBUF_NOINLINE bool ROIVolumeSetOpacityRequest::IsInitialized() const {
   return true;
 }
 
-void ROIVolumeSetOpacityRequest::InternalSwap(ROIVolumeSetOpacityRequest* other) {
+::_pbi::CachedSize* ROIVolumeSetOpacityRequest::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void ROIVolumeSetOpacityRequest::InternalSwap(ROIVolumeSetOpacityRequest* PROTOBUF_RESTRICT other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+  ::google::protobuf::internal::memswap<
       PROTOBUF_FIELD_OFFSET(ROIVolumeSetOpacityRequest, _impl_.opacity_)
       + sizeof(ROIVolumeSetOpacityRequest::_impl_.opacity_)
       - PROTOBUF_FIELD_OFFSET(ROIVolumeSetOpacityRequest, _impl_.roi_)>(
@@ -3163,7 +3189,7 @@ void ROIVolumeSetOpacityRequest::InternalSwap(ROIVolumeSetOpacityRequest* other)
           reinterpret_cast<char*>(&other->_impl_.roi_));
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata ROIVolumeSetOpacityRequest::GetMetadata() const {
+::google::protobuf::Metadata ROIVolumeSetOpacityRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_roivolume_2eproto_getter, &descriptor_table_roivolume_2eproto_once,
       file_level_metadata_roivolume_2eproto[9]);
@@ -3181,68 +3207,70 @@ class ROIVolumeSetFactorRequest::_Internal {
   }
 };
 
-const ::osirixgrpc::ROIVolume&
-ROIVolumeSetFactorRequest::_Internal::roi(const ROIVolumeSetFactorRequest* msg) {
+const ::osirixgrpc::ROIVolume& ROIVolumeSetFactorRequest::_Internal::roi(const ROIVolumeSetFactorRequest* msg) {
   return *msg->_impl_.roi_;
 }
 void ROIVolumeSetFactorRequest::clear_roi() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   if (_impl_.roi_ != nullptr) _impl_.roi_->Clear();
   _impl_._has_bits_[0] &= ~0x00000001u;
 }
-ROIVolumeSetFactorRequest::ROIVolumeSetFactorRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
+ROIVolumeSetFactorRequest::ROIVolumeSetFactorRequest(::google::protobuf::Arena* arena)
+    : ::google::protobuf::Message(arena) {
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.ROIVolumeSetFactorRequest)
 }
-ROIVolumeSetFactorRequest::ROIVolumeSetFactorRequest(const ROIVolumeSetFactorRequest& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message() {
-  ROIVolumeSetFactorRequest* const _this = this; (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_}
-    , /*decltype(_impl_._cached_size_)*/{}
-    , decltype(_impl_.roi_){nullptr}
-    , decltype(_impl_.factor_) {}
-  };
+inline PROTOBUF_NDEBUG_INLINE ROIVolumeSetFactorRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0} {}
 
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_impl_.roi_ = new ::osirixgrpc::ROIVolume(*from._impl_.roi_);
-  }
-  _this->_impl_.factor_ = from._impl_.factor_;
+ROIVolumeSetFactorRequest::ROIVolumeSetFactorRequest(
+    ::google::protobuf::Arena* arena,
+    const ROIVolumeSetFactorRequest& from)
+    : ::google::protobuf::Message(arena) {
+  ROIVolumeSetFactorRequest* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.roi_ = (cached_has_bits & 0x00000001u)
+                ? CreateMaybeMessage<::osirixgrpc::ROIVolume>(arena, *from._impl_.roi_)
+                : nullptr;
+  _impl_.factor_ = from._impl_.factor_;
+
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.ROIVolumeSetFactorRequest)
 }
+inline PROTOBUF_NDEBUG_INLINE ROIVolumeSetFactorRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0} {}
 
 inline void ROIVolumeSetFactorRequest::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){}
-    , /*decltype(_impl_._cached_size_)*/{}
-    , decltype(_impl_.roi_){nullptr}
-    , decltype(_impl_.factor_) { 0 }
-
-  };
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, roi_),
+           0,
+           offsetof(Impl_, factor_) -
+               offsetof(Impl_, roi_) +
+               sizeof(Impl_::factor_));
 }
-
 ROIVolumeSetFactorRequest::~ROIVolumeSetFactorRequest() {
   // @@protoc_insertion_point(destructor:osirixgrpc.ROIVolumeSetFactorRequest)
-  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
-  (void)arena;
-    return;
-  }
+  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
   SharedDtor();
 }
-
 inline void ROIVolumeSetFactorRequest::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
-  if (this != internal_default_instance()) delete _impl_.roi_;
+  ABSL_DCHECK(GetArena() == nullptr);
+  delete _impl_.roi_;
+  _impl_.~Impl_();
 }
 
-void ROIVolumeSetFactorRequest::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
-}
-
-void ROIVolumeSetFactorRequest::Clear() {
+PROTOBUF_NOINLINE void ROIVolumeSetFactorRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.ROIVolumeSetFactorRequest)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -3254,74 +3282,70 @@ void ROIVolumeSetFactorRequest::Clear() {
   }
   _impl_.factor_ = 0;
   _impl_._has_bits_.Clear();
-  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
-const char* ROIVolumeSetFactorRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
-#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  _Internal::HasBits has_bits{};
-  while (!ctx->Done(&ptr)) {
-    ::uint32_t tag;
-    ptr = ::_pbi::ReadTag(ptr, &tag);
-    switch (tag >> 3) {
-      // .osirixgrpc.ROIVolume roi = 1;
-      case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
-          ptr = ctx->ParseMessage(_internal_mutable_roi(), ptr);
-          CHK_(ptr);
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      // float factor = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 21)) {
-          _impl_.factor_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
-          ptr += sizeof(float);
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      default:
-        goto handle_unusual;
-    }  // switch
-  handle_unusual:
-    if ((tag == 0) || ((tag & 7) == 4)) {
-      CHK_(ptr);
-      ctx->SetLastTag(tag);
-      goto message_done;
-    }
-    ptr = UnknownFieldParse(
-        tag,
-        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-        ptr, ctx);
-    CHK_(ptr != nullptr);
-  }  // while
-message_done:
-  _impl_._has_bits_.Or(has_bits);
+const char* ROIVolumeSetFactorRequest::_InternalParse(
+    const char* ptr, ::_pbi::ParseContext* ctx) {
+  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
   return ptr;
-failure:
-  ptr = nullptr;
-  goto message_done;
-#undef CHK_
 }
+
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<1, 2, 1, 0, 2> ROIVolumeSetFactorRequest::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(ROIVolumeSetFactorRequest, _impl_._has_bits_),
+    0, // no _extensions_
+    2, 8,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967292,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    2,  // num_field_entries
+    1,  // num_aux_entries
+    offsetof(decltype(_table_), aux_entries),
+    &_ROIVolumeSetFactorRequest_default_instance_._instance,
+    ::_pbi::TcParser::GenericFallback,  // fallback
+  }, {{
+    // float factor = 2;
+    {::_pbi::TcParser::FastF32S1,
+     {21, 63, 0, PROTOBUF_FIELD_OFFSET(ROIVolumeSetFactorRequest, _impl_.factor_)}},
+    // .osirixgrpc.ROIVolume roi = 1;
+    {::_pbi::TcParser::FastMtS1,
+     {10, 0, 0, PROTOBUF_FIELD_OFFSET(ROIVolumeSetFactorRequest, _impl_.roi_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // .osirixgrpc.ROIVolume roi = 1;
+    {PROTOBUF_FIELD_OFFSET(ROIVolumeSetFactorRequest, _impl_.roi_), _Internal::kHasBitsOffset + 0, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
+    // float factor = 2;
+    {PROTOBUF_FIELD_OFFSET(ROIVolumeSetFactorRequest, _impl_.factor_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kFloat)},
+  }}, {{
+    {::_pbi::TcParser::GetTable<::osirixgrpc::ROIVolume>()},
+  }}, {{
+  }},
+};
 
 ::uint8_t* ROIVolumeSetFactorRequest::_InternalSerialize(
-    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+    ::uint8_t* target,
+    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.ROIVolumeSetFactorRequest)
   ::uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
+  (void)cached_has_bits;
 
   cached_has_bits = _impl_._has_bits_[0];
   // .osirixgrpc.ROIVolume roi = 1;
   if (cached_has_bits & 0x00000001u) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(1, _Internal::roi(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        1, _Internal::roi(this),
         _Internal::roi(this).GetCachedSize(), target, stream);
   }
 
   // float factor = 2;
-  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  static_assert(sizeof(::uint32_t) == sizeof(float),
+                "Code assumes ::uint32_t and float are the same size.");
   float tmp_factor = this->_internal_factor();
   ::uint32_t raw_factor;
   memcpy(&raw_factor, &tmp_factor, sizeof(tmp_factor));
@@ -3332,8 +3356,9 @@ failure:
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.ROIVolumeSetFactorRequest)
   return target;
@@ -3350,13 +3375,13 @@ failure:
   // .osirixgrpc.ROIVolume roi = 1;
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *_impl_.roi_);
+    total_size +=
+        1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.roi_);
   }
 
   // float factor = 2;
-  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  static_assert(sizeof(::uint32_t) == sizeof(float),
+                "Code assumes ::uint32_t and float are the same size.");
   float tmp_factor = this->_internal_factor();
   ::uint32_t raw_factor;
   memcpy(&raw_factor, &tmp_factor, sizeof(tmp_factor));
@@ -3367,14 +3392,15 @@ failure:
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ROIVolumeSetFactorRequest::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
-    ROIVolumeSetFactorRequest::MergeImpl
+const ::google::protobuf::Message::ClassData ROIVolumeSetFactorRequest::_class_data_ = {
+    ROIVolumeSetFactorRequest::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ROIVolumeSetFactorRequest::GetClassData() const { return &_class_data_; }
+const ::google::protobuf::Message::ClassData* ROIVolumeSetFactorRequest::GetClassData() const {
+  return &_class_data_;
+}
 
-
-void ROIVolumeSetFactorRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+void ROIVolumeSetFactorRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<ROIVolumeSetFactorRequest*>(&to_msg);
   auto& from = static_cast<const ROIVolumeSetFactorRequest&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ROIVolumeSetFactorRequest)
@@ -3386,14 +3412,15 @@ void ROIVolumeSetFactorRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_m
     _this->_internal_mutable_roi()->::osirixgrpc::ROIVolume::MergeFrom(
         from._internal_roi());
   }
-  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  static_assert(sizeof(::uint32_t) == sizeof(float),
+                "Code assumes ::uint32_t and float are the same size.");
   float tmp_factor = from._internal_factor();
   ::uint32_t raw_factor;
   memcpy(&raw_factor, &tmp_factor, sizeof(tmp_factor));
   if (raw_factor != 0) {
     _this->_internal_set_factor(from._internal_factor());
   }
-  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void ROIVolumeSetFactorRequest::CopyFrom(const ROIVolumeSetFactorRequest& from) {
@@ -3403,15 +3430,18 @@ void ROIVolumeSetFactorRequest::CopyFrom(const ROIVolumeSetFactorRequest& from) 
   MergeFrom(from);
 }
 
-bool ROIVolumeSetFactorRequest::IsInitialized() const {
+PROTOBUF_NOINLINE bool ROIVolumeSetFactorRequest::IsInitialized() const {
   return true;
 }
 
-void ROIVolumeSetFactorRequest::InternalSwap(ROIVolumeSetFactorRequest* other) {
+::_pbi::CachedSize* ROIVolumeSetFactorRequest::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void ROIVolumeSetFactorRequest::InternalSwap(ROIVolumeSetFactorRequest* PROTOBUF_RESTRICT other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+  ::google::protobuf::internal::memswap<
       PROTOBUF_FIELD_OFFSET(ROIVolumeSetFactorRequest, _impl_.factor_)
       + sizeof(ROIVolumeSetFactorRequest::_impl_.factor_)
       - PROTOBUF_FIELD_OFFSET(ROIVolumeSetFactorRequest, _impl_.roi_)>(
@@ -3419,58 +3449,16 @@ void ROIVolumeSetFactorRequest::InternalSwap(ROIVolumeSetFactorRequest* other) {
           reinterpret_cast<char*>(&other->_impl_.roi_));
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata ROIVolumeSetFactorRequest::GetMetadata() const {
+::google::protobuf::Metadata ROIVolumeSetFactorRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_roivolume_2eproto_getter, &descriptor_table_roivolume_2eproto_once,
       file_level_metadata_roivolume_2eproto[10]);
 }
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace osirixgrpc
-PROTOBUF_NAMESPACE_OPEN
-template<> PROTOBUF_NOINLINE ::osirixgrpc::ROIVolumeTextureResponse*
-Arena::CreateMaybeMessage< ::osirixgrpc::ROIVolumeTextureResponse >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::osirixgrpc::ROIVolumeTextureResponse >(arena);
-}
-template<> PROTOBUF_NOINLINE ::osirixgrpc::ROIVolumeVolumeResponse*
-Arena::CreateMaybeMessage< ::osirixgrpc::ROIVolumeVolumeResponse >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::osirixgrpc::ROIVolumeVolumeResponse >(arena);
-}
-template<> PROTOBUF_NOINLINE ::osirixgrpc::ROIVolumeColorResponse*
-Arena::CreateMaybeMessage< ::osirixgrpc::ROIVolumeColorResponse >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::osirixgrpc::ROIVolumeColorResponse >(arena);
-}
-template<> PROTOBUF_NOINLINE ::osirixgrpc::ROIVolumeOpacityResponse*
-Arena::CreateMaybeMessage< ::osirixgrpc::ROIVolumeOpacityResponse >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::osirixgrpc::ROIVolumeOpacityResponse >(arena);
-}
-template<> PROTOBUF_NOINLINE ::osirixgrpc::ROIVolumeFactorResponse*
-Arena::CreateMaybeMessage< ::osirixgrpc::ROIVolumeFactorResponse >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::osirixgrpc::ROIVolumeFactorResponse >(arena);
-}
-template<> PROTOBUF_NOINLINE ::osirixgrpc::ROIVolumeVisibleResponse*
-Arena::CreateMaybeMessage< ::osirixgrpc::ROIVolumeVisibleResponse >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::osirixgrpc::ROIVolumeVisibleResponse >(arena);
-}
-template<> PROTOBUF_NOINLINE ::osirixgrpc::ROIVolumeNameResponse*
-Arena::CreateMaybeMessage< ::osirixgrpc::ROIVolumeNameResponse >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::osirixgrpc::ROIVolumeNameResponse >(arena);
-}
-template<> PROTOBUF_NOINLINE ::osirixgrpc::ROIVolumeSetTextureRequest*
-Arena::CreateMaybeMessage< ::osirixgrpc::ROIVolumeSetTextureRequest >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::osirixgrpc::ROIVolumeSetTextureRequest >(arena);
-}
-template<> PROTOBUF_NOINLINE ::osirixgrpc::ROIVolumeSetColorRequest*
-Arena::CreateMaybeMessage< ::osirixgrpc::ROIVolumeSetColorRequest >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::osirixgrpc::ROIVolumeSetColorRequest >(arena);
-}
-template<> PROTOBUF_NOINLINE ::osirixgrpc::ROIVolumeSetOpacityRequest*
-Arena::CreateMaybeMessage< ::osirixgrpc::ROIVolumeSetOpacityRequest >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::osirixgrpc::ROIVolumeSetOpacityRequest >(arena);
-}
-template<> PROTOBUF_NOINLINE ::osirixgrpc::ROIVolumeSetFactorRequest*
-Arena::CreateMaybeMessage< ::osirixgrpc::ROIVolumeSetFactorRequest >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::osirixgrpc::ROIVolumeSetFactorRequest >(arena);
-}
-PROTOBUF_NAMESPACE_CLOSE
+namespace google {
+namespace protobuf {
+}  // namespace protobuf
+}  // namespace google
 // @@protoc_insertion_point(global_scope)
 #include "google/protobuf/port_undef.inc"

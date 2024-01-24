@@ -7,11 +7,12 @@ message Status{
 	string message = 2;
 }
 
-// Base response for messages that don't pass anything back (e.g. setters)
+// Base response for methods that don't pass results (e.g. setters)
 message Response{
 	Status status = 1;
 }
 
+// Empty request for methods that don't expect arguments (e.g. getters)
 message Empty{
 	
 }

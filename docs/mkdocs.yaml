@@ -26,6 +26,10 @@ theme:
       - sh
   palette:
     - scheme: default  # The color scheme to use.
+  features:
+    - content.code.copy
+    - content.code.select
+    - content.code.annotate
 
 plugins:
   - search
@@ -33,14 +37,24 @@ plugins:
 
 # Documentation extensions.
 markdown_extensions:
+  - pymdownx.highlight:  # See: https://squidfunk.github.io/mkdocs-material/reference/code-blocks/
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
   - attr_list  # Attribute lists, used here for images.
   - md_in_html  # Markdown in HTML for adding markdown syntax to HTML, used here for images.
-  
+  - pymdownx.snippets:
+      base_path: ["../"] # Root of the repository
+
 # The page tree. This links the layout of the generated documentation site to the page contents.
 nav:
   - Home: README.md  # Where the home page of the documentation will be stored.
   - Getting Started: getting_started.md
   - API:
     - Basics: api/README.md
+    - Regions of Interest: api/ROI.md
   - Contributing:
     - Home: contributing/README.md

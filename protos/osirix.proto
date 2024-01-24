@@ -16,157 +16,157 @@ package osirixgrpc;
 
 service OsiriXService {
 
-  // OsiriX messages
-  rpc OsirixCurrentBrowser (Empty) returns (OsirixCurrentBrowserResponse) {}
-  rpc OsirixFrontmostViewer (Empty) returns (OsirixFrontmostViewerResponse) {}
-  rpc OsirixDisplayed2DViewers (Empty) returns (OsirixDisplayed2DViewersResponse) {}
-  rpc OsirixFrontmostVRController (Empty) returns (OsirixFrontmostVRControllerResponse) {}
-  rpc OsirixDisplayedVRControllers (Empty) returns (OsirixDisplayedVRControllersResponse) {}
+// OsiriX methods
+rpc OsirixCurrentBrowser (Empty) returns (OsirixCurrentBrowserResponse) {}
+rpc OsirixFrontmostViewer (Empty) returns (OsirixFrontmostViewerResponse) {}
+rpc OsirixDisplayed2DViewers (Empty) returns (OsirixDisplayed2DViewersResponse) {}
+rpc OsirixFrontmostVRController (Empty) returns (OsirixFrontmostVRControllerResponse) {}
+rpc OsirixDisplayedVRControllers (Empty) returns (OsirixDisplayedVRControllersResponse) {}
 
-  // ROI messages
-  rpc ROIFlipHorizontally (ROI) returns (Response) {}
-  rpc ROIFlipVertically (ROI) returns (Response) {}
-  rpc ROIArea (ROI) returns (ROIAreaResponse) {}
-  rpc ROICentroid (ROI) returns (ROICentroidResponse) {}
-  rpc ROIRotate (ROIRotateRequest) returns (Response) {}
-  rpc ROIMove (ROIMoveRequest) returns (Response) {}
-  rpc ROIPix (ROI) returns (ROIPixResponse) {}
-  rpc ROIName (ROI) returns (ROINameResponse) {}
-  rpc ROIIType (ROI) returns (ROIITypeResponse) {}
-  rpc ROISetName (ROISetNameRequest) returns (Response) {}
-  rpc ROIColor (ROI) returns (ROIColorResponse) {}
-  rpc ROISetColor (ROISetColorRequest) returns (Response) {}
-  rpc ROIOpacity (ROI) returns (ROIOpacityResponse) {}
-  rpc ROISetOpacity (ROISetOpacityRequest) returns (Response) {}
-  rpc ROIThickness (ROI) returns (ROIThicknessResponse) {}
-  rpc ROISetThickness (ROISetThicknessRequest) returns (Response) {}
-  rpc ROIPoints (ROI) returns (ROIPointsResponse) {}
-  rpc ROISetPoints (ROISetPointsRequest) returns (Response) {}
+// ROI methods
+rpc ROIFlipHorizontally (ROI) returns (Response) {}
+rpc ROIFlipVertically (ROI) returns (Response) {}
+rpc ROIArea (ROI) returns (ROIAreaResponse) {}
+rpc ROICentroid (ROI) returns (ROICentroidResponse) {}
+rpc ROIRotate (ROIRotateRequest) returns (Response) {}
+rpc ROIMove (ROIMoveRequest) returns (Response) {}
+rpc ROIPix (ROI) returns (ROIPixResponse) {}
+rpc ROIName (ROI) returns (ROINameResponse) {}
+rpc ROIIType (ROI) returns (ROIITypeResponse) {}
+rpc ROISetName (ROISetNameRequest) returns (Response) {}
+rpc ROIColor (ROI) returns (ROIColorResponse) {}
+rpc ROISetColor (ROISetColorRequest) returns (Response) {}
+rpc ROIOpacity (ROI) returns (ROIOpacityResponse) {}
+rpc ROISetOpacity (ROISetOpacityRequest) returns (Response) {}
+rpc ROIThickness (ROI) returns (ROIThicknessResponse) {}
+rpc ROISetThickness (ROISetThicknessRequest) returns (Response) {}
+rpc ROIPoints (ROI) returns (ROIPointsResponse) {}
+rpc ROISetPoints (ROISetPointsRequest) returns (Response) {}
 
-  // ROIVolume messages
-  rpc ROIVolumeTexture (ROIVolume) returns (ROIVolumeTextureResponse) {}
-  rpc ROIVolumeSetTexture (ROIVolumeSetTextureRequest) returns (Response) {}
-  rpc ROIVolumeVolume (ROIVolume) returns (ROIVolumeVolumeResponse) {}
-  rpc ROIVolumeColor(ROIVolume) returns (ROIVolumeColorResponse) {}
-  rpc ROIVolumeSetColor(ROIVolumeSetColorRequest) returns (Response) {}
-  rpc ROIVolumeOpacity(ROIVolume) returns (ROIVolumeOpacityResponse) {}
-  rpc ROIVolumeSetOpacity(ROIVolumeSetOpacityRequest) returns (Response) {}
-  rpc ROIVolumeFactor(ROIVolume) returns (ROIVolumeFactorResponse) {}
-  rpc ROIVolumeSetFactor(ROIVolumeSetFactorRequest) returns (Response) {}
-  rpc ROIVolumeName(ROIVolume) returns (ROIVolumeNameResponse) {}
-  rpc ROIVolumeVisible (ROIVolume) returns (ROIVolumeVisibleResponse) {}
+// ROIVolume methods
+rpc ROIVolumeTexture (ROIVolume) returns (ROIVolumeTextureResponse) {}
+rpc ROIVolumeSetTexture (ROIVolumeSetTextureRequest) returns (Response) {}
+rpc ROIVolumeVolume (ROIVolume) returns (ROIVolumeVolumeResponse) {}
+rpc ROIVolumeColor(ROIVolume) returns (ROIVolumeColorResponse) {}
+rpc ROIVolumeSetColor(ROIVolumeSetColorRequest) returns (Response) {}
+rpc ROIVolumeOpacity(ROIVolume) returns (ROIVolumeOpacityResponse) {}
+rpc ROIVolumeSetOpacity(ROIVolumeSetOpacityRequest) returns (Response) {}
+rpc ROIVolumeFactor(ROIVolume) returns (ROIVolumeFactorResponse) {}
+rpc ROIVolumeSetFactor(ROIVolumeSetFactorRequest) returns (Response) {}
+rpc ROIVolumeName(ROIVolume) returns (ROIVolumeNameResponse) {}
+rpc ROIVolumeVisible (ROIVolume) returns (ROIVolumeVisibleResponse) {}
 
-  // DCMPix messages
-  rpc DCMPixConvertToRGB (DCMPixConvertToRGBRequest) returns (Response) {}
-  rpc DCMPixConvertToBW (DCMPixConvertToBWRequest) returns (Response) {}
-  rpc DCMPixIsRGB (DCMPix) returns (DCMPixIsRGBResponse) {}
-  rpc DCMPixComputeROI (DCMPixComputeROIRequest) returns (DCMPixComputeROIResponse) {}
-  rpc DCMPixROIValues (DCMPixROIValuesRequest) returns (DCMPixROIValuesResponse) {}
-  rpc DCMPixShape (DCMPix) returns (DCMPixShapeResponse) {}
-  rpc DCMPixSpacing (DCMPix) returns (DCMPixSpacingResponse) {}
-  rpc DCMPixOrigin (DCMPix) returns (DCMPixOriginResponse) {}
-  rpc DCMPixOrientation (DCMPix) returns (DCMPixOrientationResponse) {}
-  rpc DCMPixSliceLocation (DCMPix) returns (DCMPixSliceLocationResponse) {}
-  rpc DCMPixSourceFile (DCMPix) returns (DCMPixSourceFileResponse) {}
-  rpc DCMPixImage (DCMPix) returns (DCMPixImageResponse) {}
-  rpc DCMPixSetImage (DCMPixSetImageRequest) returns (Response) {}
-  rpc DCMPixGetMapFromROI (DCMPixGetMapFromROIRequest) returns (DCMPixGetMapFromROIResponse) {}
-  rpc DCMPixDicomImage (DCMPix) returns (DCMPixDicomImageResponse) {}
-  rpc DCMPixDicomSeries (DCMPix) returns (DCMPixDicomSeriesResponse) {}
-  rpc DCMPixDicomStudy (DCMPix) returns (DCMPixDicomStudyResponse) {}
+// DCMPix methods
+rpc DCMPixConvertToRGB (DCMPixConvertToRGBRequest) returns (Response) {}
+rpc DCMPixConvertToBW (DCMPixConvertToBWRequest) returns (Response) {}
+rpc DCMPixIsRGB (DCMPix) returns (DCMPixIsRGBResponse) {}
+rpc DCMPixComputeROI (DCMPixComputeROIRequest) returns (DCMPixComputeROIResponse) {}
+rpc DCMPixROIValues (DCMPixROIValuesRequest) returns (DCMPixROIValuesResponse) {}
+rpc DCMPixShape (DCMPix) returns (DCMPixShapeResponse) {}
+rpc DCMPixSpacing (DCMPix) returns (DCMPixSpacingResponse) {}
+rpc DCMPixOrigin (DCMPix) returns (DCMPixOriginResponse) {}
+rpc DCMPixOrientation (DCMPix) returns (DCMPixOrientationResponse) {}
+rpc DCMPixSliceLocation (DCMPix) returns (DCMPixSliceLocationResponse) {}
+rpc DCMPixSourceFile (DCMPix) returns (DCMPixSourceFileResponse) {}
+rpc DCMPixImage (DCMPix) returns (DCMPixImageResponse) {}
+rpc DCMPixSetImage (DCMPixSetImageRequest) returns (Response) {}
+rpc DCMPixGetMapFromROI (DCMPixGetMapFromROIRequest) returns (DCMPixGetMapFromROIResponse) {}
+rpc DCMPixDicomImage (DCMPix) returns (DCMPixDicomImageResponse) {}
+rpc DCMPixDicomSeries (DCMPix) returns (DCMPixDicomSeriesResponse) {}
+rpc DCMPixDicomStudy (DCMPix) returns (DCMPixDicomStudyResponse) {}
 
-  // VRController messages
-  rpc VRControllerViewer2D (VRController) returns (VRControllerViewer2DResponse) {}
-  rpc VRControllerBlendingController (VRController) returns (VRControllerBlendingControllerResponse) {}
-  rpc VRControllerStyle (VRController) returns (VRControllerStyleResponse) {}
-  rpc VRControllerTitle (VRController) returns (VRControllerTitleResponse) {}
-  rpc VRControllerROIVolumes (VRController) returns (VRControllerROIVolumesResponse) {}
-  rpc VRControllerRenderingMode (VRController) returns (VRControllerRenderingModeResponse) {}
-  rpc VRControllerSetRenderingMode (VRControllerSetRenderingModeRequest) returns (Response) {}
-  rpc VRControllerWLWW (VRController) returns (VRControllerWLWWResponse) {}
-  rpc VRControllerSetWLWW (VRControllerSetWLWWRequest) returns (Response) {}
-  rpc VRControllerHideROIVolume (VRControllerHideROIVolumeRequest) returns (Response) {}
-  rpc VRControllerDisplayROIVolume (VRControllerDisplayROIVolumeRequest) returns (Response) {}
-  rpc VRControllerNeedsDisplayUpdate (VRController) returns (Response) {}
+// VRController methods
+rpc VRControllerViewer2D (VRController) returns (VRControllerViewer2DResponse) {}
+rpc VRControllerBlendingController (VRController) returns (VRControllerBlendingControllerResponse) {}
+rpc VRControllerStyle (VRController) returns (VRControllerStyleResponse) {}
+rpc VRControllerTitle (VRController) returns (VRControllerTitleResponse) {}
+rpc VRControllerROIVolumes (VRController) returns (VRControllerROIVolumesResponse) {}
+rpc VRControllerRenderingMode (VRController) returns (VRControllerRenderingModeResponse) {}
+rpc VRControllerSetRenderingMode (VRControllerSetRenderingModeRequest) returns (Response) {}
+rpc VRControllerWLWW (VRController) returns (VRControllerWLWWResponse) {}
+rpc VRControllerSetWLWW (VRControllerSetWLWWRequest) returns (Response) {}
+rpc VRControllerHideROIVolume (VRControllerHideROIVolumeRequest) returns (Response) {}
+rpc VRControllerDisplayROIVolume (VRControllerDisplayROIVolumeRequest) returns (Response) {}
+rpc VRControllerNeedsDisplayUpdate (VRController) returns (Response) {}
 
-  // ViewerController messages
-  rpc ViewerControllerCloseViewer (ViewerController) returns (Response) {}
-  rpc ViewerControllerPixList (ViewerControllerPixListRequest) returns (ViewerControllerPixListResponse) {}
-  rpc ViewerControllerNeedsDisplayUpdate (ViewerController) returns (Response) {}
-  rpc ViewerControllerROIList (ViewerControllerROIListRequest) returns (ViewerControllerROIListResponse) {}
-  rpc ViewerControllerNewROI (ViewerControllerNewROIRequest) returns (ViewerControllerNewROIResponse) {}
-  rpc ViewerControllerCurDCM (ViewerController) returns (ViewerControllerCurDCMResponse) {}
-  rpc ViewerControllerROIsWithName (ViewerControllerROIsWithNameRequest) returns (ViewerControllerROIsWithNameResponse) {}
-  rpc ViewerControllerSelectedROIs (ViewerController) returns (ViewerControllerSelectedROIsResponse) {}
-  rpc ViewerControllerIsDataVolumic (ViewerControllerIsDataVolumicRequest) returns (ViewerControllerIsDataVolumicResponse) {}
-  rpc ViewerControllerCopyViewerWindow (ViewerControllerCopyViewerWindowRequest) returns (Response) {}
-  rpc ViewerControllerResampleViewerController (ViewerControllerResampleViewerControllerRequest) returns (Response) {}
-  rpc ViewerControllerBlendingController (ViewerController) returns (ViewerControllerBlendingControllerResponse) {}
-  rpc ViewerControllerVRControllers (ViewerController) returns (ViewerControllerVRControllersResponse) {}
-  rpc ViewerControllerTitle (ViewerController) returns (ViewerControllerTitleResponse) {}
-  rpc ViewerControllerModality (ViewerController) returns (ViewerControllerModalityResponse) {}
-  rpc ViewerControllerMovieIdx (ViewerController) returns (ViewerControllerMovieIdxResponse) {}
-  rpc ViewerControllerSetMovieIdx (ViewerControllerSetMovieIdxRequest) returns (Response) {}
-  rpc ViewerControllerMaxMovieIdx (ViewerController) returns (ViewerControllerMaxMovieIdxResponse) {}
-  rpc ViewerControllerIdx (ViewerController) returns (ViewerControllerIdxResponse) {}
-  rpc ViewerControllerSetIdx (ViewerControllerSetIdxRequest) returns (Response) {}
-  rpc ViewerControllerWLWW (ViewerController) returns (ViewerControllerWLWWResponse) {}
-  rpc ViewerControllerSetWLWW (ViewerControllerSetWLWWRequest) returns (Response) {}
-  rpc ViewerControllerOpenVRViewerForMode (ViewerControllerOpenVRViewerForModeRequest) returns (ViewerControllerOpenVRViewerForModeResponse) {}
+// ViewerController methods
+rpc ViewerControllerCloseViewer (ViewerController) returns (Response) {}
+rpc ViewerControllerPixList (ViewerControllerPixListRequest) returns (ViewerControllerPixListResponse) {}
+rpc ViewerControllerNeedsDisplayUpdate (ViewerController) returns (Response) {}
+rpc ViewerControllerROIList (ViewerControllerROIListRequest) returns (ViewerControllerROIListResponse) {}
+rpc ViewerControllerNewROI (ViewerControllerNewROIRequest) returns (ViewerControllerNewROIResponse) {}
+rpc ViewerControllerCurDCM (ViewerController) returns (ViewerControllerCurDCMResponse) {}
+rpc ViewerControllerROIsWithName (ViewerControllerROIsWithNameRequest) returns (ViewerControllerROIsWithNameResponse) {}
+rpc ViewerControllerSelectedROIs (ViewerController) returns (ViewerControllerSelectedROIsResponse) {}
+rpc ViewerControllerIsDataVolumic (ViewerControllerIsDataVolumicRequest) returns (ViewerControllerIsDataVolumicResponse) {}
+rpc ViewerControllerCopyViewerWindow (ViewerControllerCopyViewerWindowRequest) returns (Response) {}
+rpc ViewerControllerResampleViewerController (ViewerControllerResampleViewerControllerRequest) returns (Response) {}
+rpc ViewerControllerBlendingController (ViewerController) returns (ViewerControllerBlendingControllerResponse) {}
+rpc ViewerControllerVRControllers (ViewerController) returns (ViewerControllerVRControllersResponse) {}
+rpc ViewerControllerTitle (ViewerController) returns (ViewerControllerTitleResponse) {}
+rpc ViewerControllerModality (ViewerController) returns (ViewerControllerModalityResponse) {}
+rpc ViewerControllerMovieIdx (ViewerController) returns (ViewerControllerMovieIdxResponse) {}
+rpc ViewerControllerSetMovieIdx (ViewerControllerSetMovieIdxRequest) returns (Response) {}
+rpc ViewerControllerMaxMovieIdx (ViewerController) returns (ViewerControllerMaxMovieIdxResponse) {}
+rpc ViewerControllerIdx (ViewerController) returns (ViewerControllerIdxResponse) {}
+rpc ViewerControllerSetIdx (ViewerControllerSetIdxRequest) returns (Response) {}
+rpc ViewerControllerWLWW (ViewerController) returns (ViewerControllerWLWWResponse) {}
+rpc ViewerControllerSetWLWW (ViewerControllerSetWLWWRequest) returns (Response) {}
+rpc ViewerControllerOpenVRViewerForMode (ViewerControllerOpenVRViewerForModeRequest) returns (ViewerControllerOpenVRViewerForModeResponse) {}
 
-  // BrowserController messages
-  rpc BrowserControllerDatabaseSelection (BrowserController) returns (BrowserControllerDatabaseSelectionResponse) {}
-  rpc BrowserControllerCopyFilesIfNeeded (BrowserControllerCopyFilesIfNeededRequest) returns (Response) {}
+// BrowserController methods
+rpc BrowserControllerDatabaseSelection (BrowserController) returns (BrowserControllerDatabaseSelectionResponse) {}
+rpc BrowserControllerCopyFilesIfNeeded (BrowserControllerCopyFilesIfNeededRequest) returns (Response) {}
 
-  // DicomImage messages
-  rpc DicomImageWidth (DicomImage) returns (DicomImageWidthResponse) {}
-  rpc DicomImageHeight (DicomImage) returns (DicomImageHeightResponse) {}
-  rpc DicomImageSOPInstanceUID (DicomImage) returns (DicomImageSOPInstanceUIDResponse) {}
-  rpc DicomImageCompletePath (DicomImage) returns (DicomImageCompletePathResponse) {}
-  rpc DicomImageDate (DicomImage) returns (DicomImageDateResponse) {}
-  rpc DicomImageNumberOfFrames (DicomImage) returns (DicomImageNumberOfFramesResponse) {}
-  rpc DicomImageModality (DicomImage) returns (DicomImageModalityResponse) {}
-  rpc DicomImageSeries (DicomImage) returns (DicomImageSeriesResponse) {}
-  rpc DicomImageSliceLocation (DicomImage) returns (DicomImageSliceLocationResponse) {}
-  rpc DicomImageInstanceNumber (DicomImage) returns (DicomImageInstanceNumberResponse) {}
+// DicomImage methods
+rpc DicomImageWidth (DicomImage) returns (DicomImageWidthResponse) {}
+rpc DicomImageHeight (DicomImage) returns (DicomImageHeightResponse) {}
+rpc DicomImageSOPInstanceUID (DicomImage) returns (DicomImageSOPInstanceUIDResponse) {}
+rpc DicomImageCompletePath (DicomImage) returns (DicomImageCompletePathResponse) {}
+rpc DicomImageDate (DicomImage) returns (DicomImageDateResponse) {}
+rpc DicomImageNumberOfFrames (DicomImage) returns (DicomImageNumberOfFramesResponse) {}
+rpc DicomImageModality (DicomImage) returns (DicomImageModalityResponse) {}
+rpc DicomImageSeries (DicomImage) returns (DicomImageSeriesResponse) {}
+rpc DicomImageSliceLocation (DicomImage) returns (DicomImageSliceLocationResponse) {}
+rpc DicomImageInstanceNumber (DicomImage) returns (DicomImageInstanceNumberResponse) {}
 
-  // DicomSeries messages
-  rpc DicomSeriesPaths (DicomSeries) returns (DicomSeriesPathsResponse) {}
-  rpc DicomSeriesPreviousSeries (DicomSeries) returns (DicomSeriesPreviousSeriesResponse) {}
-  rpc DicomSeriesNextSeries (DicomSeries) returns (DicomSeriesNextSeriesResponse) {}
-  rpc DicomSeriesSortedImages (DicomSeries) returns (DicomSeriesSortedImagesResponse) {}
-  rpc DicomSeriesStudy (DicomSeries) returns (DicomSeriesStudyResponse) {}
-  rpc DicomSeriesImages (DicomSeries) returns (DicomSeriesImagesResponse) {}
-  rpc DicomSeriesSeriesInstanceUID (DicomSeries) returns (DicomSeriesSeriesInstanceUIDResponse) {}
-  rpc DicomSeriesSeriesSOPClassUID (DicomSeries) returns (DicomSeriesSeriesSOPClassUIDResponse) {}
-  rpc DicomSeriesSeriesDescription (DicomSeries) returns (DicomSeriesSeriesDescriptionResponse) {}
-  rpc DicomSeriesModality (DicomSeries) returns (DicomSeriesModalityResponse) {}
-  rpc DicomSeriesName (DicomSeries) returns (DicomSeriesNameResponse) {}
-  rpc DicomSeriesDate (DicomSeries) returns (DicomSeriesDateResponse) {}
-  rpc DicomSeriesNumberOfImages (DicomSeries) returns (DicomSeriesNumberOfImagesResponse) {}
+// DicomSeries methods
+rpc DicomSeriesPaths (DicomSeries) returns (DicomSeriesPathsResponse) {}
+rpc DicomSeriesPreviousSeries (DicomSeries) returns (DicomSeriesPreviousSeriesResponse) {}
+rpc DicomSeriesNextSeries (DicomSeries) returns (DicomSeriesNextSeriesResponse) {}
+rpc DicomSeriesSortedImages (DicomSeries) returns (DicomSeriesSortedImagesResponse) {}
+rpc DicomSeriesStudy (DicomSeries) returns (DicomSeriesStudyResponse) {}
+rpc DicomSeriesImages (DicomSeries) returns (DicomSeriesImagesResponse) {}
+rpc DicomSeriesSeriesInstanceUID (DicomSeries) returns (DicomSeriesSeriesInstanceUIDResponse) {}
+rpc DicomSeriesSeriesSOPClassUID (DicomSeries) returns (DicomSeriesSeriesSOPClassUIDResponse) {}
+rpc DicomSeriesSeriesDescription (DicomSeries) returns (DicomSeriesSeriesDescriptionResponse) {}
+rpc DicomSeriesModality (DicomSeries) returns (DicomSeriesModalityResponse) {}
+rpc DicomSeriesName (DicomSeries) returns (DicomSeriesNameResponse) {}
+rpc DicomSeriesDate (DicomSeries) returns (DicomSeriesDateResponse) {}
+rpc DicomSeriesNumberOfImages (DicomSeries) returns (DicomSeriesNumberOfImagesResponse) {}
 
-  // DicomStudy messages
-  rpc DicomStudyPaths (DicomStudy) returns (DicomStudyPathsResponse) {}
-  rpc DicomStudyImages (DicomStudy) returns (DicomStudyImagesResponse) {}
-  rpc DicomStudyModalities (DicomStudy) returns (DicomStudyModalitiesResponse) {}
-  rpc DicomStudyNoFiles (DicomStudy) returns (DicomStudyNoFilesResponse) {}
-  rpc DicomStudyRawNoFiles (DicomStudy) returns (DicomStudyRawNoFilesResponse) {}
-  rpc DicomStudyNoFilesExcludingMultiFrames (DicomStudy) returns (DicomStudyNoFilesExcludingMultiFramesResponse) {}
-  rpc DicomStudyNumberOfImages (DicomStudy) returns (DicomStudyNumberOfImagesResponse) {}
-  rpc DicomStudySeries (DicomStudy) returns (DicomStudySeriesResponse) {}
-  rpc DicomStudyName (DicomStudy) returns (DicomStudyNameResponse) {}
-  rpc DicomStudyDate (DicomStudy) returns (DicomStudyDateResponse) {}
-  rpc DicomStudyDateAdded (DicomStudy) returns (DicomStudyDateAddedResponse) {}
-  rpc DicomStudyDateOfBirth (DicomStudy) returns (DicomStudyDateOfBirthResponse) {}
-  rpc DicomStudyInstitutionName (DicomStudy) returns (DicomStudyInstitutionNameResponse) {}
-  rpc DicomStudyModality (DicomStudy) returns (DicomStudyModalityResponse) {}
-  rpc DicomStudyPatientID (DicomStudy) returns (DicomStudyPatientIDResponse) {}
-  rpc DicomStudyPatientUID (DicomStudy) returns (DicomStudyPatientUIDResponse) {}
-  rpc DicomStudyPatientSex (DicomStudy) returns (DicomStudyPatientSexResponse) {}
-  rpc DicomStudyPerformingPhysician (DicomStudy) returns (DicomStudyPerformingPhysicianResponse) {}
-  rpc DicomStudyReferringPhysician (DicomStudy) returns (DicomStudyReferringPhysicianResponse) {}
-  rpc DicomStudyStudyInstanceUID (DicomStudy) returns (DicomStudyStudyInstanceUIDResponse) {}
-  rpc DicomStudyStudyName (DicomStudy) returns (DicomStudyStudyNameResponse) {}
+// DicomStudy methods
+rpc DicomStudyPaths (DicomStudy) returns (DicomStudyPathsResponse) {}
+rpc DicomStudyImages (DicomStudy) returns (DicomStudyImagesResponse) {}
+rpc DicomStudyModalities (DicomStudy) returns (DicomStudyModalitiesResponse) {}
+rpc DicomStudyNoFiles (DicomStudy) returns (DicomStudyNoFilesResponse) {}
+rpc DicomStudyRawNoFiles (DicomStudy) returns (DicomStudyRawNoFilesResponse) {}
+rpc DicomStudyNoFilesExcludingMultiFrames (DicomStudy) returns (DicomStudyNoFilesExcludingMultiFramesResponse) {}
+rpc DicomStudyNumberOfImages (DicomStudy) returns (DicomStudyNumberOfImagesResponse) {}
+rpc DicomStudySeries (DicomStudy) returns (DicomStudySeriesResponse) {}
+rpc DicomStudyName (DicomStudy) returns (DicomStudyNameResponse) {}
+rpc DicomStudyDate (DicomStudy) returns (DicomStudyDateResponse) {}
+rpc DicomStudyDateAdded (DicomStudy) returns (DicomStudyDateAddedResponse) {}
+rpc DicomStudyDateOfBirth (DicomStudy) returns (DicomStudyDateOfBirthResponse) {}
+rpc DicomStudyInstitutionName (DicomStudy) returns (DicomStudyInstitutionNameResponse) {}
+rpc DicomStudyModality (DicomStudy) returns (DicomStudyModalityResponse) {}
+rpc DicomStudyPatientID (DicomStudy) returns (DicomStudyPatientIDResponse) {}
+rpc DicomStudyPatientUID (DicomStudy) returns (DicomStudyPatientUIDResponse) {}
+rpc DicomStudyPatientSex (DicomStudy) returns (DicomStudyPatientSexResponse) {}
+rpc DicomStudyPerformingPhysician (DicomStudy) returns (DicomStudyPerformingPhysicianResponse) {}
+rpc DicomStudyReferringPhysician (DicomStudy) returns (DicomStudyReferringPhysicianResponse) {}
+rpc DicomStudyStudyInstanceUID (DicomStudy) returns (DicomStudyStudyInstanceUIDResponse) {}
+rpc DicomStudyStudyName (DicomStudy) returns (DicomStudyStudyNameResponse) {}
 }
 
 // Response messages

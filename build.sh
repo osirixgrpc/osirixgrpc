@@ -1,14 +1,15 @@
 #! /bin/bash
 
 # Define the name of the temporary conda environment and grpc version
-env_name="temp_env"
-grpc_version="1.56.0"
+env_name="grpc_build_env"
+grpc_version="1.55.0"
 
 # Create the temporary conda environment
 conda create --name "$env_name" python=3.8
+conda init bash
 
 # Activate the environment
-source activate "$env_name"
+conda activate "$env_name"
 
 # Remove the current grpc clone
 # =============================
@@ -87,7 +88,7 @@ grpc/install/bin/protoc -I protos --cpp_out=cpp osirix.proto roi.proto roivolume
 
 # Build the Python definitions
 # ============================
-mkdir -p python/grpc
+mkdir -p python/osirixgrpc
 
 # see https://stackoverflow.com/questions/72620996/apple-m1-symbol-not-found-cfrelease-while-running-python-app)
 export GRPC_PYTHON_LDFLAGS=" -framework CoreFoundation"

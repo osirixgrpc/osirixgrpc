@@ -11,78 +11,27 @@
 #include "google/protobuf/generated_message_reflection.h"
 #include "google/protobuf/reflection_ops.h"
 #include "google/protobuf/wire_format.h"
+#include "google/protobuf/generated_message_tctable_impl.h"
 // @@protoc_insertion_point(includes)
 
 // Must be included last.
 #include "google/protobuf/port_def.inc"
 PROTOBUF_PRAGMA_INIT_SEG
-namespace _pb = ::PROTOBUF_NAMESPACE_ID;
-namespace _pbi = ::PROTOBUF_NAMESPACE_ID::internal;
+namespace _pb = ::google::protobuf;
+namespace _pbi = ::google::protobuf::internal;
+namespace _fl = ::google::protobuf::internal::field_layout;
 namespace osirixgrpc {
+
+inline constexpr VRControllerWLWWResponse::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        status_{nullptr},
+        wl_{0},
+        ww_{0} {}
+
 template <typename>
-PROTOBUF_CONSTEXPR VRControllerViewer2DResponse::VRControllerViewer2DResponse(
-    ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_._has_bits_)*/{}
-  , /*decltype(_impl_._cached_size_)*/{}
-  , /*decltype(_impl_.status_)*/nullptr
-  , /*decltype(_impl_.viewer_controller_)*/nullptr} {}
-struct VRControllerViewer2DResponseDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR VRControllerViewer2DResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~VRControllerViewer2DResponseDefaultTypeInternal() {}
-  union {
-    VRControllerViewer2DResponse _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 VRControllerViewer2DResponseDefaultTypeInternal _VRControllerViewer2DResponse_default_instance_;
-template <typename>
-PROTOBUF_CONSTEXPR VRControllerBlendingControllerResponse::VRControllerBlendingControllerResponse(
-    ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_._has_bits_)*/{}
-  , /*decltype(_impl_._cached_size_)*/{}
-  , /*decltype(_impl_.status_)*/nullptr
-  , /*decltype(_impl_.viewer_controller_)*/nullptr} {}
-struct VRControllerBlendingControllerResponseDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR VRControllerBlendingControllerResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~VRControllerBlendingControllerResponseDefaultTypeInternal() {}
-  union {
-    VRControllerBlendingControllerResponse _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 VRControllerBlendingControllerResponseDefaultTypeInternal _VRControllerBlendingControllerResponse_default_instance_;
-template <typename>
-PROTOBUF_CONSTEXPR VRControllerRenderingModeResponse::VRControllerRenderingModeResponse(
-    ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_._has_bits_)*/{}
-  , /*decltype(_impl_._cached_size_)*/{}
-  , /*decltype(_impl_.rendering_mode_)*/ {
-    &::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized {}
-  }
-
-  , /*decltype(_impl_.status_)*/nullptr} {}
-struct VRControllerRenderingModeResponseDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR VRControllerRenderingModeResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~VRControllerRenderingModeResponseDefaultTypeInternal() {}
-  union {
-    VRControllerRenderingModeResponse _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 VRControllerRenderingModeResponseDefaultTypeInternal _VRControllerRenderingModeResponse_default_instance_;
-template <typename>
-PROTOBUF_CONSTEXPR VRControllerWLWWResponse::VRControllerWLWWResponse(
-    ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_._has_bits_)*/{}
-  , /*decltype(_impl_._cached_size_)*/{}
-  , /*decltype(_impl_.status_)*/nullptr
-  , /*decltype(_impl_.wl_)*/ 0
-
-  , /*decltype(_impl_.ww_)*/ 0
-} {}
+PROTOBUF_CONSTEXPR VRControllerWLWWResponse::VRControllerWLWWResponse(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
 struct VRControllerWLWWResponseDefaultTypeInternal {
   PROTOBUF_CONSTEXPR VRControllerWLWWResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
   ~VRControllerWLWWResponseDefaultTypeInternal() {}
@@ -93,36 +42,38 @@ struct VRControllerWLWWResponseDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 VRControllerWLWWResponseDefaultTypeInternal _VRControllerWLWWResponse_default_instance_;
-template <typename>
-PROTOBUF_CONSTEXPR VRControllerStyleResponse::VRControllerStyleResponse(
-    ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_._has_bits_)*/{}
-  , /*decltype(_impl_._cached_size_)*/{}
-  , /*decltype(_impl_.style_)*/ {
-    &::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized {}
-  }
 
-  , /*decltype(_impl_.status_)*/nullptr} {}
-struct VRControllerStyleResponseDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR VRControllerStyleResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~VRControllerStyleResponseDefaultTypeInternal() {}
+inline constexpr VRControllerViewer2DResponse::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        status_{nullptr},
+        viewer_controller_{nullptr} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR VRControllerViewer2DResponse::VRControllerViewer2DResponse(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct VRControllerViewer2DResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR VRControllerViewer2DResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~VRControllerViewer2DResponseDefaultTypeInternal() {}
   union {
-    VRControllerStyleResponse _instance;
+    VRControllerViewer2DResponse _instance;
   };
 };
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 VRControllerStyleResponseDefaultTypeInternal _VRControllerStyleResponse_default_instance_;
-template <typename>
-PROTOBUF_CONSTEXPR VRControllerTitleResponse::VRControllerTitleResponse(
-    ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_._has_bits_)*/{}
-  , /*decltype(_impl_._cached_size_)*/{}
-  , /*decltype(_impl_.title_)*/ {
-    &::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized {}
-  }
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 VRControllerViewer2DResponseDefaultTypeInternal _VRControllerViewer2DResponse_default_instance_;
 
-  , /*decltype(_impl_.status_)*/nullptr} {}
+inline constexpr VRControllerTitleResponse::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        title_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        status_{nullptr} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR VRControllerTitleResponse::VRControllerTitleResponse(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
 struct VRControllerTitleResponseDefaultTypeInternal {
   PROTOBUF_CONSTEXPR VRControllerTitleResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
   ~VRControllerTitleResponseDefaultTypeInternal() {}
@@ -133,53 +84,39 @@ struct VRControllerTitleResponseDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 VRControllerTitleResponseDefaultTypeInternal _VRControllerTitleResponse_default_instance_;
+
+inline constexpr VRControllerStyleResponse::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        style_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        status_{nullptr} {}
+
 template <typename>
-PROTOBUF_CONSTEXPR VRControllerROIVolumesResponse::VRControllerROIVolumesResponse(
-    ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_._has_bits_)*/{}
-  , /*decltype(_impl_._cached_size_)*/{}
-  , /*decltype(_impl_.roi_volumes_)*/{}
-  , /*decltype(_impl_.status_)*/nullptr} {}
-struct VRControllerROIVolumesResponseDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR VRControllerROIVolumesResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~VRControllerROIVolumesResponseDefaultTypeInternal() {}
+PROTOBUF_CONSTEXPR VRControllerStyleResponse::VRControllerStyleResponse(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct VRControllerStyleResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR VRControllerStyleResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~VRControllerStyleResponseDefaultTypeInternal() {}
   union {
-    VRControllerROIVolumesResponse _instance;
+    VRControllerStyleResponse _instance;
   };
 };
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 VRControllerROIVolumesResponseDefaultTypeInternal _VRControllerROIVolumesResponse_default_instance_;
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 VRControllerStyleResponseDefaultTypeInternal _VRControllerStyleResponse_default_instance_;
+
+inline constexpr VRControllerSetWLWWRequest::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        vr_controller_{nullptr},
+        wl_{0},
+        ww_{0} {}
+
 template <typename>
-PROTOBUF_CONSTEXPR VRControllerSetRenderingModeRequest::VRControllerSetRenderingModeRequest(
-    ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_._has_bits_)*/{}
-  , /*decltype(_impl_._cached_size_)*/{}
-  , /*decltype(_impl_.rendering_mode_)*/ {
-    &::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized {}
-  }
-
-  , /*decltype(_impl_.vr_controller_)*/nullptr} {}
-struct VRControllerSetRenderingModeRequestDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR VRControllerSetRenderingModeRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~VRControllerSetRenderingModeRequestDefaultTypeInternal() {}
-  union {
-    VRControllerSetRenderingModeRequest _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 VRControllerSetRenderingModeRequestDefaultTypeInternal _VRControllerSetRenderingModeRequest_default_instance_;
-template <typename>
-PROTOBUF_CONSTEXPR VRControllerSetWLWWRequest::VRControllerSetWLWWRequest(
-    ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_._has_bits_)*/{}
-  , /*decltype(_impl_._cached_size_)*/{}
-  , /*decltype(_impl_.vr_controller_)*/nullptr
-  , /*decltype(_impl_.wl_)*/ 0
-
-  , /*decltype(_impl_.ww_)*/ 0
-} {}
+PROTOBUF_CONSTEXPR VRControllerSetWLWWRequest::VRControllerSetWLWWRequest(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
 struct VRControllerSetWLWWRequestDefaultTypeInternal {
   PROTOBUF_CONSTEXPR VRControllerSetWLWWRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
   ~VRControllerSetWLWWRequestDefaultTypeInternal() {}
@@ -190,13 +127,80 @@ struct VRControllerSetWLWWRequestDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 VRControllerSetWLWWRequestDefaultTypeInternal _VRControllerSetWLWWRequest_default_instance_;
+
+inline constexpr VRControllerSetRenderingModeRequest::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        rendering_mode_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        vr_controller_{nullptr} {}
+
 template <typename>
-PROTOBUF_CONSTEXPR VRControllerHideROIVolumeRequest::VRControllerHideROIVolumeRequest(
-    ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_._has_bits_)*/{}
-  , /*decltype(_impl_._cached_size_)*/{}
-  , /*decltype(_impl_.vr_controller_)*/nullptr
-  , /*decltype(_impl_.roi_volume_)*/nullptr} {}
+PROTOBUF_CONSTEXPR VRControllerSetRenderingModeRequest::VRControllerSetRenderingModeRequest(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct VRControllerSetRenderingModeRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR VRControllerSetRenderingModeRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~VRControllerSetRenderingModeRequestDefaultTypeInternal() {}
+  union {
+    VRControllerSetRenderingModeRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 VRControllerSetRenderingModeRequestDefaultTypeInternal _VRControllerSetRenderingModeRequest_default_instance_;
+
+inline constexpr VRControllerRenderingModeResponse::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        rendering_mode_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        status_{nullptr} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR VRControllerRenderingModeResponse::VRControllerRenderingModeResponse(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct VRControllerRenderingModeResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR VRControllerRenderingModeResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~VRControllerRenderingModeResponseDefaultTypeInternal() {}
+  union {
+    VRControllerRenderingModeResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 VRControllerRenderingModeResponseDefaultTypeInternal _VRControllerRenderingModeResponse_default_instance_;
+
+inline constexpr VRControllerROIVolumesResponse::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        roi_volumes_{},
+        status_{nullptr} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR VRControllerROIVolumesResponse::VRControllerROIVolumesResponse(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct VRControllerROIVolumesResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR VRControllerROIVolumesResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~VRControllerROIVolumesResponseDefaultTypeInternal() {}
+  union {
+    VRControllerROIVolumesResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 VRControllerROIVolumesResponseDefaultTypeInternal _VRControllerROIVolumesResponse_default_instance_;
+
+inline constexpr VRControllerHideROIVolumeRequest::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        vr_controller_{nullptr},
+        roi_volume_{nullptr} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR VRControllerHideROIVolumeRequest::VRControllerHideROIVolumeRequest(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
 struct VRControllerHideROIVolumeRequestDefaultTypeInternal {
   PROTOBUF_CONSTEXPR VRControllerHideROIVolumeRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
   ~VRControllerHideROIVolumeRequestDefaultTypeInternal() {}
@@ -207,13 +211,16 @@ struct VRControllerHideROIVolumeRequestDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 VRControllerHideROIVolumeRequestDefaultTypeInternal _VRControllerHideROIVolumeRequest_default_instance_;
+
+inline constexpr VRControllerDisplayROIVolumeRequest::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        vr_controller_{nullptr},
+        roi_volume_{nullptr} {}
+
 template <typename>
-PROTOBUF_CONSTEXPR VRControllerDisplayROIVolumeRequest::VRControllerDisplayROIVolumeRequest(
-    ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_._has_bits_)*/{}
-  , /*decltype(_impl_._cached_size_)*/{}
-  , /*decltype(_impl_.vr_controller_)*/nullptr
-  , /*decltype(_impl_.roi_volume_)*/nullptr} {}
+PROTOBUF_CONSTEXPR VRControllerDisplayROIVolumeRequest::VRControllerDisplayROIVolumeRequest(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
 struct VRControllerDisplayROIVolumeRequestDefaultTypeInternal {
   PROTOBUF_CONSTEXPR VRControllerDisplayROIVolumeRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
   ~VRControllerDisplayROIVolumeRequestDefaultTypeInternal() {}
@@ -224,6 +231,26 @@ struct VRControllerDisplayROIVolumeRequestDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 VRControllerDisplayROIVolumeRequestDefaultTypeInternal _VRControllerDisplayROIVolumeRequest_default_instance_;
+
+inline constexpr VRControllerBlendingControllerResponse::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        status_{nullptr},
+        viewer_controller_{nullptr} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR VRControllerBlendingControllerResponse::VRControllerBlendingControllerResponse(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct VRControllerBlendingControllerResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR VRControllerBlendingControllerResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~VRControllerBlendingControllerResponseDefaultTypeInternal() {}
+  union {
+    VRControllerBlendingControllerResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 VRControllerBlendingControllerResponseDefaultTypeInternal _VRControllerBlendingControllerResponse_default_instance_;
 }  // namespace osirixgrpc
 static ::_pb::Metadata file_level_metadata_vrcontroller_2eproto[11];
 static constexpr const ::_pb::EnumDescriptor**
@@ -372,17 +399,17 @@ const ::uint32_t TableStruct_vrcontroller_2eproto::offsets[] PROTOBUF_SECTION_VA
 
 static const ::_pbi::MigrationSchema
     schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-        { 0, 10, -1, sizeof(::osirixgrpc::VRControllerViewer2DResponse)},
-        { 12, 22, -1, sizeof(::osirixgrpc::VRControllerBlendingControllerResponse)},
-        { 24, 34, -1, sizeof(::osirixgrpc::VRControllerRenderingModeResponse)},
-        { 36, 47, -1, sizeof(::osirixgrpc::VRControllerWLWWResponse)},
-        { 50, 60, -1, sizeof(::osirixgrpc::VRControllerStyleResponse)},
-        { 62, 72, -1, sizeof(::osirixgrpc::VRControllerTitleResponse)},
-        { 74, 84, -1, sizeof(::osirixgrpc::VRControllerROIVolumesResponse)},
-        { 86, 96, -1, sizeof(::osirixgrpc::VRControllerSetRenderingModeRequest)},
-        { 98, 109, -1, sizeof(::osirixgrpc::VRControllerSetWLWWRequest)},
-        { 112, 122, -1, sizeof(::osirixgrpc::VRControllerHideROIVolumeRequest)},
-        { 124, 134, -1, sizeof(::osirixgrpc::VRControllerDisplayROIVolumeRequest)},
+        {0, 10, -1, sizeof(::osirixgrpc::VRControllerViewer2DResponse)},
+        {12, 22, -1, sizeof(::osirixgrpc::VRControllerBlendingControllerResponse)},
+        {24, 34, -1, sizeof(::osirixgrpc::VRControllerRenderingModeResponse)},
+        {36, 47, -1, sizeof(::osirixgrpc::VRControllerWLWWResponse)},
+        {50, 60, -1, sizeof(::osirixgrpc::VRControllerStyleResponse)},
+        {62, 72, -1, sizeof(::osirixgrpc::VRControllerTitleResponse)},
+        {74, 84, -1, sizeof(::osirixgrpc::VRControllerROIVolumesResponse)},
+        {86, 96, -1, sizeof(::osirixgrpc::VRControllerSetRenderingModeRequest)},
+        {98, 109, -1, sizeof(::osirixgrpc::VRControllerSetWLWWRequest)},
+        {112, 122, -1, sizeof(::osirixgrpc::VRControllerHideROIVolumeRequest)},
+        {124, 134, -1, sizeof(::osirixgrpc::VRControllerDisplayROIVolumeRequest)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -491,77 +518,81 @@ class VRControllerViewer2DResponse::_Internal {
   }
 };
 
-const ::osirixgrpc::Status&
-VRControllerViewer2DResponse::_Internal::status(const VRControllerViewer2DResponse* msg) {
+const ::osirixgrpc::Status& VRControllerViewer2DResponse::_Internal::status(const VRControllerViewer2DResponse* msg) {
   return *msg->_impl_.status_;
 }
-const ::osirixgrpc::ViewerController&
-VRControllerViewer2DResponse::_Internal::viewer_controller(const VRControllerViewer2DResponse* msg) {
+const ::osirixgrpc::ViewerController& VRControllerViewer2DResponse::_Internal::viewer_controller(const VRControllerViewer2DResponse* msg) {
   return *msg->_impl_.viewer_controller_;
 }
 void VRControllerViewer2DResponse::clear_status() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   if (_impl_.status_ != nullptr) _impl_.status_->Clear();
   _impl_._has_bits_[0] &= ~0x00000001u;
 }
 void VRControllerViewer2DResponse::clear_viewer_controller() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   if (_impl_.viewer_controller_ != nullptr) _impl_.viewer_controller_->Clear();
   _impl_._has_bits_[0] &= ~0x00000002u;
 }
-VRControllerViewer2DResponse::VRControllerViewer2DResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
+VRControllerViewer2DResponse::VRControllerViewer2DResponse(::google::protobuf::Arena* arena)
+    : ::google::protobuf::Message(arena) {
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.VRControllerViewer2DResponse)
 }
-VRControllerViewer2DResponse::VRControllerViewer2DResponse(const VRControllerViewer2DResponse& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message() {
-  VRControllerViewer2DResponse* const _this = this; (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_}
-    , /*decltype(_impl_._cached_size_)*/{}
-    , decltype(_impl_.status_){nullptr}
-    , decltype(_impl_.viewer_controller_){nullptr}};
+inline PROTOBUF_NDEBUG_INLINE VRControllerViewer2DResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0} {}
 
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_impl_.status_ = new ::osirixgrpc::Status(*from._impl_.status_);
-  }
-  if ((from._impl_._has_bits_[0] & 0x00000002u) != 0) {
-    _this->_impl_.viewer_controller_ = new ::osirixgrpc::ViewerController(*from._impl_.viewer_controller_);
-  }
+VRControllerViewer2DResponse::VRControllerViewer2DResponse(
+    ::google::protobuf::Arena* arena,
+    const VRControllerViewer2DResponse& from)
+    : ::google::protobuf::Message(arena) {
+  VRControllerViewer2DResponse* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.status_ = (cached_has_bits & 0x00000001u)
+                ? CreateMaybeMessage<::osirixgrpc::Status>(arena, *from._impl_.status_)
+                : nullptr;
+  _impl_.viewer_controller_ = (cached_has_bits & 0x00000002u)
+                ? CreateMaybeMessage<::osirixgrpc::ViewerController>(arena, *from._impl_.viewer_controller_)
+                : nullptr;
+
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.VRControllerViewer2DResponse)
 }
+inline PROTOBUF_NDEBUG_INLINE VRControllerViewer2DResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0} {}
 
 inline void VRControllerViewer2DResponse::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){}
-    , /*decltype(_impl_._cached_size_)*/{}
-    , decltype(_impl_.status_){nullptr}
-    , decltype(_impl_.viewer_controller_){nullptr}
-  };
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, status_),
+           0,
+           offsetof(Impl_, viewer_controller_) -
+               offsetof(Impl_, status_) +
+               sizeof(Impl_::viewer_controller_));
 }
-
 VRControllerViewer2DResponse::~VRControllerViewer2DResponse() {
   // @@protoc_insertion_point(destructor:osirixgrpc.VRControllerViewer2DResponse)
-  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
-  (void)arena;
-    return;
-  }
+  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
   SharedDtor();
 }
-
 inline void VRControllerViewer2DResponse::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
-  if (this != internal_default_instance()) delete _impl_.status_;
-  if (this != internal_default_instance()) delete _impl_.viewer_controller_;
+  ABSL_DCHECK(GetArena() == nullptr);
+  delete _impl_.status_;
+  delete _impl_.viewer_controller_;
+  _impl_.~Impl_();
 }
 
-void VRControllerViewer2DResponse::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
-}
-
-void VRControllerViewer2DResponse::Clear() {
+PROTOBUF_NOINLINE void VRControllerViewer2DResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.VRControllerViewer2DResponse)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -578,82 +609,79 @@ void VRControllerViewer2DResponse::Clear() {
     }
   }
   _impl_._has_bits_.Clear();
-  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
-const char* VRControllerViewer2DResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
-#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  _Internal::HasBits has_bits{};
-  while (!ctx->Done(&ptr)) {
-    ::uint32_t tag;
-    ptr = ::_pbi::ReadTag(ptr, &tag);
-    switch (tag >> 3) {
-      // .osirixgrpc.Status status = 1;
-      case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
-          ptr = ctx->ParseMessage(_internal_mutable_status(), ptr);
-          CHK_(ptr);
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      // .osirixgrpc.ViewerController viewer_controller = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 18)) {
-          ptr = ctx->ParseMessage(_internal_mutable_viewer_controller(), ptr);
-          CHK_(ptr);
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      default:
-        goto handle_unusual;
-    }  // switch
-  handle_unusual:
-    if ((tag == 0) || ((tag & 7) == 4)) {
-      CHK_(ptr);
-      ctx->SetLastTag(tag);
-      goto message_done;
-    }
-    ptr = UnknownFieldParse(
-        tag,
-        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-        ptr, ctx);
-    CHK_(ptr != nullptr);
-  }  // while
-message_done:
-  _impl_._has_bits_.Or(has_bits);
+const char* VRControllerViewer2DResponse::_InternalParse(
+    const char* ptr, ::_pbi::ParseContext* ctx) {
+  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
   return ptr;
-failure:
-  ptr = nullptr;
-  goto message_done;
-#undef CHK_
 }
+
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<1, 2, 2, 0, 2> VRControllerViewer2DResponse::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(VRControllerViewer2DResponse, _impl_._has_bits_),
+    0, // no _extensions_
+    2, 8,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967292,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    2,  // num_field_entries
+    2,  // num_aux_entries
+    offsetof(decltype(_table_), aux_entries),
+    &_VRControllerViewer2DResponse_default_instance_._instance,
+    ::_pbi::TcParser::GenericFallback,  // fallback
+  }, {{
+    // .osirixgrpc.ViewerController viewer_controller = 2;
+    {::_pbi::TcParser::FastMtS1,
+     {18, 1, 1, PROTOBUF_FIELD_OFFSET(VRControllerViewer2DResponse, _impl_.viewer_controller_)}},
+    // .osirixgrpc.Status status = 1;
+    {::_pbi::TcParser::FastMtS1,
+     {10, 0, 0, PROTOBUF_FIELD_OFFSET(VRControllerViewer2DResponse, _impl_.status_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // .osirixgrpc.Status status = 1;
+    {PROTOBUF_FIELD_OFFSET(VRControllerViewer2DResponse, _impl_.status_), _Internal::kHasBitsOffset + 0, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
+    // .osirixgrpc.ViewerController viewer_controller = 2;
+    {PROTOBUF_FIELD_OFFSET(VRControllerViewer2DResponse, _impl_.viewer_controller_), _Internal::kHasBitsOffset + 1, 1,
+    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
+  }}, {{
+    {::_pbi::TcParser::GetTable<::osirixgrpc::Status>()},
+    {::_pbi::TcParser::GetTable<::osirixgrpc::ViewerController>()},
+  }}, {{
+  }},
+};
 
 ::uint8_t* VRControllerViewer2DResponse::_InternalSerialize(
-    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+    ::uint8_t* target,
+    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.VRControllerViewer2DResponse)
   ::uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
+  (void)cached_has_bits;
 
   cached_has_bits = _impl_._has_bits_[0];
   // .osirixgrpc.Status status = 1;
   if (cached_has_bits & 0x00000001u) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(1, _Internal::status(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        1, _Internal::status(this),
         _Internal::status(this).GetCachedSize(), target, stream);
   }
 
   // .osirixgrpc.ViewerController viewer_controller = 2;
   if (cached_has_bits & 0x00000002u) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(2, _Internal::viewer_controller(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        2, _Internal::viewer_controller(this),
         _Internal::viewer_controller(this).GetCachedSize(), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.VRControllerViewer2DResponse)
   return target;
@@ -671,30 +699,29 @@ failure:
   if (cached_has_bits & 0x00000003u) {
     // .osirixgrpc.Status status = 1;
     if (cached_has_bits & 0x00000001u) {
-      total_size += 1 +
-        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-          *_impl_.status_);
+      total_size +=
+          1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.status_);
     }
 
     // .osirixgrpc.ViewerController viewer_controller = 2;
     if (cached_has_bits & 0x00000002u) {
-      total_size += 1 +
-        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-          *_impl_.viewer_controller_);
+      total_size +=
+          1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.viewer_controller_);
     }
 
   }
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData VRControllerViewer2DResponse::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
-    VRControllerViewer2DResponse::MergeImpl
+const ::google::protobuf::Message::ClassData VRControllerViewer2DResponse::_class_data_ = {
+    VRControllerViewer2DResponse::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*VRControllerViewer2DResponse::GetClassData() const { return &_class_data_; }
+const ::google::protobuf::Message::ClassData* VRControllerViewer2DResponse::GetClassData() const {
+  return &_class_data_;
+}
 
-
-void VRControllerViewer2DResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+void VRControllerViewer2DResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<VRControllerViewer2DResponse*>(&to_msg);
   auto& from = static_cast<const VRControllerViewer2DResponse&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.VRControllerViewer2DResponse)
@@ -713,7 +740,7 @@ void VRControllerViewer2DResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& t
           from._internal_viewer_controller());
     }
   }
-  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void VRControllerViewer2DResponse::CopyFrom(const VRControllerViewer2DResponse& from) {
@@ -723,15 +750,18 @@ void VRControllerViewer2DResponse::CopyFrom(const VRControllerViewer2DResponse& 
   MergeFrom(from);
 }
 
-bool VRControllerViewer2DResponse::IsInitialized() const {
+PROTOBUF_NOINLINE bool VRControllerViewer2DResponse::IsInitialized() const {
   return true;
 }
 
-void VRControllerViewer2DResponse::InternalSwap(VRControllerViewer2DResponse* other) {
+::_pbi::CachedSize* VRControllerViewer2DResponse::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void VRControllerViewer2DResponse::InternalSwap(VRControllerViewer2DResponse* PROTOBUF_RESTRICT other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+  ::google::protobuf::internal::memswap<
       PROTOBUF_FIELD_OFFSET(VRControllerViewer2DResponse, _impl_.viewer_controller_)
       + sizeof(VRControllerViewer2DResponse::_impl_.viewer_controller_)
       - PROTOBUF_FIELD_OFFSET(VRControllerViewer2DResponse, _impl_.status_)>(
@@ -739,7 +769,7 @@ void VRControllerViewer2DResponse::InternalSwap(VRControllerViewer2DResponse* ot
           reinterpret_cast<char*>(&other->_impl_.status_));
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata VRControllerViewer2DResponse::GetMetadata() const {
+::google::protobuf::Metadata VRControllerViewer2DResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_vrcontroller_2eproto_getter, &descriptor_table_vrcontroller_2eproto_once,
       file_level_metadata_vrcontroller_2eproto[0]);
@@ -761,77 +791,81 @@ class VRControllerBlendingControllerResponse::_Internal {
   }
 };
 
-const ::osirixgrpc::Status&
-VRControllerBlendingControllerResponse::_Internal::status(const VRControllerBlendingControllerResponse* msg) {
+const ::osirixgrpc::Status& VRControllerBlendingControllerResponse::_Internal::status(const VRControllerBlendingControllerResponse* msg) {
   return *msg->_impl_.status_;
 }
-const ::osirixgrpc::ViewerController&
-VRControllerBlendingControllerResponse::_Internal::viewer_controller(const VRControllerBlendingControllerResponse* msg) {
+const ::osirixgrpc::ViewerController& VRControllerBlendingControllerResponse::_Internal::viewer_controller(const VRControllerBlendingControllerResponse* msg) {
   return *msg->_impl_.viewer_controller_;
 }
 void VRControllerBlendingControllerResponse::clear_status() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   if (_impl_.status_ != nullptr) _impl_.status_->Clear();
   _impl_._has_bits_[0] &= ~0x00000001u;
 }
 void VRControllerBlendingControllerResponse::clear_viewer_controller() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   if (_impl_.viewer_controller_ != nullptr) _impl_.viewer_controller_->Clear();
   _impl_._has_bits_[0] &= ~0x00000002u;
 }
-VRControllerBlendingControllerResponse::VRControllerBlendingControllerResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
+VRControllerBlendingControllerResponse::VRControllerBlendingControllerResponse(::google::protobuf::Arena* arena)
+    : ::google::protobuf::Message(arena) {
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.VRControllerBlendingControllerResponse)
 }
-VRControllerBlendingControllerResponse::VRControllerBlendingControllerResponse(const VRControllerBlendingControllerResponse& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message() {
-  VRControllerBlendingControllerResponse* const _this = this; (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_}
-    , /*decltype(_impl_._cached_size_)*/{}
-    , decltype(_impl_.status_){nullptr}
-    , decltype(_impl_.viewer_controller_){nullptr}};
+inline PROTOBUF_NDEBUG_INLINE VRControllerBlendingControllerResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0} {}
 
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_impl_.status_ = new ::osirixgrpc::Status(*from._impl_.status_);
-  }
-  if ((from._impl_._has_bits_[0] & 0x00000002u) != 0) {
-    _this->_impl_.viewer_controller_ = new ::osirixgrpc::ViewerController(*from._impl_.viewer_controller_);
-  }
+VRControllerBlendingControllerResponse::VRControllerBlendingControllerResponse(
+    ::google::protobuf::Arena* arena,
+    const VRControllerBlendingControllerResponse& from)
+    : ::google::protobuf::Message(arena) {
+  VRControllerBlendingControllerResponse* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.status_ = (cached_has_bits & 0x00000001u)
+                ? CreateMaybeMessage<::osirixgrpc::Status>(arena, *from._impl_.status_)
+                : nullptr;
+  _impl_.viewer_controller_ = (cached_has_bits & 0x00000002u)
+                ? CreateMaybeMessage<::osirixgrpc::ViewerController>(arena, *from._impl_.viewer_controller_)
+                : nullptr;
+
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.VRControllerBlendingControllerResponse)
 }
+inline PROTOBUF_NDEBUG_INLINE VRControllerBlendingControllerResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0} {}
 
 inline void VRControllerBlendingControllerResponse::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){}
-    , /*decltype(_impl_._cached_size_)*/{}
-    , decltype(_impl_.status_){nullptr}
-    , decltype(_impl_.viewer_controller_){nullptr}
-  };
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, status_),
+           0,
+           offsetof(Impl_, viewer_controller_) -
+               offsetof(Impl_, status_) +
+               sizeof(Impl_::viewer_controller_));
 }
-
 VRControllerBlendingControllerResponse::~VRControllerBlendingControllerResponse() {
   // @@protoc_insertion_point(destructor:osirixgrpc.VRControllerBlendingControllerResponse)
-  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
-  (void)arena;
-    return;
-  }
+  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
   SharedDtor();
 }
-
 inline void VRControllerBlendingControllerResponse::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
-  if (this != internal_default_instance()) delete _impl_.status_;
-  if (this != internal_default_instance()) delete _impl_.viewer_controller_;
+  ABSL_DCHECK(GetArena() == nullptr);
+  delete _impl_.status_;
+  delete _impl_.viewer_controller_;
+  _impl_.~Impl_();
 }
 
-void VRControllerBlendingControllerResponse::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
-}
-
-void VRControllerBlendingControllerResponse::Clear() {
+PROTOBUF_NOINLINE void VRControllerBlendingControllerResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.VRControllerBlendingControllerResponse)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -848,82 +882,79 @@ void VRControllerBlendingControllerResponse::Clear() {
     }
   }
   _impl_._has_bits_.Clear();
-  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
-const char* VRControllerBlendingControllerResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
-#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  _Internal::HasBits has_bits{};
-  while (!ctx->Done(&ptr)) {
-    ::uint32_t tag;
-    ptr = ::_pbi::ReadTag(ptr, &tag);
-    switch (tag >> 3) {
-      // .osirixgrpc.Status status = 1;
-      case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
-          ptr = ctx->ParseMessage(_internal_mutable_status(), ptr);
-          CHK_(ptr);
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      // .osirixgrpc.ViewerController viewer_controller = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 18)) {
-          ptr = ctx->ParseMessage(_internal_mutable_viewer_controller(), ptr);
-          CHK_(ptr);
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      default:
-        goto handle_unusual;
-    }  // switch
-  handle_unusual:
-    if ((tag == 0) || ((tag & 7) == 4)) {
-      CHK_(ptr);
-      ctx->SetLastTag(tag);
-      goto message_done;
-    }
-    ptr = UnknownFieldParse(
-        tag,
-        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-        ptr, ctx);
-    CHK_(ptr != nullptr);
-  }  // while
-message_done:
-  _impl_._has_bits_.Or(has_bits);
+const char* VRControllerBlendingControllerResponse::_InternalParse(
+    const char* ptr, ::_pbi::ParseContext* ctx) {
+  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
   return ptr;
-failure:
-  ptr = nullptr;
-  goto message_done;
-#undef CHK_
 }
+
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<1, 2, 2, 0, 2> VRControllerBlendingControllerResponse::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(VRControllerBlendingControllerResponse, _impl_._has_bits_),
+    0, // no _extensions_
+    2, 8,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967292,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    2,  // num_field_entries
+    2,  // num_aux_entries
+    offsetof(decltype(_table_), aux_entries),
+    &_VRControllerBlendingControllerResponse_default_instance_._instance,
+    ::_pbi::TcParser::GenericFallback,  // fallback
+  }, {{
+    // .osirixgrpc.ViewerController viewer_controller = 2;
+    {::_pbi::TcParser::FastMtS1,
+     {18, 1, 1, PROTOBUF_FIELD_OFFSET(VRControllerBlendingControllerResponse, _impl_.viewer_controller_)}},
+    // .osirixgrpc.Status status = 1;
+    {::_pbi::TcParser::FastMtS1,
+     {10, 0, 0, PROTOBUF_FIELD_OFFSET(VRControllerBlendingControllerResponse, _impl_.status_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // .osirixgrpc.Status status = 1;
+    {PROTOBUF_FIELD_OFFSET(VRControllerBlendingControllerResponse, _impl_.status_), _Internal::kHasBitsOffset + 0, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
+    // .osirixgrpc.ViewerController viewer_controller = 2;
+    {PROTOBUF_FIELD_OFFSET(VRControllerBlendingControllerResponse, _impl_.viewer_controller_), _Internal::kHasBitsOffset + 1, 1,
+    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
+  }}, {{
+    {::_pbi::TcParser::GetTable<::osirixgrpc::Status>()},
+    {::_pbi::TcParser::GetTable<::osirixgrpc::ViewerController>()},
+  }}, {{
+  }},
+};
 
 ::uint8_t* VRControllerBlendingControllerResponse::_InternalSerialize(
-    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+    ::uint8_t* target,
+    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.VRControllerBlendingControllerResponse)
   ::uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
+  (void)cached_has_bits;
 
   cached_has_bits = _impl_._has_bits_[0];
   // .osirixgrpc.Status status = 1;
   if (cached_has_bits & 0x00000001u) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(1, _Internal::status(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        1, _Internal::status(this),
         _Internal::status(this).GetCachedSize(), target, stream);
   }
 
   // .osirixgrpc.ViewerController viewer_controller = 2;
   if (cached_has_bits & 0x00000002u) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(2, _Internal::viewer_controller(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        2, _Internal::viewer_controller(this),
         _Internal::viewer_controller(this).GetCachedSize(), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.VRControllerBlendingControllerResponse)
   return target;
@@ -941,30 +972,29 @@ failure:
   if (cached_has_bits & 0x00000003u) {
     // .osirixgrpc.Status status = 1;
     if (cached_has_bits & 0x00000001u) {
-      total_size += 1 +
-        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-          *_impl_.status_);
+      total_size +=
+          1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.status_);
     }
 
     // .osirixgrpc.ViewerController viewer_controller = 2;
     if (cached_has_bits & 0x00000002u) {
-      total_size += 1 +
-        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-          *_impl_.viewer_controller_);
+      total_size +=
+          1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.viewer_controller_);
     }
 
   }
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData VRControllerBlendingControllerResponse::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
-    VRControllerBlendingControllerResponse::MergeImpl
+const ::google::protobuf::Message::ClassData VRControllerBlendingControllerResponse::_class_data_ = {
+    VRControllerBlendingControllerResponse::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*VRControllerBlendingControllerResponse::GetClassData() const { return &_class_data_; }
+const ::google::protobuf::Message::ClassData* VRControllerBlendingControllerResponse::GetClassData() const {
+  return &_class_data_;
+}
 
-
-void VRControllerBlendingControllerResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+void VRControllerBlendingControllerResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<VRControllerBlendingControllerResponse*>(&to_msg);
   auto& from = static_cast<const VRControllerBlendingControllerResponse&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.VRControllerBlendingControllerResponse)
@@ -983,7 +1013,7 @@ void VRControllerBlendingControllerResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::
           from._internal_viewer_controller());
     }
   }
-  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void VRControllerBlendingControllerResponse::CopyFrom(const VRControllerBlendingControllerResponse& from) {
@@ -993,15 +1023,18 @@ void VRControllerBlendingControllerResponse::CopyFrom(const VRControllerBlending
   MergeFrom(from);
 }
 
-bool VRControllerBlendingControllerResponse::IsInitialized() const {
+PROTOBUF_NOINLINE bool VRControllerBlendingControllerResponse::IsInitialized() const {
   return true;
 }
 
-void VRControllerBlendingControllerResponse::InternalSwap(VRControllerBlendingControllerResponse* other) {
+::_pbi::CachedSize* VRControllerBlendingControllerResponse::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void VRControllerBlendingControllerResponse::InternalSwap(VRControllerBlendingControllerResponse* PROTOBUF_RESTRICT other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+  ::google::protobuf::internal::memswap<
       PROTOBUF_FIELD_OFFSET(VRControllerBlendingControllerResponse, _impl_.viewer_controller_)
       + sizeof(VRControllerBlendingControllerResponse::_impl_.viewer_controller_)
       - PROTOBUF_FIELD_OFFSET(VRControllerBlendingControllerResponse, _impl_.status_)>(
@@ -1009,7 +1042,7 @@ void VRControllerBlendingControllerResponse::InternalSwap(VRControllerBlendingCo
           reinterpret_cast<char*>(&other->_impl_.status_));
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata VRControllerBlendingControllerResponse::GetMetadata() const {
+::google::protobuf::Metadata VRControllerBlendingControllerResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_vrcontroller_2eproto_getter, &descriptor_table_vrcontroller_2eproto_once,
       file_level_metadata_vrcontroller_2eproto[1]);
@@ -1027,79 +1060,67 @@ class VRControllerRenderingModeResponse::_Internal {
   }
 };
 
-const ::osirixgrpc::Status&
-VRControllerRenderingModeResponse::_Internal::status(const VRControllerRenderingModeResponse* msg) {
+const ::osirixgrpc::Status& VRControllerRenderingModeResponse::_Internal::status(const VRControllerRenderingModeResponse* msg) {
   return *msg->_impl_.status_;
 }
 void VRControllerRenderingModeResponse::clear_status() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   if (_impl_.status_ != nullptr) _impl_.status_->Clear();
   _impl_._has_bits_[0] &= ~0x00000001u;
 }
-VRControllerRenderingModeResponse::VRControllerRenderingModeResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
+VRControllerRenderingModeResponse::VRControllerRenderingModeResponse(::google::protobuf::Arena* arena)
+    : ::google::protobuf::Message(arena) {
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.VRControllerRenderingModeResponse)
 }
-VRControllerRenderingModeResponse::VRControllerRenderingModeResponse(const VRControllerRenderingModeResponse& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message() {
-  VRControllerRenderingModeResponse* const _this = this; (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_}
-    , /*decltype(_impl_._cached_size_)*/{}
-    , decltype(_impl_.rendering_mode_) {}
+inline PROTOBUF_NDEBUG_INLINE VRControllerRenderingModeResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        rendering_mode_(arena, from.rendering_mode_) {}
 
-    , decltype(_impl_.status_){nullptr}};
+VRControllerRenderingModeResponse::VRControllerRenderingModeResponse(
+    ::google::protobuf::Arena* arena,
+    const VRControllerRenderingModeResponse& from)
+    : ::google::protobuf::Message(arena) {
+  VRControllerRenderingModeResponse* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.status_ = (cached_has_bits & 0x00000001u)
+                ? CreateMaybeMessage<::osirixgrpc::Status>(arena, *from._impl_.status_)
+                : nullptr;
 
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  _impl_.rendering_mode_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.rendering_mode_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_rendering_mode().empty()) {
-    _this->_impl_.rendering_mode_.Set(from._internal_rendering_mode(), _this->GetArenaForAllocation());
-  }
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_impl_.status_ = new ::osirixgrpc::Status(*from._impl_.status_);
-  }
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.VRControllerRenderingModeResponse)
 }
+inline PROTOBUF_NDEBUG_INLINE VRControllerRenderingModeResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0},
+        rendering_mode_(arena) {}
 
 inline void VRControllerRenderingModeResponse::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){}
-    , /*decltype(_impl_._cached_size_)*/{}
-    , decltype(_impl_.rendering_mode_) {}
-
-    , decltype(_impl_.status_){nullptr}
-  };
-  _impl_.rendering_mode_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.rendering_mode_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.status_ = {};
 }
-
 VRControllerRenderingModeResponse::~VRControllerRenderingModeResponse() {
   // @@protoc_insertion_point(destructor:osirixgrpc.VRControllerRenderingModeResponse)
-  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
-  (void)arena;
-    return;
-  }
+  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
   SharedDtor();
 }
-
 inline void VRControllerRenderingModeResponse::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.rendering_mode_.Destroy();
-  if (this != internal_default_instance()) delete _impl_.status_;
+  delete _impl_.status_;
+  _impl_.~Impl_();
 }
 
-void VRControllerRenderingModeResponse::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
-}
-
-void VRControllerRenderingModeResponse::Clear() {
+PROTOBUF_NOINLINE void VRControllerRenderingModeResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.VRControllerRenderingModeResponse)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -1111,85 +1132,82 @@ void VRControllerRenderingModeResponse::Clear() {
     _impl_.status_->Clear();
   }
   _impl_._has_bits_.Clear();
-  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
-const char* VRControllerRenderingModeResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
-#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  _Internal::HasBits has_bits{};
-  while (!ctx->Done(&ptr)) {
-    ::uint32_t tag;
-    ptr = ::_pbi::ReadTag(ptr, &tag);
-    switch (tag >> 3) {
-      // .osirixgrpc.Status status = 1;
-      case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
-          ptr = ctx->ParseMessage(_internal_mutable_status(), ptr);
-          CHK_(ptr);
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      // string rendering_mode = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 18)) {
-          auto str = _internal_mutable_rendering_mode();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "osirixgrpc.VRControllerRenderingModeResponse.rendering_mode"));
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      default:
-        goto handle_unusual;
-    }  // switch
-  handle_unusual:
-    if ((tag == 0) || ((tag & 7) == 4)) {
-      CHK_(ptr);
-      ctx->SetLastTag(tag);
-      goto message_done;
-    }
-    ptr = UnknownFieldParse(
-        tag,
-        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-        ptr, ctx);
-    CHK_(ptr != nullptr);
-  }  // while
-message_done:
-  _impl_._has_bits_.Or(has_bits);
+const char* VRControllerRenderingModeResponse::_InternalParse(
+    const char* ptr, ::_pbi::ParseContext* ctx) {
+  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
   return ptr;
-failure:
-  ptr = nullptr;
-  goto message_done;
-#undef CHK_
 }
+
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<1, 2, 1, 67, 2> VRControllerRenderingModeResponse::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(VRControllerRenderingModeResponse, _impl_._has_bits_),
+    0, // no _extensions_
+    2, 8,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967292,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    2,  // num_field_entries
+    1,  // num_aux_entries
+    offsetof(decltype(_table_), aux_entries),
+    &_VRControllerRenderingModeResponse_default_instance_._instance,
+    ::_pbi::TcParser::GenericFallback,  // fallback
+  }, {{
+    // string rendering_mode = 2;
+    {::_pbi::TcParser::FastUS1,
+     {18, 63, 0, PROTOBUF_FIELD_OFFSET(VRControllerRenderingModeResponse, _impl_.rendering_mode_)}},
+    // .osirixgrpc.Status status = 1;
+    {::_pbi::TcParser::FastMtS1,
+     {10, 0, 0, PROTOBUF_FIELD_OFFSET(VRControllerRenderingModeResponse, _impl_.status_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // .osirixgrpc.Status status = 1;
+    {PROTOBUF_FIELD_OFFSET(VRControllerRenderingModeResponse, _impl_.status_), _Internal::kHasBitsOffset + 0, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
+    // string rendering_mode = 2;
+    {PROTOBUF_FIELD_OFFSET(VRControllerRenderingModeResponse, _impl_.rendering_mode_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+  }}, {{
+    {::_pbi::TcParser::GetTable<::osirixgrpc::Status>()},
+  }}, {{
+    "\54\0\16\0\0\0\0\0"
+    "osirixgrpc.VRControllerRenderingModeResponse"
+    "rendering_mode"
+  }},
+};
 
 ::uint8_t* VRControllerRenderingModeResponse::_InternalSerialize(
-    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+    ::uint8_t* target,
+    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.VRControllerRenderingModeResponse)
   ::uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
+  (void)cached_has_bits;
 
   cached_has_bits = _impl_._has_bits_[0];
   // .osirixgrpc.Status status = 1;
   if (cached_has_bits & 0x00000001u) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(1, _Internal::status(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        1, _Internal::status(this),
         _Internal::status(this).GetCachedSize(), target, stream);
   }
 
   // string rendering_mode = 2;
   if (!this->_internal_rendering_mode().empty()) {
     const std::string& _s = this->_internal_rendering_mode();
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE, "osirixgrpc.VRControllerRenderingModeResponse.rendering_mode");
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "osirixgrpc.VRControllerRenderingModeResponse.rendering_mode");
     target = stream->WriteStringMaybeAliased(2, _s, target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.VRControllerRenderingModeResponse)
   return target;
@@ -1205,29 +1223,29 @@ failure:
 
   // string rendering_mode = 2;
   if (!this->_internal_rendering_mode().empty()) {
-    total_size += 1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
                                     this->_internal_rendering_mode());
   }
 
   // .osirixgrpc.Status status = 1;
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *_impl_.status_);
+    total_size +=
+        1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.status_);
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData VRControllerRenderingModeResponse::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
-    VRControllerRenderingModeResponse::MergeImpl
+const ::google::protobuf::Message::ClassData VRControllerRenderingModeResponse::_class_data_ = {
+    VRControllerRenderingModeResponse::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*VRControllerRenderingModeResponse::GetClassData() const { return &_class_data_; }
+const ::google::protobuf::Message::ClassData* VRControllerRenderingModeResponse::GetClassData() const {
+  return &_class_data_;
+}
 
-
-void VRControllerRenderingModeResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+void VRControllerRenderingModeResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<VRControllerRenderingModeResponse*>(&to_msg);
   auto& from = static_cast<const VRControllerRenderingModeResponse&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.VRControllerRenderingModeResponse)
@@ -1242,7 +1260,7 @@ void VRControllerRenderingModeResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Messa
     _this->_internal_mutable_status()->::osirixgrpc::Status::MergeFrom(
         from._internal_status());
   }
-  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void VRControllerRenderingModeResponse::CopyFrom(const VRControllerRenderingModeResponse& from) {
@@ -1252,22 +1270,24 @@ void VRControllerRenderingModeResponse::CopyFrom(const VRControllerRenderingMode
   MergeFrom(from);
 }
 
-bool VRControllerRenderingModeResponse::IsInitialized() const {
+PROTOBUF_NOINLINE bool VRControllerRenderingModeResponse::IsInitialized() const {
   return true;
 }
 
-void VRControllerRenderingModeResponse::InternalSwap(VRControllerRenderingModeResponse* other) {
+::_pbi::CachedSize* VRControllerRenderingModeResponse::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void VRControllerRenderingModeResponse::InternalSwap(VRControllerRenderingModeResponse* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.rendering_mode_, lhs_arena,
-                                       &other->_impl_.rendering_mode_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.rendering_mode_, &other->_impl_.rendering_mode_, arena);
   swap(_impl_.status_, other->_impl_.status_);
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata VRControllerRenderingModeResponse::GetMetadata() const {
+::google::protobuf::Metadata VRControllerRenderingModeResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_vrcontroller_2eproto_getter, &descriptor_table_vrcontroller_2eproto_once,
       file_level_metadata_vrcontroller_2eproto[2]);
@@ -1285,74 +1305,76 @@ class VRControllerWLWWResponse::_Internal {
   }
 };
 
-const ::osirixgrpc::Status&
-VRControllerWLWWResponse::_Internal::status(const VRControllerWLWWResponse* msg) {
+const ::osirixgrpc::Status& VRControllerWLWWResponse::_Internal::status(const VRControllerWLWWResponse* msg) {
   return *msg->_impl_.status_;
 }
 void VRControllerWLWWResponse::clear_status() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   if (_impl_.status_ != nullptr) _impl_.status_->Clear();
   _impl_._has_bits_[0] &= ~0x00000001u;
 }
-VRControllerWLWWResponse::VRControllerWLWWResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
+VRControllerWLWWResponse::VRControllerWLWWResponse(::google::protobuf::Arena* arena)
+    : ::google::protobuf::Message(arena) {
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.VRControllerWLWWResponse)
 }
-VRControllerWLWWResponse::VRControllerWLWWResponse(const VRControllerWLWWResponse& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message() {
-  VRControllerWLWWResponse* const _this = this; (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_}
-    , /*decltype(_impl_._cached_size_)*/{}
-    , decltype(_impl_.status_){nullptr}
-    , decltype(_impl_.wl_) {}
+inline PROTOBUF_NDEBUG_INLINE VRControllerWLWWResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0} {}
 
-    , decltype(_impl_.ww_) {}
-  };
+VRControllerWLWWResponse::VRControllerWLWWResponse(
+    ::google::protobuf::Arena* arena,
+    const VRControllerWLWWResponse& from)
+    : ::google::protobuf::Message(arena) {
+  VRControllerWLWWResponse* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.status_ = (cached_has_bits & 0x00000001u)
+                ? CreateMaybeMessage<::osirixgrpc::Status>(arena, *from._impl_.status_)
+                : nullptr;
+  ::memcpy(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, wl_),
+           reinterpret_cast<const char *>(&from._impl_) +
+               offsetof(Impl_, wl_),
+           offsetof(Impl_, ww_) -
+               offsetof(Impl_, wl_) +
+               sizeof(Impl_::ww_));
 
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_impl_.status_ = new ::osirixgrpc::Status(*from._impl_.status_);
-  }
-  ::memcpy(&_impl_.wl_, &from._impl_.wl_,
-    static_cast<::size_t>(reinterpret_cast<char*>(&_impl_.ww_) -
-    reinterpret_cast<char*>(&_impl_.wl_)) + sizeof(_impl_.ww_));
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.VRControllerWLWWResponse)
 }
+inline PROTOBUF_NDEBUG_INLINE VRControllerWLWWResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0} {}
 
 inline void VRControllerWLWWResponse::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){}
-    , /*decltype(_impl_._cached_size_)*/{}
-    , decltype(_impl_.status_){nullptr}
-    , decltype(_impl_.wl_) { 0 }
-
-    , decltype(_impl_.ww_) { 0 }
-
-  };
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, status_),
+           0,
+           offsetof(Impl_, ww_) -
+               offsetof(Impl_, status_) +
+               sizeof(Impl_::ww_));
 }
-
 VRControllerWLWWResponse::~VRControllerWLWWResponse() {
   // @@protoc_insertion_point(destructor:osirixgrpc.VRControllerWLWWResponse)
-  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
-  (void)arena;
-    return;
-  }
+  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
   SharedDtor();
 }
-
 inline void VRControllerWLWWResponse::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
-  if (this != internal_default_instance()) delete _impl_.status_;
+  ABSL_DCHECK(GetArena() == nullptr);
+  delete _impl_.status_;
+  _impl_.~Impl_();
 }
 
-void VRControllerWLWWResponse::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
-}
-
-void VRControllerWLWWResponse::Clear() {
+PROTOBUF_NOINLINE void VRControllerWLWWResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.VRControllerWLWWResponse)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -1366,83 +1388,77 @@ void VRControllerWLWWResponse::Clear() {
       reinterpret_cast<char*>(&_impl_.ww_) -
       reinterpret_cast<char*>(&_impl_.wl_)) + sizeof(_impl_.ww_));
   _impl_._has_bits_.Clear();
-  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
-const char* VRControllerWLWWResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
-#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  _Internal::HasBits has_bits{};
-  while (!ctx->Done(&ptr)) {
-    ::uint32_t tag;
-    ptr = ::_pbi::ReadTag(ptr, &tag);
-    switch (tag >> 3) {
-      // .osirixgrpc.Status status = 1;
-      case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
-          ptr = ctx->ParseMessage(_internal_mutable_status(), ptr);
-          CHK_(ptr);
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      // float wl = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 21)) {
-          _impl_.wl_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
-          ptr += sizeof(float);
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      // float ww = 3;
-      case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 29)) {
-          _impl_.ww_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
-          ptr += sizeof(float);
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      default:
-        goto handle_unusual;
-    }  // switch
-  handle_unusual:
-    if ((tag == 0) || ((tag & 7) == 4)) {
-      CHK_(ptr);
-      ctx->SetLastTag(tag);
-      goto message_done;
-    }
-    ptr = UnknownFieldParse(
-        tag,
-        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-        ptr, ctx);
-    CHK_(ptr != nullptr);
-  }  // while
-message_done:
-  _impl_._has_bits_.Or(has_bits);
+const char* VRControllerWLWWResponse::_InternalParse(
+    const char* ptr, ::_pbi::ParseContext* ctx) {
+  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
   return ptr;
-failure:
-  ptr = nullptr;
-  goto message_done;
-#undef CHK_
 }
+
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<2, 3, 1, 0, 2> VRControllerWLWWResponse::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(VRControllerWLWWResponse, _impl_._has_bits_),
+    0, // no _extensions_
+    3, 24,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967288,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    3,  // num_field_entries
+    1,  // num_aux_entries
+    offsetof(decltype(_table_), aux_entries),
+    &_VRControllerWLWWResponse_default_instance_._instance,
+    ::_pbi::TcParser::GenericFallback,  // fallback
+  }, {{
+    {::_pbi::TcParser::MiniParse, {}},
+    // .osirixgrpc.Status status = 1;
+    {::_pbi::TcParser::FastMtS1,
+     {10, 0, 0, PROTOBUF_FIELD_OFFSET(VRControllerWLWWResponse, _impl_.status_)}},
+    // float wl = 2;
+    {::_pbi::TcParser::FastF32S1,
+     {21, 63, 0, PROTOBUF_FIELD_OFFSET(VRControllerWLWWResponse, _impl_.wl_)}},
+    // float ww = 3;
+    {::_pbi::TcParser::FastF32S1,
+     {29, 63, 0, PROTOBUF_FIELD_OFFSET(VRControllerWLWWResponse, _impl_.ww_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // .osirixgrpc.Status status = 1;
+    {PROTOBUF_FIELD_OFFSET(VRControllerWLWWResponse, _impl_.status_), _Internal::kHasBitsOffset + 0, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
+    // float wl = 2;
+    {PROTOBUF_FIELD_OFFSET(VRControllerWLWWResponse, _impl_.wl_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kFloat)},
+    // float ww = 3;
+    {PROTOBUF_FIELD_OFFSET(VRControllerWLWWResponse, _impl_.ww_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kFloat)},
+  }}, {{
+    {::_pbi::TcParser::GetTable<::osirixgrpc::Status>()},
+  }}, {{
+  }},
+};
 
 ::uint8_t* VRControllerWLWWResponse::_InternalSerialize(
-    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+    ::uint8_t* target,
+    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.VRControllerWLWWResponse)
   ::uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
+  (void)cached_has_bits;
 
   cached_has_bits = _impl_._has_bits_[0];
   // .osirixgrpc.Status status = 1;
   if (cached_has_bits & 0x00000001u) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(1, _Internal::status(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        1, _Internal::status(this),
         _Internal::status(this).GetCachedSize(), target, stream);
   }
 
   // float wl = 2;
-  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  static_assert(sizeof(::uint32_t) == sizeof(float),
+                "Code assumes ::uint32_t and float are the same size.");
   float tmp_wl = this->_internal_wl();
   ::uint32_t raw_wl;
   memcpy(&raw_wl, &tmp_wl, sizeof(tmp_wl));
@@ -1453,7 +1469,8 @@ failure:
   }
 
   // float ww = 3;
-  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  static_assert(sizeof(::uint32_t) == sizeof(float),
+                "Code assumes ::uint32_t and float are the same size.");
   float tmp_ww = this->_internal_ww();
   ::uint32_t raw_ww;
   memcpy(&raw_ww, &tmp_ww, sizeof(tmp_ww));
@@ -1464,8 +1481,9 @@ failure:
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.VRControllerWLWWResponse)
   return target;
@@ -1482,13 +1500,13 @@ failure:
   // .osirixgrpc.Status status = 1;
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *_impl_.status_);
+    total_size +=
+        1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.status_);
   }
 
   // float wl = 2;
-  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  static_assert(sizeof(::uint32_t) == sizeof(float),
+                "Code assumes ::uint32_t and float are the same size.");
   float tmp_wl = this->_internal_wl();
   ::uint32_t raw_wl;
   memcpy(&raw_wl, &tmp_wl, sizeof(tmp_wl));
@@ -1497,7 +1515,8 @@ failure:
   }
 
   // float ww = 3;
-  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  static_assert(sizeof(::uint32_t) == sizeof(float),
+                "Code assumes ::uint32_t and float are the same size.");
   float tmp_ww = this->_internal_ww();
   ::uint32_t raw_ww;
   memcpy(&raw_ww, &tmp_ww, sizeof(tmp_ww));
@@ -1508,14 +1527,15 @@ failure:
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData VRControllerWLWWResponse::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
-    VRControllerWLWWResponse::MergeImpl
+const ::google::protobuf::Message::ClassData VRControllerWLWWResponse::_class_data_ = {
+    VRControllerWLWWResponse::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*VRControllerWLWWResponse::GetClassData() const { return &_class_data_; }
+const ::google::protobuf::Message::ClassData* VRControllerWLWWResponse::GetClassData() const {
+  return &_class_data_;
+}
 
-
-void VRControllerWLWWResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+void VRControllerWLWWResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<VRControllerWLWWResponse*>(&to_msg);
   auto& from = static_cast<const VRControllerWLWWResponse&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.VRControllerWLWWResponse)
@@ -1527,21 +1547,23 @@ void VRControllerWLWWResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_ms
     _this->_internal_mutable_status()->::osirixgrpc::Status::MergeFrom(
         from._internal_status());
   }
-  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  static_assert(sizeof(::uint32_t) == sizeof(float),
+                "Code assumes ::uint32_t and float are the same size.");
   float tmp_wl = from._internal_wl();
   ::uint32_t raw_wl;
   memcpy(&raw_wl, &tmp_wl, sizeof(tmp_wl));
   if (raw_wl != 0) {
     _this->_internal_set_wl(from._internal_wl());
   }
-  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  static_assert(sizeof(::uint32_t) == sizeof(float),
+                "Code assumes ::uint32_t and float are the same size.");
   float tmp_ww = from._internal_ww();
   ::uint32_t raw_ww;
   memcpy(&raw_ww, &tmp_ww, sizeof(tmp_ww));
   if (raw_ww != 0) {
     _this->_internal_set_ww(from._internal_ww());
   }
-  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void VRControllerWLWWResponse::CopyFrom(const VRControllerWLWWResponse& from) {
@@ -1551,15 +1573,18 @@ void VRControllerWLWWResponse::CopyFrom(const VRControllerWLWWResponse& from) {
   MergeFrom(from);
 }
 
-bool VRControllerWLWWResponse::IsInitialized() const {
+PROTOBUF_NOINLINE bool VRControllerWLWWResponse::IsInitialized() const {
   return true;
 }
 
-void VRControllerWLWWResponse::InternalSwap(VRControllerWLWWResponse* other) {
+::_pbi::CachedSize* VRControllerWLWWResponse::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void VRControllerWLWWResponse::InternalSwap(VRControllerWLWWResponse* PROTOBUF_RESTRICT other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+  ::google::protobuf::internal::memswap<
       PROTOBUF_FIELD_OFFSET(VRControllerWLWWResponse, _impl_.ww_)
       + sizeof(VRControllerWLWWResponse::_impl_.ww_)
       - PROTOBUF_FIELD_OFFSET(VRControllerWLWWResponse, _impl_.status_)>(
@@ -1567,7 +1592,7 @@ void VRControllerWLWWResponse::InternalSwap(VRControllerWLWWResponse* other) {
           reinterpret_cast<char*>(&other->_impl_.status_));
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata VRControllerWLWWResponse::GetMetadata() const {
+::google::protobuf::Metadata VRControllerWLWWResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_vrcontroller_2eproto_getter, &descriptor_table_vrcontroller_2eproto_once,
       file_level_metadata_vrcontroller_2eproto[3]);
@@ -1585,79 +1610,67 @@ class VRControllerStyleResponse::_Internal {
   }
 };
 
-const ::osirixgrpc::Status&
-VRControllerStyleResponse::_Internal::status(const VRControllerStyleResponse* msg) {
+const ::osirixgrpc::Status& VRControllerStyleResponse::_Internal::status(const VRControllerStyleResponse* msg) {
   return *msg->_impl_.status_;
 }
 void VRControllerStyleResponse::clear_status() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   if (_impl_.status_ != nullptr) _impl_.status_->Clear();
   _impl_._has_bits_[0] &= ~0x00000001u;
 }
-VRControllerStyleResponse::VRControllerStyleResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
+VRControllerStyleResponse::VRControllerStyleResponse(::google::protobuf::Arena* arena)
+    : ::google::protobuf::Message(arena) {
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.VRControllerStyleResponse)
 }
-VRControllerStyleResponse::VRControllerStyleResponse(const VRControllerStyleResponse& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message() {
-  VRControllerStyleResponse* const _this = this; (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_}
-    , /*decltype(_impl_._cached_size_)*/{}
-    , decltype(_impl_.style_) {}
+inline PROTOBUF_NDEBUG_INLINE VRControllerStyleResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        style_(arena, from.style_) {}
 
-    , decltype(_impl_.status_){nullptr}};
+VRControllerStyleResponse::VRControllerStyleResponse(
+    ::google::protobuf::Arena* arena,
+    const VRControllerStyleResponse& from)
+    : ::google::protobuf::Message(arena) {
+  VRControllerStyleResponse* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.status_ = (cached_has_bits & 0x00000001u)
+                ? CreateMaybeMessage<::osirixgrpc::Status>(arena, *from._impl_.status_)
+                : nullptr;
 
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  _impl_.style_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.style_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_style().empty()) {
-    _this->_impl_.style_.Set(from._internal_style(), _this->GetArenaForAllocation());
-  }
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_impl_.status_ = new ::osirixgrpc::Status(*from._impl_.status_);
-  }
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.VRControllerStyleResponse)
 }
+inline PROTOBUF_NDEBUG_INLINE VRControllerStyleResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0},
+        style_(arena) {}
 
 inline void VRControllerStyleResponse::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){}
-    , /*decltype(_impl_._cached_size_)*/{}
-    , decltype(_impl_.style_) {}
-
-    , decltype(_impl_.status_){nullptr}
-  };
-  _impl_.style_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.style_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.status_ = {};
 }
-
 VRControllerStyleResponse::~VRControllerStyleResponse() {
   // @@protoc_insertion_point(destructor:osirixgrpc.VRControllerStyleResponse)
-  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
-  (void)arena;
-    return;
-  }
+  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
   SharedDtor();
 }
-
 inline void VRControllerStyleResponse::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.style_.Destroy();
-  if (this != internal_default_instance()) delete _impl_.status_;
+  delete _impl_.status_;
+  _impl_.~Impl_();
 }
 
-void VRControllerStyleResponse::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
-}
-
-void VRControllerStyleResponse::Clear() {
+PROTOBUF_NOINLINE void VRControllerStyleResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.VRControllerStyleResponse)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -1669,85 +1682,82 @@ void VRControllerStyleResponse::Clear() {
     _impl_.status_->Clear();
   }
   _impl_._has_bits_.Clear();
-  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
-const char* VRControllerStyleResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
-#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  _Internal::HasBits has_bits{};
-  while (!ctx->Done(&ptr)) {
-    ::uint32_t tag;
-    ptr = ::_pbi::ReadTag(ptr, &tag);
-    switch (tag >> 3) {
-      // .osirixgrpc.Status status = 1;
-      case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
-          ptr = ctx->ParseMessage(_internal_mutable_status(), ptr);
-          CHK_(ptr);
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      // string style = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 18)) {
-          auto str = _internal_mutable_style();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "osirixgrpc.VRControllerStyleResponse.style"));
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      default:
-        goto handle_unusual;
-    }  // switch
-  handle_unusual:
-    if ((tag == 0) || ((tag & 7) == 4)) {
-      CHK_(ptr);
-      ctx->SetLastTag(tag);
-      goto message_done;
-    }
-    ptr = UnknownFieldParse(
-        tag,
-        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-        ptr, ctx);
-    CHK_(ptr != nullptr);
-  }  // while
-message_done:
-  _impl_._has_bits_.Or(has_bits);
+const char* VRControllerStyleResponse::_InternalParse(
+    const char* ptr, ::_pbi::ParseContext* ctx) {
+  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
   return ptr;
-failure:
-  ptr = nullptr;
-  goto message_done;
-#undef CHK_
 }
+
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<1, 2, 1, 50, 2> VRControllerStyleResponse::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(VRControllerStyleResponse, _impl_._has_bits_),
+    0, // no _extensions_
+    2, 8,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967292,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    2,  // num_field_entries
+    1,  // num_aux_entries
+    offsetof(decltype(_table_), aux_entries),
+    &_VRControllerStyleResponse_default_instance_._instance,
+    ::_pbi::TcParser::GenericFallback,  // fallback
+  }, {{
+    // string style = 2;
+    {::_pbi::TcParser::FastUS1,
+     {18, 63, 0, PROTOBUF_FIELD_OFFSET(VRControllerStyleResponse, _impl_.style_)}},
+    // .osirixgrpc.Status status = 1;
+    {::_pbi::TcParser::FastMtS1,
+     {10, 0, 0, PROTOBUF_FIELD_OFFSET(VRControllerStyleResponse, _impl_.status_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // .osirixgrpc.Status status = 1;
+    {PROTOBUF_FIELD_OFFSET(VRControllerStyleResponse, _impl_.status_), _Internal::kHasBitsOffset + 0, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
+    // string style = 2;
+    {PROTOBUF_FIELD_OFFSET(VRControllerStyleResponse, _impl_.style_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+  }}, {{
+    {::_pbi::TcParser::GetTable<::osirixgrpc::Status>()},
+  }}, {{
+    "\44\0\5\0\0\0\0\0"
+    "osirixgrpc.VRControllerStyleResponse"
+    "style"
+  }},
+};
 
 ::uint8_t* VRControllerStyleResponse::_InternalSerialize(
-    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+    ::uint8_t* target,
+    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.VRControllerStyleResponse)
   ::uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
+  (void)cached_has_bits;
 
   cached_has_bits = _impl_._has_bits_[0];
   // .osirixgrpc.Status status = 1;
   if (cached_has_bits & 0x00000001u) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(1, _Internal::status(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        1, _Internal::status(this),
         _Internal::status(this).GetCachedSize(), target, stream);
   }
 
   // string style = 2;
   if (!this->_internal_style().empty()) {
     const std::string& _s = this->_internal_style();
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE, "osirixgrpc.VRControllerStyleResponse.style");
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "osirixgrpc.VRControllerStyleResponse.style");
     target = stream->WriteStringMaybeAliased(2, _s, target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.VRControllerStyleResponse)
   return target;
@@ -1763,29 +1773,29 @@ failure:
 
   // string style = 2;
   if (!this->_internal_style().empty()) {
-    total_size += 1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
                                     this->_internal_style());
   }
 
   // .osirixgrpc.Status status = 1;
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *_impl_.status_);
+    total_size +=
+        1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.status_);
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData VRControllerStyleResponse::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
-    VRControllerStyleResponse::MergeImpl
+const ::google::protobuf::Message::ClassData VRControllerStyleResponse::_class_data_ = {
+    VRControllerStyleResponse::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*VRControllerStyleResponse::GetClassData() const { return &_class_data_; }
+const ::google::protobuf::Message::ClassData* VRControllerStyleResponse::GetClassData() const {
+  return &_class_data_;
+}
 
-
-void VRControllerStyleResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+void VRControllerStyleResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<VRControllerStyleResponse*>(&to_msg);
   auto& from = static_cast<const VRControllerStyleResponse&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.VRControllerStyleResponse)
@@ -1800,7 +1810,7 @@ void VRControllerStyleResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_m
     _this->_internal_mutable_status()->::osirixgrpc::Status::MergeFrom(
         from._internal_status());
   }
-  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void VRControllerStyleResponse::CopyFrom(const VRControllerStyleResponse& from) {
@@ -1810,22 +1820,24 @@ void VRControllerStyleResponse::CopyFrom(const VRControllerStyleResponse& from) 
   MergeFrom(from);
 }
 
-bool VRControllerStyleResponse::IsInitialized() const {
+PROTOBUF_NOINLINE bool VRControllerStyleResponse::IsInitialized() const {
   return true;
 }
 
-void VRControllerStyleResponse::InternalSwap(VRControllerStyleResponse* other) {
+::_pbi::CachedSize* VRControllerStyleResponse::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void VRControllerStyleResponse::InternalSwap(VRControllerStyleResponse* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.style_, lhs_arena,
-                                       &other->_impl_.style_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.style_, &other->_impl_.style_, arena);
   swap(_impl_.status_, other->_impl_.status_);
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata VRControllerStyleResponse::GetMetadata() const {
+::google::protobuf::Metadata VRControllerStyleResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_vrcontroller_2eproto_getter, &descriptor_table_vrcontroller_2eproto_once,
       file_level_metadata_vrcontroller_2eproto[4]);
@@ -1843,79 +1855,67 @@ class VRControllerTitleResponse::_Internal {
   }
 };
 
-const ::osirixgrpc::Status&
-VRControllerTitleResponse::_Internal::status(const VRControllerTitleResponse* msg) {
+const ::osirixgrpc::Status& VRControllerTitleResponse::_Internal::status(const VRControllerTitleResponse* msg) {
   return *msg->_impl_.status_;
 }
 void VRControllerTitleResponse::clear_status() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   if (_impl_.status_ != nullptr) _impl_.status_->Clear();
   _impl_._has_bits_[0] &= ~0x00000001u;
 }
-VRControllerTitleResponse::VRControllerTitleResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
+VRControllerTitleResponse::VRControllerTitleResponse(::google::protobuf::Arena* arena)
+    : ::google::protobuf::Message(arena) {
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.VRControllerTitleResponse)
 }
-VRControllerTitleResponse::VRControllerTitleResponse(const VRControllerTitleResponse& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message() {
-  VRControllerTitleResponse* const _this = this; (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_}
-    , /*decltype(_impl_._cached_size_)*/{}
-    , decltype(_impl_.title_) {}
+inline PROTOBUF_NDEBUG_INLINE VRControllerTitleResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        title_(arena, from.title_) {}
 
-    , decltype(_impl_.status_){nullptr}};
+VRControllerTitleResponse::VRControllerTitleResponse(
+    ::google::protobuf::Arena* arena,
+    const VRControllerTitleResponse& from)
+    : ::google::protobuf::Message(arena) {
+  VRControllerTitleResponse* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.status_ = (cached_has_bits & 0x00000001u)
+                ? CreateMaybeMessage<::osirixgrpc::Status>(arena, *from._impl_.status_)
+                : nullptr;
 
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  _impl_.title_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.title_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_title().empty()) {
-    _this->_impl_.title_.Set(from._internal_title(), _this->GetArenaForAllocation());
-  }
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_impl_.status_ = new ::osirixgrpc::Status(*from._impl_.status_);
-  }
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.VRControllerTitleResponse)
 }
+inline PROTOBUF_NDEBUG_INLINE VRControllerTitleResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0},
+        title_(arena) {}
 
 inline void VRControllerTitleResponse::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){}
-    , /*decltype(_impl_._cached_size_)*/{}
-    , decltype(_impl_.title_) {}
-
-    , decltype(_impl_.status_){nullptr}
-  };
-  _impl_.title_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.title_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.status_ = {};
 }
-
 VRControllerTitleResponse::~VRControllerTitleResponse() {
   // @@protoc_insertion_point(destructor:osirixgrpc.VRControllerTitleResponse)
-  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
-  (void)arena;
-    return;
-  }
+  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
   SharedDtor();
 }
-
 inline void VRControllerTitleResponse::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.title_.Destroy();
-  if (this != internal_default_instance()) delete _impl_.status_;
+  delete _impl_.status_;
+  _impl_.~Impl_();
 }
 
-void VRControllerTitleResponse::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
-}
-
-void VRControllerTitleResponse::Clear() {
+PROTOBUF_NOINLINE void VRControllerTitleResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.VRControllerTitleResponse)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -1927,85 +1927,82 @@ void VRControllerTitleResponse::Clear() {
     _impl_.status_->Clear();
   }
   _impl_._has_bits_.Clear();
-  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
-const char* VRControllerTitleResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
-#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  _Internal::HasBits has_bits{};
-  while (!ctx->Done(&ptr)) {
-    ::uint32_t tag;
-    ptr = ::_pbi::ReadTag(ptr, &tag);
-    switch (tag >> 3) {
-      // .osirixgrpc.Status status = 1;
-      case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
-          ptr = ctx->ParseMessage(_internal_mutable_status(), ptr);
-          CHK_(ptr);
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      // string title = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 18)) {
-          auto str = _internal_mutable_title();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "osirixgrpc.VRControllerTitleResponse.title"));
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      default:
-        goto handle_unusual;
-    }  // switch
-  handle_unusual:
-    if ((tag == 0) || ((tag & 7) == 4)) {
-      CHK_(ptr);
-      ctx->SetLastTag(tag);
-      goto message_done;
-    }
-    ptr = UnknownFieldParse(
-        tag,
-        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-        ptr, ctx);
-    CHK_(ptr != nullptr);
-  }  // while
-message_done:
-  _impl_._has_bits_.Or(has_bits);
+const char* VRControllerTitleResponse::_InternalParse(
+    const char* ptr, ::_pbi::ParseContext* ctx) {
+  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
   return ptr;
-failure:
-  ptr = nullptr;
-  goto message_done;
-#undef CHK_
 }
+
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<1, 2, 1, 50, 2> VRControllerTitleResponse::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(VRControllerTitleResponse, _impl_._has_bits_),
+    0, // no _extensions_
+    2, 8,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967292,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    2,  // num_field_entries
+    1,  // num_aux_entries
+    offsetof(decltype(_table_), aux_entries),
+    &_VRControllerTitleResponse_default_instance_._instance,
+    ::_pbi::TcParser::GenericFallback,  // fallback
+  }, {{
+    // string title = 2;
+    {::_pbi::TcParser::FastUS1,
+     {18, 63, 0, PROTOBUF_FIELD_OFFSET(VRControllerTitleResponse, _impl_.title_)}},
+    // .osirixgrpc.Status status = 1;
+    {::_pbi::TcParser::FastMtS1,
+     {10, 0, 0, PROTOBUF_FIELD_OFFSET(VRControllerTitleResponse, _impl_.status_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // .osirixgrpc.Status status = 1;
+    {PROTOBUF_FIELD_OFFSET(VRControllerTitleResponse, _impl_.status_), _Internal::kHasBitsOffset + 0, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
+    // string title = 2;
+    {PROTOBUF_FIELD_OFFSET(VRControllerTitleResponse, _impl_.title_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+  }}, {{
+    {::_pbi::TcParser::GetTable<::osirixgrpc::Status>()},
+  }}, {{
+    "\44\0\5\0\0\0\0\0"
+    "osirixgrpc.VRControllerTitleResponse"
+    "title"
+  }},
+};
 
 ::uint8_t* VRControllerTitleResponse::_InternalSerialize(
-    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+    ::uint8_t* target,
+    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.VRControllerTitleResponse)
   ::uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
+  (void)cached_has_bits;
 
   cached_has_bits = _impl_._has_bits_[0];
   // .osirixgrpc.Status status = 1;
   if (cached_has_bits & 0x00000001u) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(1, _Internal::status(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        1, _Internal::status(this),
         _Internal::status(this).GetCachedSize(), target, stream);
   }
 
   // string title = 2;
   if (!this->_internal_title().empty()) {
     const std::string& _s = this->_internal_title();
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE, "osirixgrpc.VRControllerTitleResponse.title");
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "osirixgrpc.VRControllerTitleResponse.title");
     target = stream->WriteStringMaybeAliased(2, _s, target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.VRControllerTitleResponse)
   return target;
@@ -2021,29 +2018,29 @@ failure:
 
   // string title = 2;
   if (!this->_internal_title().empty()) {
-    total_size += 1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
                                     this->_internal_title());
   }
 
   // .osirixgrpc.Status status = 1;
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *_impl_.status_);
+    total_size +=
+        1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.status_);
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData VRControllerTitleResponse::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
-    VRControllerTitleResponse::MergeImpl
+const ::google::protobuf::Message::ClassData VRControllerTitleResponse::_class_data_ = {
+    VRControllerTitleResponse::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*VRControllerTitleResponse::GetClassData() const { return &_class_data_; }
+const ::google::protobuf::Message::ClassData* VRControllerTitleResponse::GetClassData() const {
+  return &_class_data_;
+}
 
-
-void VRControllerTitleResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+void VRControllerTitleResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<VRControllerTitleResponse*>(&to_msg);
   auto& from = static_cast<const VRControllerTitleResponse&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.VRControllerTitleResponse)
@@ -2058,7 +2055,7 @@ void VRControllerTitleResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_m
     _this->_internal_mutable_status()->::osirixgrpc::Status::MergeFrom(
         from._internal_status());
   }
-  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void VRControllerTitleResponse::CopyFrom(const VRControllerTitleResponse& from) {
@@ -2068,22 +2065,24 @@ void VRControllerTitleResponse::CopyFrom(const VRControllerTitleResponse& from) 
   MergeFrom(from);
 }
 
-bool VRControllerTitleResponse::IsInitialized() const {
+PROTOBUF_NOINLINE bool VRControllerTitleResponse::IsInitialized() const {
   return true;
 }
 
-void VRControllerTitleResponse::InternalSwap(VRControllerTitleResponse* other) {
+::_pbi::CachedSize* VRControllerTitleResponse::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void VRControllerTitleResponse::InternalSwap(VRControllerTitleResponse* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.title_, lhs_arena,
-                                       &other->_impl_.title_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.title_, &other->_impl_.title_, arena);
   swap(_impl_.status_, other->_impl_.status_);
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata VRControllerTitleResponse::GetMetadata() const {
+::google::protobuf::Metadata VRControllerTitleResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_vrcontroller_2eproto_getter, &descriptor_table_vrcontroller_2eproto_once,
       file_level_metadata_vrcontroller_2eproto[5]);
@@ -2101,162 +2100,155 @@ class VRControllerROIVolumesResponse::_Internal {
   }
 };
 
-const ::osirixgrpc::Status&
-VRControllerROIVolumesResponse::_Internal::status(const VRControllerROIVolumesResponse* msg) {
+const ::osirixgrpc::Status& VRControllerROIVolumesResponse::_Internal::status(const VRControllerROIVolumesResponse* msg) {
   return *msg->_impl_.status_;
 }
 void VRControllerROIVolumesResponse::clear_status() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   if (_impl_.status_ != nullptr) _impl_.status_->Clear();
   _impl_._has_bits_[0] &= ~0x00000001u;
 }
 void VRControllerROIVolumesResponse::clear_roi_volumes() {
-  _internal_mutable_roi_volumes()->Clear();
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.roi_volumes_.Clear();
 }
-VRControllerROIVolumesResponse::VRControllerROIVolumesResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
+VRControllerROIVolumesResponse::VRControllerROIVolumesResponse(::google::protobuf::Arena* arena)
+    : ::google::protobuf::Message(arena) {
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.VRControllerROIVolumesResponse)
 }
-VRControllerROIVolumesResponse::VRControllerROIVolumesResponse(const VRControllerROIVolumesResponse& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message() {
-  VRControllerROIVolumesResponse* const _this = this; (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_}
-    , /*decltype(_impl_._cached_size_)*/{}
-    , decltype(_impl_.roi_volumes_){from._impl_.roi_volumes_}
-    , decltype(_impl_.status_){nullptr}};
+inline PROTOBUF_NDEBUG_INLINE VRControllerROIVolumesResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        roi_volumes_{visibility, arena, from.roi_volumes_} {}
 
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_impl_.status_ = new ::osirixgrpc::Status(*from._impl_.status_);
-  }
+VRControllerROIVolumesResponse::VRControllerROIVolumesResponse(
+    ::google::protobuf::Arena* arena,
+    const VRControllerROIVolumesResponse& from)
+    : ::google::protobuf::Message(arena) {
+  VRControllerROIVolumesResponse* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.status_ = (cached_has_bits & 0x00000001u)
+                ? CreateMaybeMessage<::osirixgrpc::Status>(arena, *from._impl_.status_)
+                : nullptr;
+
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.VRControllerROIVolumesResponse)
 }
+inline PROTOBUF_NDEBUG_INLINE VRControllerROIVolumesResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0},
+        roi_volumes_{visibility, arena} {}
 
 inline void VRControllerROIVolumesResponse::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){}
-    , /*decltype(_impl_._cached_size_)*/{}
-    , decltype(_impl_.roi_volumes_){arena}
-    , decltype(_impl_.status_){nullptr}
-  };
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.status_ = {};
 }
-
 VRControllerROIVolumesResponse::~VRControllerROIVolumesResponse() {
   // @@protoc_insertion_point(destructor:osirixgrpc.VRControllerROIVolumesResponse)
-  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
-  (void)arena;
-    return;
-  }
+  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
   SharedDtor();
 }
-
 inline void VRControllerROIVolumesResponse::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
-  _internal_mutable_roi_volumes()->~RepeatedPtrField();
-  if (this != internal_default_instance()) delete _impl_.status_;
+  ABSL_DCHECK(GetArena() == nullptr);
+  delete _impl_.status_;
+  _impl_.~Impl_();
 }
 
-void VRControllerROIVolumesResponse::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
-}
-
-void VRControllerROIVolumesResponse::Clear() {
+PROTOBUF_NOINLINE void VRControllerROIVolumesResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.VRControllerROIVolumesResponse)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _internal_mutable_roi_volumes()->Clear();
+  _impl_.roi_volumes_.Clear();
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
     ABSL_DCHECK(_impl_.status_ != nullptr);
     _impl_.status_->Clear();
   }
   _impl_._has_bits_.Clear();
-  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
-const char* VRControllerROIVolumesResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
-#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  _Internal::HasBits has_bits{};
-  while (!ctx->Done(&ptr)) {
-    ::uint32_t tag;
-    ptr = ::_pbi::ReadTag(ptr, &tag);
-    switch (tag >> 3) {
-      // .osirixgrpc.Status status = 1;
-      case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
-          ptr = ctx->ParseMessage(_internal_mutable_status(), ptr);
-          CHK_(ptr);
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      // repeated .osirixgrpc.ROIVolume roi_volumes = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 18)) {
-          ptr -= 1;
-          do {
-            ptr += 1;
-            ptr = ctx->ParseMessage(_internal_add_roi_volumes(), ptr);
-            CHK_(ptr);
-            if (!ctx->DataAvailable(ptr)) break;
-          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<18>(ptr));
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      default:
-        goto handle_unusual;
-    }  // switch
-  handle_unusual:
-    if ((tag == 0) || ((tag & 7) == 4)) {
-      CHK_(ptr);
-      ctx->SetLastTag(tag);
-      goto message_done;
-    }
-    ptr = UnknownFieldParse(
-        tag,
-        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-        ptr, ctx);
-    CHK_(ptr != nullptr);
-  }  // while
-message_done:
-  _impl_._has_bits_.Or(has_bits);
+const char* VRControllerROIVolumesResponse::_InternalParse(
+    const char* ptr, ::_pbi::ParseContext* ctx) {
+  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
   return ptr;
-failure:
-  ptr = nullptr;
-  goto message_done;
-#undef CHK_
 }
+
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<1, 2, 2, 0, 2> VRControllerROIVolumesResponse::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(VRControllerROIVolumesResponse, _impl_._has_bits_),
+    0, // no _extensions_
+    2, 8,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967292,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    2,  // num_field_entries
+    2,  // num_aux_entries
+    offsetof(decltype(_table_), aux_entries),
+    &_VRControllerROIVolumesResponse_default_instance_._instance,
+    ::_pbi::TcParser::GenericFallback,  // fallback
+  }, {{
+    // repeated .osirixgrpc.ROIVolume roi_volumes = 2;
+    {::_pbi::TcParser::FastMtR1,
+     {18, 63, 1, PROTOBUF_FIELD_OFFSET(VRControllerROIVolumesResponse, _impl_.roi_volumes_)}},
+    // .osirixgrpc.Status status = 1;
+    {::_pbi::TcParser::FastMtS1,
+     {10, 0, 0, PROTOBUF_FIELD_OFFSET(VRControllerROIVolumesResponse, _impl_.status_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // .osirixgrpc.Status status = 1;
+    {PROTOBUF_FIELD_OFFSET(VRControllerROIVolumesResponse, _impl_.status_), _Internal::kHasBitsOffset + 0, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
+    // repeated .osirixgrpc.ROIVolume roi_volumes = 2;
+    {PROTOBUF_FIELD_OFFSET(VRControllerROIVolumesResponse, _impl_.roi_volumes_), -1, 1,
+    (0 | ::_fl::kFcRepeated | ::_fl::kMessage | ::_fl::kTvTable)},
+  }}, {{
+    {::_pbi::TcParser::GetTable<::osirixgrpc::Status>()},
+    {::_pbi::TcParser::GetTable<::osirixgrpc::ROIVolume>()},
+  }}, {{
+  }},
+};
 
 ::uint8_t* VRControllerROIVolumesResponse::_InternalSerialize(
-    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+    ::uint8_t* target,
+    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.VRControllerROIVolumesResponse)
   ::uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
+  (void)cached_has_bits;
 
   cached_has_bits = _impl_._has_bits_[0];
   // .osirixgrpc.Status status = 1;
   if (cached_has_bits & 0x00000001u) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(1, _Internal::status(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        1, _Internal::status(this),
         _Internal::status(this).GetCachedSize(), target, stream);
   }
 
   // repeated .osirixgrpc.ROIVolume roi_volumes = 2;
   for (unsigned i = 0,
       n = static_cast<unsigned>(this->_internal_roi_volumes_size()); i < n; i++) {
-    const auto& repfield = this->_internal_roi_volumes(i);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+    const auto& repfield = this->_internal_roi_volumes().Get(i);
+    target = ::google::protobuf::internal::WireFormatLite::
         InternalWriteMessage(2, repfield, repfield.GetCachedSize(), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.VRControllerROIVolumesResponse)
   return target;
@@ -2274,28 +2266,27 @@ failure:
   total_size += 1UL * this->_internal_roi_volumes_size();
   for (const auto& msg : this->_internal_roi_volumes()) {
     total_size +=
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
+      ::google::protobuf::internal::WireFormatLite::MessageSize(msg);
   }
-
   // .osirixgrpc.Status status = 1;
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *_impl_.status_);
+    total_size +=
+        1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.status_);
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData VRControllerROIVolumesResponse::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
-    VRControllerROIVolumesResponse::MergeImpl
+const ::google::protobuf::Message::ClassData VRControllerROIVolumesResponse::_class_data_ = {
+    VRControllerROIVolumesResponse::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*VRControllerROIVolumesResponse::GetClassData() const { return &_class_data_; }
+const ::google::protobuf::Message::ClassData* VRControllerROIVolumesResponse::GetClassData() const {
+  return &_class_data_;
+}
 
-
-void VRControllerROIVolumesResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+void VRControllerROIVolumesResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<VRControllerROIVolumesResponse*>(&to_msg);
   auto& from = static_cast<const VRControllerROIVolumesResponse&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.VRControllerROIVolumesResponse)
@@ -2303,12 +2294,13 @@ void VRControllerROIVolumesResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message&
   ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  _this->_internal_mutable_roi_volumes()->MergeFrom(from._internal_roi_volumes());
+  _this->_internal_mutable_roi_volumes()->MergeFrom(
+      from._internal_roi_volumes());
   if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
     _this->_internal_mutable_status()->::osirixgrpc::Status::MergeFrom(
         from._internal_status());
   }
-  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void VRControllerROIVolumesResponse::CopyFrom(const VRControllerROIVolumesResponse& from) {
@@ -2318,19 +2310,22 @@ void VRControllerROIVolumesResponse::CopyFrom(const VRControllerROIVolumesRespon
   MergeFrom(from);
 }
 
-bool VRControllerROIVolumesResponse::IsInitialized() const {
+PROTOBUF_NOINLINE bool VRControllerROIVolumesResponse::IsInitialized() const {
   return true;
 }
 
-void VRControllerROIVolumesResponse::InternalSwap(VRControllerROIVolumesResponse* other) {
+::_pbi::CachedSize* VRControllerROIVolumesResponse::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void VRControllerROIVolumesResponse::InternalSwap(VRControllerROIVolumesResponse* PROTOBUF_RESTRICT other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  _internal_mutable_roi_volumes()->InternalSwap(other->_internal_mutable_roi_volumes());
+  _impl_.roi_volumes_.InternalSwap(&other->_impl_.roi_volumes_);
   swap(_impl_.status_, other->_impl_.status_);
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata VRControllerROIVolumesResponse::GetMetadata() const {
+::google::protobuf::Metadata VRControllerROIVolumesResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_vrcontroller_2eproto_getter, &descriptor_table_vrcontroller_2eproto_once,
       file_level_metadata_vrcontroller_2eproto[6]);
@@ -2348,79 +2343,67 @@ class VRControllerSetRenderingModeRequest::_Internal {
   }
 };
 
-const ::osirixgrpc::VRController&
-VRControllerSetRenderingModeRequest::_Internal::vr_controller(const VRControllerSetRenderingModeRequest* msg) {
+const ::osirixgrpc::VRController& VRControllerSetRenderingModeRequest::_Internal::vr_controller(const VRControllerSetRenderingModeRequest* msg) {
   return *msg->_impl_.vr_controller_;
 }
 void VRControllerSetRenderingModeRequest::clear_vr_controller() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   if (_impl_.vr_controller_ != nullptr) _impl_.vr_controller_->Clear();
   _impl_._has_bits_[0] &= ~0x00000001u;
 }
-VRControllerSetRenderingModeRequest::VRControllerSetRenderingModeRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
+VRControllerSetRenderingModeRequest::VRControllerSetRenderingModeRequest(::google::protobuf::Arena* arena)
+    : ::google::protobuf::Message(arena) {
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.VRControllerSetRenderingModeRequest)
 }
-VRControllerSetRenderingModeRequest::VRControllerSetRenderingModeRequest(const VRControllerSetRenderingModeRequest& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message() {
-  VRControllerSetRenderingModeRequest* const _this = this; (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_}
-    , /*decltype(_impl_._cached_size_)*/{}
-    , decltype(_impl_.rendering_mode_) {}
+inline PROTOBUF_NDEBUG_INLINE VRControllerSetRenderingModeRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        rendering_mode_(arena, from.rendering_mode_) {}
 
-    , decltype(_impl_.vr_controller_){nullptr}};
+VRControllerSetRenderingModeRequest::VRControllerSetRenderingModeRequest(
+    ::google::protobuf::Arena* arena,
+    const VRControllerSetRenderingModeRequest& from)
+    : ::google::protobuf::Message(arena) {
+  VRControllerSetRenderingModeRequest* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.vr_controller_ = (cached_has_bits & 0x00000001u)
+                ? CreateMaybeMessage<::osirixgrpc::VRController>(arena, *from._impl_.vr_controller_)
+                : nullptr;
 
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  _impl_.rendering_mode_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.rendering_mode_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_rendering_mode().empty()) {
-    _this->_impl_.rendering_mode_.Set(from._internal_rendering_mode(), _this->GetArenaForAllocation());
-  }
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_impl_.vr_controller_ = new ::osirixgrpc::VRController(*from._impl_.vr_controller_);
-  }
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.VRControllerSetRenderingModeRequest)
 }
+inline PROTOBUF_NDEBUG_INLINE VRControllerSetRenderingModeRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0},
+        rendering_mode_(arena) {}
 
 inline void VRControllerSetRenderingModeRequest::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){}
-    , /*decltype(_impl_._cached_size_)*/{}
-    , decltype(_impl_.rendering_mode_) {}
-
-    , decltype(_impl_.vr_controller_){nullptr}
-  };
-  _impl_.rendering_mode_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.rendering_mode_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.vr_controller_ = {};
 }
-
 VRControllerSetRenderingModeRequest::~VRControllerSetRenderingModeRequest() {
   // @@protoc_insertion_point(destructor:osirixgrpc.VRControllerSetRenderingModeRequest)
-  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
-  (void)arena;
-    return;
-  }
+  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
   SharedDtor();
 }
-
 inline void VRControllerSetRenderingModeRequest::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.rendering_mode_.Destroy();
-  if (this != internal_default_instance()) delete _impl_.vr_controller_;
+  delete _impl_.vr_controller_;
+  _impl_.~Impl_();
 }
 
-void VRControllerSetRenderingModeRequest::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
-}
-
-void VRControllerSetRenderingModeRequest::Clear() {
+PROTOBUF_NOINLINE void VRControllerSetRenderingModeRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.VRControllerSetRenderingModeRequest)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -2432,85 +2415,82 @@ void VRControllerSetRenderingModeRequest::Clear() {
     _impl_.vr_controller_->Clear();
   }
   _impl_._has_bits_.Clear();
-  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
-const char* VRControllerSetRenderingModeRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
-#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  _Internal::HasBits has_bits{};
-  while (!ctx->Done(&ptr)) {
-    ::uint32_t tag;
-    ptr = ::_pbi::ReadTag(ptr, &tag);
-    switch (tag >> 3) {
-      // .osirixgrpc.VRController vr_controller = 1;
-      case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
-          ptr = ctx->ParseMessage(_internal_mutable_vr_controller(), ptr);
-          CHK_(ptr);
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      // string rendering_mode = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 18)) {
-          auto str = _internal_mutable_rendering_mode();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "osirixgrpc.VRControllerSetRenderingModeRequest.rendering_mode"));
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      default:
-        goto handle_unusual;
-    }  // switch
-  handle_unusual:
-    if ((tag == 0) || ((tag & 7) == 4)) {
-      CHK_(ptr);
-      ctx->SetLastTag(tag);
-      goto message_done;
-    }
-    ptr = UnknownFieldParse(
-        tag,
-        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-        ptr, ctx);
-    CHK_(ptr != nullptr);
-  }  // while
-message_done:
-  _impl_._has_bits_.Or(has_bits);
+const char* VRControllerSetRenderingModeRequest::_InternalParse(
+    const char* ptr, ::_pbi::ParseContext* ctx) {
+  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
   return ptr;
-failure:
-  ptr = nullptr;
-  goto message_done;
-#undef CHK_
 }
+
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<1, 2, 1, 69, 2> VRControllerSetRenderingModeRequest::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(VRControllerSetRenderingModeRequest, _impl_._has_bits_),
+    0, // no _extensions_
+    2, 8,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967292,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    2,  // num_field_entries
+    1,  // num_aux_entries
+    offsetof(decltype(_table_), aux_entries),
+    &_VRControllerSetRenderingModeRequest_default_instance_._instance,
+    ::_pbi::TcParser::GenericFallback,  // fallback
+  }, {{
+    // string rendering_mode = 2;
+    {::_pbi::TcParser::FastUS1,
+     {18, 63, 0, PROTOBUF_FIELD_OFFSET(VRControllerSetRenderingModeRequest, _impl_.rendering_mode_)}},
+    // .osirixgrpc.VRController vr_controller = 1;
+    {::_pbi::TcParser::FastMtS1,
+     {10, 0, 0, PROTOBUF_FIELD_OFFSET(VRControllerSetRenderingModeRequest, _impl_.vr_controller_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // .osirixgrpc.VRController vr_controller = 1;
+    {PROTOBUF_FIELD_OFFSET(VRControllerSetRenderingModeRequest, _impl_.vr_controller_), _Internal::kHasBitsOffset + 0, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
+    // string rendering_mode = 2;
+    {PROTOBUF_FIELD_OFFSET(VRControllerSetRenderingModeRequest, _impl_.rendering_mode_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+  }}, {{
+    {::_pbi::TcParser::GetTable<::osirixgrpc::VRController>()},
+  }}, {{
+    "\56\0\16\0\0\0\0\0"
+    "osirixgrpc.VRControllerSetRenderingModeRequest"
+    "rendering_mode"
+  }},
+};
 
 ::uint8_t* VRControllerSetRenderingModeRequest::_InternalSerialize(
-    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+    ::uint8_t* target,
+    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.VRControllerSetRenderingModeRequest)
   ::uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
+  (void)cached_has_bits;
 
   cached_has_bits = _impl_._has_bits_[0];
   // .osirixgrpc.VRController vr_controller = 1;
   if (cached_has_bits & 0x00000001u) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(1, _Internal::vr_controller(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        1, _Internal::vr_controller(this),
         _Internal::vr_controller(this).GetCachedSize(), target, stream);
   }
 
   // string rendering_mode = 2;
   if (!this->_internal_rendering_mode().empty()) {
     const std::string& _s = this->_internal_rendering_mode();
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE, "osirixgrpc.VRControllerSetRenderingModeRequest.rendering_mode");
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "osirixgrpc.VRControllerSetRenderingModeRequest.rendering_mode");
     target = stream->WriteStringMaybeAliased(2, _s, target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.VRControllerSetRenderingModeRequest)
   return target;
@@ -2526,29 +2506,29 @@ failure:
 
   // string rendering_mode = 2;
   if (!this->_internal_rendering_mode().empty()) {
-    total_size += 1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
                                     this->_internal_rendering_mode());
   }
 
   // .osirixgrpc.VRController vr_controller = 1;
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *_impl_.vr_controller_);
+    total_size +=
+        1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.vr_controller_);
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData VRControllerSetRenderingModeRequest::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
-    VRControllerSetRenderingModeRequest::MergeImpl
+const ::google::protobuf::Message::ClassData VRControllerSetRenderingModeRequest::_class_data_ = {
+    VRControllerSetRenderingModeRequest::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*VRControllerSetRenderingModeRequest::GetClassData() const { return &_class_data_; }
+const ::google::protobuf::Message::ClassData* VRControllerSetRenderingModeRequest::GetClassData() const {
+  return &_class_data_;
+}
 
-
-void VRControllerSetRenderingModeRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+void VRControllerSetRenderingModeRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<VRControllerSetRenderingModeRequest*>(&to_msg);
   auto& from = static_cast<const VRControllerSetRenderingModeRequest&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.VRControllerSetRenderingModeRequest)
@@ -2563,7 +2543,7 @@ void VRControllerSetRenderingModeRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Mes
     _this->_internal_mutable_vr_controller()->::osirixgrpc::VRController::MergeFrom(
         from._internal_vr_controller());
   }
-  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void VRControllerSetRenderingModeRequest::CopyFrom(const VRControllerSetRenderingModeRequest& from) {
@@ -2573,22 +2553,24 @@ void VRControllerSetRenderingModeRequest::CopyFrom(const VRControllerSetRenderin
   MergeFrom(from);
 }
 
-bool VRControllerSetRenderingModeRequest::IsInitialized() const {
+PROTOBUF_NOINLINE bool VRControllerSetRenderingModeRequest::IsInitialized() const {
   return true;
 }
 
-void VRControllerSetRenderingModeRequest::InternalSwap(VRControllerSetRenderingModeRequest* other) {
+::_pbi::CachedSize* VRControllerSetRenderingModeRequest::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void VRControllerSetRenderingModeRequest::InternalSwap(VRControllerSetRenderingModeRequest* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.rendering_mode_, lhs_arena,
-                                       &other->_impl_.rendering_mode_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.rendering_mode_, &other->_impl_.rendering_mode_, arena);
   swap(_impl_.vr_controller_, other->_impl_.vr_controller_);
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata VRControllerSetRenderingModeRequest::GetMetadata() const {
+::google::protobuf::Metadata VRControllerSetRenderingModeRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_vrcontroller_2eproto_getter, &descriptor_table_vrcontroller_2eproto_once,
       file_level_metadata_vrcontroller_2eproto[7]);
@@ -2606,74 +2588,76 @@ class VRControllerSetWLWWRequest::_Internal {
   }
 };
 
-const ::osirixgrpc::VRController&
-VRControllerSetWLWWRequest::_Internal::vr_controller(const VRControllerSetWLWWRequest* msg) {
+const ::osirixgrpc::VRController& VRControllerSetWLWWRequest::_Internal::vr_controller(const VRControllerSetWLWWRequest* msg) {
   return *msg->_impl_.vr_controller_;
 }
 void VRControllerSetWLWWRequest::clear_vr_controller() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   if (_impl_.vr_controller_ != nullptr) _impl_.vr_controller_->Clear();
   _impl_._has_bits_[0] &= ~0x00000001u;
 }
-VRControllerSetWLWWRequest::VRControllerSetWLWWRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
+VRControllerSetWLWWRequest::VRControllerSetWLWWRequest(::google::protobuf::Arena* arena)
+    : ::google::protobuf::Message(arena) {
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.VRControllerSetWLWWRequest)
 }
-VRControllerSetWLWWRequest::VRControllerSetWLWWRequest(const VRControllerSetWLWWRequest& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message() {
-  VRControllerSetWLWWRequest* const _this = this; (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_}
-    , /*decltype(_impl_._cached_size_)*/{}
-    , decltype(_impl_.vr_controller_){nullptr}
-    , decltype(_impl_.wl_) {}
+inline PROTOBUF_NDEBUG_INLINE VRControllerSetWLWWRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0} {}
 
-    , decltype(_impl_.ww_) {}
-  };
+VRControllerSetWLWWRequest::VRControllerSetWLWWRequest(
+    ::google::protobuf::Arena* arena,
+    const VRControllerSetWLWWRequest& from)
+    : ::google::protobuf::Message(arena) {
+  VRControllerSetWLWWRequest* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.vr_controller_ = (cached_has_bits & 0x00000001u)
+                ? CreateMaybeMessage<::osirixgrpc::VRController>(arena, *from._impl_.vr_controller_)
+                : nullptr;
+  ::memcpy(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, wl_),
+           reinterpret_cast<const char *>(&from._impl_) +
+               offsetof(Impl_, wl_),
+           offsetof(Impl_, ww_) -
+               offsetof(Impl_, wl_) +
+               sizeof(Impl_::ww_));
 
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_impl_.vr_controller_ = new ::osirixgrpc::VRController(*from._impl_.vr_controller_);
-  }
-  ::memcpy(&_impl_.wl_, &from._impl_.wl_,
-    static_cast<::size_t>(reinterpret_cast<char*>(&_impl_.ww_) -
-    reinterpret_cast<char*>(&_impl_.wl_)) + sizeof(_impl_.ww_));
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.VRControllerSetWLWWRequest)
 }
+inline PROTOBUF_NDEBUG_INLINE VRControllerSetWLWWRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0} {}
 
 inline void VRControllerSetWLWWRequest::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){}
-    , /*decltype(_impl_._cached_size_)*/{}
-    , decltype(_impl_.vr_controller_){nullptr}
-    , decltype(_impl_.wl_) { 0 }
-
-    , decltype(_impl_.ww_) { 0 }
-
-  };
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, vr_controller_),
+           0,
+           offsetof(Impl_, ww_) -
+               offsetof(Impl_, vr_controller_) +
+               sizeof(Impl_::ww_));
 }
-
 VRControllerSetWLWWRequest::~VRControllerSetWLWWRequest() {
   // @@protoc_insertion_point(destructor:osirixgrpc.VRControllerSetWLWWRequest)
-  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
-  (void)arena;
-    return;
-  }
+  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
   SharedDtor();
 }
-
 inline void VRControllerSetWLWWRequest::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
-  if (this != internal_default_instance()) delete _impl_.vr_controller_;
+  ABSL_DCHECK(GetArena() == nullptr);
+  delete _impl_.vr_controller_;
+  _impl_.~Impl_();
 }
 
-void VRControllerSetWLWWRequest::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
-}
-
-void VRControllerSetWLWWRequest::Clear() {
+PROTOBUF_NOINLINE void VRControllerSetWLWWRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.VRControllerSetWLWWRequest)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -2687,83 +2671,77 @@ void VRControllerSetWLWWRequest::Clear() {
       reinterpret_cast<char*>(&_impl_.ww_) -
       reinterpret_cast<char*>(&_impl_.wl_)) + sizeof(_impl_.ww_));
   _impl_._has_bits_.Clear();
-  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
-const char* VRControllerSetWLWWRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
-#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  _Internal::HasBits has_bits{};
-  while (!ctx->Done(&ptr)) {
-    ::uint32_t tag;
-    ptr = ::_pbi::ReadTag(ptr, &tag);
-    switch (tag >> 3) {
-      // .osirixgrpc.VRController vr_controller = 1;
-      case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
-          ptr = ctx->ParseMessage(_internal_mutable_vr_controller(), ptr);
-          CHK_(ptr);
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      // float wl = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 21)) {
-          _impl_.wl_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
-          ptr += sizeof(float);
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      // float ww = 3;
-      case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 29)) {
-          _impl_.ww_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
-          ptr += sizeof(float);
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      default:
-        goto handle_unusual;
-    }  // switch
-  handle_unusual:
-    if ((tag == 0) || ((tag & 7) == 4)) {
-      CHK_(ptr);
-      ctx->SetLastTag(tag);
-      goto message_done;
-    }
-    ptr = UnknownFieldParse(
-        tag,
-        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-        ptr, ctx);
-    CHK_(ptr != nullptr);
-  }  // while
-message_done:
-  _impl_._has_bits_.Or(has_bits);
+const char* VRControllerSetWLWWRequest::_InternalParse(
+    const char* ptr, ::_pbi::ParseContext* ctx) {
+  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
   return ptr;
-failure:
-  ptr = nullptr;
-  goto message_done;
-#undef CHK_
 }
+
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<2, 3, 1, 0, 2> VRControllerSetWLWWRequest::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(VRControllerSetWLWWRequest, _impl_._has_bits_),
+    0, // no _extensions_
+    3, 24,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967288,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    3,  // num_field_entries
+    1,  // num_aux_entries
+    offsetof(decltype(_table_), aux_entries),
+    &_VRControllerSetWLWWRequest_default_instance_._instance,
+    ::_pbi::TcParser::GenericFallback,  // fallback
+  }, {{
+    {::_pbi::TcParser::MiniParse, {}},
+    // .osirixgrpc.VRController vr_controller = 1;
+    {::_pbi::TcParser::FastMtS1,
+     {10, 0, 0, PROTOBUF_FIELD_OFFSET(VRControllerSetWLWWRequest, _impl_.vr_controller_)}},
+    // float wl = 2;
+    {::_pbi::TcParser::FastF32S1,
+     {21, 63, 0, PROTOBUF_FIELD_OFFSET(VRControllerSetWLWWRequest, _impl_.wl_)}},
+    // float ww = 3;
+    {::_pbi::TcParser::FastF32S1,
+     {29, 63, 0, PROTOBUF_FIELD_OFFSET(VRControllerSetWLWWRequest, _impl_.ww_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // .osirixgrpc.VRController vr_controller = 1;
+    {PROTOBUF_FIELD_OFFSET(VRControllerSetWLWWRequest, _impl_.vr_controller_), _Internal::kHasBitsOffset + 0, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
+    // float wl = 2;
+    {PROTOBUF_FIELD_OFFSET(VRControllerSetWLWWRequest, _impl_.wl_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kFloat)},
+    // float ww = 3;
+    {PROTOBUF_FIELD_OFFSET(VRControllerSetWLWWRequest, _impl_.ww_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kFloat)},
+  }}, {{
+    {::_pbi::TcParser::GetTable<::osirixgrpc::VRController>()},
+  }}, {{
+  }},
+};
 
 ::uint8_t* VRControllerSetWLWWRequest::_InternalSerialize(
-    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+    ::uint8_t* target,
+    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.VRControllerSetWLWWRequest)
   ::uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
+  (void)cached_has_bits;
 
   cached_has_bits = _impl_._has_bits_[0];
   // .osirixgrpc.VRController vr_controller = 1;
   if (cached_has_bits & 0x00000001u) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(1, _Internal::vr_controller(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        1, _Internal::vr_controller(this),
         _Internal::vr_controller(this).GetCachedSize(), target, stream);
   }
 
   // float wl = 2;
-  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  static_assert(sizeof(::uint32_t) == sizeof(float),
+                "Code assumes ::uint32_t and float are the same size.");
   float tmp_wl = this->_internal_wl();
   ::uint32_t raw_wl;
   memcpy(&raw_wl, &tmp_wl, sizeof(tmp_wl));
@@ -2774,7 +2752,8 @@ failure:
   }
 
   // float ww = 3;
-  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  static_assert(sizeof(::uint32_t) == sizeof(float),
+                "Code assumes ::uint32_t and float are the same size.");
   float tmp_ww = this->_internal_ww();
   ::uint32_t raw_ww;
   memcpy(&raw_ww, &tmp_ww, sizeof(tmp_ww));
@@ -2785,8 +2764,9 @@ failure:
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.VRControllerSetWLWWRequest)
   return target;
@@ -2803,13 +2783,13 @@ failure:
   // .osirixgrpc.VRController vr_controller = 1;
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *_impl_.vr_controller_);
+    total_size +=
+        1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.vr_controller_);
   }
 
   // float wl = 2;
-  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  static_assert(sizeof(::uint32_t) == sizeof(float),
+                "Code assumes ::uint32_t and float are the same size.");
   float tmp_wl = this->_internal_wl();
   ::uint32_t raw_wl;
   memcpy(&raw_wl, &tmp_wl, sizeof(tmp_wl));
@@ -2818,7 +2798,8 @@ failure:
   }
 
   // float ww = 3;
-  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  static_assert(sizeof(::uint32_t) == sizeof(float),
+                "Code assumes ::uint32_t and float are the same size.");
   float tmp_ww = this->_internal_ww();
   ::uint32_t raw_ww;
   memcpy(&raw_ww, &tmp_ww, sizeof(tmp_ww));
@@ -2829,14 +2810,15 @@ failure:
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData VRControllerSetWLWWRequest::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
-    VRControllerSetWLWWRequest::MergeImpl
+const ::google::protobuf::Message::ClassData VRControllerSetWLWWRequest::_class_data_ = {
+    VRControllerSetWLWWRequest::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*VRControllerSetWLWWRequest::GetClassData() const { return &_class_data_; }
+const ::google::protobuf::Message::ClassData* VRControllerSetWLWWRequest::GetClassData() const {
+  return &_class_data_;
+}
 
-
-void VRControllerSetWLWWRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+void VRControllerSetWLWWRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<VRControllerSetWLWWRequest*>(&to_msg);
   auto& from = static_cast<const VRControllerSetWLWWRequest&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.VRControllerSetWLWWRequest)
@@ -2848,21 +2830,23 @@ void VRControllerSetWLWWRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_
     _this->_internal_mutable_vr_controller()->::osirixgrpc::VRController::MergeFrom(
         from._internal_vr_controller());
   }
-  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  static_assert(sizeof(::uint32_t) == sizeof(float),
+                "Code assumes ::uint32_t and float are the same size.");
   float tmp_wl = from._internal_wl();
   ::uint32_t raw_wl;
   memcpy(&raw_wl, &tmp_wl, sizeof(tmp_wl));
   if (raw_wl != 0) {
     _this->_internal_set_wl(from._internal_wl());
   }
-  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
+  static_assert(sizeof(::uint32_t) == sizeof(float),
+                "Code assumes ::uint32_t and float are the same size.");
   float tmp_ww = from._internal_ww();
   ::uint32_t raw_ww;
   memcpy(&raw_ww, &tmp_ww, sizeof(tmp_ww));
   if (raw_ww != 0) {
     _this->_internal_set_ww(from._internal_ww());
   }
-  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void VRControllerSetWLWWRequest::CopyFrom(const VRControllerSetWLWWRequest& from) {
@@ -2872,15 +2856,18 @@ void VRControllerSetWLWWRequest::CopyFrom(const VRControllerSetWLWWRequest& from
   MergeFrom(from);
 }
 
-bool VRControllerSetWLWWRequest::IsInitialized() const {
+PROTOBUF_NOINLINE bool VRControllerSetWLWWRequest::IsInitialized() const {
   return true;
 }
 
-void VRControllerSetWLWWRequest::InternalSwap(VRControllerSetWLWWRequest* other) {
+::_pbi::CachedSize* VRControllerSetWLWWRequest::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void VRControllerSetWLWWRequest::InternalSwap(VRControllerSetWLWWRequest* PROTOBUF_RESTRICT other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+  ::google::protobuf::internal::memswap<
       PROTOBUF_FIELD_OFFSET(VRControllerSetWLWWRequest, _impl_.ww_)
       + sizeof(VRControllerSetWLWWRequest::_impl_.ww_)
       - PROTOBUF_FIELD_OFFSET(VRControllerSetWLWWRequest, _impl_.vr_controller_)>(
@@ -2888,7 +2875,7 @@ void VRControllerSetWLWWRequest::InternalSwap(VRControllerSetWLWWRequest* other)
           reinterpret_cast<char*>(&other->_impl_.vr_controller_));
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata VRControllerSetWLWWRequest::GetMetadata() const {
+::google::protobuf::Metadata VRControllerSetWLWWRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_vrcontroller_2eproto_getter, &descriptor_table_vrcontroller_2eproto_once,
       file_level_metadata_vrcontroller_2eproto[8]);
@@ -2910,77 +2897,81 @@ class VRControllerHideROIVolumeRequest::_Internal {
   }
 };
 
-const ::osirixgrpc::VRController&
-VRControllerHideROIVolumeRequest::_Internal::vr_controller(const VRControllerHideROIVolumeRequest* msg) {
+const ::osirixgrpc::VRController& VRControllerHideROIVolumeRequest::_Internal::vr_controller(const VRControllerHideROIVolumeRequest* msg) {
   return *msg->_impl_.vr_controller_;
 }
-const ::osirixgrpc::ROIVolume&
-VRControllerHideROIVolumeRequest::_Internal::roi_volume(const VRControllerHideROIVolumeRequest* msg) {
+const ::osirixgrpc::ROIVolume& VRControllerHideROIVolumeRequest::_Internal::roi_volume(const VRControllerHideROIVolumeRequest* msg) {
   return *msg->_impl_.roi_volume_;
 }
 void VRControllerHideROIVolumeRequest::clear_vr_controller() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   if (_impl_.vr_controller_ != nullptr) _impl_.vr_controller_->Clear();
   _impl_._has_bits_[0] &= ~0x00000001u;
 }
 void VRControllerHideROIVolumeRequest::clear_roi_volume() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   if (_impl_.roi_volume_ != nullptr) _impl_.roi_volume_->Clear();
   _impl_._has_bits_[0] &= ~0x00000002u;
 }
-VRControllerHideROIVolumeRequest::VRControllerHideROIVolumeRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
+VRControllerHideROIVolumeRequest::VRControllerHideROIVolumeRequest(::google::protobuf::Arena* arena)
+    : ::google::protobuf::Message(arena) {
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.VRControllerHideROIVolumeRequest)
 }
-VRControllerHideROIVolumeRequest::VRControllerHideROIVolumeRequest(const VRControllerHideROIVolumeRequest& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message() {
-  VRControllerHideROIVolumeRequest* const _this = this; (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_}
-    , /*decltype(_impl_._cached_size_)*/{}
-    , decltype(_impl_.vr_controller_){nullptr}
-    , decltype(_impl_.roi_volume_){nullptr}};
+inline PROTOBUF_NDEBUG_INLINE VRControllerHideROIVolumeRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0} {}
 
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_impl_.vr_controller_ = new ::osirixgrpc::VRController(*from._impl_.vr_controller_);
-  }
-  if ((from._impl_._has_bits_[0] & 0x00000002u) != 0) {
-    _this->_impl_.roi_volume_ = new ::osirixgrpc::ROIVolume(*from._impl_.roi_volume_);
-  }
+VRControllerHideROIVolumeRequest::VRControllerHideROIVolumeRequest(
+    ::google::protobuf::Arena* arena,
+    const VRControllerHideROIVolumeRequest& from)
+    : ::google::protobuf::Message(arena) {
+  VRControllerHideROIVolumeRequest* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.vr_controller_ = (cached_has_bits & 0x00000001u)
+                ? CreateMaybeMessage<::osirixgrpc::VRController>(arena, *from._impl_.vr_controller_)
+                : nullptr;
+  _impl_.roi_volume_ = (cached_has_bits & 0x00000002u)
+                ? CreateMaybeMessage<::osirixgrpc::ROIVolume>(arena, *from._impl_.roi_volume_)
+                : nullptr;
+
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.VRControllerHideROIVolumeRequest)
 }
+inline PROTOBUF_NDEBUG_INLINE VRControllerHideROIVolumeRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0} {}
 
 inline void VRControllerHideROIVolumeRequest::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){}
-    , /*decltype(_impl_._cached_size_)*/{}
-    , decltype(_impl_.vr_controller_){nullptr}
-    , decltype(_impl_.roi_volume_){nullptr}
-  };
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, vr_controller_),
+           0,
+           offsetof(Impl_, roi_volume_) -
+               offsetof(Impl_, vr_controller_) +
+               sizeof(Impl_::roi_volume_));
 }
-
 VRControllerHideROIVolumeRequest::~VRControllerHideROIVolumeRequest() {
   // @@protoc_insertion_point(destructor:osirixgrpc.VRControllerHideROIVolumeRequest)
-  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
-  (void)arena;
-    return;
-  }
+  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
   SharedDtor();
 }
-
 inline void VRControllerHideROIVolumeRequest::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
-  if (this != internal_default_instance()) delete _impl_.vr_controller_;
-  if (this != internal_default_instance()) delete _impl_.roi_volume_;
+  ABSL_DCHECK(GetArena() == nullptr);
+  delete _impl_.vr_controller_;
+  delete _impl_.roi_volume_;
+  _impl_.~Impl_();
 }
 
-void VRControllerHideROIVolumeRequest::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
-}
-
-void VRControllerHideROIVolumeRequest::Clear() {
+PROTOBUF_NOINLINE void VRControllerHideROIVolumeRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.VRControllerHideROIVolumeRequest)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -2997,82 +2988,79 @@ void VRControllerHideROIVolumeRequest::Clear() {
     }
   }
   _impl_._has_bits_.Clear();
-  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
-const char* VRControllerHideROIVolumeRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
-#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  _Internal::HasBits has_bits{};
-  while (!ctx->Done(&ptr)) {
-    ::uint32_t tag;
-    ptr = ::_pbi::ReadTag(ptr, &tag);
-    switch (tag >> 3) {
-      // .osirixgrpc.VRController vr_controller = 1;
-      case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
-          ptr = ctx->ParseMessage(_internal_mutable_vr_controller(), ptr);
-          CHK_(ptr);
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      // .osirixgrpc.ROIVolume roi_volume = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 18)) {
-          ptr = ctx->ParseMessage(_internal_mutable_roi_volume(), ptr);
-          CHK_(ptr);
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      default:
-        goto handle_unusual;
-    }  // switch
-  handle_unusual:
-    if ((tag == 0) || ((tag & 7) == 4)) {
-      CHK_(ptr);
-      ctx->SetLastTag(tag);
-      goto message_done;
-    }
-    ptr = UnknownFieldParse(
-        tag,
-        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-        ptr, ctx);
-    CHK_(ptr != nullptr);
-  }  // while
-message_done:
-  _impl_._has_bits_.Or(has_bits);
+const char* VRControllerHideROIVolumeRequest::_InternalParse(
+    const char* ptr, ::_pbi::ParseContext* ctx) {
+  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
   return ptr;
-failure:
-  ptr = nullptr;
-  goto message_done;
-#undef CHK_
 }
+
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<1, 2, 2, 0, 2> VRControllerHideROIVolumeRequest::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(VRControllerHideROIVolumeRequest, _impl_._has_bits_),
+    0, // no _extensions_
+    2, 8,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967292,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    2,  // num_field_entries
+    2,  // num_aux_entries
+    offsetof(decltype(_table_), aux_entries),
+    &_VRControllerHideROIVolumeRequest_default_instance_._instance,
+    ::_pbi::TcParser::GenericFallback,  // fallback
+  }, {{
+    // .osirixgrpc.ROIVolume roi_volume = 2;
+    {::_pbi::TcParser::FastMtS1,
+     {18, 1, 1, PROTOBUF_FIELD_OFFSET(VRControllerHideROIVolumeRequest, _impl_.roi_volume_)}},
+    // .osirixgrpc.VRController vr_controller = 1;
+    {::_pbi::TcParser::FastMtS1,
+     {10, 0, 0, PROTOBUF_FIELD_OFFSET(VRControllerHideROIVolumeRequest, _impl_.vr_controller_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // .osirixgrpc.VRController vr_controller = 1;
+    {PROTOBUF_FIELD_OFFSET(VRControllerHideROIVolumeRequest, _impl_.vr_controller_), _Internal::kHasBitsOffset + 0, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
+    // .osirixgrpc.ROIVolume roi_volume = 2;
+    {PROTOBUF_FIELD_OFFSET(VRControllerHideROIVolumeRequest, _impl_.roi_volume_), _Internal::kHasBitsOffset + 1, 1,
+    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
+  }}, {{
+    {::_pbi::TcParser::GetTable<::osirixgrpc::VRController>()},
+    {::_pbi::TcParser::GetTable<::osirixgrpc::ROIVolume>()},
+  }}, {{
+  }},
+};
 
 ::uint8_t* VRControllerHideROIVolumeRequest::_InternalSerialize(
-    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+    ::uint8_t* target,
+    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.VRControllerHideROIVolumeRequest)
   ::uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
+  (void)cached_has_bits;
 
   cached_has_bits = _impl_._has_bits_[0];
   // .osirixgrpc.VRController vr_controller = 1;
   if (cached_has_bits & 0x00000001u) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(1, _Internal::vr_controller(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        1, _Internal::vr_controller(this),
         _Internal::vr_controller(this).GetCachedSize(), target, stream);
   }
 
   // .osirixgrpc.ROIVolume roi_volume = 2;
   if (cached_has_bits & 0x00000002u) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(2, _Internal::roi_volume(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        2, _Internal::roi_volume(this),
         _Internal::roi_volume(this).GetCachedSize(), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.VRControllerHideROIVolumeRequest)
   return target;
@@ -3090,30 +3078,29 @@ failure:
   if (cached_has_bits & 0x00000003u) {
     // .osirixgrpc.VRController vr_controller = 1;
     if (cached_has_bits & 0x00000001u) {
-      total_size += 1 +
-        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-          *_impl_.vr_controller_);
+      total_size +=
+          1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.vr_controller_);
     }
 
     // .osirixgrpc.ROIVolume roi_volume = 2;
     if (cached_has_bits & 0x00000002u) {
-      total_size += 1 +
-        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-          *_impl_.roi_volume_);
+      total_size +=
+          1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.roi_volume_);
     }
 
   }
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData VRControllerHideROIVolumeRequest::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
-    VRControllerHideROIVolumeRequest::MergeImpl
+const ::google::protobuf::Message::ClassData VRControllerHideROIVolumeRequest::_class_data_ = {
+    VRControllerHideROIVolumeRequest::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*VRControllerHideROIVolumeRequest::GetClassData() const { return &_class_data_; }
+const ::google::protobuf::Message::ClassData* VRControllerHideROIVolumeRequest::GetClassData() const {
+  return &_class_data_;
+}
 
-
-void VRControllerHideROIVolumeRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+void VRControllerHideROIVolumeRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<VRControllerHideROIVolumeRequest*>(&to_msg);
   auto& from = static_cast<const VRControllerHideROIVolumeRequest&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.VRControllerHideROIVolumeRequest)
@@ -3132,7 +3119,7 @@ void VRControllerHideROIVolumeRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Messag
           from._internal_roi_volume());
     }
   }
-  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void VRControllerHideROIVolumeRequest::CopyFrom(const VRControllerHideROIVolumeRequest& from) {
@@ -3142,15 +3129,18 @@ void VRControllerHideROIVolumeRequest::CopyFrom(const VRControllerHideROIVolumeR
   MergeFrom(from);
 }
 
-bool VRControllerHideROIVolumeRequest::IsInitialized() const {
+PROTOBUF_NOINLINE bool VRControllerHideROIVolumeRequest::IsInitialized() const {
   return true;
 }
 
-void VRControllerHideROIVolumeRequest::InternalSwap(VRControllerHideROIVolumeRequest* other) {
+::_pbi::CachedSize* VRControllerHideROIVolumeRequest::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void VRControllerHideROIVolumeRequest::InternalSwap(VRControllerHideROIVolumeRequest* PROTOBUF_RESTRICT other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+  ::google::protobuf::internal::memswap<
       PROTOBUF_FIELD_OFFSET(VRControllerHideROIVolumeRequest, _impl_.roi_volume_)
       + sizeof(VRControllerHideROIVolumeRequest::_impl_.roi_volume_)
       - PROTOBUF_FIELD_OFFSET(VRControllerHideROIVolumeRequest, _impl_.vr_controller_)>(
@@ -3158,7 +3148,7 @@ void VRControllerHideROIVolumeRequest::InternalSwap(VRControllerHideROIVolumeReq
           reinterpret_cast<char*>(&other->_impl_.vr_controller_));
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata VRControllerHideROIVolumeRequest::GetMetadata() const {
+::google::protobuf::Metadata VRControllerHideROIVolumeRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_vrcontroller_2eproto_getter, &descriptor_table_vrcontroller_2eproto_once,
       file_level_metadata_vrcontroller_2eproto[9]);
@@ -3180,77 +3170,81 @@ class VRControllerDisplayROIVolumeRequest::_Internal {
   }
 };
 
-const ::osirixgrpc::VRController&
-VRControllerDisplayROIVolumeRequest::_Internal::vr_controller(const VRControllerDisplayROIVolumeRequest* msg) {
+const ::osirixgrpc::VRController& VRControllerDisplayROIVolumeRequest::_Internal::vr_controller(const VRControllerDisplayROIVolumeRequest* msg) {
   return *msg->_impl_.vr_controller_;
 }
-const ::osirixgrpc::ROIVolume&
-VRControllerDisplayROIVolumeRequest::_Internal::roi_volume(const VRControllerDisplayROIVolumeRequest* msg) {
+const ::osirixgrpc::ROIVolume& VRControllerDisplayROIVolumeRequest::_Internal::roi_volume(const VRControllerDisplayROIVolumeRequest* msg) {
   return *msg->_impl_.roi_volume_;
 }
 void VRControllerDisplayROIVolumeRequest::clear_vr_controller() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   if (_impl_.vr_controller_ != nullptr) _impl_.vr_controller_->Clear();
   _impl_._has_bits_[0] &= ~0x00000001u;
 }
 void VRControllerDisplayROIVolumeRequest::clear_roi_volume() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   if (_impl_.roi_volume_ != nullptr) _impl_.roi_volume_->Clear();
   _impl_._has_bits_[0] &= ~0x00000002u;
 }
-VRControllerDisplayROIVolumeRequest::VRControllerDisplayROIVolumeRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
+VRControllerDisplayROIVolumeRequest::VRControllerDisplayROIVolumeRequest(::google::protobuf::Arena* arena)
+    : ::google::protobuf::Message(arena) {
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.VRControllerDisplayROIVolumeRequest)
 }
-VRControllerDisplayROIVolumeRequest::VRControllerDisplayROIVolumeRequest(const VRControllerDisplayROIVolumeRequest& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message() {
-  VRControllerDisplayROIVolumeRequest* const _this = this; (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_}
-    , /*decltype(_impl_._cached_size_)*/{}
-    , decltype(_impl_.vr_controller_){nullptr}
-    , decltype(_impl_.roi_volume_){nullptr}};
+inline PROTOBUF_NDEBUG_INLINE VRControllerDisplayROIVolumeRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0} {}
 
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_impl_.vr_controller_ = new ::osirixgrpc::VRController(*from._impl_.vr_controller_);
-  }
-  if ((from._impl_._has_bits_[0] & 0x00000002u) != 0) {
-    _this->_impl_.roi_volume_ = new ::osirixgrpc::ROIVolume(*from._impl_.roi_volume_);
-  }
+VRControllerDisplayROIVolumeRequest::VRControllerDisplayROIVolumeRequest(
+    ::google::protobuf::Arena* arena,
+    const VRControllerDisplayROIVolumeRequest& from)
+    : ::google::protobuf::Message(arena) {
+  VRControllerDisplayROIVolumeRequest* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.vr_controller_ = (cached_has_bits & 0x00000001u)
+                ? CreateMaybeMessage<::osirixgrpc::VRController>(arena, *from._impl_.vr_controller_)
+                : nullptr;
+  _impl_.roi_volume_ = (cached_has_bits & 0x00000002u)
+                ? CreateMaybeMessage<::osirixgrpc::ROIVolume>(arena, *from._impl_.roi_volume_)
+                : nullptr;
+
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.VRControllerDisplayROIVolumeRequest)
 }
+inline PROTOBUF_NDEBUG_INLINE VRControllerDisplayROIVolumeRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0} {}
 
 inline void VRControllerDisplayROIVolumeRequest::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){}
-    , /*decltype(_impl_._cached_size_)*/{}
-    , decltype(_impl_.vr_controller_){nullptr}
-    , decltype(_impl_.roi_volume_){nullptr}
-  };
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, vr_controller_),
+           0,
+           offsetof(Impl_, roi_volume_) -
+               offsetof(Impl_, vr_controller_) +
+               sizeof(Impl_::roi_volume_));
 }
-
 VRControllerDisplayROIVolumeRequest::~VRControllerDisplayROIVolumeRequest() {
   // @@protoc_insertion_point(destructor:osirixgrpc.VRControllerDisplayROIVolumeRequest)
-  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
-  (void)arena;
-    return;
-  }
+  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
   SharedDtor();
 }
-
 inline void VRControllerDisplayROIVolumeRequest::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
-  if (this != internal_default_instance()) delete _impl_.vr_controller_;
-  if (this != internal_default_instance()) delete _impl_.roi_volume_;
+  ABSL_DCHECK(GetArena() == nullptr);
+  delete _impl_.vr_controller_;
+  delete _impl_.roi_volume_;
+  _impl_.~Impl_();
 }
 
-void VRControllerDisplayROIVolumeRequest::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
-}
-
-void VRControllerDisplayROIVolumeRequest::Clear() {
+PROTOBUF_NOINLINE void VRControllerDisplayROIVolumeRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.VRControllerDisplayROIVolumeRequest)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -3267,82 +3261,79 @@ void VRControllerDisplayROIVolumeRequest::Clear() {
     }
   }
   _impl_._has_bits_.Clear();
-  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
-const char* VRControllerDisplayROIVolumeRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
-#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  _Internal::HasBits has_bits{};
-  while (!ctx->Done(&ptr)) {
-    ::uint32_t tag;
-    ptr = ::_pbi::ReadTag(ptr, &tag);
-    switch (tag >> 3) {
-      // .osirixgrpc.VRController vr_controller = 1;
-      case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
-          ptr = ctx->ParseMessage(_internal_mutable_vr_controller(), ptr);
-          CHK_(ptr);
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      // .osirixgrpc.ROIVolume roi_volume = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 18)) {
-          ptr = ctx->ParseMessage(_internal_mutable_roi_volume(), ptr);
-          CHK_(ptr);
-        } else {
-          goto handle_unusual;
-        }
-        continue;
-      default:
-        goto handle_unusual;
-    }  // switch
-  handle_unusual:
-    if ((tag == 0) || ((tag & 7) == 4)) {
-      CHK_(ptr);
-      ctx->SetLastTag(tag);
-      goto message_done;
-    }
-    ptr = UnknownFieldParse(
-        tag,
-        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-        ptr, ctx);
-    CHK_(ptr != nullptr);
-  }  // while
-message_done:
-  _impl_._has_bits_.Or(has_bits);
+const char* VRControllerDisplayROIVolumeRequest::_InternalParse(
+    const char* ptr, ::_pbi::ParseContext* ctx) {
+  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
   return ptr;
-failure:
-  ptr = nullptr;
-  goto message_done;
-#undef CHK_
 }
+
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<1, 2, 2, 0, 2> VRControllerDisplayROIVolumeRequest::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(VRControllerDisplayROIVolumeRequest, _impl_._has_bits_),
+    0, // no _extensions_
+    2, 8,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967292,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    2,  // num_field_entries
+    2,  // num_aux_entries
+    offsetof(decltype(_table_), aux_entries),
+    &_VRControllerDisplayROIVolumeRequest_default_instance_._instance,
+    ::_pbi::TcParser::GenericFallback,  // fallback
+  }, {{
+    // .osirixgrpc.ROIVolume roi_volume = 2;
+    {::_pbi::TcParser::FastMtS1,
+     {18, 1, 1, PROTOBUF_FIELD_OFFSET(VRControllerDisplayROIVolumeRequest, _impl_.roi_volume_)}},
+    // .osirixgrpc.VRController vr_controller = 1;
+    {::_pbi::TcParser::FastMtS1,
+     {10, 0, 0, PROTOBUF_FIELD_OFFSET(VRControllerDisplayROIVolumeRequest, _impl_.vr_controller_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // .osirixgrpc.VRController vr_controller = 1;
+    {PROTOBUF_FIELD_OFFSET(VRControllerDisplayROIVolumeRequest, _impl_.vr_controller_), _Internal::kHasBitsOffset + 0, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
+    // .osirixgrpc.ROIVolume roi_volume = 2;
+    {PROTOBUF_FIELD_OFFSET(VRControllerDisplayROIVolumeRequest, _impl_.roi_volume_), _Internal::kHasBitsOffset + 1, 1,
+    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
+  }}, {{
+    {::_pbi::TcParser::GetTable<::osirixgrpc::VRController>()},
+    {::_pbi::TcParser::GetTable<::osirixgrpc::ROIVolume>()},
+  }}, {{
+  }},
+};
 
 ::uint8_t* VRControllerDisplayROIVolumeRequest::_InternalSerialize(
-    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+    ::uint8_t* target,
+    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.VRControllerDisplayROIVolumeRequest)
   ::uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
+  (void)cached_has_bits;
 
   cached_has_bits = _impl_._has_bits_[0];
   // .osirixgrpc.VRController vr_controller = 1;
   if (cached_has_bits & 0x00000001u) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(1, _Internal::vr_controller(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        1, _Internal::vr_controller(this),
         _Internal::vr_controller(this).GetCachedSize(), target, stream);
   }
 
   // .osirixgrpc.ROIVolume roi_volume = 2;
   if (cached_has_bits & 0x00000002u) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(2, _Internal::roi_volume(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        2, _Internal::roi_volume(this),
         _Internal::roi_volume(this).GetCachedSize(), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.VRControllerDisplayROIVolumeRequest)
   return target;
@@ -3360,30 +3351,29 @@ failure:
   if (cached_has_bits & 0x00000003u) {
     // .osirixgrpc.VRController vr_controller = 1;
     if (cached_has_bits & 0x00000001u) {
-      total_size += 1 +
-        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-          *_impl_.vr_controller_);
+      total_size +=
+          1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.vr_controller_);
     }
 
     // .osirixgrpc.ROIVolume roi_volume = 2;
     if (cached_has_bits & 0x00000002u) {
-      total_size += 1 +
-        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-          *_impl_.roi_volume_);
+      total_size +=
+          1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.roi_volume_);
     }
 
   }
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData VRControllerDisplayROIVolumeRequest::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
-    VRControllerDisplayROIVolumeRequest::MergeImpl
+const ::google::protobuf::Message::ClassData VRControllerDisplayROIVolumeRequest::_class_data_ = {
+    VRControllerDisplayROIVolumeRequest::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*VRControllerDisplayROIVolumeRequest::GetClassData() const { return &_class_data_; }
+const ::google::protobuf::Message::ClassData* VRControllerDisplayROIVolumeRequest::GetClassData() const {
+  return &_class_data_;
+}
 
-
-void VRControllerDisplayROIVolumeRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+void VRControllerDisplayROIVolumeRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<VRControllerDisplayROIVolumeRequest*>(&to_msg);
   auto& from = static_cast<const VRControllerDisplayROIVolumeRequest&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.VRControllerDisplayROIVolumeRequest)
@@ -3402,7 +3392,7 @@ void VRControllerDisplayROIVolumeRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Mes
           from._internal_roi_volume());
     }
   }
-  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void VRControllerDisplayROIVolumeRequest::CopyFrom(const VRControllerDisplayROIVolumeRequest& from) {
@@ -3412,15 +3402,18 @@ void VRControllerDisplayROIVolumeRequest::CopyFrom(const VRControllerDisplayROIV
   MergeFrom(from);
 }
 
-bool VRControllerDisplayROIVolumeRequest::IsInitialized() const {
+PROTOBUF_NOINLINE bool VRControllerDisplayROIVolumeRequest::IsInitialized() const {
   return true;
 }
 
-void VRControllerDisplayROIVolumeRequest::InternalSwap(VRControllerDisplayROIVolumeRequest* other) {
+::_pbi::CachedSize* VRControllerDisplayROIVolumeRequest::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void VRControllerDisplayROIVolumeRequest::InternalSwap(VRControllerDisplayROIVolumeRequest* PROTOBUF_RESTRICT other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+  ::google::protobuf::internal::memswap<
       PROTOBUF_FIELD_OFFSET(VRControllerDisplayROIVolumeRequest, _impl_.roi_volume_)
       + sizeof(VRControllerDisplayROIVolumeRequest::_impl_.roi_volume_)
       - PROTOBUF_FIELD_OFFSET(VRControllerDisplayROIVolumeRequest, _impl_.vr_controller_)>(
@@ -3428,58 +3421,16 @@ void VRControllerDisplayROIVolumeRequest::InternalSwap(VRControllerDisplayROIVol
           reinterpret_cast<char*>(&other->_impl_.vr_controller_));
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata VRControllerDisplayROIVolumeRequest::GetMetadata() const {
+::google::protobuf::Metadata VRControllerDisplayROIVolumeRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_vrcontroller_2eproto_getter, &descriptor_table_vrcontroller_2eproto_once,
       file_level_metadata_vrcontroller_2eproto[10]);
 }
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace osirixgrpc
-PROTOBUF_NAMESPACE_OPEN
-template<> PROTOBUF_NOINLINE ::osirixgrpc::VRControllerViewer2DResponse*
-Arena::CreateMaybeMessage< ::osirixgrpc::VRControllerViewer2DResponse >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::osirixgrpc::VRControllerViewer2DResponse >(arena);
-}
-template<> PROTOBUF_NOINLINE ::osirixgrpc::VRControllerBlendingControllerResponse*
-Arena::CreateMaybeMessage< ::osirixgrpc::VRControllerBlendingControllerResponse >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::osirixgrpc::VRControllerBlendingControllerResponse >(arena);
-}
-template<> PROTOBUF_NOINLINE ::osirixgrpc::VRControllerRenderingModeResponse*
-Arena::CreateMaybeMessage< ::osirixgrpc::VRControllerRenderingModeResponse >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::osirixgrpc::VRControllerRenderingModeResponse >(arena);
-}
-template<> PROTOBUF_NOINLINE ::osirixgrpc::VRControllerWLWWResponse*
-Arena::CreateMaybeMessage< ::osirixgrpc::VRControllerWLWWResponse >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::osirixgrpc::VRControllerWLWWResponse >(arena);
-}
-template<> PROTOBUF_NOINLINE ::osirixgrpc::VRControllerStyleResponse*
-Arena::CreateMaybeMessage< ::osirixgrpc::VRControllerStyleResponse >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::osirixgrpc::VRControllerStyleResponse >(arena);
-}
-template<> PROTOBUF_NOINLINE ::osirixgrpc::VRControllerTitleResponse*
-Arena::CreateMaybeMessage< ::osirixgrpc::VRControllerTitleResponse >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::osirixgrpc::VRControllerTitleResponse >(arena);
-}
-template<> PROTOBUF_NOINLINE ::osirixgrpc::VRControllerROIVolumesResponse*
-Arena::CreateMaybeMessage< ::osirixgrpc::VRControllerROIVolumesResponse >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::osirixgrpc::VRControllerROIVolumesResponse >(arena);
-}
-template<> PROTOBUF_NOINLINE ::osirixgrpc::VRControllerSetRenderingModeRequest*
-Arena::CreateMaybeMessage< ::osirixgrpc::VRControllerSetRenderingModeRequest >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::osirixgrpc::VRControllerSetRenderingModeRequest >(arena);
-}
-template<> PROTOBUF_NOINLINE ::osirixgrpc::VRControllerSetWLWWRequest*
-Arena::CreateMaybeMessage< ::osirixgrpc::VRControllerSetWLWWRequest >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::osirixgrpc::VRControllerSetWLWWRequest >(arena);
-}
-template<> PROTOBUF_NOINLINE ::osirixgrpc::VRControllerHideROIVolumeRequest*
-Arena::CreateMaybeMessage< ::osirixgrpc::VRControllerHideROIVolumeRequest >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::osirixgrpc::VRControllerHideROIVolumeRequest >(arena);
-}
-template<> PROTOBUF_NOINLINE ::osirixgrpc::VRControllerDisplayROIVolumeRequest*
-Arena::CreateMaybeMessage< ::osirixgrpc::VRControllerDisplayROIVolumeRequest >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::osirixgrpc::VRControllerDisplayROIVolumeRequest >(arena);
-}
-PROTOBUF_NAMESPACE_CLOSE
+namespace google {
+namespace protobuf {
+}  // namespace protobuf
+}  // namespace google
 // @@protoc_insertion_point(global_scope)
 #include "google/protobuf/port_undef.inc"
