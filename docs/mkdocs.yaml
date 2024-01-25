@@ -55,6 +55,14 @@ nav:
   - Getting Started: getting_started.md
   - API:
     - Basics: api/README.md
-    - Regions of Interest: api/ROI.md
+    - Regions of Interest: api/roi.md
+    - ROI Volumes: api/roivolume.md
+    - DCMPix: api/dcmpix.md
+    - VR Controller: api/vrcontroller.md
+    - Viewer Controller: api/viewercontroller.md
+    - Browser Controller: api/browsercontroller.md
+    - Dicom Image: api/dicomimage.md
+    - Dicom Series: api/dicomseries.md
+    - Dicom Study: api/dicomstudy.md
   - Contributing:
     - Home: contributing/README.md
