@@ -1,5 +1,7 @@
 # osirixgrpc
 
+__NOTE__: This page is currently under development and will be released soon (~April 2024).
+
 __osirixgrpc__ is a research plugin for the popular [OsiriX](https://www.osirix-viewer.com) medical image viewing platform for Mac OS. It leverages the [gRPC](https://grpc.io) architecture to provide fast communication between OsiriX (the "server") and custom-built software or script running on a different local process (the "client").  This enables fast development of additional OsiriX functionality, including the adoption of state-of-the-art libraries for image processing and artificial intelligence.  Currently, Python is the only in-built supported language, though adoption of [other languages](https://grpc.io/docs/languages) can be easily achieved.  
 
 gRPC relies on a paradigm of message passing through 'requests' and 'responses'.  We also suggest the use our supporting library [pyOsiriX](https://pyosirix.com) for script development, which is aimed at converting these conventions to an object-oriented paradigm, that may be more familiar to users. 
