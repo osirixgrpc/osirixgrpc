@@ -2,7 +2,7 @@
 
 The following steps demonstrate how to install the plugin and subsequently start up a local OsiriX server and run 
 scripts that can be defined in any source file on your system. To see how to write GRPC client code for use with 
-OsiriXgrpc please see [defining client code](404.html).  
+OsiriXgrpc please see the [API](docs/docfiles/api/README.md).  
 
 The OsiriXgrpc plugin consists of three core functionalities, all of which are accessible from the OsiriX submenus at
 `Plugins` &rarr; `Database` &rarr; `osirixgrpc`:
@@ -23,7 +23,7 @@ The OsiriXgrpc plugin consists of three core functionalities, all of which are a
 ## Server Configuration
 
 OsiriXgrpc servers can be started and paused using the server configuration window.
-![Server Configuration](../assets/plugin/server_configuration.png)
+![Server Configuration](assets/plugin/server_configuration.png)
 To start one of the available servers, press the &#9654; button and the `Active` status will turn green once this has 
 been successful (<span style="color: rgb(0, 200, 0);">&#9679;</span>). Alternatively, to stop a running server press
 &#9632; and the `Active` status will turn red (<span style="color: rgb(255, 0, 0);">&#9679;</span>). If, for any reason,
@@ -48,7 +48,7 @@ node for example), this can be achieved by the client as necessary.
 Although not necessary, scripts can be registered with OsiriXgrpc so that users can run them without needing to see any 
 code whatsoever. To register a script, select the `Script Management` plugin sub-menu to start the script database 
 console.
-![Script Console](../assets/plugin/script_management.png)
+![Script Console](assets/plugin/script_management.png)
 
  - `Name`: The name of the script, which is automatically taken as the filename (without file extension).
  - `Type`: A drop-down that determines which drop-down menu contains the button to start the script.
@@ -79,7 +79,7 @@ ribbon toolbar in each of these windows, select `Customize Toolbar...`, and drag
 ## Task Console
 The task console provides all stdout and stderr messages for the registered scripts run through the script management 
 interface. Outputs can be saved and the console can be cleared.
-![Task Console](../assets/plugin/task_console.png)
+![Task Console](assets/plugin/task_console.png)
 
 
 __Congratulations!__ You should now be ready to create client scripts to interact with OsiriX!
