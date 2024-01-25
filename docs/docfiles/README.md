@@ -1,5 +1,9 @@
 # OsiriXgrpc	
 
+<figure style="width: 200px;">
+  <img src="assets/logo/logo.png" alt="Welcome to OsiriXgrpc!">
+</figure>
+
 _NOTE_: This repository is still in development. Bare with us, it will be released soon!
 
 __Welcome__ to the OsiriXgrpc documentation. Here you will find setup routines required to run OsiriXgrpc 
