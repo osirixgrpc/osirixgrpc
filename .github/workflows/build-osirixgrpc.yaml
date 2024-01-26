@@ -1,0 +1,115 @@
+name: Build OsiriXgrpc
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    env:
+      GRPC_VERSION: 1.55.0
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Conda
+        uses: conda-incubator/setup-miniconda@v2
+        with:
+          activate-environment: grpc_build_env
+          environment-file: environment.yml  # Create a YAML file with Python version and dependencies
+
+      - name: Set up Xcode
+        uses: actions/setup-xcode@v2
+        with:
+          xcode-version: '13.4'  # Use the appropriate Xcode version
+
+      - name: Clone gRPC repository
+        run: git clone --recurse-submodules -b v"$GRPC_VERSION" https://github.com/grpc/grpc
+
+      - name: Build/install x86_64 grpc libraries
+        run: |
+          cd grpc
+          mkdir -p cmake/build-x86_64
+          mkdir -p install-x86_64
+          cd cmake/build-x86_64
+          cmake -DgRPC_INSTALL=ON \
+                -DgRPC_BUILD_TESTS=OFF \
+                -DCMAKE_INSTALL_PREFIX=../../install-x86_64 \
+                -DCMAKE_OSX_ARCHITECTURES=x86_64 \
+                ../..
+          make -j 4
+          make install
+
+      - name: Build/install arm64 grpc libraries
+        run: |
+          cd grpc
+          mkdir -p cmake/build-arm64
+          mkdir -p install-arm64
+          cd cmake/build-arm64
+          cmake -DgRPC_INSTALL=ON \
+                -DgRPC_BUILD_TESTS=OFF \
+                -DCMAKE_INSTALL_PREFIX=../../install-arm64 \
+                -DCMAKE_OSX_ARCHITECTURES=arm64 \
+                ../..
+          make -j 4
+          make install
+
+      - name: Create universal libraries
+        run: |
+          cd grpc
+          universal_library_output="install/lib"
+          mkdir -p "$universal_library_output"
+          for file1 in install-arm64/lib/*.a; do
+            filename=$(basename "$file1" .a)
+            file2="install-x86_64/lib/$filename.a"
+            if [ -f "$file2" ]; then
+              lipo -create -output "$universal_library_output/$filename.a" "$file1" "$file2"
+              echo "Combined $filename.a"
+            else
+              echo "Skipping $filename.a, corresponding file not found in install-x86_64"
+            fi
+          done
+
+      - name: Copy relevant binaries/headers
+        run: |
+          cd grpc
+          machine_arch=$(arch)
+          cp -r install-$machine_arch/bin install
+          cp -r install-$machine_arch/include install
+
+      - name: Build cpp definitions
+        run: |
+          cd grpc
+          mkdir -p cpp
+          install/bin/protoc -I protos --grpc_out=cpp --plugin=protoc-gen-grpc=install/bin/grpc_cpp_plugin osirix.proto
+          install/bin/protoc -I protos --cpp_out=cpp osirix.proto roi.proto roivolume.proto dcmpix.proto vrcontroller.proto viewercontroller.proto browsercontroller.proto dicomimage.proto dicomstudy.proto dicomseries.proto utilities.proto types.proto
+
+      - name: Build Python definitions
+        run: |
+          cd grpc
+          mkdir -p python/osirixgrpc
+          export GRPC_PYTHON_LDFLAGS=" -framework CoreFoundation"
+          pip install grpcio=="$GRPC_VERSION" grpcio-tools=="$GRPC_VERSION" --no-binary :all:
+          python -m grpc_tools.protoc -I protos --python_out=python/osirixgrpc --grpc_python_out=python/osirixgrpc osirix.proto
+          python -m grpc_tools.protoc -I protos --python_out=python/osirixgrpc roi.proto roivolume.proto dcmpix.proto vrcontroller.proto viewercontroller.proto browsercontroller.proto dicomimage.proto dicomstudy.proto dicomseries.proto utilities.proto types.proto
+
+      - name: Update requirements file
+        run: |
+          cd grpc
+          echo "grpcio>=$GRPC_VERSION > python/requirements.txt
+          echo "grpcio-tools>=$GRPC_VERSION" >> python/requirements.txt
+
+      - name: Clean up
+        run: |
+          cd grpc
+          conda deactivate
+          conda env remove --name "$env_name" --yes
+
+      - name: Build project
+        run: |
+          cd src  # Change to your project directory
+          xcodebuild -project osirixgrpc.xcodeproj -scheme osirixgrpc_build -destination 'macOS'
