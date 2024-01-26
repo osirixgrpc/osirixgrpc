@@ -10,7 +10,7 @@ jobs:
     runs-on: macos-latest-xlarge
 
     env:
-      GRPC_VERSION: 1.55.0
+      GRPC_VERSION: 1.56.0
 
     steps:
       - name: Checkout code
