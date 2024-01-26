@@ -23,9 +23,9 @@ jobs:
           environment-file: environment.yml  # Create a YAML file with Python version and dependencies
 
       - name: Set up Xcode
-        uses: actions/setup-xcode@v2
+        uses: maxim-lobanov/setup-xcode@v2
         with:
-          xcode-version: '13.4'  # Use the appropriate Xcode version
+          xcode-version: latest  # Use the appropriate Xcode version
 
       - name: Clone gRPC repository
         run: git clone --recurse-submodules -b v"$GRPC_VERSION" https://github.com/grpc/grpc
