@@ -20,8 +20,7 @@ jobs:
         uses: conda-incubator/setup-miniconda@v2
         with:
           activate-environment: grpc_build_env
-          environment-file: environment.yml  # Create a YAML file with Python version and dependencies
-
+          
       - name: Set up Xcode
         uses: maxim-lobanov/setup-xcode@v1
         with:
