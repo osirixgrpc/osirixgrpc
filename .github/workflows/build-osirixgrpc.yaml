@@ -85,8 +85,8 @@ jobs:
       - name: Build cpp definitions
         run: |
           mkdir -p cpp
-          install/bin/protoc -I protos --grpc_out=cpp --plugin=protoc-gen-grpc=install/bin/grpc_cpp_plugin osirix.proto
-          install/bin/protoc -I protos --cpp_out=cpp osirix.proto roi.proto roivolume.proto dcmpix.proto vrcontroller.proto viewercontroller.proto browsercontroller.proto dicomimage.proto dicomstudy.proto dicomseries.proto utilities.proto types.proto
+          grpc/install/bin/protoc -I protos --grpc_out=cpp --plugin=protoc-gen-grpc=install/bin/grpc_cpp_plugin osirix.proto
+          grpc/install/bin/protoc -I protos --cpp_out=cpp osirix.proto roi.proto roivolume.proto dcmpix.proto vrcontroller.proto viewercontroller.proto browsercontroller.proto dicomimage.proto dicomstudy.proto dicomseries.proto utilities.proto types.proto
 
       - name: Build Python definitions
         run: |
@@ -98,13 +98,11 @@ jobs:
 
       - name: Update requirements file
         run: |
-          cd grpc
           echo "grpcio>=$GRPC_VERSION > python/requirements.txt
           echo "grpcio-tools>=$GRPC_VERSION" >> python/requirements.txt
 
       - name: Clean up
         run: |
-          cd grpc
           conda deactivate
           conda env remove --name "$env_name" --yes
 
