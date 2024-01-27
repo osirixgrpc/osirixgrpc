@@ -91,10 +91,9 @@ jobs:
       - name: Build Python definitions
         run: |
           mkdir -p python/osirixgrpc
-          pip install grpcio=="$GRPC_VERSION" grpcio-tools=="$GRPC_VERSION"
-          python -m grpc_tools.protoc -I protos --python_out=python/osirixgrpc --grpc_python_out=python/osirixgrpc osirix.proto
-          python -m grpc_tools.protoc -I protos --python_out=python/osirixgrpc roi.proto roivolume.proto dcmpix.proto vrcontroller.proto viewercontroller.proto browsercontroller.proto dicomimage.proto dicomstudy.proto dicomseries.proto utilities.proto types.proto
-
+          grpc/install/bin/protoc -I protos --python_out=python/osirixgrpc --grpc_python_out=python/osirixgrpc --plugin=protoc-gen-grpc=grpc/install/bin/grpc_python_plugin osirix.proto 
+          grpc/install/bin/protoc -I protos --python_out=python/osirixgrpc osirix.proto roi.proto roivolume.proto dcmpix.proto vrcontroller.proto viewercontroller.proto browsercontroller.proto dicomimage.proto dicomstudy.proto dicomseries.proto utilities.proto types.proto
+          
       - name: Update requirements file
         run: |
           echo "grpcio>=$GRPC_VERSION > python/requirements.txt
