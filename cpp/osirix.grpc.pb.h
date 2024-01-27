@@ -35,7 +35,7 @@ class OsiriXService final {
   class StubInterface {
    public:
     virtual ~StubInterface() {}
-    // OsiriX messages
+    // OsiriX methods
     virtual ::grpc::Status OsirixCurrentBrowser(::grpc::ClientContext* context, const ::osirixgrpc::Empty& request, ::osirixgrpc::OsirixCurrentBrowserResponse* response) = 0;
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::osirixgrpc::OsirixCurrentBrowserResponse>> AsyncOsirixCurrentBrowser(::grpc::ClientContext* context, const ::osirixgrpc::Empty& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::osirixgrpc::OsirixCurrentBrowserResponse>>(AsyncOsirixCurrentBrowserRaw(context, request, cq));
@@ -71,7 +71,7 @@ class OsiriXService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::osirixgrpc::OsirixDisplayedVRControllersResponse>> PrepareAsyncOsirixDisplayedVRControllers(::grpc::ClientContext* context, const ::osirixgrpc::Empty& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::osirixgrpc::OsirixDisplayedVRControllersResponse>>(PrepareAsyncOsirixDisplayedVRControllersRaw(context, request, cq));
     }
-    // ROI messages
+    // ROI methods
     virtual ::grpc::Status ROIFlipHorizontally(::grpc::ClientContext* context, const ::osirixgrpc::ROI& request, ::osirixgrpc::Response* response) = 0;
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::osirixgrpc::Response>> AsyncROIFlipHorizontally(::grpc::ClientContext* context, const ::osirixgrpc::ROI& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::osirixgrpc::Response>>(AsyncROIFlipHorizontallyRaw(context, request, cq));
@@ -198,7 +198,7 @@ class OsiriXService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::osirixgrpc::Response>> PrepareAsyncROISetPoints(::grpc::ClientContext* context, const ::osirixgrpc::ROISetPointsRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::osirixgrpc::Response>>(PrepareAsyncROISetPointsRaw(context, request, cq));
     }
-    // ROIVolume messages
+    // ROIVolume methods
     virtual ::grpc::Status ROIVolumeTexture(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolume& request, ::osirixgrpc::ROIVolumeTextureResponse* response) = 0;
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::osirixgrpc::ROIVolumeTextureResponse>> AsyncROIVolumeTexture(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolume& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::osirixgrpc::ROIVolumeTextureResponse>>(AsyncROIVolumeTextureRaw(context, request, cq));
@@ -276,7 +276,7 @@ class OsiriXService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::osirixgrpc::ROIVolumeVisibleResponse>> PrepareAsyncROIVolumeVisible(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolume& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::osirixgrpc::ROIVolumeVisibleResponse>>(PrepareAsyncROIVolumeVisibleRaw(context, request, cq));
     }
-    // DCMPix messages
+    // DCMPix methods
     virtual ::grpc::Status DCMPixConvertToRGB(::grpc::ClientContext* context, const ::osirixgrpc::DCMPixConvertToRGBRequest& request, ::osirixgrpc::Response* response) = 0;
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::osirixgrpc::Response>> AsyncDCMPixConvertToRGB(::grpc::ClientContext* context, const ::osirixgrpc::DCMPixConvertToRGBRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::osirixgrpc::Response>>(AsyncDCMPixConvertToRGBRaw(context, request, cq));
@@ -396,7 +396,7 @@ class OsiriXService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::osirixgrpc::DCMPixDicomStudyResponse>> PrepareAsyncDCMPixDicomStudy(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::osirixgrpc::DCMPixDicomStudyResponse>>(PrepareAsyncDCMPixDicomStudyRaw(context, request, cq));
     }
-    // VRController messages
+    // VRController methods
     virtual ::grpc::Status VRControllerViewer2D(::grpc::ClientContext* context, const ::osirixgrpc::VRController& request, ::osirixgrpc::VRControllerViewer2DResponse* response) = 0;
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::osirixgrpc::VRControllerViewer2DResponse>> AsyncVRControllerViewer2D(::grpc::ClientContext* context, const ::osirixgrpc::VRController& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::osirixgrpc::VRControllerViewer2DResponse>>(AsyncVRControllerViewer2DRaw(context, request, cq));
@@ -481,7 +481,7 @@ class OsiriXService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::osirixgrpc::Response>> PrepareAsyncVRControllerNeedsDisplayUpdate(::grpc::ClientContext* context, const ::osirixgrpc::VRController& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::osirixgrpc::Response>>(PrepareAsyncVRControllerNeedsDisplayUpdateRaw(context, request, cq));
     }
-    // ViewerController messages
+    // ViewerController methods
     virtual ::grpc::Status ViewerControllerCloseViewer(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController& request, ::osirixgrpc::Response* response) = 0;
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::osirixgrpc::Response>> AsyncViewerControllerCloseViewer(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::osirixgrpc::Response>>(AsyncViewerControllerCloseViewerRaw(context, request, cq));
@@ -643,7 +643,7 @@ class OsiriXService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::osirixgrpc::ViewerControllerOpenVRViewerForModeResponse>> PrepareAsyncViewerControllerOpenVRViewerForMode(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerOpenVRViewerForModeRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::osirixgrpc::ViewerControllerOpenVRViewerForModeResponse>>(PrepareAsyncViewerControllerOpenVRViewerForModeRaw(context, request, cq));
     }
-    // BrowserController messages
+    // BrowserController methods
     virtual ::grpc::Status BrowserControllerDatabaseSelection(::grpc::ClientContext* context, const ::osirixgrpc::BrowserController& request, ::osirixgrpc::BrowserControllerDatabaseSelectionResponse* response) = 0;
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::osirixgrpc::BrowserControllerDatabaseSelectionResponse>> AsyncBrowserControllerDatabaseSelection(::grpc::ClientContext* context, const ::osirixgrpc::BrowserController& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::osirixgrpc::BrowserControllerDatabaseSelectionResponse>>(AsyncBrowserControllerDatabaseSelectionRaw(context, request, cq));
@@ -658,7 +658,7 @@ class OsiriXService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::osirixgrpc::Response>> PrepareAsyncBrowserControllerCopyFilesIfNeeded(::grpc::ClientContext* context, const ::osirixgrpc::BrowserControllerCopyFilesIfNeededRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::osirixgrpc::Response>>(PrepareAsyncBrowserControllerCopyFilesIfNeededRaw(context, request, cq));
     }
-    // DicomImage messages
+    // DicomImage methods
     virtual ::grpc::Status DicomImageWidth(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage& request, ::osirixgrpc::DicomImageWidthResponse* response) = 0;
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::osirixgrpc::DicomImageWidthResponse>> AsyncDicomImageWidth(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::osirixgrpc::DicomImageWidthResponse>>(AsyncDicomImageWidthRaw(context, request, cq));
@@ -729,7 +729,7 @@ class OsiriXService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::osirixgrpc::DicomImageInstanceNumberResponse>> PrepareAsyncDicomImageInstanceNumber(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::osirixgrpc::DicomImageInstanceNumberResponse>>(PrepareAsyncDicomImageInstanceNumberRaw(context, request, cq));
     }
-    // DicomSeries messages
+    // DicomSeries methods
     virtual ::grpc::Status DicomSeriesPaths(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries& request, ::osirixgrpc::DicomSeriesPathsResponse* response) = 0;
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::osirixgrpc::DicomSeriesPathsResponse>> AsyncDicomSeriesPaths(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::osirixgrpc::DicomSeriesPathsResponse>>(AsyncDicomSeriesPathsRaw(context, request, cq));
@@ -821,7 +821,7 @@ class OsiriXService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::osirixgrpc::DicomSeriesNumberOfImagesResponse>> PrepareAsyncDicomSeriesNumberOfImages(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::osirixgrpc::DicomSeriesNumberOfImagesResponse>>(PrepareAsyncDicomSeriesNumberOfImagesRaw(context, request, cq));
     }
-    // DicomStudy messages
+    // DicomStudy methods
     virtual ::grpc::Status DicomStudyPaths(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy& request, ::osirixgrpc::DicomStudyPathsResponse* response) = 0;
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::osirixgrpc::DicomStudyPathsResponse>> AsyncDicomStudyPaths(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::osirixgrpc::DicomStudyPathsResponse>>(AsyncDicomStudyPathsRaw(context, request, cq));
@@ -972,7 +972,7 @@ class OsiriXService final {
     class async_interface {
      public:
       virtual ~async_interface() {}
-      // OsiriX messages
+      // OsiriX methods
       virtual void OsirixCurrentBrowser(::grpc::ClientContext* context, const ::osirixgrpc::Empty* request, ::osirixgrpc::OsirixCurrentBrowserResponse* response, std::function<void(::grpc::Status)>) = 0;
       virtual void OsirixCurrentBrowser(::grpc::ClientContext* context, const ::osirixgrpc::Empty* request, ::osirixgrpc::OsirixCurrentBrowserResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       virtual void OsirixFrontmostViewer(::grpc::ClientContext* context, const ::osirixgrpc::Empty* request, ::osirixgrpc::OsirixFrontmostViewerResponse* response, std::function<void(::grpc::Status)>) = 0;
@@ -983,7 +983,7 @@ class OsiriXService final {
       virtual void OsirixFrontmostVRController(::grpc::ClientContext* context, const ::osirixgrpc::Empty* request, ::osirixgrpc::OsirixFrontmostVRControllerResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       virtual void OsirixDisplayedVRControllers(::grpc::ClientContext* context, const ::osirixgrpc::Empty* request, ::osirixgrpc::OsirixDisplayedVRControllersResponse* response, std::function<void(::grpc::Status)>) = 0;
       virtual void OsirixDisplayedVRControllers(::grpc::ClientContext* context, const ::osirixgrpc::Empty* request, ::osirixgrpc::OsirixDisplayedVRControllersResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      // ROI messages
+      // ROI methods
       virtual void ROIFlipHorizontally(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)>) = 0;
       virtual void ROIFlipHorizontally(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::Response* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       virtual void ROIFlipVertically(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)>) = 0;
@@ -1020,7 +1020,7 @@ class OsiriXService final {
       virtual void ROIPoints(::grpc::ClientContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROIPointsResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       virtual void ROISetPoints(::grpc::ClientContext* context, const ::osirixgrpc::ROISetPointsRequest* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)>) = 0;
       virtual void ROISetPoints(::grpc::ClientContext* context, const ::osirixgrpc::ROISetPointsRequest* request, ::osirixgrpc::Response* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      // ROIVolume messages
+      // ROIVolume methods
       virtual void ROIVolumeTexture(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolume* request, ::osirixgrpc::ROIVolumeTextureResponse* response, std::function<void(::grpc::Status)>) = 0;
       virtual void ROIVolumeTexture(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolume* request, ::osirixgrpc::ROIVolumeTextureResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       virtual void ROIVolumeSetTexture(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolumeSetTextureRequest* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)>) = 0;
@@ -1043,7 +1043,7 @@ class OsiriXService final {
       virtual void ROIVolumeName(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolume* request, ::osirixgrpc::ROIVolumeNameResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       virtual void ROIVolumeVisible(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolume* request, ::osirixgrpc::ROIVolumeVisibleResponse* response, std::function<void(::grpc::Status)>) = 0;
       virtual void ROIVolumeVisible(::grpc::ClientContext* context, const ::osirixgrpc::ROIVolume* request, ::osirixgrpc::ROIVolumeVisibleResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      // DCMPix messages
+      // DCMPix methods
       virtual void DCMPixConvertToRGB(::grpc::ClientContext* context, const ::osirixgrpc::DCMPixConvertToRGBRequest* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)>) = 0;
       virtual void DCMPixConvertToRGB(::grpc::ClientContext* context, const ::osirixgrpc::DCMPixConvertToRGBRequest* request, ::osirixgrpc::Response* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       virtual void DCMPixConvertToBW(::grpc::ClientContext* context, const ::osirixgrpc::DCMPixConvertToBWRequest* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)>) = 0;
@@ -1078,7 +1078,7 @@ class OsiriXService final {
       virtual void DCMPixDicomSeries(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixDicomSeriesResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       virtual void DCMPixDicomStudy(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixDicomStudyResponse* response, std::function<void(::grpc::Status)>) = 0;
       virtual void DCMPixDicomStudy(::grpc::ClientContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixDicomStudyResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      // VRController messages
+      // VRController methods
       virtual void VRControllerViewer2D(::grpc::ClientContext* context, const ::osirixgrpc::VRController* request, ::osirixgrpc::VRControllerViewer2DResponse* response, std::function<void(::grpc::Status)>) = 0;
       virtual void VRControllerViewer2D(::grpc::ClientContext* context, const ::osirixgrpc::VRController* request, ::osirixgrpc::VRControllerViewer2DResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       virtual void VRControllerBlendingController(::grpc::ClientContext* context, const ::osirixgrpc::VRController* request, ::osirixgrpc::VRControllerBlendingControllerResponse* response, std::function<void(::grpc::Status)>) = 0;
@@ -1103,7 +1103,7 @@ class OsiriXService final {
       virtual void VRControllerDisplayROIVolume(::grpc::ClientContext* context, const ::osirixgrpc::VRControllerDisplayROIVolumeRequest* request, ::osirixgrpc::Response* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       virtual void VRControllerNeedsDisplayUpdate(::grpc::ClientContext* context, const ::osirixgrpc::VRController* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)>) = 0;
       virtual void VRControllerNeedsDisplayUpdate(::grpc::ClientContext* context, const ::osirixgrpc::VRController* request, ::osirixgrpc::Response* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      // ViewerController messages
+      // ViewerController methods
       virtual void ViewerControllerCloseViewer(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)>) = 0;
       virtual void ViewerControllerCloseViewer(::grpc::ClientContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::Response* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       virtual void ViewerControllerPixList(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerPixListRequest* request, ::osirixgrpc::ViewerControllerPixListResponse* response, std::function<void(::grpc::Status)>) = 0;
@@ -1150,12 +1150,12 @@ class OsiriXService final {
       virtual void ViewerControllerSetWLWW(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerSetWLWWRequest* request, ::osirixgrpc::Response* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       virtual void ViewerControllerOpenVRViewerForMode(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerOpenVRViewerForModeRequest* request, ::osirixgrpc::ViewerControllerOpenVRViewerForModeResponse* response, std::function<void(::grpc::Status)>) = 0;
       virtual void ViewerControllerOpenVRViewerForMode(::grpc::ClientContext* context, const ::osirixgrpc::ViewerControllerOpenVRViewerForModeRequest* request, ::osirixgrpc::ViewerControllerOpenVRViewerForModeResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      // BrowserController messages
+      // BrowserController methods
       virtual void BrowserControllerDatabaseSelection(::grpc::ClientContext* context, const ::osirixgrpc::BrowserController* request, ::osirixgrpc::BrowserControllerDatabaseSelectionResponse* response, std::function<void(::grpc::Status)>) = 0;
       virtual void BrowserControllerDatabaseSelection(::grpc::ClientContext* context, const ::osirixgrpc::BrowserController* request, ::osirixgrpc::BrowserControllerDatabaseSelectionResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       virtual void BrowserControllerCopyFilesIfNeeded(::grpc::ClientContext* context, const ::osirixgrpc::BrowserControllerCopyFilesIfNeededRequest* request, ::osirixgrpc::Response* response, std::function<void(::grpc::Status)>) = 0;
       virtual void BrowserControllerCopyFilesIfNeeded(::grpc::ClientContext* context, const ::osirixgrpc::BrowserControllerCopyFilesIfNeededRequest* request, ::osirixgrpc::Response* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      // DicomImage messages
+      // DicomImage methods
       virtual void DicomImageWidth(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageWidthResponse* response, std::function<void(::grpc::Status)>) = 0;
       virtual void DicomImageWidth(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageWidthResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       virtual void DicomImageHeight(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageHeightResponse* response, std::function<void(::grpc::Status)>) = 0;
@@ -1176,7 +1176,7 @@ class OsiriXService final {
       virtual void DicomImageSliceLocation(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageSliceLocationResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       virtual void DicomImageInstanceNumber(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageInstanceNumberResponse* response, std::function<void(::grpc::Status)>) = 0;
       virtual void DicomImageInstanceNumber(::grpc::ClientContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageInstanceNumberResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      // DicomSeries messages
+      // DicomSeries methods
       virtual void DicomSeriesPaths(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesPathsResponse* response, std::function<void(::grpc::Status)>) = 0;
       virtual void DicomSeriesPaths(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesPathsResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       virtual void DicomSeriesPreviousSeries(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesPreviousSeriesResponse* response, std::function<void(::grpc::Status)>) = 0;
@@ -1203,7 +1203,7 @@ class OsiriXService final {
       virtual void DicomSeriesDate(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesDateResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       virtual void DicomSeriesNumberOfImages(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesNumberOfImagesResponse* response, std::function<void(::grpc::Status)>) = 0;
       virtual void DicomSeriesNumberOfImages(::grpc::ClientContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesNumberOfImagesResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      // DicomStudy messages
+      // DicomStudy methods
       virtual void DicomStudyPaths(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyPathsResponse* response, std::function<void(::grpc::Status)>) = 0;
       virtual void DicomStudyPaths(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyPathsResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       virtual void DicomStudyImages(::grpc::ClientContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyImagesResponse* response, std::function<void(::grpc::Status)>) = 0;
@@ -3124,13 +3124,13 @@ class OsiriXService final {
    public:
     Service();
     virtual ~Service();
-    // OsiriX messages
+    // OsiriX methods
     virtual ::grpc::Status OsirixCurrentBrowser(::grpc::ServerContext* context, const ::osirixgrpc::Empty* request, ::osirixgrpc::OsirixCurrentBrowserResponse* response);
     virtual ::grpc::Status OsirixFrontmostViewer(::grpc::ServerContext* context, const ::osirixgrpc::Empty* request, ::osirixgrpc::OsirixFrontmostViewerResponse* response);
     virtual ::grpc::Status OsirixDisplayed2DViewers(::grpc::ServerContext* context, const ::osirixgrpc::Empty* request, ::osirixgrpc::OsirixDisplayed2DViewersResponse* response);
     virtual ::grpc::Status OsirixFrontmostVRController(::grpc::ServerContext* context, const ::osirixgrpc::Empty* request, ::osirixgrpc::OsirixFrontmostVRControllerResponse* response);
     virtual ::grpc::Status OsirixDisplayedVRControllers(::grpc::ServerContext* context, const ::osirixgrpc::Empty* request, ::osirixgrpc::OsirixDisplayedVRControllersResponse* response);
-    // ROI messages
+    // ROI methods
     virtual ::grpc::Status ROIFlipHorizontally(::grpc::ServerContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::Response* response);
     virtual ::grpc::Status ROIFlipVertically(::grpc::ServerContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::Response* response);
     virtual ::grpc::Status ROIArea(::grpc::ServerContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROIAreaResponse* response);
@@ -3149,7 +3149,7 @@ class OsiriXService final {
     virtual ::grpc::Status ROISetThickness(::grpc::ServerContext* context, const ::osirixgrpc::ROISetThicknessRequest* request, ::osirixgrpc::Response* response);
     virtual ::grpc::Status ROIPoints(::grpc::ServerContext* context, const ::osirixgrpc::ROI* request, ::osirixgrpc::ROIPointsResponse* response);
     virtual ::grpc::Status ROISetPoints(::grpc::ServerContext* context, const ::osirixgrpc::ROISetPointsRequest* request, ::osirixgrpc::Response* response);
-    // ROIVolume messages
+    // ROIVolume methods
     virtual ::grpc::Status ROIVolumeTexture(::grpc::ServerContext* context, const ::osirixgrpc::ROIVolume* request, ::osirixgrpc::ROIVolumeTextureResponse* response);
     virtual ::grpc::Status ROIVolumeSetTexture(::grpc::ServerContext* context, const ::osirixgrpc::ROIVolumeSetTextureRequest* request, ::osirixgrpc::Response* response);
     virtual ::grpc::Status ROIVolumeVolume(::grpc::ServerContext* context, const ::osirixgrpc::ROIVolume* request, ::osirixgrpc::ROIVolumeVolumeResponse* response);
@@ -3161,7 +3161,7 @@ class OsiriXService final {
     virtual ::grpc::Status ROIVolumeSetFactor(::grpc::ServerContext* context, const ::osirixgrpc::ROIVolumeSetFactorRequest* request, ::osirixgrpc::Response* response);
     virtual ::grpc::Status ROIVolumeName(::grpc::ServerContext* context, const ::osirixgrpc::ROIVolume* request, ::osirixgrpc::ROIVolumeNameResponse* response);
     virtual ::grpc::Status ROIVolumeVisible(::grpc::ServerContext* context, const ::osirixgrpc::ROIVolume* request, ::osirixgrpc::ROIVolumeVisibleResponse* response);
-    // DCMPix messages
+    // DCMPix methods
     virtual ::grpc::Status DCMPixConvertToRGB(::grpc::ServerContext* context, const ::osirixgrpc::DCMPixConvertToRGBRequest* request, ::osirixgrpc::Response* response);
     virtual ::grpc::Status DCMPixConvertToBW(::grpc::ServerContext* context, const ::osirixgrpc::DCMPixConvertToBWRequest* request, ::osirixgrpc::Response* response);
     virtual ::grpc::Status DCMPixIsRGB(::grpc::ServerContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixIsRGBResponse* response);
@@ -3179,7 +3179,7 @@ class OsiriXService final {
     virtual ::grpc::Status DCMPixDicomImage(::grpc::ServerContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixDicomImageResponse* response);
     virtual ::grpc::Status DCMPixDicomSeries(::grpc::ServerContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixDicomSeriesResponse* response);
     virtual ::grpc::Status DCMPixDicomStudy(::grpc::ServerContext* context, const ::osirixgrpc::DCMPix* request, ::osirixgrpc::DCMPixDicomStudyResponse* response);
-    // VRController messages
+    // VRController methods
     virtual ::grpc::Status VRControllerViewer2D(::grpc::ServerContext* context, const ::osirixgrpc::VRController* request, ::osirixgrpc::VRControllerViewer2DResponse* response);
     virtual ::grpc::Status VRControllerBlendingController(::grpc::ServerContext* context, const ::osirixgrpc::VRController* request, ::osirixgrpc::VRControllerBlendingControllerResponse* response);
     virtual ::grpc::Status VRControllerStyle(::grpc::ServerContext* context, const ::osirixgrpc::VRController* request, ::osirixgrpc::VRControllerStyleResponse* response);
@@ -3192,7 +3192,7 @@ class OsiriXService final {
     virtual ::grpc::Status VRControllerHideROIVolume(::grpc::ServerContext* context, const ::osirixgrpc::VRControllerHideROIVolumeRequest* request, ::osirixgrpc::Response* response);
     virtual ::grpc::Status VRControllerDisplayROIVolume(::grpc::ServerContext* context, const ::osirixgrpc::VRControllerDisplayROIVolumeRequest* request, ::osirixgrpc::Response* response);
     virtual ::grpc::Status VRControllerNeedsDisplayUpdate(::grpc::ServerContext* context, const ::osirixgrpc::VRController* request, ::osirixgrpc::Response* response);
-    // ViewerController messages
+    // ViewerController methods
     virtual ::grpc::Status ViewerControllerCloseViewer(::grpc::ServerContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::Response* response);
     virtual ::grpc::Status ViewerControllerPixList(::grpc::ServerContext* context, const ::osirixgrpc::ViewerControllerPixListRequest* request, ::osirixgrpc::ViewerControllerPixListResponse* response);
     virtual ::grpc::Status ViewerControllerNeedsDisplayUpdate(::grpc::ServerContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::Response* response);
@@ -3216,10 +3216,10 @@ class OsiriXService final {
     virtual ::grpc::Status ViewerControllerWLWW(::grpc::ServerContext* context, const ::osirixgrpc::ViewerController* request, ::osirixgrpc::ViewerControllerWLWWResponse* response);
     virtual ::grpc::Status ViewerControllerSetWLWW(::grpc::ServerContext* context, const ::osirixgrpc::ViewerControllerSetWLWWRequest* request, ::osirixgrpc::Response* response);
     virtual ::grpc::Status ViewerControllerOpenVRViewerForMode(::grpc::ServerContext* context, const ::osirixgrpc::ViewerControllerOpenVRViewerForModeRequest* request, ::osirixgrpc::ViewerControllerOpenVRViewerForModeResponse* response);
-    // BrowserController messages
+    // BrowserController methods
     virtual ::grpc::Status BrowserControllerDatabaseSelection(::grpc::ServerContext* context, const ::osirixgrpc::BrowserController* request, ::osirixgrpc::BrowserControllerDatabaseSelectionResponse* response);
     virtual ::grpc::Status BrowserControllerCopyFilesIfNeeded(::grpc::ServerContext* context, const ::osirixgrpc::BrowserControllerCopyFilesIfNeededRequest* request, ::osirixgrpc::Response* response);
-    // DicomImage messages
+    // DicomImage methods
     virtual ::grpc::Status DicomImageWidth(::grpc::ServerContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageWidthResponse* response);
     virtual ::grpc::Status DicomImageHeight(::grpc::ServerContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageHeightResponse* response);
     virtual ::grpc::Status DicomImageSOPInstanceUID(::grpc::ServerContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageSOPInstanceUIDResponse* response);
@@ -3230,7 +3230,7 @@ class OsiriXService final {
     virtual ::grpc::Status DicomImageSeries(::grpc::ServerContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageSeriesResponse* response);
     virtual ::grpc::Status DicomImageSliceLocation(::grpc::ServerContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageSliceLocationResponse* response);
     virtual ::grpc::Status DicomImageInstanceNumber(::grpc::ServerContext* context, const ::osirixgrpc::DicomImage* request, ::osirixgrpc::DicomImageInstanceNumberResponse* response);
-    // DicomSeries messages
+    // DicomSeries methods
     virtual ::grpc::Status DicomSeriesPaths(::grpc::ServerContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesPathsResponse* response);
     virtual ::grpc::Status DicomSeriesPreviousSeries(::grpc::ServerContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesPreviousSeriesResponse* response);
     virtual ::grpc::Status DicomSeriesNextSeries(::grpc::ServerContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesNextSeriesResponse* response);
@@ -3244,7 +3244,7 @@ class OsiriXService final {
     virtual ::grpc::Status DicomSeriesName(::grpc::ServerContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesNameResponse* response);
     virtual ::grpc::Status DicomSeriesDate(::grpc::ServerContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesDateResponse* response);
     virtual ::grpc::Status DicomSeriesNumberOfImages(::grpc::ServerContext* context, const ::osirixgrpc::DicomSeries* request, ::osirixgrpc::DicomSeriesNumberOfImagesResponse* response);
-    // DicomStudy messages
+    // DicomStudy methods
     virtual ::grpc::Status DicomStudyPaths(::grpc::ServerContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyPathsResponse* response);
     virtual ::grpc::Status DicomStudyImages(::grpc::ServerContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyImagesResponse* response);
     virtual ::grpc::Status DicomStudyModalities(::grpc::ServerContext* context, const ::osirixgrpc::DicomStudy* request, ::osirixgrpc::DicomStudyModalitiesResponse* response);

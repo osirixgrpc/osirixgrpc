@@ -11,218 +11,22 @@
 #include "google/protobuf/generated_message_reflection.h"
 #include "google/protobuf/reflection_ops.h"
 #include "google/protobuf/wire_format.h"
-#include "google/protobuf/generated_message_tctable_impl.h"
 // @@protoc_insertion_point(includes)
 
 // Must be included last.
 #include "google/protobuf/port_def.inc"
 PROTOBUF_PRAGMA_INIT_SEG
-namespace _pb = ::google::protobuf;
-namespace _pbi = ::google::protobuf::internal;
-namespace _fl = ::google::protobuf::internal::field_layout;
+namespace _pb = ::PROTOBUF_NAMESPACE_ID;
+namespace _pbi = ::PROTOBUF_NAMESPACE_ID::internal;
 namespace osirixgrpc {
-
-inline constexpr DCMPixSpacingResponse::Impl_::Impl_(
-    ::_pbi::ConstantInitialized) noexcept
-      : _cached_size_{0},
-        status_{nullptr},
-        spacing_rows_{0},
-        spacing_columns_{0} {}
-
 template <typename>
-PROTOBUF_CONSTEXPR DCMPixSpacingResponse::DCMPixSpacingResponse(::_pbi::ConstantInitialized)
-    : _impl_(::_pbi::ConstantInitialized()) {}
-struct DCMPixSpacingResponseDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR DCMPixSpacingResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~DCMPixSpacingResponseDefaultTypeInternal() {}
-  union {
-    DCMPixSpacingResponse _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 DCMPixSpacingResponseDefaultTypeInternal _DCMPixSpacingResponse_default_instance_;
-
-inline constexpr DCMPixSourceFileResponse::Impl_::Impl_(
-    ::_pbi::ConstantInitialized) noexcept
-      : _cached_size_{0},
-        source_file_(
-            &::google::protobuf::internal::fixed_address_empty_string,
-            ::_pbi::ConstantInitialized()),
-        status_{nullptr} {}
-
-template <typename>
-PROTOBUF_CONSTEXPR DCMPixSourceFileResponse::DCMPixSourceFileResponse(::_pbi::ConstantInitialized)
-    : _impl_(::_pbi::ConstantInitialized()) {}
-struct DCMPixSourceFileResponseDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR DCMPixSourceFileResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~DCMPixSourceFileResponseDefaultTypeInternal() {}
-  union {
-    DCMPixSourceFileResponse _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 DCMPixSourceFileResponseDefaultTypeInternal _DCMPixSourceFileResponse_default_instance_;
-
-inline constexpr DCMPixSliceLocationResponse::Impl_::Impl_(
-    ::_pbi::ConstantInitialized) noexcept
-      : _cached_size_{0},
-        status_{nullptr},
-        slice_location_{0} {}
-
-template <typename>
-PROTOBUF_CONSTEXPR DCMPixSliceLocationResponse::DCMPixSliceLocationResponse(::_pbi::ConstantInitialized)
-    : _impl_(::_pbi::ConstantInitialized()) {}
-struct DCMPixSliceLocationResponseDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR DCMPixSliceLocationResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~DCMPixSliceLocationResponseDefaultTypeInternal() {}
-  union {
-    DCMPixSliceLocationResponse _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 DCMPixSliceLocationResponseDefaultTypeInternal _DCMPixSliceLocationResponse_default_instance_;
-
-inline constexpr DCMPixShapeResponse::Impl_::Impl_(
-    ::_pbi::ConstantInitialized) noexcept
-      : _cached_size_{0},
-        status_{nullptr},
-        rows_{0},
-        columns_{0} {}
-
-template <typename>
-PROTOBUF_CONSTEXPR DCMPixShapeResponse::DCMPixShapeResponse(::_pbi::ConstantInitialized)
-    : _impl_(::_pbi::ConstantInitialized()) {}
-struct DCMPixShapeResponseDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR DCMPixShapeResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~DCMPixShapeResponseDefaultTypeInternal() {}
-  union {
-    DCMPixShapeResponse _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 DCMPixShapeResponseDefaultTypeInternal _DCMPixShapeResponse_default_instance_;
-
-inline constexpr DCMPixSetImageRequest::Impl_::Impl_(
-    ::_pbi::ConstantInitialized) noexcept
-      : _cached_size_{0},
-        image_data_float_{},
-        image_data_argb_{},
-        _image_data_argb_cached_byte_size_{0},
-        pix_{nullptr} {}
-
-template <typename>
-PROTOBUF_CONSTEXPR DCMPixSetImageRequest::DCMPixSetImageRequest(::_pbi::ConstantInitialized)
-    : _impl_(::_pbi::ConstantInitialized()) {}
-struct DCMPixSetImageRequestDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR DCMPixSetImageRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~DCMPixSetImageRequestDefaultTypeInternal() {}
-  union {
-    DCMPixSetImageRequest _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 DCMPixSetImageRequestDefaultTypeInternal _DCMPixSetImageRequest_default_instance_;
-
-inline constexpr DCMPixROIValuesResponse::Impl_::Impl_(
-    ::_pbi::ConstantInitialized) noexcept
-      : _cached_size_{0},
-        values_{},
-        row_indices_{},
-        _row_indices_cached_byte_size_{0},
-        column_indices_{},
-        _column_indices_cached_byte_size_{0},
-        status_{nullptr} {}
-
-template <typename>
-PROTOBUF_CONSTEXPR DCMPixROIValuesResponse::DCMPixROIValuesResponse(::_pbi::ConstantInitialized)
-    : _impl_(::_pbi::ConstantInitialized()) {}
-struct DCMPixROIValuesResponseDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR DCMPixROIValuesResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~DCMPixROIValuesResponseDefaultTypeInternal() {}
-  union {
-    DCMPixROIValuesResponse _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 DCMPixROIValuesResponseDefaultTypeInternal _DCMPixROIValuesResponse_default_instance_;
-
-inline constexpr DCMPixROIValuesRequest::Impl_::Impl_(
-    ::_pbi::ConstantInitialized) noexcept
-      : _cached_size_{0},
-        pix_{nullptr},
-        roi_{nullptr} {}
-
-template <typename>
-PROTOBUF_CONSTEXPR DCMPixROIValuesRequest::DCMPixROIValuesRequest(::_pbi::ConstantInitialized)
-    : _impl_(::_pbi::ConstantInitialized()) {}
-struct DCMPixROIValuesRequestDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR DCMPixROIValuesRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~DCMPixROIValuesRequestDefaultTypeInternal() {}
-  union {
-    DCMPixROIValuesRequest _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 DCMPixROIValuesRequestDefaultTypeInternal _DCMPixROIValuesRequest_default_instance_;
-
-inline constexpr DCMPixOriginResponse::Impl_::Impl_(
-    ::_pbi::ConstantInitialized) noexcept
-      : _cached_size_{0},
-        status_{nullptr},
-        origin_rows_{0},
-        origin_columns_{0},
-        origin_slices_{0} {}
-
-template <typename>
-PROTOBUF_CONSTEXPR DCMPixOriginResponse::DCMPixOriginResponse(::_pbi::ConstantInitialized)
-    : _impl_(::_pbi::ConstantInitialized()) {}
-struct DCMPixOriginResponseDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR DCMPixOriginResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~DCMPixOriginResponseDefaultTypeInternal() {}
-  union {
-    DCMPixOriginResponse _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 DCMPixOriginResponseDefaultTypeInternal _DCMPixOriginResponse_default_instance_;
-
-inline constexpr DCMPixOrientationResponse::Impl_::Impl_(
-    ::_pbi::ConstantInitialized) noexcept
-      : _cached_size_{0},
-        orientation_{},
-        status_{nullptr} {}
-
-template <typename>
-PROTOBUF_CONSTEXPR DCMPixOrientationResponse::DCMPixOrientationResponse(::_pbi::ConstantInitialized)
-    : _impl_(::_pbi::ConstantInitialized()) {}
-struct DCMPixOrientationResponseDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR DCMPixOrientationResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~DCMPixOrientationResponseDefaultTypeInternal() {}
-  union {
-    DCMPixOrientationResponse _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 DCMPixOrientationResponseDefaultTypeInternal _DCMPixOrientationResponse_default_instance_;
-
-inline constexpr DCMPixIsRGBResponse::Impl_::Impl_(
-    ::_pbi::ConstantInitialized) noexcept
-      : _cached_size_{0},
-        status_{nullptr},
-        is_rgb_{false} {}
-
-template <typename>
-PROTOBUF_CONSTEXPR DCMPixIsRGBResponse::DCMPixIsRGBResponse(::_pbi::ConstantInitialized)
-    : _impl_(::_pbi::ConstantInitialized()) {}
+PROTOBUF_CONSTEXPR DCMPixIsRGBResponse::DCMPixIsRGBResponse(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.status_)*/nullptr
+  , /*decltype(_impl_.is_rgb_)*/ false
+} {}
 struct DCMPixIsRGBResponseDefaultTypeInternal {
   PROTOBUF_CONSTEXPR DCMPixIsRGBResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
   ~DCMPixIsRGBResponseDefaultTypeInternal() {}
@@ -233,189 +37,26 @@ struct DCMPixIsRGBResponseDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 DCMPixIsRGBResponseDefaultTypeInternal _DCMPixIsRGBResponse_default_instance_;
-
-inline constexpr DCMPixImageResponse::Impl_::Impl_(
-    ::_pbi::ConstantInitialized) noexcept
-      : _cached_size_{0},
-        image_data_float_{},
-        image_data_argb_{},
-        _image_data_argb_cached_byte_size_{0},
-        status_{nullptr},
-        rows_{0},
-        columns_{0},
-        is_argb_{false} {}
-
 template <typename>
-PROTOBUF_CONSTEXPR DCMPixImageResponse::DCMPixImageResponse(::_pbi::ConstantInitialized)
-    : _impl_(::_pbi::ConstantInitialized()) {}
-struct DCMPixImageResponseDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR DCMPixImageResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~DCMPixImageResponseDefaultTypeInternal() {}
-  union {
-    DCMPixImageResponse _instance;
-  };
-};
+PROTOBUF_CONSTEXPR DCMPixComputeROIResponse::DCMPixComputeROIResponse(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.status_)*/nullptr
+  , /*decltype(_impl_.mean_)*/ 0
 
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 DCMPixImageResponseDefaultTypeInternal _DCMPixImageResponse_default_instance_;
+  , /*decltype(_impl_.total_)*/ 0
 
-inline constexpr DCMPixGetMapFromROIResponse::Impl_::Impl_(
-    ::_pbi::ConstantInitialized) noexcept
-      : _cached_size_{0},
-        map_{},
-        status_{nullptr},
-        rows_{0},
-        columns_{0} {}
+  , /*decltype(_impl_.std_dev_)*/ 0
 
-template <typename>
-PROTOBUF_CONSTEXPR DCMPixGetMapFromROIResponse::DCMPixGetMapFromROIResponse(::_pbi::ConstantInitialized)
-    : _impl_(::_pbi::ConstantInitialized()) {}
-struct DCMPixGetMapFromROIResponseDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR DCMPixGetMapFromROIResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~DCMPixGetMapFromROIResponseDefaultTypeInternal() {}
-  union {
-    DCMPixGetMapFromROIResponse _instance;
-  };
-};
+  , /*decltype(_impl_.min_)*/ 0
 
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 DCMPixGetMapFromROIResponseDefaultTypeInternal _DCMPixGetMapFromROIResponse_default_instance_;
+  , /*decltype(_impl_.max_)*/ 0
 
-inline constexpr DCMPixGetMapFromROIRequest::Impl_::Impl_(
-    ::_pbi::ConstantInitialized) noexcept
-      : _cached_size_{0},
-        pix_{nullptr},
-        roi_{nullptr} {}
+  , /*decltype(_impl_.skewness_)*/ 0
 
-template <typename>
-PROTOBUF_CONSTEXPR DCMPixGetMapFromROIRequest::DCMPixGetMapFromROIRequest(::_pbi::ConstantInitialized)
-    : _impl_(::_pbi::ConstantInitialized()) {}
-struct DCMPixGetMapFromROIRequestDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR DCMPixGetMapFromROIRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~DCMPixGetMapFromROIRequestDefaultTypeInternal() {}
-  union {
-    DCMPixGetMapFromROIRequest _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 DCMPixGetMapFromROIRequestDefaultTypeInternal _DCMPixGetMapFromROIRequest_default_instance_;
-
-inline constexpr DCMPixDicomStudyResponse::Impl_::Impl_(
-    ::_pbi::ConstantInitialized) noexcept
-      : _cached_size_{0},
-        status_{nullptr},
-        dicom_study_{nullptr} {}
-
-template <typename>
-PROTOBUF_CONSTEXPR DCMPixDicomStudyResponse::DCMPixDicomStudyResponse(::_pbi::ConstantInitialized)
-    : _impl_(::_pbi::ConstantInitialized()) {}
-struct DCMPixDicomStudyResponseDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR DCMPixDicomStudyResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~DCMPixDicomStudyResponseDefaultTypeInternal() {}
-  union {
-    DCMPixDicomStudyResponse _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 DCMPixDicomStudyResponseDefaultTypeInternal _DCMPixDicomStudyResponse_default_instance_;
-
-inline constexpr DCMPixDicomSeriesResponse::Impl_::Impl_(
-    ::_pbi::ConstantInitialized) noexcept
-      : _cached_size_{0},
-        status_{nullptr},
-        dicom_series_{nullptr} {}
-
-template <typename>
-PROTOBUF_CONSTEXPR DCMPixDicomSeriesResponse::DCMPixDicomSeriesResponse(::_pbi::ConstantInitialized)
-    : _impl_(::_pbi::ConstantInitialized()) {}
-struct DCMPixDicomSeriesResponseDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR DCMPixDicomSeriesResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~DCMPixDicomSeriesResponseDefaultTypeInternal() {}
-  union {
-    DCMPixDicomSeriesResponse _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 DCMPixDicomSeriesResponseDefaultTypeInternal _DCMPixDicomSeriesResponse_default_instance_;
-
-inline constexpr DCMPixDicomImageResponse::Impl_::Impl_(
-    ::_pbi::ConstantInitialized) noexcept
-      : _cached_size_{0},
-        status_{nullptr},
-        dicom_image_{nullptr} {}
-
-template <typename>
-PROTOBUF_CONSTEXPR DCMPixDicomImageResponse::DCMPixDicomImageResponse(::_pbi::ConstantInitialized)
-    : _impl_(::_pbi::ConstantInitialized()) {}
-struct DCMPixDicomImageResponseDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR DCMPixDicomImageResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~DCMPixDicomImageResponseDefaultTypeInternal() {}
-  union {
-    DCMPixDicomImageResponse _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 DCMPixDicomImageResponseDefaultTypeInternal _DCMPixDicomImageResponse_default_instance_;
-
-inline constexpr DCMPixConvertToRGBRequest::Impl_::Impl_(
-    ::_pbi::ConstantInitialized) noexcept
-      : _cached_size_{0},
-        pix_{nullptr},
-        rgb_channel_{0} {}
-
-template <typename>
-PROTOBUF_CONSTEXPR DCMPixConvertToRGBRequest::DCMPixConvertToRGBRequest(::_pbi::ConstantInitialized)
-    : _impl_(::_pbi::ConstantInitialized()) {}
-struct DCMPixConvertToRGBRequestDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR DCMPixConvertToRGBRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~DCMPixConvertToRGBRequestDefaultTypeInternal() {}
-  union {
-    DCMPixConvertToRGBRequest _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 DCMPixConvertToRGBRequestDefaultTypeInternal _DCMPixConvertToRGBRequest_default_instance_;
-
-inline constexpr DCMPixConvertToBWRequest::Impl_::Impl_(
-    ::_pbi::ConstantInitialized) noexcept
-      : _cached_size_{0},
-        pix_{nullptr},
-        bw_channel_{0} {}
-
-template <typename>
-PROTOBUF_CONSTEXPR DCMPixConvertToBWRequest::DCMPixConvertToBWRequest(::_pbi::ConstantInitialized)
-    : _impl_(::_pbi::ConstantInitialized()) {}
-struct DCMPixConvertToBWRequestDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR DCMPixConvertToBWRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~DCMPixConvertToBWRequestDefaultTypeInternal() {}
-  union {
-    DCMPixConvertToBWRequest _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 DCMPixConvertToBWRequestDefaultTypeInternal _DCMPixConvertToBWRequest_default_instance_;
-
-inline constexpr DCMPixComputeROIResponse::Impl_::Impl_(
-    ::_pbi::ConstantInitialized) noexcept
-      : _cached_size_{0},
-        status_{nullptr},
-        mean_{0},
-        total_{0},
-        std_dev_{0},
-        min_{0},
-        max_{0},
-        skewness_{0},
-        kurtosis_{0} {}
-
-template <typename>
-PROTOBUF_CONSTEXPR DCMPixComputeROIResponse::DCMPixComputeROIResponse(::_pbi::ConstantInitialized)
-    : _impl_(::_pbi::ConstantInitialized()) {}
+  , /*decltype(_impl_.kurtosis_)*/ 0
+} {}
 struct DCMPixComputeROIResponseDefaultTypeInternal {
   PROTOBUF_CONSTEXPR DCMPixComputeROIResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
   ~DCMPixComputeROIResponseDefaultTypeInternal() {}
@@ -426,16 +67,291 @@ struct DCMPixComputeROIResponseDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 DCMPixComputeROIResponseDefaultTypeInternal _DCMPixComputeROIResponse_default_instance_;
-
-inline constexpr DCMPixComputeROIRequest::Impl_::Impl_(
-    ::_pbi::ConstantInitialized) noexcept
-      : _cached_size_{0},
-        pix_{nullptr},
-        roi_{nullptr} {}
-
 template <typename>
-PROTOBUF_CONSTEXPR DCMPixComputeROIRequest::DCMPixComputeROIRequest(::_pbi::ConstantInitialized)
-    : _impl_(::_pbi::ConstantInitialized()) {}
+PROTOBUF_CONSTEXPR DCMPixROIValuesResponse::DCMPixROIValuesResponse(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.values_)*/ {}
+
+  , /*decltype(_impl_.row_indices_)*/ {}
+  ,/* _impl_._row_indices_cached_byte_size_ = */ { 0 }
+
+  , /*decltype(_impl_.column_indices_)*/ {}
+  ,/* _impl_._column_indices_cached_byte_size_ = */ { 0 }
+
+  , /*decltype(_impl_.status_)*/nullptr} {}
+struct DCMPixROIValuesResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR DCMPixROIValuesResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~DCMPixROIValuesResponseDefaultTypeInternal() {}
+  union {
+    DCMPixROIValuesResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 DCMPixROIValuesResponseDefaultTypeInternal _DCMPixROIValuesResponse_default_instance_;
+template <typename>
+PROTOBUF_CONSTEXPR DCMPixDicomImageResponse::DCMPixDicomImageResponse(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.status_)*/nullptr
+  , /*decltype(_impl_.dicom_image_)*/nullptr} {}
+struct DCMPixDicomImageResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR DCMPixDicomImageResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~DCMPixDicomImageResponseDefaultTypeInternal() {}
+  union {
+    DCMPixDicomImageResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 DCMPixDicomImageResponseDefaultTypeInternal _DCMPixDicomImageResponse_default_instance_;
+template <typename>
+PROTOBUF_CONSTEXPR DCMPixDicomSeriesResponse::DCMPixDicomSeriesResponse(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.status_)*/nullptr
+  , /*decltype(_impl_.dicom_series_)*/nullptr} {}
+struct DCMPixDicomSeriesResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR DCMPixDicomSeriesResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~DCMPixDicomSeriesResponseDefaultTypeInternal() {}
+  union {
+    DCMPixDicomSeriesResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 DCMPixDicomSeriesResponseDefaultTypeInternal _DCMPixDicomSeriesResponse_default_instance_;
+template <typename>
+PROTOBUF_CONSTEXPR DCMPixDicomStudyResponse::DCMPixDicomStudyResponse(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.status_)*/nullptr
+  , /*decltype(_impl_.dicom_study_)*/nullptr} {}
+struct DCMPixDicomStudyResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR DCMPixDicomStudyResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~DCMPixDicomStudyResponseDefaultTypeInternal() {}
+  union {
+    DCMPixDicomStudyResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 DCMPixDicomStudyResponseDefaultTypeInternal _DCMPixDicomStudyResponse_default_instance_;
+template <typename>
+PROTOBUF_CONSTEXPR DCMPixImageResponse::DCMPixImageResponse(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.image_data_float_)*/ {}
+
+  , /*decltype(_impl_.image_data_argb_)*/ {}
+  ,/* _impl_._image_data_argb_cached_byte_size_ = */ { 0 }
+
+  , /*decltype(_impl_.status_)*/nullptr
+  , /*decltype(_impl_.rows_)*/ 0
+
+  , /*decltype(_impl_.columns_)*/ 0
+
+  , /*decltype(_impl_.is_argb_)*/ false
+} {}
+struct DCMPixImageResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR DCMPixImageResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~DCMPixImageResponseDefaultTypeInternal() {}
+  union {
+    DCMPixImageResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 DCMPixImageResponseDefaultTypeInternal _DCMPixImageResponse_default_instance_;
+template <typename>
+PROTOBUF_CONSTEXPR DCMPixGetMapFromROIResponse::DCMPixGetMapFromROIResponse(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.map_)*/ {}
+
+  , /*decltype(_impl_.status_)*/nullptr
+  , /*decltype(_impl_.rows_)*/ 0
+
+  , /*decltype(_impl_.columns_)*/ 0
+} {}
+struct DCMPixGetMapFromROIResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR DCMPixGetMapFromROIResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~DCMPixGetMapFromROIResponseDefaultTypeInternal() {}
+  union {
+    DCMPixGetMapFromROIResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 DCMPixGetMapFromROIResponseDefaultTypeInternal _DCMPixGetMapFromROIResponse_default_instance_;
+template <typename>
+PROTOBUF_CONSTEXPR DCMPixShapeResponse::DCMPixShapeResponse(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.status_)*/nullptr
+  , /*decltype(_impl_.rows_)*/ 0
+
+  , /*decltype(_impl_.columns_)*/ 0
+} {}
+struct DCMPixShapeResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR DCMPixShapeResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~DCMPixShapeResponseDefaultTypeInternal() {}
+  union {
+    DCMPixShapeResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 DCMPixShapeResponseDefaultTypeInternal _DCMPixShapeResponse_default_instance_;
+template <typename>
+PROTOBUF_CONSTEXPR DCMPixSpacingResponse::DCMPixSpacingResponse(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.status_)*/nullptr
+  , /*decltype(_impl_.spacing_rows_)*/ 0
+
+  , /*decltype(_impl_.spacing_columns_)*/ 0
+} {}
+struct DCMPixSpacingResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR DCMPixSpacingResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~DCMPixSpacingResponseDefaultTypeInternal() {}
+  union {
+    DCMPixSpacingResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 DCMPixSpacingResponseDefaultTypeInternal _DCMPixSpacingResponse_default_instance_;
+template <typename>
+PROTOBUF_CONSTEXPR DCMPixOriginResponse::DCMPixOriginResponse(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.status_)*/nullptr
+  , /*decltype(_impl_.origin_rows_)*/ 0
+
+  , /*decltype(_impl_.origin_columns_)*/ 0
+
+  , /*decltype(_impl_.origin_slices_)*/ 0
+} {}
+struct DCMPixOriginResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR DCMPixOriginResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~DCMPixOriginResponseDefaultTypeInternal() {}
+  union {
+    DCMPixOriginResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 DCMPixOriginResponseDefaultTypeInternal _DCMPixOriginResponse_default_instance_;
+template <typename>
+PROTOBUF_CONSTEXPR DCMPixOrientationResponse::DCMPixOrientationResponse(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.orientation_)*/ {}
+
+  , /*decltype(_impl_.status_)*/nullptr} {}
+struct DCMPixOrientationResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR DCMPixOrientationResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~DCMPixOrientationResponseDefaultTypeInternal() {}
+  union {
+    DCMPixOrientationResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 DCMPixOrientationResponseDefaultTypeInternal _DCMPixOrientationResponse_default_instance_;
+template <typename>
+PROTOBUF_CONSTEXPR DCMPixSliceLocationResponse::DCMPixSliceLocationResponse(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.status_)*/nullptr
+  , /*decltype(_impl_.slice_location_)*/ 0
+} {}
+struct DCMPixSliceLocationResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR DCMPixSliceLocationResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~DCMPixSliceLocationResponseDefaultTypeInternal() {}
+  union {
+    DCMPixSliceLocationResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 DCMPixSliceLocationResponseDefaultTypeInternal _DCMPixSliceLocationResponse_default_instance_;
+template <typename>
+PROTOBUF_CONSTEXPR DCMPixSourceFileResponse::DCMPixSourceFileResponse(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.source_file_)*/ {
+    &::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized {}
+  }
+
+  , /*decltype(_impl_.status_)*/nullptr} {}
+struct DCMPixSourceFileResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR DCMPixSourceFileResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~DCMPixSourceFileResponseDefaultTypeInternal() {}
+  union {
+    DCMPixSourceFileResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 DCMPixSourceFileResponseDefaultTypeInternal _DCMPixSourceFileResponse_default_instance_;
+template <typename>
+PROTOBUF_CONSTEXPR DCMPixConvertToRGBRequest::DCMPixConvertToRGBRequest(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.pix_)*/nullptr
+  , /*decltype(_impl_.rgb_channel_)*/ 0
+} {}
+struct DCMPixConvertToRGBRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR DCMPixConvertToRGBRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~DCMPixConvertToRGBRequestDefaultTypeInternal() {}
+  union {
+    DCMPixConvertToRGBRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 DCMPixConvertToRGBRequestDefaultTypeInternal _DCMPixConvertToRGBRequest_default_instance_;
+template <typename>
+PROTOBUF_CONSTEXPR DCMPixConvertToBWRequest::DCMPixConvertToBWRequest(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.pix_)*/nullptr
+  , /*decltype(_impl_.bw_channel_)*/ 0
+} {}
+struct DCMPixConvertToBWRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR DCMPixConvertToBWRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~DCMPixConvertToBWRequestDefaultTypeInternal() {}
+  union {
+    DCMPixConvertToBWRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 DCMPixConvertToBWRequestDefaultTypeInternal _DCMPixConvertToBWRequest_default_instance_;
+template <typename>
+PROTOBUF_CONSTEXPR DCMPixComputeROIRequest::DCMPixComputeROIRequest(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.pix_)*/nullptr
+  , /*decltype(_impl_.roi_)*/nullptr} {}
 struct DCMPixComputeROIRequestDefaultTypeInternal {
   PROTOBUF_CONSTEXPR DCMPixComputeROIRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
   ~DCMPixComputeROIRequestDefaultTypeInternal() {}
@@ -446,6 +362,61 @@ struct DCMPixComputeROIRequestDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 DCMPixComputeROIRequestDefaultTypeInternal _DCMPixComputeROIRequest_default_instance_;
+template <typename>
+PROTOBUF_CONSTEXPR DCMPixROIValuesRequest::DCMPixROIValuesRequest(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.pix_)*/nullptr
+  , /*decltype(_impl_.roi_)*/nullptr} {}
+struct DCMPixROIValuesRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR DCMPixROIValuesRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~DCMPixROIValuesRequestDefaultTypeInternal() {}
+  union {
+    DCMPixROIValuesRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 DCMPixROIValuesRequestDefaultTypeInternal _DCMPixROIValuesRequest_default_instance_;
+template <typename>
+PROTOBUF_CONSTEXPR DCMPixSetImageRequest::DCMPixSetImageRequest(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.image_data_float_)*/ {}
+
+  , /*decltype(_impl_.image_data_argb_)*/ {}
+  ,/* _impl_._image_data_argb_cached_byte_size_ = */ { 0 }
+
+  , /*decltype(_impl_.pix_)*/nullptr} {}
+struct DCMPixSetImageRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR DCMPixSetImageRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~DCMPixSetImageRequestDefaultTypeInternal() {}
+  union {
+    DCMPixSetImageRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 DCMPixSetImageRequestDefaultTypeInternal _DCMPixSetImageRequest_default_instance_;
+template <typename>
+PROTOBUF_CONSTEXPR DCMPixGetMapFromROIRequest::DCMPixGetMapFromROIRequest(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.pix_)*/nullptr
+  , /*decltype(_impl_.roi_)*/nullptr} {}
+struct DCMPixGetMapFromROIRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR DCMPixGetMapFromROIRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~DCMPixGetMapFromROIRequestDefaultTypeInternal() {}
+  union {
+    DCMPixGetMapFromROIRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 DCMPixGetMapFromROIRequestDefaultTypeInternal _DCMPixGetMapFromROIRequest_default_instance_;
 }  // namespace osirixgrpc
 static ::_pb::Metadata file_level_metadata_dcmpix_2eproto[20];
 static constexpr const ::_pb::EnumDescriptor**
@@ -736,26 +707,26 @@ const ::uint32_t TableStruct_dcmpix_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE
 
 static const ::_pbi::MigrationSchema
     schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-        {0, 10, -1, sizeof(::osirixgrpc::DCMPixIsRGBResponse)},
-        {12, 28, -1, sizeof(::osirixgrpc::DCMPixComputeROIResponse)},
-        {36, 48, -1, sizeof(::osirixgrpc::DCMPixROIValuesResponse)},
-        {52, 62, -1, sizeof(::osirixgrpc::DCMPixDicomImageResponse)},
-        {64, 74, -1, sizeof(::osirixgrpc::DCMPixDicomSeriesResponse)},
-        {76, 86, -1, sizeof(::osirixgrpc::DCMPixDicomStudyResponse)},
-        {88, 102, -1, sizeof(::osirixgrpc::DCMPixImageResponse)},
-        {108, 120, -1, sizeof(::osirixgrpc::DCMPixGetMapFromROIResponse)},
-        {124, 135, -1, sizeof(::osirixgrpc::DCMPixShapeResponse)},
-        {138, 149, -1, sizeof(::osirixgrpc::DCMPixSpacingResponse)},
-        {152, 164, -1, sizeof(::osirixgrpc::DCMPixOriginResponse)},
-        {168, 178, -1, sizeof(::osirixgrpc::DCMPixOrientationResponse)},
-        {180, 190, -1, sizeof(::osirixgrpc::DCMPixSliceLocationResponse)},
-        {192, 202, -1, sizeof(::osirixgrpc::DCMPixSourceFileResponse)},
-        {204, 214, -1, sizeof(::osirixgrpc::DCMPixConvertToRGBRequest)},
-        {216, 226, -1, sizeof(::osirixgrpc::DCMPixConvertToBWRequest)},
-        {228, 238, -1, sizeof(::osirixgrpc::DCMPixComputeROIRequest)},
-        {240, 250, -1, sizeof(::osirixgrpc::DCMPixROIValuesRequest)},
-        {252, 263, -1, sizeof(::osirixgrpc::DCMPixSetImageRequest)},
-        {266, 276, -1, sizeof(::osirixgrpc::DCMPixGetMapFromROIRequest)},
+        { 0, 10, -1, sizeof(::osirixgrpc::DCMPixIsRGBResponse)},
+        { 12, 28, -1, sizeof(::osirixgrpc::DCMPixComputeROIResponse)},
+        { 36, 48, -1, sizeof(::osirixgrpc::DCMPixROIValuesResponse)},
+        { 52, 62, -1, sizeof(::osirixgrpc::DCMPixDicomImageResponse)},
+        { 64, 74, -1, sizeof(::osirixgrpc::DCMPixDicomSeriesResponse)},
+        { 76, 86, -1, sizeof(::osirixgrpc::DCMPixDicomStudyResponse)},
+        { 88, 102, -1, sizeof(::osirixgrpc::DCMPixImageResponse)},
+        { 108, 120, -1, sizeof(::osirixgrpc::DCMPixGetMapFromROIResponse)},
+        { 124, 135, -1, sizeof(::osirixgrpc::DCMPixShapeResponse)},
+        { 138, 149, -1, sizeof(::osirixgrpc::DCMPixSpacingResponse)},
+        { 152, 164, -1, sizeof(::osirixgrpc::DCMPixOriginResponse)},
+        { 168, 178, -1, sizeof(::osirixgrpc::DCMPixOrientationResponse)},
+        { 180, 190, -1, sizeof(::osirixgrpc::DCMPixSliceLocationResponse)},
+        { 192, 202, -1, sizeof(::osirixgrpc::DCMPixSourceFileResponse)},
+        { 204, 214, -1, sizeof(::osirixgrpc::DCMPixConvertToRGBRequest)},
+        { 216, 226, -1, sizeof(::osirixgrpc::DCMPixConvertToBWRequest)},
+        { 228, 238, -1, sizeof(::osirixgrpc::DCMPixComputeROIRequest)},
+        { 240, 250, -1, sizeof(::osirixgrpc::DCMPixROIValuesRequest)},
+        { 252, 263, -1, sizeof(::osirixgrpc::DCMPixSetImageRequest)},
+        { 266, 276, -1, sizeof(::osirixgrpc::DCMPixGetMapFromROIRequest)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -892,70 +863,68 @@ class DCMPixIsRGBResponse::_Internal {
   }
 };
 
-const ::osirixgrpc::Status& DCMPixIsRGBResponse::_Internal::status(const DCMPixIsRGBResponse* msg) {
+const ::osirixgrpc::Status&
+DCMPixIsRGBResponse::_Internal::status(const DCMPixIsRGBResponse* msg) {
   return *msg->_impl_.status_;
 }
 void DCMPixIsRGBResponse::clear_status() {
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   if (_impl_.status_ != nullptr) _impl_.status_->Clear();
   _impl_._has_bits_[0] &= ~0x00000001u;
 }
-DCMPixIsRGBResponse::DCMPixIsRGBResponse(::google::protobuf::Arena* arena)
-    : ::google::protobuf::Message(arena) {
+DCMPixIsRGBResponse::DCMPixIsRGBResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.DCMPixIsRGBResponse)
 }
-inline PROTOBUF_NDEBUG_INLINE DCMPixIsRGBResponse::Impl_::Impl_(
-    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
-    const Impl_& from)
-      : _has_bits_{from._has_bits_},
-        _cached_size_{0} {}
+DCMPixIsRGBResponse::DCMPixIsRGBResponse(const DCMPixIsRGBResponse& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  DCMPixIsRGBResponse* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.status_){nullptr}
+    , decltype(_impl_.is_rgb_) {}
+  };
 
-DCMPixIsRGBResponse::DCMPixIsRGBResponse(
-    ::google::protobuf::Arena* arena,
-    const DCMPixIsRGBResponse& from)
-    : ::google::protobuf::Message(arena) {
-  DCMPixIsRGBResponse* const _this = this;
-  (void)_this;
-  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
-      from._internal_metadata_);
-  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
-  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
-  _impl_.status_ = (cached_has_bits & 0x00000001u)
-                ? CreateMaybeMessage<::osirixgrpc::Status>(arena, *from._impl_.status_)
-                : nullptr;
-  _impl_.is_rgb_ = from._impl_.is_rgb_;
-
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_impl_.status_ = new ::osirixgrpc::Status(*from._impl_.status_);
+  }
+  _this->_impl_.is_rgb_ = from._impl_.is_rgb_;
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.DCMPixIsRGBResponse)
 }
-inline PROTOBUF_NDEBUG_INLINE DCMPixIsRGBResponse::Impl_::Impl_(
-    ::google::protobuf::internal::InternalVisibility visibility,
-    ::google::protobuf::Arena* arena)
-      : _cached_size_{0} {}
 
 inline void DCMPixIsRGBResponse::SharedCtor(::_pb::Arena* arena) {
-  new (&_impl_) Impl_(internal_visibility(), arena);
-  ::memset(reinterpret_cast<char *>(&_impl_) +
-               offsetof(Impl_, status_),
-           0,
-           offsetof(Impl_, is_rgb_) -
-               offsetof(Impl_, status_) +
-               sizeof(Impl_::is_rgb_));
-}
-DCMPixIsRGBResponse::~DCMPixIsRGBResponse() {
-  // @@protoc_insertion_point(destructor:osirixgrpc.DCMPixIsRGBResponse)
-  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
-  SharedDtor();
-}
-inline void DCMPixIsRGBResponse::SharedDtor() {
-  ABSL_DCHECK(GetArena() == nullptr);
-  delete _impl_.status_;
-  _impl_.~Impl_();
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.status_){nullptr}
+    , decltype(_impl_.is_rgb_) { false }
+
+  };
 }
 
-PROTOBUF_NOINLINE void DCMPixIsRGBResponse::Clear() {
+DCMPixIsRGBResponse::~DCMPixIsRGBResponse() {
+  // @@protoc_insertion_point(destructor:osirixgrpc.DCMPixIsRGBResponse)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void DCMPixIsRGBResponse::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  if (this != internal_default_instance()) delete _impl_.status_;
+}
+
+void DCMPixIsRGBResponse::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void DCMPixIsRGBResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.DCMPixIsRGBResponse)
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -967,64 +936,69 @@ PROTOBUF_NOINLINE void DCMPixIsRGBResponse::Clear() {
   }
   _impl_.is_rgb_ = false;
   _impl_._has_bits_.Clear();
-  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* DCMPixIsRGBResponse::_InternalParse(
-    const char* ptr, ::_pbi::ParseContext* ctx) {
-  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+const char* DCMPixIsRGBResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
+  while (!ctx->Done(&ptr)) {
+    ::uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // .osirixgrpc.Status status = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
+          ptr = ctx->ParseMessage(_internal_mutable_status(), ptr);
+          CHK_(ptr);
+        } else {
+          goto handle_unusual;
+        }
+        continue;
+      // bool is_rgb = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 16)) {
+          _impl_.is_rgb_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else {
+          goto handle_unusual;
+        }
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
 }
-
-
-PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<1, 2, 1, 0, 2> DCMPixIsRGBResponse::_table_ = {
-  {
-    PROTOBUF_FIELD_OFFSET(DCMPixIsRGBResponse, _impl_._has_bits_),
-    0, // no _extensions_
-    2, 8,  // max_field_number, fast_idx_mask
-    offsetof(decltype(_table_), field_lookup_table),
-    4294967292,  // skipmap
-    offsetof(decltype(_table_), field_entries),
-    2,  // num_field_entries
-    1,  // num_aux_entries
-    offsetof(decltype(_table_), aux_entries),
-    &_DCMPixIsRGBResponse_default_instance_._instance,
-    ::_pbi::TcParser::GenericFallback,  // fallback
-  }, {{
-    // bool is_rgb = 2;
-    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(DCMPixIsRGBResponse, _impl_.is_rgb_), 63>(),
-     {16, 63, 0, PROTOBUF_FIELD_OFFSET(DCMPixIsRGBResponse, _impl_.is_rgb_)}},
-    // .osirixgrpc.Status status = 1;
-    {::_pbi::TcParser::FastMtS1,
-     {10, 0, 0, PROTOBUF_FIELD_OFFSET(DCMPixIsRGBResponse, _impl_.status_)}},
-  }}, {{
-    65535, 65535
-  }}, {{
-    // .osirixgrpc.Status status = 1;
-    {PROTOBUF_FIELD_OFFSET(DCMPixIsRGBResponse, _impl_.status_), _Internal::kHasBitsOffset + 0, 0,
-    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
-    // bool is_rgb = 2;
-    {PROTOBUF_FIELD_OFFSET(DCMPixIsRGBResponse, _impl_.is_rgb_), -1, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kBool)},
-  }}, {{
-    {::_pbi::TcParser::GetTable<::osirixgrpc::Status>()},
-  }}, {{
-  }},
-};
 
 ::uint8_t* DCMPixIsRGBResponse::_InternalSerialize(
-    ::uint8_t* target,
-    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.DCMPixIsRGBResponse)
   ::uint32_t cached_has_bits = 0;
-  (void)cached_has_bits;
+  (void) cached_has_bits;
 
   cached_has_bits = _impl_._has_bits_[0];
   // .osirixgrpc.Status status = 1;
   if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-        1, _Internal::status(this),
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(1, _Internal::status(this),
         _Internal::status(this).GetCachedSize(), target, stream);
   }
 
@@ -1036,9 +1010,8 @@ const ::_pbi::TcParseTable<1, 2, 1, 0, 2> DCMPixIsRGBResponse::_table_ = {
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target =
-        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.DCMPixIsRGBResponse)
   return target;
@@ -1055,8 +1028,9 @@ const ::_pbi::TcParseTable<1, 2, 1, 0, 2> DCMPixIsRGBResponse::_table_ = {
   // .osirixgrpc.Status status = 1;
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
-    total_size +=
-        1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.status_);
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *_impl_.status_);
   }
 
   // bool is_rgb = 2;
@@ -1067,15 +1041,14 @@ const ::_pbi::TcParseTable<1, 2, 1, 0, 2> DCMPixIsRGBResponse::_table_ = {
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::google::protobuf::Message::ClassData DCMPixIsRGBResponse::_class_data_ = {
-    DCMPixIsRGBResponse::MergeImpl,
-    nullptr,  // OnDemandRegisterArenaDtor
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData DCMPixIsRGBResponse::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    DCMPixIsRGBResponse::MergeImpl
 };
-const ::google::protobuf::Message::ClassData* DCMPixIsRGBResponse::GetClassData() const {
-  return &_class_data_;
-}
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*DCMPixIsRGBResponse::GetClassData() const { return &_class_data_; }
 
-void DCMPixIsRGBResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+
+void DCMPixIsRGBResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
   auto* const _this = static_cast<DCMPixIsRGBResponse*>(&to_msg);
   auto& from = static_cast<const DCMPixIsRGBResponse&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.DCMPixIsRGBResponse)
@@ -1090,7 +1063,7 @@ void DCMPixIsRGBResponse::MergeImpl(::google::protobuf::Message& to_msg, const :
   if (from._internal_is_rgb() != 0) {
     _this->_internal_set_is_rgb(from._internal_is_rgb());
   }
-  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void DCMPixIsRGBResponse::CopyFrom(const DCMPixIsRGBResponse& from) {
@@ -1100,18 +1073,15 @@ void DCMPixIsRGBResponse::CopyFrom(const DCMPixIsRGBResponse& from) {
   MergeFrom(from);
 }
 
-PROTOBUF_NOINLINE bool DCMPixIsRGBResponse::IsInitialized() const {
+bool DCMPixIsRGBResponse::IsInitialized() const {
   return true;
 }
 
-::_pbi::CachedSize* DCMPixIsRGBResponse::AccessCachedSize() const {
-  return &_impl_._cached_size_;
-}
-void DCMPixIsRGBResponse::InternalSwap(DCMPixIsRGBResponse* PROTOBUF_RESTRICT other) {
+void DCMPixIsRGBResponse::InternalSwap(DCMPixIsRGBResponse* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::google::protobuf::internal::memswap<
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
       PROTOBUF_FIELD_OFFSET(DCMPixIsRGBResponse, _impl_.is_rgb_)
       + sizeof(DCMPixIsRGBResponse::_impl_.is_rgb_)
       - PROTOBUF_FIELD_OFFSET(DCMPixIsRGBResponse, _impl_.status_)>(
@@ -1119,7 +1089,7 @@ void DCMPixIsRGBResponse::InternalSwap(DCMPixIsRGBResponse* PROTOBUF_RESTRICT ot
           reinterpret_cast<char*>(&other->_impl_.status_));
 }
 
-::google::protobuf::Metadata DCMPixIsRGBResponse::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata DCMPixIsRGBResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_dcmpix_2eproto_getter, &descriptor_table_dcmpix_2eproto_once,
       file_level_metadata_dcmpix_2eproto[0]);
@@ -1137,76 +1107,94 @@ class DCMPixComputeROIResponse::_Internal {
   }
 };
 
-const ::osirixgrpc::Status& DCMPixComputeROIResponse::_Internal::status(const DCMPixComputeROIResponse* msg) {
+const ::osirixgrpc::Status&
+DCMPixComputeROIResponse::_Internal::status(const DCMPixComputeROIResponse* msg) {
   return *msg->_impl_.status_;
 }
 void DCMPixComputeROIResponse::clear_status() {
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   if (_impl_.status_ != nullptr) _impl_.status_->Clear();
   _impl_._has_bits_[0] &= ~0x00000001u;
 }
-DCMPixComputeROIResponse::DCMPixComputeROIResponse(::google::protobuf::Arena* arena)
-    : ::google::protobuf::Message(arena) {
+DCMPixComputeROIResponse::DCMPixComputeROIResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.DCMPixComputeROIResponse)
 }
-inline PROTOBUF_NDEBUG_INLINE DCMPixComputeROIResponse::Impl_::Impl_(
-    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
-    const Impl_& from)
-      : _has_bits_{from._has_bits_},
-        _cached_size_{0} {}
+DCMPixComputeROIResponse::DCMPixComputeROIResponse(const DCMPixComputeROIResponse& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  DCMPixComputeROIResponse* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.status_){nullptr}
+    , decltype(_impl_.mean_) {}
 
-DCMPixComputeROIResponse::DCMPixComputeROIResponse(
-    ::google::protobuf::Arena* arena,
-    const DCMPixComputeROIResponse& from)
-    : ::google::protobuf::Message(arena) {
-  DCMPixComputeROIResponse* const _this = this;
-  (void)_this;
-  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
-      from._internal_metadata_);
-  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
-  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
-  _impl_.status_ = (cached_has_bits & 0x00000001u)
-                ? CreateMaybeMessage<::osirixgrpc::Status>(arena, *from._impl_.status_)
-                : nullptr;
-  ::memcpy(reinterpret_cast<char *>(&_impl_) +
-               offsetof(Impl_, mean_),
-           reinterpret_cast<const char *>(&from._impl_) +
-               offsetof(Impl_, mean_),
-           offsetof(Impl_, kurtosis_) -
-               offsetof(Impl_, mean_) +
-               sizeof(Impl_::kurtosis_));
+    , decltype(_impl_.total_) {}
 
+    , decltype(_impl_.std_dev_) {}
+
+    , decltype(_impl_.min_) {}
+
+    , decltype(_impl_.max_) {}
+
+    , decltype(_impl_.skewness_) {}
+
+    , decltype(_impl_.kurtosis_) {}
+  };
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_impl_.status_ = new ::osirixgrpc::Status(*from._impl_.status_);
+  }
+  ::memcpy(&_impl_.mean_, &from._impl_.mean_,
+    static_cast<::size_t>(reinterpret_cast<char*>(&_impl_.kurtosis_) -
+    reinterpret_cast<char*>(&_impl_.mean_)) + sizeof(_impl_.kurtosis_));
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.DCMPixComputeROIResponse)
 }
-inline PROTOBUF_NDEBUG_INLINE DCMPixComputeROIResponse::Impl_::Impl_(
-    ::google::protobuf::internal::InternalVisibility visibility,
-    ::google::protobuf::Arena* arena)
-      : _cached_size_{0} {}
 
 inline void DCMPixComputeROIResponse::SharedCtor(::_pb::Arena* arena) {
-  new (&_impl_) Impl_(internal_visibility(), arena);
-  ::memset(reinterpret_cast<char *>(&_impl_) +
-               offsetof(Impl_, status_),
-           0,
-           offsetof(Impl_, kurtosis_) -
-               offsetof(Impl_, status_) +
-               sizeof(Impl_::kurtosis_));
-}
-DCMPixComputeROIResponse::~DCMPixComputeROIResponse() {
-  // @@protoc_insertion_point(destructor:osirixgrpc.DCMPixComputeROIResponse)
-  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
-  SharedDtor();
-}
-inline void DCMPixComputeROIResponse::SharedDtor() {
-  ABSL_DCHECK(GetArena() == nullptr);
-  delete _impl_.status_;
-  _impl_.~Impl_();
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.status_){nullptr}
+    , decltype(_impl_.mean_) { 0 }
+
+    , decltype(_impl_.total_) { 0 }
+
+    , decltype(_impl_.std_dev_) { 0 }
+
+    , decltype(_impl_.min_) { 0 }
+
+    , decltype(_impl_.max_) { 0 }
+
+    , decltype(_impl_.skewness_) { 0 }
+
+    , decltype(_impl_.kurtosis_) { 0 }
+
+  };
 }
 
-PROTOBUF_NOINLINE void DCMPixComputeROIResponse::Clear() {
+DCMPixComputeROIResponse::~DCMPixComputeROIResponse() {
+  // @@protoc_insertion_point(destructor:osirixgrpc.DCMPixComputeROIResponse)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void DCMPixComputeROIResponse::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  if (this != internal_default_instance()) delete _impl_.status_;
+}
+
+void DCMPixComputeROIResponse::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void DCMPixComputeROIResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.DCMPixComputeROIResponse)
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -1220,106 +1208,128 @@ PROTOBUF_NOINLINE void DCMPixComputeROIResponse::Clear() {
       reinterpret_cast<char*>(&_impl_.kurtosis_) -
       reinterpret_cast<char*>(&_impl_.mean_)) + sizeof(_impl_.kurtosis_));
   _impl_._has_bits_.Clear();
-  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* DCMPixComputeROIResponse::_InternalParse(
-    const char* ptr, ::_pbi::ParseContext* ctx) {
-  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+const char* DCMPixComputeROIResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
+  while (!ctx->Done(&ptr)) {
+    ::uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // .osirixgrpc.Status status = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
+          ptr = ctx->ParseMessage(_internal_mutable_status(), ptr);
+          CHK_(ptr);
+        } else {
+          goto handle_unusual;
+        }
+        continue;
+      // float mean = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 21)) {
+          _impl_.mean_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else {
+          goto handle_unusual;
+        }
+        continue;
+      // float total = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 29)) {
+          _impl_.total_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else {
+          goto handle_unusual;
+        }
+        continue;
+      // float std_dev = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 37)) {
+          _impl_.std_dev_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else {
+          goto handle_unusual;
+        }
+        continue;
+      // float min = 5;
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 45)) {
+          _impl_.min_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else {
+          goto handle_unusual;
+        }
+        continue;
+      // float max = 6;
+      case 6:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 53)) {
+          _impl_.max_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else {
+          goto handle_unusual;
+        }
+        continue;
+      // float skewness = 7;
+      case 7:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 61)) {
+          _impl_.skewness_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else {
+          goto handle_unusual;
+        }
+        continue;
+      // float kurtosis = 8;
+      case 8:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 69)) {
+          _impl_.kurtosis_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else {
+          goto handle_unusual;
+        }
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
 }
-
-
-PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<3, 8, 1, 0, 2> DCMPixComputeROIResponse::_table_ = {
-  {
-    PROTOBUF_FIELD_OFFSET(DCMPixComputeROIResponse, _impl_._has_bits_),
-    0, // no _extensions_
-    8, 56,  // max_field_number, fast_idx_mask
-    offsetof(decltype(_table_), field_lookup_table),
-    4294967040,  // skipmap
-    offsetof(decltype(_table_), field_entries),
-    8,  // num_field_entries
-    1,  // num_aux_entries
-    offsetof(decltype(_table_), aux_entries),
-    &_DCMPixComputeROIResponse_default_instance_._instance,
-    ::_pbi::TcParser::GenericFallback,  // fallback
-  }, {{
-    // float kurtosis = 8;
-    {::_pbi::TcParser::FastF32S1,
-     {69, 63, 0, PROTOBUF_FIELD_OFFSET(DCMPixComputeROIResponse, _impl_.kurtosis_)}},
-    // .osirixgrpc.Status status = 1;
-    {::_pbi::TcParser::FastMtS1,
-     {10, 0, 0, PROTOBUF_FIELD_OFFSET(DCMPixComputeROIResponse, _impl_.status_)}},
-    // float mean = 2;
-    {::_pbi::TcParser::FastF32S1,
-     {21, 63, 0, PROTOBUF_FIELD_OFFSET(DCMPixComputeROIResponse, _impl_.mean_)}},
-    // float total = 3;
-    {::_pbi::TcParser::FastF32S1,
-     {29, 63, 0, PROTOBUF_FIELD_OFFSET(DCMPixComputeROIResponse, _impl_.total_)}},
-    // float std_dev = 4;
-    {::_pbi::TcParser::FastF32S1,
-     {37, 63, 0, PROTOBUF_FIELD_OFFSET(DCMPixComputeROIResponse, _impl_.std_dev_)}},
-    // float min = 5;
-    {::_pbi::TcParser::FastF32S1,
-     {45, 63, 0, PROTOBUF_FIELD_OFFSET(DCMPixComputeROIResponse, _impl_.min_)}},
-    // float max = 6;
-    {::_pbi::TcParser::FastF32S1,
-     {53, 63, 0, PROTOBUF_FIELD_OFFSET(DCMPixComputeROIResponse, _impl_.max_)}},
-    // float skewness = 7;
-    {::_pbi::TcParser::FastF32S1,
-     {61, 63, 0, PROTOBUF_FIELD_OFFSET(DCMPixComputeROIResponse, _impl_.skewness_)}},
-  }}, {{
-    65535, 65535
-  }}, {{
-    // .osirixgrpc.Status status = 1;
-    {PROTOBUF_FIELD_OFFSET(DCMPixComputeROIResponse, _impl_.status_), _Internal::kHasBitsOffset + 0, 0,
-    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
-    // float mean = 2;
-    {PROTOBUF_FIELD_OFFSET(DCMPixComputeROIResponse, _impl_.mean_), -1, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kFloat)},
-    // float total = 3;
-    {PROTOBUF_FIELD_OFFSET(DCMPixComputeROIResponse, _impl_.total_), -1, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kFloat)},
-    // float std_dev = 4;
-    {PROTOBUF_FIELD_OFFSET(DCMPixComputeROIResponse, _impl_.std_dev_), -1, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kFloat)},
-    // float min = 5;
-    {PROTOBUF_FIELD_OFFSET(DCMPixComputeROIResponse, _impl_.min_), -1, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kFloat)},
-    // float max = 6;
-    {PROTOBUF_FIELD_OFFSET(DCMPixComputeROIResponse, _impl_.max_), -1, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kFloat)},
-    // float skewness = 7;
-    {PROTOBUF_FIELD_OFFSET(DCMPixComputeROIResponse, _impl_.skewness_), -1, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kFloat)},
-    // float kurtosis = 8;
-    {PROTOBUF_FIELD_OFFSET(DCMPixComputeROIResponse, _impl_.kurtosis_), -1, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kFloat)},
-  }}, {{
-    {::_pbi::TcParser::GetTable<::osirixgrpc::Status>()},
-  }}, {{
-  }},
-};
 
 ::uint8_t* DCMPixComputeROIResponse::_InternalSerialize(
-    ::uint8_t* target,
-    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.DCMPixComputeROIResponse)
   ::uint32_t cached_has_bits = 0;
-  (void)cached_has_bits;
+  (void) cached_has_bits;
 
   cached_has_bits = _impl_._has_bits_[0];
   // .osirixgrpc.Status status = 1;
   if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-        1, _Internal::status(this),
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(1, _Internal::status(this),
         _Internal::status(this).GetCachedSize(), target, stream);
   }
 
   // float mean = 2;
-  static_assert(sizeof(::uint32_t) == sizeof(float),
-                "Code assumes ::uint32_t and float are the same size.");
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
   float tmp_mean = this->_internal_mean();
   ::uint32_t raw_mean;
   memcpy(&raw_mean, &tmp_mean, sizeof(tmp_mean));
@@ -1330,8 +1340,7 @@ const ::_pbi::TcParseTable<3, 8, 1, 0, 2> DCMPixComputeROIResponse::_table_ = {
   }
 
   // float total = 3;
-  static_assert(sizeof(::uint32_t) == sizeof(float),
-                "Code assumes ::uint32_t and float are the same size.");
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
   float tmp_total = this->_internal_total();
   ::uint32_t raw_total;
   memcpy(&raw_total, &tmp_total, sizeof(tmp_total));
@@ -1342,8 +1351,7 @@ const ::_pbi::TcParseTable<3, 8, 1, 0, 2> DCMPixComputeROIResponse::_table_ = {
   }
 
   // float std_dev = 4;
-  static_assert(sizeof(::uint32_t) == sizeof(float),
-                "Code assumes ::uint32_t and float are the same size.");
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
   float tmp_std_dev = this->_internal_std_dev();
   ::uint32_t raw_std_dev;
   memcpy(&raw_std_dev, &tmp_std_dev, sizeof(tmp_std_dev));
@@ -1354,8 +1362,7 @@ const ::_pbi::TcParseTable<3, 8, 1, 0, 2> DCMPixComputeROIResponse::_table_ = {
   }
 
   // float min = 5;
-  static_assert(sizeof(::uint32_t) == sizeof(float),
-                "Code assumes ::uint32_t and float are the same size.");
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
   float tmp_min = this->_internal_min();
   ::uint32_t raw_min;
   memcpy(&raw_min, &tmp_min, sizeof(tmp_min));
@@ -1366,8 +1373,7 @@ const ::_pbi::TcParseTable<3, 8, 1, 0, 2> DCMPixComputeROIResponse::_table_ = {
   }
 
   // float max = 6;
-  static_assert(sizeof(::uint32_t) == sizeof(float),
-                "Code assumes ::uint32_t and float are the same size.");
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
   float tmp_max = this->_internal_max();
   ::uint32_t raw_max;
   memcpy(&raw_max, &tmp_max, sizeof(tmp_max));
@@ -1378,8 +1384,7 @@ const ::_pbi::TcParseTable<3, 8, 1, 0, 2> DCMPixComputeROIResponse::_table_ = {
   }
 
   // float skewness = 7;
-  static_assert(sizeof(::uint32_t) == sizeof(float),
-                "Code assumes ::uint32_t and float are the same size.");
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
   float tmp_skewness = this->_internal_skewness();
   ::uint32_t raw_skewness;
   memcpy(&raw_skewness, &tmp_skewness, sizeof(tmp_skewness));
@@ -1390,8 +1395,7 @@ const ::_pbi::TcParseTable<3, 8, 1, 0, 2> DCMPixComputeROIResponse::_table_ = {
   }
 
   // float kurtosis = 8;
-  static_assert(sizeof(::uint32_t) == sizeof(float),
-                "Code assumes ::uint32_t and float are the same size.");
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
   float tmp_kurtosis = this->_internal_kurtosis();
   ::uint32_t raw_kurtosis;
   memcpy(&raw_kurtosis, &tmp_kurtosis, sizeof(tmp_kurtosis));
@@ -1402,9 +1406,8 @@ const ::_pbi::TcParseTable<3, 8, 1, 0, 2> DCMPixComputeROIResponse::_table_ = {
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target =
-        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.DCMPixComputeROIResponse)
   return target;
@@ -1421,13 +1424,13 @@ const ::_pbi::TcParseTable<3, 8, 1, 0, 2> DCMPixComputeROIResponse::_table_ = {
   // .osirixgrpc.Status status = 1;
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
-    total_size +=
-        1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.status_);
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *_impl_.status_);
   }
 
   // float mean = 2;
-  static_assert(sizeof(::uint32_t) == sizeof(float),
-                "Code assumes ::uint32_t and float are the same size.");
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
   float tmp_mean = this->_internal_mean();
   ::uint32_t raw_mean;
   memcpy(&raw_mean, &tmp_mean, sizeof(tmp_mean));
@@ -1436,8 +1439,7 @@ const ::_pbi::TcParseTable<3, 8, 1, 0, 2> DCMPixComputeROIResponse::_table_ = {
   }
 
   // float total = 3;
-  static_assert(sizeof(::uint32_t) == sizeof(float),
-                "Code assumes ::uint32_t and float are the same size.");
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
   float tmp_total = this->_internal_total();
   ::uint32_t raw_total;
   memcpy(&raw_total, &tmp_total, sizeof(tmp_total));
@@ -1446,8 +1448,7 @@ const ::_pbi::TcParseTable<3, 8, 1, 0, 2> DCMPixComputeROIResponse::_table_ = {
   }
 
   // float std_dev = 4;
-  static_assert(sizeof(::uint32_t) == sizeof(float),
-                "Code assumes ::uint32_t and float are the same size.");
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
   float tmp_std_dev = this->_internal_std_dev();
   ::uint32_t raw_std_dev;
   memcpy(&raw_std_dev, &tmp_std_dev, sizeof(tmp_std_dev));
@@ -1456,8 +1457,7 @@ const ::_pbi::TcParseTable<3, 8, 1, 0, 2> DCMPixComputeROIResponse::_table_ = {
   }
 
   // float min = 5;
-  static_assert(sizeof(::uint32_t) == sizeof(float),
-                "Code assumes ::uint32_t and float are the same size.");
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
   float tmp_min = this->_internal_min();
   ::uint32_t raw_min;
   memcpy(&raw_min, &tmp_min, sizeof(tmp_min));
@@ -1466,8 +1466,7 @@ const ::_pbi::TcParseTable<3, 8, 1, 0, 2> DCMPixComputeROIResponse::_table_ = {
   }
 
   // float max = 6;
-  static_assert(sizeof(::uint32_t) == sizeof(float),
-                "Code assumes ::uint32_t and float are the same size.");
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
   float tmp_max = this->_internal_max();
   ::uint32_t raw_max;
   memcpy(&raw_max, &tmp_max, sizeof(tmp_max));
@@ -1476,8 +1475,7 @@ const ::_pbi::TcParseTable<3, 8, 1, 0, 2> DCMPixComputeROIResponse::_table_ = {
   }
 
   // float skewness = 7;
-  static_assert(sizeof(::uint32_t) == sizeof(float),
-                "Code assumes ::uint32_t and float are the same size.");
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
   float tmp_skewness = this->_internal_skewness();
   ::uint32_t raw_skewness;
   memcpy(&raw_skewness, &tmp_skewness, sizeof(tmp_skewness));
@@ -1486,8 +1484,7 @@ const ::_pbi::TcParseTable<3, 8, 1, 0, 2> DCMPixComputeROIResponse::_table_ = {
   }
 
   // float kurtosis = 8;
-  static_assert(sizeof(::uint32_t) == sizeof(float),
-                "Code assumes ::uint32_t and float are the same size.");
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
   float tmp_kurtosis = this->_internal_kurtosis();
   ::uint32_t raw_kurtosis;
   memcpy(&raw_kurtosis, &tmp_kurtosis, sizeof(tmp_kurtosis));
@@ -1498,15 +1495,14 @@ const ::_pbi::TcParseTable<3, 8, 1, 0, 2> DCMPixComputeROIResponse::_table_ = {
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::google::protobuf::Message::ClassData DCMPixComputeROIResponse::_class_data_ = {
-    DCMPixComputeROIResponse::MergeImpl,
-    nullptr,  // OnDemandRegisterArenaDtor
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData DCMPixComputeROIResponse::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    DCMPixComputeROIResponse::MergeImpl
 };
-const ::google::protobuf::Message::ClassData* DCMPixComputeROIResponse::GetClassData() const {
-  return &_class_data_;
-}
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*DCMPixComputeROIResponse::GetClassData() const { return &_class_data_; }
 
-void DCMPixComputeROIResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+
+void DCMPixComputeROIResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
   auto* const _this = static_cast<DCMPixComputeROIResponse*>(&to_msg);
   auto& from = static_cast<const DCMPixComputeROIResponse&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.DCMPixComputeROIResponse)
@@ -1518,63 +1514,56 @@ void DCMPixComputeROIResponse::MergeImpl(::google::protobuf::Message& to_msg, co
     _this->_internal_mutable_status()->::osirixgrpc::Status::MergeFrom(
         from._internal_status());
   }
-  static_assert(sizeof(::uint32_t) == sizeof(float),
-                "Code assumes ::uint32_t and float are the same size.");
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
   float tmp_mean = from._internal_mean();
   ::uint32_t raw_mean;
   memcpy(&raw_mean, &tmp_mean, sizeof(tmp_mean));
   if (raw_mean != 0) {
     _this->_internal_set_mean(from._internal_mean());
   }
-  static_assert(sizeof(::uint32_t) == sizeof(float),
-                "Code assumes ::uint32_t and float are the same size.");
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
   float tmp_total = from._internal_total();
   ::uint32_t raw_total;
   memcpy(&raw_total, &tmp_total, sizeof(tmp_total));
   if (raw_total != 0) {
     _this->_internal_set_total(from._internal_total());
   }
-  static_assert(sizeof(::uint32_t) == sizeof(float),
-                "Code assumes ::uint32_t and float are the same size.");
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
   float tmp_std_dev = from._internal_std_dev();
   ::uint32_t raw_std_dev;
   memcpy(&raw_std_dev, &tmp_std_dev, sizeof(tmp_std_dev));
   if (raw_std_dev != 0) {
     _this->_internal_set_std_dev(from._internal_std_dev());
   }
-  static_assert(sizeof(::uint32_t) == sizeof(float),
-                "Code assumes ::uint32_t and float are the same size.");
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
   float tmp_min = from._internal_min();
   ::uint32_t raw_min;
   memcpy(&raw_min, &tmp_min, sizeof(tmp_min));
   if (raw_min != 0) {
     _this->_internal_set_min(from._internal_min());
   }
-  static_assert(sizeof(::uint32_t) == sizeof(float),
-                "Code assumes ::uint32_t and float are the same size.");
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
   float tmp_max = from._internal_max();
   ::uint32_t raw_max;
   memcpy(&raw_max, &tmp_max, sizeof(tmp_max));
   if (raw_max != 0) {
     _this->_internal_set_max(from._internal_max());
   }
-  static_assert(sizeof(::uint32_t) == sizeof(float),
-                "Code assumes ::uint32_t and float are the same size.");
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
   float tmp_skewness = from._internal_skewness();
   ::uint32_t raw_skewness;
   memcpy(&raw_skewness, &tmp_skewness, sizeof(tmp_skewness));
   if (raw_skewness != 0) {
     _this->_internal_set_skewness(from._internal_skewness());
   }
-  static_assert(sizeof(::uint32_t) == sizeof(float),
-                "Code assumes ::uint32_t and float are the same size.");
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
   float tmp_kurtosis = from._internal_kurtosis();
   ::uint32_t raw_kurtosis;
   memcpy(&raw_kurtosis, &tmp_kurtosis, sizeof(tmp_kurtosis));
   if (raw_kurtosis != 0) {
     _this->_internal_set_kurtosis(from._internal_kurtosis());
   }
-  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void DCMPixComputeROIResponse::CopyFrom(const DCMPixComputeROIResponse& from) {
@@ -1584,18 +1573,15 @@ void DCMPixComputeROIResponse::CopyFrom(const DCMPixComputeROIResponse& from) {
   MergeFrom(from);
 }
 
-PROTOBUF_NOINLINE bool DCMPixComputeROIResponse::IsInitialized() const {
+bool DCMPixComputeROIResponse::IsInitialized() const {
   return true;
 }
 
-::_pbi::CachedSize* DCMPixComputeROIResponse::AccessCachedSize() const {
-  return &_impl_._cached_size_;
-}
-void DCMPixComputeROIResponse::InternalSwap(DCMPixComputeROIResponse* PROTOBUF_RESTRICT other) {
+void DCMPixComputeROIResponse::InternalSwap(DCMPixComputeROIResponse* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::google::protobuf::internal::memswap<
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
       PROTOBUF_FIELD_OFFSET(DCMPixComputeROIResponse, _impl_.kurtosis_)
       + sizeof(DCMPixComputeROIResponse::_impl_.kurtosis_)
       - PROTOBUF_FIELD_OFFSET(DCMPixComputeROIResponse, _impl_.status_)>(
@@ -1603,7 +1589,7 @@ void DCMPixComputeROIResponse::InternalSwap(DCMPixComputeROIResponse* PROTOBUF_R
           reinterpret_cast<char*>(&other->_impl_.status_));
 }
 
-::google::protobuf::Metadata DCMPixComputeROIResponse::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata DCMPixComputeROIResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_dcmpix_2eproto_getter, &descriptor_table_dcmpix_2eproto_once,
       file_level_metadata_dcmpix_2eproto[1]);
@@ -1621,157 +1607,185 @@ class DCMPixROIValuesResponse::_Internal {
   }
 };
 
-const ::osirixgrpc::Status& DCMPixROIValuesResponse::_Internal::status(const DCMPixROIValuesResponse* msg) {
+const ::osirixgrpc::Status&
+DCMPixROIValuesResponse::_Internal::status(const DCMPixROIValuesResponse* msg) {
   return *msg->_impl_.status_;
 }
 void DCMPixROIValuesResponse::clear_status() {
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   if (_impl_.status_ != nullptr) _impl_.status_->Clear();
   _impl_._has_bits_[0] &= ~0x00000001u;
 }
-DCMPixROIValuesResponse::DCMPixROIValuesResponse(::google::protobuf::Arena* arena)
-    : ::google::protobuf::Message(arena) {
+DCMPixROIValuesResponse::DCMPixROIValuesResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.DCMPixROIValuesResponse)
 }
-inline PROTOBUF_NDEBUG_INLINE DCMPixROIValuesResponse::Impl_::Impl_(
-    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
-    const Impl_& from)
-      : _has_bits_{from._has_bits_},
-        _cached_size_{0},
-        values_{visibility, arena, from.values_},
-        row_indices_{visibility, arena, from.row_indices_},
-        _row_indices_cached_byte_size_{0},
-        column_indices_{visibility, arena, from.column_indices_},
-        _column_indices_cached_byte_size_{0} {}
+DCMPixROIValuesResponse::DCMPixROIValuesResponse(const DCMPixROIValuesResponse& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  DCMPixROIValuesResponse* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.values_) { from._impl_.values_ }
 
-DCMPixROIValuesResponse::DCMPixROIValuesResponse(
-    ::google::protobuf::Arena* arena,
-    const DCMPixROIValuesResponse& from)
-    : ::google::protobuf::Message(arena) {
-  DCMPixROIValuesResponse* const _this = this;
-  (void)_this;
-  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
-      from._internal_metadata_);
-  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
-  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
-  _impl_.status_ = (cached_has_bits & 0x00000001u)
-                ? CreateMaybeMessage<::osirixgrpc::Status>(arena, *from._impl_.status_)
-                : nullptr;
+    , decltype(_impl_.row_indices_) { from._impl_.row_indices_ }
+    ,/* _impl_._row_indices_cached_byte_size_ = */ { 0 }
 
+    , decltype(_impl_.column_indices_) { from._impl_.column_indices_ }
+    ,/* _impl_._column_indices_cached_byte_size_ = */ { 0 }
+
+    , decltype(_impl_.status_){nullptr}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_impl_.status_ = new ::osirixgrpc::Status(*from._impl_.status_);
+  }
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.DCMPixROIValuesResponse)
 }
-inline PROTOBUF_NDEBUG_INLINE DCMPixROIValuesResponse::Impl_::Impl_(
-    ::google::protobuf::internal::InternalVisibility visibility,
-    ::google::protobuf::Arena* arena)
-      : _cached_size_{0},
-        values_{visibility, arena},
-        row_indices_{visibility, arena},
-        _row_indices_cached_byte_size_{0},
-        column_indices_{visibility, arena},
-        _column_indices_cached_byte_size_{0} {}
 
 inline void DCMPixROIValuesResponse::SharedCtor(::_pb::Arena* arena) {
-  new (&_impl_) Impl_(internal_visibility(), arena);
-  _impl_.status_ = {};
-}
-DCMPixROIValuesResponse::~DCMPixROIValuesResponse() {
-  // @@protoc_insertion_point(destructor:osirixgrpc.DCMPixROIValuesResponse)
-  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
-  SharedDtor();
-}
-inline void DCMPixROIValuesResponse::SharedDtor() {
-  ABSL_DCHECK(GetArena() == nullptr);
-  delete _impl_.status_;
-  _impl_.~Impl_();
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.values_) { arena }
+
+    , decltype(_impl_.row_indices_) { arena }
+    ,/* _impl_._row_indices_cached_byte_size_ = */ { 0 }
+
+    , decltype(_impl_.column_indices_) { arena }
+    ,/* _impl_._column_indices_cached_byte_size_ = */ { 0 }
+
+    , decltype(_impl_.status_){nullptr}
+  };
 }
 
-PROTOBUF_NOINLINE void DCMPixROIValuesResponse::Clear() {
+DCMPixROIValuesResponse::~DCMPixROIValuesResponse() {
+  // @@protoc_insertion_point(destructor:osirixgrpc.DCMPixROIValuesResponse)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void DCMPixROIValuesResponse::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.values_.~RepeatedField();
+  _impl_.row_indices_.~RepeatedField();
+  _impl_.column_indices_.~RepeatedField();
+  if (this != internal_default_instance()) delete _impl_.status_;
+}
+
+void DCMPixROIValuesResponse::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void DCMPixROIValuesResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.DCMPixROIValuesResponse)
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _impl_.values_.Clear();
-  _impl_.row_indices_.Clear();
-  _impl_.column_indices_.Clear();
+  _internal_mutable_values()->Clear();
+  _internal_mutable_row_indices()->Clear();
+  _internal_mutable_column_indices()->Clear();
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
     ABSL_DCHECK(_impl_.status_ != nullptr);
     _impl_.status_->Clear();
   }
   _impl_._has_bits_.Clear();
-  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* DCMPixROIValuesResponse::_InternalParse(
-    const char* ptr, ::_pbi::ParseContext* ctx) {
-  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+const char* DCMPixROIValuesResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
+  while (!ctx->Done(&ptr)) {
+    ::uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // .osirixgrpc.Status status = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
+          ptr = ctx->ParseMessage(_internal_mutable_status(), ptr);
+          CHK_(ptr);
+        } else {
+          goto handle_unusual;
+        }
+        continue;
+      // repeated float values = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 18)) {
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedFloatParser(_internal_mutable_values(), ptr, ctx);
+          CHK_(ptr);
+        } else if (static_cast<::uint8_t>(tag) == 21) {
+          _internal_add_values(::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr));
+          ptr += sizeof(float);
+        } else {
+          goto handle_unusual;
+        }
+        continue;
+      // repeated int32 row_indices = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 26)) {
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedInt32Parser(_internal_mutable_row_indices(), ptr, ctx);
+          CHK_(ptr);
+        } else if (static_cast<::uint8_t>(tag) == 24) {
+          _internal_add_row_indices(::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr));
+          CHK_(ptr);
+        } else {
+          goto handle_unusual;
+        }
+        continue;
+      // repeated int32 column_indices = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 34)) {
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedInt32Parser(_internal_mutable_column_indices(), ptr, ctx);
+          CHK_(ptr);
+        } else if (static_cast<::uint8_t>(tag) == 32) {
+          _internal_add_column_indices(::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr));
+          CHK_(ptr);
+        } else {
+          goto handle_unusual;
+        }
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
 }
-
-
-PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<2, 4, 1, 0, 2> DCMPixROIValuesResponse::_table_ = {
-  {
-    PROTOBUF_FIELD_OFFSET(DCMPixROIValuesResponse, _impl_._has_bits_),
-    0, // no _extensions_
-    4, 24,  // max_field_number, fast_idx_mask
-    offsetof(decltype(_table_), field_lookup_table),
-    4294967280,  // skipmap
-    offsetof(decltype(_table_), field_entries),
-    4,  // num_field_entries
-    1,  // num_aux_entries
-    offsetof(decltype(_table_), aux_entries),
-    &_DCMPixROIValuesResponse_default_instance_._instance,
-    ::_pbi::TcParser::GenericFallback,  // fallback
-  }, {{
-    // repeated int32 column_indices = 4;
-    {::_pbi::TcParser::FastV32P1,
-     {34, 63, 0, PROTOBUF_FIELD_OFFSET(DCMPixROIValuesResponse, _impl_.column_indices_)}},
-    // .osirixgrpc.Status status = 1;
-    {::_pbi::TcParser::FastMtS1,
-     {10, 0, 0, PROTOBUF_FIELD_OFFSET(DCMPixROIValuesResponse, _impl_.status_)}},
-    // repeated float values = 2;
-    {::_pbi::TcParser::FastF32P1,
-     {18, 63, 0, PROTOBUF_FIELD_OFFSET(DCMPixROIValuesResponse, _impl_.values_)}},
-    // repeated int32 row_indices = 3;
-    {::_pbi::TcParser::FastV32P1,
-     {26, 63, 0, PROTOBUF_FIELD_OFFSET(DCMPixROIValuesResponse, _impl_.row_indices_)}},
-  }}, {{
-    65535, 65535
-  }}, {{
-    // .osirixgrpc.Status status = 1;
-    {PROTOBUF_FIELD_OFFSET(DCMPixROIValuesResponse, _impl_.status_), _Internal::kHasBitsOffset + 0, 0,
-    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
-    // repeated float values = 2;
-    {PROTOBUF_FIELD_OFFSET(DCMPixROIValuesResponse, _impl_.values_), -1, 0,
-    (0 | ::_fl::kFcRepeated | ::_fl::kPackedFloat)},
-    // repeated int32 row_indices = 3;
-    {PROTOBUF_FIELD_OFFSET(DCMPixROIValuesResponse, _impl_.row_indices_), -1, 0,
-    (0 | ::_fl::kFcRepeated | ::_fl::kPackedInt32)},
-    // repeated int32 column_indices = 4;
-    {PROTOBUF_FIELD_OFFSET(DCMPixROIValuesResponse, _impl_.column_indices_), -1, 0,
-    (0 | ::_fl::kFcRepeated | ::_fl::kPackedInt32)},
-  }}, {{
-    {::_pbi::TcParser::GetTable<::osirixgrpc::Status>()},
-  }}, {{
-  }},
-};
 
 ::uint8_t* DCMPixROIValuesResponse::_InternalSerialize(
-    ::uint8_t* target,
-    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.DCMPixROIValuesResponse)
   ::uint32_t cached_has_bits = 0;
-  (void)cached_has_bits;
+  (void) cached_has_bits;
 
   cached_has_bits = _impl_._has_bits_[0];
   // .osirixgrpc.Status status = 1;
   if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-        1, _Internal::status(this),
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(1, _Internal::status(this),
         _Internal::status(this).GetCachedSize(), target, stream);
   }
 
@@ -1784,8 +1798,8 @@ const ::_pbi::TcParseTable<2, 4, 1, 0, 2> DCMPixROIValuesResponse::_table_ = {
   {
     int byte_size = _impl_._row_indices_cached_byte_size_.Get();
     if (byte_size > 0) {
-      target = stream->WriteInt32Packed(
-          3, _internal_row_indices(), byte_size, target);
+      target = stream->WriteInt32Packed(3, _internal_row_indices(),
+                                                 byte_size, target);
     }
   }
 
@@ -1793,15 +1807,14 @@ const ::_pbi::TcParseTable<2, 4, 1, 0, 2> DCMPixROIValuesResponse::_table_ = {
   {
     int byte_size = _impl_._column_indices_cached_byte_size_.Get();
     if (byte_size > 0) {
-      target = stream->WriteInt32Packed(
-          4, _internal_column_indices(), byte_size, target);
+      target = stream->WriteInt32Packed(4, _internal_column_indices(),
+                                                 byte_size, target);
     }
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target =
-        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.DCMPixROIValuesResponse)
   return target;
@@ -1827,6 +1840,7 @@ const ::_pbi::TcParseTable<2, 4, 1, 0, 2> DCMPixROIValuesResponse::_table_ = {
     ;
     total_size += tag_size + data_size;
   }
+
   // repeated int32 row_indices = 3;
   {
     std::size_t data_size = ::_pbi::WireFormatLite::Int32Size(
@@ -1840,6 +1854,7 @@ const ::_pbi::TcParseTable<2, 4, 1, 0, 2> DCMPixROIValuesResponse::_table_ = {
     ;
     total_size += tag_size + data_size;
   }
+
   // repeated int32 column_indices = 4;
   {
     std::size_t data_size = ::_pbi::WireFormatLite::Int32Size(
@@ -1853,25 +1868,26 @@ const ::_pbi::TcParseTable<2, 4, 1, 0, 2> DCMPixROIValuesResponse::_table_ = {
     ;
     total_size += tag_size + data_size;
   }
+
   // .osirixgrpc.Status status = 1;
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
-    total_size +=
-        1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.status_);
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *_impl_.status_);
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::google::protobuf::Message::ClassData DCMPixROIValuesResponse::_class_data_ = {
-    DCMPixROIValuesResponse::MergeImpl,
-    nullptr,  // OnDemandRegisterArenaDtor
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData DCMPixROIValuesResponse::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    DCMPixROIValuesResponse::MergeImpl
 };
-const ::google::protobuf::Message::ClassData* DCMPixROIValuesResponse::GetClassData() const {
-  return &_class_data_;
-}
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*DCMPixROIValuesResponse::GetClassData() const { return &_class_data_; }
 
-void DCMPixROIValuesResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+
+void DCMPixROIValuesResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
   auto* const _this = static_cast<DCMPixROIValuesResponse*>(&to_msg);
   auto& from = static_cast<const DCMPixROIValuesResponse&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.DCMPixROIValuesResponse)
@@ -1879,14 +1895,14 @@ void DCMPixROIValuesResponse::MergeImpl(::google::protobuf::Message& to_msg, con
   ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  _this->_internal_mutable_values()->MergeFrom(from._internal_values());
-  _this->_internal_mutable_row_indices()->MergeFrom(from._internal_row_indices());
-  _this->_internal_mutable_column_indices()->MergeFrom(from._internal_column_indices());
+  _this->_impl_.values_.MergeFrom(from._impl_.values_);
+  _this->_impl_.row_indices_.MergeFrom(from._impl_.row_indices_);
+  _this->_impl_.column_indices_.MergeFrom(from._impl_.column_indices_);
   if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
     _this->_internal_mutable_status()->::osirixgrpc::Status::MergeFrom(
         from._internal_status());
   }
-  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void DCMPixROIValuesResponse::CopyFrom(const DCMPixROIValuesResponse& from) {
@@ -1896,14 +1912,11 @@ void DCMPixROIValuesResponse::CopyFrom(const DCMPixROIValuesResponse& from) {
   MergeFrom(from);
 }
 
-PROTOBUF_NOINLINE bool DCMPixROIValuesResponse::IsInitialized() const {
+bool DCMPixROIValuesResponse::IsInitialized() const {
   return true;
 }
 
-::_pbi::CachedSize* DCMPixROIValuesResponse::AccessCachedSize() const {
-  return &_impl_._cached_size_;
-}
-void DCMPixROIValuesResponse::InternalSwap(DCMPixROIValuesResponse* PROTOBUF_RESTRICT other) {
+void DCMPixROIValuesResponse::InternalSwap(DCMPixROIValuesResponse* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
@@ -1913,7 +1926,7 @@ void DCMPixROIValuesResponse::InternalSwap(DCMPixROIValuesResponse* PROTOBUF_RES
   swap(_impl_.status_, other->_impl_.status_);
 }
 
-::google::protobuf::Metadata DCMPixROIValuesResponse::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata DCMPixROIValuesResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_dcmpix_2eproto_getter, &descriptor_table_dcmpix_2eproto_once,
       file_level_metadata_dcmpix_2eproto[2]);
@@ -1935,81 +1948,77 @@ class DCMPixDicomImageResponse::_Internal {
   }
 };
 
-const ::osirixgrpc::Status& DCMPixDicomImageResponse::_Internal::status(const DCMPixDicomImageResponse* msg) {
+const ::osirixgrpc::Status&
+DCMPixDicomImageResponse::_Internal::status(const DCMPixDicomImageResponse* msg) {
   return *msg->_impl_.status_;
 }
-const ::osirixgrpc::DicomImage& DCMPixDicomImageResponse::_Internal::dicom_image(const DCMPixDicomImageResponse* msg) {
+const ::osirixgrpc::DicomImage&
+DCMPixDicomImageResponse::_Internal::dicom_image(const DCMPixDicomImageResponse* msg) {
   return *msg->_impl_.dicom_image_;
 }
 void DCMPixDicomImageResponse::clear_status() {
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   if (_impl_.status_ != nullptr) _impl_.status_->Clear();
   _impl_._has_bits_[0] &= ~0x00000001u;
 }
 void DCMPixDicomImageResponse::clear_dicom_image() {
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   if (_impl_.dicom_image_ != nullptr) _impl_.dicom_image_->Clear();
   _impl_._has_bits_[0] &= ~0x00000002u;
 }
-DCMPixDicomImageResponse::DCMPixDicomImageResponse(::google::protobuf::Arena* arena)
-    : ::google::protobuf::Message(arena) {
+DCMPixDicomImageResponse::DCMPixDicomImageResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.DCMPixDicomImageResponse)
 }
-inline PROTOBUF_NDEBUG_INLINE DCMPixDicomImageResponse::Impl_::Impl_(
-    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
-    const Impl_& from)
-      : _has_bits_{from._has_bits_},
-        _cached_size_{0} {}
+DCMPixDicomImageResponse::DCMPixDicomImageResponse(const DCMPixDicomImageResponse& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  DCMPixDicomImageResponse* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.status_){nullptr}
+    , decltype(_impl_.dicom_image_){nullptr}};
 
-DCMPixDicomImageResponse::DCMPixDicomImageResponse(
-    ::google::protobuf::Arena* arena,
-    const DCMPixDicomImageResponse& from)
-    : ::google::protobuf::Message(arena) {
-  DCMPixDicomImageResponse* const _this = this;
-  (void)_this;
-  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
-      from._internal_metadata_);
-  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
-  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
-  _impl_.status_ = (cached_has_bits & 0x00000001u)
-                ? CreateMaybeMessage<::osirixgrpc::Status>(arena, *from._impl_.status_)
-                : nullptr;
-  _impl_.dicom_image_ = (cached_has_bits & 0x00000002u)
-                ? CreateMaybeMessage<::osirixgrpc::DicomImage>(arena, *from._impl_.dicom_image_)
-                : nullptr;
-
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_impl_.status_ = new ::osirixgrpc::Status(*from._impl_.status_);
+  }
+  if ((from._impl_._has_bits_[0] & 0x00000002u) != 0) {
+    _this->_impl_.dicom_image_ = new ::osirixgrpc::DicomImage(*from._impl_.dicom_image_);
+  }
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.DCMPixDicomImageResponse)
 }
-inline PROTOBUF_NDEBUG_INLINE DCMPixDicomImageResponse::Impl_::Impl_(
-    ::google::protobuf::internal::InternalVisibility visibility,
-    ::google::protobuf::Arena* arena)
-      : _cached_size_{0} {}
 
 inline void DCMPixDicomImageResponse::SharedCtor(::_pb::Arena* arena) {
-  new (&_impl_) Impl_(internal_visibility(), arena);
-  ::memset(reinterpret_cast<char *>(&_impl_) +
-               offsetof(Impl_, status_),
-           0,
-           offsetof(Impl_, dicom_image_) -
-               offsetof(Impl_, status_) +
-               sizeof(Impl_::dicom_image_));
-}
-DCMPixDicomImageResponse::~DCMPixDicomImageResponse() {
-  // @@protoc_insertion_point(destructor:osirixgrpc.DCMPixDicomImageResponse)
-  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
-  SharedDtor();
-}
-inline void DCMPixDicomImageResponse::SharedDtor() {
-  ABSL_DCHECK(GetArena() == nullptr);
-  delete _impl_.status_;
-  delete _impl_.dicom_image_;
-  _impl_.~Impl_();
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.status_){nullptr}
+    , decltype(_impl_.dicom_image_){nullptr}
+  };
 }
 
-PROTOBUF_NOINLINE void DCMPixDicomImageResponse::Clear() {
+DCMPixDicomImageResponse::~DCMPixDicomImageResponse() {
+  // @@protoc_insertion_point(destructor:osirixgrpc.DCMPixDicomImageResponse)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void DCMPixDicomImageResponse::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  if (this != internal_default_instance()) delete _impl_.status_;
+  if (this != internal_default_instance()) delete _impl_.dicom_image_;
+}
+
+void DCMPixDicomImageResponse::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void DCMPixDicomImageResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.DCMPixDicomImageResponse)
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -2026,79 +2035,82 @@ PROTOBUF_NOINLINE void DCMPixDicomImageResponse::Clear() {
     }
   }
   _impl_._has_bits_.Clear();
-  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* DCMPixDicomImageResponse::_InternalParse(
-    const char* ptr, ::_pbi::ParseContext* ctx) {
-  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+const char* DCMPixDicomImageResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
+  while (!ctx->Done(&ptr)) {
+    ::uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // .osirixgrpc.Status status = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
+          ptr = ctx->ParseMessage(_internal_mutable_status(), ptr);
+          CHK_(ptr);
+        } else {
+          goto handle_unusual;
+        }
+        continue;
+      // .osirixgrpc.DicomImage dicom_image = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 18)) {
+          ptr = ctx->ParseMessage(_internal_mutable_dicom_image(), ptr);
+          CHK_(ptr);
+        } else {
+          goto handle_unusual;
+        }
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
 }
-
-
-PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<1, 2, 2, 0, 2> DCMPixDicomImageResponse::_table_ = {
-  {
-    PROTOBUF_FIELD_OFFSET(DCMPixDicomImageResponse, _impl_._has_bits_),
-    0, // no _extensions_
-    2, 8,  // max_field_number, fast_idx_mask
-    offsetof(decltype(_table_), field_lookup_table),
-    4294967292,  // skipmap
-    offsetof(decltype(_table_), field_entries),
-    2,  // num_field_entries
-    2,  // num_aux_entries
-    offsetof(decltype(_table_), aux_entries),
-    &_DCMPixDicomImageResponse_default_instance_._instance,
-    ::_pbi::TcParser::GenericFallback,  // fallback
-  }, {{
-    // .osirixgrpc.DicomImage dicom_image = 2;
-    {::_pbi::TcParser::FastMtS1,
-     {18, 1, 1, PROTOBUF_FIELD_OFFSET(DCMPixDicomImageResponse, _impl_.dicom_image_)}},
-    // .osirixgrpc.Status status = 1;
-    {::_pbi::TcParser::FastMtS1,
-     {10, 0, 0, PROTOBUF_FIELD_OFFSET(DCMPixDicomImageResponse, _impl_.status_)}},
-  }}, {{
-    65535, 65535
-  }}, {{
-    // .osirixgrpc.Status status = 1;
-    {PROTOBUF_FIELD_OFFSET(DCMPixDicomImageResponse, _impl_.status_), _Internal::kHasBitsOffset + 0, 0,
-    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
-    // .osirixgrpc.DicomImage dicom_image = 2;
-    {PROTOBUF_FIELD_OFFSET(DCMPixDicomImageResponse, _impl_.dicom_image_), _Internal::kHasBitsOffset + 1, 1,
-    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
-  }}, {{
-    {::_pbi::TcParser::GetTable<::osirixgrpc::Status>()},
-    {::_pbi::TcParser::GetTable<::osirixgrpc::DicomImage>()},
-  }}, {{
-  }},
-};
 
 ::uint8_t* DCMPixDicomImageResponse::_InternalSerialize(
-    ::uint8_t* target,
-    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.DCMPixDicomImageResponse)
   ::uint32_t cached_has_bits = 0;
-  (void)cached_has_bits;
+  (void) cached_has_bits;
 
   cached_has_bits = _impl_._has_bits_[0];
   // .osirixgrpc.Status status = 1;
   if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-        1, _Internal::status(this),
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(1, _Internal::status(this),
         _Internal::status(this).GetCachedSize(), target, stream);
   }
 
   // .osirixgrpc.DicomImage dicom_image = 2;
   if (cached_has_bits & 0x00000002u) {
-    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-        2, _Internal::dicom_image(this),
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(2, _Internal::dicom_image(this),
         _Internal::dicom_image(this).GetCachedSize(), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target =
-        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.DCMPixDicomImageResponse)
   return target;
@@ -2116,29 +2128,30 @@ const ::_pbi::TcParseTable<1, 2, 2, 0, 2> DCMPixDicomImageResponse::_table_ = {
   if (cached_has_bits & 0x00000003u) {
     // .osirixgrpc.Status status = 1;
     if (cached_has_bits & 0x00000001u) {
-      total_size +=
-          1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.status_);
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+          *_impl_.status_);
     }
 
     // .osirixgrpc.DicomImage dicom_image = 2;
     if (cached_has_bits & 0x00000002u) {
-      total_size +=
-          1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.dicom_image_);
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+          *_impl_.dicom_image_);
     }
 
   }
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::google::protobuf::Message::ClassData DCMPixDicomImageResponse::_class_data_ = {
-    DCMPixDicomImageResponse::MergeImpl,
-    nullptr,  // OnDemandRegisterArenaDtor
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData DCMPixDicomImageResponse::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    DCMPixDicomImageResponse::MergeImpl
 };
-const ::google::protobuf::Message::ClassData* DCMPixDicomImageResponse::GetClassData() const {
-  return &_class_data_;
-}
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*DCMPixDicomImageResponse::GetClassData() const { return &_class_data_; }
 
-void DCMPixDicomImageResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+
+void DCMPixDicomImageResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
   auto* const _this = static_cast<DCMPixDicomImageResponse*>(&to_msg);
   auto& from = static_cast<const DCMPixDicomImageResponse&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.DCMPixDicomImageResponse)
@@ -2157,7 +2170,7 @@ void DCMPixDicomImageResponse::MergeImpl(::google::protobuf::Message& to_msg, co
           from._internal_dicom_image());
     }
   }
-  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void DCMPixDicomImageResponse::CopyFrom(const DCMPixDicomImageResponse& from) {
@@ -2167,18 +2180,15 @@ void DCMPixDicomImageResponse::CopyFrom(const DCMPixDicomImageResponse& from) {
   MergeFrom(from);
 }
 
-PROTOBUF_NOINLINE bool DCMPixDicomImageResponse::IsInitialized() const {
+bool DCMPixDicomImageResponse::IsInitialized() const {
   return true;
 }
 
-::_pbi::CachedSize* DCMPixDicomImageResponse::AccessCachedSize() const {
-  return &_impl_._cached_size_;
-}
-void DCMPixDicomImageResponse::InternalSwap(DCMPixDicomImageResponse* PROTOBUF_RESTRICT other) {
+void DCMPixDicomImageResponse::InternalSwap(DCMPixDicomImageResponse* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::google::protobuf::internal::memswap<
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
       PROTOBUF_FIELD_OFFSET(DCMPixDicomImageResponse, _impl_.dicom_image_)
       + sizeof(DCMPixDicomImageResponse::_impl_.dicom_image_)
       - PROTOBUF_FIELD_OFFSET(DCMPixDicomImageResponse, _impl_.status_)>(
@@ -2186,7 +2196,7 @@ void DCMPixDicomImageResponse::InternalSwap(DCMPixDicomImageResponse* PROTOBUF_R
           reinterpret_cast<char*>(&other->_impl_.status_));
 }
 
-::google::protobuf::Metadata DCMPixDicomImageResponse::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata DCMPixDicomImageResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_dcmpix_2eproto_getter, &descriptor_table_dcmpix_2eproto_once,
       file_level_metadata_dcmpix_2eproto[3]);
@@ -2208,81 +2218,77 @@ class DCMPixDicomSeriesResponse::_Internal {
   }
 };
 
-const ::osirixgrpc::Status& DCMPixDicomSeriesResponse::_Internal::status(const DCMPixDicomSeriesResponse* msg) {
+const ::osirixgrpc::Status&
+DCMPixDicomSeriesResponse::_Internal::status(const DCMPixDicomSeriesResponse* msg) {
   return *msg->_impl_.status_;
 }
-const ::osirixgrpc::DicomSeries& DCMPixDicomSeriesResponse::_Internal::dicom_series(const DCMPixDicomSeriesResponse* msg) {
+const ::osirixgrpc::DicomSeries&
+DCMPixDicomSeriesResponse::_Internal::dicom_series(const DCMPixDicomSeriesResponse* msg) {
   return *msg->_impl_.dicom_series_;
 }
 void DCMPixDicomSeriesResponse::clear_status() {
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   if (_impl_.status_ != nullptr) _impl_.status_->Clear();
   _impl_._has_bits_[0] &= ~0x00000001u;
 }
 void DCMPixDicomSeriesResponse::clear_dicom_series() {
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   if (_impl_.dicom_series_ != nullptr) _impl_.dicom_series_->Clear();
   _impl_._has_bits_[0] &= ~0x00000002u;
 }
-DCMPixDicomSeriesResponse::DCMPixDicomSeriesResponse(::google::protobuf::Arena* arena)
-    : ::google::protobuf::Message(arena) {
+DCMPixDicomSeriesResponse::DCMPixDicomSeriesResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.DCMPixDicomSeriesResponse)
 }
-inline PROTOBUF_NDEBUG_INLINE DCMPixDicomSeriesResponse::Impl_::Impl_(
-    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
-    const Impl_& from)
-      : _has_bits_{from._has_bits_},
-        _cached_size_{0} {}
+DCMPixDicomSeriesResponse::DCMPixDicomSeriesResponse(const DCMPixDicomSeriesResponse& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  DCMPixDicomSeriesResponse* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.status_){nullptr}
+    , decltype(_impl_.dicom_series_){nullptr}};
 
-DCMPixDicomSeriesResponse::DCMPixDicomSeriesResponse(
-    ::google::protobuf::Arena* arena,
-    const DCMPixDicomSeriesResponse& from)
-    : ::google::protobuf::Message(arena) {
-  DCMPixDicomSeriesResponse* const _this = this;
-  (void)_this;
-  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
-      from._internal_metadata_);
-  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
-  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
-  _impl_.status_ = (cached_has_bits & 0x00000001u)
-                ? CreateMaybeMessage<::osirixgrpc::Status>(arena, *from._impl_.status_)
-                : nullptr;
-  _impl_.dicom_series_ = (cached_has_bits & 0x00000002u)
-                ? CreateMaybeMessage<::osirixgrpc::DicomSeries>(arena, *from._impl_.dicom_series_)
-                : nullptr;
-
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_impl_.status_ = new ::osirixgrpc::Status(*from._impl_.status_);
+  }
+  if ((from._impl_._has_bits_[0] & 0x00000002u) != 0) {
+    _this->_impl_.dicom_series_ = new ::osirixgrpc::DicomSeries(*from._impl_.dicom_series_);
+  }
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.DCMPixDicomSeriesResponse)
 }
-inline PROTOBUF_NDEBUG_INLINE DCMPixDicomSeriesResponse::Impl_::Impl_(
-    ::google::protobuf::internal::InternalVisibility visibility,
-    ::google::protobuf::Arena* arena)
-      : _cached_size_{0} {}
 
 inline void DCMPixDicomSeriesResponse::SharedCtor(::_pb::Arena* arena) {
-  new (&_impl_) Impl_(internal_visibility(), arena);
-  ::memset(reinterpret_cast<char *>(&_impl_) +
-               offsetof(Impl_, status_),
-           0,
-           offsetof(Impl_, dicom_series_) -
-               offsetof(Impl_, status_) +
-               sizeof(Impl_::dicom_series_));
-}
-DCMPixDicomSeriesResponse::~DCMPixDicomSeriesResponse() {
-  // @@protoc_insertion_point(destructor:osirixgrpc.DCMPixDicomSeriesResponse)
-  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
-  SharedDtor();
-}
-inline void DCMPixDicomSeriesResponse::SharedDtor() {
-  ABSL_DCHECK(GetArena() == nullptr);
-  delete _impl_.status_;
-  delete _impl_.dicom_series_;
-  _impl_.~Impl_();
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.status_){nullptr}
+    , decltype(_impl_.dicom_series_){nullptr}
+  };
 }
 
-PROTOBUF_NOINLINE void DCMPixDicomSeriesResponse::Clear() {
+DCMPixDicomSeriesResponse::~DCMPixDicomSeriesResponse() {
+  // @@protoc_insertion_point(destructor:osirixgrpc.DCMPixDicomSeriesResponse)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void DCMPixDicomSeriesResponse::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  if (this != internal_default_instance()) delete _impl_.status_;
+  if (this != internal_default_instance()) delete _impl_.dicom_series_;
+}
+
+void DCMPixDicomSeriesResponse::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void DCMPixDicomSeriesResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.DCMPixDicomSeriesResponse)
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -2299,79 +2305,82 @@ PROTOBUF_NOINLINE void DCMPixDicomSeriesResponse::Clear() {
     }
   }
   _impl_._has_bits_.Clear();
-  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* DCMPixDicomSeriesResponse::_InternalParse(
-    const char* ptr, ::_pbi::ParseContext* ctx) {
-  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+const char* DCMPixDicomSeriesResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
+  while (!ctx->Done(&ptr)) {
+    ::uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // .osirixgrpc.Status status = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
+          ptr = ctx->ParseMessage(_internal_mutable_status(), ptr);
+          CHK_(ptr);
+        } else {
+          goto handle_unusual;
+        }
+        continue;
+      // .osirixgrpc.DicomSeries dicom_series = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 18)) {
+          ptr = ctx->ParseMessage(_internal_mutable_dicom_series(), ptr);
+          CHK_(ptr);
+        } else {
+          goto handle_unusual;
+        }
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
 }
-
-
-PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<1, 2, 2, 0, 2> DCMPixDicomSeriesResponse::_table_ = {
-  {
-    PROTOBUF_FIELD_OFFSET(DCMPixDicomSeriesResponse, _impl_._has_bits_),
-    0, // no _extensions_
-    2, 8,  // max_field_number, fast_idx_mask
-    offsetof(decltype(_table_), field_lookup_table),
-    4294967292,  // skipmap
-    offsetof(decltype(_table_), field_entries),
-    2,  // num_field_entries
-    2,  // num_aux_entries
-    offsetof(decltype(_table_), aux_entries),
-    &_DCMPixDicomSeriesResponse_default_instance_._instance,
-    ::_pbi::TcParser::GenericFallback,  // fallback
-  }, {{
-    // .osirixgrpc.DicomSeries dicom_series = 2;
-    {::_pbi::TcParser::FastMtS1,
-     {18, 1, 1, PROTOBUF_FIELD_OFFSET(DCMPixDicomSeriesResponse, _impl_.dicom_series_)}},
-    // .osirixgrpc.Status status = 1;
-    {::_pbi::TcParser::FastMtS1,
-     {10, 0, 0, PROTOBUF_FIELD_OFFSET(DCMPixDicomSeriesResponse, _impl_.status_)}},
-  }}, {{
-    65535, 65535
-  }}, {{
-    // .osirixgrpc.Status status = 1;
-    {PROTOBUF_FIELD_OFFSET(DCMPixDicomSeriesResponse, _impl_.status_), _Internal::kHasBitsOffset + 0, 0,
-    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
-    // .osirixgrpc.DicomSeries dicom_series = 2;
-    {PROTOBUF_FIELD_OFFSET(DCMPixDicomSeriesResponse, _impl_.dicom_series_), _Internal::kHasBitsOffset + 1, 1,
-    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
-  }}, {{
-    {::_pbi::TcParser::GetTable<::osirixgrpc::Status>()},
-    {::_pbi::TcParser::GetTable<::osirixgrpc::DicomSeries>()},
-  }}, {{
-  }},
-};
 
 ::uint8_t* DCMPixDicomSeriesResponse::_InternalSerialize(
-    ::uint8_t* target,
-    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.DCMPixDicomSeriesResponse)
   ::uint32_t cached_has_bits = 0;
-  (void)cached_has_bits;
+  (void) cached_has_bits;
 
   cached_has_bits = _impl_._has_bits_[0];
   // .osirixgrpc.Status status = 1;
   if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-        1, _Internal::status(this),
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(1, _Internal::status(this),
         _Internal::status(this).GetCachedSize(), target, stream);
   }
 
   // .osirixgrpc.DicomSeries dicom_series = 2;
   if (cached_has_bits & 0x00000002u) {
-    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-        2, _Internal::dicom_series(this),
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(2, _Internal::dicom_series(this),
         _Internal::dicom_series(this).GetCachedSize(), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target =
-        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.DCMPixDicomSeriesResponse)
   return target;
@@ -2389,29 +2398,30 @@ const ::_pbi::TcParseTable<1, 2, 2, 0, 2> DCMPixDicomSeriesResponse::_table_ = {
   if (cached_has_bits & 0x00000003u) {
     // .osirixgrpc.Status status = 1;
     if (cached_has_bits & 0x00000001u) {
-      total_size +=
-          1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.status_);
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+          *_impl_.status_);
     }
 
     // .osirixgrpc.DicomSeries dicom_series = 2;
     if (cached_has_bits & 0x00000002u) {
-      total_size +=
-          1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.dicom_series_);
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+          *_impl_.dicom_series_);
     }
 
   }
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::google::protobuf::Message::ClassData DCMPixDicomSeriesResponse::_class_data_ = {
-    DCMPixDicomSeriesResponse::MergeImpl,
-    nullptr,  // OnDemandRegisterArenaDtor
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData DCMPixDicomSeriesResponse::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    DCMPixDicomSeriesResponse::MergeImpl
 };
-const ::google::protobuf::Message::ClassData* DCMPixDicomSeriesResponse::GetClassData() const {
-  return &_class_data_;
-}
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*DCMPixDicomSeriesResponse::GetClassData() const { return &_class_data_; }
 
-void DCMPixDicomSeriesResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+
+void DCMPixDicomSeriesResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
   auto* const _this = static_cast<DCMPixDicomSeriesResponse*>(&to_msg);
   auto& from = static_cast<const DCMPixDicomSeriesResponse&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.DCMPixDicomSeriesResponse)
@@ -2430,7 +2440,7 @@ void DCMPixDicomSeriesResponse::MergeImpl(::google::protobuf::Message& to_msg, c
           from._internal_dicom_series());
     }
   }
-  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void DCMPixDicomSeriesResponse::CopyFrom(const DCMPixDicomSeriesResponse& from) {
@@ -2440,18 +2450,15 @@ void DCMPixDicomSeriesResponse::CopyFrom(const DCMPixDicomSeriesResponse& from) 
   MergeFrom(from);
 }
 
-PROTOBUF_NOINLINE bool DCMPixDicomSeriesResponse::IsInitialized() const {
+bool DCMPixDicomSeriesResponse::IsInitialized() const {
   return true;
 }
 
-::_pbi::CachedSize* DCMPixDicomSeriesResponse::AccessCachedSize() const {
-  return &_impl_._cached_size_;
-}
-void DCMPixDicomSeriesResponse::InternalSwap(DCMPixDicomSeriesResponse* PROTOBUF_RESTRICT other) {
+void DCMPixDicomSeriesResponse::InternalSwap(DCMPixDicomSeriesResponse* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::google::protobuf::internal::memswap<
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
       PROTOBUF_FIELD_OFFSET(DCMPixDicomSeriesResponse, _impl_.dicom_series_)
       + sizeof(DCMPixDicomSeriesResponse::_impl_.dicom_series_)
       - PROTOBUF_FIELD_OFFSET(DCMPixDicomSeriesResponse, _impl_.status_)>(
@@ -2459,7 +2466,7 @@ void DCMPixDicomSeriesResponse::InternalSwap(DCMPixDicomSeriesResponse* PROTOBUF
           reinterpret_cast<char*>(&other->_impl_.status_));
 }
 
-::google::protobuf::Metadata DCMPixDicomSeriesResponse::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata DCMPixDicomSeriesResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_dcmpix_2eproto_getter, &descriptor_table_dcmpix_2eproto_once,
       file_level_metadata_dcmpix_2eproto[4]);
@@ -2481,81 +2488,77 @@ class DCMPixDicomStudyResponse::_Internal {
   }
 };
 
-const ::osirixgrpc::Status& DCMPixDicomStudyResponse::_Internal::status(const DCMPixDicomStudyResponse* msg) {
+const ::osirixgrpc::Status&
+DCMPixDicomStudyResponse::_Internal::status(const DCMPixDicomStudyResponse* msg) {
   return *msg->_impl_.status_;
 }
-const ::osirixgrpc::DicomStudy& DCMPixDicomStudyResponse::_Internal::dicom_study(const DCMPixDicomStudyResponse* msg) {
+const ::osirixgrpc::DicomStudy&
+DCMPixDicomStudyResponse::_Internal::dicom_study(const DCMPixDicomStudyResponse* msg) {
   return *msg->_impl_.dicom_study_;
 }
 void DCMPixDicomStudyResponse::clear_status() {
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   if (_impl_.status_ != nullptr) _impl_.status_->Clear();
   _impl_._has_bits_[0] &= ~0x00000001u;
 }
 void DCMPixDicomStudyResponse::clear_dicom_study() {
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   if (_impl_.dicom_study_ != nullptr) _impl_.dicom_study_->Clear();
   _impl_._has_bits_[0] &= ~0x00000002u;
 }
-DCMPixDicomStudyResponse::DCMPixDicomStudyResponse(::google::protobuf::Arena* arena)
-    : ::google::protobuf::Message(arena) {
+DCMPixDicomStudyResponse::DCMPixDicomStudyResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.DCMPixDicomStudyResponse)
 }
-inline PROTOBUF_NDEBUG_INLINE DCMPixDicomStudyResponse::Impl_::Impl_(
-    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
-    const Impl_& from)
-      : _has_bits_{from._has_bits_},
-        _cached_size_{0} {}
+DCMPixDicomStudyResponse::DCMPixDicomStudyResponse(const DCMPixDicomStudyResponse& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  DCMPixDicomStudyResponse* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.status_){nullptr}
+    , decltype(_impl_.dicom_study_){nullptr}};
 
-DCMPixDicomStudyResponse::DCMPixDicomStudyResponse(
-    ::google::protobuf::Arena* arena,
-    const DCMPixDicomStudyResponse& from)
-    : ::google::protobuf::Message(arena) {
-  DCMPixDicomStudyResponse* const _this = this;
-  (void)_this;
-  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
-      from._internal_metadata_);
-  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
-  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
-  _impl_.status_ = (cached_has_bits & 0x00000001u)
-                ? CreateMaybeMessage<::osirixgrpc::Status>(arena, *from._impl_.status_)
-                : nullptr;
-  _impl_.dicom_study_ = (cached_has_bits & 0x00000002u)
-                ? CreateMaybeMessage<::osirixgrpc::DicomStudy>(arena, *from._impl_.dicom_study_)
-                : nullptr;
-
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_impl_.status_ = new ::osirixgrpc::Status(*from._impl_.status_);
+  }
+  if ((from._impl_._has_bits_[0] & 0x00000002u) != 0) {
+    _this->_impl_.dicom_study_ = new ::osirixgrpc::DicomStudy(*from._impl_.dicom_study_);
+  }
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.DCMPixDicomStudyResponse)
 }
-inline PROTOBUF_NDEBUG_INLINE DCMPixDicomStudyResponse::Impl_::Impl_(
-    ::google::protobuf::internal::InternalVisibility visibility,
-    ::google::protobuf::Arena* arena)
-      : _cached_size_{0} {}
 
 inline void DCMPixDicomStudyResponse::SharedCtor(::_pb::Arena* arena) {
-  new (&_impl_) Impl_(internal_visibility(), arena);
-  ::memset(reinterpret_cast<char *>(&_impl_) +
-               offsetof(Impl_, status_),
-           0,
-           offsetof(Impl_, dicom_study_) -
-               offsetof(Impl_, status_) +
-               sizeof(Impl_::dicom_study_));
-}
-DCMPixDicomStudyResponse::~DCMPixDicomStudyResponse() {
-  // @@protoc_insertion_point(destructor:osirixgrpc.DCMPixDicomStudyResponse)
-  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
-  SharedDtor();
-}
-inline void DCMPixDicomStudyResponse::SharedDtor() {
-  ABSL_DCHECK(GetArena() == nullptr);
-  delete _impl_.status_;
-  delete _impl_.dicom_study_;
-  _impl_.~Impl_();
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.status_){nullptr}
+    , decltype(_impl_.dicom_study_){nullptr}
+  };
 }
 
-PROTOBUF_NOINLINE void DCMPixDicomStudyResponse::Clear() {
+DCMPixDicomStudyResponse::~DCMPixDicomStudyResponse() {
+  // @@protoc_insertion_point(destructor:osirixgrpc.DCMPixDicomStudyResponse)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void DCMPixDicomStudyResponse::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  if (this != internal_default_instance()) delete _impl_.status_;
+  if (this != internal_default_instance()) delete _impl_.dicom_study_;
+}
+
+void DCMPixDicomStudyResponse::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void DCMPixDicomStudyResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.DCMPixDicomStudyResponse)
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -2572,79 +2575,82 @@ PROTOBUF_NOINLINE void DCMPixDicomStudyResponse::Clear() {
     }
   }
   _impl_._has_bits_.Clear();
-  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* DCMPixDicomStudyResponse::_InternalParse(
-    const char* ptr, ::_pbi::ParseContext* ctx) {
-  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+const char* DCMPixDicomStudyResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
+  while (!ctx->Done(&ptr)) {
+    ::uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // .osirixgrpc.Status status = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
+          ptr = ctx->ParseMessage(_internal_mutable_status(), ptr);
+          CHK_(ptr);
+        } else {
+          goto handle_unusual;
+        }
+        continue;
+      // .osirixgrpc.DicomStudy dicom_study = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 18)) {
+          ptr = ctx->ParseMessage(_internal_mutable_dicom_study(), ptr);
+          CHK_(ptr);
+        } else {
+          goto handle_unusual;
+        }
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
 }
-
-
-PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<1, 2, 2, 0, 2> DCMPixDicomStudyResponse::_table_ = {
-  {
-    PROTOBUF_FIELD_OFFSET(DCMPixDicomStudyResponse, _impl_._has_bits_),
-    0, // no _extensions_
-    2, 8,  // max_field_number, fast_idx_mask
-    offsetof(decltype(_table_), field_lookup_table),
-    4294967292,  // skipmap
-    offsetof(decltype(_table_), field_entries),
-    2,  // num_field_entries
-    2,  // num_aux_entries
-    offsetof(decltype(_table_), aux_entries),
-    &_DCMPixDicomStudyResponse_default_instance_._instance,
-    ::_pbi::TcParser::GenericFallback,  // fallback
-  }, {{
-    // .osirixgrpc.DicomStudy dicom_study = 2;
-    {::_pbi::TcParser::FastMtS1,
-     {18, 1, 1, PROTOBUF_FIELD_OFFSET(DCMPixDicomStudyResponse, _impl_.dicom_study_)}},
-    // .osirixgrpc.Status status = 1;
-    {::_pbi::TcParser::FastMtS1,
-     {10, 0, 0, PROTOBUF_FIELD_OFFSET(DCMPixDicomStudyResponse, _impl_.status_)}},
-  }}, {{
-    65535, 65535
-  }}, {{
-    // .osirixgrpc.Status status = 1;
-    {PROTOBUF_FIELD_OFFSET(DCMPixDicomStudyResponse, _impl_.status_), _Internal::kHasBitsOffset + 0, 0,
-    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
-    // .osirixgrpc.DicomStudy dicom_study = 2;
-    {PROTOBUF_FIELD_OFFSET(DCMPixDicomStudyResponse, _impl_.dicom_study_), _Internal::kHasBitsOffset + 1, 1,
-    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
-  }}, {{
-    {::_pbi::TcParser::GetTable<::osirixgrpc::Status>()},
-    {::_pbi::TcParser::GetTable<::osirixgrpc::DicomStudy>()},
-  }}, {{
-  }},
-};
 
 ::uint8_t* DCMPixDicomStudyResponse::_InternalSerialize(
-    ::uint8_t* target,
-    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.DCMPixDicomStudyResponse)
   ::uint32_t cached_has_bits = 0;
-  (void)cached_has_bits;
+  (void) cached_has_bits;
 
   cached_has_bits = _impl_._has_bits_[0];
   // .osirixgrpc.Status status = 1;
   if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-        1, _Internal::status(this),
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(1, _Internal::status(this),
         _Internal::status(this).GetCachedSize(), target, stream);
   }
 
   // .osirixgrpc.DicomStudy dicom_study = 2;
   if (cached_has_bits & 0x00000002u) {
-    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-        2, _Internal::dicom_study(this),
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(2, _Internal::dicom_study(this),
         _Internal::dicom_study(this).GetCachedSize(), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target =
-        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.DCMPixDicomStudyResponse)
   return target;
@@ -2662,29 +2668,30 @@ const ::_pbi::TcParseTable<1, 2, 2, 0, 2> DCMPixDicomStudyResponse::_table_ = {
   if (cached_has_bits & 0x00000003u) {
     // .osirixgrpc.Status status = 1;
     if (cached_has_bits & 0x00000001u) {
-      total_size +=
-          1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.status_);
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+          *_impl_.status_);
     }
 
     // .osirixgrpc.DicomStudy dicom_study = 2;
     if (cached_has_bits & 0x00000002u) {
-      total_size +=
-          1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.dicom_study_);
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+          *_impl_.dicom_study_);
     }
 
   }
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::google::protobuf::Message::ClassData DCMPixDicomStudyResponse::_class_data_ = {
-    DCMPixDicomStudyResponse::MergeImpl,
-    nullptr,  // OnDemandRegisterArenaDtor
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData DCMPixDicomStudyResponse::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    DCMPixDicomStudyResponse::MergeImpl
 };
-const ::google::protobuf::Message::ClassData* DCMPixDicomStudyResponse::GetClassData() const {
-  return &_class_data_;
-}
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*DCMPixDicomStudyResponse::GetClassData() const { return &_class_data_; }
 
-void DCMPixDicomStudyResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+
+void DCMPixDicomStudyResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
   auto* const _this = static_cast<DCMPixDicomStudyResponse*>(&to_msg);
   auto& from = static_cast<const DCMPixDicomStudyResponse&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.DCMPixDicomStudyResponse)
@@ -2703,7 +2710,7 @@ void DCMPixDicomStudyResponse::MergeImpl(::google::protobuf::Message& to_msg, co
           from._internal_dicom_study());
     }
   }
-  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void DCMPixDicomStudyResponse::CopyFrom(const DCMPixDicomStudyResponse& from) {
@@ -2713,18 +2720,15 @@ void DCMPixDicomStudyResponse::CopyFrom(const DCMPixDicomStudyResponse& from) {
   MergeFrom(from);
 }
 
-PROTOBUF_NOINLINE bool DCMPixDicomStudyResponse::IsInitialized() const {
+bool DCMPixDicomStudyResponse::IsInitialized() const {
   return true;
 }
 
-::_pbi::CachedSize* DCMPixDicomStudyResponse::AccessCachedSize() const {
-  return &_impl_._cached_size_;
-}
-void DCMPixDicomStudyResponse::InternalSwap(DCMPixDicomStudyResponse* PROTOBUF_RESTRICT other) {
+void DCMPixDicomStudyResponse::InternalSwap(DCMPixDicomStudyResponse* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::google::protobuf::internal::memswap<
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
       PROTOBUF_FIELD_OFFSET(DCMPixDicomStudyResponse, _impl_.dicom_study_)
       + sizeof(DCMPixDicomStudyResponse::_impl_.dicom_study_)
       - PROTOBUF_FIELD_OFFSET(DCMPixDicomStudyResponse, _impl_.status_)>(
@@ -2732,7 +2736,7 @@ void DCMPixDicomStudyResponse::InternalSwap(DCMPixDicomStudyResponse* PROTOBUF_R
           reinterpret_cast<char*>(&other->_impl_.status_));
 }
 
-::google::protobuf::Metadata DCMPixDicomStudyResponse::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata DCMPixDicomStudyResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_dcmpix_2eproto_getter, &descriptor_table_dcmpix_2eproto_once,
       file_level_metadata_dcmpix_2eproto[5]);
@@ -2750,88 +2754,96 @@ class DCMPixImageResponse::_Internal {
   }
 };
 
-const ::osirixgrpc::Status& DCMPixImageResponse::_Internal::status(const DCMPixImageResponse* msg) {
+const ::osirixgrpc::Status&
+DCMPixImageResponse::_Internal::status(const DCMPixImageResponse* msg) {
   return *msg->_impl_.status_;
 }
 void DCMPixImageResponse::clear_status() {
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   if (_impl_.status_ != nullptr) _impl_.status_->Clear();
   _impl_._has_bits_[0] &= ~0x00000001u;
 }
-DCMPixImageResponse::DCMPixImageResponse(::google::protobuf::Arena* arena)
-    : ::google::protobuf::Message(arena) {
+DCMPixImageResponse::DCMPixImageResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.DCMPixImageResponse)
 }
-inline PROTOBUF_NDEBUG_INLINE DCMPixImageResponse::Impl_::Impl_(
-    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
-    const Impl_& from)
-      : _has_bits_{from._has_bits_},
-        _cached_size_{0},
-        image_data_float_{visibility, arena, from.image_data_float_},
-        image_data_argb_{visibility, arena, from.image_data_argb_},
-        _image_data_argb_cached_byte_size_{0} {}
+DCMPixImageResponse::DCMPixImageResponse(const DCMPixImageResponse& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  DCMPixImageResponse* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.image_data_float_) { from._impl_.image_data_float_ }
 
-DCMPixImageResponse::DCMPixImageResponse(
-    ::google::protobuf::Arena* arena,
-    const DCMPixImageResponse& from)
-    : ::google::protobuf::Message(arena) {
-  DCMPixImageResponse* const _this = this;
-  (void)_this;
-  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
-      from._internal_metadata_);
-  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
-  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
-  _impl_.status_ = (cached_has_bits & 0x00000001u)
-                ? CreateMaybeMessage<::osirixgrpc::Status>(arena, *from._impl_.status_)
-                : nullptr;
-  ::memcpy(reinterpret_cast<char *>(&_impl_) +
-               offsetof(Impl_, rows_),
-           reinterpret_cast<const char *>(&from._impl_) +
-               offsetof(Impl_, rows_),
-           offsetof(Impl_, is_argb_) -
-               offsetof(Impl_, rows_) +
-               sizeof(Impl_::is_argb_));
+    , decltype(_impl_.image_data_argb_) { from._impl_.image_data_argb_ }
+    ,/* _impl_._image_data_argb_cached_byte_size_ = */ { 0 }
 
+    , decltype(_impl_.status_){nullptr}
+    , decltype(_impl_.rows_) {}
+
+    , decltype(_impl_.columns_) {}
+
+    , decltype(_impl_.is_argb_) {}
+  };
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_impl_.status_ = new ::osirixgrpc::Status(*from._impl_.status_);
+  }
+  ::memcpy(&_impl_.rows_, &from._impl_.rows_,
+    static_cast<::size_t>(reinterpret_cast<char*>(&_impl_.is_argb_) -
+    reinterpret_cast<char*>(&_impl_.rows_)) + sizeof(_impl_.is_argb_));
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.DCMPixImageResponse)
 }
-inline PROTOBUF_NDEBUG_INLINE DCMPixImageResponse::Impl_::Impl_(
-    ::google::protobuf::internal::InternalVisibility visibility,
-    ::google::protobuf::Arena* arena)
-      : _cached_size_{0},
-        image_data_float_{visibility, arena},
-        image_data_argb_{visibility, arena},
-        _image_data_argb_cached_byte_size_{0} {}
 
 inline void DCMPixImageResponse::SharedCtor(::_pb::Arena* arena) {
-  new (&_impl_) Impl_(internal_visibility(), arena);
-  ::memset(reinterpret_cast<char *>(&_impl_) +
-               offsetof(Impl_, status_),
-           0,
-           offsetof(Impl_, is_argb_) -
-               offsetof(Impl_, status_) +
-               sizeof(Impl_::is_argb_));
-}
-DCMPixImageResponse::~DCMPixImageResponse() {
-  // @@protoc_insertion_point(destructor:osirixgrpc.DCMPixImageResponse)
-  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
-  SharedDtor();
-}
-inline void DCMPixImageResponse::SharedDtor() {
-  ABSL_DCHECK(GetArena() == nullptr);
-  delete _impl_.status_;
-  _impl_.~Impl_();
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.image_data_float_) { arena }
+
+    , decltype(_impl_.image_data_argb_) { arena }
+    ,/* _impl_._image_data_argb_cached_byte_size_ = */ { 0 }
+
+    , decltype(_impl_.status_){nullptr}
+    , decltype(_impl_.rows_) { 0 }
+
+    , decltype(_impl_.columns_) { 0 }
+
+    , decltype(_impl_.is_argb_) { false }
+
+  };
 }
 
-PROTOBUF_NOINLINE void DCMPixImageResponse::Clear() {
+DCMPixImageResponse::~DCMPixImageResponse() {
+  // @@protoc_insertion_point(destructor:osirixgrpc.DCMPixImageResponse)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void DCMPixImageResponse::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.image_data_float_.~RepeatedField();
+  _impl_.image_data_argb_.~RepeatedField();
+  if (this != internal_default_instance()) delete _impl_.status_;
+}
+
+void DCMPixImageResponse::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void DCMPixImageResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.DCMPixImageResponse)
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _impl_.image_data_float_.Clear();
-  _impl_.image_data_argb_.Clear();
+  _internal_mutable_image_data_float()->Clear();
+  _internal_mutable_image_data_argb()->Clear();
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
     ABSL_DCHECK(_impl_.status_ != nullptr);
@@ -2841,105 +2853,126 @@ PROTOBUF_NOINLINE void DCMPixImageResponse::Clear() {
       reinterpret_cast<char*>(&_impl_.is_argb_) -
       reinterpret_cast<char*>(&_impl_.rows_)) + sizeof(_impl_.is_argb_));
   _impl_._has_bits_.Clear();
-  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* DCMPixImageResponse::_InternalParse(
-    const char* ptr, ::_pbi::ParseContext* ctx) {
-  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+const char* DCMPixImageResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
+  while (!ctx->Done(&ptr)) {
+    ::uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // .osirixgrpc.Status status = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
+          ptr = ctx->ParseMessage(_internal_mutable_status(), ptr);
+          CHK_(ptr);
+        } else {
+          goto handle_unusual;
+        }
+        continue;
+      // int32 rows = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 16)) {
+          _impl_.rows_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else {
+          goto handle_unusual;
+        }
+        continue;
+      // int32 columns = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 24)) {
+          _impl_.columns_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else {
+          goto handle_unusual;
+        }
+        continue;
+      // bool is_argb = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 32)) {
+          _impl_.is_argb_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else {
+          goto handle_unusual;
+        }
+        continue;
+      // repeated float image_data_float = 5;
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 42)) {
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedFloatParser(_internal_mutable_image_data_float(), ptr, ctx);
+          CHK_(ptr);
+        } else if (static_cast<::uint8_t>(tag) == 45) {
+          _internal_add_image_data_float(::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr));
+          ptr += sizeof(float);
+        } else {
+          goto handle_unusual;
+        }
+        continue;
+      // repeated int32 image_data_argb = 6;
+      case 6:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 50)) {
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedInt32Parser(_internal_mutable_image_data_argb(), ptr, ctx);
+          CHK_(ptr);
+        } else if (static_cast<::uint8_t>(tag) == 48) {
+          _internal_add_image_data_argb(::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr));
+          CHK_(ptr);
+        } else {
+          goto handle_unusual;
+        }
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
 }
-
-
-PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<3, 6, 1, 0, 2> DCMPixImageResponse::_table_ = {
-  {
-    PROTOBUF_FIELD_OFFSET(DCMPixImageResponse, _impl_._has_bits_),
-    0, // no _extensions_
-    6, 56,  // max_field_number, fast_idx_mask
-    offsetof(decltype(_table_), field_lookup_table),
-    4294967232,  // skipmap
-    offsetof(decltype(_table_), field_entries),
-    6,  // num_field_entries
-    1,  // num_aux_entries
-    offsetof(decltype(_table_), aux_entries),
-    &_DCMPixImageResponse_default_instance_._instance,
-    ::_pbi::TcParser::GenericFallback,  // fallback
-  }, {{
-    {::_pbi::TcParser::MiniParse, {}},
-    // .osirixgrpc.Status status = 1;
-    {::_pbi::TcParser::FastMtS1,
-     {10, 0, 0, PROTOBUF_FIELD_OFFSET(DCMPixImageResponse, _impl_.status_)}},
-    // int32 rows = 2;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(DCMPixImageResponse, _impl_.rows_), 63>(),
-     {16, 63, 0, PROTOBUF_FIELD_OFFSET(DCMPixImageResponse, _impl_.rows_)}},
-    // int32 columns = 3;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(DCMPixImageResponse, _impl_.columns_), 63>(),
-     {24, 63, 0, PROTOBUF_FIELD_OFFSET(DCMPixImageResponse, _impl_.columns_)}},
-    // bool is_argb = 4;
-    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(DCMPixImageResponse, _impl_.is_argb_), 63>(),
-     {32, 63, 0, PROTOBUF_FIELD_OFFSET(DCMPixImageResponse, _impl_.is_argb_)}},
-    // repeated float image_data_float = 5;
-    {::_pbi::TcParser::FastF32P1,
-     {42, 63, 0, PROTOBUF_FIELD_OFFSET(DCMPixImageResponse, _impl_.image_data_float_)}},
-    // repeated int32 image_data_argb = 6;
-    {::_pbi::TcParser::FastV32P1,
-     {50, 63, 0, PROTOBUF_FIELD_OFFSET(DCMPixImageResponse, _impl_.image_data_argb_)}},
-    {::_pbi::TcParser::MiniParse, {}},
-  }}, {{
-    65535, 65535
-  }}, {{
-    // .osirixgrpc.Status status = 1;
-    {PROTOBUF_FIELD_OFFSET(DCMPixImageResponse, _impl_.status_), _Internal::kHasBitsOffset + 0, 0,
-    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
-    // int32 rows = 2;
-    {PROTOBUF_FIELD_OFFSET(DCMPixImageResponse, _impl_.rows_), -1, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kInt32)},
-    // int32 columns = 3;
-    {PROTOBUF_FIELD_OFFSET(DCMPixImageResponse, _impl_.columns_), -1, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kInt32)},
-    // bool is_argb = 4;
-    {PROTOBUF_FIELD_OFFSET(DCMPixImageResponse, _impl_.is_argb_), -1, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kBool)},
-    // repeated float image_data_float = 5;
-    {PROTOBUF_FIELD_OFFSET(DCMPixImageResponse, _impl_.image_data_float_), -1, 0,
-    (0 | ::_fl::kFcRepeated | ::_fl::kPackedFloat)},
-    // repeated int32 image_data_argb = 6;
-    {PROTOBUF_FIELD_OFFSET(DCMPixImageResponse, _impl_.image_data_argb_), -1, 0,
-    (0 | ::_fl::kFcRepeated | ::_fl::kPackedInt32)},
-  }}, {{
-    {::_pbi::TcParser::GetTable<::osirixgrpc::Status>()},
-  }}, {{
-  }},
-};
 
 ::uint8_t* DCMPixImageResponse::_InternalSerialize(
-    ::uint8_t* target,
-    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.DCMPixImageResponse)
   ::uint32_t cached_has_bits = 0;
-  (void)cached_has_bits;
+  (void) cached_has_bits;
 
   cached_has_bits = _impl_._has_bits_[0];
   // .osirixgrpc.Status status = 1;
   if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-        1, _Internal::status(this),
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(1, _Internal::status(this),
         _Internal::status(this).GetCachedSize(), target, stream);
   }
 
   // int32 rows = 2;
   if (this->_internal_rows() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::
-        WriteInt32ToArrayWithField<2>(
-            stream, this->_internal_rows(), target);
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteInt32ToArray(
+        2, this->_internal_rows(), target);
   }
 
   // int32 columns = 3;
   if (this->_internal_columns() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::
-        WriteInt32ToArrayWithField<3>(
-            stream, this->_internal_columns(), target);
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteInt32ToArray(
+        3, this->_internal_columns(), target);
   }
 
   // bool is_argb = 4;
@@ -2958,15 +2991,14 @@ const ::_pbi::TcParseTable<3, 6, 1, 0, 2> DCMPixImageResponse::_table_ = {
   {
     int byte_size = _impl_._image_data_argb_cached_byte_size_.Get();
     if (byte_size > 0) {
-      target = stream->WriteInt32Packed(
-          6, _internal_image_data_argb(), byte_size, target);
+      target = stream->WriteInt32Packed(6, _internal_image_data_argb(),
+                                                 byte_size, target);
     }
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target =
-        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.DCMPixImageResponse)
   return target;
@@ -2992,6 +3024,7 @@ const ::_pbi::TcParseTable<3, 6, 1, 0, 2> DCMPixImageResponse::_table_ = {
     ;
     total_size += tag_size + data_size;
   }
+
   // repeated int32 image_data_argb = 6;
   {
     std::size_t data_size = ::_pbi::WireFormatLite::Int32Size(
@@ -3005,11 +3038,13 @@ const ::_pbi::TcParseTable<3, 6, 1, 0, 2> DCMPixImageResponse::_table_ = {
     ;
     total_size += tag_size + data_size;
   }
+
   // .osirixgrpc.Status status = 1;
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
-    total_size +=
-        1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.status_);
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *_impl_.status_);
   }
 
   // int32 rows = 2;
@@ -3032,15 +3067,14 @@ const ::_pbi::TcParseTable<3, 6, 1, 0, 2> DCMPixImageResponse::_table_ = {
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::google::protobuf::Message::ClassData DCMPixImageResponse::_class_data_ = {
-    DCMPixImageResponse::MergeImpl,
-    nullptr,  // OnDemandRegisterArenaDtor
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData DCMPixImageResponse::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    DCMPixImageResponse::MergeImpl
 };
-const ::google::protobuf::Message::ClassData* DCMPixImageResponse::GetClassData() const {
-  return &_class_data_;
-}
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*DCMPixImageResponse::GetClassData() const { return &_class_data_; }
 
-void DCMPixImageResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+
+void DCMPixImageResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
   auto* const _this = static_cast<DCMPixImageResponse*>(&to_msg);
   auto& from = static_cast<const DCMPixImageResponse&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.DCMPixImageResponse)
@@ -3048,8 +3082,8 @@ void DCMPixImageResponse::MergeImpl(::google::protobuf::Message& to_msg, const :
   ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  _this->_internal_mutable_image_data_float()->MergeFrom(from._internal_image_data_float());
-  _this->_internal_mutable_image_data_argb()->MergeFrom(from._internal_image_data_argb());
+  _this->_impl_.image_data_float_.MergeFrom(from._impl_.image_data_float_);
+  _this->_impl_.image_data_argb_.MergeFrom(from._impl_.image_data_argb_);
   if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
     _this->_internal_mutable_status()->::osirixgrpc::Status::MergeFrom(
         from._internal_status());
@@ -3063,7 +3097,7 @@ void DCMPixImageResponse::MergeImpl(::google::protobuf::Message& to_msg, const :
   if (from._internal_is_argb() != 0) {
     _this->_internal_set_is_argb(from._internal_is_argb());
   }
-  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void DCMPixImageResponse::CopyFrom(const DCMPixImageResponse& from) {
@@ -3073,20 +3107,17 @@ void DCMPixImageResponse::CopyFrom(const DCMPixImageResponse& from) {
   MergeFrom(from);
 }
 
-PROTOBUF_NOINLINE bool DCMPixImageResponse::IsInitialized() const {
+bool DCMPixImageResponse::IsInitialized() const {
   return true;
 }
 
-::_pbi::CachedSize* DCMPixImageResponse::AccessCachedSize() const {
-  return &_impl_._cached_size_;
-}
-void DCMPixImageResponse::InternalSwap(DCMPixImageResponse* PROTOBUF_RESTRICT other) {
+void DCMPixImageResponse::InternalSwap(DCMPixImageResponse* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   _impl_.image_data_float_.InternalSwap(&other->_impl_.image_data_float_);
   _impl_.image_data_argb_.InternalSwap(&other->_impl_.image_data_argb_);
-  ::google::protobuf::internal::memswap<
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
       PROTOBUF_FIELD_OFFSET(DCMPixImageResponse, _impl_.is_argb_)
       + sizeof(DCMPixImageResponse::_impl_.is_argb_)
       - PROTOBUF_FIELD_OFFSET(DCMPixImageResponse, _impl_.status_)>(
@@ -3094,7 +3125,7 @@ void DCMPixImageResponse::InternalSwap(DCMPixImageResponse* PROTOBUF_RESTRICT ot
           reinterpret_cast<char*>(&other->_impl_.status_));
 }
 
-::google::protobuf::Metadata DCMPixImageResponse::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata DCMPixImageResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_dcmpix_2eproto_getter, &descriptor_table_dcmpix_2eproto_once,
       file_level_metadata_dcmpix_2eproto[6]);
@@ -3112,83 +3143,84 @@ class DCMPixGetMapFromROIResponse::_Internal {
   }
 };
 
-const ::osirixgrpc::Status& DCMPixGetMapFromROIResponse::_Internal::status(const DCMPixGetMapFromROIResponse* msg) {
+const ::osirixgrpc::Status&
+DCMPixGetMapFromROIResponse::_Internal::status(const DCMPixGetMapFromROIResponse* msg) {
   return *msg->_impl_.status_;
 }
 void DCMPixGetMapFromROIResponse::clear_status() {
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   if (_impl_.status_ != nullptr) _impl_.status_->Clear();
   _impl_._has_bits_[0] &= ~0x00000001u;
 }
-DCMPixGetMapFromROIResponse::DCMPixGetMapFromROIResponse(::google::protobuf::Arena* arena)
-    : ::google::protobuf::Message(arena) {
+DCMPixGetMapFromROIResponse::DCMPixGetMapFromROIResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.DCMPixGetMapFromROIResponse)
 }
-inline PROTOBUF_NDEBUG_INLINE DCMPixGetMapFromROIResponse::Impl_::Impl_(
-    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
-    const Impl_& from)
-      : _has_bits_{from._has_bits_},
-        _cached_size_{0},
-        map_{visibility, arena, from.map_} {}
+DCMPixGetMapFromROIResponse::DCMPixGetMapFromROIResponse(const DCMPixGetMapFromROIResponse& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  DCMPixGetMapFromROIResponse* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.map_) { from._impl_.map_ }
 
-DCMPixGetMapFromROIResponse::DCMPixGetMapFromROIResponse(
-    ::google::protobuf::Arena* arena,
-    const DCMPixGetMapFromROIResponse& from)
-    : ::google::protobuf::Message(arena) {
-  DCMPixGetMapFromROIResponse* const _this = this;
-  (void)_this;
-  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
-      from._internal_metadata_);
-  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
-  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
-  _impl_.status_ = (cached_has_bits & 0x00000001u)
-                ? CreateMaybeMessage<::osirixgrpc::Status>(arena, *from._impl_.status_)
-                : nullptr;
-  ::memcpy(reinterpret_cast<char *>(&_impl_) +
-               offsetof(Impl_, rows_),
-           reinterpret_cast<const char *>(&from._impl_) +
-               offsetof(Impl_, rows_),
-           offsetof(Impl_, columns_) -
-               offsetof(Impl_, rows_) +
-               sizeof(Impl_::columns_));
+    , decltype(_impl_.status_){nullptr}
+    , decltype(_impl_.rows_) {}
 
+    , decltype(_impl_.columns_) {}
+  };
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_impl_.status_ = new ::osirixgrpc::Status(*from._impl_.status_);
+  }
+  ::memcpy(&_impl_.rows_, &from._impl_.rows_,
+    static_cast<::size_t>(reinterpret_cast<char*>(&_impl_.columns_) -
+    reinterpret_cast<char*>(&_impl_.rows_)) + sizeof(_impl_.columns_));
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.DCMPixGetMapFromROIResponse)
 }
-inline PROTOBUF_NDEBUG_INLINE DCMPixGetMapFromROIResponse::Impl_::Impl_(
-    ::google::protobuf::internal::InternalVisibility visibility,
-    ::google::protobuf::Arena* arena)
-      : _cached_size_{0},
-        map_{visibility, arena} {}
 
 inline void DCMPixGetMapFromROIResponse::SharedCtor(::_pb::Arena* arena) {
-  new (&_impl_) Impl_(internal_visibility(), arena);
-  ::memset(reinterpret_cast<char *>(&_impl_) +
-               offsetof(Impl_, status_),
-           0,
-           offsetof(Impl_, columns_) -
-               offsetof(Impl_, status_) +
-               sizeof(Impl_::columns_));
-}
-DCMPixGetMapFromROIResponse::~DCMPixGetMapFromROIResponse() {
-  // @@protoc_insertion_point(destructor:osirixgrpc.DCMPixGetMapFromROIResponse)
-  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
-  SharedDtor();
-}
-inline void DCMPixGetMapFromROIResponse::SharedDtor() {
-  ABSL_DCHECK(GetArena() == nullptr);
-  delete _impl_.status_;
-  _impl_.~Impl_();
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.map_) { arena }
+
+    , decltype(_impl_.status_){nullptr}
+    , decltype(_impl_.rows_) { 0 }
+
+    , decltype(_impl_.columns_) { 0 }
+
+  };
 }
 
-PROTOBUF_NOINLINE void DCMPixGetMapFromROIResponse::Clear() {
+DCMPixGetMapFromROIResponse::~DCMPixGetMapFromROIResponse() {
+  // @@protoc_insertion_point(destructor:osirixgrpc.DCMPixGetMapFromROIResponse)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void DCMPixGetMapFromROIResponse::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.map_.~RepeatedField();
+  if (this != internal_default_instance()) delete _impl_.status_;
+}
+
+void DCMPixGetMapFromROIResponse::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void DCMPixGetMapFromROIResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.DCMPixGetMapFromROIResponse)
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _impl_.map_.Clear();
+  _internal_mutable_map()->Clear();
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
     ABSL_DCHECK(_impl_.status_ != nullptr);
@@ -3198,91 +3230,105 @@ PROTOBUF_NOINLINE void DCMPixGetMapFromROIResponse::Clear() {
       reinterpret_cast<char*>(&_impl_.columns_) -
       reinterpret_cast<char*>(&_impl_.rows_)) + sizeof(_impl_.columns_));
   _impl_._has_bits_.Clear();
-  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* DCMPixGetMapFromROIResponse::_InternalParse(
-    const char* ptr, ::_pbi::ParseContext* ctx) {
-  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+const char* DCMPixGetMapFromROIResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
+  while (!ctx->Done(&ptr)) {
+    ::uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // .osirixgrpc.Status status = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
+          ptr = ctx->ParseMessage(_internal_mutable_status(), ptr);
+          CHK_(ptr);
+        } else {
+          goto handle_unusual;
+        }
+        continue;
+      // int32 rows = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 16)) {
+          _impl_.rows_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else {
+          goto handle_unusual;
+        }
+        continue;
+      // int32 columns = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 24)) {
+          _impl_.columns_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else {
+          goto handle_unusual;
+        }
+        continue;
+      // repeated bool map = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 34)) {
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedBoolParser(_internal_mutable_map(), ptr, ctx);
+          CHK_(ptr);
+        } else if (static_cast<::uint8_t>(tag) == 32) {
+          _internal_add_map(::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr));
+          CHK_(ptr);
+        } else {
+          goto handle_unusual;
+        }
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
 }
-
-
-PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<2, 4, 1, 0, 2> DCMPixGetMapFromROIResponse::_table_ = {
-  {
-    PROTOBUF_FIELD_OFFSET(DCMPixGetMapFromROIResponse, _impl_._has_bits_),
-    0, // no _extensions_
-    4, 24,  // max_field_number, fast_idx_mask
-    offsetof(decltype(_table_), field_lookup_table),
-    4294967280,  // skipmap
-    offsetof(decltype(_table_), field_entries),
-    4,  // num_field_entries
-    1,  // num_aux_entries
-    offsetof(decltype(_table_), aux_entries),
-    &_DCMPixGetMapFromROIResponse_default_instance_._instance,
-    ::_pbi::TcParser::GenericFallback,  // fallback
-  }, {{
-    // repeated bool map = 4;
-    {::_pbi::TcParser::FastV8P1,
-     {34, 63, 0, PROTOBUF_FIELD_OFFSET(DCMPixGetMapFromROIResponse, _impl_.map_)}},
-    // .osirixgrpc.Status status = 1;
-    {::_pbi::TcParser::FastMtS1,
-     {10, 0, 0, PROTOBUF_FIELD_OFFSET(DCMPixGetMapFromROIResponse, _impl_.status_)}},
-    // int32 rows = 2;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(DCMPixGetMapFromROIResponse, _impl_.rows_), 63>(),
-     {16, 63, 0, PROTOBUF_FIELD_OFFSET(DCMPixGetMapFromROIResponse, _impl_.rows_)}},
-    // int32 columns = 3;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(DCMPixGetMapFromROIResponse, _impl_.columns_), 63>(),
-     {24, 63, 0, PROTOBUF_FIELD_OFFSET(DCMPixGetMapFromROIResponse, _impl_.columns_)}},
-  }}, {{
-    65535, 65535
-  }}, {{
-    // .osirixgrpc.Status status = 1;
-    {PROTOBUF_FIELD_OFFSET(DCMPixGetMapFromROIResponse, _impl_.status_), _Internal::kHasBitsOffset + 0, 0,
-    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
-    // int32 rows = 2;
-    {PROTOBUF_FIELD_OFFSET(DCMPixGetMapFromROIResponse, _impl_.rows_), -1, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kInt32)},
-    // int32 columns = 3;
-    {PROTOBUF_FIELD_OFFSET(DCMPixGetMapFromROIResponse, _impl_.columns_), -1, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kInt32)},
-    // repeated bool map = 4;
-    {PROTOBUF_FIELD_OFFSET(DCMPixGetMapFromROIResponse, _impl_.map_), -1, 0,
-    (0 | ::_fl::kFcRepeated | ::_fl::kPackedBool)},
-  }}, {{
-    {::_pbi::TcParser::GetTable<::osirixgrpc::Status>()},
-  }}, {{
-  }},
-};
 
 ::uint8_t* DCMPixGetMapFromROIResponse::_InternalSerialize(
-    ::uint8_t* target,
-    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.DCMPixGetMapFromROIResponse)
   ::uint32_t cached_has_bits = 0;
-  (void)cached_has_bits;
+  (void) cached_has_bits;
 
   cached_has_bits = _impl_._has_bits_[0];
   // .osirixgrpc.Status status = 1;
   if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-        1, _Internal::status(this),
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(1, _Internal::status(this),
         _Internal::status(this).GetCachedSize(), target, stream);
   }
 
   // int32 rows = 2;
   if (this->_internal_rows() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::
-        WriteInt32ToArrayWithField<2>(
-            stream, this->_internal_rows(), target);
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteInt32ToArray(
+        2, this->_internal_rows(), target);
   }
 
   // int32 columns = 3;
   if (this->_internal_columns() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::
-        WriteInt32ToArrayWithField<3>(
-            stream, this->_internal_columns(), target);
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteInt32ToArray(
+        3, this->_internal_columns(), target);
   }
 
   // repeated bool map = 4;
@@ -3291,9 +3337,8 @@ const ::_pbi::TcParseTable<2, 4, 1, 0, 2> DCMPixGetMapFromROIResponse::_table_ =
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target =
-        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.DCMPixGetMapFromROIResponse)
   return target;
@@ -3319,11 +3364,13 @@ const ::_pbi::TcParseTable<2, 4, 1, 0, 2> DCMPixGetMapFromROIResponse::_table_ =
     ;
     total_size += tag_size + data_size;
   }
+
   // .osirixgrpc.Status status = 1;
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
-    total_size +=
-        1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.status_);
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *_impl_.status_);
   }
 
   // int32 rows = 2;
@@ -3341,15 +3388,14 @@ const ::_pbi::TcParseTable<2, 4, 1, 0, 2> DCMPixGetMapFromROIResponse::_table_ =
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::google::protobuf::Message::ClassData DCMPixGetMapFromROIResponse::_class_data_ = {
-    DCMPixGetMapFromROIResponse::MergeImpl,
-    nullptr,  // OnDemandRegisterArenaDtor
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData DCMPixGetMapFromROIResponse::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    DCMPixGetMapFromROIResponse::MergeImpl
 };
-const ::google::protobuf::Message::ClassData* DCMPixGetMapFromROIResponse::GetClassData() const {
-  return &_class_data_;
-}
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*DCMPixGetMapFromROIResponse::GetClassData() const { return &_class_data_; }
 
-void DCMPixGetMapFromROIResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+
+void DCMPixGetMapFromROIResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
   auto* const _this = static_cast<DCMPixGetMapFromROIResponse*>(&to_msg);
   auto& from = static_cast<const DCMPixGetMapFromROIResponse&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.DCMPixGetMapFromROIResponse)
@@ -3357,7 +3403,7 @@ void DCMPixGetMapFromROIResponse::MergeImpl(::google::protobuf::Message& to_msg,
   ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  _this->_internal_mutable_map()->MergeFrom(from._internal_map());
+  _this->_impl_.map_.MergeFrom(from._impl_.map_);
   if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
     _this->_internal_mutable_status()->::osirixgrpc::Status::MergeFrom(
         from._internal_status());
@@ -3368,7 +3414,7 @@ void DCMPixGetMapFromROIResponse::MergeImpl(::google::protobuf::Message& to_msg,
   if (from._internal_columns() != 0) {
     _this->_internal_set_columns(from._internal_columns());
   }
-  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void DCMPixGetMapFromROIResponse::CopyFrom(const DCMPixGetMapFromROIResponse& from) {
@@ -3378,19 +3424,16 @@ void DCMPixGetMapFromROIResponse::CopyFrom(const DCMPixGetMapFromROIResponse& fr
   MergeFrom(from);
 }
 
-PROTOBUF_NOINLINE bool DCMPixGetMapFromROIResponse::IsInitialized() const {
+bool DCMPixGetMapFromROIResponse::IsInitialized() const {
   return true;
 }
 
-::_pbi::CachedSize* DCMPixGetMapFromROIResponse::AccessCachedSize() const {
-  return &_impl_._cached_size_;
-}
-void DCMPixGetMapFromROIResponse::InternalSwap(DCMPixGetMapFromROIResponse* PROTOBUF_RESTRICT other) {
+void DCMPixGetMapFromROIResponse::InternalSwap(DCMPixGetMapFromROIResponse* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   _impl_.map_.InternalSwap(&other->_impl_.map_);
-  ::google::protobuf::internal::memswap<
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
       PROTOBUF_FIELD_OFFSET(DCMPixGetMapFromROIResponse, _impl_.columns_)
       + sizeof(DCMPixGetMapFromROIResponse::_impl_.columns_)
       - PROTOBUF_FIELD_OFFSET(DCMPixGetMapFromROIResponse, _impl_.status_)>(
@@ -3398,7 +3441,7 @@ void DCMPixGetMapFromROIResponse::InternalSwap(DCMPixGetMapFromROIResponse* PROT
           reinterpret_cast<char*>(&other->_impl_.status_));
 }
 
-::google::protobuf::Metadata DCMPixGetMapFromROIResponse::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata DCMPixGetMapFromROIResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_dcmpix_2eproto_getter, &descriptor_table_dcmpix_2eproto_once,
       file_level_metadata_dcmpix_2eproto[7]);
@@ -3416,76 +3459,74 @@ class DCMPixShapeResponse::_Internal {
   }
 };
 
-const ::osirixgrpc::Status& DCMPixShapeResponse::_Internal::status(const DCMPixShapeResponse* msg) {
+const ::osirixgrpc::Status&
+DCMPixShapeResponse::_Internal::status(const DCMPixShapeResponse* msg) {
   return *msg->_impl_.status_;
 }
 void DCMPixShapeResponse::clear_status() {
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   if (_impl_.status_ != nullptr) _impl_.status_->Clear();
   _impl_._has_bits_[0] &= ~0x00000001u;
 }
-DCMPixShapeResponse::DCMPixShapeResponse(::google::protobuf::Arena* arena)
-    : ::google::protobuf::Message(arena) {
+DCMPixShapeResponse::DCMPixShapeResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.DCMPixShapeResponse)
 }
-inline PROTOBUF_NDEBUG_INLINE DCMPixShapeResponse::Impl_::Impl_(
-    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
-    const Impl_& from)
-      : _has_bits_{from._has_bits_},
-        _cached_size_{0} {}
+DCMPixShapeResponse::DCMPixShapeResponse(const DCMPixShapeResponse& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  DCMPixShapeResponse* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.status_){nullptr}
+    , decltype(_impl_.rows_) {}
 
-DCMPixShapeResponse::DCMPixShapeResponse(
-    ::google::protobuf::Arena* arena,
-    const DCMPixShapeResponse& from)
-    : ::google::protobuf::Message(arena) {
-  DCMPixShapeResponse* const _this = this;
-  (void)_this;
-  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
-      from._internal_metadata_);
-  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
-  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
-  _impl_.status_ = (cached_has_bits & 0x00000001u)
-                ? CreateMaybeMessage<::osirixgrpc::Status>(arena, *from._impl_.status_)
-                : nullptr;
-  ::memcpy(reinterpret_cast<char *>(&_impl_) +
-               offsetof(Impl_, rows_),
-           reinterpret_cast<const char *>(&from._impl_) +
-               offsetof(Impl_, rows_),
-           offsetof(Impl_, columns_) -
-               offsetof(Impl_, rows_) +
-               sizeof(Impl_::columns_));
+    , decltype(_impl_.columns_) {}
+  };
 
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_impl_.status_ = new ::osirixgrpc::Status(*from._impl_.status_);
+  }
+  ::memcpy(&_impl_.rows_, &from._impl_.rows_,
+    static_cast<::size_t>(reinterpret_cast<char*>(&_impl_.columns_) -
+    reinterpret_cast<char*>(&_impl_.rows_)) + sizeof(_impl_.columns_));
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.DCMPixShapeResponse)
 }
-inline PROTOBUF_NDEBUG_INLINE DCMPixShapeResponse::Impl_::Impl_(
-    ::google::protobuf::internal::InternalVisibility visibility,
-    ::google::protobuf::Arena* arena)
-      : _cached_size_{0} {}
 
 inline void DCMPixShapeResponse::SharedCtor(::_pb::Arena* arena) {
-  new (&_impl_) Impl_(internal_visibility(), arena);
-  ::memset(reinterpret_cast<char *>(&_impl_) +
-               offsetof(Impl_, status_),
-           0,
-           offsetof(Impl_, columns_) -
-               offsetof(Impl_, status_) +
-               sizeof(Impl_::columns_));
-}
-DCMPixShapeResponse::~DCMPixShapeResponse() {
-  // @@protoc_insertion_point(destructor:osirixgrpc.DCMPixShapeResponse)
-  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
-  SharedDtor();
-}
-inline void DCMPixShapeResponse::SharedDtor() {
-  ABSL_DCHECK(GetArena() == nullptr);
-  delete _impl_.status_;
-  _impl_.~Impl_();
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.status_){nullptr}
+    , decltype(_impl_.rows_) { 0 }
+
+    , decltype(_impl_.columns_) { 0 }
+
+  };
 }
 
-PROTOBUF_NOINLINE void DCMPixShapeResponse::Clear() {
+DCMPixShapeResponse::~DCMPixShapeResponse() {
+  // @@protoc_insertion_point(destructor:osirixgrpc.DCMPixShapeResponse)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void DCMPixShapeResponse::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  if (this != internal_default_instance()) delete _impl_.status_;
+}
+
+void DCMPixShapeResponse::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void DCMPixShapeResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.DCMPixShapeResponse)
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -3499,92 +3540,98 @@ PROTOBUF_NOINLINE void DCMPixShapeResponse::Clear() {
       reinterpret_cast<char*>(&_impl_.columns_) -
       reinterpret_cast<char*>(&_impl_.rows_)) + sizeof(_impl_.columns_));
   _impl_._has_bits_.Clear();
-  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* DCMPixShapeResponse::_InternalParse(
-    const char* ptr, ::_pbi::ParseContext* ctx) {
-  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+const char* DCMPixShapeResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
+  while (!ctx->Done(&ptr)) {
+    ::uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // .osirixgrpc.Status status = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
+          ptr = ctx->ParseMessage(_internal_mutable_status(), ptr);
+          CHK_(ptr);
+        } else {
+          goto handle_unusual;
+        }
+        continue;
+      // int32 rows = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 16)) {
+          _impl_.rows_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else {
+          goto handle_unusual;
+        }
+        continue;
+      // int32 columns = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 24)) {
+          _impl_.columns_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else {
+          goto handle_unusual;
+        }
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
 }
-
-
-PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<2, 3, 1, 0, 2> DCMPixShapeResponse::_table_ = {
-  {
-    PROTOBUF_FIELD_OFFSET(DCMPixShapeResponse, _impl_._has_bits_),
-    0, // no _extensions_
-    3, 24,  // max_field_number, fast_idx_mask
-    offsetof(decltype(_table_), field_lookup_table),
-    4294967288,  // skipmap
-    offsetof(decltype(_table_), field_entries),
-    3,  // num_field_entries
-    1,  // num_aux_entries
-    offsetof(decltype(_table_), aux_entries),
-    &_DCMPixShapeResponse_default_instance_._instance,
-    ::_pbi::TcParser::GenericFallback,  // fallback
-  }, {{
-    {::_pbi::TcParser::MiniParse, {}},
-    // .osirixgrpc.Status status = 1;
-    {::_pbi::TcParser::FastMtS1,
-     {10, 0, 0, PROTOBUF_FIELD_OFFSET(DCMPixShapeResponse, _impl_.status_)}},
-    // int32 rows = 2;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(DCMPixShapeResponse, _impl_.rows_), 63>(),
-     {16, 63, 0, PROTOBUF_FIELD_OFFSET(DCMPixShapeResponse, _impl_.rows_)}},
-    // int32 columns = 3;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(DCMPixShapeResponse, _impl_.columns_), 63>(),
-     {24, 63, 0, PROTOBUF_FIELD_OFFSET(DCMPixShapeResponse, _impl_.columns_)}},
-  }}, {{
-    65535, 65535
-  }}, {{
-    // .osirixgrpc.Status status = 1;
-    {PROTOBUF_FIELD_OFFSET(DCMPixShapeResponse, _impl_.status_), _Internal::kHasBitsOffset + 0, 0,
-    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
-    // int32 rows = 2;
-    {PROTOBUF_FIELD_OFFSET(DCMPixShapeResponse, _impl_.rows_), -1, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kInt32)},
-    // int32 columns = 3;
-    {PROTOBUF_FIELD_OFFSET(DCMPixShapeResponse, _impl_.columns_), -1, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kInt32)},
-  }}, {{
-    {::_pbi::TcParser::GetTable<::osirixgrpc::Status>()},
-  }}, {{
-  }},
-};
 
 ::uint8_t* DCMPixShapeResponse::_InternalSerialize(
-    ::uint8_t* target,
-    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.DCMPixShapeResponse)
   ::uint32_t cached_has_bits = 0;
-  (void)cached_has_bits;
+  (void) cached_has_bits;
 
   cached_has_bits = _impl_._has_bits_[0];
   // .osirixgrpc.Status status = 1;
   if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-        1, _Internal::status(this),
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(1, _Internal::status(this),
         _Internal::status(this).GetCachedSize(), target, stream);
   }
 
   // int32 rows = 2;
   if (this->_internal_rows() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::
-        WriteInt32ToArrayWithField<2>(
-            stream, this->_internal_rows(), target);
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteInt32ToArray(
+        2, this->_internal_rows(), target);
   }
 
   // int32 columns = 3;
   if (this->_internal_columns() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::
-        WriteInt32ToArrayWithField<3>(
-            stream, this->_internal_columns(), target);
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteInt32ToArray(
+        3, this->_internal_columns(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target =
-        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.DCMPixShapeResponse)
   return target;
@@ -3601,8 +3648,9 @@ const ::_pbi::TcParseTable<2, 3, 1, 0, 2> DCMPixShapeResponse::_table_ = {
   // .osirixgrpc.Status status = 1;
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
-    total_size +=
-        1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.status_);
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *_impl_.status_);
   }
 
   // int32 rows = 2;
@@ -3620,15 +3668,14 @@ const ::_pbi::TcParseTable<2, 3, 1, 0, 2> DCMPixShapeResponse::_table_ = {
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::google::protobuf::Message::ClassData DCMPixShapeResponse::_class_data_ = {
-    DCMPixShapeResponse::MergeImpl,
-    nullptr,  // OnDemandRegisterArenaDtor
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData DCMPixShapeResponse::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    DCMPixShapeResponse::MergeImpl
 };
-const ::google::protobuf::Message::ClassData* DCMPixShapeResponse::GetClassData() const {
-  return &_class_data_;
-}
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*DCMPixShapeResponse::GetClassData() const { return &_class_data_; }
 
-void DCMPixShapeResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+
+void DCMPixShapeResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
   auto* const _this = static_cast<DCMPixShapeResponse*>(&to_msg);
   auto& from = static_cast<const DCMPixShapeResponse&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.DCMPixShapeResponse)
@@ -3646,7 +3693,7 @@ void DCMPixShapeResponse::MergeImpl(::google::protobuf::Message& to_msg, const :
   if (from._internal_columns() != 0) {
     _this->_internal_set_columns(from._internal_columns());
   }
-  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void DCMPixShapeResponse::CopyFrom(const DCMPixShapeResponse& from) {
@@ -3656,18 +3703,15 @@ void DCMPixShapeResponse::CopyFrom(const DCMPixShapeResponse& from) {
   MergeFrom(from);
 }
 
-PROTOBUF_NOINLINE bool DCMPixShapeResponse::IsInitialized() const {
+bool DCMPixShapeResponse::IsInitialized() const {
   return true;
 }
 
-::_pbi::CachedSize* DCMPixShapeResponse::AccessCachedSize() const {
-  return &_impl_._cached_size_;
-}
-void DCMPixShapeResponse::InternalSwap(DCMPixShapeResponse* PROTOBUF_RESTRICT other) {
+void DCMPixShapeResponse::InternalSwap(DCMPixShapeResponse* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::google::protobuf::internal::memswap<
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
       PROTOBUF_FIELD_OFFSET(DCMPixShapeResponse, _impl_.columns_)
       + sizeof(DCMPixShapeResponse::_impl_.columns_)
       - PROTOBUF_FIELD_OFFSET(DCMPixShapeResponse, _impl_.status_)>(
@@ -3675,7 +3719,7 @@ void DCMPixShapeResponse::InternalSwap(DCMPixShapeResponse* PROTOBUF_RESTRICT ot
           reinterpret_cast<char*>(&other->_impl_.status_));
 }
 
-::google::protobuf::Metadata DCMPixShapeResponse::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata DCMPixShapeResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_dcmpix_2eproto_getter, &descriptor_table_dcmpix_2eproto_once,
       file_level_metadata_dcmpix_2eproto[8]);
@@ -3693,76 +3737,74 @@ class DCMPixSpacingResponse::_Internal {
   }
 };
 
-const ::osirixgrpc::Status& DCMPixSpacingResponse::_Internal::status(const DCMPixSpacingResponse* msg) {
+const ::osirixgrpc::Status&
+DCMPixSpacingResponse::_Internal::status(const DCMPixSpacingResponse* msg) {
   return *msg->_impl_.status_;
 }
 void DCMPixSpacingResponse::clear_status() {
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   if (_impl_.status_ != nullptr) _impl_.status_->Clear();
   _impl_._has_bits_[0] &= ~0x00000001u;
 }
-DCMPixSpacingResponse::DCMPixSpacingResponse(::google::protobuf::Arena* arena)
-    : ::google::protobuf::Message(arena) {
+DCMPixSpacingResponse::DCMPixSpacingResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.DCMPixSpacingResponse)
 }
-inline PROTOBUF_NDEBUG_INLINE DCMPixSpacingResponse::Impl_::Impl_(
-    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
-    const Impl_& from)
-      : _has_bits_{from._has_bits_},
-        _cached_size_{0} {}
+DCMPixSpacingResponse::DCMPixSpacingResponse(const DCMPixSpacingResponse& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  DCMPixSpacingResponse* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.status_){nullptr}
+    , decltype(_impl_.spacing_rows_) {}
 
-DCMPixSpacingResponse::DCMPixSpacingResponse(
-    ::google::protobuf::Arena* arena,
-    const DCMPixSpacingResponse& from)
-    : ::google::protobuf::Message(arena) {
-  DCMPixSpacingResponse* const _this = this;
-  (void)_this;
-  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
-      from._internal_metadata_);
-  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
-  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
-  _impl_.status_ = (cached_has_bits & 0x00000001u)
-                ? CreateMaybeMessage<::osirixgrpc::Status>(arena, *from._impl_.status_)
-                : nullptr;
-  ::memcpy(reinterpret_cast<char *>(&_impl_) +
-               offsetof(Impl_, spacing_rows_),
-           reinterpret_cast<const char *>(&from._impl_) +
-               offsetof(Impl_, spacing_rows_),
-           offsetof(Impl_, spacing_columns_) -
-               offsetof(Impl_, spacing_rows_) +
-               sizeof(Impl_::spacing_columns_));
+    , decltype(_impl_.spacing_columns_) {}
+  };
 
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_impl_.status_ = new ::osirixgrpc::Status(*from._impl_.status_);
+  }
+  ::memcpy(&_impl_.spacing_rows_, &from._impl_.spacing_rows_,
+    static_cast<::size_t>(reinterpret_cast<char*>(&_impl_.spacing_columns_) -
+    reinterpret_cast<char*>(&_impl_.spacing_rows_)) + sizeof(_impl_.spacing_columns_));
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.DCMPixSpacingResponse)
 }
-inline PROTOBUF_NDEBUG_INLINE DCMPixSpacingResponse::Impl_::Impl_(
-    ::google::protobuf::internal::InternalVisibility visibility,
-    ::google::protobuf::Arena* arena)
-      : _cached_size_{0} {}
 
 inline void DCMPixSpacingResponse::SharedCtor(::_pb::Arena* arena) {
-  new (&_impl_) Impl_(internal_visibility(), arena);
-  ::memset(reinterpret_cast<char *>(&_impl_) +
-               offsetof(Impl_, status_),
-           0,
-           offsetof(Impl_, spacing_columns_) -
-               offsetof(Impl_, status_) +
-               sizeof(Impl_::spacing_columns_));
-}
-DCMPixSpacingResponse::~DCMPixSpacingResponse() {
-  // @@protoc_insertion_point(destructor:osirixgrpc.DCMPixSpacingResponse)
-  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
-  SharedDtor();
-}
-inline void DCMPixSpacingResponse::SharedDtor() {
-  ABSL_DCHECK(GetArena() == nullptr);
-  delete _impl_.status_;
-  _impl_.~Impl_();
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.status_){nullptr}
+    , decltype(_impl_.spacing_rows_) { 0 }
+
+    , decltype(_impl_.spacing_columns_) { 0 }
+
+  };
 }
 
-PROTOBUF_NOINLINE void DCMPixSpacingResponse::Clear() {
+DCMPixSpacingResponse::~DCMPixSpacingResponse() {
+  // @@protoc_insertion_point(destructor:osirixgrpc.DCMPixSpacingResponse)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void DCMPixSpacingResponse::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  if (this != internal_default_instance()) delete _impl_.status_;
+}
+
+void DCMPixSpacingResponse::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void DCMPixSpacingResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.DCMPixSpacingResponse)
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -3776,77 +3818,83 @@ PROTOBUF_NOINLINE void DCMPixSpacingResponse::Clear() {
       reinterpret_cast<char*>(&_impl_.spacing_columns_) -
       reinterpret_cast<char*>(&_impl_.spacing_rows_)) + sizeof(_impl_.spacing_columns_));
   _impl_._has_bits_.Clear();
-  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* DCMPixSpacingResponse::_InternalParse(
-    const char* ptr, ::_pbi::ParseContext* ctx) {
-  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+const char* DCMPixSpacingResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
+  while (!ctx->Done(&ptr)) {
+    ::uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // .osirixgrpc.Status status = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
+          ptr = ctx->ParseMessage(_internal_mutable_status(), ptr);
+          CHK_(ptr);
+        } else {
+          goto handle_unusual;
+        }
+        continue;
+      // float spacing_rows = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 21)) {
+          _impl_.spacing_rows_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else {
+          goto handle_unusual;
+        }
+        continue;
+      // float spacing_columns = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 29)) {
+          _impl_.spacing_columns_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else {
+          goto handle_unusual;
+        }
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
 }
-
-
-PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<2, 3, 1, 0, 2> DCMPixSpacingResponse::_table_ = {
-  {
-    PROTOBUF_FIELD_OFFSET(DCMPixSpacingResponse, _impl_._has_bits_),
-    0, // no _extensions_
-    3, 24,  // max_field_number, fast_idx_mask
-    offsetof(decltype(_table_), field_lookup_table),
-    4294967288,  // skipmap
-    offsetof(decltype(_table_), field_entries),
-    3,  // num_field_entries
-    1,  // num_aux_entries
-    offsetof(decltype(_table_), aux_entries),
-    &_DCMPixSpacingResponse_default_instance_._instance,
-    ::_pbi::TcParser::GenericFallback,  // fallback
-  }, {{
-    {::_pbi::TcParser::MiniParse, {}},
-    // .osirixgrpc.Status status = 1;
-    {::_pbi::TcParser::FastMtS1,
-     {10, 0, 0, PROTOBUF_FIELD_OFFSET(DCMPixSpacingResponse, _impl_.status_)}},
-    // float spacing_rows = 2;
-    {::_pbi::TcParser::FastF32S1,
-     {21, 63, 0, PROTOBUF_FIELD_OFFSET(DCMPixSpacingResponse, _impl_.spacing_rows_)}},
-    // float spacing_columns = 3;
-    {::_pbi::TcParser::FastF32S1,
-     {29, 63, 0, PROTOBUF_FIELD_OFFSET(DCMPixSpacingResponse, _impl_.spacing_columns_)}},
-  }}, {{
-    65535, 65535
-  }}, {{
-    // .osirixgrpc.Status status = 1;
-    {PROTOBUF_FIELD_OFFSET(DCMPixSpacingResponse, _impl_.status_), _Internal::kHasBitsOffset + 0, 0,
-    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
-    // float spacing_rows = 2;
-    {PROTOBUF_FIELD_OFFSET(DCMPixSpacingResponse, _impl_.spacing_rows_), -1, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kFloat)},
-    // float spacing_columns = 3;
-    {PROTOBUF_FIELD_OFFSET(DCMPixSpacingResponse, _impl_.spacing_columns_), -1, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kFloat)},
-  }}, {{
-    {::_pbi::TcParser::GetTable<::osirixgrpc::Status>()},
-  }}, {{
-  }},
-};
 
 ::uint8_t* DCMPixSpacingResponse::_InternalSerialize(
-    ::uint8_t* target,
-    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.DCMPixSpacingResponse)
   ::uint32_t cached_has_bits = 0;
-  (void)cached_has_bits;
+  (void) cached_has_bits;
 
   cached_has_bits = _impl_._has_bits_[0];
   // .osirixgrpc.Status status = 1;
   if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-        1, _Internal::status(this),
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(1, _Internal::status(this),
         _Internal::status(this).GetCachedSize(), target, stream);
   }
 
   // float spacing_rows = 2;
-  static_assert(sizeof(::uint32_t) == sizeof(float),
-                "Code assumes ::uint32_t and float are the same size.");
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
   float tmp_spacing_rows = this->_internal_spacing_rows();
   ::uint32_t raw_spacing_rows;
   memcpy(&raw_spacing_rows, &tmp_spacing_rows, sizeof(tmp_spacing_rows));
@@ -3857,8 +3905,7 @@ const ::_pbi::TcParseTable<2, 3, 1, 0, 2> DCMPixSpacingResponse::_table_ = {
   }
 
   // float spacing_columns = 3;
-  static_assert(sizeof(::uint32_t) == sizeof(float),
-                "Code assumes ::uint32_t and float are the same size.");
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
   float tmp_spacing_columns = this->_internal_spacing_columns();
   ::uint32_t raw_spacing_columns;
   memcpy(&raw_spacing_columns, &tmp_spacing_columns, sizeof(tmp_spacing_columns));
@@ -3869,9 +3916,8 @@ const ::_pbi::TcParseTable<2, 3, 1, 0, 2> DCMPixSpacingResponse::_table_ = {
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target =
-        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.DCMPixSpacingResponse)
   return target;
@@ -3888,13 +3934,13 @@ const ::_pbi::TcParseTable<2, 3, 1, 0, 2> DCMPixSpacingResponse::_table_ = {
   // .osirixgrpc.Status status = 1;
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
-    total_size +=
-        1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.status_);
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *_impl_.status_);
   }
 
   // float spacing_rows = 2;
-  static_assert(sizeof(::uint32_t) == sizeof(float),
-                "Code assumes ::uint32_t and float are the same size.");
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
   float tmp_spacing_rows = this->_internal_spacing_rows();
   ::uint32_t raw_spacing_rows;
   memcpy(&raw_spacing_rows, &tmp_spacing_rows, sizeof(tmp_spacing_rows));
@@ -3903,8 +3949,7 @@ const ::_pbi::TcParseTable<2, 3, 1, 0, 2> DCMPixSpacingResponse::_table_ = {
   }
 
   // float spacing_columns = 3;
-  static_assert(sizeof(::uint32_t) == sizeof(float),
-                "Code assumes ::uint32_t and float are the same size.");
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
   float tmp_spacing_columns = this->_internal_spacing_columns();
   ::uint32_t raw_spacing_columns;
   memcpy(&raw_spacing_columns, &tmp_spacing_columns, sizeof(tmp_spacing_columns));
@@ -3915,15 +3960,14 @@ const ::_pbi::TcParseTable<2, 3, 1, 0, 2> DCMPixSpacingResponse::_table_ = {
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::google::protobuf::Message::ClassData DCMPixSpacingResponse::_class_data_ = {
-    DCMPixSpacingResponse::MergeImpl,
-    nullptr,  // OnDemandRegisterArenaDtor
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData DCMPixSpacingResponse::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    DCMPixSpacingResponse::MergeImpl
 };
-const ::google::protobuf::Message::ClassData* DCMPixSpacingResponse::GetClassData() const {
-  return &_class_data_;
-}
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*DCMPixSpacingResponse::GetClassData() const { return &_class_data_; }
 
-void DCMPixSpacingResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+
+void DCMPixSpacingResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
   auto* const _this = static_cast<DCMPixSpacingResponse*>(&to_msg);
   auto& from = static_cast<const DCMPixSpacingResponse&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.DCMPixSpacingResponse)
@@ -3935,23 +3979,21 @@ void DCMPixSpacingResponse::MergeImpl(::google::protobuf::Message& to_msg, const
     _this->_internal_mutable_status()->::osirixgrpc::Status::MergeFrom(
         from._internal_status());
   }
-  static_assert(sizeof(::uint32_t) == sizeof(float),
-                "Code assumes ::uint32_t and float are the same size.");
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
   float tmp_spacing_rows = from._internal_spacing_rows();
   ::uint32_t raw_spacing_rows;
   memcpy(&raw_spacing_rows, &tmp_spacing_rows, sizeof(tmp_spacing_rows));
   if (raw_spacing_rows != 0) {
     _this->_internal_set_spacing_rows(from._internal_spacing_rows());
   }
-  static_assert(sizeof(::uint32_t) == sizeof(float),
-                "Code assumes ::uint32_t and float are the same size.");
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
   float tmp_spacing_columns = from._internal_spacing_columns();
   ::uint32_t raw_spacing_columns;
   memcpy(&raw_spacing_columns, &tmp_spacing_columns, sizeof(tmp_spacing_columns));
   if (raw_spacing_columns != 0) {
     _this->_internal_set_spacing_columns(from._internal_spacing_columns());
   }
-  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void DCMPixSpacingResponse::CopyFrom(const DCMPixSpacingResponse& from) {
@@ -3961,18 +4003,15 @@ void DCMPixSpacingResponse::CopyFrom(const DCMPixSpacingResponse& from) {
   MergeFrom(from);
 }
 
-PROTOBUF_NOINLINE bool DCMPixSpacingResponse::IsInitialized() const {
+bool DCMPixSpacingResponse::IsInitialized() const {
   return true;
 }
 
-::_pbi::CachedSize* DCMPixSpacingResponse::AccessCachedSize() const {
-  return &_impl_._cached_size_;
-}
-void DCMPixSpacingResponse::InternalSwap(DCMPixSpacingResponse* PROTOBUF_RESTRICT other) {
+void DCMPixSpacingResponse::InternalSwap(DCMPixSpacingResponse* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::google::protobuf::internal::memswap<
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
       PROTOBUF_FIELD_OFFSET(DCMPixSpacingResponse, _impl_.spacing_columns_)
       + sizeof(DCMPixSpacingResponse::_impl_.spacing_columns_)
       - PROTOBUF_FIELD_OFFSET(DCMPixSpacingResponse, _impl_.status_)>(
@@ -3980,7 +4019,7 @@ void DCMPixSpacingResponse::InternalSwap(DCMPixSpacingResponse* PROTOBUF_RESTRIC
           reinterpret_cast<char*>(&other->_impl_.status_));
 }
 
-::google::protobuf::Metadata DCMPixSpacingResponse::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata DCMPixSpacingResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_dcmpix_2eproto_getter, &descriptor_table_dcmpix_2eproto_once,
       file_level_metadata_dcmpix_2eproto[9]);
@@ -3998,76 +4037,78 @@ class DCMPixOriginResponse::_Internal {
   }
 };
 
-const ::osirixgrpc::Status& DCMPixOriginResponse::_Internal::status(const DCMPixOriginResponse* msg) {
+const ::osirixgrpc::Status&
+DCMPixOriginResponse::_Internal::status(const DCMPixOriginResponse* msg) {
   return *msg->_impl_.status_;
 }
 void DCMPixOriginResponse::clear_status() {
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   if (_impl_.status_ != nullptr) _impl_.status_->Clear();
   _impl_._has_bits_[0] &= ~0x00000001u;
 }
-DCMPixOriginResponse::DCMPixOriginResponse(::google::protobuf::Arena* arena)
-    : ::google::protobuf::Message(arena) {
+DCMPixOriginResponse::DCMPixOriginResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.DCMPixOriginResponse)
 }
-inline PROTOBUF_NDEBUG_INLINE DCMPixOriginResponse::Impl_::Impl_(
-    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
-    const Impl_& from)
-      : _has_bits_{from._has_bits_},
-        _cached_size_{0} {}
+DCMPixOriginResponse::DCMPixOriginResponse(const DCMPixOriginResponse& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  DCMPixOriginResponse* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.status_){nullptr}
+    , decltype(_impl_.origin_rows_) {}
 
-DCMPixOriginResponse::DCMPixOriginResponse(
-    ::google::protobuf::Arena* arena,
-    const DCMPixOriginResponse& from)
-    : ::google::protobuf::Message(arena) {
-  DCMPixOriginResponse* const _this = this;
-  (void)_this;
-  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
-      from._internal_metadata_);
-  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
-  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
-  _impl_.status_ = (cached_has_bits & 0x00000001u)
-                ? CreateMaybeMessage<::osirixgrpc::Status>(arena, *from._impl_.status_)
-                : nullptr;
-  ::memcpy(reinterpret_cast<char *>(&_impl_) +
-               offsetof(Impl_, origin_rows_),
-           reinterpret_cast<const char *>(&from._impl_) +
-               offsetof(Impl_, origin_rows_),
-           offsetof(Impl_, origin_slices_) -
-               offsetof(Impl_, origin_rows_) +
-               sizeof(Impl_::origin_slices_));
+    , decltype(_impl_.origin_columns_) {}
 
+    , decltype(_impl_.origin_slices_) {}
+  };
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_impl_.status_ = new ::osirixgrpc::Status(*from._impl_.status_);
+  }
+  ::memcpy(&_impl_.origin_rows_, &from._impl_.origin_rows_,
+    static_cast<::size_t>(reinterpret_cast<char*>(&_impl_.origin_slices_) -
+    reinterpret_cast<char*>(&_impl_.origin_rows_)) + sizeof(_impl_.origin_slices_));
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.DCMPixOriginResponse)
 }
-inline PROTOBUF_NDEBUG_INLINE DCMPixOriginResponse::Impl_::Impl_(
-    ::google::protobuf::internal::InternalVisibility visibility,
-    ::google::protobuf::Arena* arena)
-      : _cached_size_{0} {}
 
 inline void DCMPixOriginResponse::SharedCtor(::_pb::Arena* arena) {
-  new (&_impl_) Impl_(internal_visibility(), arena);
-  ::memset(reinterpret_cast<char *>(&_impl_) +
-               offsetof(Impl_, status_),
-           0,
-           offsetof(Impl_, origin_slices_) -
-               offsetof(Impl_, status_) +
-               sizeof(Impl_::origin_slices_));
-}
-DCMPixOriginResponse::~DCMPixOriginResponse() {
-  // @@protoc_insertion_point(destructor:osirixgrpc.DCMPixOriginResponse)
-  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
-  SharedDtor();
-}
-inline void DCMPixOriginResponse::SharedDtor() {
-  ABSL_DCHECK(GetArena() == nullptr);
-  delete _impl_.status_;
-  _impl_.~Impl_();
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.status_){nullptr}
+    , decltype(_impl_.origin_rows_) { 0 }
+
+    , decltype(_impl_.origin_columns_) { 0 }
+
+    , decltype(_impl_.origin_slices_) { 0 }
+
+  };
 }
 
-PROTOBUF_NOINLINE void DCMPixOriginResponse::Clear() {
+DCMPixOriginResponse::~DCMPixOriginResponse() {
+  // @@protoc_insertion_point(destructor:osirixgrpc.DCMPixOriginResponse)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void DCMPixOriginResponse::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  if (this != internal_default_instance()) delete _impl_.status_;
+}
+
+void DCMPixOriginResponse::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void DCMPixOriginResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.DCMPixOriginResponse)
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -4081,82 +4122,92 @@ PROTOBUF_NOINLINE void DCMPixOriginResponse::Clear() {
       reinterpret_cast<char*>(&_impl_.origin_slices_) -
       reinterpret_cast<char*>(&_impl_.origin_rows_)) + sizeof(_impl_.origin_slices_));
   _impl_._has_bits_.Clear();
-  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* DCMPixOriginResponse::_InternalParse(
-    const char* ptr, ::_pbi::ParseContext* ctx) {
-  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+const char* DCMPixOriginResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
+  while (!ctx->Done(&ptr)) {
+    ::uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // .osirixgrpc.Status status = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
+          ptr = ctx->ParseMessage(_internal_mutable_status(), ptr);
+          CHK_(ptr);
+        } else {
+          goto handle_unusual;
+        }
+        continue;
+      // float origin_rows = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 21)) {
+          _impl_.origin_rows_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else {
+          goto handle_unusual;
+        }
+        continue;
+      // float origin_columns = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 29)) {
+          _impl_.origin_columns_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else {
+          goto handle_unusual;
+        }
+        continue;
+      // float origin_slices = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 37)) {
+          _impl_.origin_slices_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else {
+          goto handle_unusual;
+        }
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
 }
-
-
-PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<2, 4, 1, 0, 2> DCMPixOriginResponse::_table_ = {
-  {
-    PROTOBUF_FIELD_OFFSET(DCMPixOriginResponse, _impl_._has_bits_),
-    0, // no _extensions_
-    4, 24,  // max_field_number, fast_idx_mask
-    offsetof(decltype(_table_), field_lookup_table),
-    4294967280,  // skipmap
-    offsetof(decltype(_table_), field_entries),
-    4,  // num_field_entries
-    1,  // num_aux_entries
-    offsetof(decltype(_table_), aux_entries),
-    &_DCMPixOriginResponse_default_instance_._instance,
-    ::_pbi::TcParser::GenericFallback,  // fallback
-  }, {{
-    // float origin_slices = 4;
-    {::_pbi::TcParser::FastF32S1,
-     {37, 63, 0, PROTOBUF_FIELD_OFFSET(DCMPixOriginResponse, _impl_.origin_slices_)}},
-    // .osirixgrpc.Status status = 1;
-    {::_pbi::TcParser::FastMtS1,
-     {10, 0, 0, PROTOBUF_FIELD_OFFSET(DCMPixOriginResponse, _impl_.status_)}},
-    // float origin_rows = 2;
-    {::_pbi::TcParser::FastF32S1,
-     {21, 63, 0, PROTOBUF_FIELD_OFFSET(DCMPixOriginResponse, _impl_.origin_rows_)}},
-    // float origin_columns = 3;
-    {::_pbi::TcParser::FastF32S1,
-     {29, 63, 0, PROTOBUF_FIELD_OFFSET(DCMPixOriginResponse, _impl_.origin_columns_)}},
-  }}, {{
-    65535, 65535
-  }}, {{
-    // .osirixgrpc.Status status = 1;
-    {PROTOBUF_FIELD_OFFSET(DCMPixOriginResponse, _impl_.status_), _Internal::kHasBitsOffset + 0, 0,
-    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
-    // float origin_rows = 2;
-    {PROTOBUF_FIELD_OFFSET(DCMPixOriginResponse, _impl_.origin_rows_), -1, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kFloat)},
-    // float origin_columns = 3;
-    {PROTOBUF_FIELD_OFFSET(DCMPixOriginResponse, _impl_.origin_columns_), -1, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kFloat)},
-    // float origin_slices = 4;
-    {PROTOBUF_FIELD_OFFSET(DCMPixOriginResponse, _impl_.origin_slices_), -1, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kFloat)},
-  }}, {{
-    {::_pbi::TcParser::GetTable<::osirixgrpc::Status>()},
-  }}, {{
-  }},
-};
 
 ::uint8_t* DCMPixOriginResponse::_InternalSerialize(
-    ::uint8_t* target,
-    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.DCMPixOriginResponse)
   ::uint32_t cached_has_bits = 0;
-  (void)cached_has_bits;
+  (void) cached_has_bits;
 
   cached_has_bits = _impl_._has_bits_[0];
   // .osirixgrpc.Status status = 1;
   if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-        1, _Internal::status(this),
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(1, _Internal::status(this),
         _Internal::status(this).GetCachedSize(), target, stream);
   }
 
   // float origin_rows = 2;
-  static_assert(sizeof(::uint32_t) == sizeof(float),
-                "Code assumes ::uint32_t and float are the same size.");
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
   float tmp_origin_rows = this->_internal_origin_rows();
   ::uint32_t raw_origin_rows;
   memcpy(&raw_origin_rows, &tmp_origin_rows, sizeof(tmp_origin_rows));
@@ -4167,8 +4218,7 @@ const ::_pbi::TcParseTable<2, 4, 1, 0, 2> DCMPixOriginResponse::_table_ = {
   }
 
   // float origin_columns = 3;
-  static_assert(sizeof(::uint32_t) == sizeof(float),
-                "Code assumes ::uint32_t and float are the same size.");
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
   float tmp_origin_columns = this->_internal_origin_columns();
   ::uint32_t raw_origin_columns;
   memcpy(&raw_origin_columns, &tmp_origin_columns, sizeof(tmp_origin_columns));
@@ -4179,8 +4229,7 @@ const ::_pbi::TcParseTable<2, 4, 1, 0, 2> DCMPixOriginResponse::_table_ = {
   }
 
   // float origin_slices = 4;
-  static_assert(sizeof(::uint32_t) == sizeof(float),
-                "Code assumes ::uint32_t and float are the same size.");
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
   float tmp_origin_slices = this->_internal_origin_slices();
   ::uint32_t raw_origin_slices;
   memcpy(&raw_origin_slices, &tmp_origin_slices, sizeof(tmp_origin_slices));
@@ -4191,9 +4240,8 @@ const ::_pbi::TcParseTable<2, 4, 1, 0, 2> DCMPixOriginResponse::_table_ = {
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target =
-        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.DCMPixOriginResponse)
   return target;
@@ -4210,13 +4258,13 @@ const ::_pbi::TcParseTable<2, 4, 1, 0, 2> DCMPixOriginResponse::_table_ = {
   // .osirixgrpc.Status status = 1;
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
-    total_size +=
-        1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.status_);
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *_impl_.status_);
   }
 
   // float origin_rows = 2;
-  static_assert(sizeof(::uint32_t) == sizeof(float),
-                "Code assumes ::uint32_t and float are the same size.");
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
   float tmp_origin_rows = this->_internal_origin_rows();
   ::uint32_t raw_origin_rows;
   memcpy(&raw_origin_rows, &tmp_origin_rows, sizeof(tmp_origin_rows));
@@ -4225,8 +4273,7 @@ const ::_pbi::TcParseTable<2, 4, 1, 0, 2> DCMPixOriginResponse::_table_ = {
   }
 
   // float origin_columns = 3;
-  static_assert(sizeof(::uint32_t) == sizeof(float),
-                "Code assumes ::uint32_t and float are the same size.");
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
   float tmp_origin_columns = this->_internal_origin_columns();
   ::uint32_t raw_origin_columns;
   memcpy(&raw_origin_columns, &tmp_origin_columns, sizeof(tmp_origin_columns));
@@ -4235,8 +4282,7 @@ const ::_pbi::TcParseTable<2, 4, 1, 0, 2> DCMPixOriginResponse::_table_ = {
   }
 
   // float origin_slices = 4;
-  static_assert(sizeof(::uint32_t) == sizeof(float),
-                "Code assumes ::uint32_t and float are the same size.");
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
   float tmp_origin_slices = this->_internal_origin_slices();
   ::uint32_t raw_origin_slices;
   memcpy(&raw_origin_slices, &tmp_origin_slices, sizeof(tmp_origin_slices));
@@ -4247,15 +4293,14 @@ const ::_pbi::TcParseTable<2, 4, 1, 0, 2> DCMPixOriginResponse::_table_ = {
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::google::protobuf::Message::ClassData DCMPixOriginResponse::_class_data_ = {
-    DCMPixOriginResponse::MergeImpl,
-    nullptr,  // OnDemandRegisterArenaDtor
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData DCMPixOriginResponse::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    DCMPixOriginResponse::MergeImpl
 };
-const ::google::protobuf::Message::ClassData* DCMPixOriginResponse::GetClassData() const {
-  return &_class_data_;
-}
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*DCMPixOriginResponse::GetClassData() const { return &_class_data_; }
 
-void DCMPixOriginResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+
+void DCMPixOriginResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
   auto* const _this = static_cast<DCMPixOriginResponse*>(&to_msg);
   auto& from = static_cast<const DCMPixOriginResponse&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.DCMPixOriginResponse)
@@ -4267,31 +4312,28 @@ void DCMPixOriginResponse::MergeImpl(::google::protobuf::Message& to_msg, const 
     _this->_internal_mutable_status()->::osirixgrpc::Status::MergeFrom(
         from._internal_status());
   }
-  static_assert(sizeof(::uint32_t) == sizeof(float),
-                "Code assumes ::uint32_t and float are the same size.");
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
   float tmp_origin_rows = from._internal_origin_rows();
   ::uint32_t raw_origin_rows;
   memcpy(&raw_origin_rows, &tmp_origin_rows, sizeof(tmp_origin_rows));
   if (raw_origin_rows != 0) {
     _this->_internal_set_origin_rows(from._internal_origin_rows());
   }
-  static_assert(sizeof(::uint32_t) == sizeof(float),
-                "Code assumes ::uint32_t and float are the same size.");
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
   float tmp_origin_columns = from._internal_origin_columns();
   ::uint32_t raw_origin_columns;
   memcpy(&raw_origin_columns, &tmp_origin_columns, sizeof(tmp_origin_columns));
   if (raw_origin_columns != 0) {
     _this->_internal_set_origin_columns(from._internal_origin_columns());
   }
-  static_assert(sizeof(::uint32_t) == sizeof(float),
-                "Code assumes ::uint32_t and float are the same size.");
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
   float tmp_origin_slices = from._internal_origin_slices();
   ::uint32_t raw_origin_slices;
   memcpy(&raw_origin_slices, &tmp_origin_slices, sizeof(tmp_origin_slices));
   if (raw_origin_slices != 0) {
     _this->_internal_set_origin_slices(from._internal_origin_slices());
   }
-  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void DCMPixOriginResponse::CopyFrom(const DCMPixOriginResponse& from) {
@@ -4301,18 +4343,15 @@ void DCMPixOriginResponse::CopyFrom(const DCMPixOriginResponse& from) {
   MergeFrom(from);
 }
 
-PROTOBUF_NOINLINE bool DCMPixOriginResponse::IsInitialized() const {
+bool DCMPixOriginResponse::IsInitialized() const {
   return true;
 }
 
-::_pbi::CachedSize* DCMPixOriginResponse::AccessCachedSize() const {
-  return &_impl_._cached_size_;
-}
-void DCMPixOriginResponse::InternalSwap(DCMPixOriginResponse* PROTOBUF_RESTRICT other) {
+void DCMPixOriginResponse::InternalSwap(DCMPixOriginResponse* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::google::protobuf::internal::memswap<
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
       PROTOBUF_FIELD_OFFSET(DCMPixOriginResponse, _impl_.origin_slices_)
       + sizeof(DCMPixOriginResponse::_impl_.origin_slices_)
       - PROTOBUF_FIELD_OFFSET(DCMPixOriginResponse, _impl_.status_)>(
@@ -4320,7 +4359,7 @@ void DCMPixOriginResponse::InternalSwap(DCMPixOriginResponse* PROTOBUF_RESTRICT 
           reinterpret_cast<char*>(&other->_impl_.status_));
 }
 
-::google::protobuf::Metadata DCMPixOriginResponse::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata DCMPixOriginResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_dcmpix_2eproto_getter, &descriptor_table_dcmpix_2eproto_once,
       file_level_metadata_dcmpix_2eproto[10]);
@@ -4338,135 +4377,145 @@ class DCMPixOrientationResponse::_Internal {
   }
 };
 
-const ::osirixgrpc::Status& DCMPixOrientationResponse::_Internal::status(const DCMPixOrientationResponse* msg) {
+const ::osirixgrpc::Status&
+DCMPixOrientationResponse::_Internal::status(const DCMPixOrientationResponse* msg) {
   return *msg->_impl_.status_;
 }
 void DCMPixOrientationResponse::clear_status() {
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   if (_impl_.status_ != nullptr) _impl_.status_->Clear();
   _impl_._has_bits_[0] &= ~0x00000001u;
 }
-DCMPixOrientationResponse::DCMPixOrientationResponse(::google::protobuf::Arena* arena)
-    : ::google::protobuf::Message(arena) {
+DCMPixOrientationResponse::DCMPixOrientationResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.DCMPixOrientationResponse)
 }
-inline PROTOBUF_NDEBUG_INLINE DCMPixOrientationResponse::Impl_::Impl_(
-    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
-    const Impl_& from)
-      : _has_bits_{from._has_bits_},
-        _cached_size_{0},
-        orientation_{visibility, arena, from.orientation_} {}
+DCMPixOrientationResponse::DCMPixOrientationResponse(const DCMPixOrientationResponse& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  DCMPixOrientationResponse* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.orientation_) { from._impl_.orientation_ }
 
-DCMPixOrientationResponse::DCMPixOrientationResponse(
-    ::google::protobuf::Arena* arena,
-    const DCMPixOrientationResponse& from)
-    : ::google::protobuf::Message(arena) {
-  DCMPixOrientationResponse* const _this = this;
-  (void)_this;
-  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
-      from._internal_metadata_);
-  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
-  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
-  _impl_.status_ = (cached_has_bits & 0x00000001u)
-                ? CreateMaybeMessage<::osirixgrpc::Status>(arena, *from._impl_.status_)
-                : nullptr;
+    , decltype(_impl_.status_){nullptr}};
 
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_impl_.status_ = new ::osirixgrpc::Status(*from._impl_.status_);
+  }
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.DCMPixOrientationResponse)
 }
-inline PROTOBUF_NDEBUG_INLINE DCMPixOrientationResponse::Impl_::Impl_(
-    ::google::protobuf::internal::InternalVisibility visibility,
-    ::google::protobuf::Arena* arena)
-      : _cached_size_{0},
-        orientation_{visibility, arena} {}
 
 inline void DCMPixOrientationResponse::SharedCtor(::_pb::Arena* arena) {
-  new (&_impl_) Impl_(internal_visibility(), arena);
-  _impl_.status_ = {};
-}
-DCMPixOrientationResponse::~DCMPixOrientationResponse() {
-  // @@protoc_insertion_point(destructor:osirixgrpc.DCMPixOrientationResponse)
-  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
-  SharedDtor();
-}
-inline void DCMPixOrientationResponse::SharedDtor() {
-  ABSL_DCHECK(GetArena() == nullptr);
-  delete _impl_.status_;
-  _impl_.~Impl_();
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.orientation_) { arena }
+
+    , decltype(_impl_.status_){nullptr}
+  };
 }
 
-PROTOBUF_NOINLINE void DCMPixOrientationResponse::Clear() {
+DCMPixOrientationResponse::~DCMPixOrientationResponse() {
+  // @@protoc_insertion_point(destructor:osirixgrpc.DCMPixOrientationResponse)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void DCMPixOrientationResponse::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.orientation_.~RepeatedField();
+  if (this != internal_default_instance()) delete _impl_.status_;
+}
+
+void DCMPixOrientationResponse::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void DCMPixOrientationResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.DCMPixOrientationResponse)
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _impl_.orientation_.Clear();
+  _internal_mutable_orientation()->Clear();
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
     ABSL_DCHECK(_impl_.status_ != nullptr);
     _impl_.status_->Clear();
   }
   _impl_._has_bits_.Clear();
-  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* DCMPixOrientationResponse::_InternalParse(
-    const char* ptr, ::_pbi::ParseContext* ctx) {
-  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+const char* DCMPixOrientationResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
+  while (!ctx->Done(&ptr)) {
+    ::uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // .osirixgrpc.Status status = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
+          ptr = ctx->ParseMessage(_internal_mutable_status(), ptr);
+          CHK_(ptr);
+        } else {
+          goto handle_unusual;
+        }
+        continue;
+      // repeated float orientation = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 18)) {
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedFloatParser(_internal_mutable_orientation(), ptr, ctx);
+          CHK_(ptr);
+        } else if (static_cast<::uint8_t>(tag) == 21) {
+          _internal_add_orientation(::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr));
+          ptr += sizeof(float);
+        } else {
+          goto handle_unusual;
+        }
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
 }
-
-
-PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<1, 2, 1, 0, 2> DCMPixOrientationResponse::_table_ = {
-  {
-    PROTOBUF_FIELD_OFFSET(DCMPixOrientationResponse, _impl_._has_bits_),
-    0, // no _extensions_
-    2, 8,  // max_field_number, fast_idx_mask
-    offsetof(decltype(_table_), field_lookup_table),
-    4294967292,  // skipmap
-    offsetof(decltype(_table_), field_entries),
-    2,  // num_field_entries
-    1,  // num_aux_entries
-    offsetof(decltype(_table_), aux_entries),
-    &_DCMPixOrientationResponse_default_instance_._instance,
-    ::_pbi::TcParser::GenericFallback,  // fallback
-  }, {{
-    // repeated float orientation = 2;
-    {::_pbi::TcParser::FastF32P1,
-     {18, 63, 0, PROTOBUF_FIELD_OFFSET(DCMPixOrientationResponse, _impl_.orientation_)}},
-    // .osirixgrpc.Status status = 1;
-    {::_pbi::TcParser::FastMtS1,
-     {10, 0, 0, PROTOBUF_FIELD_OFFSET(DCMPixOrientationResponse, _impl_.status_)}},
-  }}, {{
-    65535, 65535
-  }}, {{
-    // .osirixgrpc.Status status = 1;
-    {PROTOBUF_FIELD_OFFSET(DCMPixOrientationResponse, _impl_.status_), _Internal::kHasBitsOffset + 0, 0,
-    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
-    // repeated float orientation = 2;
-    {PROTOBUF_FIELD_OFFSET(DCMPixOrientationResponse, _impl_.orientation_), -1, 0,
-    (0 | ::_fl::kFcRepeated | ::_fl::kPackedFloat)},
-  }}, {{
-    {::_pbi::TcParser::GetTable<::osirixgrpc::Status>()},
-  }}, {{
-  }},
-};
 
 ::uint8_t* DCMPixOrientationResponse::_InternalSerialize(
-    ::uint8_t* target,
-    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.DCMPixOrientationResponse)
   ::uint32_t cached_has_bits = 0;
-  (void)cached_has_bits;
+  (void) cached_has_bits;
 
   cached_has_bits = _impl_._has_bits_[0];
   // .osirixgrpc.Status status = 1;
   if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-        1, _Internal::status(this),
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(1, _Internal::status(this),
         _Internal::status(this).GetCachedSize(), target, stream);
   }
 
@@ -4476,9 +4525,8 @@ const ::_pbi::TcParseTable<1, 2, 1, 0, 2> DCMPixOrientationResponse::_table_ = {
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target =
-        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.DCMPixOrientationResponse)
   return target;
@@ -4504,25 +4552,26 @@ const ::_pbi::TcParseTable<1, 2, 1, 0, 2> DCMPixOrientationResponse::_table_ = {
     ;
     total_size += tag_size + data_size;
   }
+
   // .osirixgrpc.Status status = 1;
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
-    total_size +=
-        1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.status_);
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *_impl_.status_);
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::google::protobuf::Message::ClassData DCMPixOrientationResponse::_class_data_ = {
-    DCMPixOrientationResponse::MergeImpl,
-    nullptr,  // OnDemandRegisterArenaDtor
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData DCMPixOrientationResponse::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    DCMPixOrientationResponse::MergeImpl
 };
-const ::google::protobuf::Message::ClassData* DCMPixOrientationResponse::GetClassData() const {
-  return &_class_data_;
-}
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*DCMPixOrientationResponse::GetClassData() const { return &_class_data_; }
 
-void DCMPixOrientationResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+
+void DCMPixOrientationResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
   auto* const _this = static_cast<DCMPixOrientationResponse*>(&to_msg);
   auto& from = static_cast<const DCMPixOrientationResponse&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.DCMPixOrientationResponse)
@@ -4530,12 +4579,12 @@ void DCMPixOrientationResponse::MergeImpl(::google::protobuf::Message& to_msg, c
   ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  _this->_internal_mutable_orientation()->MergeFrom(from._internal_orientation());
+  _this->_impl_.orientation_.MergeFrom(from._impl_.orientation_);
   if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
     _this->_internal_mutable_status()->::osirixgrpc::Status::MergeFrom(
         from._internal_status());
   }
-  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void DCMPixOrientationResponse::CopyFrom(const DCMPixOrientationResponse& from) {
@@ -4545,14 +4594,11 @@ void DCMPixOrientationResponse::CopyFrom(const DCMPixOrientationResponse& from) 
   MergeFrom(from);
 }
 
-PROTOBUF_NOINLINE bool DCMPixOrientationResponse::IsInitialized() const {
+bool DCMPixOrientationResponse::IsInitialized() const {
   return true;
 }
 
-::_pbi::CachedSize* DCMPixOrientationResponse::AccessCachedSize() const {
-  return &_impl_._cached_size_;
-}
-void DCMPixOrientationResponse::InternalSwap(DCMPixOrientationResponse* PROTOBUF_RESTRICT other) {
+void DCMPixOrientationResponse::InternalSwap(DCMPixOrientationResponse* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
@@ -4560,7 +4606,7 @@ void DCMPixOrientationResponse::InternalSwap(DCMPixOrientationResponse* PROTOBUF
   swap(_impl_.status_, other->_impl_.status_);
 }
 
-::google::protobuf::Metadata DCMPixOrientationResponse::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata DCMPixOrientationResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_dcmpix_2eproto_getter, &descriptor_table_dcmpix_2eproto_once,
       file_level_metadata_dcmpix_2eproto[11]);
@@ -4578,70 +4624,68 @@ class DCMPixSliceLocationResponse::_Internal {
   }
 };
 
-const ::osirixgrpc::Status& DCMPixSliceLocationResponse::_Internal::status(const DCMPixSliceLocationResponse* msg) {
+const ::osirixgrpc::Status&
+DCMPixSliceLocationResponse::_Internal::status(const DCMPixSliceLocationResponse* msg) {
   return *msg->_impl_.status_;
 }
 void DCMPixSliceLocationResponse::clear_status() {
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   if (_impl_.status_ != nullptr) _impl_.status_->Clear();
   _impl_._has_bits_[0] &= ~0x00000001u;
 }
-DCMPixSliceLocationResponse::DCMPixSliceLocationResponse(::google::protobuf::Arena* arena)
-    : ::google::protobuf::Message(arena) {
+DCMPixSliceLocationResponse::DCMPixSliceLocationResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.DCMPixSliceLocationResponse)
 }
-inline PROTOBUF_NDEBUG_INLINE DCMPixSliceLocationResponse::Impl_::Impl_(
-    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
-    const Impl_& from)
-      : _has_bits_{from._has_bits_},
-        _cached_size_{0} {}
+DCMPixSliceLocationResponse::DCMPixSliceLocationResponse(const DCMPixSliceLocationResponse& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  DCMPixSliceLocationResponse* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.status_){nullptr}
+    , decltype(_impl_.slice_location_) {}
+  };
 
-DCMPixSliceLocationResponse::DCMPixSliceLocationResponse(
-    ::google::protobuf::Arena* arena,
-    const DCMPixSliceLocationResponse& from)
-    : ::google::protobuf::Message(arena) {
-  DCMPixSliceLocationResponse* const _this = this;
-  (void)_this;
-  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
-      from._internal_metadata_);
-  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
-  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
-  _impl_.status_ = (cached_has_bits & 0x00000001u)
-                ? CreateMaybeMessage<::osirixgrpc::Status>(arena, *from._impl_.status_)
-                : nullptr;
-  _impl_.slice_location_ = from._impl_.slice_location_;
-
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_impl_.status_ = new ::osirixgrpc::Status(*from._impl_.status_);
+  }
+  _this->_impl_.slice_location_ = from._impl_.slice_location_;
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.DCMPixSliceLocationResponse)
 }
-inline PROTOBUF_NDEBUG_INLINE DCMPixSliceLocationResponse::Impl_::Impl_(
-    ::google::protobuf::internal::InternalVisibility visibility,
-    ::google::protobuf::Arena* arena)
-      : _cached_size_{0} {}
 
 inline void DCMPixSliceLocationResponse::SharedCtor(::_pb::Arena* arena) {
-  new (&_impl_) Impl_(internal_visibility(), arena);
-  ::memset(reinterpret_cast<char *>(&_impl_) +
-               offsetof(Impl_, status_),
-           0,
-           offsetof(Impl_, slice_location_) -
-               offsetof(Impl_, status_) +
-               sizeof(Impl_::slice_location_));
-}
-DCMPixSliceLocationResponse::~DCMPixSliceLocationResponse() {
-  // @@protoc_insertion_point(destructor:osirixgrpc.DCMPixSliceLocationResponse)
-  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
-  SharedDtor();
-}
-inline void DCMPixSliceLocationResponse::SharedDtor() {
-  ABSL_DCHECK(GetArena() == nullptr);
-  delete _impl_.status_;
-  _impl_.~Impl_();
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.status_){nullptr}
+    , decltype(_impl_.slice_location_) { 0 }
+
+  };
 }
 
-PROTOBUF_NOINLINE void DCMPixSliceLocationResponse::Clear() {
+DCMPixSliceLocationResponse::~DCMPixSliceLocationResponse() {
+  // @@protoc_insertion_point(destructor:osirixgrpc.DCMPixSliceLocationResponse)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void DCMPixSliceLocationResponse::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  if (this != internal_default_instance()) delete _impl_.status_;
+}
+
+void DCMPixSliceLocationResponse::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void DCMPixSliceLocationResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.DCMPixSliceLocationResponse)
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -4653,70 +4697,74 @@ PROTOBUF_NOINLINE void DCMPixSliceLocationResponse::Clear() {
   }
   _impl_.slice_location_ = 0;
   _impl_._has_bits_.Clear();
-  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* DCMPixSliceLocationResponse::_InternalParse(
-    const char* ptr, ::_pbi::ParseContext* ctx) {
-  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+const char* DCMPixSliceLocationResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
+  while (!ctx->Done(&ptr)) {
+    ::uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // .osirixgrpc.Status status = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
+          ptr = ctx->ParseMessage(_internal_mutable_status(), ptr);
+          CHK_(ptr);
+        } else {
+          goto handle_unusual;
+        }
+        continue;
+      // float slice_location = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 21)) {
+          _impl_.slice_location_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else {
+          goto handle_unusual;
+        }
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
 }
-
-
-PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<1, 2, 1, 0, 2> DCMPixSliceLocationResponse::_table_ = {
-  {
-    PROTOBUF_FIELD_OFFSET(DCMPixSliceLocationResponse, _impl_._has_bits_),
-    0, // no _extensions_
-    2, 8,  // max_field_number, fast_idx_mask
-    offsetof(decltype(_table_), field_lookup_table),
-    4294967292,  // skipmap
-    offsetof(decltype(_table_), field_entries),
-    2,  // num_field_entries
-    1,  // num_aux_entries
-    offsetof(decltype(_table_), aux_entries),
-    &_DCMPixSliceLocationResponse_default_instance_._instance,
-    ::_pbi::TcParser::GenericFallback,  // fallback
-  }, {{
-    // float slice_location = 2;
-    {::_pbi::TcParser::FastF32S1,
-     {21, 63, 0, PROTOBUF_FIELD_OFFSET(DCMPixSliceLocationResponse, _impl_.slice_location_)}},
-    // .osirixgrpc.Status status = 1;
-    {::_pbi::TcParser::FastMtS1,
-     {10, 0, 0, PROTOBUF_FIELD_OFFSET(DCMPixSliceLocationResponse, _impl_.status_)}},
-  }}, {{
-    65535, 65535
-  }}, {{
-    // .osirixgrpc.Status status = 1;
-    {PROTOBUF_FIELD_OFFSET(DCMPixSliceLocationResponse, _impl_.status_), _Internal::kHasBitsOffset + 0, 0,
-    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
-    // float slice_location = 2;
-    {PROTOBUF_FIELD_OFFSET(DCMPixSliceLocationResponse, _impl_.slice_location_), -1, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kFloat)},
-  }}, {{
-    {::_pbi::TcParser::GetTable<::osirixgrpc::Status>()},
-  }}, {{
-  }},
-};
 
 ::uint8_t* DCMPixSliceLocationResponse::_InternalSerialize(
-    ::uint8_t* target,
-    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.DCMPixSliceLocationResponse)
   ::uint32_t cached_has_bits = 0;
-  (void)cached_has_bits;
+  (void) cached_has_bits;
 
   cached_has_bits = _impl_._has_bits_[0];
   // .osirixgrpc.Status status = 1;
   if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-        1, _Internal::status(this),
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(1, _Internal::status(this),
         _Internal::status(this).GetCachedSize(), target, stream);
   }
 
   // float slice_location = 2;
-  static_assert(sizeof(::uint32_t) == sizeof(float),
-                "Code assumes ::uint32_t and float are the same size.");
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
   float tmp_slice_location = this->_internal_slice_location();
   ::uint32_t raw_slice_location;
   memcpy(&raw_slice_location, &tmp_slice_location, sizeof(tmp_slice_location));
@@ -4727,9 +4775,8 @@ const ::_pbi::TcParseTable<1, 2, 1, 0, 2> DCMPixSliceLocationResponse::_table_ =
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target =
-        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.DCMPixSliceLocationResponse)
   return target;
@@ -4746,13 +4793,13 @@ const ::_pbi::TcParseTable<1, 2, 1, 0, 2> DCMPixSliceLocationResponse::_table_ =
   // .osirixgrpc.Status status = 1;
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
-    total_size +=
-        1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.status_);
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *_impl_.status_);
   }
 
   // float slice_location = 2;
-  static_assert(sizeof(::uint32_t) == sizeof(float),
-                "Code assumes ::uint32_t and float are the same size.");
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
   float tmp_slice_location = this->_internal_slice_location();
   ::uint32_t raw_slice_location;
   memcpy(&raw_slice_location, &tmp_slice_location, sizeof(tmp_slice_location));
@@ -4763,15 +4810,14 @@ const ::_pbi::TcParseTable<1, 2, 1, 0, 2> DCMPixSliceLocationResponse::_table_ =
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::google::protobuf::Message::ClassData DCMPixSliceLocationResponse::_class_data_ = {
-    DCMPixSliceLocationResponse::MergeImpl,
-    nullptr,  // OnDemandRegisterArenaDtor
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData DCMPixSliceLocationResponse::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    DCMPixSliceLocationResponse::MergeImpl
 };
-const ::google::protobuf::Message::ClassData* DCMPixSliceLocationResponse::GetClassData() const {
-  return &_class_data_;
-}
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*DCMPixSliceLocationResponse::GetClassData() const { return &_class_data_; }
 
-void DCMPixSliceLocationResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+
+void DCMPixSliceLocationResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
   auto* const _this = static_cast<DCMPixSliceLocationResponse*>(&to_msg);
   auto& from = static_cast<const DCMPixSliceLocationResponse&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.DCMPixSliceLocationResponse)
@@ -4783,15 +4829,14 @@ void DCMPixSliceLocationResponse::MergeImpl(::google::protobuf::Message& to_msg,
     _this->_internal_mutable_status()->::osirixgrpc::Status::MergeFrom(
         from._internal_status());
   }
-  static_assert(sizeof(::uint32_t) == sizeof(float),
-                "Code assumes ::uint32_t and float are the same size.");
+  static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
   float tmp_slice_location = from._internal_slice_location();
   ::uint32_t raw_slice_location;
   memcpy(&raw_slice_location, &tmp_slice_location, sizeof(tmp_slice_location));
   if (raw_slice_location != 0) {
     _this->_internal_set_slice_location(from._internal_slice_location());
   }
-  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void DCMPixSliceLocationResponse::CopyFrom(const DCMPixSliceLocationResponse& from) {
@@ -4801,18 +4846,15 @@ void DCMPixSliceLocationResponse::CopyFrom(const DCMPixSliceLocationResponse& fr
   MergeFrom(from);
 }
 
-PROTOBUF_NOINLINE bool DCMPixSliceLocationResponse::IsInitialized() const {
+bool DCMPixSliceLocationResponse::IsInitialized() const {
   return true;
 }
 
-::_pbi::CachedSize* DCMPixSliceLocationResponse::AccessCachedSize() const {
-  return &_impl_._cached_size_;
-}
-void DCMPixSliceLocationResponse::InternalSwap(DCMPixSliceLocationResponse* PROTOBUF_RESTRICT other) {
+void DCMPixSliceLocationResponse::InternalSwap(DCMPixSliceLocationResponse* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::google::protobuf::internal::memswap<
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
       PROTOBUF_FIELD_OFFSET(DCMPixSliceLocationResponse, _impl_.slice_location_)
       + sizeof(DCMPixSliceLocationResponse::_impl_.slice_location_)
       - PROTOBUF_FIELD_OFFSET(DCMPixSliceLocationResponse, _impl_.status_)>(
@@ -4820,7 +4862,7 @@ void DCMPixSliceLocationResponse::InternalSwap(DCMPixSliceLocationResponse* PROT
           reinterpret_cast<char*>(&other->_impl_.status_));
 }
 
-::google::protobuf::Metadata DCMPixSliceLocationResponse::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata DCMPixSliceLocationResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_dcmpix_2eproto_getter, &descriptor_table_dcmpix_2eproto_once,
       file_level_metadata_dcmpix_2eproto[12]);
@@ -4838,67 +4880,79 @@ class DCMPixSourceFileResponse::_Internal {
   }
 };
 
-const ::osirixgrpc::Status& DCMPixSourceFileResponse::_Internal::status(const DCMPixSourceFileResponse* msg) {
+const ::osirixgrpc::Status&
+DCMPixSourceFileResponse::_Internal::status(const DCMPixSourceFileResponse* msg) {
   return *msg->_impl_.status_;
 }
 void DCMPixSourceFileResponse::clear_status() {
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   if (_impl_.status_ != nullptr) _impl_.status_->Clear();
   _impl_._has_bits_[0] &= ~0x00000001u;
 }
-DCMPixSourceFileResponse::DCMPixSourceFileResponse(::google::protobuf::Arena* arena)
-    : ::google::protobuf::Message(arena) {
+DCMPixSourceFileResponse::DCMPixSourceFileResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.DCMPixSourceFileResponse)
 }
-inline PROTOBUF_NDEBUG_INLINE DCMPixSourceFileResponse::Impl_::Impl_(
-    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
-    const Impl_& from)
-      : _has_bits_{from._has_bits_},
-        _cached_size_{0},
-        source_file_(arena, from.source_file_) {}
+DCMPixSourceFileResponse::DCMPixSourceFileResponse(const DCMPixSourceFileResponse& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  DCMPixSourceFileResponse* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.source_file_) {}
 
-DCMPixSourceFileResponse::DCMPixSourceFileResponse(
-    ::google::protobuf::Arena* arena,
-    const DCMPixSourceFileResponse& from)
-    : ::google::protobuf::Message(arena) {
-  DCMPixSourceFileResponse* const _this = this;
-  (void)_this;
-  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
-      from._internal_metadata_);
-  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
-  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
-  _impl_.status_ = (cached_has_bits & 0x00000001u)
-                ? CreateMaybeMessage<::osirixgrpc::Status>(arena, *from._impl_.status_)
-                : nullptr;
+    , decltype(_impl_.status_){nullptr}};
 
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _impl_.source_file_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.source_file_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_source_file().empty()) {
+    _this->_impl_.source_file_.Set(from._internal_source_file(), _this->GetArenaForAllocation());
+  }
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_impl_.status_ = new ::osirixgrpc::Status(*from._impl_.status_);
+  }
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.DCMPixSourceFileResponse)
 }
-inline PROTOBUF_NDEBUG_INLINE DCMPixSourceFileResponse::Impl_::Impl_(
-    ::google::protobuf::internal::InternalVisibility visibility,
-    ::google::protobuf::Arena* arena)
-      : _cached_size_{0},
-        source_file_(arena) {}
 
 inline void DCMPixSourceFileResponse::SharedCtor(::_pb::Arena* arena) {
-  new (&_impl_) Impl_(internal_visibility(), arena);
-  _impl_.status_ = {};
-}
-DCMPixSourceFileResponse::~DCMPixSourceFileResponse() {
-  // @@protoc_insertion_point(destructor:osirixgrpc.DCMPixSourceFileResponse)
-  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
-  SharedDtor();
-}
-inline void DCMPixSourceFileResponse::SharedDtor() {
-  ABSL_DCHECK(GetArena() == nullptr);
-  _impl_.source_file_.Destroy();
-  delete _impl_.status_;
-  _impl_.~Impl_();
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.source_file_) {}
+
+    , decltype(_impl_.status_){nullptr}
+  };
+  _impl_.source_file_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.source_file_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
 
-PROTOBUF_NOINLINE void DCMPixSourceFileResponse::Clear() {
+DCMPixSourceFileResponse::~DCMPixSourceFileResponse() {
+  // @@protoc_insertion_point(destructor:osirixgrpc.DCMPixSourceFileResponse)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void DCMPixSourceFileResponse::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.source_file_.Destroy();
+  if (this != internal_default_instance()) delete _impl_.status_;
+}
+
+void DCMPixSourceFileResponse::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void DCMPixSourceFileResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.DCMPixSourceFileResponse)
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -4910,82 +4964,85 @@ PROTOBUF_NOINLINE void DCMPixSourceFileResponse::Clear() {
     _impl_.status_->Clear();
   }
   _impl_._has_bits_.Clear();
-  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* DCMPixSourceFileResponse::_InternalParse(
-    const char* ptr, ::_pbi::ParseContext* ctx) {
-  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+const char* DCMPixSourceFileResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
+  while (!ctx->Done(&ptr)) {
+    ::uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // .osirixgrpc.Status status = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
+          ptr = ctx->ParseMessage(_internal_mutable_status(), ptr);
+          CHK_(ptr);
+        } else {
+          goto handle_unusual;
+        }
+        continue;
+      // string source_file = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 18)) {
+          auto str = _internal_mutable_source_file();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "osirixgrpc.DCMPixSourceFileResponse.source_file"));
+        } else {
+          goto handle_unusual;
+        }
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
 }
-
-
-PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<1, 2, 1, 55, 2> DCMPixSourceFileResponse::_table_ = {
-  {
-    PROTOBUF_FIELD_OFFSET(DCMPixSourceFileResponse, _impl_._has_bits_),
-    0, // no _extensions_
-    2, 8,  // max_field_number, fast_idx_mask
-    offsetof(decltype(_table_), field_lookup_table),
-    4294967292,  // skipmap
-    offsetof(decltype(_table_), field_entries),
-    2,  // num_field_entries
-    1,  // num_aux_entries
-    offsetof(decltype(_table_), aux_entries),
-    &_DCMPixSourceFileResponse_default_instance_._instance,
-    ::_pbi::TcParser::GenericFallback,  // fallback
-  }, {{
-    // string source_file = 2;
-    {::_pbi::TcParser::FastUS1,
-     {18, 63, 0, PROTOBUF_FIELD_OFFSET(DCMPixSourceFileResponse, _impl_.source_file_)}},
-    // .osirixgrpc.Status status = 1;
-    {::_pbi::TcParser::FastMtS1,
-     {10, 0, 0, PROTOBUF_FIELD_OFFSET(DCMPixSourceFileResponse, _impl_.status_)}},
-  }}, {{
-    65535, 65535
-  }}, {{
-    // .osirixgrpc.Status status = 1;
-    {PROTOBUF_FIELD_OFFSET(DCMPixSourceFileResponse, _impl_.status_), _Internal::kHasBitsOffset + 0, 0,
-    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
-    // string source_file = 2;
-    {PROTOBUF_FIELD_OFFSET(DCMPixSourceFileResponse, _impl_.source_file_), -1, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
-  }}, {{
-    {::_pbi::TcParser::GetTable<::osirixgrpc::Status>()},
-  }}, {{
-    "\43\0\13\0\0\0\0\0"
-    "osirixgrpc.DCMPixSourceFileResponse"
-    "source_file"
-  }},
-};
 
 ::uint8_t* DCMPixSourceFileResponse::_InternalSerialize(
-    ::uint8_t* target,
-    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.DCMPixSourceFileResponse)
   ::uint32_t cached_has_bits = 0;
-  (void)cached_has_bits;
+  (void) cached_has_bits;
 
   cached_has_bits = _impl_._has_bits_[0];
   // .osirixgrpc.Status status = 1;
   if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-        1, _Internal::status(this),
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(1, _Internal::status(this),
         _Internal::status(this).GetCachedSize(), target, stream);
   }
 
   // string source_file = 2;
   if (!this->_internal_source_file().empty()) {
     const std::string& _s = this->_internal_source_file();
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "osirixgrpc.DCMPixSourceFileResponse.source_file");
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE, "osirixgrpc.DCMPixSourceFileResponse.source_file");
     target = stream->WriteStringMaybeAliased(2, _s, target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target =
-        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.DCMPixSourceFileResponse)
   return target;
@@ -5001,29 +5058,29 @@ const ::_pbi::TcParseTable<1, 2, 1, 55, 2> DCMPixSourceFileResponse::_table_ = {
 
   // string source_file = 2;
   if (!this->_internal_source_file().empty()) {
-    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+    total_size += 1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
                                     this->_internal_source_file());
   }
 
   // .osirixgrpc.Status status = 1;
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
-    total_size +=
-        1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.status_);
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *_impl_.status_);
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::google::protobuf::Message::ClassData DCMPixSourceFileResponse::_class_data_ = {
-    DCMPixSourceFileResponse::MergeImpl,
-    nullptr,  // OnDemandRegisterArenaDtor
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData DCMPixSourceFileResponse::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    DCMPixSourceFileResponse::MergeImpl
 };
-const ::google::protobuf::Message::ClassData* DCMPixSourceFileResponse::GetClassData() const {
-  return &_class_data_;
-}
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*DCMPixSourceFileResponse::GetClassData() const { return &_class_data_; }
 
-void DCMPixSourceFileResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+
+void DCMPixSourceFileResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
   auto* const _this = static_cast<DCMPixSourceFileResponse*>(&to_msg);
   auto& from = static_cast<const DCMPixSourceFileResponse&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.DCMPixSourceFileResponse)
@@ -5038,7 +5095,7 @@ void DCMPixSourceFileResponse::MergeImpl(::google::protobuf::Message& to_msg, co
     _this->_internal_mutable_status()->::osirixgrpc::Status::MergeFrom(
         from._internal_status());
   }
-  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void DCMPixSourceFileResponse::CopyFrom(const DCMPixSourceFileResponse& from) {
@@ -5048,24 +5105,22 @@ void DCMPixSourceFileResponse::CopyFrom(const DCMPixSourceFileResponse& from) {
   MergeFrom(from);
 }
 
-PROTOBUF_NOINLINE bool DCMPixSourceFileResponse::IsInitialized() const {
+bool DCMPixSourceFileResponse::IsInitialized() const {
   return true;
 }
 
-::_pbi::CachedSize* DCMPixSourceFileResponse::AccessCachedSize() const {
-  return &_impl_._cached_size_;
-}
-void DCMPixSourceFileResponse::InternalSwap(DCMPixSourceFileResponse* PROTOBUF_RESTRICT other) {
+void DCMPixSourceFileResponse::InternalSwap(DCMPixSourceFileResponse* other) {
   using std::swap;
-  auto* arena = GetArena();
-  ABSL_DCHECK_EQ(arena, other->GetArena());
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.source_file_, &other->_impl_.source_file_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.source_file_, lhs_arena,
+                                       &other->_impl_.source_file_, rhs_arena);
   swap(_impl_.status_, other->_impl_.status_);
 }
 
-::google::protobuf::Metadata DCMPixSourceFileResponse::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata DCMPixSourceFileResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_dcmpix_2eproto_getter, &descriptor_table_dcmpix_2eproto_once,
       file_level_metadata_dcmpix_2eproto[13]);
@@ -5083,70 +5138,68 @@ class DCMPixConvertToRGBRequest::_Internal {
   }
 };
 
-const ::osirixgrpc::DCMPix& DCMPixConvertToRGBRequest::_Internal::pix(const DCMPixConvertToRGBRequest* msg) {
+const ::osirixgrpc::DCMPix&
+DCMPixConvertToRGBRequest::_Internal::pix(const DCMPixConvertToRGBRequest* msg) {
   return *msg->_impl_.pix_;
 }
 void DCMPixConvertToRGBRequest::clear_pix() {
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   if (_impl_.pix_ != nullptr) _impl_.pix_->Clear();
   _impl_._has_bits_[0] &= ~0x00000001u;
 }
-DCMPixConvertToRGBRequest::DCMPixConvertToRGBRequest(::google::protobuf::Arena* arena)
-    : ::google::protobuf::Message(arena) {
+DCMPixConvertToRGBRequest::DCMPixConvertToRGBRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.DCMPixConvertToRGBRequest)
 }
-inline PROTOBUF_NDEBUG_INLINE DCMPixConvertToRGBRequest::Impl_::Impl_(
-    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
-    const Impl_& from)
-      : _has_bits_{from._has_bits_},
-        _cached_size_{0} {}
+DCMPixConvertToRGBRequest::DCMPixConvertToRGBRequest(const DCMPixConvertToRGBRequest& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  DCMPixConvertToRGBRequest* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.pix_){nullptr}
+    , decltype(_impl_.rgb_channel_) {}
+  };
 
-DCMPixConvertToRGBRequest::DCMPixConvertToRGBRequest(
-    ::google::protobuf::Arena* arena,
-    const DCMPixConvertToRGBRequest& from)
-    : ::google::protobuf::Message(arena) {
-  DCMPixConvertToRGBRequest* const _this = this;
-  (void)_this;
-  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
-      from._internal_metadata_);
-  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
-  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
-  _impl_.pix_ = (cached_has_bits & 0x00000001u)
-                ? CreateMaybeMessage<::osirixgrpc::DCMPix>(arena, *from._impl_.pix_)
-                : nullptr;
-  _impl_.rgb_channel_ = from._impl_.rgb_channel_;
-
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_impl_.pix_ = new ::osirixgrpc::DCMPix(*from._impl_.pix_);
+  }
+  _this->_impl_.rgb_channel_ = from._impl_.rgb_channel_;
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.DCMPixConvertToRGBRequest)
 }
-inline PROTOBUF_NDEBUG_INLINE DCMPixConvertToRGBRequest::Impl_::Impl_(
-    ::google::protobuf::internal::InternalVisibility visibility,
-    ::google::protobuf::Arena* arena)
-      : _cached_size_{0} {}
 
 inline void DCMPixConvertToRGBRequest::SharedCtor(::_pb::Arena* arena) {
-  new (&_impl_) Impl_(internal_visibility(), arena);
-  ::memset(reinterpret_cast<char *>(&_impl_) +
-               offsetof(Impl_, pix_),
-           0,
-           offsetof(Impl_, rgb_channel_) -
-               offsetof(Impl_, pix_) +
-               sizeof(Impl_::rgb_channel_));
-}
-DCMPixConvertToRGBRequest::~DCMPixConvertToRGBRequest() {
-  // @@protoc_insertion_point(destructor:osirixgrpc.DCMPixConvertToRGBRequest)
-  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
-  SharedDtor();
-}
-inline void DCMPixConvertToRGBRequest::SharedDtor() {
-  ABSL_DCHECK(GetArena() == nullptr);
-  delete _impl_.pix_;
-  _impl_.~Impl_();
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.pix_){nullptr}
+    , decltype(_impl_.rgb_channel_) { 0 }
+
+  };
 }
 
-PROTOBUF_NOINLINE void DCMPixConvertToRGBRequest::Clear() {
+DCMPixConvertToRGBRequest::~DCMPixConvertToRGBRequest() {
+  // @@protoc_insertion_point(destructor:osirixgrpc.DCMPixConvertToRGBRequest)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void DCMPixConvertToRGBRequest::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  if (this != internal_default_instance()) delete _impl_.pix_;
+}
+
+void DCMPixConvertToRGBRequest::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void DCMPixConvertToRGBRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.DCMPixConvertToRGBRequest)
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -5158,78 +5211,82 @@ PROTOBUF_NOINLINE void DCMPixConvertToRGBRequest::Clear() {
   }
   _impl_.rgb_channel_ = 0;
   _impl_._has_bits_.Clear();
-  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* DCMPixConvertToRGBRequest::_InternalParse(
-    const char* ptr, ::_pbi::ParseContext* ctx) {
-  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+const char* DCMPixConvertToRGBRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
+  while (!ctx->Done(&ptr)) {
+    ::uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // .osirixgrpc.DCMPix pix = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
+          ptr = ctx->ParseMessage(_internal_mutable_pix(), ptr);
+          CHK_(ptr);
+        } else {
+          goto handle_unusual;
+        }
+        continue;
+      // int32 rgb_channel = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 16)) {
+          _impl_.rgb_channel_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else {
+          goto handle_unusual;
+        }
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
 }
-
-
-PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<1, 2, 1, 0, 2> DCMPixConvertToRGBRequest::_table_ = {
-  {
-    PROTOBUF_FIELD_OFFSET(DCMPixConvertToRGBRequest, _impl_._has_bits_),
-    0, // no _extensions_
-    2, 8,  // max_field_number, fast_idx_mask
-    offsetof(decltype(_table_), field_lookup_table),
-    4294967292,  // skipmap
-    offsetof(decltype(_table_), field_entries),
-    2,  // num_field_entries
-    1,  // num_aux_entries
-    offsetof(decltype(_table_), aux_entries),
-    &_DCMPixConvertToRGBRequest_default_instance_._instance,
-    ::_pbi::TcParser::GenericFallback,  // fallback
-  }, {{
-    // int32 rgb_channel = 2;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(DCMPixConvertToRGBRequest, _impl_.rgb_channel_), 63>(),
-     {16, 63, 0, PROTOBUF_FIELD_OFFSET(DCMPixConvertToRGBRequest, _impl_.rgb_channel_)}},
-    // .osirixgrpc.DCMPix pix = 1;
-    {::_pbi::TcParser::FastMtS1,
-     {10, 0, 0, PROTOBUF_FIELD_OFFSET(DCMPixConvertToRGBRequest, _impl_.pix_)}},
-  }}, {{
-    65535, 65535
-  }}, {{
-    // .osirixgrpc.DCMPix pix = 1;
-    {PROTOBUF_FIELD_OFFSET(DCMPixConvertToRGBRequest, _impl_.pix_), _Internal::kHasBitsOffset + 0, 0,
-    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
-    // int32 rgb_channel = 2;
-    {PROTOBUF_FIELD_OFFSET(DCMPixConvertToRGBRequest, _impl_.rgb_channel_), -1, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kInt32)},
-  }}, {{
-    {::_pbi::TcParser::GetTable<::osirixgrpc::DCMPix>()},
-  }}, {{
-  }},
-};
 
 ::uint8_t* DCMPixConvertToRGBRequest::_InternalSerialize(
-    ::uint8_t* target,
-    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.DCMPixConvertToRGBRequest)
   ::uint32_t cached_has_bits = 0;
-  (void)cached_has_bits;
+  (void) cached_has_bits;
 
   cached_has_bits = _impl_._has_bits_[0];
   // .osirixgrpc.DCMPix pix = 1;
   if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-        1, _Internal::pix(this),
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(1, _Internal::pix(this),
         _Internal::pix(this).GetCachedSize(), target, stream);
   }
 
   // int32 rgb_channel = 2;
   if (this->_internal_rgb_channel() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::
-        WriteInt32ToArrayWithField<2>(
-            stream, this->_internal_rgb_channel(), target);
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteInt32ToArray(
+        2, this->_internal_rgb_channel(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target =
-        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.DCMPixConvertToRGBRequest)
   return target;
@@ -5246,8 +5303,9 @@ const ::_pbi::TcParseTable<1, 2, 1, 0, 2> DCMPixConvertToRGBRequest::_table_ = {
   // .osirixgrpc.DCMPix pix = 1;
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
-    total_size +=
-        1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.pix_);
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *_impl_.pix_);
   }
 
   // int32 rgb_channel = 2;
@@ -5259,15 +5317,14 @@ const ::_pbi::TcParseTable<1, 2, 1, 0, 2> DCMPixConvertToRGBRequest::_table_ = {
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::google::protobuf::Message::ClassData DCMPixConvertToRGBRequest::_class_data_ = {
-    DCMPixConvertToRGBRequest::MergeImpl,
-    nullptr,  // OnDemandRegisterArenaDtor
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData DCMPixConvertToRGBRequest::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    DCMPixConvertToRGBRequest::MergeImpl
 };
-const ::google::protobuf::Message::ClassData* DCMPixConvertToRGBRequest::GetClassData() const {
-  return &_class_data_;
-}
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*DCMPixConvertToRGBRequest::GetClassData() const { return &_class_data_; }
 
-void DCMPixConvertToRGBRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+
+void DCMPixConvertToRGBRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
   auto* const _this = static_cast<DCMPixConvertToRGBRequest*>(&to_msg);
   auto& from = static_cast<const DCMPixConvertToRGBRequest&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.DCMPixConvertToRGBRequest)
@@ -5282,7 +5339,7 @@ void DCMPixConvertToRGBRequest::MergeImpl(::google::protobuf::Message& to_msg, c
   if (from._internal_rgb_channel() != 0) {
     _this->_internal_set_rgb_channel(from._internal_rgb_channel());
   }
-  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void DCMPixConvertToRGBRequest::CopyFrom(const DCMPixConvertToRGBRequest& from) {
@@ -5292,18 +5349,15 @@ void DCMPixConvertToRGBRequest::CopyFrom(const DCMPixConvertToRGBRequest& from) 
   MergeFrom(from);
 }
 
-PROTOBUF_NOINLINE bool DCMPixConvertToRGBRequest::IsInitialized() const {
+bool DCMPixConvertToRGBRequest::IsInitialized() const {
   return true;
 }
 
-::_pbi::CachedSize* DCMPixConvertToRGBRequest::AccessCachedSize() const {
-  return &_impl_._cached_size_;
-}
-void DCMPixConvertToRGBRequest::InternalSwap(DCMPixConvertToRGBRequest* PROTOBUF_RESTRICT other) {
+void DCMPixConvertToRGBRequest::InternalSwap(DCMPixConvertToRGBRequest* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::google::protobuf::internal::memswap<
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
       PROTOBUF_FIELD_OFFSET(DCMPixConvertToRGBRequest, _impl_.rgb_channel_)
       + sizeof(DCMPixConvertToRGBRequest::_impl_.rgb_channel_)
       - PROTOBUF_FIELD_OFFSET(DCMPixConvertToRGBRequest, _impl_.pix_)>(
@@ -5311,7 +5365,7 @@ void DCMPixConvertToRGBRequest::InternalSwap(DCMPixConvertToRGBRequest* PROTOBUF
           reinterpret_cast<char*>(&other->_impl_.pix_));
 }
 
-::google::protobuf::Metadata DCMPixConvertToRGBRequest::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata DCMPixConvertToRGBRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_dcmpix_2eproto_getter, &descriptor_table_dcmpix_2eproto_once,
       file_level_metadata_dcmpix_2eproto[14]);
@@ -5329,70 +5383,68 @@ class DCMPixConvertToBWRequest::_Internal {
   }
 };
 
-const ::osirixgrpc::DCMPix& DCMPixConvertToBWRequest::_Internal::pix(const DCMPixConvertToBWRequest* msg) {
+const ::osirixgrpc::DCMPix&
+DCMPixConvertToBWRequest::_Internal::pix(const DCMPixConvertToBWRequest* msg) {
   return *msg->_impl_.pix_;
 }
 void DCMPixConvertToBWRequest::clear_pix() {
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   if (_impl_.pix_ != nullptr) _impl_.pix_->Clear();
   _impl_._has_bits_[0] &= ~0x00000001u;
 }
-DCMPixConvertToBWRequest::DCMPixConvertToBWRequest(::google::protobuf::Arena* arena)
-    : ::google::protobuf::Message(arena) {
+DCMPixConvertToBWRequest::DCMPixConvertToBWRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.DCMPixConvertToBWRequest)
 }
-inline PROTOBUF_NDEBUG_INLINE DCMPixConvertToBWRequest::Impl_::Impl_(
-    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
-    const Impl_& from)
-      : _has_bits_{from._has_bits_},
-        _cached_size_{0} {}
+DCMPixConvertToBWRequest::DCMPixConvertToBWRequest(const DCMPixConvertToBWRequest& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  DCMPixConvertToBWRequest* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.pix_){nullptr}
+    , decltype(_impl_.bw_channel_) {}
+  };
 
-DCMPixConvertToBWRequest::DCMPixConvertToBWRequest(
-    ::google::protobuf::Arena* arena,
-    const DCMPixConvertToBWRequest& from)
-    : ::google::protobuf::Message(arena) {
-  DCMPixConvertToBWRequest* const _this = this;
-  (void)_this;
-  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
-      from._internal_metadata_);
-  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
-  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
-  _impl_.pix_ = (cached_has_bits & 0x00000001u)
-                ? CreateMaybeMessage<::osirixgrpc::DCMPix>(arena, *from._impl_.pix_)
-                : nullptr;
-  _impl_.bw_channel_ = from._impl_.bw_channel_;
-
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_impl_.pix_ = new ::osirixgrpc::DCMPix(*from._impl_.pix_);
+  }
+  _this->_impl_.bw_channel_ = from._impl_.bw_channel_;
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.DCMPixConvertToBWRequest)
 }
-inline PROTOBUF_NDEBUG_INLINE DCMPixConvertToBWRequest::Impl_::Impl_(
-    ::google::protobuf::internal::InternalVisibility visibility,
-    ::google::protobuf::Arena* arena)
-      : _cached_size_{0} {}
 
 inline void DCMPixConvertToBWRequest::SharedCtor(::_pb::Arena* arena) {
-  new (&_impl_) Impl_(internal_visibility(), arena);
-  ::memset(reinterpret_cast<char *>(&_impl_) +
-               offsetof(Impl_, pix_),
-           0,
-           offsetof(Impl_, bw_channel_) -
-               offsetof(Impl_, pix_) +
-               sizeof(Impl_::bw_channel_));
-}
-DCMPixConvertToBWRequest::~DCMPixConvertToBWRequest() {
-  // @@protoc_insertion_point(destructor:osirixgrpc.DCMPixConvertToBWRequest)
-  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
-  SharedDtor();
-}
-inline void DCMPixConvertToBWRequest::SharedDtor() {
-  ABSL_DCHECK(GetArena() == nullptr);
-  delete _impl_.pix_;
-  _impl_.~Impl_();
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.pix_){nullptr}
+    , decltype(_impl_.bw_channel_) { 0 }
+
+  };
 }
 
-PROTOBUF_NOINLINE void DCMPixConvertToBWRequest::Clear() {
+DCMPixConvertToBWRequest::~DCMPixConvertToBWRequest() {
+  // @@protoc_insertion_point(destructor:osirixgrpc.DCMPixConvertToBWRequest)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void DCMPixConvertToBWRequest::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  if (this != internal_default_instance()) delete _impl_.pix_;
+}
+
+void DCMPixConvertToBWRequest::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void DCMPixConvertToBWRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.DCMPixConvertToBWRequest)
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -5404,78 +5456,82 @@ PROTOBUF_NOINLINE void DCMPixConvertToBWRequest::Clear() {
   }
   _impl_.bw_channel_ = 0;
   _impl_._has_bits_.Clear();
-  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* DCMPixConvertToBWRequest::_InternalParse(
-    const char* ptr, ::_pbi::ParseContext* ctx) {
-  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+const char* DCMPixConvertToBWRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
+  while (!ctx->Done(&ptr)) {
+    ::uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // .osirixgrpc.DCMPix pix = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
+          ptr = ctx->ParseMessage(_internal_mutable_pix(), ptr);
+          CHK_(ptr);
+        } else {
+          goto handle_unusual;
+        }
+        continue;
+      // int32 bw_channel = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 16)) {
+          _impl_.bw_channel_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else {
+          goto handle_unusual;
+        }
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
 }
-
-
-PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<1, 2, 1, 0, 2> DCMPixConvertToBWRequest::_table_ = {
-  {
-    PROTOBUF_FIELD_OFFSET(DCMPixConvertToBWRequest, _impl_._has_bits_),
-    0, // no _extensions_
-    2, 8,  // max_field_number, fast_idx_mask
-    offsetof(decltype(_table_), field_lookup_table),
-    4294967292,  // skipmap
-    offsetof(decltype(_table_), field_entries),
-    2,  // num_field_entries
-    1,  // num_aux_entries
-    offsetof(decltype(_table_), aux_entries),
-    &_DCMPixConvertToBWRequest_default_instance_._instance,
-    ::_pbi::TcParser::GenericFallback,  // fallback
-  }, {{
-    // int32 bw_channel = 2;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(DCMPixConvertToBWRequest, _impl_.bw_channel_), 63>(),
-     {16, 63, 0, PROTOBUF_FIELD_OFFSET(DCMPixConvertToBWRequest, _impl_.bw_channel_)}},
-    // .osirixgrpc.DCMPix pix = 1;
-    {::_pbi::TcParser::FastMtS1,
-     {10, 0, 0, PROTOBUF_FIELD_OFFSET(DCMPixConvertToBWRequest, _impl_.pix_)}},
-  }}, {{
-    65535, 65535
-  }}, {{
-    // .osirixgrpc.DCMPix pix = 1;
-    {PROTOBUF_FIELD_OFFSET(DCMPixConvertToBWRequest, _impl_.pix_), _Internal::kHasBitsOffset + 0, 0,
-    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
-    // int32 bw_channel = 2;
-    {PROTOBUF_FIELD_OFFSET(DCMPixConvertToBWRequest, _impl_.bw_channel_), -1, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kInt32)},
-  }}, {{
-    {::_pbi::TcParser::GetTable<::osirixgrpc::DCMPix>()},
-  }}, {{
-  }},
-};
 
 ::uint8_t* DCMPixConvertToBWRequest::_InternalSerialize(
-    ::uint8_t* target,
-    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.DCMPixConvertToBWRequest)
   ::uint32_t cached_has_bits = 0;
-  (void)cached_has_bits;
+  (void) cached_has_bits;
 
   cached_has_bits = _impl_._has_bits_[0];
   // .osirixgrpc.DCMPix pix = 1;
   if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-        1, _Internal::pix(this),
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(1, _Internal::pix(this),
         _Internal::pix(this).GetCachedSize(), target, stream);
   }
 
   // int32 bw_channel = 2;
   if (this->_internal_bw_channel() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::
-        WriteInt32ToArrayWithField<2>(
-            stream, this->_internal_bw_channel(), target);
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteInt32ToArray(
+        2, this->_internal_bw_channel(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target =
-        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.DCMPixConvertToBWRequest)
   return target;
@@ -5492,8 +5548,9 @@ const ::_pbi::TcParseTable<1, 2, 1, 0, 2> DCMPixConvertToBWRequest::_table_ = {
   // .osirixgrpc.DCMPix pix = 1;
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
-    total_size +=
-        1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.pix_);
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *_impl_.pix_);
   }
 
   // int32 bw_channel = 2;
@@ -5505,15 +5562,14 @@ const ::_pbi::TcParseTable<1, 2, 1, 0, 2> DCMPixConvertToBWRequest::_table_ = {
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::google::protobuf::Message::ClassData DCMPixConvertToBWRequest::_class_data_ = {
-    DCMPixConvertToBWRequest::MergeImpl,
-    nullptr,  // OnDemandRegisterArenaDtor
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData DCMPixConvertToBWRequest::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    DCMPixConvertToBWRequest::MergeImpl
 };
-const ::google::protobuf::Message::ClassData* DCMPixConvertToBWRequest::GetClassData() const {
-  return &_class_data_;
-}
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*DCMPixConvertToBWRequest::GetClassData() const { return &_class_data_; }
 
-void DCMPixConvertToBWRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+
+void DCMPixConvertToBWRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
   auto* const _this = static_cast<DCMPixConvertToBWRequest*>(&to_msg);
   auto& from = static_cast<const DCMPixConvertToBWRequest&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.DCMPixConvertToBWRequest)
@@ -5528,7 +5584,7 @@ void DCMPixConvertToBWRequest::MergeImpl(::google::protobuf::Message& to_msg, co
   if (from._internal_bw_channel() != 0) {
     _this->_internal_set_bw_channel(from._internal_bw_channel());
   }
-  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void DCMPixConvertToBWRequest::CopyFrom(const DCMPixConvertToBWRequest& from) {
@@ -5538,18 +5594,15 @@ void DCMPixConvertToBWRequest::CopyFrom(const DCMPixConvertToBWRequest& from) {
   MergeFrom(from);
 }
 
-PROTOBUF_NOINLINE bool DCMPixConvertToBWRequest::IsInitialized() const {
+bool DCMPixConvertToBWRequest::IsInitialized() const {
   return true;
 }
 
-::_pbi::CachedSize* DCMPixConvertToBWRequest::AccessCachedSize() const {
-  return &_impl_._cached_size_;
-}
-void DCMPixConvertToBWRequest::InternalSwap(DCMPixConvertToBWRequest* PROTOBUF_RESTRICT other) {
+void DCMPixConvertToBWRequest::InternalSwap(DCMPixConvertToBWRequest* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::google::protobuf::internal::memswap<
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
       PROTOBUF_FIELD_OFFSET(DCMPixConvertToBWRequest, _impl_.bw_channel_)
       + sizeof(DCMPixConvertToBWRequest::_impl_.bw_channel_)
       - PROTOBUF_FIELD_OFFSET(DCMPixConvertToBWRequest, _impl_.pix_)>(
@@ -5557,7 +5610,7 @@ void DCMPixConvertToBWRequest::InternalSwap(DCMPixConvertToBWRequest* PROTOBUF_R
           reinterpret_cast<char*>(&other->_impl_.pix_));
 }
 
-::google::protobuf::Metadata DCMPixConvertToBWRequest::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata DCMPixConvertToBWRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_dcmpix_2eproto_getter, &descriptor_table_dcmpix_2eproto_once,
       file_level_metadata_dcmpix_2eproto[15]);
@@ -5579,81 +5632,77 @@ class DCMPixComputeROIRequest::_Internal {
   }
 };
 
-const ::osirixgrpc::DCMPix& DCMPixComputeROIRequest::_Internal::pix(const DCMPixComputeROIRequest* msg) {
+const ::osirixgrpc::DCMPix&
+DCMPixComputeROIRequest::_Internal::pix(const DCMPixComputeROIRequest* msg) {
   return *msg->_impl_.pix_;
 }
-const ::osirixgrpc::ROI& DCMPixComputeROIRequest::_Internal::roi(const DCMPixComputeROIRequest* msg) {
+const ::osirixgrpc::ROI&
+DCMPixComputeROIRequest::_Internal::roi(const DCMPixComputeROIRequest* msg) {
   return *msg->_impl_.roi_;
 }
 void DCMPixComputeROIRequest::clear_pix() {
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   if (_impl_.pix_ != nullptr) _impl_.pix_->Clear();
   _impl_._has_bits_[0] &= ~0x00000001u;
 }
 void DCMPixComputeROIRequest::clear_roi() {
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   if (_impl_.roi_ != nullptr) _impl_.roi_->Clear();
   _impl_._has_bits_[0] &= ~0x00000002u;
 }
-DCMPixComputeROIRequest::DCMPixComputeROIRequest(::google::protobuf::Arena* arena)
-    : ::google::protobuf::Message(arena) {
+DCMPixComputeROIRequest::DCMPixComputeROIRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.DCMPixComputeROIRequest)
 }
-inline PROTOBUF_NDEBUG_INLINE DCMPixComputeROIRequest::Impl_::Impl_(
-    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
-    const Impl_& from)
-      : _has_bits_{from._has_bits_},
-        _cached_size_{0} {}
+DCMPixComputeROIRequest::DCMPixComputeROIRequest(const DCMPixComputeROIRequest& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  DCMPixComputeROIRequest* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.pix_){nullptr}
+    , decltype(_impl_.roi_){nullptr}};
 
-DCMPixComputeROIRequest::DCMPixComputeROIRequest(
-    ::google::protobuf::Arena* arena,
-    const DCMPixComputeROIRequest& from)
-    : ::google::protobuf::Message(arena) {
-  DCMPixComputeROIRequest* const _this = this;
-  (void)_this;
-  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
-      from._internal_metadata_);
-  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
-  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
-  _impl_.pix_ = (cached_has_bits & 0x00000001u)
-                ? CreateMaybeMessage<::osirixgrpc::DCMPix>(arena, *from._impl_.pix_)
-                : nullptr;
-  _impl_.roi_ = (cached_has_bits & 0x00000002u)
-                ? CreateMaybeMessage<::osirixgrpc::ROI>(arena, *from._impl_.roi_)
-                : nullptr;
-
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_impl_.pix_ = new ::osirixgrpc::DCMPix(*from._impl_.pix_);
+  }
+  if ((from._impl_._has_bits_[0] & 0x00000002u) != 0) {
+    _this->_impl_.roi_ = new ::osirixgrpc::ROI(*from._impl_.roi_);
+  }
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.DCMPixComputeROIRequest)
 }
-inline PROTOBUF_NDEBUG_INLINE DCMPixComputeROIRequest::Impl_::Impl_(
-    ::google::protobuf::internal::InternalVisibility visibility,
-    ::google::protobuf::Arena* arena)
-      : _cached_size_{0} {}
 
 inline void DCMPixComputeROIRequest::SharedCtor(::_pb::Arena* arena) {
-  new (&_impl_) Impl_(internal_visibility(), arena);
-  ::memset(reinterpret_cast<char *>(&_impl_) +
-               offsetof(Impl_, pix_),
-           0,
-           offsetof(Impl_, roi_) -
-               offsetof(Impl_, pix_) +
-               sizeof(Impl_::roi_));
-}
-DCMPixComputeROIRequest::~DCMPixComputeROIRequest() {
-  // @@protoc_insertion_point(destructor:osirixgrpc.DCMPixComputeROIRequest)
-  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
-  SharedDtor();
-}
-inline void DCMPixComputeROIRequest::SharedDtor() {
-  ABSL_DCHECK(GetArena() == nullptr);
-  delete _impl_.pix_;
-  delete _impl_.roi_;
-  _impl_.~Impl_();
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.pix_){nullptr}
+    , decltype(_impl_.roi_){nullptr}
+  };
 }
 
-PROTOBUF_NOINLINE void DCMPixComputeROIRequest::Clear() {
+DCMPixComputeROIRequest::~DCMPixComputeROIRequest() {
+  // @@protoc_insertion_point(destructor:osirixgrpc.DCMPixComputeROIRequest)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void DCMPixComputeROIRequest::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  if (this != internal_default_instance()) delete _impl_.pix_;
+  if (this != internal_default_instance()) delete _impl_.roi_;
+}
+
+void DCMPixComputeROIRequest::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void DCMPixComputeROIRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.DCMPixComputeROIRequest)
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -5670,79 +5719,82 @@ PROTOBUF_NOINLINE void DCMPixComputeROIRequest::Clear() {
     }
   }
   _impl_._has_bits_.Clear();
-  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* DCMPixComputeROIRequest::_InternalParse(
-    const char* ptr, ::_pbi::ParseContext* ctx) {
-  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+const char* DCMPixComputeROIRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
+  while (!ctx->Done(&ptr)) {
+    ::uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // .osirixgrpc.DCMPix pix = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
+          ptr = ctx->ParseMessage(_internal_mutable_pix(), ptr);
+          CHK_(ptr);
+        } else {
+          goto handle_unusual;
+        }
+        continue;
+      // .osirixgrpc.ROI roi = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 18)) {
+          ptr = ctx->ParseMessage(_internal_mutable_roi(), ptr);
+          CHK_(ptr);
+        } else {
+          goto handle_unusual;
+        }
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
 }
-
-
-PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<1, 2, 2, 0, 2> DCMPixComputeROIRequest::_table_ = {
-  {
-    PROTOBUF_FIELD_OFFSET(DCMPixComputeROIRequest, _impl_._has_bits_),
-    0, // no _extensions_
-    2, 8,  // max_field_number, fast_idx_mask
-    offsetof(decltype(_table_), field_lookup_table),
-    4294967292,  // skipmap
-    offsetof(decltype(_table_), field_entries),
-    2,  // num_field_entries
-    2,  // num_aux_entries
-    offsetof(decltype(_table_), aux_entries),
-    &_DCMPixComputeROIRequest_default_instance_._instance,
-    ::_pbi::TcParser::GenericFallback,  // fallback
-  }, {{
-    // .osirixgrpc.ROI roi = 2;
-    {::_pbi::TcParser::FastMtS1,
-     {18, 1, 1, PROTOBUF_FIELD_OFFSET(DCMPixComputeROIRequest, _impl_.roi_)}},
-    // .osirixgrpc.DCMPix pix = 1;
-    {::_pbi::TcParser::FastMtS1,
-     {10, 0, 0, PROTOBUF_FIELD_OFFSET(DCMPixComputeROIRequest, _impl_.pix_)}},
-  }}, {{
-    65535, 65535
-  }}, {{
-    // .osirixgrpc.DCMPix pix = 1;
-    {PROTOBUF_FIELD_OFFSET(DCMPixComputeROIRequest, _impl_.pix_), _Internal::kHasBitsOffset + 0, 0,
-    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
-    // .osirixgrpc.ROI roi = 2;
-    {PROTOBUF_FIELD_OFFSET(DCMPixComputeROIRequest, _impl_.roi_), _Internal::kHasBitsOffset + 1, 1,
-    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
-  }}, {{
-    {::_pbi::TcParser::GetTable<::osirixgrpc::DCMPix>()},
-    {::_pbi::TcParser::GetTable<::osirixgrpc::ROI>()},
-  }}, {{
-  }},
-};
 
 ::uint8_t* DCMPixComputeROIRequest::_InternalSerialize(
-    ::uint8_t* target,
-    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.DCMPixComputeROIRequest)
   ::uint32_t cached_has_bits = 0;
-  (void)cached_has_bits;
+  (void) cached_has_bits;
 
   cached_has_bits = _impl_._has_bits_[0];
   // .osirixgrpc.DCMPix pix = 1;
   if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-        1, _Internal::pix(this),
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(1, _Internal::pix(this),
         _Internal::pix(this).GetCachedSize(), target, stream);
   }
 
   // .osirixgrpc.ROI roi = 2;
   if (cached_has_bits & 0x00000002u) {
-    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-        2, _Internal::roi(this),
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(2, _Internal::roi(this),
         _Internal::roi(this).GetCachedSize(), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target =
-        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.DCMPixComputeROIRequest)
   return target;
@@ -5760,29 +5812,30 @@ const ::_pbi::TcParseTable<1, 2, 2, 0, 2> DCMPixComputeROIRequest::_table_ = {
   if (cached_has_bits & 0x00000003u) {
     // .osirixgrpc.DCMPix pix = 1;
     if (cached_has_bits & 0x00000001u) {
-      total_size +=
-          1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.pix_);
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+          *_impl_.pix_);
     }
 
     // .osirixgrpc.ROI roi = 2;
     if (cached_has_bits & 0x00000002u) {
-      total_size +=
-          1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.roi_);
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+          *_impl_.roi_);
     }
 
   }
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::google::protobuf::Message::ClassData DCMPixComputeROIRequest::_class_data_ = {
-    DCMPixComputeROIRequest::MergeImpl,
-    nullptr,  // OnDemandRegisterArenaDtor
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData DCMPixComputeROIRequest::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    DCMPixComputeROIRequest::MergeImpl
 };
-const ::google::protobuf::Message::ClassData* DCMPixComputeROIRequest::GetClassData() const {
-  return &_class_data_;
-}
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*DCMPixComputeROIRequest::GetClassData() const { return &_class_data_; }
 
-void DCMPixComputeROIRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+
+void DCMPixComputeROIRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
   auto* const _this = static_cast<DCMPixComputeROIRequest*>(&to_msg);
   auto& from = static_cast<const DCMPixComputeROIRequest&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.DCMPixComputeROIRequest)
@@ -5801,7 +5854,7 @@ void DCMPixComputeROIRequest::MergeImpl(::google::protobuf::Message& to_msg, con
           from._internal_roi());
     }
   }
-  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void DCMPixComputeROIRequest::CopyFrom(const DCMPixComputeROIRequest& from) {
@@ -5811,18 +5864,15 @@ void DCMPixComputeROIRequest::CopyFrom(const DCMPixComputeROIRequest& from) {
   MergeFrom(from);
 }
 
-PROTOBUF_NOINLINE bool DCMPixComputeROIRequest::IsInitialized() const {
+bool DCMPixComputeROIRequest::IsInitialized() const {
   return true;
 }
 
-::_pbi::CachedSize* DCMPixComputeROIRequest::AccessCachedSize() const {
-  return &_impl_._cached_size_;
-}
-void DCMPixComputeROIRequest::InternalSwap(DCMPixComputeROIRequest* PROTOBUF_RESTRICT other) {
+void DCMPixComputeROIRequest::InternalSwap(DCMPixComputeROIRequest* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::google::protobuf::internal::memswap<
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
       PROTOBUF_FIELD_OFFSET(DCMPixComputeROIRequest, _impl_.roi_)
       + sizeof(DCMPixComputeROIRequest::_impl_.roi_)
       - PROTOBUF_FIELD_OFFSET(DCMPixComputeROIRequest, _impl_.pix_)>(
@@ -5830,7 +5880,7 @@ void DCMPixComputeROIRequest::InternalSwap(DCMPixComputeROIRequest* PROTOBUF_RES
           reinterpret_cast<char*>(&other->_impl_.pix_));
 }
 
-::google::protobuf::Metadata DCMPixComputeROIRequest::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata DCMPixComputeROIRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_dcmpix_2eproto_getter, &descriptor_table_dcmpix_2eproto_once,
       file_level_metadata_dcmpix_2eproto[16]);
@@ -5852,81 +5902,77 @@ class DCMPixROIValuesRequest::_Internal {
   }
 };
 
-const ::osirixgrpc::DCMPix& DCMPixROIValuesRequest::_Internal::pix(const DCMPixROIValuesRequest* msg) {
+const ::osirixgrpc::DCMPix&
+DCMPixROIValuesRequest::_Internal::pix(const DCMPixROIValuesRequest* msg) {
   return *msg->_impl_.pix_;
 }
-const ::osirixgrpc::ROI& DCMPixROIValuesRequest::_Internal::roi(const DCMPixROIValuesRequest* msg) {
+const ::osirixgrpc::ROI&
+DCMPixROIValuesRequest::_Internal::roi(const DCMPixROIValuesRequest* msg) {
   return *msg->_impl_.roi_;
 }
 void DCMPixROIValuesRequest::clear_pix() {
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   if (_impl_.pix_ != nullptr) _impl_.pix_->Clear();
   _impl_._has_bits_[0] &= ~0x00000001u;
 }
 void DCMPixROIValuesRequest::clear_roi() {
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   if (_impl_.roi_ != nullptr) _impl_.roi_->Clear();
   _impl_._has_bits_[0] &= ~0x00000002u;
 }
-DCMPixROIValuesRequest::DCMPixROIValuesRequest(::google::protobuf::Arena* arena)
-    : ::google::protobuf::Message(arena) {
+DCMPixROIValuesRequest::DCMPixROIValuesRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.DCMPixROIValuesRequest)
 }
-inline PROTOBUF_NDEBUG_INLINE DCMPixROIValuesRequest::Impl_::Impl_(
-    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
-    const Impl_& from)
-      : _has_bits_{from._has_bits_},
-        _cached_size_{0} {}
+DCMPixROIValuesRequest::DCMPixROIValuesRequest(const DCMPixROIValuesRequest& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  DCMPixROIValuesRequest* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.pix_){nullptr}
+    , decltype(_impl_.roi_){nullptr}};
 
-DCMPixROIValuesRequest::DCMPixROIValuesRequest(
-    ::google::protobuf::Arena* arena,
-    const DCMPixROIValuesRequest& from)
-    : ::google::protobuf::Message(arena) {
-  DCMPixROIValuesRequest* const _this = this;
-  (void)_this;
-  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
-      from._internal_metadata_);
-  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
-  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
-  _impl_.pix_ = (cached_has_bits & 0x00000001u)
-                ? CreateMaybeMessage<::osirixgrpc::DCMPix>(arena, *from._impl_.pix_)
-                : nullptr;
-  _impl_.roi_ = (cached_has_bits & 0x00000002u)
-                ? CreateMaybeMessage<::osirixgrpc::ROI>(arena, *from._impl_.roi_)
-                : nullptr;
-
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_impl_.pix_ = new ::osirixgrpc::DCMPix(*from._impl_.pix_);
+  }
+  if ((from._impl_._has_bits_[0] & 0x00000002u) != 0) {
+    _this->_impl_.roi_ = new ::osirixgrpc::ROI(*from._impl_.roi_);
+  }
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.DCMPixROIValuesRequest)
 }
-inline PROTOBUF_NDEBUG_INLINE DCMPixROIValuesRequest::Impl_::Impl_(
-    ::google::protobuf::internal::InternalVisibility visibility,
-    ::google::protobuf::Arena* arena)
-      : _cached_size_{0} {}
 
 inline void DCMPixROIValuesRequest::SharedCtor(::_pb::Arena* arena) {
-  new (&_impl_) Impl_(internal_visibility(), arena);
-  ::memset(reinterpret_cast<char *>(&_impl_) +
-               offsetof(Impl_, pix_),
-           0,
-           offsetof(Impl_, roi_) -
-               offsetof(Impl_, pix_) +
-               sizeof(Impl_::roi_));
-}
-DCMPixROIValuesRequest::~DCMPixROIValuesRequest() {
-  // @@protoc_insertion_point(destructor:osirixgrpc.DCMPixROIValuesRequest)
-  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
-  SharedDtor();
-}
-inline void DCMPixROIValuesRequest::SharedDtor() {
-  ABSL_DCHECK(GetArena() == nullptr);
-  delete _impl_.pix_;
-  delete _impl_.roi_;
-  _impl_.~Impl_();
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.pix_){nullptr}
+    , decltype(_impl_.roi_){nullptr}
+  };
 }
 
-PROTOBUF_NOINLINE void DCMPixROIValuesRequest::Clear() {
+DCMPixROIValuesRequest::~DCMPixROIValuesRequest() {
+  // @@protoc_insertion_point(destructor:osirixgrpc.DCMPixROIValuesRequest)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void DCMPixROIValuesRequest::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  if (this != internal_default_instance()) delete _impl_.pix_;
+  if (this != internal_default_instance()) delete _impl_.roi_;
+}
+
+void DCMPixROIValuesRequest::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void DCMPixROIValuesRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.DCMPixROIValuesRequest)
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -5943,79 +5989,82 @@ PROTOBUF_NOINLINE void DCMPixROIValuesRequest::Clear() {
     }
   }
   _impl_._has_bits_.Clear();
-  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* DCMPixROIValuesRequest::_InternalParse(
-    const char* ptr, ::_pbi::ParseContext* ctx) {
-  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+const char* DCMPixROIValuesRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
+  while (!ctx->Done(&ptr)) {
+    ::uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // .osirixgrpc.DCMPix pix = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
+          ptr = ctx->ParseMessage(_internal_mutable_pix(), ptr);
+          CHK_(ptr);
+        } else {
+          goto handle_unusual;
+        }
+        continue;
+      // .osirixgrpc.ROI roi = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 18)) {
+          ptr = ctx->ParseMessage(_internal_mutable_roi(), ptr);
+          CHK_(ptr);
+        } else {
+          goto handle_unusual;
+        }
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
 }
-
-
-PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<1, 2, 2, 0, 2> DCMPixROIValuesRequest::_table_ = {
-  {
-    PROTOBUF_FIELD_OFFSET(DCMPixROIValuesRequest, _impl_._has_bits_),
-    0, // no _extensions_
-    2, 8,  // max_field_number, fast_idx_mask
-    offsetof(decltype(_table_), field_lookup_table),
-    4294967292,  // skipmap
-    offsetof(decltype(_table_), field_entries),
-    2,  // num_field_entries
-    2,  // num_aux_entries
-    offsetof(decltype(_table_), aux_entries),
-    &_DCMPixROIValuesRequest_default_instance_._instance,
-    ::_pbi::TcParser::GenericFallback,  // fallback
-  }, {{
-    // .osirixgrpc.ROI roi = 2;
-    {::_pbi::TcParser::FastMtS1,
-     {18, 1, 1, PROTOBUF_FIELD_OFFSET(DCMPixROIValuesRequest, _impl_.roi_)}},
-    // .osirixgrpc.DCMPix pix = 1;
-    {::_pbi::TcParser::FastMtS1,
-     {10, 0, 0, PROTOBUF_FIELD_OFFSET(DCMPixROIValuesRequest, _impl_.pix_)}},
-  }}, {{
-    65535, 65535
-  }}, {{
-    // .osirixgrpc.DCMPix pix = 1;
-    {PROTOBUF_FIELD_OFFSET(DCMPixROIValuesRequest, _impl_.pix_), _Internal::kHasBitsOffset + 0, 0,
-    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
-    // .osirixgrpc.ROI roi = 2;
-    {PROTOBUF_FIELD_OFFSET(DCMPixROIValuesRequest, _impl_.roi_), _Internal::kHasBitsOffset + 1, 1,
-    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
-  }}, {{
-    {::_pbi::TcParser::GetTable<::osirixgrpc::DCMPix>()},
-    {::_pbi::TcParser::GetTable<::osirixgrpc::ROI>()},
-  }}, {{
-  }},
-};
 
 ::uint8_t* DCMPixROIValuesRequest::_InternalSerialize(
-    ::uint8_t* target,
-    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.DCMPixROIValuesRequest)
   ::uint32_t cached_has_bits = 0;
-  (void)cached_has_bits;
+  (void) cached_has_bits;
 
   cached_has_bits = _impl_._has_bits_[0];
   // .osirixgrpc.DCMPix pix = 1;
   if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-        1, _Internal::pix(this),
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(1, _Internal::pix(this),
         _Internal::pix(this).GetCachedSize(), target, stream);
   }
 
   // .osirixgrpc.ROI roi = 2;
   if (cached_has_bits & 0x00000002u) {
-    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-        2, _Internal::roi(this),
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(2, _Internal::roi(this),
         _Internal::roi(this).GetCachedSize(), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target =
-        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.DCMPixROIValuesRequest)
   return target;
@@ -6033,29 +6082,30 @@ const ::_pbi::TcParseTable<1, 2, 2, 0, 2> DCMPixROIValuesRequest::_table_ = {
   if (cached_has_bits & 0x00000003u) {
     // .osirixgrpc.DCMPix pix = 1;
     if (cached_has_bits & 0x00000001u) {
-      total_size +=
-          1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.pix_);
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+          *_impl_.pix_);
     }
 
     // .osirixgrpc.ROI roi = 2;
     if (cached_has_bits & 0x00000002u) {
-      total_size +=
-          1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.roi_);
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+          *_impl_.roi_);
     }
 
   }
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::google::protobuf::Message::ClassData DCMPixROIValuesRequest::_class_data_ = {
-    DCMPixROIValuesRequest::MergeImpl,
-    nullptr,  // OnDemandRegisterArenaDtor
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData DCMPixROIValuesRequest::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    DCMPixROIValuesRequest::MergeImpl
 };
-const ::google::protobuf::Message::ClassData* DCMPixROIValuesRequest::GetClassData() const {
-  return &_class_data_;
-}
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*DCMPixROIValuesRequest::GetClassData() const { return &_class_data_; }
 
-void DCMPixROIValuesRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+
+void DCMPixROIValuesRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
   auto* const _this = static_cast<DCMPixROIValuesRequest*>(&to_msg);
   auto& from = static_cast<const DCMPixROIValuesRequest&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.DCMPixROIValuesRequest)
@@ -6074,7 +6124,7 @@ void DCMPixROIValuesRequest::MergeImpl(::google::protobuf::Message& to_msg, cons
           from._internal_roi());
     }
   }
-  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void DCMPixROIValuesRequest::CopyFrom(const DCMPixROIValuesRequest& from) {
@@ -6084,18 +6134,15 @@ void DCMPixROIValuesRequest::CopyFrom(const DCMPixROIValuesRequest& from) {
   MergeFrom(from);
 }
 
-PROTOBUF_NOINLINE bool DCMPixROIValuesRequest::IsInitialized() const {
+bool DCMPixROIValuesRequest::IsInitialized() const {
   return true;
 }
 
-::_pbi::CachedSize* DCMPixROIValuesRequest::AccessCachedSize() const {
-  return &_impl_._cached_size_;
-}
-void DCMPixROIValuesRequest::InternalSwap(DCMPixROIValuesRequest* PROTOBUF_RESTRICT other) {
+void DCMPixROIValuesRequest::InternalSwap(DCMPixROIValuesRequest* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::google::protobuf::internal::memswap<
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
       PROTOBUF_FIELD_OFFSET(DCMPixROIValuesRequest, _impl_.roi_)
       + sizeof(DCMPixROIValuesRequest::_impl_.roi_)
       - PROTOBUF_FIELD_OFFSET(DCMPixROIValuesRequest, _impl_.pix_)>(
@@ -6103,7 +6150,7 @@ void DCMPixROIValuesRequest::InternalSwap(DCMPixROIValuesRequest* PROTOBUF_RESTR
           reinterpret_cast<char*>(&other->_impl_.pix_));
 }
 
-::google::protobuf::Metadata DCMPixROIValuesRequest::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata DCMPixROIValuesRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_dcmpix_2eproto_getter, &descriptor_table_dcmpix_2eproto_once,
       file_level_metadata_dcmpix_2eproto[17]);
@@ -6121,147 +6168,165 @@ class DCMPixSetImageRequest::_Internal {
   }
 };
 
-const ::osirixgrpc::DCMPix& DCMPixSetImageRequest::_Internal::pix(const DCMPixSetImageRequest* msg) {
+const ::osirixgrpc::DCMPix&
+DCMPixSetImageRequest::_Internal::pix(const DCMPixSetImageRequest* msg) {
   return *msg->_impl_.pix_;
 }
 void DCMPixSetImageRequest::clear_pix() {
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   if (_impl_.pix_ != nullptr) _impl_.pix_->Clear();
   _impl_._has_bits_[0] &= ~0x00000001u;
 }
-DCMPixSetImageRequest::DCMPixSetImageRequest(::google::protobuf::Arena* arena)
-    : ::google::protobuf::Message(arena) {
+DCMPixSetImageRequest::DCMPixSetImageRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.DCMPixSetImageRequest)
 }
-inline PROTOBUF_NDEBUG_INLINE DCMPixSetImageRequest::Impl_::Impl_(
-    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
-    const Impl_& from)
-      : _has_bits_{from._has_bits_},
-        _cached_size_{0},
-        image_data_float_{visibility, arena, from.image_data_float_},
-        image_data_argb_{visibility, arena, from.image_data_argb_},
-        _image_data_argb_cached_byte_size_{0} {}
+DCMPixSetImageRequest::DCMPixSetImageRequest(const DCMPixSetImageRequest& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  DCMPixSetImageRequest* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.image_data_float_) { from._impl_.image_data_float_ }
 
-DCMPixSetImageRequest::DCMPixSetImageRequest(
-    ::google::protobuf::Arena* arena,
-    const DCMPixSetImageRequest& from)
-    : ::google::protobuf::Message(arena) {
-  DCMPixSetImageRequest* const _this = this;
-  (void)_this;
-  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
-      from._internal_metadata_);
-  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
-  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
-  _impl_.pix_ = (cached_has_bits & 0x00000001u)
-                ? CreateMaybeMessage<::osirixgrpc::DCMPix>(arena, *from._impl_.pix_)
-                : nullptr;
+    , decltype(_impl_.image_data_argb_) { from._impl_.image_data_argb_ }
+    ,/* _impl_._image_data_argb_cached_byte_size_ = */ { 0 }
 
+    , decltype(_impl_.pix_){nullptr}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_impl_.pix_ = new ::osirixgrpc::DCMPix(*from._impl_.pix_);
+  }
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.DCMPixSetImageRequest)
 }
-inline PROTOBUF_NDEBUG_INLINE DCMPixSetImageRequest::Impl_::Impl_(
-    ::google::protobuf::internal::InternalVisibility visibility,
-    ::google::protobuf::Arena* arena)
-      : _cached_size_{0},
-        image_data_float_{visibility, arena},
-        image_data_argb_{visibility, arena},
-        _image_data_argb_cached_byte_size_{0} {}
 
 inline void DCMPixSetImageRequest::SharedCtor(::_pb::Arena* arena) {
-  new (&_impl_) Impl_(internal_visibility(), arena);
-  _impl_.pix_ = {};
-}
-DCMPixSetImageRequest::~DCMPixSetImageRequest() {
-  // @@protoc_insertion_point(destructor:osirixgrpc.DCMPixSetImageRequest)
-  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
-  SharedDtor();
-}
-inline void DCMPixSetImageRequest::SharedDtor() {
-  ABSL_DCHECK(GetArena() == nullptr);
-  delete _impl_.pix_;
-  _impl_.~Impl_();
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.image_data_float_) { arena }
+
+    , decltype(_impl_.image_data_argb_) { arena }
+    ,/* _impl_._image_data_argb_cached_byte_size_ = */ { 0 }
+
+    , decltype(_impl_.pix_){nullptr}
+  };
 }
 
-PROTOBUF_NOINLINE void DCMPixSetImageRequest::Clear() {
+DCMPixSetImageRequest::~DCMPixSetImageRequest() {
+  // @@protoc_insertion_point(destructor:osirixgrpc.DCMPixSetImageRequest)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void DCMPixSetImageRequest::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.image_data_float_.~RepeatedField();
+  _impl_.image_data_argb_.~RepeatedField();
+  if (this != internal_default_instance()) delete _impl_.pix_;
+}
+
+void DCMPixSetImageRequest::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void DCMPixSetImageRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.DCMPixSetImageRequest)
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _impl_.image_data_float_.Clear();
-  _impl_.image_data_argb_.Clear();
+  _internal_mutable_image_data_float()->Clear();
+  _internal_mutable_image_data_argb()->Clear();
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
     ABSL_DCHECK(_impl_.pix_ != nullptr);
     _impl_.pix_->Clear();
   }
   _impl_._has_bits_.Clear();
-  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* DCMPixSetImageRequest::_InternalParse(
-    const char* ptr, ::_pbi::ParseContext* ctx) {
-  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+const char* DCMPixSetImageRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
+  while (!ctx->Done(&ptr)) {
+    ::uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // .osirixgrpc.DCMPix pix = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
+          ptr = ctx->ParseMessage(_internal_mutable_pix(), ptr);
+          CHK_(ptr);
+        } else {
+          goto handle_unusual;
+        }
+        continue;
+      // repeated float image_data_float = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 18)) {
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedFloatParser(_internal_mutable_image_data_float(), ptr, ctx);
+          CHK_(ptr);
+        } else if (static_cast<::uint8_t>(tag) == 21) {
+          _internal_add_image_data_float(::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr));
+          ptr += sizeof(float);
+        } else {
+          goto handle_unusual;
+        }
+        continue;
+      // repeated int32 image_data_argb = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 26)) {
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedInt32Parser(_internal_mutable_image_data_argb(), ptr, ctx);
+          CHK_(ptr);
+        } else if (static_cast<::uint8_t>(tag) == 24) {
+          _internal_add_image_data_argb(::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr));
+          CHK_(ptr);
+        } else {
+          goto handle_unusual;
+        }
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
 }
-
-
-PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<2, 3, 1, 0, 2> DCMPixSetImageRequest::_table_ = {
-  {
-    PROTOBUF_FIELD_OFFSET(DCMPixSetImageRequest, _impl_._has_bits_),
-    0, // no _extensions_
-    3, 24,  // max_field_number, fast_idx_mask
-    offsetof(decltype(_table_), field_lookup_table),
-    4294967288,  // skipmap
-    offsetof(decltype(_table_), field_entries),
-    3,  // num_field_entries
-    1,  // num_aux_entries
-    offsetof(decltype(_table_), aux_entries),
-    &_DCMPixSetImageRequest_default_instance_._instance,
-    ::_pbi::TcParser::GenericFallback,  // fallback
-  }, {{
-    {::_pbi::TcParser::MiniParse, {}},
-    // .osirixgrpc.DCMPix pix = 1;
-    {::_pbi::TcParser::FastMtS1,
-     {10, 0, 0, PROTOBUF_FIELD_OFFSET(DCMPixSetImageRequest, _impl_.pix_)}},
-    // repeated float image_data_float = 2;
-    {::_pbi::TcParser::FastF32P1,
-     {18, 63, 0, PROTOBUF_FIELD_OFFSET(DCMPixSetImageRequest, _impl_.image_data_float_)}},
-    // repeated int32 image_data_argb = 3;
-    {::_pbi::TcParser::FastV32P1,
-     {26, 63, 0, PROTOBUF_FIELD_OFFSET(DCMPixSetImageRequest, _impl_.image_data_argb_)}},
-  }}, {{
-    65535, 65535
-  }}, {{
-    // .osirixgrpc.DCMPix pix = 1;
-    {PROTOBUF_FIELD_OFFSET(DCMPixSetImageRequest, _impl_.pix_), _Internal::kHasBitsOffset + 0, 0,
-    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
-    // repeated float image_data_float = 2;
-    {PROTOBUF_FIELD_OFFSET(DCMPixSetImageRequest, _impl_.image_data_float_), -1, 0,
-    (0 | ::_fl::kFcRepeated | ::_fl::kPackedFloat)},
-    // repeated int32 image_data_argb = 3;
-    {PROTOBUF_FIELD_OFFSET(DCMPixSetImageRequest, _impl_.image_data_argb_), -1, 0,
-    (0 | ::_fl::kFcRepeated | ::_fl::kPackedInt32)},
-  }}, {{
-    {::_pbi::TcParser::GetTable<::osirixgrpc::DCMPix>()},
-  }}, {{
-  }},
-};
 
 ::uint8_t* DCMPixSetImageRequest::_InternalSerialize(
-    ::uint8_t* target,
-    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.DCMPixSetImageRequest)
   ::uint32_t cached_has_bits = 0;
-  (void)cached_has_bits;
+  (void) cached_has_bits;
 
   cached_has_bits = _impl_._has_bits_[0];
   // .osirixgrpc.DCMPix pix = 1;
   if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-        1, _Internal::pix(this),
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(1, _Internal::pix(this),
         _Internal::pix(this).GetCachedSize(), target, stream);
   }
 
@@ -6274,15 +6339,14 @@ const ::_pbi::TcParseTable<2, 3, 1, 0, 2> DCMPixSetImageRequest::_table_ = {
   {
     int byte_size = _impl_._image_data_argb_cached_byte_size_.Get();
     if (byte_size > 0) {
-      target = stream->WriteInt32Packed(
-          3, _internal_image_data_argb(), byte_size, target);
+      target = stream->WriteInt32Packed(3, _internal_image_data_argb(),
+                                                 byte_size, target);
     }
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target =
-        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.DCMPixSetImageRequest)
   return target;
@@ -6308,6 +6372,7 @@ const ::_pbi::TcParseTable<2, 3, 1, 0, 2> DCMPixSetImageRequest::_table_ = {
     ;
     total_size += tag_size + data_size;
   }
+
   // repeated int32 image_data_argb = 3;
   {
     std::size_t data_size = ::_pbi::WireFormatLite::Int32Size(
@@ -6321,25 +6386,26 @@ const ::_pbi::TcParseTable<2, 3, 1, 0, 2> DCMPixSetImageRequest::_table_ = {
     ;
     total_size += tag_size + data_size;
   }
+
   // .osirixgrpc.DCMPix pix = 1;
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
-    total_size +=
-        1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.pix_);
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *_impl_.pix_);
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::google::protobuf::Message::ClassData DCMPixSetImageRequest::_class_data_ = {
-    DCMPixSetImageRequest::MergeImpl,
-    nullptr,  // OnDemandRegisterArenaDtor
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData DCMPixSetImageRequest::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    DCMPixSetImageRequest::MergeImpl
 };
-const ::google::protobuf::Message::ClassData* DCMPixSetImageRequest::GetClassData() const {
-  return &_class_data_;
-}
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*DCMPixSetImageRequest::GetClassData() const { return &_class_data_; }
 
-void DCMPixSetImageRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+
+void DCMPixSetImageRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
   auto* const _this = static_cast<DCMPixSetImageRequest*>(&to_msg);
   auto& from = static_cast<const DCMPixSetImageRequest&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.DCMPixSetImageRequest)
@@ -6347,13 +6413,13 @@ void DCMPixSetImageRequest::MergeImpl(::google::protobuf::Message& to_msg, const
   ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  _this->_internal_mutable_image_data_float()->MergeFrom(from._internal_image_data_float());
-  _this->_internal_mutable_image_data_argb()->MergeFrom(from._internal_image_data_argb());
+  _this->_impl_.image_data_float_.MergeFrom(from._impl_.image_data_float_);
+  _this->_impl_.image_data_argb_.MergeFrom(from._impl_.image_data_argb_);
   if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
     _this->_internal_mutable_pix()->::osirixgrpc::DCMPix::MergeFrom(
         from._internal_pix());
   }
-  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void DCMPixSetImageRequest::CopyFrom(const DCMPixSetImageRequest& from) {
@@ -6363,14 +6429,11 @@ void DCMPixSetImageRequest::CopyFrom(const DCMPixSetImageRequest& from) {
   MergeFrom(from);
 }
 
-PROTOBUF_NOINLINE bool DCMPixSetImageRequest::IsInitialized() const {
+bool DCMPixSetImageRequest::IsInitialized() const {
   return true;
 }
 
-::_pbi::CachedSize* DCMPixSetImageRequest::AccessCachedSize() const {
-  return &_impl_._cached_size_;
-}
-void DCMPixSetImageRequest::InternalSwap(DCMPixSetImageRequest* PROTOBUF_RESTRICT other) {
+void DCMPixSetImageRequest::InternalSwap(DCMPixSetImageRequest* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
@@ -6379,7 +6442,7 @@ void DCMPixSetImageRequest::InternalSwap(DCMPixSetImageRequest* PROTOBUF_RESTRIC
   swap(_impl_.pix_, other->_impl_.pix_);
 }
 
-::google::protobuf::Metadata DCMPixSetImageRequest::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata DCMPixSetImageRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_dcmpix_2eproto_getter, &descriptor_table_dcmpix_2eproto_once,
       file_level_metadata_dcmpix_2eproto[18]);
@@ -6401,81 +6464,77 @@ class DCMPixGetMapFromROIRequest::_Internal {
   }
 };
 
-const ::osirixgrpc::DCMPix& DCMPixGetMapFromROIRequest::_Internal::pix(const DCMPixGetMapFromROIRequest* msg) {
+const ::osirixgrpc::DCMPix&
+DCMPixGetMapFromROIRequest::_Internal::pix(const DCMPixGetMapFromROIRequest* msg) {
   return *msg->_impl_.pix_;
 }
-const ::osirixgrpc::ROI& DCMPixGetMapFromROIRequest::_Internal::roi(const DCMPixGetMapFromROIRequest* msg) {
+const ::osirixgrpc::ROI&
+DCMPixGetMapFromROIRequest::_Internal::roi(const DCMPixGetMapFromROIRequest* msg) {
   return *msg->_impl_.roi_;
 }
 void DCMPixGetMapFromROIRequest::clear_pix() {
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   if (_impl_.pix_ != nullptr) _impl_.pix_->Clear();
   _impl_._has_bits_[0] &= ~0x00000001u;
 }
 void DCMPixGetMapFromROIRequest::clear_roi() {
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   if (_impl_.roi_ != nullptr) _impl_.roi_->Clear();
   _impl_._has_bits_[0] &= ~0x00000002u;
 }
-DCMPixGetMapFromROIRequest::DCMPixGetMapFromROIRequest(::google::protobuf::Arena* arena)
-    : ::google::protobuf::Message(arena) {
+DCMPixGetMapFromROIRequest::DCMPixGetMapFromROIRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.DCMPixGetMapFromROIRequest)
 }
-inline PROTOBUF_NDEBUG_INLINE DCMPixGetMapFromROIRequest::Impl_::Impl_(
-    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
-    const Impl_& from)
-      : _has_bits_{from._has_bits_},
-        _cached_size_{0} {}
+DCMPixGetMapFromROIRequest::DCMPixGetMapFromROIRequest(const DCMPixGetMapFromROIRequest& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  DCMPixGetMapFromROIRequest* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.pix_){nullptr}
+    , decltype(_impl_.roi_){nullptr}};
 
-DCMPixGetMapFromROIRequest::DCMPixGetMapFromROIRequest(
-    ::google::protobuf::Arena* arena,
-    const DCMPixGetMapFromROIRequest& from)
-    : ::google::protobuf::Message(arena) {
-  DCMPixGetMapFromROIRequest* const _this = this;
-  (void)_this;
-  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
-      from._internal_metadata_);
-  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
-  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
-  _impl_.pix_ = (cached_has_bits & 0x00000001u)
-                ? CreateMaybeMessage<::osirixgrpc::DCMPix>(arena, *from._impl_.pix_)
-                : nullptr;
-  _impl_.roi_ = (cached_has_bits & 0x00000002u)
-                ? CreateMaybeMessage<::osirixgrpc::ROI>(arena, *from._impl_.roi_)
-                : nullptr;
-
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_impl_.pix_ = new ::osirixgrpc::DCMPix(*from._impl_.pix_);
+  }
+  if ((from._impl_._has_bits_[0] & 0x00000002u) != 0) {
+    _this->_impl_.roi_ = new ::osirixgrpc::ROI(*from._impl_.roi_);
+  }
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.DCMPixGetMapFromROIRequest)
 }
-inline PROTOBUF_NDEBUG_INLINE DCMPixGetMapFromROIRequest::Impl_::Impl_(
-    ::google::protobuf::internal::InternalVisibility visibility,
-    ::google::protobuf::Arena* arena)
-      : _cached_size_{0} {}
 
 inline void DCMPixGetMapFromROIRequest::SharedCtor(::_pb::Arena* arena) {
-  new (&_impl_) Impl_(internal_visibility(), arena);
-  ::memset(reinterpret_cast<char *>(&_impl_) +
-               offsetof(Impl_, pix_),
-           0,
-           offsetof(Impl_, roi_) -
-               offsetof(Impl_, pix_) +
-               sizeof(Impl_::roi_));
-}
-DCMPixGetMapFromROIRequest::~DCMPixGetMapFromROIRequest() {
-  // @@protoc_insertion_point(destructor:osirixgrpc.DCMPixGetMapFromROIRequest)
-  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
-  SharedDtor();
-}
-inline void DCMPixGetMapFromROIRequest::SharedDtor() {
-  ABSL_DCHECK(GetArena() == nullptr);
-  delete _impl_.pix_;
-  delete _impl_.roi_;
-  _impl_.~Impl_();
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.pix_){nullptr}
+    , decltype(_impl_.roi_){nullptr}
+  };
 }
 
-PROTOBUF_NOINLINE void DCMPixGetMapFromROIRequest::Clear() {
+DCMPixGetMapFromROIRequest::~DCMPixGetMapFromROIRequest() {
+  // @@protoc_insertion_point(destructor:osirixgrpc.DCMPixGetMapFromROIRequest)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void DCMPixGetMapFromROIRequest::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  if (this != internal_default_instance()) delete _impl_.pix_;
+  if (this != internal_default_instance()) delete _impl_.roi_;
+}
+
+void DCMPixGetMapFromROIRequest::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void DCMPixGetMapFromROIRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.DCMPixGetMapFromROIRequest)
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -6492,79 +6551,82 @@ PROTOBUF_NOINLINE void DCMPixGetMapFromROIRequest::Clear() {
     }
   }
   _impl_._has_bits_.Clear();
-  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* DCMPixGetMapFromROIRequest::_InternalParse(
-    const char* ptr, ::_pbi::ParseContext* ctx) {
-  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+const char* DCMPixGetMapFromROIRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
+  while (!ctx->Done(&ptr)) {
+    ::uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // .osirixgrpc.DCMPix pix = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
+          ptr = ctx->ParseMessage(_internal_mutable_pix(), ptr);
+          CHK_(ptr);
+        } else {
+          goto handle_unusual;
+        }
+        continue;
+      // .osirixgrpc.ROI roi = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 18)) {
+          ptr = ctx->ParseMessage(_internal_mutable_roi(), ptr);
+          CHK_(ptr);
+        } else {
+          goto handle_unusual;
+        }
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
 }
-
-
-PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<1, 2, 2, 0, 2> DCMPixGetMapFromROIRequest::_table_ = {
-  {
-    PROTOBUF_FIELD_OFFSET(DCMPixGetMapFromROIRequest, _impl_._has_bits_),
-    0, // no _extensions_
-    2, 8,  // max_field_number, fast_idx_mask
-    offsetof(decltype(_table_), field_lookup_table),
-    4294967292,  // skipmap
-    offsetof(decltype(_table_), field_entries),
-    2,  // num_field_entries
-    2,  // num_aux_entries
-    offsetof(decltype(_table_), aux_entries),
-    &_DCMPixGetMapFromROIRequest_default_instance_._instance,
-    ::_pbi::TcParser::GenericFallback,  // fallback
-  }, {{
-    // .osirixgrpc.ROI roi = 2;
-    {::_pbi::TcParser::FastMtS1,
-     {18, 1, 1, PROTOBUF_FIELD_OFFSET(DCMPixGetMapFromROIRequest, _impl_.roi_)}},
-    // .osirixgrpc.DCMPix pix = 1;
-    {::_pbi::TcParser::FastMtS1,
-     {10, 0, 0, PROTOBUF_FIELD_OFFSET(DCMPixGetMapFromROIRequest, _impl_.pix_)}},
-  }}, {{
-    65535, 65535
-  }}, {{
-    // .osirixgrpc.DCMPix pix = 1;
-    {PROTOBUF_FIELD_OFFSET(DCMPixGetMapFromROIRequest, _impl_.pix_), _Internal::kHasBitsOffset + 0, 0,
-    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
-    // .osirixgrpc.ROI roi = 2;
-    {PROTOBUF_FIELD_OFFSET(DCMPixGetMapFromROIRequest, _impl_.roi_), _Internal::kHasBitsOffset + 1, 1,
-    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
-  }}, {{
-    {::_pbi::TcParser::GetTable<::osirixgrpc::DCMPix>()},
-    {::_pbi::TcParser::GetTable<::osirixgrpc::ROI>()},
-  }}, {{
-  }},
-};
 
 ::uint8_t* DCMPixGetMapFromROIRequest::_InternalSerialize(
-    ::uint8_t* target,
-    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.DCMPixGetMapFromROIRequest)
   ::uint32_t cached_has_bits = 0;
-  (void)cached_has_bits;
+  (void) cached_has_bits;
 
   cached_has_bits = _impl_._has_bits_[0];
   // .osirixgrpc.DCMPix pix = 1;
   if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-        1, _Internal::pix(this),
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(1, _Internal::pix(this),
         _Internal::pix(this).GetCachedSize(), target, stream);
   }
 
   // .osirixgrpc.ROI roi = 2;
   if (cached_has_bits & 0x00000002u) {
-    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-        2, _Internal::roi(this),
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(2, _Internal::roi(this),
         _Internal::roi(this).GetCachedSize(), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target =
-        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.DCMPixGetMapFromROIRequest)
   return target;
@@ -6582,29 +6644,30 @@ const ::_pbi::TcParseTable<1, 2, 2, 0, 2> DCMPixGetMapFromROIRequest::_table_ = 
   if (cached_has_bits & 0x00000003u) {
     // .osirixgrpc.DCMPix pix = 1;
     if (cached_has_bits & 0x00000001u) {
-      total_size +=
-          1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.pix_);
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+          *_impl_.pix_);
     }
 
     // .osirixgrpc.ROI roi = 2;
     if (cached_has_bits & 0x00000002u) {
-      total_size +=
-          1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.roi_);
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+          *_impl_.roi_);
     }
 
   }
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::google::protobuf::Message::ClassData DCMPixGetMapFromROIRequest::_class_data_ = {
-    DCMPixGetMapFromROIRequest::MergeImpl,
-    nullptr,  // OnDemandRegisterArenaDtor
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData DCMPixGetMapFromROIRequest::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    DCMPixGetMapFromROIRequest::MergeImpl
 };
-const ::google::protobuf::Message::ClassData* DCMPixGetMapFromROIRequest::GetClassData() const {
-  return &_class_data_;
-}
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*DCMPixGetMapFromROIRequest::GetClassData() const { return &_class_data_; }
 
-void DCMPixGetMapFromROIRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+
+void DCMPixGetMapFromROIRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
   auto* const _this = static_cast<DCMPixGetMapFromROIRequest*>(&to_msg);
   auto& from = static_cast<const DCMPixGetMapFromROIRequest&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.DCMPixGetMapFromROIRequest)
@@ -6623,7 +6686,7 @@ void DCMPixGetMapFromROIRequest::MergeImpl(::google::protobuf::Message& to_msg, 
           from._internal_roi());
     }
   }
-  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void DCMPixGetMapFromROIRequest::CopyFrom(const DCMPixGetMapFromROIRequest& from) {
@@ -6633,18 +6696,15 @@ void DCMPixGetMapFromROIRequest::CopyFrom(const DCMPixGetMapFromROIRequest& from
   MergeFrom(from);
 }
 
-PROTOBUF_NOINLINE bool DCMPixGetMapFromROIRequest::IsInitialized() const {
+bool DCMPixGetMapFromROIRequest::IsInitialized() const {
   return true;
 }
 
-::_pbi::CachedSize* DCMPixGetMapFromROIRequest::AccessCachedSize() const {
-  return &_impl_._cached_size_;
-}
-void DCMPixGetMapFromROIRequest::InternalSwap(DCMPixGetMapFromROIRequest* PROTOBUF_RESTRICT other) {
+void DCMPixGetMapFromROIRequest::InternalSwap(DCMPixGetMapFromROIRequest* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::google::protobuf::internal::memswap<
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
       PROTOBUF_FIELD_OFFSET(DCMPixGetMapFromROIRequest, _impl_.roi_)
       + sizeof(DCMPixGetMapFromROIRequest::_impl_.roi_)
       - PROTOBUF_FIELD_OFFSET(DCMPixGetMapFromROIRequest, _impl_.pix_)>(
@@ -6652,16 +6712,94 @@ void DCMPixGetMapFromROIRequest::InternalSwap(DCMPixGetMapFromROIRequest* PROTOB
           reinterpret_cast<char*>(&other->_impl_.pix_));
 }
 
-::google::protobuf::Metadata DCMPixGetMapFromROIRequest::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata DCMPixGetMapFromROIRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_dcmpix_2eproto_getter, &descriptor_table_dcmpix_2eproto_once,
       file_level_metadata_dcmpix_2eproto[19]);
 }
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace osirixgrpc
-namespace google {
-namespace protobuf {
-}  // namespace protobuf
-}  // namespace google
+PROTOBUF_NAMESPACE_OPEN
+template<> PROTOBUF_NOINLINE ::osirixgrpc::DCMPixIsRGBResponse*
+Arena::CreateMaybeMessage< ::osirixgrpc::DCMPixIsRGBResponse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::osirixgrpc::DCMPixIsRGBResponse >(arena);
+}
+template<> PROTOBUF_NOINLINE ::osirixgrpc::DCMPixComputeROIResponse*
+Arena::CreateMaybeMessage< ::osirixgrpc::DCMPixComputeROIResponse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::osirixgrpc::DCMPixComputeROIResponse >(arena);
+}
+template<> PROTOBUF_NOINLINE ::osirixgrpc::DCMPixROIValuesResponse*
+Arena::CreateMaybeMessage< ::osirixgrpc::DCMPixROIValuesResponse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::osirixgrpc::DCMPixROIValuesResponse >(arena);
+}
+template<> PROTOBUF_NOINLINE ::osirixgrpc::DCMPixDicomImageResponse*
+Arena::CreateMaybeMessage< ::osirixgrpc::DCMPixDicomImageResponse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::osirixgrpc::DCMPixDicomImageResponse >(arena);
+}
+template<> PROTOBUF_NOINLINE ::osirixgrpc::DCMPixDicomSeriesResponse*
+Arena::CreateMaybeMessage< ::osirixgrpc::DCMPixDicomSeriesResponse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::osirixgrpc::DCMPixDicomSeriesResponse >(arena);
+}
+template<> PROTOBUF_NOINLINE ::osirixgrpc::DCMPixDicomStudyResponse*
+Arena::CreateMaybeMessage< ::osirixgrpc::DCMPixDicomStudyResponse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::osirixgrpc::DCMPixDicomStudyResponse >(arena);
+}
+template<> PROTOBUF_NOINLINE ::osirixgrpc::DCMPixImageResponse*
+Arena::CreateMaybeMessage< ::osirixgrpc::DCMPixImageResponse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::osirixgrpc::DCMPixImageResponse >(arena);
+}
+template<> PROTOBUF_NOINLINE ::osirixgrpc::DCMPixGetMapFromROIResponse*
+Arena::CreateMaybeMessage< ::osirixgrpc::DCMPixGetMapFromROIResponse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::osirixgrpc::DCMPixGetMapFromROIResponse >(arena);
+}
+template<> PROTOBUF_NOINLINE ::osirixgrpc::DCMPixShapeResponse*
+Arena::CreateMaybeMessage< ::osirixgrpc::DCMPixShapeResponse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::osirixgrpc::DCMPixShapeResponse >(arena);
+}
+template<> PROTOBUF_NOINLINE ::osirixgrpc::DCMPixSpacingResponse*
+Arena::CreateMaybeMessage< ::osirixgrpc::DCMPixSpacingResponse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::osirixgrpc::DCMPixSpacingResponse >(arena);
+}
+template<> PROTOBUF_NOINLINE ::osirixgrpc::DCMPixOriginResponse*
+Arena::CreateMaybeMessage< ::osirixgrpc::DCMPixOriginResponse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::osirixgrpc::DCMPixOriginResponse >(arena);
+}
+template<> PROTOBUF_NOINLINE ::osirixgrpc::DCMPixOrientationResponse*
+Arena::CreateMaybeMessage< ::osirixgrpc::DCMPixOrientationResponse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::osirixgrpc::DCMPixOrientationResponse >(arena);
+}
+template<> PROTOBUF_NOINLINE ::osirixgrpc::DCMPixSliceLocationResponse*
+Arena::CreateMaybeMessage< ::osirixgrpc::DCMPixSliceLocationResponse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::osirixgrpc::DCMPixSliceLocationResponse >(arena);
+}
+template<> PROTOBUF_NOINLINE ::osirixgrpc::DCMPixSourceFileResponse*
+Arena::CreateMaybeMessage< ::osirixgrpc::DCMPixSourceFileResponse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::osirixgrpc::DCMPixSourceFileResponse >(arena);
+}
+template<> PROTOBUF_NOINLINE ::osirixgrpc::DCMPixConvertToRGBRequest*
+Arena::CreateMaybeMessage< ::osirixgrpc::DCMPixConvertToRGBRequest >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::osirixgrpc::DCMPixConvertToRGBRequest >(arena);
+}
+template<> PROTOBUF_NOINLINE ::osirixgrpc::DCMPixConvertToBWRequest*
+Arena::CreateMaybeMessage< ::osirixgrpc::DCMPixConvertToBWRequest >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::osirixgrpc::DCMPixConvertToBWRequest >(arena);
+}
+template<> PROTOBUF_NOINLINE ::osirixgrpc::DCMPixComputeROIRequest*
+Arena::CreateMaybeMessage< ::osirixgrpc::DCMPixComputeROIRequest >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::osirixgrpc::DCMPixComputeROIRequest >(arena);
+}
+template<> PROTOBUF_NOINLINE ::osirixgrpc::DCMPixROIValuesRequest*
+Arena::CreateMaybeMessage< ::osirixgrpc::DCMPixROIValuesRequest >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::osirixgrpc::DCMPixROIValuesRequest >(arena);
+}
+template<> PROTOBUF_NOINLINE ::osirixgrpc::DCMPixSetImageRequest*
+Arena::CreateMaybeMessage< ::osirixgrpc::DCMPixSetImageRequest >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::osirixgrpc::DCMPixSetImageRequest >(arena);
+}
+template<> PROTOBUF_NOINLINE ::osirixgrpc::DCMPixGetMapFromROIRequest*
+Arena::CreateMaybeMessage< ::osirixgrpc::DCMPixGetMapFromROIRequest >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::osirixgrpc::DCMPixGetMapFromROIRequest >(arena);
+}
+PROTOBUF_NAMESPACE_CLOSE
 // @@protoc_insertion_point(global_scope)
 #include "google/protobuf/port_undef.inc"

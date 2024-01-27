@@ -11,195 +11,22 @@
 #include "google/protobuf/generated_message_reflection.h"
 #include "google/protobuf/reflection_ops.h"
 #include "google/protobuf/wire_format.h"
-#include "google/protobuf/generated_message_tctable_impl.h"
 // @@protoc_insertion_point(includes)
 
 // Must be included last.
 #include "google/protobuf/port_def.inc"
 PROTOBUF_PRAGMA_INIT_SEG
-namespace _pb = ::google::protobuf;
-namespace _pbi = ::google::protobuf::internal;
-namespace _fl = ::google::protobuf::internal::field_layout;
+namespace _pb = ::PROTOBUF_NAMESPACE_ID;
+namespace _pbi = ::PROTOBUF_NAMESPACE_ID::internal;
 namespace osirixgrpc {
-
-inline constexpr ViewerController::Impl_::Impl_(
-    ::_pbi::ConstantInitialized) noexcept
-      : osirixrpc_uid_(
-            &::google::protobuf::internal::fixed_address_empty_string,
-            ::_pbi::ConstantInitialized()),
-        _cached_size_{0} {}
-
 template <typename>
-PROTOBUF_CONSTEXPR ViewerController::ViewerController(::_pbi::ConstantInitialized)
-    : _impl_(::_pbi::ConstantInitialized()) {}
-struct ViewerControllerDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR ViewerControllerDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~ViewerControllerDefaultTypeInternal() {}
-  union {
-    ViewerController _instance;
-  };
-};
+PROTOBUF_CONSTEXPR BrowserController::BrowserController(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.osirixrpc_uid_)*/ {
+    &::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized {}
+  }
 
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ViewerControllerDefaultTypeInternal _ViewerController_default_instance_;
-
-inline constexpr VRController::Impl_::Impl_(
-    ::_pbi::ConstantInitialized) noexcept
-      : osirixrpc_uid_(
-            &::google::protobuf::internal::fixed_address_empty_string,
-            ::_pbi::ConstantInitialized()),
-        _cached_size_{0} {}
-
-template <typename>
-PROTOBUF_CONSTEXPR VRController::VRController(::_pbi::ConstantInitialized)
-    : _impl_(::_pbi::ConstantInitialized()) {}
-struct VRControllerDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR VRControllerDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~VRControllerDefaultTypeInternal() {}
-  union {
-    VRController _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 VRControllerDefaultTypeInternal _VRController_default_instance_;
-
-inline constexpr ROIVolume::Impl_::Impl_(
-    ::_pbi::ConstantInitialized) noexcept
-      : osirixrpc_uid_(
-            &::google::protobuf::internal::fixed_address_empty_string,
-            ::_pbi::ConstantInitialized()),
-        _cached_size_{0} {}
-
-template <typename>
-PROTOBUF_CONSTEXPR ROIVolume::ROIVolume(::_pbi::ConstantInitialized)
-    : _impl_(::_pbi::ConstantInitialized()) {}
-struct ROIVolumeDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR ROIVolumeDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~ROIVolumeDefaultTypeInternal() {}
-  union {
-    ROIVolume _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ROIVolumeDefaultTypeInternal _ROIVolume_default_instance_;
-
-inline constexpr ROI::Impl_::Impl_(
-    ::_pbi::ConstantInitialized) noexcept
-      : osirixrpc_uid_(
-            &::google::protobuf::internal::fixed_address_empty_string,
-            ::_pbi::ConstantInitialized()),
-        _cached_size_{0} {}
-
-template <typename>
-PROTOBUF_CONSTEXPR ROI::ROI(::_pbi::ConstantInitialized)
-    : _impl_(::_pbi::ConstantInitialized()) {}
-struct ROIDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR ROIDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~ROIDefaultTypeInternal() {}
-  union {
-    ROI _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ROIDefaultTypeInternal _ROI_default_instance_;
-
-inline constexpr DicomStudy::Impl_::Impl_(
-    ::_pbi::ConstantInitialized) noexcept
-      : osirixrpc_uid_(
-            &::google::protobuf::internal::fixed_address_empty_string,
-            ::_pbi::ConstantInitialized()),
-        _cached_size_{0} {}
-
-template <typename>
-PROTOBUF_CONSTEXPR DicomStudy::DicomStudy(::_pbi::ConstantInitialized)
-    : _impl_(::_pbi::ConstantInitialized()) {}
-struct DicomStudyDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR DicomStudyDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~DicomStudyDefaultTypeInternal() {}
-  union {
-    DicomStudy _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 DicomStudyDefaultTypeInternal _DicomStudy_default_instance_;
-
-inline constexpr DicomSeries::Impl_::Impl_(
-    ::_pbi::ConstantInitialized) noexcept
-      : osirixrpc_uid_(
-            &::google::protobuf::internal::fixed_address_empty_string,
-            ::_pbi::ConstantInitialized()),
-        _cached_size_{0} {}
-
-template <typename>
-PROTOBUF_CONSTEXPR DicomSeries::DicomSeries(::_pbi::ConstantInitialized)
-    : _impl_(::_pbi::ConstantInitialized()) {}
-struct DicomSeriesDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR DicomSeriesDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~DicomSeriesDefaultTypeInternal() {}
-  union {
-    DicomSeries _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 DicomSeriesDefaultTypeInternal _DicomSeries_default_instance_;
-
-inline constexpr DicomImage::Impl_::Impl_(
-    ::_pbi::ConstantInitialized) noexcept
-      : osirixrpc_uid_(
-            &::google::protobuf::internal::fixed_address_empty_string,
-            ::_pbi::ConstantInitialized()),
-        _cached_size_{0} {}
-
-template <typename>
-PROTOBUF_CONSTEXPR DicomImage::DicomImage(::_pbi::ConstantInitialized)
-    : _impl_(::_pbi::ConstantInitialized()) {}
-struct DicomImageDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR DicomImageDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~DicomImageDefaultTypeInternal() {}
-  union {
-    DicomImage _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 DicomImageDefaultTypeInternal _DicomImage_default_instance_;
-
-inline constexpr DCMPix::Impl_::Impl_(
-    ::_pbi::ConstantInitialized) noexcept
-      : osirixrpc_uid_(
-            &::google::protobuf::internal::fixed_address_empty_string,
-            ::_pbi::ConstantInitialized()),
-        _cached_size_{0} {}
-
-template <typename>
-PROTOBUF_CONSTEXPR DCMPix::DCMPix(::_pbi::ConstantInitialized)
-    : _impl_(::_pbi::ConstantInitialized()) {}
-struct DCMPixDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR DCMPixDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~DCMPixDefaultTypeInternal() {}
-  union {
-    DCMPix _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 DCMPixDefaultTypeInternal _DCMPix_default_instance_;
-
-inline constexpr BrowserController::Impl_::Impl_(
-    ::_pbi::ConstantInitialized) noexcept
-      : osirixrpc_uid_(
-            &::google::protobuf::internal::fixed_address_empty_string,
-            ::_pbi::ConstantInitialized()),
-        _cached_size_{0} {}
-
-template <typename>
-PROTOBUF_CONSTEXPR BrowserController::BrowserController(::_pbi::ConstantInitialized)
-    : _impl_(::_pbi::ConstantInitialized()) {}
+  , /*decltype(_impl_._cached_size_)*/{}} {}
 struct BrowserControllerDefaultTypeInternal {
   PROTOBUF_CONSTEXPR BrowserControllerDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
   ~BrowserControllerDefaultTypeInternal() {}
@@ -210,6 +37,150 @@ struct BrowserControllerDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 BrowserControllerDefaultTypeInternal _BrowserController_default_instance_;
+template <typename>
+PROTOBUF_CONSTEXPR ViewerController::ViewerController(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.osirixrpc_uid_)*/ {
+    &::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized {}
+  }
+
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct ViewerControllerDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ViewerControllerDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ViewerControllerDefaultTypeInternal() {}
+  union {
+    ViewerController _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ViewerControllerDefaultTypeInternal _ViewerController_default_instance_;
+template <typename>
+PROTOBUF_CONSTEXPR VRController::VRController(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.osirixrpc_uid_)*/ {
+    &::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized {}
+  }
+
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct VRControllerDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR VRControllerDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~VRControllerDefaultTypeInternal() {}
+  union {
+    VRController _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 VRControllerDefaultTypeInternal _VRController_default_instance_;
+template <typename>
+PROTOBUF_CONSTEXPR DCMPix::DCMPix(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.osirixrpc_uid_)*/ {
+    &::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized {}
+  }
+
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct DCMPixDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR DCMPixDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~DCMPixDefaultTypeInternal() {}
+  union {
+    DCMPix _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 DCMPixDefaultTypeInternal _DCMPix_default_instance_;
+template <typename>
+PROTOBUF_CONSTEXPR ROI::ROI(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.osirixrpc_uid_)*/ {
+    &::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized {}
+  }
+
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct ROIDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ROIDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ROIDefaultTypeInternal() {}
+  union {
+    ROI _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ROIDefaultTypeInternal _ROI_default_instance_;
+template <typename>
+PROTOBUF_CONSTEXPR ROIVolume::ROIVolume(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.osirixrpc_uid_)*/ {
+    &::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized {}
+  }
+
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct ROIVolumeDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ROIVolumeDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ROIVolumeDefaultTypeInternal() {}
+  union {
+    ROIVolume _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ROIVolumeDefaultTypeInternal _ROIVolume_default_instance_;
+template <typename>
+PROTOBUF_CONSTEXPR DicomImage::DicomImage(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.osirixrpc_uid_)*/ {
+    &::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized {}
+  }
+
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct DicomImageDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR DicomImageDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~DicomImageDefaultTypeInternal() {}
+  union {
+    DicomImage _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 DicomImageDefaultTypeInternal _DicomImage_default_instance_;
+template <typename>
+PROTOBUF_CONSTEXPR DicomSeries::DicomSeries(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.osirixrpc_uid_)*/ {
+    &::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized {}
+  }
+
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct DicomSeriesDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR DicomSeriesDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~DicomSeriesDefaultTypeInternal() {}
+  union {
+    DicomSeries _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 DicomSeriesDefaultTypeInternal _DicomSeries_default_instance_;
+template <typename>
+PROTOBUF_CONSTEXPR DicomStudy::DicomStudy(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.osirixrpc_uid_)*/ {
+    &::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized {}
+  }
+
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct DicomStudyDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR DicomStudyDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~DicomStudyDefaultTypeInternal() {}
+  union {
+    DicomStudy _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 DicomStudyDefaultTypeInternal _DicomStudy_default_instance_;
 }  // namespace osirixgrpc
 static ::_pb::Metadata file_level_metadata_types_2eproto[9];
 static constexpr const ::_pb::EnumDescriptor**
@@ -303,15 +274,15 @@ const ::uint32_t TableStruct_types_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(
 
 static const ::_pbi::MigrationSchema
     schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-        {0, -1, -1, sizeof(::osirixgrpc::BrowserController)},
-        {9, -1, -1, sizeof(::osirixgrpc::ViewerController)},
-        {18, -1, -1, sizeof(::osirixgrpc::VRController)},
-        {27, -1, -1, sizeof(::osirixgrpc::DCMPix)},
-        {36, -1, -1, sizeof(::osirixgrpc::ROI)},
-        {45, -1, -1, sizeof(::osirixgrpc::ROIVolume)},
-        {54, -1, -1, sizeof(::osirixgrpc::DicomImage)},
-        {63, -1, -1, sizeof(::osirixgrpc::DicomSeries)},
-        {72, -1, -1, sizeof(::osirixgrpc::DicomStudy)},
+        { 0, -1, -1, sizeof(::osirixgrpc::BrowserController)},
+        { 9, -1, -1, sizeof(::osirixgrpc::ViewerController)},
+        { 18, -1, -1, sizeof(::osirixgrpc::VRController)},
+        { 27, -1, -1, sizeof(::osirixgrpc::DCMPix)},
+        { 36, -1, -1, sizeof(::osirixgrpc::ROI)},
+        { 45, -1, -1, sizeof(::osirixgrpc::ROIVolume)},
+        { 54, -1, -1, sizeof(::osirixgrpc::DicomImage)},
+        { 63, -1, -1, sizeof(::osirixgrpc::DicomSeries)},
+        { 72, -1, -1, sizeof(::osirixgrpc::DicomStudy)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -380,119 +351,128 @@ class BrowserController::_Internal {
  public:
 };
 
-BrowserController::BrowserController(::google::protobuf::Arena* arena)
-    : ::google::protobuf::Message(arena) {
+BrowserController::BrowserController(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.BrowserController)
 }
-inline PROTOBUF_NDEBUG_INLINE BrowserController::Impl_::Impl_(
-    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
-    const Impl_& from)
-      : osirixrpc_uid_(arena, from.osirixrpc_uid_),
-        _cached_size_{0} {}
+BrowserController::BrowserController(const BrowserController& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  BrowserController* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.osirixrpc_uid_) {}
 
-BrowserController::BrowserController(
-    ::google::protobuf::Arena* arena,
-    const BrowserController& from)
-    : ::google::protobuf::Message(arena) {
-  BrowserController* const _this = this;
-  (void)_this;
-  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
-      from._internal_metadata_);
-  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+    , /*decltype(_impl_._cached_size_)*/{}};
 
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _impl_.osirixrpc_uid_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.osirixrpc_uid_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_osirixrpc_uid().empty()) {
+    _this->_impl_.osirixrpc_uid_.Set(from._internal_osirixrpc_uid(), _this->GetArenaForAllocation());
+  }
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.BrowserController)
 }
-inline PROTOBUF_NDEBUG_INLINE BrowserController::Impl_::Impl_(
-    ::google::protobuf::internal::InternalVisibility visibility,
-    ::google::protobuf::Arena* arena)
-      : osirixrpc_uid_(arena),
-        _cached_size_{0} {}
 
 inline void BrowserController::SharedCtor(::_pb::Arena* arena) {
-  new (&_impl_) Impl_(internal_visibility(), arena);
-}
-BrowserController::~BrowserController() {
-  // @@protoc_insertion_point(destructor:osirixgrpc.BrowserController)
-  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
-  SharedDtor();
-}
-inline void BrowserController::SharedDtor() {
-  ABSL_DCHECK(GetArena() == nullptr);
-  _impl_.osirixrpc_uid_.Destroy();
-  _impl_.~Impl_();
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_.osirixrpc_uid_) {}
+
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+  _impl_.osirixrpc_uid_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.osirixrpc_uid_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
 
-PROTOBUF_NOINLINE void BrowserController::Clear() {
+BrowserController::~BrowserController() {
+  // @@protoc_insertion_point(destructor:osirixgrpc.BrowserController)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void BrowserController::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.osirixrpc_uid_.Destroy();
+}
+
+void BrowserController::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void BrowserController::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.BrowserController)
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   _impl_.osirixrpc_uid_.ClearToEmpty();
-  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* BrowserController::_InternalParse(
-    const char* ptr, ::_pbi::ParseContext* ctx) {
-  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+const char* BrowserController::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    ::uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // string osirixrpc_uid = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
+          auto str = _internal_mutable_osirixrpc_uid();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "osirixgrpc.BrowserController.osirixrpc_uid"));
+        } else {
+          goto handle_unusual;
+        }
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
   return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
 }
-
-
-PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<0, 1, 0, 50, 2> BrowserController::_table_ = {
-  {
-    0,  // no _has_bits_
-    0, // no _extensions_
-    1, 0,  // max_field_number, fast_idx_mask
-    offsetof(decltype(_table_), field_lookup_table),
-    4294967294,  // skipmap
-    offsetof(decltype(_table_), field_entries),
-    1,  // num_field_entries
-    0,  // num_aux_entries
-    offsetof(decltype(_table_), field_names),  // no aux_entries
-    &_BrowserController_default_instance_._instance,
-    ::_pbi::TcParser::GenericFallback,  // fallback
-  }, {{
-    // string osirixrpc_uid = 1;
-    {::_pbi::TcParser::FastUS1,
-     {10, 63, 0, PROTOBUF_FIELD_OFFSET(BrowserController, _impl_.osirixrpc_uid_)}},
-  }}, {{
-    65535, 65535
-  }}, {{
-    // string osirixrpc_uid = 1;
-    {PROTOBUF_FIELD_OFFSET(BrowserController, _impl_.osirixrpc_uid_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
-  }},
-  // no aux_entries
-  {{
-    "\34\15\0\0\0\0\0\0"
-    "osirixgrpc.BrowserController"
-    "osirixrpc_uid"
-  }},
-};
 
 ::uint8_t* BrowserController::_InternalSerialize(
-    ::uint8_t* target,
-    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.BrowserController)
   ::uint32_t cached_has_bits = 0;
-  (void)cached_has_bits;
+  (void) cached_has_bits;
 
   // string osirixrpc_uid = 1;
   if (!this->_internal_osirixrpc_uid().empty()) {
     const std::string& _s = this->_internal_osirixrpc_uid();
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "osirixgrpc.BrowserController.osirixrpc_uid");
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE, "osirixgrpc.BrowserController.osirixrpc_uid");
     target = stream->WriteStringMaybeAliased(1, _s, target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target =
-        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.BrowserController)
   return target;
@@ -508,22 +488,21 @@ const ::_pbi::TcParseTable<0, 1, 0, 50, 2> BrowserController::_table_ = {
 
   // string osirixrpc_uid = 1;
   if (!this->_internal_osirixrpc_uid().empty()) {
-    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+    total_size += 1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
                                     this->_internal_osirixrpc_uid());
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::google::protobuf::Message::ClassData BrowserController::_class_data_ = {
-    BrowserController::MergeImpl,
-    nullptr,  // OnDemandRegisterArenaDtor
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData BrowserController::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    BrowserController::MergeImpl
 };
-const ::google::protobuf::Message::ClassData* BrowserController::GetClassData() const {
-  return &_class_data_;
-}
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*BrowserController::GetClassData() const { return &_class_data_; }
 
-void BrowserController::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+
+void BrowserController::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
   auto* const _this = static_cast<BrowserController*>(&to_msg);
   auto& from = static_cast<const BrowserController&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.BrowserController)
@@ -534,7 +513,7 @@ void BrowserController::MergeImpl(::google::protobuf::Message& to_msg, const ::g
   if (!from._internal_osirixrpc_uid().empty()) {
     _this->_internal_set_osirixrpc_uid(from._internal_osirixrpc_uid());
   }
-  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void BrowserController::CopyFrom(const BrowserController& from) {
@@ -544,22 +523,20 @@ void BrowserController::CopyFrom(const BrowserController& from) {
   MergeFrom(from);
 }
 
-PROTOBUF_NOINLINE bool BrowserController::IsInitialized() const {
+bool BrowserController::IsInitialized() const {
   return true;
 }
 
-::_pbi::CachedSize* BrowserController::AccessCachedSize() const {
-  return &_impl_._cached_size_;
-}
-void BrowserController::InternalSwap(BrowserController* PROTOBUF_RESTRICT other) {
+void BrowserController::InternalSwap(BrowserController* other) {
   using std::swap;
-  auto* arena = GetArena();
-  ABSL_DCHECK_EQ(arena, other->GetArena());
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.osirixrpc_uid_, &other->_impl_.osirixrpc_uid_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.osirixrpc_uid_, lhs_arena,
+                                       &other->_impl_.osirixrpc_uid_, rhs_arena);
 }
 
-::google::protobuf::Metadata BrowserController::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata BrowserController::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_types_2eproto_getter, &descriptor_table_types_2eproto_once,
       file_level_metadata_types_2eproto[0]);
@@ -570,119 +547,128 @@ class ViewerController::_Internal {
  public:
 };
 
-ViewerController::ViewerController(::google::protobuf::Arena* arena)
-    : ::google::protobuf::Message(arena) {
+ViewerController::ViewerController(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.ViewerController)
 }
-inline PROTOBUF_NDEBUG_INLINE ViewerController::Impl_::Impl_(
-    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
-    const Impl_& from)
-      : osirixrpc_uid_(arena, from.osirixrpc_uid_),
-        _cached_size_{0} {}
+ViewerController::ViewerController(const ViewerController& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  ViewerController* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.osirixrpc_uid_) {}
 
-ViewerController::ViewerController(
-    ::google::protobuf::Arena* arena,
-    const ViewerController& from)
-    : ::google::protobuf::Message(arena) {
-  ViewerController* const _this = this;
-  (void)_this;
-  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
-      from._internal_metadata_);
-  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+    , /*decltype(_impl_._cached_size_)*/{}};
 
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _impl_.osirixrpc_uid_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.osirixrpc_uid_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_osirixrpc_uid().empty()) {
+    _this->_impl_.osirixrpc_uid_.Set(from._internal_osirixrpc_uid(), _this->GetArenaForAllocation());
+  }
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.ViewerController)
 }
-inline PROTOBUF_NDEBUG_INLINE ViewerController::Impl_::Impl_(
-    ::google::protobuf::internal::InternalVisibility visibility,
-    ::google::protobuf::Arena* arena)
-      : osirixrpc_uid_(arena),
-        _cached_size_{0} {}
 
 inline void ViewerController::SharedCtor(::_pb::Arena* arena) {
-  new (&_impl_) Impl_(internal_visibility(), arena);
-}
-ViewerController::~ViewerController() {
-  // @@protoc_insertion_point(destructor:osirixgrpc.ViewerController)
-  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
-  SharedDtor();
-}
-inline void ViewerController::SharedDtor() {
-  ABSL_DCHECK(GetArena() == nullptr);
-  _impl_.osirixrpc_uid_.Destroy();
-  _impl_.~Impl_();
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_.osirixrpc_uid_) {}
+
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+  _impl_.osirixrpc_uid_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.osirixrpc_uid_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
 
-PROTOBUF_NOINLINE void ViewerController::Clear() {
+ViewerController::~ViewerController() {
+  // @@protoc_insertion_point(destructor:osirixgrpc.ViewerController)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void ViewerController::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.osirixrpc_uid_.Destroy();
+}
+
+void ViewerController::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void ViewerController::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.ViewerController)
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   _impl_.osirixrpc_uid_.ClearToEmpty();
-  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* ViewerController::_InternalParse(
-    const char* ptr, ::_pbi::ParseContext* ctx) {
-  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+const char* ViewerController::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    ::uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // string osirixrpc_uid = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
+          auto str = _internal_mutable_osirixrpc_uid();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "osirixgrpc.ViewerController.osirixrpc_uid"));
+        } else {
+          goto handle_unusual;
+        }
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
   return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
 }
-
-
-PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<0, 1, 0, 49, 2> ViewerController::_table_ = {
-  {
-    0,  // no _has_bits_
-    0, // no _extensions_
-    1, 0,  // max_field_number, fast_idx_mask
-    offsetof(decltype(_table_), field_lookup_table),
-    4294967294,  // skipmap
-    offsetof(decltype(_table_), field_entries),
-    1,  // num_field_entries
-    0,  // num_aux_entries
-    offsetof(decltype(_table_), field_names),  // no aux_entries
-    &_ViewerController_default_instance_._instance,
-    ::_pbi::TcParser::GenericFallback,  // fallback
-  }, {{
-    // string osirixrpc_uid = 1;
-    {::_pbi::TcParser::FastUS1,
-     {10, 63, 0, PROTOBUF_FIELD_OFFSET(ViewerController, _impl_.osirixrpc_uid_)}},
-  }}, {{
-    65535, 65535
-  }}, {{
-    // string osirixrpc_uid = 1;
-    {PROTOBUF_FIELD_OFFSET(ViewerController, _impl_.osirixrpc_uid_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
-  }},
-  // no aux_entries
-  {{
-    "\33\15\0\0\0\0\0\0"
-    "osirixgrpc.ViewerController"
-    "osirixrpc_uid"
-  }},
-};
 
 ::uint8_t* ViewerController::_InternalSerialize(
-    ::uint8_t* target,
-    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.ViewerController)
   ::uint32_t cached_has_bits = 0;
-  (void)cached_has_bits;
+  (void) cached_has_bits;
 
   // string osirixrpc_uid = 1;
   if (!this->_internal_osirixrpc_uid().empty()) {
     const std::string& _s = this->_internal_osirixrpc_uid();
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "osirixgrpc.ViewerController.osirixrpc_uid");
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE, "osirixgrpc.ViewerController.osirixrpc_uid");
     target = stream->WriteStringMaybeAliased(1, _s, target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target =
-        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.ViewerController)
   return target;
@@ -698,22 +684,21 @@ const ::_pbi::TcParseTable<0, 1, 0, 49, 2> ViewerController::_table_ = {
 
   // string osirixrpc_uid = 1;
   if (!this->_internal_osirixrpc_uid().empty()) {
-    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+    total_size += 1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
                                     this->_internal_osirixrpc_uid());
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::google::protobuf::Message::ClassData ViewerController::_class_data_ = {
-    ViewerController::MergeImpl,
-    nullptr,  // OnDemandRegisterArenaDtor
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ViewerController::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    ViewerController::MergeImpl
 };
-const ::google::protobuf::Message::ClassData* ViewerController::GetClassData() const {
-  return &_class_data_;
-}
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ViewerController::GetClassData() const { return &_class_data_; }
 
-void ViewerController::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+
+void ViewerController::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
   auto* const _this = static_cast<ViewerController*>(&to_msg);
   auto& from = static_cast<const ViewerController&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ViewerController)
@@ -724,7 +709,7 @@ void ViewerController::MergeImpl(::google::protobuf::Message& to_msg, const ::go
   if (!from._internal_osirixrpc_uid().empty()) {
     _this->_internal_set_osirixrpc_uid(from._internal_osirixrpc_uid());
   }
-  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void ViewerController::CopyFrom(const ViewerController& from) {
@@ -734,22 +719,20 @@ void ViewerController::CopyFrom(const ViewerController& from) {
   MergeFrom(from);
 }
 
-PROTOBUF_NOINLINE bool ViewerController::IsInitialized() const {
+bool ViewerController::IsInitialized() const {
   return true;
 }
 
-::_pbi::CachedSize* ViewerController::AccessCachedSize() const {
-  return &_impl_._cached_size_;
-}
-void ViewerController::InternalSwap(ViewerController* PROTOBUF_RESTRICT other) {
+void ViewerController::InternalSwap(ViewerController* other) {
   using std::swap;
-  auto* arena = GetArena();
-  ABSL_DCHECK_EQ(arena, other->GetArena());
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.osirixrpc_uid_, &other->_impl_.osirixrpc_uid_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.osirixrpc_uid_, lhs_arena,
+                                       &other->_impl_.osirixrpc_uid_, rhs_arena);
 }
 
-::google::protobuf::Metadata ViewerController::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata ViewerController::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_types_2eproto_getter, &descriptor_table_types_2eproto_once,
       file_level_metadata_types_2eproto[1]);
@@ -760,119 +743,128 @@ class VRController::_Internal {
  public:
 };
 
-VRController::VRController(::google::protobuf::Arena* arena)
-    : ::google::protobuf::Message(arena) {
+VRController::VRController(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.VRController)
 }
-inline PROTOBUF_NDEBUG_INLINE VRController::Impl_::Impl_(
-    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
-    const Impl_& from)
-      : osirixrpc_uid_(arena, from.osirixrpc_uid_),
-        _cached_size_{0} {}
+VRController::VRController(const VRController& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  VRController* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.osirixrpc_uid_) {}
 
-VRController::VRController(
-    ::google::protobuf::Arena* arena,
-    const VRController& from)
-    : ::google::protobuf::Message(arena) {
-  VRController* const _this = this;
-  (void)_this;
-  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
-      from._internal_metadata_);
-  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+    , /*decltype(_impl_._cached_size_)*/{}};
 
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _impl_.osirixrpc_uid_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.osirixrpc_uid_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_osirixrpc_uid().empty()) {
+    _this->_impl_.osirixrpc_uid_.Set(from._internal_osirixrpc_uid(), _this->GetArenaForAllocation());
+  }
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.VRController)
 }
-inline PROTOBUF_NDEBUG_INLINE VRController::Impl_::Impl_(
-    ::google::protobuf::internal::InternalVisibility visibility,
-    ::google::protobuf::Arena* arena)
-      : osirixrpc_uid_(arena),
-        _cached_size_{0} {}
 
 inline void VRController::SharedCtor(::_pb::Arena* arena) {
-  new (&_impl_) Impl_(internal_visibility(), arena);
-}
-VRController::~VRController() {
-  // @@protoc_insertion_point(destructor:osirixgrpc.VRController)
-  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
-  SharedDtor();
-}
-inline void VRController::SharedDtor() {
-  ABSL_DCHECK(GetArena() == nullptr);
-  _impl_.osirixrpc_uid_.Destroy();
-  _impl_.~Impl_();
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_.osirixrpc_uid_) {}
+
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+  _impl_.osirixrpc_uid_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.osirixrpc_uid_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
 
-PROTOBUF_NOINLINE void VRController::Clear() {
+VRController::~VRController() {
+  // @@protoc_insertion_point(destructor:osirixgrpc.VRController)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void VRController::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.osirixrpc_uid_.Destroy();
+}
+
+void VRController::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void VRController::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.VRController)
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   _impl_.osirixrpc_uid_.ClearToEmpty();
-  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* VRController::_InternalParse(
-    const char* ptr, ::_pbi::ParseContext* ctx) {
-  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+const char* VRController::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    ::uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // string osirixrpc_uid = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
+          auto str = _internal_mutable_osirixrpc_uid();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "osirixgrpc.VRController.osirixrpc_uid"));
+        } else {
+          goto handle_unusual;
+        }
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
   return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
 }
-
-
-PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<0, 1, 0, 45, 2> VRController::_table_ = {
-  {
-    0,  // no _has_bits_
-    0, // no _extensions_
-    1, 0,  // max_field_number, fast_idx_mask
-    offsetof(decltype(_table_), field_lookup_table),
-    4294967294,  // skipmap
-    offsetof(decltype(_table_), field_entries),
-    1,  // num_field_entries
-    0,  // num_aux_entries
-    offsetof(decltype(_table_), field_names),  // no aux_entries
-    &_VRController_default_instance_._instance,
-    ::_pbi::TcParser::GenericFallback,  // fallback
-  }, {{
-    // string osirixrpc_uid = 1;
-    {::_pbi::TcParser::FastUS1,
-     {10, 63, 0, PROTOBUF_FIELD_OFFSET(VRController, _impl_.osirixrpc_uid_)}},
-  }}, {{
-    65535, 65535
-  }}, {{
-    // string osirixrpc_uid = 1;
-    {PROTOBUF_FIELD_OFFSET(VRController, _impl_.osirixrpc_uid_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
-  }},
-  // no aux_entries
-  {{
-    "\27\15\0\0\0\0\0\0"
-    "osirixgrpc.VRController"
-    "osirixrpc_uid"
-  }},
-};
 
 ::uint8_t* VRController::_InternalSerialize(
-    ::uint8_t* target,
-    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.VRController)
   ::uint32_t cached_has_bits = 0;
-  (void)cached_has_bits;
+  (void) cached_has_bits;
 
   // string osirixrpc_uid = 1;
   if (!this->_internal_osirixrpc_uid().empty()) {
     const std::string& _s = this->_internal_osirixrpc_uid();
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "osirixgrpc.VRController.osirixrpc_uid");
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE, "osirixgrpc.VRController.osirixrpc_uid");
     target = stream->WriteStringMaybeAliased(1, _s, target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target =
-        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.VRController)
   return target;
@@ -888,22 +880,21 @@ const ::_pbi::TcParseTable<0, 1, 0, 45, 2> VRController::_table_ = {
 
   // string osirixrpc_uid = 1;
   if (!this->_internal_osirixrpc_uid().empty()) {
-    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+    total_size += 1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
                                     this->_internal_osirixrpc_uid());
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::google::protobuf::Message::ClassData VRController::_class_data_ = {
-    VRController::MergeImpl,
-    nullptr,  // OnDemandRegisterArenaDtor
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData VRController::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    VRController::MergeImpl
 };
-const ::google::protobuf::Message::ClassData* VRController::GetClassData() const {
-  return &_class_data_;
-}
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*VRController::GetClassData() const { return &_class_data_; }
 
-void VRController::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+
+void VRController::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
   auto* const _this = static_cast<VRController*>(&to_msg);
   auto& from = static_cast<const VRController&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.VRController)
@@ -914,7 +905,7 @@ void VRController::MergeImpl(::google::protobuf::Message& to_msg, const ::google
   if (!from._internal_osirixrpc_uid().empty()) {
     _this->_internal_set_osirixrpc_uid(from._internal_osirixrpc_uid());
   }
-  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void VRController::CopyFrom(const VRController& from) {
@@ -924,22 +915,20 @@ void VRController::CopyFrom(const VRController& from) {
   MergeFrom(from);
 }
 
-PROTOBUF_NOINLINE bool VRController::IsInitialized() const {
+bool VRController::IsInitialized() const {
   return true;
 }
 
-::_pbi::CachedSize* VRController::AccessCachedSize() const {
-  return &_impl_._cached_size_;
-}
-void VRController::InternalSwap(VRController* PROTOBUF_RESTRICT other) {
+void VRController::InternalSwap(VRController* other) {
   using std::swap;
-  auto* arena = GetArena();
-  ABSL_DCHECK_EQ(arena, other->GetArena());
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.osirixrpc_uid_, &other->_impl_.osirixrpc_uid_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.osirixrpc_uid_, lhs_arena,
+                                       &other->_impl_.osirixrpc_uid_, rhs_arena);
 }
 
-::google::protobuf::Metadata VRController::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata VRController::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_types_2eproto_getter, &descriptor_table_types_2eproto_once,
       file_level_metadata_types_2eproto[2]);
@@ -950,119 +939,128 @@ class DCMPix::_Internal {
  public:
 };
 
-DCMPix::DCMPix(::google::protobuf::Arena* arena)
-    : ::google::protobuf::Message(arena) {
+DCMPix::DCMPix(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.DCMPix)
 }
-inline PROTOBUF_NDEBUG_INLINE DCMPix::Impl_::Impl_(
-    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
-    const Impl_& from)
-      : osirixrpc_uid_(arena, from.osirixrpc_uid_),
-        _cached_size_{0} {}
+DCMPix::DCMPix(const DCMPix& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  DCMPix* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.osirixrpc_uid_) {}
 
-DCMPix::DCMPix(
-    ::google::protobuf::Arena* arena,
-    const DCMPix& from)
-    : ::google::protobuf::Message(arena) {
-  DCMPix* const _this = this;
-  (void)_this;
-  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
-      from._internal_metadata_);
-  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+    , /*decltype(_impl_._cached_size_)*/{}};
 
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _impl_.osirixrpc_uid_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.osirixrpc_uid_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_osirixrpc_uid().empty()) {
+    _this->_impl_.osirixrpc_uid_.Set(from._internal_osirixrpc_uid(), _this->GetArenaForAllocation());
+  }
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.DCMPix)
 }
-inline PROTOBUF_NDEBUG_INLINE DCMPix::Impl_::Impl_(
-    ::google::protobuf::internal::InternalVisibility visibility,
-    ::google::protobuf::Arena* arena)
-      : osirixrpc_uid_(arena),
-        _cached_size_{0} {}
 
 inline void DCMPix::SharedCtor(::_pb::Arena* arena) {
-  new (&_impl_) Impl_(internal_visibility(), arena);
-}
-DCMPix::~DCMPix() {
-  // @@protoc_insertion_point(destructor:osirixgrpc.DCMPix)
-  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
-  SharedDtor();
-}
-inline void DCMPix::SharedDtor() {
-  ABSL_DCHECK(GetArena() == nullptr);
-  _impl_.osirixrpc_uid_.Destroy();
-  _impl_.~Impl_();
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_.osirixrpc_uid_) {}
+
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+  _impl_.osirixrpc_uid_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.osirixrpc_uid_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
 
-PROTOBUF_NOINLINE void DCMPix::Clear() {
+DCMPix::~DCMPix() {
+  // @@protoc_insertion_point(destructor:osirixgrpc.DCMPix)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void DCMPix::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.osirixrpc_uid_.Destroy();
+}
+
+void DCMPix::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void DCMPix::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.DCMPix)
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   _impl_.osirixrpc_uid_.ClearToEmpty();
-  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* DCMPix::_InternalParse(
-    const char* ptr, ::_pbi::ParseContext* ctx) {
-  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+const char* DCMPix::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    ::uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // string osirixrpc_uid = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
+          auto str = _internal_mutable_osirixrpc_uid();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "osirixgrpc.DCMPix.osirixrpc_uid"));
+        } else {
+          goto handle_unusual;
+        }
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
   return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
 }
-
-
-PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<0, 1, 0, 39, 2> DCMPix::_table_ = {
-  {
-    0,  // no _has_bits_
-    0, // no _extensions_
-    1, 0,  // max_field_number, fast_idx_mask
-    offsetof(decltype(_table_), field_lookup_table),
-    4294967294,  // skipmap
-    offsetof(decltype(_table_), field_entries),
-    1,  // num_field_entries
-    0,  // num_aux_entries
-    offsetof(decltype(_table_), field_names),  // no aux_entries
-    &_DCMPix_default_instance_._instance,
-    ::_pbi::TcParser::GenericFallback,  // fallback
-  }, {{
-    // string osirixrpc_uid = 1;
-    {::_pbi::TcParser::FastUS1,
-     {10, 63, 0, PROTOBUF_FIELD_OFFSET(DCMPix, _impl_.osirixrpc_uid_)}},
-  }}, {{
-    65535, 65535
-  }}, {{
-    // string osirixrpc_uid = 1;
-    {PROTOBUF_FIELD_OFFSET(DCMPix, _impl_.osirixrpc_uid_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
-  }},
-  // no aux_entries
-  {{
-    "\21\15\0\0\0\0\0\0"
-    "osirixgrpc.DCMPix"
-    "osirixrpc_uid"
-  }},
-};
 
 ::uint8_t* DCMPix::_InternalSerialize(
-    ::uint8_t* target,
-    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.DCMPix)
   ::uint32_t cached_has_bits = 0;
-  (void)cached_has_bits;
+  (void) cached_has_bits;
 
   // string osirixrpc_uid = 1;
   if (!this->_internal_osirixrpc_uid().empty()) {
     const std::string& _s = this->_internal_osirixrpc_uid();
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "osirixgrpc.DCMPix.osirixrpc_uid");
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE, "osirixgrpc.DCMPix.osirixrpc_uid");
     target = stream->WriteStringMaybeAliased(1, _s, target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target =
-        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.DCMPix)
   return target;
@@ -1078,22 +1076,21 @@ const ::_pbi::TcParseTable<0, 1, 0, 39, 2> DCMPix::_table_ = {
 
   // string osirixrpc_uid = 1;
   if (!this->_internal_osirixrpc_uid().empty()) {
-    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+    total_size += 1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
                                     this->_internal_osirixrpc_uid());
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::google::protobuf::Message::ClassData DCMPix::_class_data_ = {
-    DCMPix::MergeImpl,
-    nullptr,  // OnDemandRegisterArenaDtor
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData DCMPix::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    DCMPix::MergeImpl
 };
-const ::google::protobuf::Message::ClassData* DCMPix::GetClassData() const {
-  return &_class_data_;
-}
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*DCMPix::GetClassData() const { return &_class_data_; }
 
-void DCMPix::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+
+void DCMPix::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
   auto* const _this = static_cast<DCMPix*>(&to_msg);
   auto& from = static_cast<const DCMPix&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.DCMPix)
@@ -1104,7 +1101,7 @@ void DCMPix::MergeImpl(::google::protobuf::Message& to_msg, const ::google::prot
   if (!from._internal_osirixrpc_uid().empty()) {
     _this->_internal_set_osirixrpc_uid(from._internal_osirixrpc_uid());
   }
-  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void DCMPix::CopyFrom(const DCMPix& from) {
@@ -1114,22 +1111,20 @@ void DCMPix::CopyFrom(const DCMPix& from) {
   MergeFrom(from);
 }
 
-PROTOBUF_NOINLINE bool DCMPix::IsInitialized() const {
+bool DCMPix::IsInitialized() const {
   return true;
 }
 
-::_pbi::CachedSize* DCMPix::AccessCachedSize() const {
-  return &_impl_._cached_size_;
-}
-void DCMPix::InternalSwap(DCMPix* PROTOBUF_RESTRICT other) {
+void DCMPix::InternalSwap(DCMPix* other) {
   using std::swap;
-  auto* arena = GetArena();
-  ABSL_DCHECK_EQ(arena, other->GetArena());
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.osirixrpc_uid_, &other->_impl_.osirixrpc_uid_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.osirixrpc_uid_, lhs_arena,
+                                       &other->_impl_.osirixrpc_uid_, rhs_arena);
 }
 
-::google::protobuf::Metadata DCMPix::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata DCMPix::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_types_2eproto_getter, &descriptor_table_types_2eproto_once,
       file_level_metadata_types_2eproto[3]);
@@ -1140,119 +1135,128 @@ class ROI::_Internal {
  public:
 };
 
-ROI::ROI(::google::protobuf::Arena* arena)
-    : ::google::protobuf::Message(arena) {
+ROI::ROI(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.ROI)
 }
-inline PROTOBUF_NDEBUG_INLINE ROI::Impl_::Impl_(
-    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
-    const Impl_& from)
-      : osirixrpc_uid_(arena, from.osirixrpc_uid_),
-        _cached_size_{0} {}
+ROI::ROI(const ROI& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  ROI* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.osirixrpc_uid_) {}
 
-ROI::ROI(
-    ::google::protobuf::Arena* arena,
-    const ROI& from)
-    : ::google::protobuf::Message(arena) {
-  ROI* const _this = this;
-  (void)_this;
-  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
-      from._internal_metadata_);
-  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+    , /*decltype(_impl_._cached_size_)*/{}};
 
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _impl_.osirixrpc_uid_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.osirixrpc_uid_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_osirixrpc_uid().empty()) {
+    _this->_impl_.osirixrpc_uid_.Set(from._internal_osirixrpc_uid(), _this->GetArenaForAllocation());
+  }
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.ROI)
 }
-inline PROTOBUF_NDEBUG_INLINE ROI::Impl_::Impl_(
-    ::google::protobuf::internal::InternalVisibility visibility,
-    ::google::protobuf::Arena* arena)
-      : osirixrpc_uid_(arena),
-        _cached_size_{0} {}
 
 inline void ROI::SharedCtor(::_pb::Arena* arena) {
-  new (&_impl_) Impl_(internal_visibility(), arena);
-}
-ROI::~ROI() {
-  // @@protoc_insertion_point(destructor:osirixgrpc.ROI)
-  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
-  SharedDtor();
-}
-inline void ROI::SharedDtor() {
-  ABSL_DCHECK(GetArena() == nullptr);
-  _impl_.osirixrpc_uid_.Destroy();
-  _impl_.~Impl_();
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_.osirixrpc_uid_) {}
+
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+  _impl_.osirixrpc_uid_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.osirixrpc_uid_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
 
-PROTOBUF_NOINLINE void ROI::Clear() {
+ROI::~ROI() {
+  // @@protoc_insertion_point(destructor:osirixgrpc.ROI)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void ROI::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.osirixrpc_uid_.Destroy();
+}
+
+void ROI::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void ROI::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.ROI)
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   _impl_.osirixrpc_uid_.ClearToEmpty();
-  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* ROI::_InternalParse(
-    const char* ptr, ::_pbi::ParseContext* ctx) {
-  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+const char* ROI::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    ::uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // string osirixrpc_uid = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
+          auto str = _internal_mutable_osirixrpc_uid();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "osirixgrpc.ROI.osirixrpc_uid"));
+        } else {
+          goto handle_unusual;
+        }
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
   return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
 }
-
-
-PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<0, 1, 0, 36, 2> ROI::_table_ = {
-  {
-    0,  // no _has_bits_
-    0, // no _extensions_
-    1, 0,  // max_field_number, fast_idx_mask
-    offsetof(decltype(_table_), field_lookup_table),
-    4294967294,  // skipmap
-    offsetof(decltype(_table_), field_entries),
-    1,  // num_field_entries
-    0,  // num_aux_entries
-    offsetof(decltype(_table_), field_names),  // no aux_entries
-    &_ROI_default_instance_._instance,
-    ::_pbi::TcParser::GenericFallback,  // fallback
-  }, {{
-    // string osirixrpc_uid = 1;
-    {::_pbi::TcParser::FastUS1,
-     {10, 63, 0, PROTOBUF_FIELD_OFFSET(ROI, _impl_.osirixrpc_uid_)}},
-  }}, {{
-    65535, 65535
-  }}, {{
-    // string osirixrpc_uid = 1;
-    {PROTOBUF_FIELD_OFFSET(ROI, _impl_.osirixrpc_uid_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
-  }},
-  // no aux_entries
-  {{
-    "\16\15\0\0\0\0\0\0"
-    "osirixgrpc.ROI"
-    "osirixrpc_uid"
-  }},
-};
 
 ::uint8_t* ROI::_InternalSerialize(
-    ::uint8_t* target,
-    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.ROI)
   ::uint32_t cached_has_bits = 0;
-  (void)cached_has_bits;
+  (void) cached_has_bits;
 
   // string osirixrpc_uid = 1;
   if (!this->_internal_osirixrpc_uid().empty()) {
     const std::string& _s = this->_internal_osirixrpc_uid();
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "osirixgrpc.ROI.osirixrpc_uid");
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE, "osirixgrpc.ROI.osirixrpc_uid");
     target = stream->WriteStringMaybeAliased(1, _s, target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target =
-        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.ROI)
   return target;
@@ -1268,22 +1272,21 @@ const ::_pbi::TcParseTable<0, 1, 0, 36, 2> ROI::_table_ = {
 
   // string osirixrpc_uid = 1;
   if (!this->_internal_osirixrpc_uid().empty()) {
-    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+    total_size += 1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
                                     this->_internal_osirixrpc_uid());
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::google::protobuf::Message::ClassData ROI::_class_data_ = {
-    ROI::MergeImpl,
-    nullptr,  // OnDemandRegisterArenaDtor
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ROI::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    ROI::MergeImpl
 };
-const ::google::protobuf::Message::ClassData* ROI::GetClassData() const {
-  return &_class_data_;
-}
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ROI::GetClassData() const { return &_class_data_; }
 
-void ROI::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+
+void ROI::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
   auto* const _this = static_cast<ROI*>(&to_msg);
   auto& from = static_cast<const ROI&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ROI)
@@ -1294,7 +1297,7 @@ void ROI::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobu
   if (!from._internal_osirixrpc_uid().empty()) {
     _this->_internal_set_osirixrpc_uid(from._internal_osirixrpc_uid());
   }
-  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void ROI::CopyFrom(const ROI& from) {
@@ -1304,22 +1307,20 @@ void ROI::CopyFrom(const ROI& from) {
   MergeFrom(from);
 }
 
-PROTOBUF_NOINLINE bool ROI::IsInitialized() const {
+bool ROI::IsInitialized() const {
   return true;
 }
 
-::_pbi::CachedSize* ROI::AccessCachedSize() const {
-  return &_impl_._cached_size_;
-}
-void ROI::InternalSwap(ROI* PROTOBUF_RESTRICT other) {
+void ROI::InternalSwap(ROI* other) {
   using std::swap;
-  auto* arena = GetArena();
-  ABSL_DCHECK_EQ(arena, other->GetArena());
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.osirixrpc_uid_, &other->_impl_.osirixrpc_uid_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.osirixrpc_uid_, lhs_arena,
+                                       &other->_impl_.osirixrpc_uid_, rhs_arena);
 }
 
-::google::protobuf::Metadata ROI::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata ROI::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_types_2eproto_getter, &descriptor_table_types_2eproto_once,
       file_level_metadata_types_2eproto[4]);
@@ -1330,119 +1331,128 @@ class ROIVolume::_Internal {
  public:
 };
 
-ROIVolume::ROIVolume(::google::protobuf::Arena* arena)
-    : ::google::protobuf::Message(arena) {
+ROIVolume::ROIVolume(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.ROIVolume)
 }
-inline PROTOBUF_NDEBUG_INLINE ROIVolume::Impl_::Impl_(
-    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
-    const Impl_& from)
-      : osirixrpc_uid_(arena, from.osirixrpc_uid_),
-        _cached_size_{0} {}
+ROIVolume::ROIVolume(const ROIVolume& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  ROIVolume* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.osirixrpc_uid_) {}
 
-ROIVolume::ROIVolume(
-    ::google::protobuf::Arena* arena,
-    const ROIVolume& from)
-    : ::google::protobuf::Message(arena) {
-  ROIVolume* const _this = this;
-  (void)_this;
-  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
-      from._internal_metadata_);
-  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+    , /*decltype(_impl_._cached_size_)*/{}};
 
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _impl_.osirixrpc_uid_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.osirixrpc_uid_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_osirixrpc_uid().empty()) {
+    _this->_impl_.osirixrpc_uid_.Set(from._internal_osirixrpc_uid(), _this->GetArenaForAllocation());
+  }
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.ROIVolume)
 }
-inline PROTOBUF_NDEBUG_INLINE ROIVolume::Impl_::Impl_(
-    ::google::protobuf::internal::InternalVisibility visibility,
-    ::google::protobuf::Arena* arena)
-      : osirixrpc_uid_(arena),
-        _cached_size_{0} {}
 
 inline void ROIVolume::SharedCtor(::_pb::Arena* arena) {
-  new (&_impl_) Impl_(internal_visibility(), arena);
-}
-ROIVolume::~ROIVolume() {
-  // @@protoc_insertion_point(destructor:osirixgrpc.ROIVolume)
-  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
-  SharedDtor();
-}
-inline void ROIVolume::SharedDtor() {
-  ABSL_DCHECK(GetArena() == nullptr);
-  _impl_.osirixrpc_uid_.Destroy();
-  _impl_.~Impl_();
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_.osirixrpc_uid_) {}
+
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+  _impl_.osirixrpc_uid_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.osirixrpc_uid_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
 
-PROTOBUF_NOINLINE void ROIVolume::Clear() {
+ROIVolume::~ROIVolume() {
+  // @@protoc_insertion_point(destructor:osirixgrpc.ROIVolume)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void ROIVolume::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.osirixrpc_uid_.Destroy();
+}
+
+void ROIVolume::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void ROIVolume::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.ROIVolume)
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   _impl_.osirixrpc_uid_.ClearToEmpty();
-  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* ROIVolume::_InternalParse(
-    const char* ptr, ::_pbi::ParseContext* ctx) {
-  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+const char* ROIVolume::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    ::uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // string osirixrpc_uid = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
+          auto str = _internal_mutable_osirixrpc_uid();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "osirixgrpc.ROIVolume.osirixrpc_uid"));
+        } else {
+          goto handle_unusual;
+        }
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
   return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
 }
-
-
-PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<0, 1, 0, 42, 2> ROIVolume::_table_ = {
-  {
-    0,  // no _has_bits_
-    0, // no _extensions_
-    1, 0,  // max_field_number, fast_idx_mask
-    offsetof(decltype(_table_), field_lookup_table),
-    4294967294,  // skipmap
-    offsetof(decltype(_table_), field_entries),
-    1,  // num_field_entries
-    0,  // num_aux_entries
-    offsetof(decltype(_table_), field_names),  // no aux_entries
-    &_ROIVolume_default_instance_._instance,
-    ::_pbi::TcParser::GenericFallback,  // fallback
-  }, {{
-    // string osirixrpc_uid = 1;
-    {::_pbi::TcParser::FastUS1,
-     {10, 63, 0, PROTOBUF_FIELD_OFFSET(ROIVolume, _impl_.osirixrpc_uid_)}},
-  }}, {{
-    65535, 65535
-  }}, {{
-    // string osirixrpc_uid = 1;
-    {PROTOBUF_FIELD_OFFSET(ROIVolume, _impl_.osirixrpc_uid_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
-  }},
-  // no aux_entries
-  {{
-    "\24\15\0\0\0\0\0\0"
-    "osirixgrpc.ROIVolume"
-    "osirixrpc_uid"
-  }},
-};
 
 ::uint8_t* ROIVolume::_InternalSerialize(
-    ::uint8_t* target,
-    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.ROIVolume)
   ::uint32_t cached_has_bits = 0;
-  (void)cached_has_bits;
+  (void) cached_has_bits;
 
   // string osirixrpc_uid = 1;
   if (!this->_internal_osirixrpc_uid().empty()) {
     const std::string& _s = this->_internal_osirixrpc_uid();
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "osirixgrpc.ROIVolume.osirixrpc_uid");
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE, "osirixgrpc.ROIVolume.osirixrpc_uid");
     target = stream->WriteStringMaybeAliased(1, _s, target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target =
-        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.ROIVolume)
   return target;
@@ -1458,22 +1468,21 @@ const ::_pbi::TcParseTable<0, 1, 0, 42, 2> ROIVolume::_table_ = {
 
   // string osirixrpc_uid = 1;
   if (!this->_internal_osirixrpc_uid().empty()) {
-    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+    total_size += 1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
                                     this->_internal_osirixrpc_uid());
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::google::protobuf::Message::ClassData ROIVolume::_class_data_ = {
-    ROIVolume::MergeImpl,
-    nullptr,  // OnDemandRegisterArenaDtor
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ROIVolume::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    ROIVolume::MergeImpl
 };
-const ::google::protobuf::Message::ClassData* ROIVolume::GetClassData() const {
-  return &_class_data_;
-}
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ROIVolume::GetClassData() const { return &_class_data_; }
 
-void ROIVolume::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+
+void ROIVolume::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
   auto* const _this = static_cast<ROIVolume*>(&to_msg);
   auto& from = static_cast<const ROIVolume&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.ROIVolume)
@@ -1484,7 +1493,7 @@ void ROIVolume::MergeImpl(::google::protobuf::Message& to_msg, const ::google::p
   if (!from._internal_osirixrpc_uid().empty()) {
     _this->_internal_set_osirixrpc_uid(from._internal_osirixrpc_uid());
   }
-  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void ROIVolume::CopyFrom(const ROIVolume& from) {
@@ -1494,22 +1503,20 @@ void ROIVolume::CopyFrom(const ROIVolume& from) {
   MergeFrom(from);
 }
 
-PROTOBUF_NOINLINE bool ROIVolume::IsInitialized() const {
+bool ROIVolume::IsInitialized() const {
   return true;
 }
 
-::_pbi::CachedSize* ROIVolume::AccessCachedSize() const {
-  return &_impl_._cached_size_;
-}
-void ROIVolume::InternalSwap(ROIVolume* PROTOBUF_RESTRICT other) {
+void ROIVolume::InternalSwap(ROIVolume* other) {
   using std::swap;
-  auto* arena = GetArena();
-  ABSL_DCHECK_EQ(arena, other->GetArena());
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.osirixrpc_uid_, &other->_impl_.osirixrpc_uid_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.osirixrpc_uid_, lhs_arena,
+                                       &other->_impl_.osirixrpc_uid_, rhs_arena);
 }
 
-::google::protobuf::Metadata ROIVolume::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata ROIVolume::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_types_2eproto_getter, &descriptor_table_types_2eproto_once,
       file_level_metadata_types_2eproto[5]);
@@ -1520,119 +1527,128 @@ class DicomImage::_Internal {
  public:
 };
 
-DicomImage::DicomImage(::google::protobuf::Arena* arena)
-    : ::google::protobuf::Message(arena) {
+DicomImage::DicomImage(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.DicomImage)
 }
-inline PROTOBUF_NDEBUG_INLINE DicomImage::Impl_::Impl_(
-    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
-    const Impl_& from)
-      : osirixrpc_uid_(arena, from.osirixrpc_uid_),
-        _cached_size_{0} {}
+DicomImage::DicomImage(const DicomImage& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  DicomImage* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.osirixrpc_uid_) {}
 
-DicomImage::DicomImage(
-    ::google::protobuf::Arena* arena,
-    const DicomImage& from)
-    : ::google::protobuf::Message(arena) {
-  DicomImage* const _this = this;
-  (void)_this;
-  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
-      from._internal_metadata_);
-  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+    , /*decltype(_impl_._cached_size_)*/{}};
 
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _impl_.osirixrpc_uid_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.osirixrpc_uid_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_osirixrpc_uid().empty()) {
+    _this->_impl_.osirixrpc_uid_.Set(from._internal_osirixrpc_uid(), _this->GetArenaForAllocation());
+  }
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.DicomImage)
 }
-inline PROTOBUF_NDEBUG_INLINE DicomImage::Impl_::Impl_(
-    ::google::protobuf::internal::InternalVisibility visibility,
-    ::google::protobuf::Arena* arena)
-      : osirixrpc_uid_(arena),
-        _cached_size_{0} {}
 
 inline void DicomImage::SharedCtor(::_pb::Arena* arena) {
-  new (&_impl_) Impl_(internal_visibility(), arena);
-}
-DicomImage::~DicomImage() {
-  // @@protoc_insertion_point(destructor:osirixgrpc.DicomImage)
-  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
-  SharedDtor();
-}
-inline void DicomImage::SharedDtor() {
-  ABSL_DCHECK(GetArena() == nullptr);
-  _impl_.osirixrpc_uid_.Destroy();
-  _impl_.~Impl_();
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_.osirixrpc_uid_) {}
+
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+  _impl_.osirixrpc_uid_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.osirixrpc_uid_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
 
-PROTOBUF_NOINLINE void DicomImage::Clear() {
+DicomImage::~DicomImage() {
+  // @@protoc_insertion_point(destructor:osirixgrpc.DicomImage)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void DicomImage::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.osirixrpc_uid_.Destroy();
+}
+
+void DicomImage::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void DicomImage::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.DicomImage)
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   _impl_.osirixrpc_uid_.ClearToEmpty();
-  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* DicomImage::_InternalParse(
-    const char* ptr, ::_pbi::ParseContext* ctx) {
-  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+const char* DicomImage::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    ::uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // string osirixrpc_uid = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
+          auto str = _internal_mutable_osirixrpc_uid();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "osirixgrpc.DicomImage.osirixrpc_uid"));
+        } else {
+          goto handle_unusual;
+        }
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
   return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
 }
-
-
-PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<0, 1, 0, 43, 2> DicomImage::_table_ = {
-  {
-    0,  // no _has_bits_
-    0, // no _extensions_
-    1, 0,  // max_field_number, fast_idx_mask
-    offsetof(decltype(_table_), field_lookup_table),
-    4294967294,  // skipmap
-    offsetof(decltype(_table_), field_entries),
-    1,  // num_field_entries
-    0,  // num_aux_entries
-    offsetof(decltype(_table_), field_names),  // no aux_entries
-    &_DicomImage_default_instance_._instance,
-    ::_pbi::TcParser::GenericFallback,  // fallback
-  }, {{
-    // string osirixrpc_uid = 1;
-    {::_pbi::TcParser::FastUS1,
-     {10, 63, 0, PROTOBUF_FIELD_OFFSET(DicomImage, _impl_.osirixrpc_uid_)}},
-  }}, {{
-    65535, 65535
-  }}, {{
-    // string osirixrpc_uid = 1;
-    {PROTOBUF_FIELD_OFFSET(DicomImage, _impl_.osirixrpc_uid_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
-  }},
-  // no aux_entries
-  {{
-    "\25\15\0\0\0\0\0\0"
-    "osirixgrpc.DicomImage"
-    "osirixrpc_uid"
-  }},
-};
 
 ::uint8_t* DicomImage::_InternalSerialize(
-    ::uint8_t* target,
-    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.DicomImage)
   ::uint32_t cached_has_bits = 0;
-  (void)cached_has_bits;
+  (void) cached_has_bits;
 
   // string osirixrpc_uid = 1;
   if (!this->_internal_osirixrpc_uid().empty()) {
     const std::string& _s = this->_internal_osirixrpc_uid();
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "osirixgrpc.DicomImage.osirixrpc_uid");
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE, "osirixgrpc.DicomImage.osirixrpc_uid");
     target = stream->WriteStringMaybeAliased(1, _s, target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target =
-        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.DicomImage)
   return target;
@@ -1648,22 +1664,21 @@ const ::_pbi::TcParseTable<0, 1, 0, 43, 2> DicomImage::_table_ = {
 
   // string osirixrpc_uid = 1;
   if (!this->_internal_osirixrpc_uid().empty()) {
-    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+    total_size += 1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
                                     this->_internal_osirixrpc_uid());
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::google::protobuf::Message::ClassData DicomImage::_class_data_ = {
-    DicomImage::MergeImpl,
-    nullptr,  // OnDemandRegisterArenaDtor
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData DicomImage::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    DicomImage::MergeImpl
 };
-const ::google::protobuf::Message::ClassData* DicomImage::GetClassData() const {
-  return &_class_data_;
-}
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*DicomImage::GetClassData() const { return &_class_data_; }
 
-void DicomImage::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+
+void DicomImage::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
   auto* const _this = static_cast<DicomImage*>(&to_msg);
   auto& from = static_cast<const DicomImage&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.DicomImage)
@@ -1674,7 +1689,7 @@ void DicomImage::MergeImpl(::google::protobuf::Message& to_msg, const ::google::
   if (!from._internal_osirixrpc_uid().empty()) {
     _this->_internal_set_osirixrpc_uid(from._internal_osirixrpc_uid());
   }
-  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void DicomImage::CopyFrom(const DicomImage& from) {
@@ -1684,22 +1699,20 @@ void DicomImage::CopyFrom(const DicomImage& from) {
   MergeFrom(from);
 }
 
-PROTOBUF_NOINLINE bool DicomImage::IsInitialized() const {
+bool DicomImage::IsInitialized() const {
   return true;
 }
 
-::_pbi::CachedSize* DicomImage::AccessCachedSize() const {
-  return &_impl_._cached_size_;
-}
-void DicomImage::InternalSwap(DicomImage* PROTOBUF_RESTRICT other) {
+void DicomImage::InternalSwap(DicomImage* other) {
   using std::swap;
-  auto* arena = GetArena();
-  ABSL_DCHECK_EQ(arena, other->GetArena());
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.osirixrpc_uid_, &other->_impl_.osirixrpc_uid_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.osirixrpc_uid_, lhs_arena,
+                                       &other->_impl_.osirixrpc_uid_, rhs_arena);
 }
 
-::google::protobuf::Metadata DicomImage::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata DicomImage::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_types_2eproto_getter, &descriptor_table_types_2eproto_once,
       file_level_metadata_types_2eproto[6]);
@@ -1710,119 +1723,128 @@ class DicomSeries::_Internal {
  public:
 };
 
-DicomSeries::DicomSeries(::google::protobuf::Arena* arena)
-    : ::google::protobuf::Message(arena) {
+DicomSeries::DicomSeries(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.DicomSeries)
 }
-inline PROTOBUF_NDEBUG_INLINE DicomSeries::Impl_::Impl_(
-    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
-    const Impl_& from)
-      : osirixrpc_uid_(arena, from.osirixrpc_uid_),
-        _cached_size_{0} {}
+DicomSeries::DicomSeries(const DicomSeries& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  DicomSeries* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.osirixrpc_uid_) {}
 
-DicomSeries::DicomSeries(
-    ::google::protobuf::Arena* arena,
-    const DicomSeries& from)
-    : ::google::protobuf::Message(arena) {
-  DicomSeries* const _this = this;
-  (void)_this;
-  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
-      from._internal_metadata_);
-  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+    , /*decltype(_impl_._cached_size_)*/{}};
 
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _impl_.osirixrpc_uid_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.osirixrpc_uid_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_osirixrpc_uid().empty()) {
+    _this->_impl_.osirixrpc_uid_.Set(from._internal_osirixrpc_uid(), _this->GetArenaForAllocation());
+  }
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.DicomSeries)
 }
-inline PROTOBUF_NDEBUG_INLINE DicomSeries::Impl_::Impl_(
-    ::google::protobuf::internal::InternalVisibility visibility,
-    ::google::protobuf::Arena* arena)
-      : osirixrpc_uid_(arena),
-        _cached_size_{0} {}
 
 inline void DicomSeries::SharedCtor(::_pb::Arena* arena) {
-  new (&_impl_) Impl_(internal_visibility(), arena);
-}
-DicomSeries::~DicomSeries() {
-  // @@protoc_insertion_point(destructor:osirixgrpc.DicomSeries)
-  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
-  SharedDtor();
-}
-inline void DicomSeries::SharedDtor() {
-  ABSL_DCHECK(GetArena() == nullptr);
-  _impl_.osirixrpc_uid_.Destroy();
-  _impl_.~Impl_();
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_.osirixrpc_uid_) {}
+
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+  _impl_.osirixrpc_uid_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.osirixrpc_uid_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
 
-PROTOBUF_NOINLINE void DicomSeries::Clear() {
+DicomSeries::~DicomSeries() {
+  // @@protoc_insertion_point(destructor:osirixgrpc.DicomSeries)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void DicomSeries::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.osirixrpc_uid_.Destroy();
+}
+
+void DicomSeries::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void DicomSeries::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.DicomSeries)
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   _impl_.osirixrpc_uid_.ClearToEmpty();
-  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* DicomSeries::_InternalParse(
-    const char* ptr, ::_pbi::ParseContext* ctx) {
-  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+const char* DicomSeries::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    ::uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // string osirixrpc_uid = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
+          auto str = _internal_mutable_osirixrpc_uid();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "osirixgrpc.DicomSeries.osirixrpc_uid"));
+        } else {
+          goto handle_unusual;
+        }
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
   return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
 }
-
-
-PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<0, 1, 0, 44, 2> DicomSeries::_table_ = {
-  {
-    0,  // no _has_bits_
-    0, // no _extensions_
-    1, 0,  // max_field_number, fast_idx_mask
-    offsetof(decltype(_table_), field_lookup_table),
-    4294967294,  // skipmap
-    offsetof(decltype(_table_), field_entries),
-    1,  // num_field_entries
-    0,  // num_aux_entries
-    offsetof(decltype(_table_), field_names),  // no aux_entries
-    &_DicomSeries_default_instance_._instance,
-    ::_pbi::TcParser::GenericFallback,  // fallback
-  }, {{
-    // string osirixrpc_uid = 1;
-    {::_pbi::TcParser::FastUS1,
-     {10, 63, 0, PROTOBUF_FIELD_OFFSET(DicomSeries, _impl_.osirixrpc_uid_)}},
-  }}, {{
-    65535, 65535
-  }}, {{
-    // string osirixrpc_uid = 1;
-    {PROTOBUF_FIELD_OFFSET(DicomSeries, _impl_.osirixrpc_uid_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
-  }},
-  // no aux_entries
-  {{
-    "\26\15\0\0\0\0\0\0"
-    "osirixgrpc.DicomSeries"
-    "osirixrpc_uid"
-  }},
-};
 
 ::uint8_t* DicomSeries::_InternalSerialize(
-    ::uint8_t* target,
-    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.DicomSeries)
   ::uint32_t cached_has_bits = 0;
-  (void)cached_has_bits;
+  (void) cached_has_bits;
 
   // string osirixrpc_uid = 1;
   if (!this->_internal_osirixrpc_uid().empty()) {
     const std::string& _s = this->_internal_osirixrpc_uid();
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "osirixgrpc.DicomSeries.osirixrpc_uid");
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE, "osirixgrpc.DicomSeries.osirixrpc_uid");
     target = stream->WriteStringMaybeAliased(1, _s, target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target =
-        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.DicomSeries)
   return target;
@@ -1838,22 +1860,21 @@ const ::_pbi::TcParseTable<0, 1, 0, 44, 2> DicomSeries::_table_ = {
 
   // string osirixrpc_uid = 1;
   if (!this->_internal_osirixrpc_uid().empty()) {
-    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+    total_size += 1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
                                     this->_internal_osirixrpc_uid());
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::google::protobuf::Message::ClassData DicomSeries::_class_data_ = {
-    DicomSeries::MergeImpl,
-    nullptr,  // OnDemandRegisterArenaDtor
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData DicomSeries::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    DicomSeries::MergeImpl
 };
-const ::google::protobuf::Message::ClassData* DicomSeries::GetClassData() const {
-  return &_class_data_;
-}
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*DicomSeries::GetClassData() const { return &_class_data_; }
 
-void DicomSeries::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+
+void DicomSeries::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
   auto* const _this = static_cast<DicomSeries*>(&to_msg);
   auto& from = static_cast<const DicomSeries&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.DicomSeries)
@@ -1864,7 +1885,7 @@ void DicomSeries::MergeImpl(::google::protobuf::Message& to_msg, const ::google:
   if (!from._internal_osirixrpc_uid().empty()) {
     _this->_internal_set_osirixrpc_uid(from._internal_osirixrpc_uid());
   }
-  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void DicomSeries::CopyFrom(const DicomSeries& from) {
@@ -1874,22 +1895,20 @@ void DicomSeries::CopyFrom(const DicomSeries& from) {
   MergeFrom(from);
 }
 
-PROTOBUF_NOINLINE bool DicomSeries::IsInitialized() const {
+bool DicomSeries::IsInitialized() const {
   return true;
 }
 
-::_pbi::CachedSize* DicomSeries::AccessCachedSize() const {
-  return &_impl_._cached_size_;
-}
-void DicomSeries::InternalSwap(DicomSeries* PROTOBUF_RESTRICT other) {
+void DicomSeries::InternalSwap(DicomSeries* other) {
   using std::swap;
-  auto* arena = GetArena();
-  ABSL_DCHECK_EQ(arena, other->GetArena());
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.osirixrpc_uid_, &other->_impl_.osirixrpc_uid_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.osirixrpc_uid_, lhs_arena,
+                                       &other->_impl_.osirixrpc_uid_, rhs_arena);
 }
 
-::google::protobuf::Metadata DicomSeries::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata DicomSeries::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_types_2eproto_getter, &descriptor_table_types_2eproto_once,
       file_level_metadata_types_2eproto[7]);
@@ -1900,119 +1919,128 @@ class DicomStudy::_Internal {
  public:
 };
 
-DicomStudy::DicomStudy(::google::protobuf::Arena* arena)
-    : ::google::protobuf::Message(arena) {
+DicomStudy::DicomStudy(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:osirixgrpc.DicomStudy)
 }
-inline PROTOBUF_NDEBUG_INLINE DicomStudy::Impl_::Impl_(
-    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
-    const Impl_& from)
-      : osirixrpc_uid_(arena, from.osirixrpc_uid_),
-        _cached_size_{0} {}
+DicomStudy::DicomStudy(const DicomStudy& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  DicomStudy* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.osirixrpc_uid_) {}
 
-DicomStudy::DicomStudy(
-    ::google::protobuf::Arena* arena,
-    const DicomStudy& from)
-    : ::google::protobuf::Message(arena) {
-  DicomStudy* const _this = this;
-  (void)_this;
-  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
-      from._internal_metadata_);
-  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+    , /*decltype(_impl_._cached_size_)*/{}};
 
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _impl_.osirixrpc_uid_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.osirixrpc_uid_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_osirixrpc_uid().empty()) {
+    _this->_impl_.osirixrpc_uid_.Set(from._internal_osirixrpc_uid(), _this->GetArenaForAllocation());
+  }
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.DicomStudy)
 }
-inline PROTOBUF_NDEBUG_INLINE DicomStudy::Impl_::Impl_(
-    ::google::protobuf::internal::InternalVisibility visibility,
-    ::google::protobuf::Arena* arena)
-      : osirixrpc_uid_(arena),
-        _cached_size_{0} {}
 
 inline void DicomStudy::SharedCtor(::_pb::Arena* arena) {
-  new (&_impl_) Impl_(internal_visibility(), arena);
-}
-DicomStudy::~DicomStudy() {
-  // @@protoc_insertion_point(destructor:osirixgrpc.DicomStudy)
-  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
-  SharedDtor();
-}
-inline void DicomStudy::SharedDtor() {
-  ABSL_DCHECK(GetArena() == nullptr);
-  _impl_.osirixrpc_uid_.Destroy();
-  _impl_.~Impl_();
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_.osirixrpc_uid_) {}
+
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+  _impl_.osirixrpc_uid_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.osirixrpc_uid_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
 
-PROTOBUF_NOINLINE void DicomStudy::Clear() {
+DicomStudy::~DicomStudy() {
+  // @@protoc_insertion_point(destructor:osirixgrpc.DicomStudy)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void DicomStudy::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.osirixrpc_uid_.Destroy();
+}
+
+void DicomStudy::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void DicomStudy::Clear() {
 // @@protoc_insertion_point(message_clear_start:osirixgrpc.DicomStudy)
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   _impl_.osirixrpc_uid_.ClearToEmpty();
-  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* DicomStudy::_InternalParse(
-    const char* ptr, ::_pbi::ParseContext* ctx) {
-  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+const char* DicomStudy::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    ::uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // string osirixrpc_uid = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
+          auto str = _internal_mutable_osirixrpc_uid();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "osirixgrpc.DicomStudy.osirixrpc_uid"));
+        } else {
+          goto handle_unusual;
+        }
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
   return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
 }
-
-
-PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<0, 1, 0, 43, 2> DicomStudy::_table_ = {
-  {
-    0,  // no _has_bits_
-    0, // no _extensions_
-    1, 0,  // max_field_number, fast_idx_mask
-    offsetof(decltype(_table_), field_lookup_table),
-    4294967294,  // skipmap
-    offsetof(decltype(_table_), field_entries),
-    1,  // num_field_entries
-    0,  // num_aux_entries
-    offsetof(decltype(_table_), field_names),  // no aux_entries
-    &_DicomStudy_default_instance_._instance,
-    ::_pbi::TcParser::GenericFallback,  // fallback
-  }, {{
-    // string osirixrpc_uid = 1;
-    {::_pbi::TcParser::FastUS1,
-     {10, 63, 0, PROTOBUF_FIELD_OFFSET(DicomStudy, _impl_.osirixrpc_uid_)}},
-  }}, {{
-    65535, 65535
-  }}, {{
-    // string osirixrpc_uid = 1;
-    {PROTOBUF_FIELD_OFFSET(DicomStudy, _impl_.osirixrpc_uid_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
-  }},
-  // no aux_entries
-  {{
-    "\25\15\0\0\0\0\0\0"
-    "osirixgrpc.DicomStudy"
-    "osirixrpc_uid"
-  }},
-};
 
 ::uint8_t* DicomStudy::_InternalSerialize(
-    ::uint8_t* target,
-    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:osirixgrpc.DicomStudy)
   ::uint32_t cached_has_bits = 0;
-  (void)cached_has_bits;
+  (void) cached_has_bits;
 
   // string osirixrpc_uid = 1;
   if (!this->_internal_osirixrpc_uid().empty()) {
     const std::string& _s = this->_internal_osirixrpc_uid();
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "osirixgrpc.DicomStudy.osirixrpc_uid");
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE, "osirixgrpc.DicomStudy.osirixrpc_uid");
     target = stream->WriteStringMaybeAliased(1, _s, target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target =
-        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:osirixgrpc.DicomStudy)
   return target;
@@ -2028,22 +2056,21 @@ const ::_pbi::TcParseTable<0, 1, 0, 43, 2> DicomStudy::_table_ = {
 
   // string osirixrpc_uid = 1;
   if (!this->_internal_osirixrpc_uid().empty()) {
-    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+    total_size += 1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
                                     this->_internal_osirixrpc_uid());
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::google::protobuf::Message::ClassData DicomStudy::_class_data_ = {
-    DicomStudy::MergeImpl,
-    nullptr,  // OnDemandRegisterArenaDtor
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData DicomStudy::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    DicomStudy::MergeImpl
 };
-const ::google::protobuf::Message::ClassData* DicomStudy::GetClassData() const {
-  return &_class_data_;
-}
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*DicomStudy::GetClassData() const { return &_class_data_; }
 
-void DicomStudy::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+
+void DicomStudy::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
   auto* const _this = static_cast<DicomStudy*>(&to_msg);
   auto& from = static_cast<const DicomStudy&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:osirixgrpc.DicomStudy)
@@ -2054,7 +2081,7 @@ void DicomStudy::MergeImpl(::google::protobuf::Message& to_msg, const ::google::
   if (!from._internal_osirixrpc_uid().empty()) {
     _this->_internal_set_osirixrpc_uid(from._internal_osirixrpc_uid());
   }
-  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void DicomStudy::CopyFrom(const DicomStudy& from) {
@@ -2064,31 +2091,63 @@ void DicomStudy::CopyFrom(const DicomStudy& from) {
   MergeFrom(from);
 }
 
-PROTOBUF_NOINLINE bool DicomStudy::IsInitialized() const {
+bool DicomStudy::IsInitialized() const {
   return true;
 }
 
-::_pbi::CachedSize* DicomStudy::AccessCachedSize() const {
-  return &_impl_._cached_size_;
-}
-void DicomStudy::InternalSwap(DicomStudy* PROTOBUF_RESTRICT other) {
+void DicomStudy::InternalSwap(DicomStudy* other) {
   using std::swap;
-  auto* arena = GetArena();
-  ABSL_DCHECK_EQ(arena, other->GetArena());
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.osirixrpc_uid_, &other->_impl_.osirixrpc_uid_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.osirixrpc_uid_, lhs_arena,
+                                       &other->_impl_.osirixrpc_uid_, rhs_arena);
 }
 
-::google::protobuf::Metadata DicomStudy::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata DicomStudy::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_types_2eproto_getter, &descriptor_table_types_2eproto_once,
       file_level_metadata_types_2eproto[8]);
 }
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace osirixgrpc
-namespace google {
-namespace protobuf {
-}  // namespace protobuf
-}  // namespace google
+PROTOBUF_NAMESPACE_OPEN
+template<> PROTOBUF_NOINLINE ::osirixgrpc::BrowserController*
+Arena::CreateMaybeMessage< ::osirixgrpc::BrowserController >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::osirixgrpc::BrowserController >(arena);
+}
+template<> PROTOBUF_NOINLINE ::osirixgrpc::ViewerController*
+Arena::CreateMaybeMessage< ::osirixgrpc::ViewerController >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::osirixgrpc::ViewerController >(arena);
+}
+template<> PROTOBUF_NOINLINE ::osirixgrpc::VRController*
+Arena::CreateMaybeMessage< ::osirixgrpc::VRController >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::osirixgrpc::VRController >(arena);
+}
+template<> PROTOBUF_NOINLINE ::osirixgrpc::DCMPix*
+Arena::CreateMaybeMessage< ::osirixgrpc::DCMPix >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::osirixgrpc::DCMPix >(arena);
+}
+template<> PROTOBUF_NOINLINE ::osirixgrpc::ROI*
+Arena::CreateMaybeMessage< ::osirixgrpc::ROI >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::osirixgrpc::ROI >(arena);
+}
+template<> PROTOBUF_NOINLINE ::osirixgrpc::ROIVolume*
+Arena::CreateMaybeMessage< ::osirixgrpc::ROIVolume >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::osirixgrpc::ROIVolume >(arena);
+}
+template<> PROTOBUF_NOINLINE ::osirixgrpc::DicomImage*
+Arena::CreateMaybeMessage< ::osirixgrpc::DicomImage >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::osirixgrpc::DicomImage >(arena);
+}
+template<> PROTOBUF_NOINLINE ::osirixgrpc::DicomSeries*
+Arena::CreateMaybeMessage< ::osirixgrpc::DicomSeries >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::osirixgrpc::DicomSeries >(arena);
+}
+template<> PROTOBUF_NOINLINE ::osirixgrpc::DicomStudy*
+Arena::CreateMaybeMessage< ::osirixgrpc::DicomStudy >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::osirixgrpc::DicomStudy >(arena);
+}
+PROTOBUF_NAMESPACE_CLOSE
 // @@protoc_insertion_point(global_scope)
 #include "google/protobuf/port_undef.inc"
