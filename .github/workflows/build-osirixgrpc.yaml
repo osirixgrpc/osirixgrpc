@@ -99,11 +99,6 @@ jobs:
           echo "grpcio>=$GRPC_VERSION" > python/requirements.txt
           echo "grpcio-tools>=$GRPC_VERSION" >> python/requirements.txt
 
-      - name: Clean up
-        run: |
-          conda deactivate
-          conda env remove --name "$env_name" --yes
-
       - name: Build project
         run: |
           cd src  # Change to your project directory
