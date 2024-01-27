@@ -96,7 +96,7 @@ jobs:
           
       - name: Update requirements file
         run: |
-          echo "grpcio>=$GRPC_VERSION > python/requirements.txt
+          echo "grpcio>=$GRPC_VERSION" > python/requirements.txt
           echo "grpcio-tools>=$GRPC_VERSION" >> python/requirements.txt
 
       - name: Clean up
