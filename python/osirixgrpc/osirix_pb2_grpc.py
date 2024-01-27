@@ -691,7 +691,7 @@ class OsiriXServiceServicer(object):
     """Missing associated documentation comment in .proto file."""
 
     def OsirixCurrentBrowser(self, request, context):
-        """OsiriX messages
+        """OsiriX methods
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -722,7 +722,7 @@ class OsiriXServiceServicer(object):
         raise NotImplementedError('Method not implemented!')
 
     def ROIFlipHorizontally(self, request, context):
-        """ROI messages
+        """ROI methods
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -831,7 +831,7 @@ class OsiriXServiceServicer(object):
         raise NotImplementedError('Method not implemented!')
 
     def ROIVolumeTexture(self, request, context):
-        """ROIVolume messages
+        """ROIVolume methods
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -898,7 +898,7 @@ class OsiriXServiceServicer(object):
         raise NotImplementedError('Method not implemented!')
 
     def DCMPixConvertToRGB(self, request, context):
-        """DCMPix messages
+        """DCMPix methods
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -1001,7 +1001,7 @@ class OsiriXServiceServicer(object):
         raise NotImplementedError('Method not implemented!')
 
     def VRControllerViewer2D(self, request, context):
-        """VRController messages
+        """VRController methods
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -1074,7 +1074,7 @@ class OsiriXServiceServicer(object):
         raise NotImplementedError('Method not implemented!')
 
     def ViewerControllerCloseViewer(self, request, context):
-        """ViewerController messages
+        """ViewerController methods
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -1213,7 +1213,7 @@ class OsiriXServiceServicer(object):
         raise NotImplementedError('Method not implemented!')
 
     def BrowserControllerDatabaseSelection(self, request, context):
-        """BrowserController messages
+        """BrowserController methods
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -1226,7 +1226,7 @@ class OsiriXServiceServicer(object):
         raise NotImplementedError('Method not implemented!')
 
     def DicomImageWidth(self, request, context):
-        """DicomImage messages
+        """DicomImage methods
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -1287,7 +1287,7 @@ class OsiriXServiceServicer(object):
         raise NotImplementedError('Method not implemented!')
 
     def DicomSeriesPaths(self, request, context):
-        """DicomSeries messages
+        """DicomSeries methods
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -1366,7 +1366,7 @@ class OsiriXServiceServicer(object):
         raise NotImplementedError('Method not implemented!')
 
     def DicomStudyPaths(self, request, context):
-        """DicomStudy messages
+        """DicomStudy methods
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')

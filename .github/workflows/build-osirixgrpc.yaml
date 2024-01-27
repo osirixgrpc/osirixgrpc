@@ -91,7 +91,7 @@ jobs:
       - name: Build Python definitions
         run: |
           mkdir -p python/osirixgrpc
-          grpc/install/bin/protoc -I protos --python_out=python/osirixgrpc --grpc_python_out=python/osirixgrpc --plugin=protoc-gen-grpc=grpc/install/bin/grpc_python_plugin osirix.proto 
+          grpc/install/bin/protoc -I protos --grpc_python_out=python/osirixgrpc --plugin=protoc-gen-grpc_python=grpc/install/bin/grpc_python_plugin osirix.proto 
           grpc/install/bin/protoc -I protos --python_out=python/osirixgrpc osirix.proto roi.proto roivolume.proto dcmpix.proto vrcontroller.proto viewercontroller.proto browsercontroller.proto dicomimage.proto dicomstudy.proto dicomseries.proto utilities.proto types.proto
           
       - name: Update requirements file
