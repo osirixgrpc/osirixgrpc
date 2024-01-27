@@ -91,8 +91,7 @@ jobs:
       - name: Build Python definitions
         run: |
           mkdir -p python/osirixgrpc
-          export GRPC_PYTHON_LDFLAGS=" -framework CoreFoundation"
-          pip install grpcio=="$GRPC_VERSION" grpcio-tools=="$GRPC_VERSION" --no-binary :all:
+          pip install grpcio=="$GRPC_VERSION" grpcio-tools=="$GRPC_VERSION"
           python -m grpc_tools.protoc -I protos --python_out=python/osirixgrpc --grpc_python_out=python/osirixgrpc osirix.proto
           python -m grpc_tools.protoc -I protos --python_out=python/osirixgrpc roi.proto roivolume.proto dcmpix.proto vrcontroller.proto viewercontroller.proto browsercontroller.proto dicomimage.proto dicomstudy.proto dicomseries.proto utilities.proto types.proto
 
