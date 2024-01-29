@@ -102,4 +102,4 @@ jobs:
       - name: Build project
         run: |
           cd src  # Change to your project directory
-          xcodebuild -project osirixgrpc.xcodeproj -scheme osirixgrpc_build -destination 'macOS'
+          xcodebuild -project osirixgrpc.xcodeproj -scheme osirixgrpc_build -destination 'generic/platform=macOS'
