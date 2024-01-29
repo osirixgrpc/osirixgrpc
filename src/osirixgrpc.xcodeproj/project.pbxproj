@@ -940,11 +940,6 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				LastUpgradeCheck = 1240;
-				TargetAttributes = {
-					BF90A48625A270A80069D611 = {
-						ProvisioningStyle = Automatic;
-					};
-				};
 			};
 			buildConfigurationList = CE6A9A9408AC841300D0C1EE /* Build configuration list for PBXProject "osirixgrpc" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -955,6 +950,7 @@
 				ja,
 				en,
 				de,
+				Base,
 			);
 			mainGroup = 089C166AFE841209C02AAC07 /* MyNewPlugin */;
 			projectDirPath = "";
@@ -1094,7 +1090,7 @@
 					dynamic_lookup,
 				);
 				OTHER_REZFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.instituteofcancerresearch.osirixgrpc;
+				PRODUCT_BUNDLE_IDENTIFIER = com.osirixgrpc.osirixgrpc;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
@@ -1158,7 +1154,7 @@
 					dynamic_lookup,
 				);
 				OTHER_REZFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.instituteofcancerresearch.osirixgrpc;
+				PRODUCT_BUNDLE_IDENTIFIER = com.osirixgrpc.osirixgrpc;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
@@ -1263,7 +1259,7 @@
 				BF90A4D425A270A80069D611 /* Deployment */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Development;
+			defaultConfigurationName = Deployment;
 		};
 		CE6A9A9408AC841300D0C1EE /* Build configuration list for PBXProject "osirixgrpc" */ = {
 			isa = XCConfigurationList;
@@ -1272,7 +1268,7 @@
 				CE6A9A9608AC841300D0C1EE /* Deployment */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Development;
+			defaultConfigurationName = Deployment;
 		};
 /* End XCConfigurationList section */
 	};

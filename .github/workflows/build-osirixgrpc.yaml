@@ -11,10 +11,33 @@ jobs:
 
     env:
       GRPC_VERSION: 1.56.0
+      BUILD_PATH: "$GITHUB_WORKSPACE/build"
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+
+      - name: Install the Apple certificate and provisioning profile
+        env:
+          P12_CERTIFICATE: ${{ secrets.P12_CERTIFICATE }}
+          P12_PASSWORD: ${{ secrets.P12_PASSWORD }}
+          KEYCHAIN_PASSWORD: ${{ secrets.KEYCHAIN_PASSWORD }}
+        run: |
+          # create variables
+          CERTIFICATE_PATH=$RUNNER_TEMP/build_certificate.p12
+          KEYCHAIN_PATH=$RUNNER_TEMP/app-signing.keychain-db
+
+          # import certificate and provisioning profile from secrets
+          echo -n "$BUILD_CERTIFICATE_BASE64" | base64 --decode -o $CERTIFICATE_PATH
+          
+          # create temporary keychain
+          security create-keychain -p "$KEYCHAIN_PASSWORD" $KEYCHAIN_PATH
+          security set-keychain-settings -lut 21600 $KEYCHAIN_PATH
+          security unlock-keychain -p "$KEYCHAIN_PASSWORD" $KEYCHAIN_PATH
+
+          # import certificate to keychain
+          security import $CERTIFICATE_PATH -P "$P12_PASSWORD" -A -t cert -f pkcs12 -k $KEYCHAIN_PATH
+          security list-keychain -d user -s $KEYCHAIN_PATH
 
       - name: Set up Conda
         uses: conda-incubator/setup-miniconda@v3
@@ -101,5 +124,12 @@ jobs:
 
       - name: Build project
         run: |
+          mkdir -p "$BUILD_PATH"
           cd src  # Change to your project directory
-          xcodebuild -project osirixgrpc.xcodeproj -scheme osirixgrpc_build -destination 'generic/platform=macOS'
+          xcodebuild -project osirixgrpc.xcodeproj -scheme osirixgrpc_build -destination "generic/platform=macOS" CONFIGURATION_BUILD_DIR="$BUILD_PATH"
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: osirixgrpc-build
+          path: "$BUILD_PATH"
