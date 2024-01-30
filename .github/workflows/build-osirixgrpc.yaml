@@ -10,7 +10,7 @@ jobs:
     runs-on: macos-latest-xlarge
 
     env:
-      GRPC_VERSION: 1.56.0
+      GRPC_VERSION: 1.55.0
       BUILD_PATH: "$GITHUB_WORKSPACE/build"
 
     steps:
@@ -58,10 +58,21 @@ jobs:
         with:
           xcode-version: latest  # Use the appropriate Xcode version
 
-      - name: Clone gRPC repository
+      - name: Cache gRPC libraries
+        id: cache-grpc
+        uses: actions/cache@v3
+        with:
+          path: |
+            grpc/install
+          key: |
+            ${{ runner.os }}-build-$GRPC_VERSION
+
+      - if: ${{ steps.cache-grpc.outputs.cache-hit != 'true' }}
+        name: Clone gRPC repository
         run: git clone --recurse-submodules -b v"$GRPC_VERSION" https://github.com/grpc/grpc
 
-      - name: Build/install x86_64 grpc libraries
+      - if: ${{ steps.cache-grpc.outputs.cache-hit != 'true' }}
+        name: Build/install x86_64 grpc libraries
         run: |
           cd grpc
           mkdir -p cmake/build-x86_64
@@ -75,7 +86,8 @@ jobs:
           make -j 4
           make install
 
-      - name: Build/install arm64 grpc libraries
+      - if: ${{ steps.cache-grpc.outputs.cache-hit != 'true' }}
+        name: Build/install arm64 grpc libraries
         run: |
           cd grpc
           mkdir -p cmake/build-arm64
@@ -89,7 +101,8 @@ jobs:
           make -j 4
           make install
 
-      - name: Create universal libraries
+      - if: ${{ steps.cache-grpc.outputs.cache-hit != 'true' }}
+        name: Create universal libraries
         run: |
           cd grpc
           universal_library_output="install/lib"
@@ -105,7 +118,8 @@ jobs:
             fi
           done
 
-      - name: Copy relevant binaries/headers
+      - if: ${{ steps.cache-grpc.outputs.cache-hit != 'true' }}
+        name: Copy relevant binaries/headers
         run: |
           cd grpc
           machine_arch=$(arch)
@@ -133,7 +147,7 @@ jobs:
         run: |
           mkdir -p "$BUILD_PATH"
           cd src  # Change to your project directory
-          xcodebuild -project osirixgrpc.xcodeproj -scheme osirixgrpc_build -destination "generic/platform=macOS" CONFIGURATION_BUILD_DIR="$BUILD_PATH"
+          xcodebuild -project osirixgrpc.xcodeproj -scheme osirixgrpc_build -destination "generic/platform=macOS" CONFIGURATION_BUILD_DIR="$BUILD_PATH" build
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v2
