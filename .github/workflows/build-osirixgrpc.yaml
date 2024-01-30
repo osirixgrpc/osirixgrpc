@@ -11,7 +11,7 @@ jobs:
 
     env:
       GRPC_VERSION: 1.55.0
-      BUILD_PATH: "$GITHUB_WORKSPACE/build"
+      BUILD_PATH: "build"
 
     steps:
       - name: Checkout code
