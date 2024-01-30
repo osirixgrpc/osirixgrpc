@@ -151,12 +151,11 @@ jobs:
 
       - name: List contents
         run: |
-          ls .
           echo "Contents of $BUILD_PATH"
-          ls -R "$BUILD_PATH"
+          ls -R src/"$BUILD_PATH"
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v2
         with:
           name: osirixgrpc-build
-          path: ${{ env.BUILD_PATH }}
+          path: src/${{ env.BUILD_PATH }}/osirixgrpc.osirixplugin
