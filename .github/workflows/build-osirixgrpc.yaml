@@ -145,12 +145,10 @@ jobs:
 
       - name: Build project
         run: |
-          mkdir -p "$BUILD_PATH"
-          cd src  # Change to your project directory
-          xcodebuild -project osirixgrpc.xcodeproj -scheme osirixgrpc_build -destination "generic/platform=macOS" CONFIGURATION_BUILD_DIR="$BUILD_PATH" build
+          xcodebuild -project src/osirixgrpc.xcodeproj -scheme osirixgrpc_build -destination "generic/platform=macOS" CONFIGURATION_BUILD_DIR="$BUILD_PATH" build
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v2
         with:
           name: osirixgrpc-build
-          path: "$BUILD_PATH"
+          path: ${{ env.BUILD_PATH }}
