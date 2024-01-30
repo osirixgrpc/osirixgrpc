@@ -90,7 +90,7 @@
                                                         <popUpButton fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8CC-ko-WCD">
                                                             <rect key="frame" x="-10" y="-4" width="95" height="25"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                                            <popUpButtonCell key="cell" type="bevel" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" imageScaling="proportionallyDown" inset="2" id="pMX-Ca-7Mr">
+                                                            <popUpButtonCell key="cell" type="bevel" bezelStyle="rounded" alignment="center" lineBreakMode="truncatingTail" imageScaling="proportionallyDown" inset="2" id="pMX-Ca-7Mr">
                                                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                                                 <font key="font" metaFont="menu"/>
                                                                 <menu key="menu" id="ieo-PT-JvT"/>

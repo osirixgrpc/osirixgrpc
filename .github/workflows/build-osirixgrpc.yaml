@@ -15,7 +15,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Install Apple certificate
         env:
@@ -60,7 +60,7 @@ jobs:
 
       - name: Cache gRPC libraries
         id: cache-grpc
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: |
             grpc/install
@@ -154,7 +154,7 @@ jobs:
           zip -r ../../osirixgrpc.osirixplugin.zip osirixgrpc.osirixplugin
 
       - name: Upload build artifacts
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: osirixgrpc-zip
           path: osirixgrpc.osirixplugin.zip
