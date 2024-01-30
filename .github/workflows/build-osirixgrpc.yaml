@@ -147,7 +147,10 @@ jobs:
         run: |
           mkdir -p "$BUILD_PATH"
           xcodebuild -project src/osirixgrpc.xcodeproj -scheme osirixgrpc_build -destination "generic/platform=macOS" CONFIGURATION_BUILD_DIR="$BUILD_PATH" build
-          ls .
+          
+      - name: Zip plugin
+        run: |
+          zip -r -j osirixgrpc.zip src/${{ env.BUILD_PATH }}/osirixgrpc.osirixplugin
 
       - name: List contents
         run: |
@@ -157,5 +160,5 @@ jobs:
       - name: Upload build artifacts
         uses: actions/upload-artifact@v2
         with:
-          name: osirixgrpc-build
-          path: src/${{ env.BUILD_PATH }}/osirixgrpc.osirixplugin
+          name: osirixgrpc-zip
+          path: osirixgrpc.zip
