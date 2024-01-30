@@ -150,15 +150,11 @@ jobs:
           
       - name: Zip plugin
         run: |
-          zip -r -j osirixgrpc.zip src/${{ env.BUILD_PATH }}/osirixgrpc.osirixplugin
-
-      - name: List contents
-        run: |
-          echo "Contents of $BUILD_PATH"
-          ls -R src/"$BUILD_PATH"
+          cd src/$BUILD_PATH
+          zip -r ../../osirixgrpc.osirixplugin.zip osirixgrpc.osirixplugin
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v2
         with:
           name: osirixgrpc-zip
-          path: osirixgrpc.zip
+          path: osirixgrpc.osirixplugin.zip
