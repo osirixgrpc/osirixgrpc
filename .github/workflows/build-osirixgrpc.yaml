@@ -17,7 +17,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Install the Apple certificate and provisioning profile
+      - name: Install Apple certificate
         env:
           P12_CERTIFICATE: ${{ secrets.P12_CERTIFICATE }}
           P12_PASSWORD: ${{ secrets.P12_PASSWORD }}
@@ -145,8 +145,15 @@ jobs:
 
       - name: Build project
         run: |
+          mkdir -p "$BUILD_PATH"
           xcodebuild -project src/osirixgrpc.xcodeproj -scheme osirixgrpc_build -destination "generic/platform=macOS" CONFIGURATION_BUILD_DIR="$BUILD_PATH" build
           ls .
+
+      - name: List contents
+        run: |
+          ls .
+          echo "Contents of $BUILD_PATH"
+          ls -R "$BUILD_PATH"
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v2
