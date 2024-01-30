@@ -154,7 +154,7 @@ jobs:
           zip -r ../../osirixgrpc.osirixplugin.zip osirixgrpc.osirixplugin
 
       - name: Upload build artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: osirixgrpc-zip
           path: osirixgrpc.osirixplugin.zip
