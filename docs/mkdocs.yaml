@@ -1,13 +1,12 @@
 # This provides set up for mkdocs documentation generation.
-
 site_name: OsiriXgrpc v0.2.1-dev0
 site_url: 
 repo_url: https://github.com/osirixgrpc/osirixgrpc
-docs_dir: docfiles
+docs_dir: docs
 
 # Copyright
 copyright: Copyright &copy; Matthew D Blackledge
-edit_uri: edit/main/docs/docfiles
+edit_uri: edit/main/docs/docs
 use_directory_urls: false
 theme:
   name: material  # This theme is available through "mkdocs materials" extension.
@@ -34,7 +33,6 @@ theme:
 
 plugins:
   - search
-  # - with-pdf  # Uncomment if creating a pdf version of the documentation.
 
 # Documentation extensions.
 markdown_extensions:
@@ -66,4 +64,4 @@ nav:
     - Dicom Series: api/dicomseries.md
     - Dicom Study: api/dicomstudy.md
   - Contributing:
-    - Home: contributing/README.md
+    - Home: contributing/CONTRIBUTING.md
