@@ -26,8 +26,23 @@ jobs:
         name: Append warning to README if dev
         run: |
           sed -i '/__Welcome__/i Warning: this is for development only\n\n' docs/docs/README.md
+
+      - name: Build MkDocs Site
+        run: |
+          cd docs
+          mkdocs build
     
-      - name: Deploy to GitHub Pages
+      - if: github.ref == 'refs/heads/main'
+        name: Deploy docs to GitHub Pages
         run: |
           cd docs
           mkdocs gh-deploy --force
+
+      - if: github.ref == 'refs/heads/dev'
+        name: Deploy dev docs to Netlify
+        uses: jsmrcaga/action-netlify-deploy@v2.0.0
+        with:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          build_directory: ./docs/site
+
