@@ -4,8 +4,6 @@
   <img src="assets/logo/logo.png" alt="Welcome to OsiriXgrpc!">
 </figure>
 
-_NOTE_: This repository is still in development. Bare with us, it will be released soon!
-
 __Welcome__ to the OsiriXgrpc documentation. Here you will find setup routines required to run OsiriXgrpc 
 from within OsiriX and how it can be used to create OsiriX plugins at speed.
 
