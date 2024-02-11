@@ -40,16 +40,10 @@ jobs:
 
       - if: github.ref == 'refs/heads/dev'
         name: Deploy dev docs to Netlify
-        uses: nwtgck/actions-netlify@v2.1
+        uses: netlify/actions/cli@master
         with:
-          publish-dir: './docs/site'
-          production-branch: dev
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          deploy-message: "Deploy from GitHub Actions"
-          enable-pull-request-comment: false
-          enable-commit-comment: false
-          overwrites-pull-request-comment: false
+          args: deploy --dir=docs/site --prod
         env:
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_TOKEN }}
 
