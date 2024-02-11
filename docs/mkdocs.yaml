@@ -45,6 +45,9 @@ markdown_extensions:
   - pymdownx.superfences
   - attr_list  # Attribute lists, used here for images.
   - md_in_html  # Markdown in HTML for adding markdown syntax to HTML, used here for images.
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
   - pymdownx.snippets:
       base_path: ["../"] # Root of the repository
 

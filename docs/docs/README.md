@@ -9,4 +9,3 @@ from within OsiriX and how it can be used to create OsiriX plugins at speed.
 
 This plugin will typically be used alongside a supporting tool, which currently is exclusively pyosirix (pyosirix.com); 
 this provides simplest OsiriX functionality through a convenient Python interface.
-
