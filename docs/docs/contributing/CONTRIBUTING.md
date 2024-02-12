@@ -10,73 +10,103 @@ tools, allowing researchers to concentrate on groundbreaking scientific discover
 As a community-driven project, we invite contributors from diverse backgrounds to join us in shaping the future of 
 medical research, fostering an environment of collaboration and innovation.
 
-# Ways to Contribute
+## Ways to Contribute
 <table>
-<tr>
+  <tr>
     <td><b>Example Scripts</b></td>
     <td>We strongly encourage developers to share scripts of OsiriXgrpc in use.  Please see our <a href="404.html">
         submitting examples</a> section for more information.</td>
-</tr>
-<tr>
-    <td><b>Plugin Development</b></td>
-    <td>If you would like to help develop the core OsiriXgrpc plugin, we are keen to improve and evolve every 
-        aspect of it. This includes: 
-        <ul>
-            <li>Expose additional OsiriX functionality to OsiriXgrpc</li>
-            <li>Optimize CI/CD of the plugin (all performed in GitHub)</li>
-            <li>Improve the user experience through additional plugin features</li>
-            <li>Boost security of the GRPC connections through SSL connections.</li>
-            <li>Ensure that key updates to OsiriX are monitored and fixed within the plugin</li>
-        </ul>
-        Please see the remainder of this documentation to see how this can be done, and <a href="contact">let us 
-        know</a> about your ideas!
-    </td>
-</tr>
-<tr>
+  </tr>
+  <tr>
     <td><b>Documentation</b></td>
     <td>We encourage feedback on our documentation to improve the user experience and ensure it makes sense. We 
         currently do not support localization, but should the project be successful we would encourage this moving
         forward. Please see our <a href="#documentation">instructions for project documentation</a> for more 
-        information.   
-    </td>
-</tr>
-<tr>
+        information.</td>
+  </tr>
+  <tr>
     <td><b>Testing</b></td>
     <td>We greatly appreciate our testers, who provide core feedback on OsiriXgrpc and have a key role in deciding the 
-        future of the project. Please <a href="#contact">contact us</a> if you would like to become an official tester!
-    </td>
-</tr>
-<tr>
+        future of the project. Please <a href="#contact">contact us</a> if you would like to become an official 
+        tester!</td>
+  </tr>
+  <tr>
     <td><b>Bug Tracking</b></td>
     <td>We will endeavour to fix all bugs encountered in OsiriXgrpc as soon as possible. If you encounter a bug, please
-        see our <a href="#bug-reporting">bug reporting</a> section.
-    </td>
-</tr>
+        see our <a href="#bug-reporting">bug reporting</a> section.</td>
+  </tr>
+  <tr>
+    <td><b>Feature Suggestions</b></td>
+    <td>We cannot improve OsiriXgrpc without good ideas coming from users. If you would like to request a new feature
+        this can be done as a feature request on the project issue tracker.  Please note that acceptance and importance
+        of features will be discussed and agreed by our developers following discussion with you. We cannot guarantee
+        that all feature requests will be implemented, or how quickly they will be delivered.</td>
+  </tr>
+  <tr>
+    <td><b>Feature Development</b></td>
+    <td>If you would like to help develop the core OsiriXgrpc plugin, we are keen to improve and evolve every 
+      aspect of it. This includes: 
+      <ul>
+        <li>Expose additional OsiriX functionality to OsiriXgrpc</li>
+        <li>Optimize CI/CD of the plugin (all performed in GitHub)</li>
+        <li>Improve the user experience through additional plugin features</li>
+        <li>Boost security of the GRPC connections through SSL connections.</li>
+        <li>Ensure that key updates to OsiriX are monitored and fixed within the plugin</li>
+      </ul>
+      Please see the remainder of this documentation to see how this can be done, and <a href="contact">let us 
+      know</a> about your ideas!</td>
+  </tr>
 </table>
 
-# Code of Conduct
+## Code of Conduct
 Please see our [Code of Conduct](CODE_OF_CONDUCT.md) for more information.
 
-# Documentation
+## Prerequisites
+In order to help contribute to the OsiriXgrpc project there are a few things you will need. Some may not be required 
+depending on the level contributions you want to make.
 
-# Bug Reporting
+<table>
+  <tr>
+    <td><b>Mac</b></td>
+    <td>OsiriX works on macOS.  We currently support (and have tested) compatability of OsiriXgrpc on macOS Monterey and
+        above, on both Intel and M1/M2/M3 native processors. We always advise ensuring that your operating system is 
+        up-to-date.</td>
+  </tr>
+  <tr>
+    <td><b>OsiriX</b></td>
+    <td>A copy of the <a href="https://www.osirix-viewer.com/osirix/osirix-md/download-osirix-lite/">latest OsiriX 
+        app</a> downloaded on your system. This will be crucial for testing the OsiriXgrpc plugin, developing new 
+        features, and authoring new OsiriXgrpc scripts.</td>
+  </tr>
+  <tr>
+    <td><b>Xcode</b></td>
+    <td>Xcode is freely available from the App store, and is only required if you want to develop new features for the
+        core OsiriXgrpc plugin, or build the source code.</td>
+  </tr>
+  <tr>
+    <td><b>GitHub Account</b></td>
+    <td>You will need a GitHub account to interact with the OsiriXgrpc source code, create pull requests for new
+        features that you have developed, and raise new issues or report bugs on the project 
+        <a href="https://github.com/osirixgrpc/osirixgrpc/issues"> issue tracker</a>.</td>
+  </tr>
+</table>
 
-# Coding Guidelines
-## Project Structure
+## Coding Guidelines
+### Project Structure
 There are several core files and directories at the [root of the project](https://github.com/osirixgrpc/osirixgrpc)
 
-| Name             | Description                                                                                                      |
-|------------------|------------------------------------------------------------------------------------------------------------------|
-| __cpp__          | Auto-generated C++ protobuf files (not under version control).                                                   |
-| __docs__         | All externally-facing documentation (definition files in markdown).                                              |
-| __protos__       | gRPC protocol files, which need to be modified to provide additional OsiriX functionality.                       |
-| __python__       | Source code for the osirixgrpc pip project. Sub-folder `osirixgrpc` is automatically generated (not under vc).   |
-| __src__          | Source files for building the OsiriXgrpc plugin. This is also where grpc methods are implemented.                |
-| __tests__        | Integration tests for the plugin and protobuf files. Note these are not automated and run manually.              |
-| .bumpversion.cfg | Rules to increment version numbers scattered throughout the project                                              |
-| build.sh         | A bash shell script used to compile gRPC from source and build all protobuf files from defintion (.proto) files. |
+| Name             | Description                                                                                                                 |
+|------------------|-----------------------------------------------------------------------------------------------------------------------------|
+| __cpp__          | Auto-generated C++ protobuf files (not under version control).                                                              |
+| __docs__         | All externally-facing documentation (definition files in markdown).                                                         |
+| __protos__       | gRPC protocol files, which need to be modified to provide additional OsiriX functionality.                                  |
+| __python__       | Source code for the osirixgrpc pip project. Sub-folder `osirixgrpc` is automatically generated (not under version control). |
+| __src__          | Source files for building the OsiriXgrpc plugin. This is also where grpc methods are implemented.                           |
+| __tests__        | Integration tests for the plugin and protobuf files. Note these are not automated and run manually.                         |
+| .bumpversion.cfg | Rules to increment version numbers scattered throughout the project                                                         |
+| build.sh         | A bash shell script used to compile gRPC from source and build all protobuf files from defintion (.proto) files.            |
 
-# Version Control
+### Version Control
 
 OsiriXgrpc uses semantic versioning as illustrated in the figure below. If you wish to contribute to OsiriXgrpc,
 please fork the repository and make your changes. Please contact us if you wish to merge your planned additions with
@@ -96,7 +126,15 @@ Versioning is controlled by [bump version](https://pypi.org/project/bumpversion/
 on the `dev` or `main` branches and is therefore not for public use.  Any changes to the version numbers in a fork or 
 branch will be ignored and no pull request accepted until versioning is normalised to baseline.
 
-# Contact
+## Documentation
+
+## Bug Reporting
+
+## User Testing
+
+## Feature Requests
+
+## Contact
 | Name                | Contact                      |
 |---------------------|------------------------------|
 | Matt Blackledge     | matthew.blackledge@icr.ac.uk |
