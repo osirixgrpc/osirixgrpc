@@ -68,3 +68,4 @@ nav:
     - Dicom Study: api/dicomstudy.md
   - Contributing:
     - Home: contributing/CONTRIBUTING.md
+    - Code of Conduct: contributing/CODE_OF_CONDUCT.md

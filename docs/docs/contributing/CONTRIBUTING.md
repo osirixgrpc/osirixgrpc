@@ -55,7 +55,7 @@ medical research, fostering an environment of collaboration and innovation.
 </table>
 
 # Code of Conduct
-
+Please see our [Code of Conduct](CODE_OF_CONDUCT.md) for more information.
 
 # Documentation
 
