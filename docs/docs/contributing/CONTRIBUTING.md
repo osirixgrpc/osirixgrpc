@@ -102,30 +102,94 @@ There are several core files and directories at the [root of the project](https:
 | __docs__         | All externally-facing documentation (definition files in markdown).                                                                    |
 | __protos__       | gRPC protocol files, which need to be modified to provide additional OsiriX functionality.                                             |
 | __python__       | Source code for the osirixgrpc pip project. Sub-folder `osirixgrpc` is automatically generated (not under version control).            |
-| __src__          | Source files for building the OsiriXgrpc plugin. This is also where grpc methods are implemented.                                      |
+| __src__          | Source files for building the OsiriXgrpc plugin. This is also where gRPC methods are implemented.                                      |
 | __tests__        | Integration tests for the plugin and protobuf files. Note these are not automated and run manually.                                    |
 | .bumpversion.cfg | Rules to increment version numbers scattered throughout the project                                                                    |
 | build.sh         | A utility shell script used to compile gRPC from source and build all protobuf files from definition (.proto) files on a host machine. |
 
+### Modifying Source Code
+When making changes to the source code, we recommend the following process to ensure your contributions can be 
+efficiently reviewed and integrated:
+
+1. __Fork the Repository__ Start by forking the repository. This creates your own copy of the project where you can make 
+   your changes. 
+2. __Build the Plugin__ Before making any changes, please familiarize yourself with the [build process](#building). 
+3. __Make Your Changes__ Implement your changes in your forked repository. To facilitate a smooth review process, we 
+   suggest:
+   - Isolate Changes: Keep your changes focused. Large or complex modifications may require more extensive review and 
+     have a higher chance of being rejected.
+   - Communicate Intentions: Let us know about your planned changes in advance. This helps us coordinate contributions 
+     and include them in our release planning.
+4. __Submit a Pull Request (PR)__ Once you're satisfied with your changes, submit them back to the main project via a 
+   pull request. Ensure your PR targets the `dev` branch. For guidance on creating a pull request, see GitHub's 
+   [documentation](https://docs.github.com/articles/creating-a-pull-request-from-a-fork) on Creating a pull request from 
+   a fork. 
+5. __Review Process__ Your pull request will undergo a review by the project maintainers. During this phase:
+   - Merge Upstream Changes: You may be asked to merge changes from the upstream `dev branch into your fork to resolve 
+     any conflicts. 
+   - Version Bumping: If your changes are accepted, you'll be asked to bump the version by executing bumpversion build. 
+      This step is crucial for maintaining version control and ensuring compatibility. 
+6. Final Steps: After addressing any review comments and completing the version bump, your changes will be merged into 
+   the `dev` branch.
+
+__Additional Tips for a Successful Contribution__
+ - __Follow Coding Standards__ Adhere to the coding standards and guidelines provided in the repository documentation to 
+   increase the likelihood of your changes being accepted. 
+ - __Test Thoroughly__ Before submitting your pull request, thoroughly test your changes to ensure they work as expected 
+   and do not introduce any new issues.
+
+By following these guidelines, you can contribute valuable improvements to osirixgrpc and help enhance its 
+functionality and user experience.
+
 ### Version Control
 
-OsiriXgrpc uses semantic versioning as illustrated in the figure below. If you wish to contribute to OsiriXgrpc,
-please fork the repository and make your changes. Please contact us if you wish to merge your planned additions with
-OsiriXgrpc so that we are aware of your intended changes and ensure that they are inline with planned milestones.
+OsiriXgrpc uses semantic versioning using a traditional Gitflow scheme as illustrated in the figure below. All 
+development takes place within within the `dev` branch prior to release in the main branch. This branch exists in one of 
+two phases:
 
-Note that all development should take place within separate branches/forks and then merged with the `dev` branch prior 
-to release using pull requests.  This branch will exist in two core phases:
-
-1. __Development__ phase. Each version will be appended by the `_devX`, where `X` increments after each additional
+1. __Development__ phase. Each version is appended by the `_devX`, where `X` increments after each additional
   feature is merged. New features are accepted in this stage.
 2. __Release Candidate__ phase. Each version will be appended by the `_rcX`, where `X` increments after each additional
   hot-fix applied during user testing. No new features will be accepted during this phase.
 
 ![OsiriXgrpc version control](../assets/osirixgrpc.drawio.svg)
 
-Versioning is controlled by [bump version](https://pypi.org/project/bumpversion/). This should only be performed 
-on the `dev` or `main` branches and is therefore not for public use.  Any changes to the version numbers in a fork or 
-branch will be ignored and no pull request accepted until versioning is normalised to baseline.
+Versioning is controlled by [bump2version](https://pypi.org/project/bump2version/). Please don't bump the version until 
+your code is ready to be merged after review of the pull request to ensure it uses the intended version. Below are the
+commands available to bump2version within this project, and example increments in each case:
+<table>
+  <tr>
+    <td><code>bumpversion build</code></td>
+    <td>1.0.0-dev0 &rarr; 1.0.0-dev1 &rarr; 1.0.0-dev2 &rarr; ... <br> <i>or</i> <br>
+        1.0.0-rc0 &rarr; 1.0.0-rc1 &rarr; 1.0.0-rc2 &rarr; ...</td>
+  </tr>
+  <tr>
+    <td><code>bumpversion release</code></td>
+    <td>1.0.0-dev5 &rarr; 1.0.0-rc0 &rarr; 1.0.0</td>
+  </tr>
+  <tr>
+    <td><code>bumpversion patch</code></td>
+    <td>1.0.0 &rarr; 1.0.1-dev0 &rarr; 1.0.2-dev0 &rarr; ...</td>
+  </tr>
+  <tr>
+    <td><code>bumpversion minor</code></td>
+    <td>1.0.2 &rarr; 1.1.0-dev0 &rarr; 1.2.0-dev0 &rarr; ...</td>
+  </tr>
+  <tr>
+    <td><code>bumpversion major</code></td>
+    <td>1.2.0 &rarr; 2.0.0-dev0 &rarr; 3.0.0-dev0 &rarr; ...</td>
+  </tr>
+</table>
+
+### Building
+To build the plugin, please use the `build.sh` script provided, which emulates the final build performed as during 
+CI/CD in the `main` and `dev` branches.  This script performs the following operations within your repository:
+ 1. Clone the correct version of gRPC (to a directory called `grpc`).
+ 2. Build Intel (x86_64) and Apple Silicon (arm64) gRPC libraries and executables.
+ 3. Combine the libraries into universal binary files using the `lipo` tool.
+ 4. Use the compiled executables to C++ and Python implementation files from the protocol files (in `protos` directory).
+ 5. Ensure the OsiriXgrpc python package (`Python` directory) has the correct `requirements.txt` definitions.
+ 6. Build and zip the plugin bundle. This will result in a file called `osirixgrpc.osirixplugin.zip`.
 
 ## Documentation
 All documentation is written in Markdown format and compiled using [MkDocs](https://www.mkdocs.org/). The organization 
@@ -165,7 +229,7 @@ By connecting to the established service (linking to `http://localhost:8000/` in
 view changes to documentation in real-time.
 
 ### Deploying Documentation
-Collaborators should and will never directly modify the deployed documentation. Instead, this will be performed as part
+Collaborators should not directly modify the deployed documentation. Instead, this will be performed as part
 of OsiriXgrpc continuous integration. The OsiriXgrpc documentation will be deployed from either the `main` or `dev` 
 branches to one of two sites, following a push to the GitHub repository:
 
@@ -175,9 +239,10 @@ branches to one of two sites, following a push to the GitHub repository:
 | `dev`  | [https://osirixgrpc.netlify.app](https://osirixgrpc.netlify.app)                   | Documentation in development mode and for user testing of next release. |
 
 ### Suggesting Changes
-If you would like to suggest a change to the documentation rather than altering the source code, then please let us 
-know through the project <a href="https://github.com/osirixgrpc/osirixgrpc/issues"> issue tracker</a>, ensuring you 
-choose a `documentation` label for the issue.
+If you would like to suggest a change to the documentation please let us know through the project 
+<a href="https://github.com/osirixgrpc/osirixgrpc/issues"> issue tracker</a>, ensuring you 
+choose a `documentation` label for the issue. If you wish to help contribute to the documentation, then please fork the
+latest copy of the repository, modify it, and submit a pull request to the main branch. 
 
 ## Bug Reporting
 If you encounter any bugs with the OsiriXgrpc plugin then please let us know through the 
