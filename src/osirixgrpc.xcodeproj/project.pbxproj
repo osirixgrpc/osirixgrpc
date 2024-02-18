@@ -127,7 +127,6 @@
 		8E4FA3D42B6944280081FC4C /* libabsl_random_internal_randen_slow.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E4FA39B2B6944280081FC4C /* libabsl_random_internal_randen_slow.a */; };
 		8E4FF20426247AEE0082346A /* gRPCService.h in Headers */ = {isa = PBXBuildFile; fileRef = 8E4FF1F926247AEE0082346A /* gRPCService.h */; };
 		8E4FF20926247AEE0082346A /* gRPCService.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8E4FF1FE26247AEE0082346A /* gRPCService.mm */; };
-		8E6E05B02B56DF1A00F20311 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E6E05AF2B56DF1900F20311 /* logo.png */; };
 		8E700E9326610E0200FF1168 /* gRPCLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E700E9226610E0200FF1168 /* gRPCLog.m */; };
 		8E7349D9266D83580050E26F /* gRPCScriptControllerInterpreterCellView.h in Headers */ = {isa = PBXBuildFile; fileRef = 8E7349D7266D83580050E26F /* gRPCScriptControllerInterpreterCellView.h */; };
 		8E7349DA266D83580050E26F /* gRPCScriptControllerInterpreterCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E7349D8266D83580050E26F /* gRPCScriptControllerInterpreterCellView.m */; };
@@ -145,6 +144,7 @@
 		8EA37F41262EEBEB0025D217 /* gRPCScriptWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8EA37F3F262E45B90025D217 /* gRPCScriptWindow.xib */; };
 		8EA37F42262EED780025D217 /* gRPCScriptController.h in Headers */ = {isa = PBXBuildFile; fileRef = 8E95FD4F26249C9800694A05 /* gRPCScriptController.h */; };
 		8EA37F43262EED7B0025D217 /* gRPCScriptController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E95FD5026249C9800694A05 /* gRPCScriptController.m */; };
+		8EA938422B81F20E0012B060 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EA938412B81F20E0012B060 /* logo.png */; };
 		8EB0878527FA4C9A00467660 /* gRPCErrorCodes.h in Headers */ = {isa = PBXBuildFile; fileRef = 8EB0878427FA4C3600467660 /* gRPCErrorCodes.h */; };
 		8EB91AE0260DF2CB0034C16A /* gRPCCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 8EB91AD6260DF2CA0034C16A /* gRPCCache.h */; };
 		8EB91AE2260DF2CB0034C16A /* gRPCCache.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8EB91AD8260DF2CA0034C16A /* gRPCCache.mm */; };
@@ -283,7 +283,6 @@
 		8E4FA39B2B6944280081FC4C /* libabsl_random_internal_randen_slow.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libabsl_random_internal_randen_slow.a; path = ../grpc/install/lib/libabsl_random_internal_randen_slow.a; sourceTree = "<group>"; };
 		8E4FF1F926247AEE0082346A /* gRPCService.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = gRPCService.h; sourceTree = "<group>"; };
 		8E4FF1FE26247AEE0082346A /* gRPCService.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = gRPCService.mm; sourceTree = "<group>"; };
-		8E6E05AF2B56DF1900F20311 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logo.png; path = ../docs/docfiles/assets/logo/logo.png; sourceTree = "<group>"; };
 		8E700E9226610E0200FF1168 /* gRPCLog.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = gRPCLog.m; sourceTree = "<group>"; };
 		8E7349D7266D83580050E26F /* gRPCScriptControllerInterpreterCellView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = gRPCScriptControllerInterpreterCellView.h; sourceTree = "<group>"; };
 		8E7349D8266D83580050E26F /* gRPCScriptControllerInterpreterCellView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = gRPCScriptControllerInterpreterCellView.m; sourceTree = "<group>"; };
@@ -299,6 +298,7 @@
 		8EA37F3B262E3FB00025D217 /* gRPCUtilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = gRPCUtilities.h; sourceTree = "<group>"; };
 		8EA37F3C262E3FB00025D217 /* gRPCUtilities.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = gRPCUtilities.m; sourceTree = "<group>"; };
 		8EA37F3F262E45B90025D217 /* gRPCScriptWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = gRPCScriptWindow.xib; sourceTree = "<group>"; };
+		8EA938412B81F20E0012B060 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logo.png; path = ../docs/docs/assets/logo/logo.png; sourceTree = "<group>"; };
 		8EB0878427FA4C3600467660 /* gRPCErrorCodes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = gRPCErrorCodes.h; sourceTree = "<group>"; };
 		8EB91AD6260DF2CA0034C16A /* gRPCCache.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = gRPCCache.h; sourceTree = "<group>"; };
 		8EB91AD8260DF2CA0034C16A /* gRPCCache.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = gRPCCache.mm; sourceTree = "<group>"; };
@@ -538,7 +538,7 @@
 		089C166AFE841209C02AAC07 /* MyNewPlugin */ = {
 			isa = PBXGroup;
 			children = (
-				8E6E05AF2B56DF1900F20311 /* logo.png */,
+				8EA938412B81F20E0012B060 /* logo.png */,
 				8EB91B7D260DF3FD0034C16A /* Protobuf C++ */,
 				8EB91AD4260DF2930034C16A /* Plugin Files */,
 				8EB91AD3260DF2840034C16A /* Delegate Files */,
@@ -954,7 +954,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8E6E05B02B56DF1A00F20311 /* logo.png in Resources */,
+				8EA938422B81F20E0012B060 /* logo.png in Resources */,
 				8E069C382893D2DF008CD14B /* VTKHeaders in Resources */,
 				8E1A3E6F25E31D3F00ABB854 /* gRPCMenuItem.xib in Resources */,
 				8EB91B14260DF30C0034C16A /* version.plist in Resources */,

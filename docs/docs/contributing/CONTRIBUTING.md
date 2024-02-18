@@ -191,6 +191,10 @@ CI/CD in the `main` and `dev` branches.  This script performs the following oper
  5. Ensure the OsiriXgrpc python package (`Python` directory) has the correct `requirements.txt` definitions.
  6. Build and zip the plugin bundle. This will result in a file called `osirixgrpc.osirixplugin.zip`.
 
+__Note__: The built file will not be signed and thus should not be shared. Please ensure you share your changes with us
+by issuing a [pull request](#modifying-source-code), and we will ensure your changes are incorporated into a signed
+plugin for distribution during the next release.
+
 ## Documentation
 All documentation is written in Markdown format and compiled using [MkDocs](https://www.mkdocs.org/). The organization 
 of documentation should be kept consistent, and any changes to layout need to be fully discussed and agreed with all
