@@ -184,6 +184,7 @@ commands available to bump2version within this project, and example increments i
 ### Building
 To build the plugin, please use the `build.sh` script provided, which emulates the final build performed as during 
 CI/CD in the `main` and `dev` branches.  This script performs the following operations within your repository:
+
  1. Clone the correct version of gRPC (to a directory called `grpc`).
  2. Build Intel (x86_64) and Apple Silicon (arm64) gRPC libraries and executables.
  3. Combine the libraries into universal binary files using the `lipo` tool.
@@ -254,8 +255,7 @@ If you encounter any bugs with the OsiriXgrpc plugin then please let us know thr
 you raise the issue, please using the relevant template for bugs, which will include the following information:
 
 <ul>
-  <li> Is the bug a plugin issue (e.g. inability to start a server or install the plugin), or an issue with creating 
-    some functionality using the client API? </li>
+  <li> Is the bug related to the plugin (OsiriXgrpc) or a client issue (pyOsiriX)? </li>
   <li> What steps could we use to reproduce the bug? </li>
   <li> If the issue is related to a script that you used, please send us (where possible):
     <ol>
@@ -313,6 +313,15 @@ label, using the feature request issue template.  This includes the following in
   <li>How urgent is the new functionality to you?</li>
   <li>Would you be willing to help develop/test the new functionality?</li>
 </ul>
+
+## Issues
+Please use the relevant label for each issue that you submit on the GitHub project.
+
+| Label           | Description                                                                                                                           |
+|-----------------|---------------------------------------------------------------------------------------------------------------------------------------|
+| Bug             | If you encounter a bug then please let us know using the provided template. See [Bug Reporting](#bug-reporting) for more information. |
+| Feature Request | 
+
 
 ## Contact
 | Name                | Contact                      |

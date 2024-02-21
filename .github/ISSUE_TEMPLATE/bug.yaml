@@ -1,0 +1,92 @@
+name: Bug Report
+description: File a bug report
+title: "Bug: "
+labels: ["bug"]
+projects: ["osirixgrpc/osirixgrpc"]
+assignees:
+  - mdblackledge
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this bug report!
+  - type: input
+    id: contact
+    attributes:
+      label: Contact Details
+      description: How can we get in touch with you if we need more info?
+      placeholder: ex. email@example.com
+    validations:
+      required: false
+  - type: dropdown
+    id: bug-scope
+    attributes:
+      label: Bug Scope
+      description: Is the bug related to the OsiriX plugin, or related to a client script?
+      options:
+        - OsiriXgrpc
+        - pyOsiriX
+      default: 0
+    validations:
+      required: true
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: |
+        What steps could we use to reproduce the bug? 
+        If the error is related to client script please upload the script and tell us what you expected it to do.
+        Also, if client related, please provide the output of the Task Console (`Plugins` &rarr; `Database` &rarr; `osirixgrpc` &rarr; `Task Console`)
+      placeholder: |
+        1. I added a new server using the plugin funtionality...
+        2. The following occurred...
+        3. I expected to see...
+        4. This is a copy of the error text...
+        5. See attached an error file...
+    validations:
+      required: true
+  - type: dropdown
+    id: osirixgrpc-version
+    attributes:
+      label: OsiriXgrpc Version
+      description: What version of OsiriXgrpc are you running?
+      options:
+        - "1.0.0"
+      default: 0
+    validations:
+      required: true
+  - type: input
+    id: osirix-version
+    attributes:
+      label: OsiriX Version
+      description: What version of OsiriX are you running? (see bottom-right in OsiriX &rarr; About OsiriX )
+      placeholder: "14.0"
+    validations:
+      required: true
+  - type: input
+    id: macos-version
+    attributes:
+      label: MacOS Version
+      description: What version of MacOS are you running?
+      placeholder: "13.0.0"
+    validations:
+      required: true
+  - type: dropdown
+    id: architecture
+    attributes:
+      label: Architecture
+      description: What Mac architecture are you using? (output of `arch` from terminal)
+      options:
+        - x86_64
+        - arm64
+      default: 0
+    validations:
+      required: true
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Code of Conduct
+      description: By submitting this issue, you agree to follow our [Code of Conduct](osirixgrpc.github.io/osirixgrpc/contributing/CODE_OF_CONDUCT.html)
+      options:
+        - label: I agree to follow this project's Code of Conduct
+          required: true
