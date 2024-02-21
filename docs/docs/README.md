@@ -1,6 +1,6 @@
 # OsiriXgrpc	
 
-![Welcome to OsiriXgrpc!](https://github.com/osirixgrpc/osirixgrpc/blob/dev/docs/docs/assets/logo/logo-large.png)
+![Welcome to OsiriXgrpc!](assets/logo/logo-large.png)
 
 __Welcome to OsiriXgrpc__, a research plugin for the popular [OsiriX](https://www.osirix-viewer.com) medical image 
 viewing platform for Mac OS. It leverages the [gRPC](https://grpc.io) architecture to provide fast communication between 
