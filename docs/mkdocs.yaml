@@ -55,6 +55,8 @@ markdown_extensions:
 nav:
   - Home: README.md  # Where the home page of the documentation will be stored.
   - Getting Started: getting_started.md
+  - pyOsiriX:
+    - Getting Started: pyosirix/README.md
   - API:
     - Basics: api/README.md
     - Regions of Interest: api/roi.md
