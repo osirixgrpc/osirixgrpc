@@ -13,7 +13,7 @@ __all__ = ["Osirix",
            "GrpcException",
            "OsirixServiceException"]
 
-__version__ = "0.1.6"
+__version__ = "0.2.1-dev1"
 
 __author__ = "Timothy Sum Hon Mun & Matthew D Blackledge"
 
