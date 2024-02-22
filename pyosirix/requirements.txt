@@ -1,12 +1,7 @@
-pytest
-setuptools
+grpc
+hatchling
+hatch-requirements-txt
 pip
-bump2version
 wheel
-watchdog
-flake8
-coverage
 twine
-build
 osirixgrpc==0.2.1.dev0
-pyppeteer==1.0.2
