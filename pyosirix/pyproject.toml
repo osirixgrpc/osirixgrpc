@@ -3,7 +3,7 @@ requires = ["hatchling", "hatch-requirements-txt"]
 build-backend = "hatchling.build"
 
 [project]
-name = "pyosirix"
+name = "pyosirix-test"
 dynamic = ["dependencies", "version"]
 requires-python = ">=3.8"
 authors = [
