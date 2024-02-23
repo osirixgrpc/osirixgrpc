@@ -1,3 +1,47 @@
 [build-system]
-requires = ["setuptools>=62.1"]
-build-backend = "setuptools.build_meta"
+requires = ["hatchling", "hatch-requirements-txt"]
+build-backend = "hatchling.build"
+
+[project]
+name = "osirixgrpc"
+dynamic = ["dependencies", "version"]
+requires-python = ">=3.8"
+authors = [
+  {name = "Matthew D Blackledge", email = "mattyblackledge@gmail.com"},
+  {name = "Timothy Sum Hon Mun", email = "timothy22000@gmail.com"},
+  {name = "Richard Holbrey", email = "richard.holbrey@icr.ac.uk"},
+]
+maintainers = [
+  {name = "Matthew D Blackledge", email = "mattyblackledge@gmail.com"}
+]
+description = "gRPC interface for interacting with OsiriX"
+readme = "README.md"
+license = {file = "LICENSE.txt"}
+keywords = [
+    "Dicom", 
+    "Medical Imaging", 
+    "Artificial Intelligence", 
+    "Image Processing",
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Development Status :: 3 - Alpha",
+    "License :: OSI Approved :: MIT License",
+    "Natural Language :: English",
+    "Operating System :: MacOS :: MacOS X",
+]
+
+[project.urls]
+Homepage = "https://osirixgrpc.github.io/osirixgrpc/"
+Documentation = "https://osirixgrpc.github.io/osirixgrpc/"
+Repository = "https://github.com/osirixgrpc/osirixgrpc"
+"Bug Tracker" = "https://github.com/osirixgrpc/osirixgrpc/issues"
+
+[tool.hatch.metadata.hooks.requirements_txt]
+files = ["requirements.txt"]
+
+[tool.hatch.version]
+path = "osirixgrpc/__init__.py"
+
+[tool.hatch.build.targets.wheel]
+packages = ["osirixgrpc"]

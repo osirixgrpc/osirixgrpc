@@ -1,7 +1,2 @@
-grpcio>=1.55.0
-hatchling
-hatch-requirements-txt
-pip
-wheel
-twine
-osirixgrpc==0.2.1.dev0
+numpy
+osirixgrpc==0.2.1-dev3
