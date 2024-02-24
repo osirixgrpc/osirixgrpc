@@ -8,7 +8,6 @@ __all__ = ["Osirix",
            "DicomSeries",
            "DicomStudy",
            "DicomImage",
-           "ROIVolume",
            "VRController",
            "GrpcException",
            "OsirixServiceException"]
@@ -17,7 +16,6 @@ __version__ = "0.2.1-dev3"
 
 __author__ = "Timothy Sum Hon Mun & Matthew D Blackledge"
 
-import sys
 import os
 import json
 import warnings
@@ -25,10 +23,10 @@ from typing import Tuple
 
 from .exceptions import GrpcException, OsirixServiceException
 from .viewer_controller import ViewerController, DCMPix, ROI
-from .vr_controller import VRController, ROIVolume
+from .vr_controller import VRController
 from .dicom import DicomSeries, DicomStudy, DicomImage
 from .browser_controller import BrowserController
-from .osirix_utils import Osirix, OsirixService
+from .osirix import Osirix, OsirixService
 
 global __port__, __domain__, __osirix__, __osirix_service__
 
@@ -49,27 +47,32 @@ def __init_setup__():
                 __domain__ = item["ipaddress"] + ":"
                 break
 
-    if __port__ is None  or __domain__ is None:
+    if __port__ is None or __domain__ is None:
         warnings.warn("No valid port or domain found. You may need to start one in OsiriX.")
         return
 
-    channel_opt = [('grpc.max_send_message_length', 512 * 1024 * 1024),
-                   ('grpc.max_receive_message_length', 512 * 1024 * 1024)]
-    __osirix_service__ = OsirixService(channel_opt=channel_opt,
-                                       domain=__domain__,
-                                       port=__port__).get_service()
+    __osirix_service__ = OsirixService(domain=__domain__,
+                                       port=__port__,
+                                       max_send_message_length=500000000,
+                                       max_receive_message_length=500000000).osirix_service
     __osirix__ = Osirix(__osirix_service__)
 
 
 __init_setup__()
 
 
+# The following functions are defined for ease of access.
 def current_browser() -> BrowserController:
-    """
-    Provides the Osirix browser window
+    """ The main Dicom browser instance.
 
     Returns:
-        BrowserController
+        The main Dicom browser.
+
+    Example:
+        ```python
+        import osirix
+        browser = osirix.current_browser2()
+        ```
     """
     global __osirix__
     if __osirix__ is None:
@@ -77,12 +80,21 @@ def current_browser() -> BrowserController:
     return __osirix__.current_browser()
 
 
-def frontmost_viewer() -> ViewerController:
-    """
-    Provides the 2D viewer that is currently selected
+def frontmost_viewer(some_value: float) -> Tuple[ViewerController, int]:
+    """ The front-most 2D viewer.
+
+    Args:
+        some_value (float): Not sure what this is for.
 
     Returns:
-        ViewerController
+        The viewer controller instance (osirix.viewer_controller.ViewerController)
+        A random integer.
+
+    Example:
+        ```python
+        import osirix
+        viewer = osirix.frontmost_viewer()
+        ```
     """
     global __osirix__
     if __osirix__ is None:
@@ -90,25 +102,17 @@ def frontmost_viewer() -> ViewerController:
     return __osirix__.frontmost_viewer()
 
 
-def frontmost_vr_controller() -> VRController:
-    """
-    Provides the VR Controller that is currently selected
-
-    Returns:
-        VRController
-    """
-    global __osirix__
-    if __osirix__ is None:
-        raise ConnectionError("No connection established")
-    return __osirix__.frontmost_vr_controller()
-
-
 def displayed_2d_viewers() -> Tuple[ViewerController, ...]:
-    """
-    Provides all 2D viewers that are displayed
+    """ All currently active 2D viewers.
 
     Returns:
-        Tuple containing each 2D Viewer
+        List
+
+    Example:
+        ```python
+        import osirix
+        viewers = osirix.displayed_2d_viewers()
+        ```
     """
     global __osirix__
     if __osirix__ is None:
@@ -116,12 +120,35 @@ def displayed_2d_viewers() -> Tuple[ViewerController, ...]:
     return __osirix__.displayed_2d_viewers()
 
 
-def displayed_vr_controllers() -> Tuple[VRController, ...]:
-    """
-    Provides all VR controllers that are displayed
+def frontmost_vr_controller() -> VRController:
+    """ The front-most 3D viewer.
 
     Returns:
-        Tuple containing each VRController
+        osirix.viewer_controller.VRController
+
+    Example:
+        ```python
+        import osirix
+        vr_controller = osirix.frontmost_vr_controller()
+        ```
+    """
+    global __osirix__
+    if __osirix__ is None:
+        raise ConnectionError("No connection established")
+    return __osirix__.frontmost_vr_controller()
+
+
+def displayed_vr_controllers() -> Tuple[VRController, ...]:
+    """ All currently active 3D viewers.
+
+    Returns:
+        List
+
+    Example:
+        ```python
+        import osirix
+        vr_controllers = osirix.displayed_vr_controllers()
+        ```
     """
     global __osirix__
     if __osirix__ is None:

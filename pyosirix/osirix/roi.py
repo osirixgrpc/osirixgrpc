@@ -150,6 +150,7 @@ class ROIVolume:
         if not response.status == 1:
             warnings.warn("Could not set ROIVolume factor")
 
+
 class ROI(object):
     '''
     Class representing the properties and methods to communicate with the Osirix service through

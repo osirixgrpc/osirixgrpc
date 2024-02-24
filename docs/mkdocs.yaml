@@ -33,6 +33,7 @@ theme:
 
 plugins:
   - search
+  - mkdocstrings
 
 # Documentation extensions.
 markdown_extensions:
@@ -57,6 +58,10 @@ nav:
   - Getting Started: getting_started.md
   - pyOsiriX:
     - Getting Started: pyosirix/README.md
+    - API:
+      - osirix: pyosirix/api/osirix.md
+    - Contributing:
+      - Home: pyosirix/contributing/CONTRIBUTING.md
   - API:
     - Basics: api/README.md
     - Regions of Interest: api/roi.md

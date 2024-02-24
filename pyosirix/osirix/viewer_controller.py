@@ -1,11 +1,8 @@
 from __future__ import annotations
 from typing import Tuple, Dict
-import sys
 
 from numpy import ndarray
 
-# sys.path.append("./pb2")
-# sys.path.append("/Users/admintmun/dev/pyosirix/osirix/pb2")
 import osirixgrpc.viewercontroller_pb2 as viewercontroller_pb2
 import osirixgrpc.vrcontroller_pb2 as vrcontroller_pb2
 import osirixgrpc.dcmpix_pb2 as dcmpix_pb2
@@ -14,13 +11,13 @@ from osirix.dicom import DicomSeries, DicomStudy, DicomImage
 from osirix.response_processor import ResponseProcessor
 from osirix.dcm_pix import DCMPix
 from osirix.roi import ROI
-from osirix.vr_controller import VRController
+
 
 class ViewerController(object):
-    '''
+    """
     Class representing the properties and methods to communicate with the Osirix service through
     gRPC for a ViewerController
-    '''
+    """
 
     def __init__(self, osirixrpc_uid, osirix_service):
         self.osirixrpc_uid = osirixrpc_uid
@@ -82,29 +79,23 @@ class ViewerController(object):
         """
         response_viewer_movie_idx = self.osirix_service.ViewerControllerMovieIdx(self.osirixrpc_uid)
         self.response_processor.response_check(response_viewer_movie_idx)
-        self._movie_idx = response_viewer_movie_idx.movie_idx
-
-        return self._movie_idx
+        return response_viewer_movie_idx.movie_idx
 
     @movie_idx.setter
     def movie_idx(self, movie_idx=int) -> None:
-        """
-          Makes a gRPC request to set the movie idx for the ViewerController
+        """ Makes a gRPC request to set the movie idx for the ViewerController.
 
           Args:
-            int : movie_idx
-
-          Returns:
-            None
+            movie_idx (int): The frame to set the 2D viewer to.
         """
-        request = viewercontroller_pb2.ViewerControllerSetMovieIdxRequest(viewer_controller=self.osirixrpc_uid, movie_idx=movie_idx)
+        request = viewercontroller_pb2.ViewerControllerSetMovieIdxRequest(
+            viewer_controller=self.osirixrpc_uid, movie_idx=movie_idx)
         response = self.osirix_service.ViewerControllerSetMovieIdx(request)
         self.response_processor.response_check(response)
 
     @property
     def title(self) -> str:
-        """
-          Makes a gRPC request to retrieve the title for the ViewerController
+        """ Makes a gRPC request to retrieve the title for the ViewerController
 
           Returns:
             str : title
@@ -262,9 +253,6 @@ class ViewerController(object):
         pix = self.osirix_service.ViewerControllerCurDCM(self.osirixrpc_uid).pix
         dcm_pix = DCMPix(pix, self.osirix_service)
         return dcm_pix
-
-    #TODO wait for Wait protobuf to be exposed
-    # def end_wait_window(self, window: Wait):
 
     def is_data_volumic(self, in_4d: bool = False) -> bool:
         """
@@ -523,7 +511,7 @@ class ViewerController(object):
 
     # def start_wait_progress_window(self, message: str, max: int) -> Wait:
 
-    def vr_controllers(self) -> Tuple[VRController, ...]:
+    def vr_controllers(self) -> Tuple:
         """
           Process gRPC request to retrieve the VR Controllers for the ViewerController
 
