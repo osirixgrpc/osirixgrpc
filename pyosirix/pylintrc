@@ -5,6 +5,8 @@
 # Its canonical open-source location is:
 #   https://google.github.io/styleguide/pylintrc
 
+# NOTE: For the osirixgrpc project we have stuck with 4 spaces for an indent.
+
 [MAIN]
 
 # Files or directories to be skipped. They should be base names, not paths.
@@ -259,7 +261,9 @@ max-module-lines=99999
 # spaces.  Google's externaly-published style guide says 4, consistent with
 # PEP 8.  Here, we use 2 spaces, for conformity with many open-sourced Google
 # projects (like TensorFlow).
-indent-string='  '
+
+# For the osirixgrpc project we revert back to 4 spaces.
+indent-string='    '
 
 # Number of spaces of indent required inside a hanging  or continued line.
 indent-after-paren=4
