@@ -1,4 +1,14 @@
-""" Core pyOsiriX functionality classes. """
+""" Core pyOsiriX functionality classes.
+
+This module contains two classes:
+    OsirixService: Used to establish connection with OsiriX through OsiriXgrpc.
+    Osirix: Used to access core OsiriX objects (Dicom browser, viewer controller and vr controller).
+        All other objects can be accessed via a subsequent chain of requests.
+
+Please only use these if you know what you are doing. There is a global instance of Osirix set up
+on first import of the pyOsiriX package, which establishes a gRPC connection with OsiriX according
+to the OsiriXgrpc plugin preferences.
+"""
 
 from __future__ import annotations
 from typing import List
@@ -25,7 +35,7 @@ class OsirixService(object):
             Default is 500000000 (500 MB).
         max_receive_message_length (int): The maximum number of bytes permitted in a receive
             message. Default is 500000000 (500 MB).
-        osirix_service (osirix_pb2_grpc.OsiriXServiceStub): The service client used to send gRPC
+        osirix_service_stub (osirix_pb2_grpc.OsiriXServiceStub): The service stub used to send gRPC
             messages to the OsiriXgrpc server. None if no connection established.
         channel (grpc._channel.Channel): An insecure gRPC channel configuration.
 
@@ -38,25 +48,33 @@ class OsirixService(object):
         self.server_url = domain + str(self.port)
         self.max_send_message_length = max_send_message_length
         self.max_receive_message_length = max_receive_message_length
-        self.osirix_service = None
+        self.osirix_service_stub = None
         self.channel = None
 
     def start_service(self):
         """ Start the insecure client service.
-
         """
-        self.channel = grpc.insecure_channel(self.server_url,
-                                             options=[("max_receive_message_length",
-                                                       self.max_receive_message_length),
-                                                      ("max_send_message_length",
-                                                       self.max_send_message_length)])
-        self.osirix_service = osirix_pb2_grpc.OsiriXServiceStub(self.channel)
+        try:
+            self.channel = grpc.insecure_channel(self.server_url,
+                                                 options=[("max_receive_message_length",
+                                                           self.max_receive_message_length),
+                                                          ("max_send_message_length",
+                                                           self.max_send_message_length)])
+            self.osirix_service_stub = osirix_pb2_grpc.OsiriXServiceStub(self.channel)
+        except Exception as exc:
+            raise GrpcException("Could not establish a connection with OsiriX.") from exc
 
 
 class OsirixBase:
-    """ A base class to use for all wrapper classes. Provides all shared capabilities
+    """ A base class to be used for all pyOsiriX classes.
+
+    Attributes:
+        osirix_service (OsirixService): A service instance created with appropriate configuration.
 
     """
+    def __init__(self, osirix_service: OsirixService):
+        self.osirix_service = osirix_service
+        self.osirix_service_stub = osirix_service.osirix_service_stub
 
     @staticmethod
     def response_check(grpc_response) -> None:
@@ -76,77 +94,114 @@ class OsirixBase:
 
 
 class Osirix(OsirixBase):
-    """ Provides access functionality to core OsiriX objects (viewers and Dicom browser).
+    """ Provides access functionality to core OsiriX objects (2D/3D viewers and Dicom browser).
 
-    Attributes:
-        osirix_service: The `OsirixService` to assign to the instance (required). This is passed
-            to all child instances create from this object.
-
+    Note that it is better not to use this class directly, unless you know what you are doing.
+    There is a global instance of this class, set-up according to the OsiriXgrpc plugin
+    configuration, as described in the main `__init__.py` module.
     """
 
-    def __init__(self, osirix_service: osirix_pb2_grpc.OsiriXServiceStub) -> None:
-        self.osirix_service = osirix_service
-
     def current_browser(self) -> BrowserController:
-        """ The main Dicom browser instance.
+        """ Return an instance of the current Dicom database browser.
+
+        Note that it is better not use this method directly. Use the following instead:
+
+        ```python
+        import osirix
+        browser = osirix.current_browser()
+        ```
 
         Returns:
-            osirix.browser_controller.BrowserController
+            The main Dicom browser instance.
         """
-        current_browser_response = self.osirix_service.OsirixCurrentBrowser(utilities_pb2.Empty())
-        self.response_check(current_browser_response)
-        browser_controller = current_browser_response.browser_controller
+        request = utilities_pb2.Empty()
+        response = self.osirix_service_stub.OsirixCurrentBrowser(request)
+        self.response_check(response)
+        browser_controller = response.browser_controller
         browser_controller_obj = BrowserController(browser_controller, self.osirix_service)
         return browser_controller_obj
 
     def frontmost_viewer(self) -> ViewerController:
-        """ The front-most 2D viewer.
+        """ Return an instance of the front-most 2D viewer.
+
+        If there are more than one, look for the viewer highlighted by a red boundary.
+        Note that it is better not use this method directly. Use the following instead:
+
+        ```python
+        import osirix
+        viewer = osirix.frontmost_viewer()
+        ```
 
         Returns:
-            osirix.viewer_controller.ViewerController
+            The front-most 2D viewer.
         """
-        viewer_response = self.osirix_service.OsirixFrontmostViewer(utilities_pb2.Empty())
-        self.response_check(viewer_response)
-        viewer_controller = viewer_response.viewer_controller
+        request = utilities_pb2.Empty()
+        response = self.osirix_service_stub.OsirixFrontmostViewer(request)
+        self.response_check(response)
+        viewer_controller = response.viewer_controller
         viewer_controller_obj = ViewerController(viewer_controller, self.osirix_service)
         return viewer_controller_obj
 
     def displayed_2d_viewers(self) -> List[ViewerController, ...]:
-        """ All currently active 2D viewers.
+        """ Return all displayed 2D viewer instances.
+
+        Note that it is better not use this method directly. Use the following instead:
+
+        ```python
+        import osirix
+        viewers = osirix.displayed_2d_viewers()
+        ```
 
         Returns:
-            List
+            A list of 2D viewer instances.
         """
-        viewers_response = self.osirix_service.OsirixDisplayed2DViewers(utilities_pb2.Empty())
-        self.response_check(viewers_response)
+        request = utilities_pb2.Empty()
+        response = self.osirix_service_stub.OsirixDisplayed2DViewers(request)
+        self.response_check(response)
         viewer_controller_objs = []
-        for viewer_controller in viewers_response.viewer_controllers:
+        for viewer_controller in response.viewer_controllers:
             viewer_controller_obj = ViewerController(viewer_controller, self.osirix_service)
             viewer_controller_objs.append(viewer_controller_obj)
         return viewer_controller_objs
 
     def frontmost_vr_controller(self) -> VRController:
-        """ The front-most 3D viewer.
+        """ Return an instance of the front-most 3D viewer.
+
+        Note that it is better not use this method directly. Use the following instead:
+
+        ```python
+        import osirix
+        vr_controller = osirix.frontmost_vr_controller()
+        ```
 
         Returns:
-            osirix.vr_controller.VRController
+            The front-most 3D viewer.
         """
-        vr_response = self.osirix_service.OsirixFrontmostVRController(utilities_pb2.Empty())
-        self.response_check(vr_response)
-        vr_controller = vr_response.vr_controller
+        request = utilities_pb2.Empty()
+        response = self.osirix_service_stub.OsirixFrontmostVRController(request)
+        self.response_check(response)
+        vr_controller = response.vr_controller
         vr_controller_obj = VRController(vr_controller, self.osirix_service)
         return vr_controller_obj
 
     def displayed_vr_controllers(self) -> List[VRController, ...]:
-        """ All currently active 3D viewers.
+        """ Return all displayed 3D viewer instances.
+
+        Note that it is better not use this method directly. Use the following instead:
+
+        ```python
+        import osirix
+        vr_controllers = osirix.displayed_vr_controllers()
+        ```
 
         Returns:
-            List
+            A list of 3D viewer instances.
         """
-        vrs_response = self.osirix_service.OsirixDisplayedVRControllers(utilities_pb2.Empty())
-        self.response_check(vrs_response)
+        request = utilities_pb2.Empty()
+        response = self.osirix_service_stub.OsirixDisplayedVRControllers(request)
+        self.response_check(response)
         vr_controller_objs = []
-        for vr_controller in vrs_response.vr_controllers:
+        for vr_controller in response.vr_controllers:
             vr_controller_obj = VRController(vr_controller, self.osirix_service)
             vr_controller_objs.append(vr_controller_obj)
         return vr_controller_objs

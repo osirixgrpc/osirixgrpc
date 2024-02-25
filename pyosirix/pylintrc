@@ -240,7 +240,8 @@ generated-members=
 [FORMAT]
 
 # Maximum number of characters on a single line.
-max-line-length=80
+# NOTE: For the pyOsiriX project we have increased this from 80 to 100.
+max-line-length=100
 
 # TODO(https://github.com/pylint-dev/pylint/issues/3352): Direct pylint to exempt
 # lines made too long by directives to pytype.
@@ -262,7 +263,7 @@ max-module-lines=99999
 # PEP 8.  Here, we use 2 spaces, for conformity with many open-sourced Google
 # projects (like TensorFlow).
 
-# For the osirixgrpc project we revert back to 4 spaces.
+# NOTE: For the osirixgrpc project we revert back to 4 spaces.
 indent-string='    '
 
 # Number of spaces of indent required inside a hanging  or continued line.

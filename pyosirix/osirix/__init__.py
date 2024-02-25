@@ -99,6 +99,7 @@ def global_osirix_instance() -> Osirix:
                                     port=port,
                                     max_send_message_length=500000000,
                                     max_receive_message_length=500000000)
+            service.start_service()
             _osirix = Osirix(service.osirix_service)
     return _osirix
 
@@ -133,9 +134,10 @@ def current_browser() -> BrowserController:
 def frontmost_viewer() -> ViewerController:
     """ The front-most 2D viewer.
 
+    If there are more than one, look for the viewer highlighted by a red boundary.
+
     Returns:
         The viewer controller instance.
-        A random integer.
 
     Example:
         ```python
@@ -153,7 +155,7 @@ def displayed_2d_viewers() -> List[ViewerController, ...]:
     """ All currently active 2D viewers.
 
     Returns:
-        List
+        A list of all displayed 2D viewers.
 
     Example:
         ```python
@@ -171,7 +173,7 @@ def frontmost_vr_controller() -> VRController:
     """ The front-most 3D viewer.
 
     Returns:
-        osirix.viewer_controller.VRController
+        The VR controller instance.
 
     Example:
         ```python
@@ -189,7 +191,7 @@ def displayed_vr_controllers() -> List[VRController, ...]:
     """ All currently active 3D viewers.
 
     Returns:
-        List
+        A list of all displayed 3D viewers.
 
     Example:
         ```python
