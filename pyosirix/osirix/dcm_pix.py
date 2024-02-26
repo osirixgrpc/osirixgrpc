@@ -240,7 +240,7 @@ class DCMPix(osirix.base.OsirixBase):
         self.response_check(response)
         return osirix.dicom.DicomSeries(self.osirix_service, response.dicom_series)
 
-    def study_object(self) -> osirix.dicom.DicomStudy:
+    def study_obj(self) -> osirix.dicom.DicomStudy:
         """ The `DicomStudy` instance from which the image was derived.
 
         Returns:

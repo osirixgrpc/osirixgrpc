@@ -75,7 +75,6 @@ class DicomStudy(OsirixBase):
 
     @property
     def patient_name(self) -> str:
-        # TODO: Check this actually is the patient name.
         """ The patient name of the Dicom study
         """
         response = self.osirix_service_stub.DicomStudyName(self.pb2_object)
@@ -147,11 +146,10 @@ class DicomStudy(OsirixBase):
         return response.study_name
 
     def modalities(self) -> str:
-        # TODO: Provide an example in the documentation as the return value is not obvious.
         """ The modalities available within the Dicom study.
 
         Returns:
-            A description of the modalities contained within the study.
+            The modalities of the study seperated by a double backslash.
         """
         response = self.osirix_service_stub.DicomStudyModalities(self.pb2_object)
         self.response_check(response)
@@ -266,7 +264,6 @@ class DicomSeries(OsirixBase):
 
     @property
     def patient_name(self) -> str:
-        # TODO: Check this actually is the patient name.
         """ The patient name of the Dicom series
         """
         response = self.osirix_service_stub.DicomSeriesName(self.pb2_object)
@@ -345,8 +342,9 @@ class DicomSeries(OsirixBase):
         return paths
 
     def sorted_images(self) -> List[DicomImage]:
-        # TODO: Figure how these are sorted and provide an example.
-        """ Sorted images in the Dicom
+        """ Dicom image instances sorted by OsiriX user preferences.
+
+        These preferences are determined in OsiriX Preferences / Database / Sorting.
 
         Returns:
            A list of sorted DicomImage instances.
@@ -355,7 +353,7 @@ class DicomSeries(OsirixBase):
         self.response_check(response)
         sorted_images = []
         for sorted_image in response.sorted_images:
-            sorted_images.append(DicomImage(self.osirix_service, sorted_image.osirxrpc_uid))
+            sorted_images.append(DicomImage(self.osirix_service, sorted_image))
         return sorted_images
 
 

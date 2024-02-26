@@ -252,6 +252,7 @@ class ROI(osirix.base.OsirixBase):
 
     @property
     def itype(self) -> int:
+        # TODO: We need to more than provide an integer here. It should be a text description.
         """ The ROI type
         """
         response = self.osirix_service_stub.ROIIType(self.pb2_object)
@@ -259,8 +260,7 @@ class ROI(osirix.base.OsirixBase):
         return int(response.itype)
 
     def centroid(self) -> Tuple[float, float]:
-        # TODO: Check what this is returning.  Is it image or pixel coordinates.  What order?
-        """ The centroid of the ROI
+        """ The centroid of the ROI in format (column, row). Non-integer values are permitted.
         """
         response = self.osirix_service_stub.ROICentroid(self.pb2_object)
         self.response_check(response)
@@ -279,7 +279,6 @@ class ROI(osirix.base.OsirixBase):
         self.response_check(response)
 
     def roi_area(self) -> float:
-        # TODO: Is this in cm2?
         """ The area of the ROI in squared centimeters.
         """
         response = self.osirix_service_stub.ROIArea(self.pb2_object)
@@ -287,19 +286,19 @@ class ROI(osirix.base.OsirixBase):
         return response.area
 
     def roi_move(self, columns: int, rows: int) -> None:
-        # TODO: Ensure this is correct.
+        # TODO: This could be float, but need to change the protocol definition.
         """ Move the ROI by a specified number of columns and rows.
 
         Args:
-            columns (int): The number of columns to move (right = positive, left = negative)
-            rows (int): The number of rows to move (up = positive, down = negative)
+            columns (int): The number of columns to move.
+                positive = left-right, negative = right-left.
+            rows (int): The number of rows to move (up = negative, down = positive)
         """
         request = roi_pb2.ROIMoveRequest(roi=self.pb2_object, columns=columns, rows=rows)
         response = self.osirix_service_stub.ROIMove(request)
         self.response_check(response)
 
     def rotate(self, theta: float, center: Tuple[float, float] = None) -> None:
-        # TODO: Check the direction of theta is correct and that center works.
         """ Rotate the ROI by angle theta, about a given
 
         Args:

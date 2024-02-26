@@ -16,7 +16,9 @@ class ViewerController(osirix.base.OsirixBase):
     """
     @property
     def idx(self) -> int:
-        """ The slice index currently being displayed to the viewer.
+        """ The slice index currently being displayed to the viewer (starting at 0).
+
+        Note that the index displayed on the viewer is this value plus one.
         """
         response = self.osirix_service_stub.ViewerControllerIdx(self.pb2_object)
         self.response_check(response)
@@ -24,8 +26,9 @@ class ViewerController(osirix.base.OsirixBase):
 
     @idx.setter
     def idx(self, idx: int) -> None:
-        # TODO: Do I need to ensure any limits on this?
-        """ The slice index currently being displayed to the viewer.
+        """ The slice index currently being displayed to the viewer (starting at 0).
+
+        Note that the index displayed on the viewer is this value plus one.
         """
         request = viewercontroller_pb2.ViewerControllerSetIdxRequest(
             viewer_controller=self.pb2_object, idx=idx)
@@ -165,7 +168,7 @@ class ViewerController(osirix.base.OsirixBase):
         Returns:
             A list of selected ROIs.
         """
-        response = self.osirix_service_stub.ViewerControllerROIsWithName(self.pb2_object)
+        response = self.osirix_service_stub.ViewerControllerSelectedROIs(self.pb2_object)
         self.response_check(response)
         rois = []
         for roi in response.rois:
