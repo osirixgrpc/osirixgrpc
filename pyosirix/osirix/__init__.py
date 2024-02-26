@@ -14,6 +14,7 @@ __all__ = ["Osirix",
            "ViewerController",
            "DCMPix",
            "ROI",
+           "ROIVolume",
            "VRController",
            "BrowserController",
            "DicomSeries",
@@ -32,7 +33,9 @@ import warnings
 from typing import List, AnyStr
 
 from .exceptions import GrpcException, OsirixServiceException
-from .viewer_controller import ViewerController, DCMPix, ROI
+from .viewer_controller import ViewerController
+from .dcm_pix import DCMPix
+from .roi import ROI, ROIVolume
 from .vr_controller import VRController
 from .dicom import DicomSeries, DicomStudy, DicomImage
 from .browser_controller import BrowserController

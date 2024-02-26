@@ -5,8 +5,6 @@
 from __future__ import annotations
 from typing import List
 
-import grpc  # noqa
-
 import osirixgrpc.utilities_pb2 as utilities_pb2
 
 from osirix.viewer_controller import ViewerController

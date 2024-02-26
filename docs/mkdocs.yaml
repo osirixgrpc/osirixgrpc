@@ -61,6 +61,7 @@ nav:
     - API:
       - osirix: pyosirix/api/osirix.md
       - dicom: pyosirix/api/dicom.md
+      - browser_controller: pyosirix/api/browser_controller.md
     - Contributing:
       - Home: pyosirix/contributing/CONTRIBUTING.md
   - API:

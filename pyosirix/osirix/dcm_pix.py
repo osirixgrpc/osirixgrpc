@@ -1,194 +1,154 @@
-from __future__ import annotations
-from typing import Tuple, Dict
-import sys
+""" Provides functionality for the images displayed in a 2D OsiriX viewer.
 
-from numpy import ndarray
+"""
+
+from __future__ import annotations
+from typing import Dict, Tuple
+
+from numpy.typing import NDArray
 import numpy as np
 
-import osirixgrpc.viewercontroller_pb2 as viewercontroller_pb2
-import osirixgrpc.vrcontroller_pb2 as vrcontroller_pb2
 import osirixgrpc.dcmpix_pb2 as dcmpix_pb2
-import osirixgrpc.roi_pb2 as roi_pb2
-from osirix.dicom import DicomSeries, DicomStudy, DicomImage
 
-class DCMPix(object):
-    '''
-    Class representing the properties and methods to communicate with the Osirix service through
-    gRPC for DCMPix
-    '''
+import osirix
 
-    def __init__(self,
-                 osirixrpc_uid,
-                 osirix_service):
-        self.response_processor = ResponseProcessor()
-        self.osirixrpc_uid = osirixrpc_uid
-        self.osirix_service = osirix_service
+
+class DCMPix(osirix.base.OsirixBase):
+    """ Represents a single image displayed within a 2D OsiriX viewer (`ViewerController`)
+
+    """
 
     @property
     def is_rgb(self) -> bool:
+        """ Is the image data red-green-blue? If `False` must be greyscale.
         """
-        Provides boolean value whether the DCMPix is rgb
-        Returns:
-            bool: rgb
-        """
-        response_is_rgb = self.osirix_service.DCMPixIsRGB(self.osirixrpc_uid)
-
-        self.response_processor.response_check(response_is_rgb)
-
-        self._is_rgb = response_is_rgb.is_rgb
-
-        return self._is_rgb
+        response = self.osirix_service_stub.DCMPixIsRGB(self.pb2_object)
+        self.response_check(response)
+        return response.is_rgb
 
     @property
     def slice_location(self) -> float:
-        """
-        Provides slice location associated with the DCMPix
-        Returns:
-            bool: slice location
-        """
-        response_slice_location = self.osirix_service.DCMPixSliceLocation(self.osirixrpc_uid)
+        """ The slice location of the image.
 
-        self.response_processor.response_check(response_slice_location)
-        self._slice_location = response_slice_location.slice_location
-
-        return self._slice_location
+        NOTE: It can be more accurate to get the slice location by loading the dicom file via the
+        `source_file` property (using pydicom for example), and using the ImagePositionPatient tag.
+        """
+        response = self.osirix_service_stub.DCMPixSliceLocation(self.pb2_object)
+        self.response_check(response)
+        return float(response.slice_location)
 
     @property
-    def orientation(self) -> Tuple[float]:
+    def orientation(self) -> NDArray:
+        """ The orientation of the image.
+
+        NOTE: It can be more accurate to get the slice location by loading the dicom file via the
+        `source_file` property (using pydicom for example), and using the ImageOrientationPatient
+        tag.
         """
-        Provides orientation associated with the DCMPix
-        Returns:
-            Tuple containing orientations in float
-        """
-        response_orientation = self.osirix_service.DCMPixOrientation(self.osirixrpc_uid)
-
-        self.response_processor.response_check(response_orientation)
-
-        tuple: Tuple[float, ...] = ()
-        for orientation in response_orientation.orientation:
-            tuple = tuple + (orientation,)
-
-        self._orientation = tuple
-
-        return self._orientation
+        response = self.osirix_service_stub.DCMPixOrientation(self.pb2_object)
+        self.response_check(response)
+        orientation = []
+        for o in response.orientation:
+            orientation.append(float(o))
+        return np.array(orientation)
 
     @property
-    def origin(self) -> Tuple[float]:
+    def origin(self) -> Tuple[float, float, float]:
+        """ The origin of the image.
+
+        NOTE: It can be more accurate to get the slice location by loading the dicom file via the
+        `source_file` property (using pydicom for example), and using the ImagePositionPatient tag.
         """
-        Provides origin (rows, columns, slices) associated with the DCMPix
-        Returns:
-            A Tuple containing the origin values (rows, columns, slices) in float
-        """
-        response_origin = self.osirix_service.DCMPixOrigin(self.osirixrpc_uid)
-
-        self.response_processor.response_check(response_origin)
-
-        self._origin = (response_origin.origin_rows, response_origin.origin_columns, response_origin.origin_slices)
-
-        return self._origin
+        response = self.osirix_service_stub.DCMPixOrigin(self.pb2_object)
+        self.response_check(response)
+        return float(response.origin[0]), float(response.origin[1]), float(response.origin[2])
 
     @property
-    def pixel_spacing(self) -> Tuple[float]:
+    def pixel_spacing(self) -> Tuple[float, float]:
+        """ The pixel spacing of the image (order: rows, columns)
         """
-        Provides pixel spacing in rows and columns associated with the DCMPix
-        Returns:
-            A tuple containing pixel spacings (rows and columns) in float
-        """
-        response_spacing = self.osirix_service.DCMPixSpacing(self.osirixrpc_uid)
-
-        self.response_processor.response_check(response_spacing)
-        self._pixel_spacing = (response_spacing.spacing_rows, response_spacing.spacing_columns)
-
-        return self._pixel_spacing
+        response = self.osirix_service_stub.DCMPixSpacing(self.pb2_object)
+        self.response_check(response)
+        return float(response.spacing_rows), float(response.spacing_columns)
 
     @property
-    def shape(self) -> Tuple[int]:
+    def shape(self) -> Tuple[int, int]:
+        """ The pixel shape of the image (order: rows, columns)
         """
-        Provides shape (rows, columns) associated with the DCMPix
-        Returns:
-            Tuple containing shape (rows, columns) in float
-        """
-        response_pix_shape = self.osirix_service.DCMPixShape(self.osirixrpc_uid)
-
-        self.response_processor.response_check(response_pix_shape)
-        self._shape = (response_pix_shape.rows, response_pix_shape.columns)
-        return self._shape
+        response = self.osirix_service_stub.DCMPixShape(self.pb2_object)
+        self.response_check(response)
+        return int(response.rows), int(response.columns)
 
     @property
     def source_file(self) -> str:
+        """ The source file of the image on the host machine.
         """
-         Provides source file associated with the DCMPix
-         Returns:
-            str: source file for DCMPix
-        """
-        response_pix_source_file = self.osirix_service.DCMPixSourceFile(self.osirixrpc_uid)
-
-        self.response_processor.response_check(response_pix_source_file)
-        self._source_file = response_pix_source_file.source_file
-
-        return self._source_file
+        response = self.osirix_service_stub.DCMPixSourceFile(self.pb2_object)
+        self.response_check(response)
+        return response.source_file
 
     @property
-    def image(self) -> ndarray:
-        """
-          Provides underlying image associated with the DCMPix
-          Returns:
-            ndarray: image data for DCMPix
-        """
-        response_pix_image = self.osirix_service.DCMPixImage(self.osirixrpc_uid)
+    def image(self) -> NDArray:
+        """ The image data as a Numpy array.
 
-        self.response_processor.response_check(response_pix_image)
-
-        if response_pix_image.is_argb:
-            image_array = np.array(response_pix_image.image_data_argb).reshape(response_pix_image.rows, response_pix_image.columns, 4)
-            return image_array
+        If the image is RGB format, then the shape will be (rows, columns, 4), whereas if the image
+        is greyscale format it will be shape (rows, columns) (see `is_rgb` property).
+        """
+        response = self.osirix_service_stub.DCMPixImage(self.pb2_object)
+        self.response_check(response)
+        if response.is_argb:
+            image_array = np.array(response.image_data_argb).reshape((response.rows,
+                                                                      response.columns,
+                                                                      4))
         else:
-            image_array = np.array(response_pix_image.image_data_float).reshape(response_pix_image.rows, response_pix_image.columns)
-            return image_array
+            image_array = np.array(response.image_data_float).reshape((response.rows,
+                                                                       response.columns))
 
-        return self._image
+        return image_array
 
-    # @image.setter - setter only allows one value so switch to using a method
-    def set_image(self, image: ndarray, is_argb: bool) -> None:
+    def set_image(self, image: NDArray, is_argb: bool) -> None:
+        """ Set the pixel data of an image.
+
+        Note that care must be taken the shape of the input data matches that of the current image.
+
+        Args:
+             image (NDArray): The pixel data with shape (rows, columns, 4) if `is_argb` is `True`,
+                (rows, columns) otherwise.
+             is_argb (bool): Whether the data is in ARGB format or not.
+        """
         if is_argb:
-            request = dcmpix_pb2.DCMPixSetImageRequest(pix=self.osirixrpc_uid, image_data_argb=image)
+            request = dcmpix_pb2.DCMPixSetImageRequest(pix=self.pb2_object,
+                                                       image_data_argb=image.ravel().tolist())
 
         else:
-            request = dcmpix_pb2.DCMPixSetImageRequest(pix=self.osirixrpc_uid, image_data_float=image)
+            request = dcmpix_pb2.DCMPixSetImageRequest(pix=self.pb2_object,
+                                                       image_data_float=image.ravel().tolist())
+        response = self.osirix_service_stub.DCMPixSetImage(request)
+        self.response_check(response)
 
-        response = self.osirix_service.DCMPixSetImage(request)
-        print(response)
-        self.response_processor.response_check(response)
+    def compute_roi(self, roi: osirix.roi.ROI) -> Dict:
+        """ Compute some statistics from an ROI contained within the image.
 
+        Note that these are calculated internally by OsiriX.  For more refinement on how statistics
+        are calculated we suggest that it is better to create your own tools (based on the
+        `scipy.stats` library for example).
 
-    def compute_roi(self, roi : ROI) -> Dict[str, float]:
+        Args:
+            roi (osirix.roi.ROI): The region of interest from which to compute the statistics.
+
+        Returns:
+            The following statistics:
+                - "mean"
+                - "total"
+                - "std_dev"
+                - "min"
+                - "max"
+                - "skewness"
+                - "kurtosis"
         """
-          Makes a gRPC request to compute ROIs of DCMPix and retrieves the statistics for the ROI in a dictionary.
-
-          Examples:
-
-           roi_dict = {
-                'mean': ...,
-                'total': ...,
-                'std_dev': ...,
-                'min': ...,
-                'max': ...,
-                'skewness': ...,
-                'kurtosis': ...
-            }
-
-          Args:
-            ROI: osirixrpc_uid of a ROI
-
-          Returns:
-            Dict containing the statistics of the ROI
-
-        """
-        request = dcmpix_pb2.DCMPixComputeROIRequest(pix=self.osirixrpc_uid, roi=roi.osirixrpc_uid)
-        response = self.osirix_service.DCMPixComputeROI(request)
-
-        self.response_processor.response_check(response)
-
+        request = dcmpix_pb2.DCMPixComputeROIRequest(pix=self.pb2_object, roi=roi.pb2_object)
+        response = self.osirix_service_stub.DCMPixComputeROI(request)
+        self.response_check(response)
         roi_dict = {
             'mean': response.mean,
             'total': response.total,
@@ -198,113 +158,94 @@ class DCMPix(object):
             'skewness': response.skewness,
             'kurtosis': response.kurtosis
         }
-
         return roi_dict
 
-    def convert_to_bw(self) -> None:
+    def convert_to_bw(self, mode: int = 3) -> None:
+        """ Convert the image to greyscale.
+
+        Args:
+            mode (int): 0 = use red channel, 1 = use green channel, 2 = use blue channel, and
+                3 = merge.
         """
-          Makes a gRPC request to convert DCMPix to black-white
-          Returns:
-            None
+        if mode not in [0, 1, 2, 3]:
+            raise ValueError('Mode must 0, 1, 2, or 3')
+        request = dcmpix_pb2.DCMPixConvertToBWRequest(pix=self.pb2_object,
+                                                      bw_channel=mode)
+        response = self.osirix_service_stub.DCMPixConvertToBW(request)
+        self.response_check(response)
+
+    def convert_to_rgb(self, mode: int = 3) -> None:
+        """ Convert the image to RGB.
+
+        Args:
+            mode (int): 0 = create red channel, 1 = create green channel, 2 = create blue channel,
+                and 3 = create all channels.
         """
-        request = dcmpix_pb2.DCMPixConvertToBWRequest(pix = self.osirixrpc_uid, bw_channel = 3)
-        response = self.osirix_service.DCMPixConvertToBW(request)
-        self.response_processor.response_check(response)
+        request = dcmpix_pb2.DCMPixConvertToRGBRequest(pix=self.pb2_object, rgb_channel=mode)
+        response = self.osirix_service_stub.DCMPixConvertToRGB(request)
+        self.response_check(response)
 
-        if (response.status.status == 1):
-            pass
-        elif (response.status.status == 0):
-            # 0 response code is the current overall failure code so there could be many reasons for failures.
-            # In this case, if the image is already rgb/bw, it would be 0
-            print("Image is already RGB or BW")
-        else:
-            raise GrpcException("No response")
+    def get_map_from_roi(self, roi: osirix.roi.ROI) -> NDArray:
+        """ Create a mask from an input ROI based on the image.
 
-    def convert_to_rgb(self) -> None:
+        Args:
+            roi (osirix.roi.ROI): The ROI from which to extract the mask.
+
+        Returns:
+            The mask as a 2-dimensional binary array with shape (rows, columns).
         """
-          Makes a gRPC request to convert DCMPix to red-green-blue
-          Returns:
-            None
+        request = dcmpix_pb2.DCMPixGetMapFromROIRequest(pix=self.pb2_object,
+                                                        roi=roi.pb2_object)
+        response = self.osirix_service_stub.DCMPixGetMapFromROI(request)
+        self.response_check(response)
+        mask = np.array(response.map).reshape(response.rows, response.columns)
+        return mask
+
+    def get_roi_values(self, roi: osirix.roi.ROI) -> Tuple[NDArray, NDArray, NDArray]:
+        """ Extract the pixel values within a region of interest.
+
+        Args:
+            roi (osirix.roi.ROI): The ROI from which to extract values.
+
+        Returns:
+            The row indices of the extracted values.
+            The columns indices of the extracted values.
+            The extracted pixel values.
         """
-        request = dcmpix_pb2.DCMPixConvertToRGBRequest(pix = self.osirixrpc_uid, rgb_channel = 3)
-        response = self.osirix_service.DCMPixConvertToRGB(request)
-        self.response_processor.response_check(response)
-
-        if (response.status.status == 1):
-            pass
-        elif (response.status.status == 0):
-            # 0 response code is the current overall failure code so there could be many reasons for failures.
-            # In this case, if the image is already rgb/bw, it would be 0
-            print("Image is already RGB or BW")
-        else:
-            raise GrpcException("No response")
-
-    def get_map_from_roi(self, roi : ROI) -> ndarray:
-        """
-          Makes a gRPC request to retrieve the ROI map for the DCMPix
-          Args:
-            ROI: osirixrpc_uid of a ROI
-
-          Returns:
-            ndarray: ROI map
-        """
-        request = dcmpix_pb2.DCMPixGetMapFromROIRequest(pix=self.osirixrpc_uid, roi=roi.osirixrpc_uid)
-        response = self.osirix_service.DCMPixGetMapFromROI(request)
-        self.response_processor.response_check(response)
-
-        roi_map_array = np.array(response.map).reshape(response.rows, response.columns)
-
-        return roi_map_array
-
-    def get_roi_values(self, roi : ROI) -> Tuple[ndarray]:
-        """
-          Makes a gRPC request to get the ROI values for the DCMPix
-
-          Args:
-            ROI: osirixrpc_uid of a ROI
-
-          Returns:
-            Tuple containing the ROI values (rows, columns, values) in ndarray
-        """
-        request = dcmpix_pb2.DCMPixROIValuesRequest(pix=self.osirixrpc_uid, roi=roi.osirixrpc_uid)
-        response = self.osirix_service.DCMPixROIValues(request)
-        self.response_processor.response_check(response)
+        request = dcmpix_pb2.DCMPixROIValuesRequest(pix=self.pb2_object, roi=roi.pb2_object)
+        response = self.osirix_service_stub.DCMPixROIValues(request)
+        self.response_check(response)
         rows = np.array(response.row_indices)
         columns = np.array(response.column_indices)
         values = np.array(response.values)
-        roi_values = (rows, columns, values)
-        return roi_values
-    #TODO
-    # Don't see their RPC in osirix.proto but can see response in dcmpix.prot
-    def image_obj(self) -> DicomImage:
-        """
-          Makes a gRPC request to to retrieve the image obj for the DCMPix
-          Returns:
-              DicomImage: image for DCMPix
-        """
-        response_pix_dicom_image = self.osirix_service.DCMPixDicomImage(self.osirixrpc_uid)
-        return DicomImage(response_pix_dicom_image, self.osirix_service)
+        return rows, columns, values
 
-    #TODO
-    # Don't see their RPC in osirix.proto but can see response in dcmpix.prot
-    def series_obj(self) -> DicomSeries:
-        """
-          Makes a gRPC request to to retrieve the series obj for the DCMPix
-          Returns:
-              DicomSeries: series for DCMPix
-        """
-        response_pix_dicom_series = self.osirix_service.DCMPixDicomSeries(self.osirixrpc_uid)
-        return DicomSeries(response_pix_dicom_series, self.osirix_service)
+    def image_obj(self) -> osirix.dicom.DicomImage:
+        """ The `DicomImage` instance from which the image was derived.
 
-    #TODO
-    # Don't see their RPC in osirix.proto but can see response in dcmpix.prot
-    def study_object(self) -> DicomStudy:
+        Returns:
+            The image instance.
         """
-          Makes a gRPC request to to retrieve the study obj for the DCMPix
-          Returns:
-              DicomStudy: study for DCMPix
+        response = self.osirix_service_stub.DCMPixDicomImage(self.pb2_object)
+        self.response_check(response)
+        return osirix.dicom.DicomImage(self.osirix_service, response.dicom_image)
+
+    def series_obj(self) -> osirix.dicom.DicomSeries:
+        """ The `DicomSeries` instance from which the image was derived.
+
+        Returns:
+            The series instance.
         """
-        response_pix_dicom_study = self.osirix_service.DCMPixDicomStudy(self.osirixrpc_uid)
-        return DicomStudy(response_pix_dicom_study, self.osirix_service)
+        response = self.osirix_service_stub.DCMPixDicomSeries(self.pb2_object)
+        self.response_check(response)
+        return osirix.dicom.DicomSeries(self.osirix_service, response.dicom_series)
 
+    def study_object(self) -> osirix.dicom.DicomStudy:
+        """ The `DicomStudy` instance from which the image was derived.
 
+        Returns:
+            The study instance.
+        """
+        response = self.osirix_service_stub.DCMPixDicomStudy(self.pb2_object)
+        self.response_check(response)
+        return osirix.dicom.DicomStudy(self.osirix_service, response.dicom_study)

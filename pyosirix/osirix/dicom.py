@@ -9,6 +9,8 @@ Example usage:
     studies, series = database.database_selection()  # Get the current selection by the user
     for study in studies:
         print(f"This is a DicomStudy instance with name {obj.study_name}")
+    for serie in series:
+        print(f"This is a DicomSeries instance with description {obj.series_description}")
     ```
 """
 

@@ -2,9 +2,18 @@
 
 At present this includes operations:
 
- 1. Copy files into the database.
- 2. Interrogating the user selection of Dicom objects.
+ - Copy files into the database.
+ - Interrogating the user selection of Dicom objects.
 
+ Example usage:
+     ```python
+     import os
+     import osirix
+
+     database = osirix.current_browser()  # Get the current browser instance
+     images_path = "/path/to/dicoms"  # Define the location of your images
+     database.copy_files_into_database(images_path)  # Load the images (on separate process).
+     ```
 """
 
 from typing import Tuple, List
@@ -41,9 +50,8 @@ class BrowserController(OsirixBase):
         """ Queries the user selection of Dicom images.
 
         Returns:
-            The
-            Tuple contains all the Dicom series in the database
-
+            The selected Dicom study instances
+            The selected Dicom series instances
         """
         response = self.osirix_service_stub.BrowserControllerDatabaseSelection(self.pb2_object)
         self.response_check(response)
