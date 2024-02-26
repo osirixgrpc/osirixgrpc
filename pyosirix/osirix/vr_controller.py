@@ -1,136 +1,85 @@
+""" Functionality for the 3D viewer.
+
+"""
+
 from __future__ import annotations
-from typing import Tuple, Dict
-import sys
+from typing import Tuple
 
-import numpy
-
-import osirixgrpc.viewercontroller_pb2 as viewercontroller_pb2
 import osirixgrpc.vrcontroller_pb2 as vrcontroller_pb2
-from osirix.viewer_controller import ViewerController
-from osirix import viewer_controller
 
-class VRController(object):
-    '''
-    Class representing the properties and methods to communicate with the Osirix service through
-    gRPC for a VRController
-    '''
+import osirix
 
-    def __init__(self,
-                 osirixrpc_uid : str,
-                 osirix_service):
-        self.osirixrpc_uid = osirixrpc_uid
-        self.osirix_service = osirix_service
-        self.response_processor = ResponseProcessor()
 
+class VRController(osirix.base.OsirixBase):
+    """ Represents one of the displayed volume render windows.
+
+    """
     @property
     def rendering_mode(self) -> str:
+        """ The rendering mode: "VR" for volume render, "MIP" for maximum intensity projection.
         """
-          Process gRPC request to retrieve the rendering mode for VRController
-
-          Returns:
-            str : rendering mode
-        """
-        response_vr_rendering_mode = self.osirix_service.VRControllerRenderingMode(self.osirixrpc_uid)
-        self.response_processor.response_check(response_vr_rendering_mode)
-        self._rendering_mode = response_vr_rendering_mode.rendering_mode
-
-        return self._rendering_mode
+        response = self.osirix_service_stub.VRControllerRenderingMode(self.pb2_object)
+        self.response_check(response)
+        return response.rendering_mode
 
     @rendering_mode.setter
-    def rendering_mode(self, rendering_mode : str) -> None:
+    def rendering_mode(self, rendering_mode: str) -> None:
+        """ The rendering mode: "VR" for volume render, "MIP" for maximum intensity projection.
         """
-          Process gRPC request to set the rendering mode for the VRController
-
-          Args:
-            str: rendering mode
-
-          Returns:
-            None
-        """
-        request = vrcontroller_pb2.VRControllerSetRenderingModeRequest(vr_controller=self.osirixrpc_uid, rendering_mode=rendering_mode)
-        response = self.osirix_service.VRControllerSetRenderingMode(request)
-        self.response_processor.response_check(response)
-
+        if not rendering_mode == "VR" or rendering_mode == "MIP":
+            raise ValueError("Bad rendering_mode. Must be 'VR' or 'MIP'")
+        request = vrcontroller_pb2.VRControllerSetRenderingModeRequest(
+            vr_controller=self.pb2_object, rendering_mode=rendering_mode)
+        response = self.osirix_service_stub.VRControllerSetRenderingMode(request)
+        self.response_check(response)
 
     @property
     def style(self) -> str:
+        """ The style of the volume render window.
         """
-          Process gRPC request to retrieve the style for the VRController
-
-          Returns:
-            str : style
-        """
-        response_vr_style = self.osirix_service.VRControllerStyle(self.osirixrpc_uid)
-        self.response_processor.response_check(response_vr_style)
-        self._style = response_vr_style.style
-
-        return self._style
+        response = self.osirix_service_stub.VRControllerStyle(self.pb2_object)
+        self.response_check(response)
+        return response.style
 
     @property
     def title(self) -> str:
+        """ The title of the volume render window.
         """
-          Process gRPC request to retrieve the title for the VRController
-
-          Returns:
-            str : title
-        """
-        response_vr_title = self.osirix_service.VRControllerTitle(self.osirixrpc_uid)
-        self.response_processor.response_check(response_vr_title)
-        self._title = response_vr_title.title
-
-        return self._title
+        response = self.osirix_service_stub.VRControllerTitle(self.pb2_object)
+        self.response_check(response)
+        return response.title
 
     @property
     def wlww(self) -> Tuple[float, float]:
+        """ The window level and window width of the viewer.
         """
-          Process gRPC request to retrive the wlww for the VRController
-
-          Returns:
-            Tuple containing wl and ww in float
-        """
-        response_vr_wlww = self.osirix_service.VRControllerWLWW(self.osirixrpc_uid)
-        self.response_processor.response_check(response_vr_wlww)
-
-        return (response_vr_wlww.wl, response_vr_wlww.ww)
+        response = self.osirix_service_stub.VRControllerWLWW(self.pb2_object)
+        self.response_check(response)
+        return response.wl, response.ww
 
     @wlww.setter
-    def wlww(self, wlww : Tuple[float, float]) -> None:
+    def wlww(self, wlww: Tuple[float, float]) -> None:
+        # TODO: Do I need to set a tolerance on the WW?
+        """The window level and window width of the viewer.
         """
-          Process gRPC request to set the wlww for the VRController
+        request = vrcontroller_pb2.VRControllerSetWLWWRequest(vr_controller=self.pb2_object,
+                                                              wl=wlww[0],
+                                                              ww=wlww[1])
+        response = self.osirix_service_stub.VRControllerSetWLWW(request)
+        self.response_check(response)
 
-          Args:
-            Tuple[float, float]: wlww
-
-          Returns:
-            None
+    def blending_controller(self) -> osirix.viewer_controller.ViewerController:
+        """ The 2D ViewerController instance currently being blended (fused).
         """
-        wl, ww = wlww
-        request = vrcontroller_pb2.VRControllerSetWLWWRequest(vr_controller=self.osirixrpc_uid, wl=wl, ww=ww)
-        response = self.osirix_service.VRControllerSetWLWW(request)
-        self.response_processor.response_check(response)
+        response = self.osirix_service_stub.VRControllerBlendingController(self.pb2_object)
+        self.response_check(response)
+        return osirix.viewer_controller.ViewerController(self.osirix_service,
+                                                         response.viewer_controller)
 
-    def blending_controller(self) -> ViewerController:
+    def viewer_2d(self) -> osirix.viewer_controller.ViewerController:
+        """ The 2D ViewerController instance from which the 3D viewer was started.
         """
-          Process gRPC request to retrieve the blending controller for the VRController
-
-          Returns:
-            ViewerController
-        """
-        response_blending_controller = self.osirix_service.VRControllerBlendingController(self.osirixrpc_uid)
-
-        blending_controller_obj = ViewerController(response_blending_controller.viewer_controller, self.osirix_service)
-
-        return blending_controller_obj
-
-    def viewer_2d(self) -> ViewerController:
-        """
-          Process gRPC request to retrieve the 2D viewer for the VRController
-
-          Returns:
-            ViewerController
-        """
-        response_viewer_2d = self.osirix_service.VRControllerViewer2D(self.osirixrpc_uid)
-        viewer_2d = response_viewer_2d.viewer_controller
-        viewer_2d_obj = ViewerController(viewer_2d, self.osirix_service)
-
-        return viewer_2d_obj
+        response = self.osirix_service_stub.VRControllerViewer2D(self.pb2_object)
+        self.response_check(response)
+        return osirix.viewer_controller.ViewerController(self.osirix_service,
+                                                         response.viewer_controller)
