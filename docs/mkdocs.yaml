@@ -59,9 +59,13 @@ nav:
   - pyOsiriX:
     - Getting Started: pyosirix/README.md
     - API:
-      - osirix: pyosirix/api/osirix.md
-      - dicom: pyosirix/api/dicom.md
       - browser_controller: pyosirix/api/browser_controller.md
+      - dcm_pix: pyosirix/api/dcm_pix.md
+      - dicom: pyosirix/api/dicom.md
+      - osirix: pyosirix/api/osirix.md
+      - roi: pyosirix/api/roi.md
+      - viewer_controller: pyosirix/api/viewer_controller.md
+      - vr_controller: pyosirix/api/vr_controller.md
     - Contributing:
       - Home: pyosirix/contributing/CONTRIBUTING.md
   - API:

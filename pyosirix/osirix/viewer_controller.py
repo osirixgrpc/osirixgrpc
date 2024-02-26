@@ -1,530 +1,271 @@
-from __future__ import annotations
-from typing import Tuple, Dict
+""" Functionality for the 2D viewer.
 
-from numpy import ndarray
+"""
+
+from __future__ import annotations
+from typing import Tuple, List
 
 import osirixgrpc.viewercontroller_pb2 as viewercontroller_pb2
-import osirixgrpc.vrcontroller_pb2 as vrcontroller_pb2
-import osirixgrpc.dcmpix_pb2 as dcmpix_pb2
-import osirixgrpc.roi_pb2 as roi_pb2
-from osirix.dicom import DicomSeries, DicomStudy, DicomImage
-from osirix.dcm_pix import DCMPix
-from osirix.roi import ROI
+
+import osirix
 
 
-class ViewerController(object):
+class ViewerController(osirix.base.OsirixBase):
+    """ Represents one of the displayed volume render windows.
+
     """
-    Class representing the properties and methods to communicate with the Osirix service through
-    gRPC for a ViewerController
-    """
-
-    def __init__(self, osirixrpc_uid, osirix_service):
-        self.osirixrpc_uid = osirixrpc_uid
-        self.osirix_service = osirix_service
-        self.response_processor = ResponseProcessor()
-
     @property
     def idx(self) -> int:
+        """ The slice index currently being displayed to the viewer.
         """
-          Makes a gRPC request to retrieve the idx for the ViewerController
-
-          Returns:
-            int : idx
-        """
-        response_viewer_idx = self.osirix_service.ViewerControllerIdx(self.osirixrpc_uid)
-        self.response_processor.response_check(response_viewer_idx)
-        self._idx = response_viewer_idx.idx
-
-        return self._idx
+        response = self.osirix_service_stub.ViewerControllerIdx(self.pb2_object)
+        self.response_check(response)
+        return int(response.idx)
 
     @idx.setter
-    def idx(self, idx=int) -> None:
+    def idx(self, idx: int) -> None:
+        # TODO: Do I need to ensure any limits on this?
+        """ The slice index currently being displayed to the viewer.
         """
-          Makes a gRPC request to set the idx for the ViewerController
-
-          Args:
-            int : idx
-
-          Returns:
-            None
-        """
-        request = viewercontroller_pb2.ViewerControllerSetIdxRequest(viewer_controller=self.osirixrpc_uid, idx=idx)
-        response = self.osirix_service.ViewerControllerSetIdx(request)
-        self.response_processor.response_check(response)
+        request = viewercontroller_pb2.ViewerControllerSetIdxRequest(
+            viewer_controller=self.pb2_object, idx=idx)
+        response = self.osirix_service_stub.ViewerControllerSetIdx(request)
+        self.response_check(response)
 
     @property
     def modality(self) -> str:
+        """ The modality of the displayed data.
         """
-          Makes a gRPC request to retrieve the modality for the ViewerController
-
-          Returns:
-            str : modality
-        """
-        response_viewer_modality = self.osirix_service.ViewerControllerModality(self.osirixrpc_uid)
-
-        self.response_processor.response_check(response_viewer_modality)
-
-        self._modality = response_viewer_modality.modality
-
-        return self._modality
+        response = self.osirix_service_stub.ViewerControllerModality(self.pb2_object)
+        self.response_check(response)
+        return response.modality
 
     @property
     def movie_idx(self) -> int:
+        """ The frame currently being displayed by the viewer.
         """
-          Makes a gRPC request to retrieve the movie idx for the ViewerController
-
-          Returns:
-            int : movie_idx
-        """
-        response_viewer_movie_idx = self.osirix_service.ViewerControllerMovieIdx(self.osirixrpc_uid)
-        self.response_processor.response_check(response_viewer_movie_idx)
-        return response_viewer_movie_idx.movie_idx
+        response = self.osirix_service_stub.ViewerControllerMovieIdx(self.pb2_object)
+        self.response_check(response)
+        return response.movie_idx
 
     @movie_idx.setter
-    def movie_idx(self, movie_idx=int) -> None:
-        """ Makes a gRPC request to set the movie idx for the ViewerController.
-
-          Args:
-            movie_idx (int): The frame to set the 2D viewer to.
+    def movie_idx(self, movie_idx: int) -> None:
+        """ The frame currently being displayed by the viewer.
         """
+        if movie_idx < 0:
+            raise ValueError("movie_idx must be >= 0.")
         request = viewercontroller_pb2.ViewerControllerSetMovieIdxRequest(
-            viewer_controller=self.osirixrpc_uid, movie_idx=movie_idx)
-        response = self.osirix_service.ViewerControllerSetMovieIdx(request)
-        self.response_processor.response_check(response)
+            viewer_controller=self.pb2_object, movie_idx=movie_idx)
+        response = self.osirix_service_stub.ViewerControllerSetMovieIdx(request)
+        self.response_check(response)
 
     @property
     def title(self) -> str:
-        """ Makes a gRPC request to retrieve the title for the ViewerController
-
-          Returns:
-            str : title
+        """ The title of the 2D viewing window.
         """
-        response_viewer_title = self.osirix_service.ViewerControllerTitle(self.osirixrpc_uid)
-        self.response_processor.response_check(response_viewer_title)
-        self._title = response_viewer_title.title
-
-        return self._title
+        response = self.osirix_service_stub.ViewerControllerTitle(self.pb2_object)
+        self.response_check(response)
+        return response.title
 
     @property
     def wlww(self) -> Tuple[float, float]:
+        """The window level and window width of the viewer.
         """
-          Makes a gRPC request to retrieve the wlww for the ViewerController
-
-          Returns:
-            A Tuple containing wl and ww in float
-        """
-        response_viewer_wlww = self.osirix_service.ViewerControllerWLWW(self.osirixrpc_uid)
-        self.response_processor.response_check(response_viewer_wlww)
-        self._ww = response_viewer_wlww.ww
-        self._wl = response_viewer_wlww.wl
-        return (self._wl, self._ww)
+        response = self.osirix_service_stub.ViewerControllerWLWW(self.pb2_object)
+        self.response_check(response)
+        return response.wl, response.ww
 
     @wlww.setter
-    def wlww(self, wlww : Tuple[float, float]) -> None:
+    def wlww(self, wlww: Tuple[float, float]) -> None:
+        """The window level and window width of the viewer.
         """
-          Makes a gRPC request to set the wlww for the ViewerController
+        request = viewercontroller_pb2.ViewerControllerSetWLWWRequest(vr_controller=self.pb2_object,
+                                                                      wl=wlww[0],
+                                                                      ww=wlww[1])
+        response = self.osirix_service_stub.ViewerControllerSetWLWW(request)
+        self.response_check(response)
 
-          Args:
-            Tuple[float, float] : wlww
+    def pix_list(self, movie_idx: int = None) -> List[osirix.dcm_pix.DCMPix]:
+        """ Access the list of DCMPix objects contained within the 2D viewer.
 
-          Returns:
-            None
+        Args:
+            movie_idx (int): The frame from which to extract the DCMPix instances. If `None`, then
+                use the currently displayed movie_idx. Default is `None`.
+
+        Returns:
+            The list of osirix.dcm_pix.DCMPix instances requested for a particular frame.
         """
-        wl, ww = wlww
-        request = viewercontroller_pb2.ViewerControllerSetWLWWRequest(viewer_controller=self.osirixrpc_uid, wl=wl, ww=ww)
-        response = self.osirix_service.ViewerControllerSetWLWW(request)
-        self.response_processor.response_check(response)
+        if movie_idx is None:
+            movie_idx = self.movie_idx
+        response = self.osirix_service_stub.ViewerControllerPixListRequest(
+            viewer_controller=self.pb2_object, movie_idx=movie_idx)
+        self.response_check(response)
+        return [osirix.dcm_pix.DCMPix(self.osirix_service, pix) for pix in response.pix]
 
-    def process_viewer_pix_list(self, response) -> Tuple[DCMPix, ...]:
+    def roi_list(self, movie_idx: int = None) -> List[List[osirix.roi.ROI]]:
+        """ Access a list of lists of ROI objects contained within the 2D viewer.
+
+        The length of the outer list is the same as the number of slices in the viewer. Note
+        that some inner lists will be empty if no ROIs are drawn on that slice.
+
+        Args:
+            movie_idx (int): The frame from which to extract the ROI instances. If `None`, then
+                use the currently displayed movie_idx. Default is `None`.
+
+        Returns:
+            A list of lists of osirix.roi.ROI instances requested for a particular frame.
         """
-          Process gRPC response to retrieve the pix list for the ViewerController
+        if movie_idx is None:
+            movie_idx = self.movie_idx
 
-          Args:
-            response : response from ViewerControllerPixListResponse
+        # Get the response
+        request = viewercontroller_pb2.ViewerControllerROIListRequest(
+            viewer_controller=self.pb2_object, movie_idx=movie_idx)
+        response = self.osirix_service_stub.ViewerControllerROIList(request)
+        self.response_check(response)
 
-          Returns:
-            A Tuple containing DCMPix
-        """
-        pix_tuple: Tuple[DCMPix, ...] = ()
-        for pix in response.pix:
-            dcm_pix = DCMPix(pix, self.osirix_service)
-            pix_tuple = pix_tuple + (dcm_pix,)
-
-        return pix_tuple
-
-    def process_viewer_roi_list(self, response) -> Tuple[ROI, ...]:
-        """
-          Process gRPC response to retrieve the roi list for the ViewerController
-
-          Args:
-            response : response from ViewerControllerROIListResponse
-
-          Returns:
-            A Tuple containing ROIs
-        """
-        roi_tuple: Tuple[ROI, ...] = ()
+        # Loop through all ROI slices and append a list of inner ROIs.
+        rois = []
         for roi_slice in response.roi_slices:
-            roi = ROI(roi_slice, self.osirix_service)
-            roi_tuple = roi_tuple + (roi,)
-        return roi_tuple
+            rois_ = []
+            for roi in roi_slice.rois:
+                rois_.append(osirix.roi.ROI(self.osirix_service, roi))
+            rois.append(rois_)
+        return rois
 
-    def process_viewer_rois(self, response) -> Tuple[ROI, ...]:
+    def rois_with_name(self, name: str, movie_idx: int = None, in_4d: bool = False)\
+            -> List[osirix.roi.ROI]:
+        """ Return a list of ROIs with a given name.
+        Args:
+            name (str): The name of ROIs to look for.
+            movie_idx (int): The frame from which to extract the ROI instances. If `None`, then
+                use the currently displayed movie_idx. Default is `None`.
+            in_4d (bool): Whether to look through all frames. Default is False.
+
+        Returns:
+            A list of ROIs with the given name.
         """
-          Process gRPC response to retrieve the ROIs for the ViewerController
+        if movie_idx is None:
+            movie_idx = self.movie_idx
 
-          Args:
-            response : response from ViewerControllerROIsWithNameResponse/ViewerControllerSelectedROIsResponse
+        request = viewercontroller_pb2.ViewerControllerROIsWithNameRequest(
+            viewer_controller=self.pb2_object, name=name, movie_idx=movie_idx, in_4d=in_4d)
+        response = self.osirix_service_stub.ViewerControllerROIsWithName(request)
+        self.response_check(response)
 
-          Returns:
-            A Tuple containing DCMPix
-        """
-        roi_tuple: Tuple[ROI, ...] = ()
+        rois = []
         for roi in response.rois:
-            roi = ROI(roi, self.osirix_service)
-            roi_tuple = roi_tuple + (roi,)
-        return roi_tuple
+            rois.append(osirix.roi.ROI(self.osirix_service, roi))
+        return rois
 
-    def process_vr_controllers(self, response) -> Tuple[VRController, ...]:
+    def selected_rois(self) -> List[osirix.roi.ROI]:
+        """ Return a list of the user-selected ROIs
+
+        Returns:
+            A list of selected ROIs.
         """
-          Process gRPC response to retrieve the VR controllers for the ViewerController
+        response = self.osirix_service_stub.ViewerControllerROIsWithName(self.pb2_object)
+        self.response_check(response)
+        rois = []
+        for roi in response.rois:
+            rois.append(osirix.roi.ROI(self.osirix_service, roi))
+        return rois
 
-          Args:
-            response : response from ViewerControllerVRControllersResponse
-
-          Returns:
-            A Tuple containing VR Controllers`
+    def vr_controllers(self) -> List[osirix.vr_controller.VRController]:
+        """ Return the list of currently displayed 3D viewers associates with this 2D window.
         """
-        vr_tuple: Tuple[VRController, ...] = ()
+        response = self.osirix_service_stub.ViewerControllerVRControllers(self.pb2_object)
+        self.response_check(response)
+        vrs = []
         for vr_controller in response.vr_controllers:
-            vr_controller_obj = VRController(vr_controller, self.osirix_service)
-            vr_tuple = vr_tuple + (vr_controller_obj,)
-        return vr_tuple
+            vrs.append(osirix.vr_controller.VRController(self.osirix_service, vr_controller))
+        return vrs
 
-    # # returns VC
     def blending_controller(self) -> ViewerController:
-        """
-          Process gRPC response to retrieve the blending controller for the ViewerController
+        # TODO: What happens if there isn't one. Does it return None?
+        """ Return the viewer controller instance that is being fused with this one.
 
-          Returns:
-            ViewerController
+        Returns:
+            The ViewerController instance.
         """
-
-        # Multiple VR Controllers case?
-        vr_controller = self.osirix_service.ViewerControllerVRControllers(self.osirixrpc_uid).vr_controllers[0]
-        response = self.osirix_service.VRControllerBlendingController(vr_controller)
-        self.response_processor.response_check(response)
-        return ViewerController(response.viewer_controller, self.osirix_service)
+        response = self.osirix_service_stub.ViewerControllerVRControllers(self.pb2_object)
+        self.response_check(response)
+        return ViewerController(self.osirix_service, response.viewer_controller)
 
     def close_viewer(self) -> None:
+        """ Close the viewer
         """
-          Process gRPC request to close the ViewerController
+        response = self.osirix_service_stub.ViewerControllerCloseViewer(self.pb2_object)
+        self.response_check(response)
 
-          Returns:
-            None
+    def copy_viewer_window(self, in_4d: bool = False) -> None:
+        # TODO: Is it just the first frame if in_4d is False?
+        # TODO: Currently this does not return a reference to the new window.  This would be nice!
+        """ Create a copy of this 2D viewer.
+
+        This can be useful for image processing when you want to keep a copy of the original and
+        a processed version.
+
+        Args:
+            in_4d (bool): Whether to copy the entire 4D dataset. Default is False.
         """
-        response = self.osirix_service.ViewerControllerCloseViewer(self.osirixrpc_uid)
-        self.response_processor.response_check(response)
+        request = viewercontroller_pb2.ViewerControllerCopyViewerWindowRequest(
+            viewer_controller=self.pb2_object, in_4d=in_4d)
+        response = self.osirix_service_stub.ViewerControllerCopyViewerWindow(request)
+        self.response_check(response)
 
-    # returns VC
-    def copy_viewer_window(self, in_4d: bool = False) -> ViewerController:
+    def cur_dcm(self) -> osirix.dcm_pix.DCMPix:
+        """ Return the currently displayed DCMPix instance.
+
+        Returns:
+            the currently displayed DCMPix instance.
         """
-          Process gRPC request to copy the viewer window for the ViewerController
-
-          Args:
-            bool : in_4d
-
-          Returns:
-            ViewerController
-        """
-        request = viewercontroller_pb2.ViewerControllerCopyViewerWindowRequest(viewer_controller=self.osirixrpc_uid, in_4d=in_4d)
-        response = self.osirix_service.ViewerControllerCopyViewerWindow(request)
-        self.response_processor.response_check(response)
-
-        return ViewerController(self.osirixrpc_uid,self.osirix_service)
-
-    def cur_dcm(self) -> DCMPix:
-        """
-          Process gRPC request to retrieve current dicom pix for the ViewerController
-
-          Returns:
-            DCMPix: current dicom picture for ViewerController
-        """
-        pix = self.osirix_service.ViewerControllerCurDCM(self.osirixrpc_uid).pix
-        dcm_pix = DCMPix(pix, self.osirix_service)
-        return dcm_pix
+        response = self.osirix_service_stub.ViewerControllerCurDCM(self.pb2_object)
+        self.response_check(response)
+        return osirix.dcm_pix.DCMPix(self.osirix_service, response.pix)
 
     def is_data_volumic(self, in_4d: bool = False) -> bool:
-        """
-          Process gRPC request to retrieve the is_data_volumic flag for the ViewerController
+        """ Does the underlying data have sufficient geometric properties for volume rendering.
 
-          Args:
-            bool : in_4d
+        Args:
+            in_4d (bool): Determine for all frames.
 
-          Returns:
-            bool : whether data is volumic
+        Returns:
+            Is the data volumic?
         """
-        request = viewercontroller_pb2.ViewerControllerIsDataVolumicRequest(viewer_controller=self.osirixrpc_uid, in_4d=in_4d)
-        response = self.osirix_service.ViewerControllerIsDataVolumic(request)
-        self.response_processor.response_check(response)
-        return response.in_4d
+        request = viewercontroller_pb2.ViewerControllerIsDataVolumicRequest(
+            viewer_controller=self.pb2_object, in_4d=in_4d)
+        response = self.osirix_service_stub.ViewerControllerIsDataVolumic(request)
+        self.response_check(response)
+        return response.is_volumic
 
     def max_movie_index(self) -> int:
-        """
-          Process gRPC request to retrieve max movie idx for the ViewerController
+        """ The maximum movie index in the viewer.
 
-          Returns:
-            int : max movie inde
+        Note this equals the number of frames minus 1.
+
+        Returns:
+            The maximum frame index.
         """
-        response = self.osirix_service.ViewerControllerMaxMovieIdx(self.osirixrpc_uid)
-        self.response_processor.response_check(response)
+        response = self.osirix_service_stub.ViewerControllerMaxMovieIdx(self.pb2_object)
+        self.response_check(response)
         return response.max_movie_idx
 
     def needs_display_update(self) -> None:
+        """ Tell the viewer it should update its display.
+
+        This is particularly important if you want to see changes to pixel values in real time.
         """
-          Process gRPC requqest to check whether the ViewerController needs display update
+        response = self.osirix_service_stub.ViewerControllerNeedsDisplayUpdate(self.pb2_object)
+        self.response_check(response)
 
-          Returns:
-            None
-        """
-        response = self.osirix_service.ViewerControllerNeedsDisplayUpdate(self.osirixrpc_uid)
-        self.response_processor.response_check(response)
+    def resample_viewer_controller(self, vc: ViewerController):
+        """ Resample this (moving) ViewerController based on another (fixed) ViewerController.
 
-    def pix_list(self, movie_idx: int) -> Tuple[DCMPix, ...]:
-        """
-          Process gRPC response to retrieve the VR controllers for the ViewerController
-
-          Args:
-            response : response from ViewerControllerVRControllersResponse
-
-          Returns:
-            A Tuple containing VR Controllers`
-        """
-        request = viewercontroller_pb2.ViewerControllerPixListRequest(viewer_controller=self.osirixrpc_uid, movie_idx=movie_idx)
-        response = self.osirix_service.ViewerControllerPixList(request)
-        pix_tuple = self.process_viewer_pix_list(response)
-
-        return pix_tuple
-
-    def resample_viewer_controller(self, vc : ViewerController) -> ViewerController:
-        """
-          Process gRPC request to resample the ViewerController based on another fixed ViewerController
-
-          Args:
-            ViewerController : ViewerController to resameple from
-
-          Returns:
-            ViewerController
+        Args:
+            vc (osirix.viewer_controller.ViewerController): The fixed viewer.
         """
         request = viewercontroller_pb2.ViewerControllerResampleViewerControllerRequest(
-                                                            viewer_controller=self.osirixrpc_uid,
-                                                            fixed_viewer_controller=vc.osirixrpc_uid)
-
-        response = self.osirix_service.ViewerControllerResampleViewerController(request)
-        self.response_processor.response_check(response)
-        return ViewerController(self.osirixrpc_uid, self.osirix_service)
-
-    # Check ROISlice and ROI
-    def roi_list(self, movie_idx:int) -> Tuple[ROI, ...]:
-        """
-          Process gRPC request to retrieve the list of ROIs based on movie_idx for the ViewerController
-
-          Args:
-            int: movie_idx
-
-          Returns:
-            A Tuple containing ROIs
-        """
-        request = viewercontroller_pb2.ViewerControllerROIListRequest(viewer_controller=self.osirixrpc_uid,
-                                                                      movie_idx=movie_idx)
-        response = self.osirix_service.ViewerControllerROIList(request)
-        self.response_processor.response_check(response)
-        roi_tuple = self.process_viewer_roi_list(response)
-
-        return roi_tuple
-
-
-    def rois_with_name(self, name: str, movie_idx: int, in_4d: bool = False) -> Tuple[ROI, ...]:
-        """
-          Process gRPC request to retrieve the list of ROIs based on movie_idx for the ViewerController
-
-          Args:
-            str: name
-            int: movie_idx
-            bool : in_4d
-
-          Returns:
-            A Tuple containing ROIs
-        """
-        request = viewercontroller_pb2.ViewerControllerROIsWithNameRequest(viewer_controller=self.osirixrpc_uid,
-                                                                           name=name,
-                                                                           movie_idx=movie_idx,
-                                                                           in_4d=in_4d)
-        response = self.osirix_service.ViewerControllerROIsWithName(request)
-        self.response_processor.response_check(response)
-        roi_tuple = self.process_viewer_rois(response)
-
-        return roi_tuple
-
-    def selected_rois(self) -> Tuple[ROI, ...]:
-        """
-          Process gRPC request to retrieve ROIs that are selected for the ViewerController
-
-          Returns:
-            A Tuple containing ROIs
-        """
-        response = self.osirix_service.ViewerControllerSelectedROIs(self.osirixrpc_uid)
-        self.response_processor.response_check(response)
-        roi_tuple = self.process_viewer_rois(response)
-
-        return roi_tuple
-
-    #TODO implement this when the TypeResponse protobuf is exposed
-
-    # def set_roi(self, roi: ROI, position: int, movie_idx: int) -> None:
-    #     #Mask
-    #     buffer_array = np.random.randn(40 * 40) > 0
-    #     buffer = viewercontroller_pb2.ViewerControllerNewROIRequest.Buffer(buffer=1 * buffer_array, rows=40,
-    #                                                                        columns=40)
-    #
-    #     r, g, b = roi.color
-    #     color = viewercontroller_pb2.ViewerControllerNewROIRequest.Color(r=r, g=g, b=b)
-    #     request = viewercontroller_pb2.ViewerControllerNewROIRequest(viewer_controller=self.osirixrpc_uid,
-    #                                                                  movie_idx=movie_idx,
-    #                                                                  position=position,
-    #                                                                  itype=20,
-    #                                                                  buffer=buffer,
-    #                                                                  color=color,
-    #                                                                  opacity=roi.opacity,
-    #                                                                  name=roi.name)
-    #     response = self.osirix_service.ViewerControllerNewROI(request)
-    #     print(response.roi)
-    #
-    #     # How to decide between which ROI to create
-    #
-    #     #Oval
-    #     rect = viewercontroller_pb2.ViewerControllerNewROIRequest.Rect(origin_x=66., origin_y=42., width=20.,
-    #                                                                    height=10.)
-    #     color = viewercontroller_pb2.ViewerControllerNewROIRequest.Color(r=255, g=100, b=200)
-    #     request = viewercontroller_pb2.ViewerControllerNewROIRequest(viewer_controller=self.viewer_controller,
-    #                                                                  movie_idx=0, position=0, itype=9,
-    #                                                                  rectangle=rect, color=color, opacity=0.5,
-    #                                                                  name="oval", thickness=3.0)
-    #     response = self.osirix_service.ViewerControllerNewROI(request)
-    #     self.assertEqual(response.status.status, 1)
-    #     print(response.roi)
-    #
-    #     # Arrow
-    #     # Points seem to go in order [head, tail]
-    #     color = viewercontroller_pb2.ViewerControllerNewROIRequest.Color(r=0, g=255, b=0)
-    #     points = [viewercontroller_pb2.ViewerControllerNewROIRequest.Point2D(x=66., y=42.),
-    #               viewercontroller_pb2.ViewerControllerNewROIRequest.Point2D(x=99., y=24.)]
-    #     request = viewercontroller_pb2.ViewerControllerNewROIRequest(viewer_controller=self.viewer_controller,
-    #                                                                  points=points, movie_idx=0, position=0,
-    #                                                                  itype=14, color=color, opacity=0.5,
-    #                                                                  name="arrow", thickness=3.0)
-    #     response = self.osirix_service.ViewerControllerNewROI(request)
-    #     print(response.roi)
-    #
-    #     #Point
-    #     rect = viewercontroller_pb2.ViewerControllerNewROIRequest.Rect(origin_x=66., origin_y=42., width=20.,
-    #                                                                    height=10.)
-    #     color = viewercontroller_pb2.ViewerControllerNewROIRequest.Color(r=0, g=255, b=255)
-    #     request = viewercontroller_pb2.ViewerControllerNewROIRequest(viewer_controller=self.viewer_controller,
-    #                                                                  rectangle=rect, movie_idx=0, position=0,
-    #                                                                  itype=19, color=color, opacity=1.0,
-    #                                                                  name="point", thickness=3.0)
-    #     response = self.osirix_service.ViewerControllerNewROI(request)
-    #     print(response.roi)
-    #
-    #     # A rectangle TROI
-    #     rect = viewercontroller_pb2.ViewerControllerNewROIRequest.Rect(origin_x=66., origin_y=42., width=20.,
-    #                                                                    height=10.)
-    #     color = viewercontroller_pb2.ViewerControllerNewROIRequest.Color(r=255, g=100, b=100)
-    #     request = viewercontroller_pb2.ViewerControllerNewROIRequest(viewer_controller=self.viewer_controller,
-    #                                                                  rectangle=rect, movie_idx=0, position=0,
-    #                                                                  itype=6, color=color, opacity=1.0, name="tROI",
-    #                                                                  thickness=3.0)
-    #     response = self.osirix_service.ViewerControllerNewROI(request)
-    #     self.assertEqual(response.status.status, 1)
-    #     print(response.roi)
-    #
-    #     #Text
-    #     rect = viewercontroller_pb2.ViewerControllerNewROIRequest.Rect(origin_x=66., origin_y=42., width=20.,
-    #                                                                    height=10.)
-    #     color = viewercontroller_pb2.ViewerControllerNewROIRequest.Color(r=255, g=100, b=100)
-    #     request = viewercontroller_pb2.ViewerControllerNewROIRequest(viewer_controller=self.viewer_controller,
-    #                                                                  rectangle=rect, movie_idx=0, position=0,
-    #                                                                  itype=13, color=color, opacity=1.0,
-    #                                                                  name="Some text", thickness=3.0)
-    #     response = self.osirix_service.ViewerControllerNewROI(request)
-    #     print(response.roi)
-    #
-    #     #TTAGT
-    #     points = [[50.20499802, 32.32217407], [53.27367783, 38.77323914], [64.68674469, 25.43341637],
-    #               [69.71873474, 36.01180649], [41.8967247, 36.27430344], [68.91729736, 23.42099953]]
-    #     points = [viewercontroller_pb2.ViewerControllerNewROIRequest.Point2D(x=p[0], y=p[1]) for p in points]
-    #     print(len(points))
-    #     color = viewercontroller_pb2.ViewerControllerNewROIRequest.Color(r=100, g=250, b=220)
-    #     request = viewercontroller_pb2.ViewerControllerNewROIRequest(viewer_controller=self.viewer_controller,
-    #                                                                  points=points, movie_idx=0, position=0,
-    #                                                                  itype=29, color=color, opacity=1.0,
-    #                                                                  name="tTAGT", thickness=3.0)
-    #     response = self.osirix_service.ViewerControllerNewROI(request)
-    #     print(response.roi)
-    #
-    #     #Pencil
-    #     points = [[50.20499802, 32.32217407], [53.27367783, 38.77323914], [64.68674469, 25.43341637],
-    #               [69.71873474, 36.01180649], [41.8967247, 36.27430344], [68.91729736, 23.42099953]]
-    #     points = [viewercontroller_pb2.ViewerControllerNewROIRequest.Point2D(x=p[0], y=p[1]) for p in points]
-    #     color = viewercontroller_pb2.ViewerControllerNewROIRequest.Color(r=100, g=50, b=220)
-    #     request = viewercontroller_pb2.ViewerControllerNewROIRequest(viewer_controller=self.viewer_controller,
-    #                                                                  points=points, movie_idx=0, position=0,
-    #                                                                  itype=15, color=color, opacity=1.0,
-    #                                                                  name="pencil", thickness=3.0)
-    #     response = self.osirix_service.ViewerControllerNewROI(request)
-    #     print(response.roi)
-    #
-    #     points = [viewercontroller_pb2.ViewerControllerNewROIRequest.Point2D(x=71., y=-2.), \
-    #               viewercontroller_pb2.ViewerControllerNewROIRequest.Point2D(x=67., y=11.), \
-    #               viewercontroller_pb2.ViewerControllerNewROIRequest.Point2D(x=90., y=9.)]
-    #     color = viewercontroller_pb2.ViewerControllerNewROIRequest.Color(r=100, g=50, b=220)
-    #     request = viewercontroller_pb2.ViewerControllerNewROIRequest(viewer_controller=self.viewer_controller,
-    #                                                                  points=points, movie_idx=0, position=0,
-    #                                                                  itype=12, color=color, opacity=1.0,
-    #                                                                  name="pencil", thickness=3.0)
-    #     response = self.osirix_service.ViewerControllerNewROI(request)
-    #     print(response.roi)
-    #
-    #     # Measure
-    #     points = [viewercontroller_pb2.ViewerControllerNewROIRequest.Point2D(x=71., y=-2.), \
-    #               viewercontroller_pb2.ViewerControllerNewROIRequest.Point2D(x=67., y=11.)]
-    #     color = viewercontroller_pb2.ViewerControllerNewROIRequest.Color(r=100, g=50, b=0)
-    #     request = viewercontroller_pb2.ViewerControllerNewROIRequest(viewer_controller=self.viewer_controller,
-    #                                                                  points=points, movie_idx=0, position=0,
-    #                                                                  itype=5, color=color, opacity=1.0,
-    #                                                                  name="measure", thickness=3.0)
-    #     response = self.osirix_service.ViewerControllerNewROI(request)
-    #     print(response.roi)
-
-    #TODO No response in osirix.proto
-
-    # def start_wait_progress_window(self, message: str, max: int) -> Wait:
-
-    def vr_controllers(self) -> Tuple:
-        """
-          Process gRPC request to retrieve the VR Controllers for the ViewerController
-
-          Returns:
-            None
-        """
-        response = self.osirix_service.ViewerControllerVRControllers(self.osirixrpc_uid)
-        self.response_processor.response_check(response)
-        vr_tuple = self.process_vr_controllers(response)
-
-        return vr_tuple
-
-    @classmethod
-    def name(cls):
-        cls.__name__
-
-
+            viewer_controller=self.pb2_object, fixed_viewer_controller=vc.pb2_object)
+        response = self.osirix_service_stub.ViewerControllerResampleViewerController(request)
+        self.response_check(response)
