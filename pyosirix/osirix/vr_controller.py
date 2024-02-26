@@ -6,10 +6,8 @@ import numpy
 
 import osirixgrpc.viewercontroller_pb2 as viewercontroller_pb2
 import osirixgrpc.vrcontroller_pb2 as vrcontroller_pb2
-from osirix.response_processor import ResponseProcessor
 from osirix.viewer_controller import ViewerController
 from osirix import viewer_controller
-from osirix import *
 
 class VRController(object):
     '''

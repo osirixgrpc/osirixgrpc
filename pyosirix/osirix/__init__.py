@@ -19,7 +19,6 @@ __all__ = ["Osirix",
            "DicomSeries",
            "DicomStudy",
            "DicomImage",
-           "VRController",
            "GrpcException",
            "OsirixServiceException"]
 
@@ -37,7 +36,8 @@ from .viewer_controller import ViewerController, DCMPix, ROI
 from .vr_controller import VRController
 from .dicom import DicomSeries, DicomStudy, DicomImage
 from .browser_controller import BrowserController
-from .osirix import Osirix, OsirixService
+from .base import OsirixService
+from .osirix import Osirix
 
 # An instance of the automatically established OsiriX class.
 # Do not change or access directly.
@@ -53,7 +53,7 @@ def plugin_support_directory() -> AnyStr:
     home = os.path.expanduser("~")
     support_directory = os.path.join(home,
                                      "Library",
-                                     "Application Support"
+                                     "Application Support",
                                      "OsirixGRPC")
     return support_directory
 
@@ -100,7 +100,7 @@ def global_osirix_instance() -> Osirix:
                                     max_send_message_length=500000000,
                                     max_receive_message_length=500000000)
             service.start_service()
-            _osirix = Osirix(service.osirix_service)
+            _osirix = Osirix(service)
     return _osirix
 
 
@@ -151,7 +151,7 @@ def frontmost_viewer() -> ViewerController:
     return osirix_.frontmost_viewer()
 
 
-def displayed_2d_viewers() -> List[ViewerController, ...]:
+def displayed_2d_viewers() -> List[ViewerController]:
     """ All currently active 2D viewers.
 
     Returns:
@@ -187,7 +187,7 @@ def frontmost_vr_controller() -> VRController:
     return osirix_.frontmost_vr_controller()
 
 
-def displayed_vr_controllers() -> List[VRController, ...]:
+def displayed_vr_controllers() -> List[VRController]:
     """ All currently active 3D viewers.
 
     Returns:

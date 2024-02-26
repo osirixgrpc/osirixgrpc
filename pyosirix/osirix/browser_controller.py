@@ -1,74 +1,59 @@
-import sys
-# sys.path.append("./pb2")
+""" Provides access to core functionality of the OsiriX database.
 
-# sys.path.append("/Users/admintmun/dev/pyosirix/osirix/pb2")
-import osirixgrpc.browsercontroller_pb2 as browsercontroller_pb2
-from osirix.exceptions import GrpcException
+At present this includes operations:
+
+ 1. Copy files into the database.
+ 2. Interrogating the user selection of Dicom objects.
+
+"""
+
 from typing import Tuple, List
+
+import osirixgrpc.browsercontroller_pb2 as browsercontroller_pb2
+
 from osirix.dicom import DicomSeries, DicomStudy
-from osirix.response_processor import ResponseProcessor
+from osirix.base import OsirixBase
 
-class BrowserController(object):
+
+class BrowserController(OsirixBase):
+    """ The main OsiriX Dicom database window.
+
+    There should only ever be one, but it is OK to create multiple pyOsiriX instances, they will
+    just contiain the same `osirixrpc_uid`.
     """
-    Retrives the browser window of Osirix
-    """
-
-    def __init__(self, osirixrpc_uid, osirix_service) -> None:
-        self.osirix_service = osirix_service
-        self.osirixrpc_uid = osirixrpc_uid
-        self.response_processor = ResponseProcessor()
-
 
     def copy_files_into_database(self, files: List[str]) -> None:
-        """
-        Copy files into the database of Osirix
+        """ Copy files into the Osirix database.
+
+        Note that this will always copy files, rather than copy by link, therefore doubling the
+        memory requirements. It is safe to delete the source Dicom data after import, if you wish
+        to do so.
 
         Args:
-            files: list of files to copy into database
+            files (List[str]): The list of files to copy, as absolute paths.
+        """
+        request = browsercontroller_pb2.BrowserControllerCopyFilesIfNeededRequest(
+            browser=self.osirix_type, paths=files)
+        response = self.osirix_service_stub.BrowserControllerCopyFilesIfNeeded(request)
+        self.response_check(response)
+
+    def database_selection(self) -> Tuple[List[DicomStudy], List[DicomSeries]]:
+        """ Queries the user selection of Dicom images.
 
         Returns:
-            None
-
-        """
-        request = browsercontroller_pb2.BrowserControllerCopyFilesIfNeededRequest(browser=self.osirixrpc_uid, paths = files)
-        response = self.osirix_service.BrowserControllerCopyFilesIfNeeded(request)
-        self.response_processor.process_basic_response(response)
-
-    # Check return type of Tuples
-    def database_selection(self) -> Tuple[Tuple[DicomStudy,...], Tuple[DicomSeries,...]]:
-        """
-        Queries the Osirix database for its files
-
-        Returns:
-            A Tuple containing two Tuples. The first Tuple contains all the Dicom studies and the second
+            The
             Tuple contains all the Dicom series in the database
 
         """
-        response = self.osirix_service.BrowserControllerDatabaseSelection(self.osirixrpc_uid)
-        # dicom_study_tuple, dicom_series_tuple = self.response_processor.process_browser_database_selection(response)
+        response = self.osirix_service_stub.BrowserControllerDatabaseSelection(self.pb2_object)
+        self.response_check(response)
 
-        if (response.status.status == 1):
+        selected_studies = []
+        for study in response.studies:
+            selected_studies.append(DicomStudy(self.osirix_service, study))
 
-            series_tuple: Tuple[DicomSeries, ...] = ()
-            study_tuple: Tuple[DicomStudy, ...] = ()
+        selected_series = []
+        for series in response.series:
+            selected_series.append(DicomSeries(self.osirix_service, series))
 
-            for series in response.series:
-                series_obj= DicomSeries(series, self.osirix_service)
-                series_tuple = series_tuple + (series_obj,)
-
-            for study in response.studies:
-                study_obj = DicomStudy(study, self.osirix_service)
-
-                study_tuple = study_tuple + (study_obj,)
-
-            return (study_tuple, series_tuple)
-        else:
-            raise GrpcException("No response")
-
-
-
-
-
-
-
-
+        return selected_studies, selected_series

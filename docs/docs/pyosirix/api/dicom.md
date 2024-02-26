@@ -1,4 +1,4 @@
-::: osirix.osirix
+::: osirix.dicom
     handler: python
     options:
       show_root_heading: true

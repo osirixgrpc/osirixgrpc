@@ -11,7 +11,6 @@ import osirixgrpc.dcmpix_pb2 as dcmpix_pb2
 import osirixgrpc.roi_pb2 as roi_pb2
 import osirixgrpc.roivolume_pb2 as roivolume_pb2
 from osirix.dicom import DicomSeries, DicomStudy, DicomImage
-from osirix.response_processor import ResponseProcessor
 from osirix.dcm_pix import DCMPix
 
 class ROIVolume:
