@@ -97,8 +97,9 @@ class ViewerController(osirix.base.OsirixBase):
         """
         if movie_idx is None:
             movie_idx = self.movie_idx
-        response = self.osirix_service_stub.ViewerControllerPixListRequest(
+        request = viewercontroller_pb2.ViewerControllerPixListRequest(
             viewer_controller=self.pb2_object, movie_idx=movie_idx)
+        response = self.osirix_service_stub.ViewerControllerPixList(request)
         self.response_check(response)
         return [osirix.dcm_pix.DCMPix(self.osirix_service, pix) for pix in response.pix]
 

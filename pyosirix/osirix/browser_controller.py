@@ -11,20 +11,20 @@ At present this includes operations:
      import osirix
 
      database = osirix.current_browser()  # Get the current browser instance
-     images_path = "/path/to/dicoms"  # Define the location of your images
+     images_path = "/path/to/dicoms"  # Define the location of the images
      database.copy_files_into_database(images_path)  # Load the images (on separate process).
      ```
 """
 
+from __future__ import annotations
 from typing import Tuple, List
 
 import osirixgrpc.browsercontroller_pb2 as browsercontroller_pb2
 
-from osirix.dicom import DicomSeries, DicomStudy
-from osirix.base import OsirixBase
+import osirix
 
 
-class BrowserController(OsirixBase):
+class BrowserController(osirix.base.OsirixBase):
     """ The main OsiriX Dicom database window.
 
     There should only ever be one, but it is OK to create multiple pyOsiriX instances, they will
@@ -42,11 +42,12 @@ class BrowserController(OsirixBase):
             files (List[str]): The list of files to copy, as absolute paths.
         """
         request = browsercontroller_pb2.BrowserControllerCopyFilesIfNeededRequest(
-            browser=self.osirix_type, paths=files)
+            browser=self.pb2_object, paths=files)
         response = self.osirix_service_stub.BrowserControllerCopyFilesIfNeeded(request)
         self.response_check(response)
 
-    def database_selection(self) -> Tuple[List[DicomStudy], List[DicomSeries]]:
+    def database_selection(self) -> Tuple[List[osirix.dicom.DicomStudy],
+                                          List[osirix.dicom.DicomSeries]]:
         """ Queries the user selection of Dicom images.
 
         Returns:
@@ -58,10 +59,10 @@ class BrowserController(OsirixBase):
 
         selected_studies = []
         for study in response.studies:
-            selected_studies.append(DicomStudy(self.osirix_service, study))
+            selected_studies.append(osirix.dicom.DicomStudy(self.osirix_service, study))
 
         selected_series = []
         for series in response.series:
-            selected_series.append(DicomSeries(self.osirix_service, series))
+            selected_series.append(osirix.dicom.DicomSeries(self.osirix_service, series))
 
         return selected_studies, selected_series

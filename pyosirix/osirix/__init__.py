@@ -9,19 +9,7 @@ Typical usage example:
     vr_controller = osirix.vr_controller()
 """
 
-__all__ = ["Osirix",
-           "OsirixService",
-           "ViewerController",
-           "DCMPix",
-           "ROI",
-           "ROIVolume",
-           "VRController",
-           "BrowserController",
-           "DicomSeries",
-           "DicomStudy",
-           "DicomImage",
-           "GrpcException",
-           "OsirixServiceException"]
+from __future__ import annotations
 
 __version__ = "0.2.1-dev3"
 
@@ -32,15 +20,15 @@ import json
 import warnings
 from typing import List, AnyStr
 
-from .exceptions import GrpcException, OsirixServiceException
-from .viewer_controller import ViewerController
-from .dcm_pix import DCMPix
-from .roi import ROI, ROIVolume
-from .vr_controller import VRController
-from .dicom import DicomSeries, DicomStudy, DicomImage
-from .browser_controller import BrowserController
-from .base import OsirixService
-from .osirix import Osirix
+from . import base
+from . import browser_controller
+from . import dcm_pix
+from . import dicom
+from . import exceptions
+from . import osirix_utilities
+from . import roi
+from . import viewer_controller
+from . import vr_controller
 
 # An instance of the automatically established OsiriX class.
 # Do not change or access directly.
@@ -84,7 +72,7 @@ def osirixgrpc_port_preference() -> int:
     return port
 
 
-def global_osirix_instance() -> Osirix:
+def global_osirix_instance() -> osirix_utilities.Osirix:
     """ Get the global osirix instance.
 
     This should be set-up on first import of the osirix package, and uses the
@@ -98,12 +86,12 @@ def global_osirix_instance() -> Osirix:
     if _osirix is None:
         port = osirixgrpc_port_preference()
         if port is not None:
-            service = OsirixService(domain="127.0.0.1",
-                                    port=port,
-                                    max_send_message_length=500000000,
-                                    max_receive_message_length=500000000)
+            service = osirix_utilities.OsirixService(domain="127.0.0.1",
+                                                     port=port,
+                                                     max_send_message_length=500000000,
+                                                     max_receive_message_length=500000000)
             service.start_service()
-            _osirix = Osirix(service)
+            _osirix = osirix_utilities.Osirix(service)
     return _osirix
 
 
@@ -116,7 +104,7 @@ def _establish_global_osirix_instance():
 
 
 # The following functions are defined for ease of access.
-def current_browser() -> BrowserController:
+def current_browser() -> browser_controller.BrowserController:
     """ The main Dicom browser instance.
 
     Returns:
@@ -130,11 +118,11 @@ def current_browser() -> BrowserController:
     """
     osirix_ = global_osirix_instance()
     if osirix_ is None:
-        raise GrpcException("No connection could be established with OsiriX")
+        raise exceptions.GrpcException("No connection could be established with OsiriX")
     return osirix_.current_browser()
 
 
-def frontmost_viewer() -> ViewerController:
+def frontmost_viewer() -> viewer_controller.ViewerController:
     """ The front-most 2D viewer.
 
     If there are more than one, look for the viewer highlighted by a red boundary.
@@ -150,11 +138,11 @@ def frontmost_viewer() -> ViewerController:
     """
     osirix_ = global_osirix_instance()
     if osirix_ is None:
-        raise GrpcException("No connection could be established with OsiriX")
+        raise exceptions.GrpcException("No connection could be established with OsiriX")
     return osirix_.frontmost_viewer()
 
 
-def displayed_2d_viewers() -> List[ViewerController]:
+def displayed_2d_viewers() -> List[viewer_controller.ViewerController]:
     """ All currently active 2D viewers.
 
     Returns:
@@ -168,11 +156,11 @@ def displayed_2d_viewers() -> List[ViewerController]:
     """
     osirix_ = global_osirix_instance()
     if osirix_ is None:
-        raise GrpcException("No connection could be established with OsiriX")
+        raise exceptions.GrpcException("No connection could be established with OsiriX")
     return osirix_.displayed_2d_viewers()
 
 
-def frontmost_vr_controller() -> VRController:
+def frontmost_vr_controller() -> vr_controller.VRController:
     """ The front-most 3D viewer.
 
     Returns:
@@ -186,11 +174,11 @@ def frontmost_vr_controller() -> VRController:
     """
     osirix_ = global_osirix_instance()
     if osirix_ is None:
-        raise GrpcException("No connection could be established with OsiriX")
+        raise exceptions.GrpcException("No connection could be established with OsiriX")
     return osirix_.frontmost_vr_controller()
 
 
-def displayed_vr_controllers() -> List[VRController]:
+def displayed_vr_controllers() -> List[vr_controller.VRController]:
     """ All currently active 3D viewers.
 
     Returns:
@@ -204,7 +192,7 @@ def displayed_vr_controllers() -> List[VRController]:
     """
     osirix_ = global_osirix_instance()
     if osirix_ is None:
-        raise GrpcException("No connection could be established with OsiriX")
+        raise exceptions.GrpcException("No connection could be established with OsiriX")
     return osirix_.displayed_vr_controllers()
 
 
