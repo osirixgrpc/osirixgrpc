@@ -5,7 +5,7 @@
 from __future__ import annotations
 
 import warnings
-from typing import Tuple
+from typing import Tuple, Dict
 
 import numpy as np
 from numpy.typing import NDArray
@@ -135,6 +135,71 @@ class ROI(osirix.base.OsirixBase):
     """ Represents a single region of interest in a 2D viewer (`ViewerController`)
 
     """
+    @classmethod
+    def itypes(cls, reverse_order: bool = False) -> Dict:
+        """ Provides a map between the integer ROI type and a text descriptor.
+
+        The following ROI types are available in pyOsiriX, seperated into 2 core group:
+
+        Brush ROIs: Described by a 2D array of boolean values (0 = outside ROI, 1 = within ROI).
+
+            - tPlain: The only brush ROI type.
+
+        Point-based ROIs: Described by a set of N 2-element vertices as a shape (N, 2) array.
+
+        Note that even though all ROIs have vertices accessible via a `points` attribute, and a
+        majority of them are created by directly supplying the vertices, a few are instead created
+        by supplying the rectangle information (column, row, width, height).
+
+            - tMeasure: A ruler measurement. N = 2 (start then end).
+            - tROI: A square ROI. N = 4. Created by rectangle.
+            - tOval: An oval-based ROI. No limit on N. Created by rectangle.
+            - tOPolygon: An open polygon. No limit on N.
+            - tCPolygon: A closed polygon. No limit on N.
+            - tAngle: An angle measurement. N = 3 (start, middle then end).
+            - tText: A text box. Created by rectangle.
+            - tArrow: An arrow. N = 2 (arrow head then arrow tail).
+            - tPencil: A closed polygon. No limit it N.
+            - t2DPoint: A single point ROI. Created by rectangle.
+            - tLayerROI:
+            - tAxis: An axis-based ROI for bi-dimensional measurement.
+            - tDynAngle: The angle between two lines. N = 4 (line 1 start/end, line 2 start/end).
+            - tTAGT: A pair of oriented perpendicular lines for measuring distance. N must equal 6.
+            - tBall: A circular ROI representing a slice of a 3D ball ROI. No limit on N.
+                It is not possible to create a new tBall ROI with pyOsiriX.
+            - tOvalAngle: An oval with an additional angle specifier. No limit on N. Note that only
+                the vertices are provided on request (via the `points` attribute of an
+                `osirix.roi.ROI` instance). Created by rectangle.
+
+        Args:
+            reverse_order (bool): If `False` then the mapping is provided in the form
+                `{identifier: descriptor}`, where `identifier` is a unique integer. If `True`,
+                the mapping is returned in reverse order:  `{descriptor: identifier}`.
+
+        Returns:
+            A mapping between ROI itype and textual descriptor.
+        """
+        mapping = {5: "tMeasure",
+                   6: "tROI",
+                   9: "tOval",
+                   10: "tOPolygon",
+                   11: "tCPolygon",
+                   12: "tAngle",
+                   13: "tText",
+                   14: "tArrow",
+                   15: "tPencil",
+                   19: "t2DPoint",
+                   20: "tPlain",
+                   24: "tLayerROI",
+                   26: "tAxis",
+                   27: "tDynAngle",
+                   29: "tTAGT",
+                   30: "tBall",
+                   31: "tOvalAngle"}
+        if reverse_order:
+            mapping = {value: key for key, value in mapping.items()}
+        return mapping
+
     @property
     def color(self) -> Tuple[int, int, int]:
         """ The color of the volume ROI as a (r, g, b) tuple (each channel in range 0-255)

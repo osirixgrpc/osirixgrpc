@@ -4,6 +4,10 @@
 
 from __future__ import annotations
 from typing import Tuple, List
+import warnings
+
+from numpy.typing import NDArray
+import numpy as np
 
 import osirixgrpc.viewercontroller_pb2 as viewercontroller_pb2
 
@@ -273,3 +277,94 @@ class ViewerController(osirix.base.OsirixBase):
             viewer_controller=self.pb2_object, fixed_viewer_controller=vc.pb2_object)
         response = self.osirix_service_stub.ViewerControllerResampleViewerController(request)
         self.response_check(response)
+
+    def new_roi(self, itype: int = 15, name: str = "", position: idx = 0, movie_idx: int = 0,
+                buffer_position_column: int = 0, buffer_position_row: int = 0,
+                color: Tuple[float, float, float] = (0, 255, 0), thickness: float = 1.0,
+                opacity: float = 1.0, buffer: NDArray = None, rect: NDArray = None,
+                points: NDArray = None) -> osirix.roi.ROI:
+        """ Create a new ROI within the viewer.
+
+        Important: It is safer to create a new ROI using one of the utility functions as they
+        provide better checking on input parameters in certain contexts, and ensure the right ROI
+        type is created. This is meant as a parent function that performs the heavy lifting. It is
+        made public for transparency.
+
+        Args:
+            itype (int): The index of the roi type (see `osirix.roi.ROI.itypes` for details).
+                Default is 15 (tPencil).
+            name (str): The name of the ROI.
+            position (int): The slice index on which to create the new ROI.
+            movie_idx (int): The frame on which to create the new ROI.
+            buffer_position_column (int): The column offset of a mask ROI in pixel coordinates.
+            buffer_position_row (int): The row offset of a mask ROI in pixel coordinates.
+            color (tuple): The RGB color of the ROI (values from 0-255 in each channel).
+            thickness (float): The thickness of the ROI. Value between 1-20 as per OsiriX.
+            opacity (float): The opacity on a scale from 0 (transparent) to 1 (opaque).
+            buffer (NDArray): The buffer mask as a 2D boolean Numpy array. If `None`, then ignored.
+            rect (NDArray): The rectangle defining the ROI. Must be shape (4,).
+            points (NDArray): The points defining the ROI. Must be shape (N, 2) for N vertices. If
+                `None` or `buffer` is not `None` or `rect` is not `None` then ignored.
+
+        Returns:
+             The created ROI instance.
+
+        Raises:
+            ValueError: When both `buffer` and `points` is None.
+        """
+        if buffer is None and rect is None and points is None:
+            raise ValueError("buffer, rect and points cannot be None at the same time.")
+
+        if thickness < 0 or thickness > 20:
+            thickness = np.clip(thickness, 0, 20)
+            warnings.warn(f"Bad value for thickness. Clipping to {thickness}")
+
+        color_request = viewercontroller_pb2.ViewerControllerNewROIRequest.Color(r=color[0],
+                                                                                 g=color[1],
+                                                                                 b=color[2])
+        if itype == 20:
+            if buffer is None:
+                raise ValueError("Need buffer data if creating a tPlain ROI")
+            buffer = np.array(buffer)
+            if buffer.ndim != 2:
+                raise ValueError("`buffer` must be two-dimensional")
+            rows, columns = buffer.shape
+            buffer_request = viewercontroller_pb2.ViewerControllerNewROIRequest.Buffer(
+                buffer=buffer, rows=rows, columns=columns)
+            request = viewercontroller_pb2.ViewerControllerNewROIRequest(
+                viewer_controller=self.pb2_object, position=position, movie_idx=movie_idx,
+                buffer_position_column=buffer_position_column, color=color_request,
+                buffer_position_row=buffer_position_row, opacity=opacity, name=name,
+                buffer=buffer_request, itype=itype)
+        elif itype in [6, 9, 13, 19, 31]:
+            if rect is None:
+                raise ValueError("Need rect if creating a rectangle-based ROI")
+            rect = np.array(rect)
+            if rect.ndim != 1:
+                raise ValueError("`rect` must be one-dimensional")
+            if rect.shape[0] != 4:
+                raise ValueError("`rect` must be shape (4,)")
+            rect_request = viewercontroller_pb2.ViewerControllerNewROIRequest.Rect(origin_x=rect[0],
+                                                                                   origin_y=rect[1],
+                                                                                   width=rect[2],
+                                                                                   height=rect[3])
+            request = viewercontroller_pb2.ViewerControllerNewROIRequest(
+                viewer_controller=self.pb2_object, position=position, movie_idx=movie_idx,
+                color=color_request, opacity=opacity, name=name, rectangle=rect_request,
+                thickness=thickness, itype=itype)
+        else:
+            if points is None:
+                raise ValueError("Need points if creating a point-based ROI")
+            points = np.array(points)
+            if points.ndim != 2:
+                raise ValueError("`points` must be two-dimensional")
+            points_request = [
+                viewercontroller_pb2.ViewerControllerNewROIRequest.Point2D(x=p[0], y=p[1]) for p in
+                points]
+            request = viewercontroller_pb2.ViewerControllerNewROIRequest(
+                viewer_controller=self.pb2_object, position=position, movie_idx=movie_idx,
+                color=color_request, opacity=opacity, name=name, points=points_request,
+                thickness=thickness, itype=itype)
+        response = self.osirix_service_stub.ViewerControllerNewROI(request)
+        self.response_check(response)
+        return osirix.roi.ROI(self.osirix_service, response.roi)
