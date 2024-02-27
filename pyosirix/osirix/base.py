@@ -6,8 +6,6 @@ from __future__ import annotations
 
 from typing import Union
 
-import grpc  # noqa
-
 from osirixgrpc import types_pb2
 
 import osirix
