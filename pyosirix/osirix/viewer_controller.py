@@ -285,7 +285,7 @@ class ViewerController(osirix.base.OsirixBase):
                 points: NDArray = None) -> osirix.roi.ROI:
         """ Create a new ROI within the viewer.
 
-        Important: It is safer to create a new ROI using one of the utility functions as they
+        __Important__: It is safer to create a new ROI using one of the utility functions as they
         provide better checking on input parameters in certain contexts, and ensure the right ROI
         type is created. This is meant as a parent function that performs the heavy lifting. It is
         made public for transparency.
@@ -310,7 +310,8 @@ class ViewerController(osirix.base.OsirixBase):
              The created ROI instance.
 
         Raises:
-            ValueError: When both `buffer` and `points` is None.
+            ValueError: When `buffer`, `points` and `rect` are all None.
+            ValueError: When the input data is of invalid format.
         """
         if buffer is None and rect is None and points is None:
             raise ValueError("buffer, rect and points cannot be None at the same time.")
@@ -330,12 +331,11 @@ class ViewerController(osirix.base.OsirixBase):
                 raise ValueError("`buffer` must be two-dimensional")
             rows, columns = buffer.shape
             buffer_request = viewercontroller_pb2.ViewerControllerNewROIRequest.Buffer(
-                buffer=buffer, rows=rows, columns=columns)
+                buffer=buffer.ravel().tolist(), rows=rows, columns=columns)
             request = viewercontroller_pb2.ViewerControllerNewROIRequest(
                 viewer_controller=self.pb2_object, position=position, movie_idx=movie_idx,
-                buffer_position_column=buffer_position_column, color=color_request,
-                buffer_position_row=buffer_position_row, opacity=opacity, name=name,
-                buffer=buffer_request, itype=itype)
+                buffer_position_x=buffer_position_column, buffer_position_y=buffer_position_row,
+                color=color_request, opacity=opacity, name=name, buffer=buffer_request, itype=itype)
         elif itype in [6, 9, 13, 19, 31]:
             if rect is None:
                 raise ValueError("Need rect if creating a rectangle-based ROI")
@@ -368,3 +368,63 @@ class ViewerController(osirix.base.OsirixBase):
         response = self.osirix_service_stub.ViewerControllerNewROI(request)
         self.response_check(response)
         return osirix.roi.ROI(self.osirix_service, response.roi)
+
+    def new_mask_roi(self, buffer: NDArray, **kwargs) -> osirix.roi.ROI:
+        """ Create a new mask ROI within the viewer.
+
+        Args:
+            buffer (NDArray): The buffer mask as a 2D boolean Numpy array.
+            **kwargs: See `new_roi` for all additional comments.
+
+        Returns:
+             The created ROI instance.
+        """
+        return self.new_roi(buffer=buffer, itype=20, **kwargs)
+
+    def new_polygon_roi(self, points: NDArray, closed: bool = True, **kwargs) -> osirix.roi.ROI:
+        """ Create a new polygon ROI within the viewer.
+
+        Args:
+            points (NDArray): The vertices of the ROI.  Must have shape (N, 2).
+            closed (bool): Whether the polygon is closed.
+            **kwargs: See `new_roi` for all additional comments.
+
+        Returns:
+             The created ROI instance.
+        """
+        itype = 10
+        if closed:
+            itype = 11
+        return self.new_roi(points=points, itype=itype, **kwargs)
+
+    def new_measurement_roi(self, start_column: float, end_column:float , start_row: float,
+                            end_row: NDArray, **kwargs) -> osirix.roi.ROI:
+        """ Create a new length measurement ROI within the viewer.
+
+        Args:
+            start_column (float): The starting column position of the ROI
+            end_column (float): The ending column position of the ROI
+            start_row (float): The starting row position of the ROI
+            end_row (float): The ending row position of the ROI
+            **kwargs: See `new_roi` for all additional comments.
+
+        Returns:
+             The created ROI instance.
+        """
+        points = np.array([[start_column, start_row],
+                           [end_column, end_row]])
+        return self.new_roi(points=points, itype=5, **kwargs)
+
+    def new_point_roi(self, column: float, row: float, **kwargs) -> osirix.roi.ROI:
+        """ Create a new 2D point ROI within the viewer.
+
+        Args:
+            column (float): The column position of the ROI
+            row (float): The row position of the ROI
+            **kwargs: See `new_roi` for all additional comments.
+
+        Returns:
+             The created ROI instance.
+        """
+        rect = np.array([column, row, 0, 0])
+        return self.new_roi(rect=rect, itype=19, **kwargs)

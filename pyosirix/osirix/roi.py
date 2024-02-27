@@ -190,7 +190,6 @@ class ROI(osirix.base.OsirixBase):
                    15: "tPencil",
                    19: "t2DPoint",
                    20: "tPlain",
-                   24: "tLayerROI",
                    26: "tAxis",
                    27: "tDynAngle",
                    29: "tTAGT",
