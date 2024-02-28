@@ -106,23 +106,22 @@ class DCMPix(osirix.base.OsirixBase):
 
         return image_array
 
-    def set_image(self, image: NDArray, is_argb: bool) -> None:
-        """ Set the pixel data of an image.
+    @image.setter
+    def image(self, image_arr: NDArray):
+        """ The image data as a Numpy array.
 
-        Note that care must be taken the shape of the input data matches that of the current image.
-
-        Args:
-             image (NDArray): The pixel data with shape (rows, columns, 4) if `is_argb` is `True`,
-                (rows, columns) otherwise.
-             is_argb (bool): Whether the data is in ARGB format or not.
+        If the image is RGB format, then the shape will be (rows, columns, 4), whereas if the image
+        is greyscale format it will be shape (rows, columns) (see `is_rgb` property).
         """
-        if is_argb:
+        is_rgb = self.is_rgb
+        if is_rgb:
             request = dcmpix_pb2.DCMPixSetImageRequest(pix=self.pb2_object,
-                                                       image_data_argb=image.ravel().tolist())
+                                                       image_data_argb=image_arr.ravel().tolist())
 
         else:
             request = dcmpix_pb2.DCMPixSetImageRequest(pix=self.pb2_object,
-                                                       image_data_float=image.ravel().tolist())
+                                                       image_data_float=image_arr.ravel().tolist())
+
         response = self.osirix_service_stub.DCMPixSetImage(request)
         self.response_check(response)
 
