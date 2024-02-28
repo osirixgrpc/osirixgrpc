@@ -3,7 +3,7 @@
 ![Welcome to OsiriXgrpc!](assets/logo/logo-large.png)
 
 __Welcome to OsiriXgrpc__, a research plugin for the popular [OsiriX](https://www.osirix-viewer.com) medical image 
-viewing platform for Mac OS. It leverages the [gRPC](https://grpc.io) architecture to provide fast communication between 
+viewing platform for macOS. It leverages the [gRPC](https://grpc.io) architecture to provide fast communication between 
 OsiriX (the _server_) and custom-built software or scripts running on a different local process (the _client_).  This 
 enables fast development of additional OsiriX functionality, including the adoption of state-of-the-art libraries for 
 image processing and artificial intelligence.  Currently, Python is the only in-built supported language, though
