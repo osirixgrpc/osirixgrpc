@@ -19,7 +19,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>0.2.1-dev0</string>
+	<string><key>CFBundleVersion</key>\n<string>0.2.1-dev3</string></string>
 	<key>MenuTitles</key>
 	<array>
 		<string>Server Configuration</string>

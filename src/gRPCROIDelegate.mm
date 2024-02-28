@@ -53,7 +53,7 @@
     
     if (roi)
     {
-        float area = [roi roiArea]; // TODO: I think there is a version conflict between the OsiriX.framework and Horos?
+        float area = [roi area];
         response->set_area(area);
         response->mutable_status()->set_status(1);
     }
