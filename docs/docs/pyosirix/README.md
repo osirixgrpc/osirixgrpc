@@ -3,6 +3,13 @@
 Welcome to the documentation for __pyOsiriX__, a subpackage of the OsiriXgrpc project that makes grpc
 communication with OsiriX more pythonic and simpler to use.
 
+## Installation
+Installation is most easily performed using the Python Package Index distribution:
+
+```bash
+pip install osirix
+``` 
+
 ## Helper routines
 ::: osirix.current_browser
     handler: python
