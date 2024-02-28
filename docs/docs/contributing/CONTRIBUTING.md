@@ -1,4 +1,4 @@
-# Contributing
+# Contributing to OsiriXgrpc
 __Welcome__ to the contributions section!
 
 OsiriXgrpc is an emerging open-source initiative by the Institute of Cancer Research, dedicated to accelerating the 

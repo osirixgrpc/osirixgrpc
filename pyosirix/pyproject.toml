@@ -3,7 +3,7 @@ requires = ["hatchling", "hatch-requirements-txt"]
 build-backend = "hatchling.build"
 
 [project]
-name = "osirixgrpc"
+name = "pyosirix-test"
 dynamic = ["dependencies", "version"]
 requires-python = ">=3.8"
 authors = [
@@ -14,7 +14,7 @@ authors = [
 maintainers = [
   {name = "Matthew D Blackledge", email = "mattyblackledge@gmail.com"}
 ]
-description = "gRPC interface for interacting with OsiriX"
+description = "Pythonic interface for interacting with Osirix through a gRPC protocol"
 readme = "README.md"
 license = {file = "LICENSE.txt"}
 keywords = [
@@ -41,7 +41,7 @@ Repository = "https://github.com/osirixgrpc/osirixgrpc"
 files = ["requirements.txt"]
 
 [tool.hatch.version]
-path = "osirixgrpc/__init__.py"
+path = "osirix/__init__.py"
 
 [tool.hatch.build.targets.wheel]
-packages = ["osirixgrpc"]
+packages = ["osirix"]

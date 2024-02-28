@@ -13,8 +13,7 @@ Note that it can be much simpler to interact with OsiriXgrpc using the more pyth
 dedicated [documentation](pyosirix/README.md) for further information.
 
 ## Getting Started
-For instructions on how to install and set-up the plugin, please see the [getting started](getting_started.md) page.
-
+For instructions on how to install and set up the plugin, please see the [getting started](getting_started.md) page.
 
 ## Any suggestions?
 We are always happy to receive suggestions for future versions of the plugin, or just to hear about what is or isn't 
