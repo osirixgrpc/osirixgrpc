@@ -397,7 +397,7 @@ class ViewerController(osirix.base.OsirixBase):
             itype = 11
         return self.new_roi(points=points, itype=itype, **kwargs)
 
-    def new_measurement_roi(self, start_column: float, end_column:float , start_row: float,
+    def new_measurement_roi(self, start_column: float, end_column: float, start_row: float,
                             end_row: NDArray, **kwargs) -> osirix.roi.ROI:
         """ Create a new length measurement ROI within the viewer.
 
@@ -428,3 +428,177 @@ class ViewerController(osirix.base.OsirixBase):
         """
         rect = np.array([column, row, 0, 0])
         return self.new_roi(rect=rect, itype=19, **kwargs)
+
+    def new_text_roi(self, column: float, row: float, name: str, **kwargs) -> osirix.roi.ROI:
+        """ Create a new text-box ROI within the viewer.
+
+        Args:
+            column (float): The column position of the ROI
+            row (float): The row position of the ROI
+            name (str): The text to show
+            **kwargs: See `new_roi` for all additional comments.
+
+        Returns:
+             The created ROI instance.
+        """
+        rect = np.array([column, row, 0, 0])
+        return self.new_roi(rect=rect, itype=13, name=name, **kwargs)
+
+    def new_arrow_roi(self, tail: Tuple[float, float], head: Tuple[float, float],  **kwargs)\
+            -> osirix.roi.ROI:
+        """ Create a new text-box ROI within the viewer.
+
+        Args:
+            tail (float, float): The (column, row) position of the arrow tail.
+            head (float, float): The (column, row) position of the arrow hear.
+            **kwargs: See `new_roi` for all additional comments.
+
+        Returns:
+             The created ROI instance.
+        """
+        points = np.vstack([head, tail])
+        return self.new_roi(points=points, itype=14, **kwargs)
+
+    def new_oval_roi(self, center: Tuple[float, float], width: float, height: float, **kwargs)\
+            -> osirix.roi.ROI:
+        """ Create a new oval ROI within the viewer.
+
+        Args:
+            center (float, float): The (column, row) center of the oval ROI.
+            width (float): The width of the oval ROI.
+            height (float): The height of the oval ROI.
+            **kwargs: See `new_roi` for all additional comments.
+
+        Returns:
+             The created ROI instance.
+        """
+        rect = np.array([center[0], center[1], width / 2, height / 2])
+        return self.new_roi(rect=rect, itype=9, **kwargs)
+
+    def new_rectangle_roi(self, center: Tuple[float, float], width: float, height: float, **kwargs)\
+            -> osirix.roi.ROI:
+        """ Create a new rectangle ROI within the viewer.
+
+        Args:
+            center (float, float): The (column, row) center of the rectangle ROI.
+            width (float): The width of the rectangle ROI.
+            height (float): The height of the rectangle ROI.
+            **kwargs: See `new_roi` for all additional comments.
+
+        Returns:
+             The created ROI instance.
+        """
+        rect = np.array([center[0] - width / 2, center[1] - height / 2, width, height])
+        return self.new_roi(rect=rect, itype=6, **kwargs)
+
+    def new_angle_roi(self, p1: Tuple[float, float], p2: Tuple[float, float],
+                      p3: Tuple[float, float], **kwargs) -> osirix.roi.ROI:
+        """ Create a new angle ROI within the viewer.
+
+        This draws two connected vectors:
+            - v = p2 -> p1
+            - u = p2 -> p3
+
+        The displayed angle is the angle between these two vectors.
+
+        Args:
+            p1 (float, float): The (column, row) position of the first angle vertex.
+            p2 (float, float): The (column, row) position of the second angle vertex.
+            p3 (float, float): The (column, row) position of the third angle vertex.
+            **kwargs: See `new_roi` for all additional comments.
+
+        Returns:
+             The created ROI instance.
+        """
+        points = np.vstack([np.array(p1), np.array(p2), np.array(p3)])
+        return self.new_roi(points=points, itype=12, **kwargs)
+
+    def new_dynamic_angle_roi(self, p1: Tuple[float, float], p2: Tuple[float, float],
+                              p3: Tuple[float, float], p4: Tuple[float, float], **kwargs)\
+            -> osirix.roi.ROI:
+        """ Create a new dynamic angle ROI within the viewer.
+
+        This draws two vectors:
+            - v = p2 -> p1
+            - u = p3 -> p4
+
+        The displayed angle is the angle between these two vectors. The vector p2 -> p3 is also
+        drawn.
+
+        Args:
+            p1 (float, float): The (column, row) position of the first angle vertex.
+            p2 (float, float): The (column, row) position of the second angle vertex.
+            p3 (float, float): The (column, row) position of the third angle vertex.
+            p4 (float, float): The (column, row) position of the fourth angle vertex.
+            **kwargs: See `new_roi` for all additional comments.
+
+        Returns:
+             The created ROI instance.
+        """
+        points = np.vstack([np.array(p1), np.array(p2), np.array(p3), np.array(p4)])
+        return self.new_roi(points=points, itype=27, **kwargs)
+
+    def new_axis_roi(self, p1: Tuple[float, float], p2: Tuple[float, float],
+                     p3: Tuple[float, float], p4: Tuple[float, float], **kwargs) -> osirix.roi.ROI:
+        """ Create a new axis ROI within the viewer.
+
+        Args:
+            p1 (float, float): The (column, row) position of the first vertex.
+            p2 (float, float): The (column, row) position of the second vertex.
+            p3 (float, float): The (column, row) position of the third vertex.
+            p4 (float, float): The (column, row) position of the fourth vertex.
+            **kwargs: See `new_roi` for all additional comments.
+
+        Returns:
+             The created ROI instance.
+        """
+        points = np.vstack([np.array(p1), np.array(p2), np.array(p3), np.array(p4)])
+        return self.new_roi(points=points, itype=26, **kwargs)
+
+    def new_tagt_roi(self, a: Tuple[float, float], b: Tuple[float, float],
+                     c: Tuple[float, float], d: Tuple[float, float], **kwargs) -> osirix.roi.ROI:
+        """ Create a new tTAGT ROI within the viewer.
+
+        ROI displays:
+            - The length of vector DA.
+            - The perpendicular distance from B to DA
+            - The perpendicular distance from C to DA
+            - The distance between B and C, parallel to DA.
+
+        Args:
+            a (float, float): The (column, row) position of point A.
+            b (float, float): The (column, row) position of point B.
+            c (float, float): The (column, row) position of point C.
+            d (float, float): The (column, row) position of point D.
+            **kwargs: See `new_roi` for all additional comments.
+
+        Returns:
+             The created ROI instance.
+        """
+        points = np.vstack([np.array(d),
+                            np.array(a),
+                            np.array((0, 0)),  # Projection point of C onto AD calculated by OsiriX.
+                            np.array(c),
+                            np.array((0, 0)),  # Projection point of B onto AD calculated by OsiriX.
+                            np.array(b)])
+        return self.new_roi(points=points, itype=29, **kwargs)
+
+    def new_oval_angle_roi(self, center: Tuple[float, float], width: float,
+                           height: float, **kwargs) -> osirix.roi.ROI:
+        """ Create a new angle oval ROI within the viewer.
+
+        Note: At present we are not aware that it is possible to pre-determine the angle part of
+        this ROI. This method defines only the oval that will be drawn; the angle appears to have a
+        default value of 113 degrees that can then be adapted by the user.
+
+        Args:
+            center (float, float): The (column, row) center of the oval ROI.
+            width (float): The width of the oval ROI.
+            height (float): The height of the oval ROI.
+            **kwargs: See `new_roi` for all additional comments.
+
+        Returns:
+             The created ROI instance.
+        """
+        rect = np.array([center[0], center[1], width / 2, height / 2])
+        return self.new_roi(rect=rect, itype=31, **kwargs)

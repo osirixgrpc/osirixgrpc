@@ -151,25 +151,23 @@ class ROI(osirix.base.OsirixBase):
         majority of them are created by directly supplying the vertices, a few are instead created
         by supplying the rectangle information (column, row, width, height).
 
-            - tMeasure: A ruler measurement. N = 2 (start then end).
+            - tMeasure: A ruler measurement. N = 2.
             - tROI: A square ROI. N = 4. Created by rectangle.
             - tOval: An oval-based ROI. No limit on N. Created by rectangle.
             - tOPolygon: An open polygon. No limit on N.
             - tCPolygon: A closed polygon. No limit on N.
-            - tAngle: An angle measurement. N = 3 (start, middle then end).
+            - tAngle: An angle measurement. N = 3.
             - tText: A text box. Created by rectangle.
-            - tArrow: An arrow. N = 2 (arrow head then arrow tail).
+            - tArrow: An arrow. N = 2 (arrow head then tail).
             - tPencil: A closed polygon. No limit it N.
             - t2DPoint: A single point ROI. Created by rectangle.
-            - tLayerROI:
-            - tAxis: An axis-based ROI for bi-dimensional measurement.
-            - tDynAngle: The angle between two lines. N = 4 (line 1 start/end, line 2 start/end).
-            - tTAGT: A pair of oriented perpendicular lines for measuring distance. N must equal 6.
+            - tAxis: An axis-based ROI for bi-dimensional measurement. N = 4.
+            - tDynAngle: The angle between two lines. N = 4.
+            - tTAGT: A pair of oriented perpendicular lines for measuring distance. N = 6.
             - tBall: A circular ROI representing a slice of a 3D ball ROI. No limit on N.
                 It is not possible to create a new tBall ROI with pyOsiriX.
-            - tOvalAngle: An oval with an additional angle specifier. No limit on N. Note that only
-                the vertices are provided on request (via the `points` attribute of an
-                `osirix.roi.ROI` instance). Created by rectangle.
+            - tOvalAngle: An oval with an additional angle specifier. No limit on N. Created by
+                rectangle.
 
         Args:
             reverse_order (bool): If `False` then the mapping is provided in the form
