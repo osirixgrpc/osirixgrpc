@@ -38,9 +38,11 @@ class ROIVolume(osirix.base.OsirixBase):
         self.response_check(response)
 
     @property
-    # TODO: Can we define a set_visible method?
     def visible(self) -> bool:
         """ Whether the volume ROI is visible in the 3D viewer
+
+        Note that whilst this property cannot be set, it can be modified using the `hide_roi_volume`
+        and `display_roi_volume` methods of the `osirix.vr_controller.VRController` class.
         """
         response = self.osirix_service_stub.ROIVolumeVisible(self.pb2_object)
         self.response_check(response)

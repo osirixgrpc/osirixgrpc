@@ -3,7 +3,7 @@
 """
 
 from __future__ import annotations
-from typing import Tuple
+from typing import Tuple, List
 
 import osirixgrpc.vrcontroller_pb2 as vrcontroller_pb2
 
@@ -83,3 +83,38 @@ class VRController(osirix.base.OsirixBase):
         self.response_check(response)
         return osirix.viewer_controller.ViewerController(self.osirix_service,
                                                          response.viewer_controller)
+
+    def roi_volumes(self) -> List[osirix.roi.ROIVolume]:
+        """ Obtain references to all volumetric ROIs.
+
+        Returns:
+            A list of ROIVolume instances.
+        """
+        response = self.osirix_service_stub.VRControllerROIVolumes(self.pb2_object)
+        self.response_check(response)
+        roi_volumes = []
+        for roi_volume in response.roi_volumes:
+            roi_volumes.append(osirix.roi.ROIVolume(self.osirix_service, roi_volume))
+        return roi_volumes
+
+    def hide_roi_volume(self, roi_volume: osirix.roi.ROIVolume):
+        """ Ensure that an input ROI is hidden on the 3D display.
+
+        Args:
+            roi_volume (osirix.roi.ROIVolume): The ROI volume to hide.
+        """
+        request = vrcontroller_pb2.VRControllerHideROIVolumeRequest(
+            vr_controller=self.pb2_object, roi_volume=roi_volume.pb2_object)
+        response = self.osirix_service_stub.VRControllerHideROIVolume(request)
+        self.response_check(response)
+
+    def display_roi_volume(self, roi_volume: osirix.roi.ROIVolume):
+        """ Ensure that an input ROI is visible on the 3D display.
+
+        Args:
+            roi_volume (osirix.roi.ROIVolume): The ROI volume to make visible.
+        """
+        request = vrcontroller_pb2.VRControllerDisplayROIVolumeRequest(
+            vr_controller=self.pb2_object, roi_volume=roi_volume.pb2_object)
+        response = self.osirix_service_stub.VRControllerDisplayROIVolume(request)
+        self.response_check(response)
