@@ -20,16 +20,16 @@ import sys
 import os
 sys.path.insert(0, os.path.abspath(os.path.dirname(__file__)))
 
-from osirixgrpc import browsercontroller_pb2
-from osirixgrpc import dcmpix_pb2
-from osirixgrpc import dicomimage_pb2
-from osirixgrpc import dicomseries_pb2
-from osirixgrpc import dicomstudy_pb2
-from osirixgrpc import osirix_pb2_grpc
-from osirixgrpc import osirix_pb2
-from osirixgrpc import roi_pb2
-from osirixgrpc import roivolume_pb2
-from osirixgrpc import types_pb2
-from osirixgrpc import utilities_pb2
-from osirixgrpc import viewercontroller_pb2
-from osirixgrpc import vrcontroller_pb2
+from python.osirixgrpc import browsercontroller_pb2
+from python.osirixgrpc import dcmpix_pb2
+from python.osirixgrpc import dicomimage_pb2
+from python.osirixgrpc import dicomseries_pb2
+from python.osirixgrpc import dicomstudy_pb2
+from python.osirixgrpc import osirix_pb2_grpc
+from python.osirixgrpc import osirix_pb2
+from python.osirixgrpc import roi_pb2
+from python.osirixgrpc import roivolume_pb2
+from python.osirixgrpc import types_pb2
+from python.osirixgrpc import utilities_pb2
+from python.osirixgrpc import viewercontroller_pb2
+from python.osirixgrpc import vrcontroller_pb2
