@@ -22,7 +22,7 @@ Example functionality includes:
 Please ensure you check our [official documentation](https://osirixgrpc.github.io/osirixgrpc/) to find out more!
 
 ## Installation
-```bash
+```
 pip install -i https://pypi.org/simple/ --extra-index-url https://test.pypi.org/simple/ pyosirix==0.2.1-dev9
 ```
 
