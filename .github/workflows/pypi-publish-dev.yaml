@@ -22,7 +22,7 @@ jobs:
         run: |
           python3 -m pip install --upgrade build twine
 
-      - name: Resolve README and LICENSE  # Symlinks don't seem to resolve well pypi build
+      - name: Resolve README and LICENSE
         run: |
           rm pyosirix/LICENSE.txt pyosirix/README.md
           cp LICENSE.txt pyosirix/LICENSE.txt
@@ -33,18 +33,15 @@ jobs:
       - name: Build and publish osirixgrpc
         run: |
           cd python
-          sed -i'' -e 's|numpy|-i https://pypi.org/simple/ numpy|g' requirements.txt
-          sed -i'' -e 's|osirixgrpc|-i https://test.pypi.org/simple/ osirixgrpc|g' requirements.txt
           python3 -m build
           python3 -m twine upload --repository testpypi dist/*
         env:
           TWINE_USERNAME: __token__
           TWINE_PASSWORD: ${{ secrets.PYPI_TEST_TOKEN }}
 
-      - name: Build and publish pyosirix  # (specify exactly the requirements locations)
+      - name: Build and publish pyosirix
         run: |
           cd pyosirix  
-          sed -i'' -e 's|numpy|https://files.pythonhosted.org/packages/65/6e/09db70a523a96d25e115e71cc56a6f9031e7b8cd166c1ac8438307c14058/numpy-1.26.4.tar.gz|g' requirements.txt
           python3 -m build
           python3 -m twine upload --repository testpypi dist/*
         env:
