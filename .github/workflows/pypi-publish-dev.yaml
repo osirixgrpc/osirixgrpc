@@ -24,9 +24,9 @@ jobs:
 
       - name: Resolve README and LICENSE  # Symlinks don't seem to resolve well pypi build
         run: |
-          rm pyosirix/LICENSE.txt pyosirix/README.txt
+          rm pyosirix/LICENSE.txt pyosirix/README.md
           cp LICENSE.txt pyosirix/LICENSE.txt
-          cp docs/docs/pyosirix/README.txt pyosirix/README.txt
+          cp docs/docs/pyosirix/README.md pyosirix/README.md
 
       - name: Build and publish
         run: |
