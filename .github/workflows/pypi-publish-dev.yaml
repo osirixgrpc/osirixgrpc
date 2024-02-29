@@ -33,15 +33,18 @@ jobs:
       - name: Build and publish osirixgrpc
         run: |
           cd python
+          sed -i'' -e 's|numpy|-i https://pypi.org/simple/ numpy|g' requirements.txt
+          sed -i'' -e 's|osirixgrpc|-i https://test.pypi.org/simple/ osirixgrpc|g' requirements.txt
           python3 -m build
           python3 -m twine upload --repository testpypi dist/*
         env:
           TWINE_USERNAME: __token__
           TWINE_PASSWORD: ${{ secrets.PYPI_TEST_TOKEN }}
 
-      - name: Build and publish pyosirix  # (ensure requirements updated)
+      - name: Build and publish pyosirix  # (specify exactly the requirements locations)
         run: |
-          cd pyosirix
+          cd pyosirix  
+          sed -i'' -e 's|numpy|-i https://pypi.org/simple/ numpy|g' requirements.txt
           sed -i'' -e 's|osirixgrpc|-i https://test.pypi.org/simple/ osirixgrpc|g' requirements.txt
           python3 -m build
           python3 -m twine upload --repository testpypi dist/*
