@@ -20,6 +20,17 @@ class ROIVolume(osirix.base.OsirixBase):
     """ Represents a single volumetric region of interest in a 3D viewer (`VRController`)
 
     """
+
+    def __init__(self, vr_controller: osirix.vr_controller.VRController, *args, **kwargs):
+        super(ROIVolume, self).__init__(*args, **kwargs)
+        self._vr_controller = vr_controller
+
+    @property
+    def vr_controller(self) -> osirix.vr_controller.VRController:
+        """ The 3D volume render window in which this ROI is shown.
+        """
+        return self._vr_controller
+
     @property
     def texture(self) -> bool:
         """ Whether the volume ROI is textured
@@ -40,13 +51,19 @@ class ROIVolume(osirix.base.OsirixBase):
     @property
     def visible(self) -> bool:
         """ Whether the volume ROI is visible in the 3D viewer
-
-        Note that whilst this property cannot be set, it can be modified using the `hide_roi_volume`
-        and `display_roi_volume` methods of the `osirix.vr_controller.VRController` class.
         """
         response = self.osirix_service_stub.ROIVolumeVisible(self.pb2_object)
         self.response_check(response)
         return response.visible
+
+    @visible.setter
+    def visible(self, set_visible: bool):
+        """ Whether the volume ROI is visible in the 3D viewer
+        """
+        if self.visible and not set_visible:
+            self.vr_controller.hide_roi_volume(self)
+        if not self.visible and set_visible:
+            self.vr_controller.display_roi_volume(self)
 
     @property
     def name(self) -> str:

@@ -1,5 +1,5 @@
 # This provides set up for mkdocs documentation generation.
-site_name: OsiriXgrpc v0.2.1-dev3
+site_name: OsiriXgrpc v0.2.1-dev10
 site_url: 
 repo_url: https://github.com/osirixgrpc/osirixgrpc
 docs_dir: docs
@@ -34,6 +34,11 @@ theme:
 plugins:
   - search
   - mkdocstrings
+  - mkdocstrings:
+      default_handler: python
+      handlers:
+        python:
+          paths: [ "../pyosirix" ]
 
 # Documentation extensions.
 markdown_extensions:
@@ -50,7 +55,7 @@ markdown_extensions:
   - pymdownx.details
   - pymdownx.superfences
   - pymdownx.snippets:
-      base_path: ["../"] # Root of the repository
+      base_path: [".."] # Root of the repository
 
 # The page tree. This links the layout of the generated documentation site to the page contents.
 nav:

@@ -6,6 +6,7 @@ from __future__ import annotations
 
 from typing import Union
 
+import osirixgrpc
 from osirixgrpc import types_pb2
 
 import osirix
@@ -17,20 +18,26 @@ Pb2Type = Union[types_pb2.DicomStudy, types_pb2.DicomSeries, types_pb2.DicomImag
 
 
 class OsirixBase:
-    """ A base class to be used for all pyOsiriX classes.
+    """ A base class to be used for all pyOsiriX classes. Only subclasses must be created.
 
-    Attributes:
-        osirix_service (OsirixService): A service instance created with appropriate configuration.
-        pb2_object (Pb2Type): The object messages passed by OsiriXgrpc (as defined in types.proto).
-            Importantly, each object contains the unique identity of an instance within OsiriX,
-            accessible via `osirixrpc_uid`.  Please do not modify its value!  The only time this
-            should be passed as `None` is when creating an `Osirix` instance.
     """
     def __init__(self, osirix_service: osirix.osirix_utilities.OsirixService,
                  pb2_object: Pb2Type = None):
-        self.osirix_service = osirix_service
-        self.osirix_service_stub = osirix_service.osirix_service_stub
-        self.pb2_object = pb2_object
+        self._osirix_service = osirix_service
+        self._osirix_service_stub = osirix_service.osirix_service_stub
+        self.pb2_object = pb2_object  # The protobuf object created using osirixgrpc (private)
+
+    @property
+    def osirix_service(self) -> osirix.osirix_utilities.OsirixService:
+        """ The OsiriX service from which the instance was created.
+        """
+        return self._osirix_service
+
+    @property
+    def osirix_service_stub(self) -> osirixgrpc.osirix_pb2_grpc.OsiriXServiceStub:
+        """ The service stub contained with service. Provided for convenient/fast access.
+        """
+        return self._osirix_service_stub
 
     @staticmethod
     def response_check(grpc_response) -> None:
