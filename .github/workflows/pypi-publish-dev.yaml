@@ -31,7 +31,6 @@ jobs:
       - name: Build and publish
         run: |
           cd pyosirix
-          rm LICENSE.txt README.txt
           python3 -m build
           python3 -m twine upload --repository testpypi dist/*
         env:
