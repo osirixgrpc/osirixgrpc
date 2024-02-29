@@ -22,9 +22,16 @@ jobs:
         run: |
           python3 -m pip install --upgrade build twine
 
+      - name: Resolve README and LICENSE  # Symlinks don't seem to resolve well pypi build
+        run: |
+          rm pyosix/LICENSE.txt pyosirix/README.txt
+          cp LICENSE.txt pyosix/LICENSE.txt
+          cp docs/docs/pyosirix/README.txt pyosirix/README.txt
+
       - name: Build and publish
         run: |
           cd pyosirix
+          rm LICENSE.txt README.txt
           python3 -m build
           python3 -m twine upload --repository testpypi dist/*
         env:
