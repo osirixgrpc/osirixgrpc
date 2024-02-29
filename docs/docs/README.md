@@ -2,6 +2,12 @@
 
 ![Welcome to OsiriXgrpc!](https://raw.githubusercontent.com/osirixgrpc/osirixgrpc/dev/docs/docs/assets/logo/logo-large.png)
 
+[![Powered By gRPC](https://img.shields.io/badge/powered_by-gRPC-green?labelColor=red)](https://grpc.io)
+[![GitHub License](https://img.shields.io/github/license/osirixgrpc/osirixgrpc?color=blue)](https://github.com/osirixgrpc/osirixgrpc/blob/main/LICENSE)
+![PyPI - Downloads](https://img.shields.io/pypi/dm/osirixgrpc)
+[![Static Badge](https://img.shields.io/badge/issues-osirixgrpc-red?logo=github)](https://github.com/osirixgrpc/osirixgrpc/issues)
+[![Static Badge](https://img.shields.io/badge/citation-AI2ASE-green?logo=googlescholar)](https://ai-2-ase.github.io/papers/29%5cCameraReady%5cAAAI_OsiriXgrpc__Rapid_prototyping_and_development_of_state_of_the_art_artificial_intelligence_in_OsiriX_cam_ready.pdf)
+
 __Welcome to OsiriXgrpc__, a research plugin for the popular [OsiriX](https://www.osirix-viewer.com) medical image 
 viewing platform for macOS. It leverages the [gRPC](https://grpc.io) architecture to provide fast communication between 
 OsiriX (the _server_) and custom-built software or scripts running on a different local process (the _client_).  This 
@@ -9,10 +15,11 @@ enables fast development of additional OsiriX functionality, including the adopt
 image processing and artificial intelligence.  Currently, Python is the only in-built supported language, though
 adoption of [other languages](https://grpc.io/docs/languages) can be easily achieved.  
 
-Note that it can be much simpler to interact with OsiriXgrpc using the more pythonic __pyOsiriX__ glue code. See the
-dedicated [documentation](pyosirix/README.md) for further information.
+!!! note "Using osirixgrpc versus pyosirix"
+    It can be much simpler to interact with OsiriXgrpc using the more pythonic __pyOsiriX__ glue code. See the
+    dedicated [documentation](pyosirix/README.md) for further information.
 
-## Getting Started
+## Installation
 For instructions on how to install and set up the plugin, please see the [getting started](getting_started.md) page.
 
 ## Any suggestions?
@@ -31,9 +38,4 @@ thoughts - please let us know using a `feature request` [issue](https://github.c
 template.
 
  - Support for other scripting languages including Java and Ruby.
- - Improve security through SSL/TCL encryption.  
- 
-## Citations
-
- 1. [Timothy Sum Hon Mun, et. al., AAAI, 2022](https://ai-2-ase.github.io/papers/29%5cCameraReady%5cAAAI_OsiriXgrpc__Rapid_prototyping_and_development_of_state_of_the_art_artificial_intelligence_in_OsiriX_cam_ready.pdf)
- 
+ - Improve security through SSL/TCL encryption.

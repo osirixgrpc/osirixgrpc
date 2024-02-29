@@ -13,6 +13,7 @@ for the OsiriX medical image viewing platform. Our vision is to accelerate the d
 processing tools for the medical community, including straight-forward deployment of AI algorithms.
 
 Example functionality includes:
+
  1. Interrogating metadata of studies/series/imaging included within the OsiriX database.
  2. Accessing and adjusting pixel values within a 2D OsiriX viewer.
  3. Adjusting visualization settings of 3D volume rendering windows.
