@@ -1,4 +1,4 @@
-name: Build OsiriXgrpc
+name: Build OsiriXgrpc and publish to PyPI (test-PyPI if from dev)
 
 on:
   push:
@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-    runs-on: macos-latest-xlarge
+    runs-on: macos-latest
 
     env:
       GRPC_VERSION: 1.55.0
@@ -152,3 +152,34 @@ jobs:
         with:
           name: osirixgrpc-zip
           path: osirixgrpc.osirixplugin.zip
+
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3
+
+      - name: Install dependencies
+        run: |
+          python3 -m pip install --upgrade build twine
+
+      - name: Resolve README and LICENSE
+        run: |
+          rm python/LICENSE.txt
+          cp LICENSE.txt python/LICENSE.txt
+
+      - if: github.ref == 'refs/heads/dev'
+        name: Build and publish osirixgrpc
+        run: |
+          cd python
+          python3 -m build
+          python3 -m twine upload --repository testpypi dist/*
+        env:
+          TWINE_USERNAME: __token__
+          TWINE_PASSWORD: ${{ secrets.PYPI_TEST_TOKEN }}
