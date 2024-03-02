@@ -154,6 +154,8 @@ jobs:
           path: osirixgrpc.osirixplugin.zip
 
   publish:
+    needs: build
+    
     runs-on: ubuntu-latest
 
     steps:
