@@ -5,6 +5,7 @@
 from __future__ import annotations
 
 from typing import Union
+import re
 
 import osirixgrpc
 from osirixgrpc import types_pb2
@@ -26,6 +27,12 @@ class OsirixBase:
         self._osirix_service = osirix_service
         self._osirix_service_stub = osirix_service.osirix_service_stub
         self.pb2_object = pb2_object  # The protobuf object created using osirixgrpc (private)
+
+    def __str__(self):
+        s = self.__repr__()
+        pattern = r",?\s*uid\s*=\s*[^,\n]*"  # Prettify be removing osirixrpc_uid
+        s_new = re.sub(pattern, "", s)
+        return s_new
 
     @property
     def osirix_service(self) -> osirix.osirix_utilities.OsirixService:

@@ -14,6 +14,12 @@ class VRController(osirix.base.OsirixBase):
     """ Represents one of the displayed volume render windows.
 
     """
+    def __repr__(self):
+        return f"VRController: " \
+               f"rendering_mode = {self.rendering_mode}, " \
+               f"uid = {self.pb2_object.osirixrpc_uid}" \
+               f"\n     {self.viewer_2d().__repr__()}"
+
     @property
     def rendering_mode(self) -> str:
         """ The rendering mode: "VR" for volume render, "MIP" for maximum intensity projection.
@@ -94,7 +100,7 @@ class VRController(osirix.base.OsirixBase):
         self.response_check(response)
         roi_volumes = []
         for roi_volume in response.roi_volumes:
-            roi_volumes.append(osirix.roi.ROIVolume(self.osirix_service, roi_volume))
+            roi_volumes.append(osirix.roi.ROIVolume(self, self.osirix_service, roi_volume))
         return roi_volumes
 
     def hide_roi_volume(self, roi_volume: osirix.roi.ROIVolume):

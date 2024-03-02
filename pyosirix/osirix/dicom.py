@@ -18,6 +18,7 @@ from __future__ import annotations
 
 import datetime
 from typing import List
+
 from osirix.base import OsirixBase
 
 
@@ -26,6 +27,12 @@ class DicomStudy(OsirixBase):
 
     All attributes for this instance are immutable.
     """
+    def __repr__(self):
+        return f"DicomStudy: " \
+               f"patient_id = {self.patient_id}, " \
+               f"date = {self.date.strftime('%d/%m/%Y - %H:%M')}, " \
+               f"uid = {self.pb2_object.osirixrpc_uid}"
+
     @property
     def date(self) -> datetime.datetime:
         """ The date in which the Dicom data were acquired.
@@ -228,6 +235,12 @@ class DicomSeries(OsirixBase):
 
     All attributes for this instance are immutable.
     """
+    def __repr__(self):
+        return f"DicomSeries: " \
+               f"modality = {self.modality}, "\
+               f"series_description = {self.series_description}, " \
+               f"uid = {self.pb2_object.osirixrpc_uid}" \
+               f"\n     {self.study.__repr__()}"
 
     @property
     def date(self) -> datetime.datetime:
@@ -276,10 +289,10 @@ class DicomSeries(OsirixBase):
         """
         response = self.osirix_service_stub.DicomSeriesNumberOfImages(self.pb2_object)
         self.response_check(response)
-        return response.no_images
+        return response.number_of_images
 
     @property
-    def series_description(self) -> int:
+    def series_description(self) -> str:
         """ The series description.
         """
         response = self.osirix_service_stub.DicomSeriesSeriesDescription(self.pb2_object)
@@ -362,6 +375,12 @@ class DicomImage(OsirixBase):
 
     All attributes for this instance are immutable.
     """
+    def __repr__(self):
+        return f"DicomImage: " \
+               f"instance_number = {self.instance_number}, "\
+               f"slice_location = {self.slice_location:.2f}, " \
+               f"uid = {self.pb2_object.osirixrpc_uid}" \
+               f"\n     {self.series.__repr__()}"
 
     @property
     def date(self) -> datetime.datetime:
@@ -444,7 +463,7 @@ class DicomImage(OsirixBase):
         Returns:
            The width (number of columns) of the image.
         """
-        response = self.osirix_service_stub.DicomImageHeight(self.pb2_object)
+        response = self.osirix_service_stub.DicomImageWidth(self.pb2_object)
         self.response_check(response)
         return response.width
 

@@ -183,7 +183,7 @@
     
     if (image)
     {
-        response->set_slice_locations([[image sliceLocation] floatValue]);
+        response->set_slice_location([[image sliceLocation] floatValue]);
         response->mutable_status()->set_status(1);
     }
     else

@@ -54,7 +54,7 @@ package osirixgrpc;
 
  message DicomImageSliceLocationResponse{
  	Status status = 1;
- 	float slice_locations = 2;
+ 	float slice_location = 2;
  }
 
  message DicomImageInstanceNumberResponse{

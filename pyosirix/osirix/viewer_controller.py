@@ -18,6 +18,14 @@ class ViewerController(osirix.base.OsirixBase):
     """ Represents one of the displayed volume render windows.
 
     """
+    def __repr__(self):
+        return f"ViewerController: " \
+               f"modality = {self.modality}, " \
+               f"idx = {self.idx}, " \
+               f"movie_idx = {self.movie_idx}, " \
+               f"patient_name = {self.cur_dcm().study_obj().patient_name}, "\
+               f"uid = {self.pb2_object.osirixrpc_uid}"
+
     @property
     def idx(self) -> int:
         """ The slice index currently being displayed to the viewer (starting at 0).

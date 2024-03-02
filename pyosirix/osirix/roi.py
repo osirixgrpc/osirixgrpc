@@ -20,10 +20,17 @@ class ROIVolume(osirix.base.OsirixBase):
     """ Represents a single volumetric region of interest in a 3D viewer (`VRController`)
 
     """
-
-    def __init__(self, vr_controller: osirix.vr_controller.VRController, *args, **kwargs):
-        super(ROIVolume, self).__init__(*args, **kwargs)
+    def __init__(self, vr_controller: osirix.vr_controller.VRController,
+                 osirix_service: osirix.osirix_utilities.OsirixService, *args, **kwargs):
+        super(ROIVolume, self).__init__(osirix_service, *args, **kwargs)
         self._vr_controller = vr_controller
+
+    def __repr__(self):
+        return f"ROIVolume: " \
+               f"name = {self.name}, " \
+               f"visible = {self.visible}, " \
+               f"uid = {self.pb2_object.osirixrpc_uid}" \
+               f"\n     {self.vr_controller.__repr__()}"
 
     @property
     def vr_controller(self) -> osirix.vr_controller.VRController:
@@ -154,6 +161,13 @@ class ROI(osirix.base.OsirixBase):
     """ Represents a single region of interest in a 2D viewer (`ViewerController`)
 
     """
+    def __repr__(self):
+        return f"ROI: " \
+               f"name = {self.name}, " \
+               f"type = {self.itypes()[self.itype]}, " \
+               f"uid = {self.pb2_object.osirixrpc_uid}" \
+               f"\n     {self.pix.__repr__()}"
+
     @classmethod
     def itypes(cls, reverse_order: bool = False) -> Dict:
         """ Provides a map between the integer ROI type and a text descriptor.

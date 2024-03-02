@@ -17,6 +17,11 @@ class DCMPix(osirix.base.OsirixBase):
     """ Represents a single image displayed within a 2D OsiriX viewer (`ViewerController`)
 
     """
+    def __repr__(self):
+        return f"DCMPix: " \
+               f"shape = {self.shape}, "\
+               f"uid = {self.pb2_object.osirixrpc_uid}" \
+               f"\n     {self.image_obj().__repr__()}"
 
     @property
     def is_rgb(self) -> bool:
@@ -54,14 +59,16 @@ class DCMPix(osirix.base.OsirixBase):
 
     @property
     def origin(self) -> Tuple[float, float, float]:
-        """ The origin of the image.
+        """ The origin of the image (rows, columns, slices).
 
         NOTE: It can be more accurate to get the slice location by loading the dicom file via the
         `source_file` property (using pydicom for example), and using the ImagePositionPatient tag.
         """
         response = self.osirix_service_stub.DCMPixOrigin(self.pb2_object)
         self.response_check(response)
-        return float(response.origin[0]), float(response.origin[1]), float(response.origin[2])
+        return (float(response.origin_rows),
+                float(response.origin_columns),
+                float(response.origin_slices))
 
     @property
     def pixel_spacing(self) -> Tuple[float, float]:

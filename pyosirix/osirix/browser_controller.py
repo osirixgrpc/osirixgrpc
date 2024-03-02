@@ -30,6 +30,9 @@ class BrowserController(osirix.base.OsirixBase):
     There should only ever be one, but it is OK to create multiple pyOsiriX instances, they will
     just contiain the same `osirixrpc_uid`.
     """
+    def __repr__(self):
+        return f"BrowserController: " \
+               f"uid = {self.pb2_object.osirixrpc_uid}"
 
     def copy_files_into_database(self, files: List[str]) -> None:
         """ Copy files into the Osirix database.
