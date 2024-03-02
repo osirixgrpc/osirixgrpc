@@ -186,7 +186,7 @@ PROTOBUF_CONSTEXPR DicomImageSliceLocationResponse::DicomImageSliceLocationRespo
     /*decltype(_impl_._has_bits_)*/{}
   , /*decltype(_impl_._cached_size_)*/{}
   , /*decltype(_impl_.status_)*/nullptr
-  , /*decltype(_impl_.slice_locations_)*/ 0
+  , /*decltype(_impl_.slice_location_)*/ 0
 } {}
 struct DicomImageSliceLocationResponseDefaultTypeInternal {
   PROTOBUF_CONSTEXPR DicomImageSliceLocationResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
@@ -341,7 +341,7 @@ const ::uint32_t TableStruct_dicomimage_2eproto::offsets[] PROTOBUF_SECTION_VARI
     ~0u,  // no _split_
     ~0u,  // no sizeof(Split)
     PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomImageSliceLocationResponse, _impl_.status_),
-    PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomImageSliceLocationResponse, _impl_.slice_locations_),
+    PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomImageSliceLocationResponse, _impl_.slice_location_),
     0,
     ~0u,
     PROTOBUF_FIELD_OFFSET(::osirixgrpc::DicomImageInstanceNumberResponse, _impl_._has_bits_),
@@ -406,12 +406,12 @@ const char descriptor_table_protodef_dicomimage_2eproto[] PROTOBUF_SECTION_VARIA
     "\0132\022.osirixgrpc.Status\022\020\n\010modality\030\002 \001(\t\""
     "g\n\030DicomImageSeriesResponse\022\"\n\006status\030\001 "
     "\001(\0132\022.osirixgrpc.Status\022\'\n\006series\030\002 \001(\0132"
-    "\027.osirixgrpc.DicomSeries\"^\n\037DicomImageSl"
+    "\027.osirixgrpc.DicomSeries\"]\n\037DicomImageSl"
     "iceLocationResponse\022\"\n\006status\030\001 \001(\0132\022.os"
-    "irixgrpc.Status\022\027\n\017slice_locations\030\002 \001(\002"
-    "\"_\n DicomImageInstanceNumberResponse\022\"\n\006"
-    "status\030\001 \001(\0132\022.osirixgrpc.Status\022\027\n\017inst"
-    "ance_number\030\002 \001(\rb\006proto3"
+    "irixgrpc.Status\022\026\n\016slice_location\030\002 \001(\002\""
+    "_\n DicomImageInstanceNumberResponse\022\"\n\006s"
+    "tatus\030\001 \001(\0132\022.osirixgrpc.Status\022\027\n\017insta"
+    "nce_number\030\002 \001(\rb\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_dicomimage_2eproto_deps[2] =
     {
@@ -422,7 +422,7 @@ static ::absl::once_flag descriptor_table_dicomimage_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_dicomimage_2eproto = {
     false,
     false,
-    1065,
+    1064,
     descriptor_table_protodef_dicomimage_2eproto,
     "dicomimage.proto",
     &descriptor_table_dicomimage_2eproto_once,
@@ -2690,14 +2690,14 @@ DicomImageSliceLocationResponse::DicomImageSliceLocationResponse(const DicomImag
       decltype(_impl_._has_bits_){from._impl_._has_bits_}
     , /*decltype(_impl_._cached_size_)*/{}
     , decltype(_impl_.status_){nullptr}
-    , decltype(_impl_.slice_locations_) {}
+    , decltype(_impl_.slice_location_) {}
   };
 
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
     _this->_impl_.status_ = new ::osirixgrpc::Status(*from._impl_.status_);
   }
-  _this->_impl_.slice_locations_ = from._impl_.slice_locations_;
+  _this->_impl_.slice_location_ = from._impl_.slice_location_;
   // @@protoc_insertion_point(copy_constructor:osirixgrpc.DicomImageSliceLocationResponse)
 }
 
@@ -2707,7 +2707,7 @@ inline void DicomImageSliceLocationResponse::SharedCtor(::_pb::Arena* arena) {
       decltype(_impl_._has_bits_){}
     , /*decltype(_impl_._cached_size_)*/{}
     , decltype(_impl_.status_){nullptr}
-    , decltype(_impl_.slice_locations_) { 0 }
+    , decltype(_impl_.slice_location_) { 0 }
 
   };
 }
@@ -2741,7 +2741,7 @@ void DicomImageSliceLocationResponse::Clear() {
     ABSL_DCHECK(_impl_.status_ != nullptr);
     _impl_.status_->Clear();
   }
-  _impl_.slice_locations_ = 0;
+  _impl_.slice_location_ = 0;
   _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
@@ -2762,10 +2762,10 @@ const char* DicomImageSliceLocationResponse::_InternalParse(const char* ptr, ::_
           goto handle_unusual;
         }
         continue;
-      // float slice_locations = 2;
+      // float slice_location = 2;
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 21)) {
-          _impl_.slice_locations_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          _impl_.slice_location_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
           ptr += sizeof(float);
         } else {
           goto handle_unusual;
@@ -2809,15 +2809,15 @@ failure:
         _Internal::status(this).GetCachedSize(), target, stream);
   }
 
-  // float slice_locations = 2;
+  // float slice_location = 2;
   static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
-  float tmp_slice_locations = this->_internal_slice_locations();
-  ::uint32_t raw_slice_locations;
-  memcpy(&raw_slice_locations, &tmp_slice_locations, sizeof(tmp_slice_locations));
-  if (raw_slice_locations != 0) {
+  float tmp_slice_location = this->_internal_slice_location();
+  ::uint32_t raw_slice_location;
+  memcpy(&raw_slice_location, &tmp_slice_location, sizeof(tmp_slice_location));
+  if (raw_slice_location != 0) {
     target = stream->EnsureSpace(target);
     target = ::_pbi::WireFormatLite::WriteFloatToArray(
-        2, this->_internal_slice_locations(), target);
+        2, this->_internal_slice_location(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -2844,12 +2844,12 @@ failure:
         *_impl_.status_);
   }
 
-  // float slice_locations = 2;
+  // float slice_location = 2;
   static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
-  float tmp_slice_locations = this->_internal_slice_locations();
-  ::uint32_t raw_slice_locations;
-  memcpy(&raw_slice_locations, &tmp_slice_locations, sizeof(tmp_slice_locations));
-  if (raw_slice_locations != 0) {
+  float tmp_slice_location = this->_internal_slice_location();
+  ::uint32_t raw_slice_location;
+  memcpy(&raw_slice_location, &tmp_slice_location, sizeof(tmp_slice_location));
+  if (raw_slice_location != 0) {
     total_size += 5;
   }
 
@@ -2876,11 +2876,11 @@ void DicomImageSliceLocationResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message
         from._internal_status());
   }
   static_assert(sizeof(::uint32_t) == sizeof(float), "Code assumes ::uint32_t and float are the same size.");
-  float tmp_slice_locations = from._internal_slice_locations();
-  ::uint32_t raw_slice_locations;
-  memcpy(&raw_slice_locations, &tmp_slice_locations, sizeof(tmp_slice_locations));
-  if (raw_slice_locations != 0) {
-    _this->_internal_set_slice_locations(from._internal_slice_locations());
+  float tmp_slice_location = from._internal_slice_location();
+  ::uint32_t raw_slice_location;
+  memcpy(&raw_slice_location, &tmp_slice_location, sizeof(tmp_slice_location));
+  if (raw_slice_location != 0) {
+    _this->_internal_set_slice_location(from._internal_slice_location());
   }
   _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
@@ -2901,8 +2901,8 @@ void DicomImageSliceLocationResponse::InternalSwap(DicomImageSliceLocationRespon
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(DicomImageSliceLocationResponse, _impl_.slice_locations_)
-      + sizeof(DicomImageSliceLocationResponse::_impl_.slice_locations_)
+      PROTOBUF_FIELD_OFFSET(DicomImageSliceLocationResponse, _impl_.slice_location_)
+      + sizeof(DicomImageSliceLocationResponse::_impl_.slice_location_)
       - PROTOBUF_FIELD_OFFSET(DicomImageSliceLocationResponse, _impl_.status_)>(
           reinterpret_cast<char*>(&_impl_.status_),
           reinterpret_cast<char*>(&other->_impl_.status_));

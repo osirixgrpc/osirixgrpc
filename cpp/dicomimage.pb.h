@@ -1725,7 +1725,7 @@ class DicomImageSliceLocationResponse final :
 
   enum : int {
     kStatusFieldNumber = 1,
-    kSliceLocationsFieldNumber = 2,
+    kSliceLocationFieldNumber = 2,
   };
   // .osirixgrpc.Status status = 1;
   bool has_status() const;
@@ -1741,14 +1741,14 @@ class DicomImageSliceLocationResponse final :
   void unsafe_arena_set_allocated_status(
       ::osirixgrpc::Status* status);
   ::osirixgrpc::Status* unsafe_arena_release_status();
-  // float slice_locations = 2;
-  void clear_slice_locations() ;
-  float slice_locations() const;
-  void set_slice_locations(float value);
+  // float slice_location = 2;
+  void clear_slice_location() ;
+  float slice_location() const;
+  void set_slice_location(float value);
 
   private:
-  float _internal_slice_locations() const;
-  void _internal_set_slice_locations(float value);
+  float _internal_slice_location() const;
+  void _internal_set_slice_location(float value);
 
   public:
   // @@protoc_insertion_point(class_scope:osirixgrpc.DicomImageSliceLocationResponse)
@@ -1762,7 +1762,7 @@ class DicomImageSliceLocationResponse final :
     ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
     ::osirixgrpc::Status* status_;
-    float slice_locations_;
+    float slice_location_;
   };
   union { Impl_ _impl_; };
   friend struct ::TableStruct_dicomimage_2eproto;
@@ -3169,24 +3169,24 @@ inline void DicomImageSliceLocationResponse::set_allocated_status(::osirixgrpc::
   // @@protoc_insertion_point(field_set_allocated:osirixgrpc.DicomImageSliceLocationResponse.status)
 }
 
-// float slice_locations = 2;
-inline void DicomImageSliceLocationResponse::clear_slice_locations() {
-  _impl_.slice_locations_ = 0;
+// float slice_location = 2;
+inline void DicomImageSliceLocationResponse::clear_slice_location() {
+  _impl_.slice_location_ = 0;
 }
-inline float DicomImageSliceLocationResponse::slice_locations() const {
-  // @@protoc_insertion_point(field_get:osirixgrpc.DicomImageSliceLocationResponse.slice_locations)
-  return _internal_slice_locations();
+inline float DicomImageSliceLocationResponse::slice_location() const {
+  // @@protoc_insertion_point(field_get:osirixgrpc.DicomImageSliceLocationResponse.slice_location)
+  return _internal_slice_location();
 }
-inline void DicomImageSliceLocationResponse::set_slice_locations(float value) {
-  _internal_set_slice_locations(value);
-  // @@protoc_insertion_point(field_set:osirixgrpc.DicomImageSliceLocationResponse.slice_locations)
+inline void DicomImageSliceLocationResponse::set_slice_location(float value) {
+  _internal_set_slice_location(value);
+  // @@protoc_insertion_point(field_set:osirixgrpc.DicomImageSliceLocationResponse.slice_location)
 }
-inline float DicomImageSliceLocationResponse::_internal_slice_locations() const {
-  return _impl_.slice_locations_;
+inline float DicomImageSliceLocationResponse::_internal_slice_location() const {
+  return _impl_.slice_location_;
 }
-inline void DicomImageSliceLocationResponse::_internal_set_slice_locations(float value) {
+inline void DicomImageSliceLocationResponse::_internal_set_slice_location(float value) {
   ;
-  _impl_.slice_locations_ = value;
+  _impl_.slice_location_ = value;
 }
 
 // -------------------------------------------------------------------
