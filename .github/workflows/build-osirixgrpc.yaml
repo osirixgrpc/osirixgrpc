@@ -153,17 +153,17 @@ jobs:
           name: osirixgrpc-zip
           path: osirixgrpc.osirixplugin.zip
 
-  publish:
+  publish-pypi:
     needs: build
     
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v5
         with:
           python-version: 3
 
@@ -171,13 +171,20 @@ jobs:
         run: |
           python3 -m pip install --upgrade build twine
 
-      - name: Resolve README and LICENSE
+      - name: Resolve README and LICENSE symlinks (osirigrpc)
         run: |
           rm python/LICENSE.txt
           cp LICENSE.txt python/LICENSE.txt
 
+      - name: Resolve README and LICENSE symlinks (pyosirix)
+        run: |
+          rm pyosirix/LICENSE.txt pyosirix/README.md
+          cp LICENSE.txt pyosirix/LICENSE.txt
+          cp docs/docs/pyosirix/README.md pyosirix/README.md
+          
+      # Publish osirixgrpc
       - if: github.ref == 'refs/heads/dev'
-        name: Build and publish osirixgrpc
+        name: Build and publish osirixgrpc (dev)
         run: |
           cd python
           python3 -m build
@@ -185,3 +192,34 @@ jobs:
         env:
           TWINE_USERNAME: __token__
           TWINE_PASSWORD: ${{ secrets.PYPI_TEST_TOKEN }}
+
+      - if: github.ref == 'refs/heads/main'
+        name: Build and publish osirixgrpc (main)
+        run: |
+          cd python
+          python3 -m build
+          python3 -m twine upload --repository pypi dist/*
+        env:
+          TWINE_USERNAME: __token__
+          TWINE_PASSWORD: ${{ secrets.PYPI_TOKEN }}
+
+      # Publish pyosirix
+      - if: github.ref == 'refs/heads/dev'
+        name: Build and publish pyosirix (dev)
+        run: |
+          cd pyosirix  
+          python3 -m build
+          python3 -m twine upload --repository testpypi dist/*
+        env:
+          TWINE_USERNAME: __token__
+          TWINE_PASSWORD: ${{ secrets.PYPI_TEST_TOKEN }}
+
+      - if: github.ref == 'refs/heads/main'
+        name: Build and publish pyosirix (main)
+        run: |
+          cd pyosirix
+          python3 -m build
+          python3 -m twine upload --repository pypi dist/*
+        env:
+          TWINE_USERNAME: __token__
+          TWINE_PASSWORD: ${{ secrets.PYPI_TOKEN }}
