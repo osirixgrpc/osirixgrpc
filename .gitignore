@@ -15,3 +15,6 @@ __pycache__
 
 # The plugin bundle
 osirixgrpc.osirixplugin.zip
+
+# PyCharm project files
+.idea/*
