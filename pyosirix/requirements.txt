@@ -1,2 +1,2 @@
 numpy
-osirixgrpc==0.2.1-dev15
+osirixgrpc==0.2.1-dev16
