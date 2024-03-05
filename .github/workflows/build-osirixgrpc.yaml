@@ -160,9 +160,9 @@ jobs:
           python-version: 3
 
       - name: Update osirixgrpc requirements file
-          run: |
-            echo "grpcio>=$GRPC_VERSION" > python/requirements.txt
-            echo "grpcio-tools>=$GRPC_VERSION" >> python/requirements.txt
+        run: |
+          echo "grpcio>=$GRPC_VERSION" > python/requirements.txt
+          echo "grpcio-tools>=$GRPC_VERSION" >> python/requirements.txt
 
       - name: Install dependencies
         run: |
