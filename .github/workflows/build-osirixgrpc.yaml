@@ -126,17 +126,6 @@ jobs:
           grpc/install/bin/protoc -I protos --grpc_out=cpp --plugin=protoc-gen-grpc=grpc/install/bin/grpc_cpp_plugin osirix.proto
           grpc/install/bin/protoc -I protos --cpp_out=cpp osirix.proto roi.proto roivolume.proto dcmpix.proto vrcontroller.proto viewercontroller.proto browsercontroller.proto dicomimage.proto dicomstudy.proto dicomseries.proto utilities.proto types.proto
 
-      - name: Build Python definitions
-        run: |
-          mkdir -p python/osirixgrpc
-          grpc/install/bin/protoc -I protos --grpc_python_out=python/osirixgrpc --plugin=protoc-gen-grpc_python=grpc/install/bin/grpc_python_plugin osirix.proto 
-          grpc/install/bin/protoc -I protos --python_out=python/osirixgrpc osirix.proto roi.proto roivolume.proto dcmpix.proto vrcontroller.proto viewercontroller.proto browsercontroller.proto dicomimage.proto dicomstudy.proto dicomseries.proto utilities.proto types.proto
-          
-      - name: Update requirements file
-        run: |
-          echo "grpcio>=$GRPC_VERSION" > python/requirements.txt
-          echo "grpcio-tools>=$GRPC_VERSION" >> python/requirements.txt
-
       - name: Build project
         run: |
           mkdir -p src/"$BUILD_PATH"
@@ -158,6 +147,9 @@ jobs:
     
     runs-on: ubuntu-latest
 
+    env:
+      GRPC_VERSION: 1.55.0
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -167,11 +159,17 @@ jobs:
         with:
           python-version: 3
 
+      - name: Update osirixgrpc requirements file
+          run: |
+            echo "grpcio>=$GRPC_VERSION" > python/requirements.txt
+            echo "grpcio-tools>=$GRPC_VERSION" >> python/requirements.txt
+
       - name: Install dependencies
         run: |
           python3 -m pip install --upgrade build twine
+          python3 -m pip install -r python/requirements.txt
 
-      - name: Resolve README and LICENSE symlinks (osirigrpc)
+      - name: Resolve README and LICENSE symlinks (osirixgrpc)
         run: |
           rm python/LICENSE.txt
           cp LICENSE.txt python/LICENSE.txt
@@ -181,7 +179,13 @@ jobs:
           rm pyosirix/LICENSE.txt pyosirix/README.md
           cp LICENSE.txt pyosirix/LICENSE.txt
           cp docs/docs/pyosirix/README.md pyosirix/README.md
-          
+
+      - name: Build Python definitions
+        run: |
+          mkdir -p python/osirixgrpc
+          python -m grpc_tools.protoc -I protos --grpc_python_out=python/osirixgrpc osirix.proto 
+          python -m grpc_tools.protoc -I protos --python_out=python/osirixgrpc osirix.proto roi.proto roivolume.proto dcmpix.proto vrcontroller.proto viewercontroller.proto browsercontroller.proto dicomimage.proto dicomstudy.proto dicomseries.proto utilities.proto types.proto
+
       # Publish osirixgrpc
       - if: github.ref == 'refs/heads/dev'
         name: Build and publish osirixgrpc (dev)
