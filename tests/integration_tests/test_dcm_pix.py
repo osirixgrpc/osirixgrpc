@@ -9,6 +9,7 @@ import dicomstudy_pb2
 import viewercontroller_pb2
 import types_pb2
 
+
 class TestDCMPix(GrpcTest):
 	"""Test case for ViewerController messaging
 
@@ -17,16 +18,17 @@ class TestDCMPix(GrpcTest):
 		super().setUp()
 		self.viewer_controller = self.stub.OsirixFrontmostViewer(utilities_pb2.Empty()).viewer_controller
 		self.pix = self.stub.ViewerControllerCurDCM(self.viewer_controller).pix
-		roi_request = viewercontroller_pb2.ViewerControllerROIsWithNameRequest(viewer_controller = self.viewer_controller, name = "test_grpc", movie_idx = 0)
+		roi_request = viewercontroller_pb2.ViewerControllerROIsWithNameRequest(
+			viewer_controller=self.viewer_controller, name="test_grpc", movie_idx=0)
 		self.roi = self.stub.ViewerControllerROIsWithName(roi_request).rois[0]
 
 	def testDCMPixConvertToRGB(self):
-		request = dcmpix_pb2.DCMPixConvertToRGBRequest(pix = self.pix, rgb_channel = 3)
+		request = dcmpix_pb2.DCMPixConvertToRGBRequest(pix=self.pix, rgb_channel=3)
 		response = self.stub.DCMPixConvertToRGB(request)
 		self.assertEqual(response.status.status, 1)
 
 	def testDCMPixConvertToBW(self):
-		request = dcmpix_pb2.DCMPixConvertToBWRequest(pix = self.pix, bw_channel = 3)
+		request = dcmpix_pb2.DCMPixConvertToBWRequest(pix=self.pix, bw_channel=3)
 		response = self.stub.DCMPixConvertToBW(request)
 		self.assertEqual(response.status.status, 1)
 
