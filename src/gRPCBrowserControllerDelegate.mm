@@ -72,4 +72,41 @@
 
 }
 
++ (void) BrowserControllerOpenViewerFromImages:(const osirixgrpc::BrowserControllerOpenViewerFromImagesRequest *) request :(osirixgrpc::BrowserControllerOpenViewerFromImagesResponse *) response :(gRPCCache *) cache
+{
+    NSString *uid = stringFromGRPCString(request->browser().osirixrpc_uid());
+
+    BrowserController *bc = [cache objectForUID:uid];
+
+    if (bc)
+    {
+        NSMutableArray *frames = [NSMutableArray init];
+        int n_frames = request->frames_size();
+        for (int i = 0; i < n_frames; i++) {
+            osirixgrpc::BrowserControllerOpenViewerFromImagesRequest_FrameImages frame = request->frames(i);
+            NSMutableArray *frame_images = [NSMutableArray init];
+            int n_images = frame.images_size();
+            for (int j = 0; j < n_images; j++) {
+                osirixgrpc::DicomImage dicom_image = frame.images(j);
+                NSString *dicom_image_uid = stringFromGRPCString(dicom_image.osirixrpc_uid());
+                DicomImage *image = [cache objectForUID:dicom_image_uid];
+                [frame_images addObject:image];
+            }
+            [frames addObject:frame_images];
+        }
+        ViewerController *opened_viewer = [bc openViewerFromImages:frames movie:request->movie() viewer:nil keyImagesOnly:NO];
+        
+        // Add to cache
+        NSString *viewer_uid = [cache addObject:opened_viewer];
+        response->mutable_viewer()->set_osirixrpc_uid([viewer_uid UTF8String]);
+        response->mutable_status()->set_status(1);
+    }
+    else
+    {
+        response->mutable_status()->set_status(0);
+        response->mutable_status()->set_message("No BrowserController cached");
+    }
+
+}
+
 @end

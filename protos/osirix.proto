@@ -117,6 +117,7 @@ rpc ViewerControllerOpenVRViewerForMode (ViewerControllerOpenVRViewerForModeRequ
 // BrowserController methods
 rpc BrowserControllerDatabaseSelection (BrowserController) returns (BrowserControllerDatabaseSelectionResponse) {}
 rpc BrowserControllerCopyFilesIfNeeded (BrowserControllerCopyFilesIfNeededRequest) returns (Response) {}
+rpc BrowserControllerOpenViewerFromImages (BrowserControllerOpenViewerFromImagesRequest) returns (BrowserControllerOpenViewerFromImagesResponse) {}
 
 // DicomImage methods
 rpc DicomImageWidth (DicomImage) returns (DicomImageWidthResponse) {}

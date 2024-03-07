@@ -139,6 +139,7 @@ private:
 # pragma mark BrowserController messages
     gRPCServiceMessageDeclaration(BrowserControllerDatabaseSelection, BrowserController, BrowserControllerDatabaseSelectionResponse)
     gRPCServiceMessageDeclaration(BrowserControllerCopyFilesIfNeeded, BrowserControllerCopyFilesIfNeededRequest, Response)
+    gRPCServiceMessageDeclaration(BrowserControllerOpenViewerFromImages, BrowserControllerOpenViewerFromImagesRequest, BrowserControllerOpenViewerFromImagesResponse)
     
 # pragma mark DicomImage messages
     gRPCServiceMessageDeclaration(DicomImageWidth, DicomImage, DicomImageWidthResponse)

@@ -5,5 +5,6 @@
 
 delegateDeclaration(BrowserControllerDatabaseSelection, BrowserController, BrowserControllerDatabaseSelectionResponse)
 delegateDeclaration(BrowserControllerCopyFilesIfNeeded, BrowserControllerCopyFilesIfNeededRequest, Response)
+delegateDeclaration(BrowserControllerOpenViewerFromImages, BrowserControllerOpenViewerFromImagesRequest, BrowserControllerOpenViewerFromImagesResponse)
 
 @end
