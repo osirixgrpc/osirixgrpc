@@ -91,7 +91,7 @@ xcodebuild -project src/osirixgrpc.xcodeproj -scheme osirixgrpc_build -destinati
 # Zip plugin
 # ==========
 cd src/$BUILD_PATH
-zip -r ../../osirixgrpc.osirixplugin.zip osirixgrpc.osirixplugin
+zip -r osirixgrpc.osirixplugin.zip osirixgrpc.osirixplugin
 
 # Remind user to re-import libraries in XCode: Only needs to be done if grpc version is altered.
 echo "Finished installation! Don't forget to re-link the compiled libraries (in grpc/install/lib) with the 'Build Phases' stage of XCode project (if grpc version is changed)."
