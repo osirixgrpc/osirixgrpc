@@ -1,3 +1,7 @@
+""" Configuration and fixtures for pytest """
+
+import os
+
 import pytest
 import grpc
 
@@ -29,3 +33,10 @@ def grpc_stub():
 
     yield stub
     channel.close()
+
+
+@pytest.fixture(scope="function")
+def dicom_paths():
+    directory = os.path.abspath("../data/MR phantom")
+    paths = [os.path.join(directory, path) for path in os.listdir(directory) if "dcm" in path]
+    yield paths

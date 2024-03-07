@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+# To run:
+#  1. Ensure an empty OsiriX database is created and selected.
+#  2. Run this script from within the directory it is contained.
+
 # Create a new virtual environment
 python -m venv test_osirixgrpc_env
 
@@ -16,13 +20,13 @@ pip uninstall -y osirixgrpc
 export OSIRIXGRPCVERSION=$(cat ../../VERSION)
 
 # Install the package from the test PYPI
-pip install -i https://pypi.org/simple/ --extra-index-url https://test.pypi.org/simple/ osirixgrpc==0.2.1-dev16
+pip install -i https://pypi.org/simple/ --extra-index-url https://test.pypi.org/simple/ osirixgrpc==$OSIRIXGRPCVERSION
 
 # Run pytest on the entire test directory
-pytest tests/
+pytest test_browser_controller.py -s
 
 # Deactivate the virtual environment
 deactivate
 
 # Remove the virtual environment after testing
-rm -rf venv
+rm -rf test_osirixgrpc_env
