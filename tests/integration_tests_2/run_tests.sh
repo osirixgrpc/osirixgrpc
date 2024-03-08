@@ -22,8 +22,9 @@ export OSIRIXGRPCVERSION=$(cat ../../VERSION)
 # Install the package from the test PYPI
 pip install -i https://pypi.org/simple/ --extra-index-url https://test.pypi.org/simple/ osirixgrpc==$OSIRIXGRPCVERSION
 
-# Run pytest on the entire test directory
-pytest test_browser_controller.py -s
+# Run pytest on the entire test directory: -s flag ensures print statements are available; -x stops after first fail.
+pytest test_browser_controller.py -s -x
+pytest test_dicom_image.py -s -x
 
 # Deactivate the virtual environment
 deactivate
