@@ -302,6 +302,9 @@ class DicomSeries(OsirixBase):
     @property
     def series_instance_uid(self) -> int:
         """ The series instance UID.
+
+        Warning: This seems to generate some unexpected results. It is better to access directly
+            by reading the dicom files (via DicomSeries.paths) with pydicom.
         """
         response = self.osirix_service_stub.DicomSeriesSeriesInstanceUID(self.pb2_object)
         self.response_check(response)
