@@ -21,11 +21,24 @@ def test_dicom_import(grpc_stub, browser_controller, dicom_paths):
     assert response.status.status == 1
 
 
+def test_database_studies(grpc_stub, browser_controller):
+    response = grpc_stub.BrowserControllerDatabaseStudies(browser_controller)
+    print(response)
+    assert response.status.status == 1
+
+
 def test_database_selection_status(grpc_stub, browser_controller):
     response = grpc_stub.BrowserControllerDatabaseSelection(browser_controller)
     assert response.status.status == 1
 
 
 def test_open_viewer(grpc_stub, browser_controller):
-    response = grpc_stub.BrowserControllerDatabaseSelection(browser_controller)
-    print(response)
+    database_selection = grpc_stub.BrowserControllerDatabaseSelection(browser_controller)
+    study = database_selection.studies[0]
+    dicom_images = grpc_stub.DicomStudyImages(study).images
+    frames = [browsercontroller_pb2.BrowserControllerOpenViewerFromImagesRequest.FrameImages(
+        images=dicom_images)]
+    request = browsercontroller_pb2.BrowserControllerOpenViewerFromImagesRequest(
+        browser=browser_controller, frames=frames, movie=True)
+    response = grpc_stub.BrowserControllerOpenViewerFromImages(request)
+    assert response.status.status == 1

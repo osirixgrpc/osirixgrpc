@@ -17,6 +17,11 @@ message BrowserControllerOpenViewerFromImagesResponse{
 	ViewerController viewer = 2;
 }
 
+message BrowserControllerDatabaseStudiesResponse{
+	Status status = 1;
+	repeated DicomStudy studies = 2;
+}
+
 // Message requests
 message BrowserControllerCopyFilesIfNeededRequest{
 	BrowserController browser = 1;
