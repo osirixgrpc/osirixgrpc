@@ -75,3 +75,22 @@ def test_open_viewer_2d(grpc_stub, browser_controller, study_test, series_test):
         browser=browser_controller, frames=frames, movie=False)
     response = grpc_stub.BrowserControllerOpenViewerFromImages(request)
     assert response.status.status == 1
+
+
+def test_open_viewer_4d(grpc_stub, browser_controller, study_test, series_test):
+    """ Check that the database can be traversed and a series opened in 4D """
+    # Sort the DicomImage instances by slice location.
+    dicom_images = np.array(grpc_stub.DicomSeriesImages(series_test).images)
+    sorted_idx = np.argsort([grpc_stub.DicomImageSliceLocation(image).slice_location
+                             for image in dicom_images])
+    dicom_images = dicom_images[sorted_idx].tolist()
+
+    # Generate the request and start.
+    frames = [browsercontroller_pb2.BrowserControllerOpenViewerFromImagesRequest.FrameImages(
+                  images=dicom_images),
+              browsercontroller_pb2.BrowserControllerOpenViewerFromImagesRequest.FrameImages(
+                  images=dicom_images)]
+    request = browsercontroller_pb2.BrowserControllerOpenViewerFromImagesRequest(
+        browser=browser_controller, frames=frames, movie=True)
+    response = grpc_stub.BrowserControllerOpenViewerFromImages(request)
+    assert response.status.status == 1
