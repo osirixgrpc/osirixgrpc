@@ -23,7 +23,7 @@ package osirixgrpc;
 
  message DicomImageCompletePathResponse{
  	Status status = 1;
- 	string path_name = 2;
+ 	string complete_path = 2;
  }
 
  message DicomImageDateResponse{

@@ -44,7 +44,7 @@ def test_dicom_series_study(grpc_stub, series_test, study_test):
 def test_dicom_series_images(grpc_stub, series_test):
     """ Check that images are provided. """
     response = grpc_stub.DicomSeriesImages(series_test)
-    assert response.status.status == 1, f"Could not request sorted images"
+    assert response.status.status == 1, f"Could not request images"
     images = response.images
     assert len(images) == 40, f"Bad number of images ({len(images)})"
 

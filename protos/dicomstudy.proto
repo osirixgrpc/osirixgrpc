@@ -31,11 +31,6 @@ message DicomStudyRawNoFilesResponse{
 	int32 no_files = 2;
 }
 
-message DicomStudyNoFilesExcludingMultiFramesResponse{
-	Status status = 1;
-	int32 no_files = 2;
-}
-
 message DicomStudyNumberOfImagesResponse{
 	Status status = 1;
 	int32 no_images = 2;

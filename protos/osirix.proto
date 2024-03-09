@@ -153,7 +153,6 @@ rpc DicomStudyImages (DicomStudy) returns (DicomStudyImagesResponse) {}
 rpc DicomStudyModalities (DicomStudy) returns (DicomStudyModalitiesResponse) {}
 rpc DicomStudyNoFiles (DicomStudy) returns (DicomStudyNoFilesResponse) {}
 rpc DicomStudyRawNoFiles (DicomStudy) returns (DicomStudyRawNoFilesResponse) {}
-rpc DicomStudyNoFilesExcludingMultiFrames (DicomStudy) returns (DicomStudyNoFilesExcludingMultiFramesResponse) {}
 rpc DicomStudyNumberOfImages (DicomStudy) returns (DicomStudyNumberOfImagesResponse) {}
 rpc DicomStudySeries (DicomStudy) returns (DicomStudySeriesResponse) {}
 rpc DicomStudyName (DicomStudy) returns (DicomStudyNameResponse) {}

@@ -175,7 +175,6 @@ private:
     gRPCServiceMessageDeclaration(DicomStudyModalities, DicomStudy, DicomStudyModalitiesResponse)
     gRPCServiceMessageDeclaration(DicomStudyNoFiles, DicomStudy, DicomStudyNoFilesResponse)
     gRPCServiceMessageDeclaration(DicomStudyRawNoFiles, DicomStudy, DicomStudyRawNoFilesResponse)
-    gRPCServiceMessageDeclaration(DicomStudyNoFilesExcludingMultiFrames, DicomStudy, DicomStudyNoFilesExcludingMultiFramesResponse)
     gRPCServiceMessageDeclaration(DicomStudyNumberOfImages, DicomStudy, DicomStudyNumberOfImagesResponse)
     gRPCServiceMessageDeclaration(DicomStudySeries, DicomStudy, DicomStudySeriesResponse)
     gRPCServiceMessageDeclaration(DicomStudyName, DicomStudy, DicomStudyNameResponse)
