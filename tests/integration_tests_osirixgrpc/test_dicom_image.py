@@ -35,7 +35,7 @@ def test_complete_path(grpc_stub, image_test):
     """ Check that a complete path is provided. """
     response = grpc_stub.DicomImageCompletePath(image_test)
     assert response.status.status == 1, f"Could not request complete path"
-    assert os.path.exists(response.path_name), f"Bad path provided"
+    assert os.path.exists(response.complete_path), f"Bad path provided"
 
 
 def test_date(grpc_stub, image_test):
