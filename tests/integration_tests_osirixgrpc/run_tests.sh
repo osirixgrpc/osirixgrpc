@@ -25,6 +25,7 @@ pip install -i https://pypi.org/simple/ --extra-index-url https://test.pypi.org/
 # Run pytest on the entire test directory: -s flag ensures print statements are available; -x stops after first fail.
 pytest test_browser_controller.py -s -x
 pytest test_dicom_image.py -s -x
+pytest test_dicom_series.py -s -x
 
 # Deactivate the virtual environment
 deactivate
