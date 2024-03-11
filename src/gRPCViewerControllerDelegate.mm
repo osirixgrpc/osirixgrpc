@@ -8,42 +8,6 @@
 #import <OsiriXAPI/MyPoint.h>
 #import <OsiriXAPI/DCMView.h>
 
-void copyVolumeDataForViewerController(ViewerController *vC, NSData** vD, NSMutableArray ** newPixList, int v)
-{
-    *vD = nil;
-    *newPixList = nil;
-    
-    // First calculate the amount of memory needed for the new serie
-    NSArray        *pL = [vC pixList: v];
-    DCMPix        *curPix;
-    long        mem = 0;
-    
-    for( int i = 0; i < [pL count]; i++)
-    {
-        curPix = [pL objectAtIndex: i];
-        mem += [curPix pheight] * [curPix pwidth] * 4;        // each pixel contains either a 32-bit float or a 32-bit ARGB value
-    }
-    
-    unsigned char *fVolumePtr = (unsigned char *)malloc( mem);    // ALWAYS use malloc for allocating memory !
-    if( fVolumePtr)
-    {
-        // Copy the source series in the new one !
-        memcpy( fVolumePtr, [vC volumePtr: v], mem);
-        
-        // Create a NSData object to control the new pointer
-        *vD = [[[NSData alloc] initWithBytesNoCopy:fVolumePtr length:mem freeWhenDone:YES] autorelease];
-        
-        // Now copy the DCMPix with the new fVolumePtr
-        *newPixList = [NSMutableArray array];
-        for( int i = 0; i < [pL count]; i++)
-        {
-            curPix = [[[pL objectAtIndex: i] copy] autorelease];
-            [curPix setfImage: (float*) (fVolumePtr + [curPix pheight] * [curPix pwidth] * 4 * i)];
-            [*newPixList addObject: curPix];
-        }
-    }
-}
-
 @implementation gRPCViewerControllerDelegate
 
 + (void) ViewerControllerCloseViewer:(const osirixgrpc::ViewerController *) request :(osirixgrpc::Response *) response :(gRPCCache *) cache
@@ -421,51 +385,25 @@ void copyVolumeDataForViewerController(ViewerController *vC, NSData** vD, NSMuta
     }
 }
 
-+ (void) ViewerControllerCopyViewerWindow:(const osirixgrpc::ViewerControllerCopyViewerWindowRequest *) request :(osirixgrpc::Response *) response :(gRPCCache *) cache
++ (void) ViewerControllerCopyViewerWindow:(const osirixgrpc::ViewerController *) request :(osirixgrpc::ViewerControllerCopyViewerWindowResponse *) response :(gRPCCache *) cache
 {
-    NSString *uid = stringFromGRPCString(request->viewer_controller().osirixrpc_uid())
-    
+    NSString *uid = stringFromGRPCString(request->osirixrpc_uid())
+
     ViewerController *vc = [cache objectForUID:uid];
     
     if (vc)
     {
         @try
         {
-            ViewerController *new2DViewer = nil;
-            
-            NSData *vD = nil;
-            NSMutableArray *newPixList = nil;
-            
-            BOOL in4D = request->in_4d();
-            
-            copyVolumeDataForViewerController(vc, &vD, &newPixList, 0);
-            if (!vD) {
-                response->mutable_status()->set_status(0);
-                response->mutable_status()->set_message("Could not generate 4D viewer");
-            }
-            else
-            {
-                // CAUTION: The DicomFile array is identical!
-                new2DViewer = [vc newWindow:newPixList :[vc fileList: 0] :vD];
-                [new2DViewer roiDeleteAll: vc];
-                
-                if (in4D && [vc maxMovieIndex] > 1) {
-                    for( int v = 1; v < [vc maxMovieIndex]; v++)
-                    {
-                        vD = nil;
-                        newPixList = nil;
-                        copyVolumeDataForViewerController(vc, &vD, &newPixList, v);
-                        if( vD)
-                            [new2DViewer addMovieSerie:newPixList :[vc fileList: v] :vD];
-                    }
-                }
-                response->mutable_status()->set_status(1);
-            }
+            ViewerController *new2DViewer = [vc copyViewerWindow];
+            NSString *new_uid = [cache addObject:new2DViewer];
+            response->mutable_viewer_controller()->set_osirixrpc_uid([new_uid UTF8String]);
+            response->mutable_status()->set_status(1);
         }
         @catch (NSException *exception)
         {
             response->mutable_status()->set_status(0);
-            response->mutable_status()->set_message("Could not generate 4D viewer");
+            response->mutable_status()->set_message("Could not generate new viewer");
         }
     }
     else
@@ -526,7 +464,8 @@ void copyVolumeDataForViewerController(ViewerController *vC, NSData** vD, NSMuta
         }
         else
         {
-            response->mutable_status()->set_status(1); // Should not really return an "error" here.
+            response->mutable_status()->set_status(0);
+            response->mutable_status()->set_message("No blending controller active");
         }
     }
     else

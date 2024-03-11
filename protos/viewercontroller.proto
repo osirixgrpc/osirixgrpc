@@ -85,6 +85,11 @@ message ViewerControllerWLWWResponse{
 	float ww = 3;
 }
 
+message ViewerControllerCopyViewerWindowResponse{
+	Status status = 1;
+	ViewerController viewer_controller = 2;
+}
+
 message ViewerControllerOpenVRViewerForModeResponse{
 	Status status = 1;
 	VRController vr_controller = 2;
@@ -148,11 +153,6 @@ message ViewerControllerROIsWithNameRequest{
 message ViewerControllerResampleViewerControllerRequest{
 	ViewerController viewer_controller = 1;
 	ViewerController fixed_viewer_controller = 2;
-}
-
-message ViewerControllerCopyViewerWindowRequest{
-	ViewerController viewer_controller = 1;
-	bool in_4d = 2;
 }
 
 message ViewerControllerSetMovieIdxRequest{

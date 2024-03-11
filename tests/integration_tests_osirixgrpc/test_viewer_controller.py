@@ -1,6 +1,8 @@
 """ Test the osirixgrpc functionality for OsiriX ViewerController class """
 
-from osirixgrpc import viewercontroller_pb2
+from time import time
+
+from osirixgrpc import viewercontroller_pb2, utilities_pb2
 
 
 def test_viewer_controller_2d_viewer(viewer_controller_2d):
@@ -25,12 +27,6 @@ def test_viewer_controller_max_movie_idx_4d(grpc_stub, viewer_controller_4d):
     response = grpc_stub.ViewerControllerMaxMovieIdx(viewer_controller_4d)
     assert response.status.status == 1, f"Could not request 4D max movie index"
     assert response.max_movie_idx == 2, f"Bad max movie index {response.max_movie_idx}"
-
-
-def test_viewer_controller_close_viewer(grpc_stub, viewer_controller_2d):
-    """ Check that a 2D viewer can be closed. """
-    response = grpc_stub.ViewerControllerCloseViewer(viewer_controller_2d)
-    assert response.status.status == 1, f"Could not close 2D viewer"
 
 
 def test_viewer_controller_set_idx(grpc_stub, viewer_controller_4d):
@@ -138,3 +134,45 @@ def test_viewer_controller_pix_list(grpc_stub, viewer_controller_4d):
     assert len(response.pix) == 40, f"Bad number of pix {len(response.pix)}"
 
 
+def test_viewer_controller_fuse_with_viewer(grpc_stub, viewer_controller_2d, viewer_controller_4d):
+    """ Check that the 2D viewer can be fused on top of the 4D viewer. """
+    request = viewercontroller_pb2.ViewerControllerFuseWithViewerRequest(
+        viewer_controller=viewer_controller_4d, fusion_viewer_controller=viewer_controller_2d)
+    response = grpc_stub.ViewerControllerFuseWithViewer(request)
+    assert response.status.status == 1, f"Could not fuse viewers"
+
+
+def test_viewer_controller_blending_controller(grpc_stub, viewer_controller_4d,
+                                               viewer_controller_2d):
+    """ Check the correct fusion viewer is provided. """
+    response = grpc_stub.ViewerControllerBlendingController(viewer_controller_4d)
+    print(response)
+    assert response.status.status == 1, f"Could not request blending controller"
+    assert response.blending_viewer.osirixrpc_uid == viewer_controller_2d.osirixrpc_uid
+
+
+def test_viewer_controller_copy_viewer_window_in_4d(grpc_stub, viewer_controller_4d):
+    """ Test that a window can be copied (shut down in next test). """
+    request = viewercontroller_pb2.ViewerControllerCopyViewerWindowRequest(
+        viewer_controller=viewer_controller_4d, in_4d=False)
+    response = grpc_stub.ViewerControllerCopyViewerWindow(request)
+    assert response.status.status == 1, f"Could not request copy viewer window"
+
+
+def test_viewer_controller_close_viewer(grpc_stub, viewer_controller_2d, viewer_controller_4d):
+    """ Check that a viewer can be closed. """
+    # Wait for the new viewer to open
+    t0 = time()
+    viewers = grpc_stub.OsirixDisplayed2DViewers(utilities_pb2.Empty()).viewer_controllers
+    while len(viewers) == 2 and time() - t0 < 10.0:
+        viewers = grpc_stub.OsirixDisplayed2DViewers(utilities_pb2.Empty()).viewer_controllers
+    assert len(viewers) > 2, f"Could not establish a third viewer"
+
+    for viewer in viewers:
+        if viewer.osirixrpc_uid == viewer_controller_2d.osirixrpc_uid:
+            continue
+        elif viewer.osirixrpc_uid == viewer_controller_4d.osirixrpc_uid:
+            continue
+        else:
+            response = grpc_stub.ViewerControllerCloseViewer(viewer)
+            assert response.status.status == 1, f"Could not close viewer"
