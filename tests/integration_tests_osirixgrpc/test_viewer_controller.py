@@ -341,10 +341,10 @@ def test_viewer_controller_rois_with_name(grpc_stub, viewer_controller_4d):
     assert len(response.rois) == 10, f"Bad number of ROIs with name mask {len(response.rois)}"
 
 
-def test_viewer_controller_open_vr_viewer_for_mode_mip(grpc_stub, viewer_controller_2d):
+def test_viewer_controller_open_vr_viewer_for_mode_mip(grpc_stub, viewer_controller_4d):
     """ Check that we can open up a MIP viewer. """
     request = viewercontroller_pb2.ViewerControllerOpenVRViewerForModeRequest(
-        viewer_controller=viewer_controller_2d, mode="VR")
+        viewer_controller=viewer_controller_4d, mode="MIP")
     response = grpc_stub.ViewerControllerOpenVRViewerForMode(request)
     assert response.status.status == 1, f"Could not open MIP viewer"
     print(response)

@@ -722,7 +722,6 @@
             [[vc imageView] getWLWW:&iwl :&iww];
             [vrc setWLWW:iwl :iww];
             [vc place3DViewerWindow: vrc];
-            [vrc load3DState];
             [vrc showWindow:vc];
             [[vrc window] makeKeyAndOrderFront:self];
             [[vrc window] display];
