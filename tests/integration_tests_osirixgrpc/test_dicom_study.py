@@ -76,7 +76,7 @@ def test_dicom_study_name(grpc_stub, study_test):
 def test_dicom_study_date(grpc_stub, study_test):
     """ Check the correct study date is provided. """
     response = grpc_stub.DicomStudyDate(study_test)
-    assert response.status.status == 1, f"Could not request study date"  # noqa
+    assert response.status.status == 1, f"Could not request study date"  # noqa: duplicate lines
     assert response.year == 2022, f"Bad year {response.year}"
     assert response.month == 8, f"Bad month {response.month}"
     assert response.day == 3, f"Bad day {response.day}"

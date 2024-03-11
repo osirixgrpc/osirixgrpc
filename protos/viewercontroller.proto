@@ -181,4 +181,7 @@ message ViewerControllerOpenVRViewerForModeRequest{
 	string mode = 2;
 }
 
-
+message ViewerControllerFuseWithViewerRequest{
+	ViewerController viewer_controller = 1;
+	ViewerController fusion_viewer_controller = 2;
+}

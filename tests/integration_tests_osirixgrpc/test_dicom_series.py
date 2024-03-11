@@ -1,4 +1,4 @@
-""" Test the  osirixgrpc functionality for OsiriX DicomSeries class """
+""" Test the osirixgrpc functionality for OsiriX DicomSeries class """
 
 import os
 
@@ -90,7 +90,7 @@ def test_dicom_series_name(grpc_stub, series_test):
 def test_dicom_series_date(grpc_stub, series_test):
     """ Check the correct series date is returned. """
     response = grpc_stub.DicomSeriesDate(series_test)
-    assert response.status.status == 1, f"Could not request series date"
+    assert response.status.status == 1, f"Could not request series date"   # noqa: duplicate lines
     assert response.year == 2022, f"Bad year {response.year}"
     assert response.month == 8, f"Bad month {response.month}"
     assert response.day == 3, f"Bad day {response.day}"

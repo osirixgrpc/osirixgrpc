@@ -49,6 +49,30 @@ def browser_controller(grpc_stub):
 
 
 @pytest.fixture(scope="function")
+def viewer_controller_2d(grpc_stub):
+    viewers = grpc_stub.OsirixDisplayed2DViewers(utilities_pb2.Empty()).viewer_controllers
+    viewer_controller = None
+    for viewer in viewers:
+        response = grpc_stub.ViewerControllerMaxMovieIdx(viewer)
+        max_movie_idx = response.max_movie_idx
+        if max_movie_idx == 1:
+            viewer_controller = viewer
+    yield viewer_controller
+
+
+@pytest.fixture(scope="function")
+def viewer_controller_4d(grpc_stub):
+    viewers = grpc_stub.OsirixDisplayed2DViewers(utilities_pb2.Empty()).viewer_controllers
+    viewer_controller = None
+    for viewer in viewers:
+        response = grpc_stub.ViewerControllerMaxMovieIdx(viewer)
+        max_movie_idx = response.max_movie_idx
+        if max_movie_idx > 1:
+            viewer_controller = viewer
+    yield viewer_controller
+
+
+@pytest.fixture(scope="function")
 def study_uid_test():
     """ The test study UID """
     yield "1.2.840.846310145.17.1.1.4515953"

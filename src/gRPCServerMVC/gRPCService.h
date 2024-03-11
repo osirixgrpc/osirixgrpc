@@ -69,6 +69,7 @@ private:
     gRPCServiceMessageDeclaration(ViewerControllerWLWW, ViewerController, ViewerControllerWLWWResponse)
     gRPCServiceMessageDeclaration(ViewerControllerSetWLWW, ViewerControllerSetWLWWRequest, Response)
     gRPCServiceMessageDeclaration(ViewerControllerOpenVRViewerForMode, ViewerControllerOpenVRViewerForModeRequest, ViewerControllerOpenVRViewerForModeResponse)
+    gRPCServiceMessageDeclaration(ViewerControllerFuseWithViewer, ViewerControllerFuseWithViewerRequest, Response)
     
 # pragma mark DCMPix messages
     gRPCServiceMessageDeclaration(DCMPixConvertToRGB, DCMPixConvertToRGBRequest, Response)

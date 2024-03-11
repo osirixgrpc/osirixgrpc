@@ -99,6 +99,7 @@
                 [frames addObject:frame_images];
             }
             ViewerController *opened_viewer = [bc openViewerFromImages:frames movie:request->movie() viewer:nil keyImagesOnly:NO];
+            [[AppController sharedAppController] performSelector: @selector(tileWindows:) withObject:nil afterDelay: 0.1];
             
             [[AppController sharedAppController] checkAllWindowsAreVisible: self makeKey: YES];
             

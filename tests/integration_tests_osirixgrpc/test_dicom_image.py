@@ -1,4 +1,4 @@
-""" Test the  osirixgrpc functionality for OsiriX DicomImage class """
+""" Test the osirixgrpc functionality for OsiriX DicomImage class """
 
 import os
 

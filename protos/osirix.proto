@@ -113,6 +113,7 @@ rpc ViewerControllerSetIdx (ViewerControllerSetIdxRequest) returns (Response) {}
 rpc ViewerControllerWLWW (ViewerController) returns (ViewerControllerWLWWResponse) {}
 rpc ViewerControllerSetWLWW (ViewerControllerSetWLWWRequest) returns (Response) {}
 rpc ViewerControllerOpenVRViewerForMode (ViewerControllerOpenVRViewerForModeRequest) returns (ViewerControllerOpenVRViewerForModeResponse) {}
+rpc ViewerControllerFuseWithViewer (ViewerControllerFuseWithViewerRequest) returns (Response) {}
 
 // BrowserController methods
 rpc BrowserControllerDatabaseSelection (BrowserController) returns (BrowserControllerDatabaseSelectionResponse) {}

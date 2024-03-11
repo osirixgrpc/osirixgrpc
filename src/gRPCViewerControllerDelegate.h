@@ -26,5 +26,6 @@ delegateDeclaration(ViewerControllerSetIdx, ViewerControllerSetIdxRequest, Respo
 delegateDeclaration(ViewerControllerWLWW, ViewerController, ViewerControllerWLWWResponse)
 delegateDeclaration(ViewerControllerSetWLWW, ViewerControllerSetWLWWRequest, Response)
 delegateDeclaration(ViewerControllerOpenVRViewerForMode, ViewerControllerOpenVRViewerForModeRequest, ViewerControllerOpenVRViewerForModeResponse)
+delegateDeclaration(ViewerControllerFuseWithViewer, ViewerControllerFuseWithViewerRequest, Response)
 
 @end

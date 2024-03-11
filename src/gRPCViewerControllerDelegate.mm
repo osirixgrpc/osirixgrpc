@@ -796,4 +796,31 @@ void copyVolumeDataForViewerController(ViewerController *vC, NSData** vD, NSMuta
     }
 }
 
++(void) ViewerControllerFuseWithViewer:(const osirixgrpc::ViewerControllerFuseWithViewerRequest *)request :(osirixgrpc::Response *)response :(gRPCCache *)cache
+{
+    NSString *uid = stringFromGRPCString(request->viewer_controller().osirixrpc_uid())
+    
+    ViewerController *vc = [cache objectForUID:uid];
+    if (vc)
+    {
+        NSString *fuid = stringFromGRPCString(request->fusion_viewer_controller().osirixrpc_uid())
+        ViewerController *fvc = [cache objectForUID:fuid];
+        if (fvc)
+        {
+            [vc ActivateBlending:fvc];
+            response->mutable_status()->set_status(1);
+        }
+        else
+        {
+            response->mutable_status()->set_status(0);
+            response->mutable_status()->set_message("No fusion ViewerController cached");
+        }
+    }
+    else
+    {
+        response->mutable_status()->set_status(0);
+        response->mutable_status()->set_message("No ViewerController cached");
+    }
+}
+
 @end

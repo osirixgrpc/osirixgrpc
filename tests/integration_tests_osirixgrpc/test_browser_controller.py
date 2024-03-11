@@ -1,4 +1,4 @@
-""" Test the  osirixgrpc functionality for OsiriX BrowserController class """
+""" Test the osirixgrpc functionality for OsiriX BrowserController class """
 
 from time import time
 
