@@ -56,7 +56,7 @@ private:
     gRPCServiceMessageDeclaration(ViewerControllerSelectedROIs, ViewerController, ViewerControllerSelectedROIsResponse)
     gRPCServiceMessageDeclaration(ViewerControllerIsDataVolumic, ViewerControllerIsDataVolumicRequest, ViewerControllerIsDataVolumicResponse)
     gRPCServiceMessageDeclaration(ViewerControllerCopyViewerWindow, ViewerController, ViewerControllerCopyViewerWindowResponse)
-    gRPCServiceMessageDeclaration(ViewerControllerResampleViewerController, ViewerControllerResampleViewerControllerRequest, Response)
+    gRPCServiceMessageDeclaration(ViewerControllerResampleViewerController, ViewerControllerResampleViewerControllerRequest, ViewerControllerResampleViewerControllerResponse)
     gRPCServiceMessageDeclaration(ViewerControllerBlendingController, ViewerController, ViewerControllerBlendingControllerResponse)
     gRPCServiceMessageDeclaration(ViewerControllerVRControllers, ViewerController, ViewerControllerVRControllersResponse)
     gRPCServiceMessageDeclaration(ViewerControllerTitle, ViewerController, ViewerControllerTitleResponse)

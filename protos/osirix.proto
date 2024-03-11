@@ -100,7 +100,7 @@ rpc ViewerControllerROIsWithName (ViewerControllerROIsWithNameRequest) returns (
 rpc ViewerControllerSelectedROIs (ViewerController) returns (ViewerControllerSelectedROIsResponse) {}
 rpc ViewerControllerIsDataVolumic (ViewerControllerIsDataVolumicRequest) returns (ViewerControllerIsDataVolumicResponse) {}
 rpc ViewerControllerCopyViewerWindow (ViewerController) returns (ViewerControllerCopyViewerWindowResponse) {}
-rpc ViewerControllerResampleViewerController (ViewerControllerResampleViewerControllerRequest) returns (Response) {}
+rpc ViewerControllerResampleViewerController (ViewerControllerResampleViewerControllerRequest) returns (ViewerControllerResampleViewerControllerResponse) {}
 rpc ViewerControllerBlendingController (ViewerController) returns (ViewerControllerBlendingControllerResponse) {}
 rpc ViewerControllerVRControllers (ViewerController) returns (ViewerControllerVRControllersResponse) {}
 rpc ViewerControllerTitle (ViewerController) returns (ViewerControllerTitleResponse) {}

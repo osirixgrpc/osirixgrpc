@@ -146,33 +146,37 @@ def test_viewer_controller_blending_controller(grpc_stub, viewer_controller_4d,
                                                viewer_controller_2d):
     """ Check the correct fusion viewer is provided. """
     response = grpc_stub.ViewerControllerBlendingController(viewer_controller_4d)
-    print(response)
     assert response.status.status == 1, f"Could not request blending controller"
     assert response.blending_viewer.osirixrpc_uid == viewer_controller_2d.osirixrpc_uid
 
 
-def test_viewer_controller_copy_viewer_window_in_4d(grpc_stub, viewer_controller_4d):
-    """ Test that a window can be copied (shut down in next test). """
-    request = viewercontroller_pb2.ViewerControllerCopyViewerWindowRequest(
-        viewer_controller=viewer_controller_4d, in_4d=False)
-    response = grpc_stub.ViewerControllerCopyViewerWindow(request)
+def test_viewer_controller_copy_viewer_window_and_close_4d(grpc_stub, viewer_controller_4d):
+    """ Test that a 4D window can be copied (then shut it down!). """
+    response = grpc_stub.ViewerControllerCopyViewerWindow(viewer_controller_4d)
     assert response.status.status == 1, f"Could not request copy viewer window"
+    new_viewer = response.viewer_controller
+    response = grpc_stub.ViewerControllerCloseViewer(new_viewer)
+    assert response.status.status == 1, f"Could not close the new viewer"
 
 
-def test_viewer_controller_close_viewer(grpc_stub, viewer_controller_2d, viewer_controller_4d):
-    """ Check that a viewer can be closed. """
-    # Wait for the new viewer to open
-    t0 = time()
-    viewers = grpc_stub.OsirixDisplayed2DViewers(utilities_pb2.Empty()).viewer_controllers
-    while len(viewers) == 2 and time() - t0 < 10.0:
-        viewers = grpc_stub.OsirixDisplayed2DViewers(utilities_pb2.Empty()).viewer_controllers
-    assert len(viewers) > 2, f"Could not establish a third viewer"
+def test_viewer_controller_copy_viewer_window_and_close_2d(grpc_stub, viewer_controller_2d):
+    """ Test that a 4D window can be copied (then shut it down!). """
+    response = grpc_stub.ViewerControllerCopyViewerWindow(viewer_controller_2d)
+    assert response.status.status == 1, f"Could not request copy viewer window"
+    new_viewer = response.viewer_controller
+    response = grpc_stub.ViewerControllerCloseViewer(new_viewer)
+    assert response.status.status == 1, f"Could not close the new viewer"
 
-    for viewer in viewers:
-        if viewer.osirixrpc_uid == viewer_controller_2d.osirixrpc_uid:
-            continue
-        elif viewer.osirixrpc_uid == viewer_controller_4d.osirixrpc_uid:
-            continue
-        else:
-            response = grpc_stub.ViewerControllerCloseViewer(viewer)
-            assert response.status.status == 1, f"Could not close viewer"
+
+def test_viewer_controller_resample_viewer_window(grpc_stub, viewer_controller_2d):
+    """ Try to resample the 2D viewer to itself. """
+    response = grpc_stub.ViewerControllerCopyViewerWindow(viewer_controller_2d)
+    assert response.status.status == 1, f"Could not request copy viewer window"
+    new_viewer = response.viewer_controller
+    request = viewercontroller_pb2.ViewerControllerResampleViewerControllerRequest(
+        viewer_controller=new_viewer, fixed_viewer_controller=viewer_controller_2d)
+    response = grpc_stub.ViewerControllerResampleViewerController(request)
+    assert response.status.status == 1, f"Could not resample data"
+    response = grpc_stub.ViewerControllerCloseViewer(new_viewer)
+    assert response.status.status == 1, f"Could not close the new viewer"
+

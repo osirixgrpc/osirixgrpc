@@ -414,7 +414,7 @@
     
 }
 
-+ (void) ViewerControllerResampleViewerController:(const osirixgrpc::ViewerControllerResampleViewerControllerRequest *) request :(osirixgrpc::Response *) response :(gRPCCache *) cache
++ (void) ViewerControllerResampleViewerController:(const osirixgrpc::ViewerControllerResampleViewerControllerRequest *) request :(osirixgrpc::ViewerControllerResampleViewerControllerResponse *) response :(gRPCCache *) cache
 {
     NSString *uid = stringFromGRPCString(request->viewer_controller().osirixrpc_uid())
     
@@ -426,7 +426,9 @@
         ViewerController *vc_fixed = [cache objectForUID:uid_fixed];
         if (vc_fixed)
         {
-            [vc_fixed resampleSeries:vc];
+            ViewerController *new2DViewer = [vc_fixed resampleSeries:vc];
+            NSString *new_uid = [cache addObject:new2DViewer];
+            response->mutable_resampled_viewer()->set_osirixrpc_uid([new_uid UTF8String]);
             response->mutable_status()->set_status(1);
         }
         else
