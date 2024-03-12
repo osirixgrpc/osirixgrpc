@@ -144,3 +144,13 @@ def roi_mask_test(grpc_stub, viewer_controller_4d):
     roi = response.roi_slices[0].rois[0]
     assert grpc_stub.ROIName(roi).name == "mask"
     yield roi
+
+
+@pytest.fixture(scope="function")
+def roi_pencil_test(grpc_stub, viewer_controller_4d):
+    request = viewercontroller_pb2.ViewerControllerROIListRequest(
+        viewer_controller=viewer_controller_4d, movie_idx=0)
+    response = grpc_stub.ViewerControllerROIList(request)
+    roi = response.roi_slices[39].rois[0]
+    assert grpc_stub.ROIName(roi).name == "pencil"
+    yield roi

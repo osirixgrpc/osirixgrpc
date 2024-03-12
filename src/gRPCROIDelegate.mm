@@ -53,7 +53,7 @@
     
     if (roi)
     {
-        float area = [roi area];
+        float area = [roi areaPix] * [roi pixelSpacingX] * [roi pixelSpacingY] / 100.0;  // in cm^2
         response->set_area(area);
         response->mutable_status()->set_status(1);
     }

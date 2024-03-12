@@ -281,7 +281,7 @@ def test_viewer_controller_new_roi_pencil(grpc_stub, viewer_controller_4d):
     """ Check that a new pencil ROI can be created. """
     verts = [[50.20499802, 32.32217407], [53.27367783, 38.77323914], [64.68674469, 25.43341637],
              [69.71873474, 36.01180649], [41.8967247, 36.27430344], [68.91729736, 23.42099953]]
-    for i in range(30, 39):
+    for i in range(30, 40):
         points = [viewercontroller_pb2.ViewerControllerNewROIRequest.Point2D(x=v[0], y=v[1])
                   for v in verts]
         color = viewercontroller_pb2.ViewerControllerNewROIRequest.Color(r=100, g=50, b=220)
