@@ -270,6 +270,9 @@
             NSMutableArray *rois = [vc roiList:movieIdx];
             [(NSMutableArray *)[rois objectAtIndex:position] addObject:[roi autorelease]];
             
+            // Set the DCMPix
+            [roi setPix:[[vc pixList:movieIdx] objectAtIndex:position]];
+            
             // Add to cache
             NSString *roi_uid = [cache addObject:roi];
             response->mutable_roi()->set_osirixrpc_uid([roi_uid UTF8String]);

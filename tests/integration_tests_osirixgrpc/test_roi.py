@@ -38,19 +38,6 @@ def test_roi_itype_mask(grpc_stub, roi_mask_test):
     assert response.itype == 20, f"Bad itype {response.itype}"
 
 
-# def test_roi_pix(grpc_stub, viewer_controller_4d):
-#     """ Check the correct DCMPix instance is returned. """
-#     request = viewercontroller_pb2.ViewerControllerPixListRequest(
-#         viewer_controller=viewer_controller_4d, movie_idx=0)
-#     pix = grpc_stub.ViewerControllerPixList(request).pix[39]
-#     request = viewercontroller_pb2.ViewerControllerROIListRequest(
-#         viewer_controller=viewer_controller_4d, movie_idx=0)
-#     roi = grpc_stub.ViewerControllerROIList(request).roi_slices[39].rois[0]
-#     response = grpc_stub.ROIPix(roi)
-#     assert response.status.status == 1, f"Could not request ROI DCMPix"
-#     assert response.pix.osirixrpc_uid == pix.osirixrpc_uid, f"Bad DCMPix returned"
-
-
 def test_roi_set_color(grpc_stub, roi_mask_test):
     """ Check the ROI color can be set (to red). """
     request = roi_pb2.ROISetColorRequest(roi=roi_mask_test, r=255, g=0, b=0)
@@ -142,6 +129,7 @@ def test_roi_flip_horizontally(grpc_stub, roi_pencil_test):
     """ Check the ROI can be flipped horizontally (and reset). """
     response = grpc_stub.ROIFlipHorizontally(roi_pencil_test)
     assert response.status.status == 1, f"Could not request ROI flip horizontally"
+
     points_new = grpc_stub.ROIPoints(roi_pencil_test).points
     assert points_new[0].x == pytest.approx(50.5, abs=1e-2)
     assert points_new[0].y == pytest.approx(10.5, abs=1e-2)
@@ -151,6 +139,7 @@ def test_roi_flip_horizontally(grpc_stub, roi_pencil_test):
     assert points_new[2].y == pytest.approx(50.5, abs=1e-2)
     assert points_new[3].x == pytest.approx(50.5, abs=1e-2)
     assert points_new[3].y == pytest.approx(50.5, abs=1e-2)
+
     response = grpc_stub.ROIFlipHorizontally(roi_pencil_test)
     assert response.status.status == 1, f"Could not reset ROI flip horizontally"
 
@@ -159,6 +148,7 @@ def test_roi_flip_vertically(grpc_stub, roi_pencil_test):
     """ Check the ROI can be flipped vertically (and reset). """
     response = grpc_stub.ROIFlipVertically(roi_pencil_test)
     assert response.status.status == 1, f"Could not request ROI flip vertically"
+
     points_new = grpc_stub.ROIPoints(roi_pencil_test).points
     assert points_new[0].x == pytest.approx(10.5, abs=1e-2)
     assert points_new[0].y == pytest.approx(50.5, abs=1e-2)
@@ -168,6 +158,7 @@ def test_roi_flip_vertically(grpc_stub, roi_pencil_test):
     assert points_new[2].y == pytest.approx(10.5, abs=1e-2)
     assert points_new[3].x == pytest.approx(10.5, abs=1e-2)
     assert points_new[3].y == pytest.approx(10.5, abs=1e-2)
+
     response = grpc_stub.ROIFlipVertically(roi_pencil_test)
     assert response.status.status == 1, f"Could not reset ROI flip vertically"
 
@@ -191,3 +182,39 @@ def test_roi_move(grpc_stub, roi_pencil_test):
     request = roi_pb2.ROIMoveRequest(roi=roi_pencil_test, columns=-10.5, rows=-5.5)
     response = grpc_stub.ROIMove(request)
     assert response.status.status == 1, f"Could not reset ROI move"
+
+
+def test_roi_rotate(grpc_stub, roi_pencil_test):
+    """ Check that an ROI can be rotated by 90 degrees (and reset). """
+    response = grpc_stub.ROICentroid(roi_pencil_test)
+    request = roi_pb2.ROIRotateRequest(roi=roi_pencil_test, degrees=90., x=response.x, y=response.y)
+    response = grpc_stub.ROIRotate(request)
+    assert response.status.status == 1, f"Could not request ROI rotate"
+
+    points_new = grpc_stub.ROIPoints(roi_pencil_test).points
+    assert points_new[3].x == pytest.approx(10.5, abs=1e-2)
+    assert points_new[3].y == pytest.approx(10.5, abs=1e-2)
+    assert points_new[0].x == pytest.approx(50.5, abs=1e-2)
+    assert points_new[0].y == pytest.approx(10.5, abs=1e-2)
+    assert points_new[1].x == pytest.approx(50.5, abs=1e-2)
+    assert points_new[1].y == pytest.approx(50.5, abs=1e-2)
+    assert points_new[2].x == pytest.approx(10.5, abs=1e-2)
+    assert points_new[2].y == pytest.approx(50.5, abs=1e-2)
+
+    response = grpc_stub.ROICentroid(roi_pencil_test)
+    request = roi_pb2.ROIRotateRequest(roi=roi_pencil_test, degrees=-90, x=response.x, y=response.y)
+    response = grpc_stub.ROIRotate(request)
+    assert response.status.status == 1, f"Could not reset ROI rotate"
+
+
+def test_roi_pix(grpc_stub, viewer_controller_4d, roi_pencil_test):
+    """ Check the correct DCMPix instance is returned. """
+    request = viewercontroller_pb2.ViewerControllerPixListRequest(
+        viewer_controller=viewer_controller_4d, movie_idx=0)
+    pix = grpc_stub.ViewerControllerPixList(request).pix[39]
+    request = viewercontroller_pb2.ViewerControllerROIListRequest(
+        viewer_controller=viewer_controller_4d, movie_idx=0)
+    roi = grpc_stub.ViewerControllerROIList(request).roi_slices[39].rois[0]
+    response = grpc_stub.ROIPix(roi)
+    assert response.status.status == 1, f"Could not request ROI DCMPix"
+    assert response.pix.osirixrpc_uid == pix.osirixrpc_uid, f"Bad DCMPix returned"
