@@ -10,6 +10,27 @@
 
 @implementation gRPCViewerControllerDelegate
 
++ (NSArray *) VRControllersAssociatedWithVewierController:(ViewerController *) viewer withStyle: (nullable NSString *)style
+{
+    NSArray *viewers = [[AppController sharedAppController] FindRelatedViewers:[viewer pixList:0]];
+    NSMutableArray *vr_viewers = [NSMutableArray array];
+    for( NSWindowController *v in viewers)
+    {
+        if( [v.windowNibName isEqualToString: @"VR"])
+        {
+            if (style)
+            {
+                VRController *vv = (VRController*) v;
+                if( [vv.style isEqualToString: style])
+                    [vr_viewers addObject:vv];
+            }
+            else
+                [vr_viewers addObject:v];
+        }
+    }
+    return vr_viewers;
+}
+
 + (void) ViewerControllerCloseViewer:(const osirixgrpc::ViewerController *) request :(osirixgrpc::Response *) response :(gRPCCache *) cache
 {
     NSString *uid = stringFromGRPCString(request->osirixrpc_uid())
@@ -487,19 +508,16 @@
     
     if (vc)
     {
-        NSArray *viewers = [[AppController sharedAppController] FindRelatedViewers:[vc pixList:0]];
-        for( NSWindowController *v in viewers)
+        NSArray *viewers = [gRPCViewerControllerDelegate VRControllersAssociatedWithVewierController:vc withStyle:nil];
+        for( VRController *v in viewers)
         {
-            if( [v.windowNibName isEqualToString: @"VR"])
+            NSString *vr_uid = [cache uidForObject:v];
+            if (!vr_uid)
             {
-                NSString *vr_uid = [cache uidForObject:v];
-                if (!vr_uid)
-                {
-                    vr_uid = [cache addObject:v];
-                }
-                osirixgrpc::VRController *vrc = response->mutable_vr_controllers()->Add();
-                vrc->set_osirixrpc_uid([vr_uid UTF8String]);
+                vr_uid = [cache addObject:v];
             }
+            osirixgrpc::VRController *vrc = response->mutable_vr_controllers()->Add();
+            vrc->set_osirixrpc_uid([vr_uid UTF8String]);
         }
         response->mutable_status()->set_status(1);
     }
@@ -715,35 +733,28 @@
         NSString *mode = stringFromGRPCString(request->mode());
         if ([mode isEqualToString:@"VR"] || [mode isEqualToString:@"MIP"])
         {
-            // Simulate a button click
-            NSMenuItem *mitem = nil;
-            if ([mode isEqualToString:@"VR"])
+            // Check whether one exists
+            NSArray *viewers = [gRPCViewerControllerDelegate VRControllersAssociatedWithVewierController:vc withStyle:@"standard"];
+            
+            // Create one if not
+            if([viewers count] == 0)
             {
+                // Simulate a button click
                 NSMenuItem *mitem = [[NSMenuItem alloc] initWithTitle:@"3D Volume Rendering" action:NULL keyEquivalent:@""];
                 [mitem setTag:4];
+                [vc VRViewer:mitem];
+                [mitem release];
+                
+                // Find the opened window
+                viewers = [gRPCViewerControllerDelegate VRControllersAssociatedWithVewierController:vc withStyle:@"standard"];
             }
-            else
-            {
-                NSMenuItem *mitem = [[NSMenuItem alloc] initWithTitle:@"3D MIP" action:NULL keyEquivalent:@""];
-                [mitem setTag:3];
-            }
-            [vc VRViewer:mitem];
-            [mitem release];
             
-            // Find the opened window
-            NSArray *viewers = [[AppController sharedAppController] FindRelatedViewers:[[vc pixList] objectAtIndex:0]];
-            VRController *vrc = nil;
-            for( NSWindowController *v in viewers)
+            if ([viewers count] > 0)
             {
-                if( [v.windowNibName isEqualToString: @"VR"])
-                {
-                    VRController *vv = (VRController*) v;
-                    if( [vv.style isEqualToString: @"standard"])
-                        vrc = vv;
-                }
-            }
-            if (vrc)
-            {
+                VRController *vrc = (VRController *)[viewers objectAtIndex:0];
+                [vrc setRenderingMode:mode];
+                [[vrc window] makeKeyAndOrderFront:self];
+                
                 NSString *vrcUID = [cache uidForObject:vrc];
                 if (!vrcUID)
                 {
