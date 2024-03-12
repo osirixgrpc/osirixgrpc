@@ -5,7 +5,7 @@ import os
 import pytest
 import grpc
 
-from osirixgrpc import osirix_pb2_grpc, utilities_pb2
+from osirixgrpc import osirix_pb2_grpc, utilities_pb2, viewercontroller_pb2
 
 
 class GrpcTestException(Exception):
@@ -125,4 +125,17 @@ def image_test(grpc_stub, series_test, image_uid_test):
         sop_instance_uid = response.sop_instance_uid
         if sop_instance_uid == image_uid_test:
             test_image = image
-    return test_image
+    yield test_image
+
+
+@pytest.fixture(scope="function")
+def dcm_pix_test(grpc_stub, viewer_controller_2d, image_test):
+    request = viewercontroller_pb2.ViewerControllerPixListRequest(
+        viewer_controller=viewer_controller_2d, movie_idx=0)
+    response = grpc_stub.ViewerControllerPixList(request)
+    dcm_pix = None
+    for pix in response.pix:
+        image = grpc_stub.DCMPixDicomImage(pix).dicom_image
+        if image.osirixrpc_uid == image_test.osirixrpc_uid:
+            dcm_pix = pix
+    yield dcm_pix

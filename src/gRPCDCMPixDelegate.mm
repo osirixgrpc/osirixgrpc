@@ -259,9 +259,9 @@
         float orix = [pix originX];
         float oriy = [pix originY];
         float oriz = [pix originZ];
-        response->set_origin_columns(orix);
-        response->set_origin_rows(oriy);
-        response->set_origin_slices(oriz);
+        response->set_origin_x(orix);
+        response->set_origin_y(oriy);
+        response->set_origin_z(oriz);
         response->mutable_status()->set_status(1);
     }
     else

@@ -28,6 +28,7 @@ pytest test_dicom_image.py -s
 pytest test_dicom_series.py -s
 pytest test_dicom_study.py -s
 pytest test_viewer_controller.py -s
+pytest test_dcm_pix.py -s
 
 # Deactivate the virtual environment
 deactivate

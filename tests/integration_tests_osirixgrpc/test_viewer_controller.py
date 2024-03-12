@@ -2,7 +2,7 @@
 
 import numpy as np
 
-from osirixgrpc import viewercontroller_pb2, utilities_pb2
+from osirixgrpc import viewercontroller_pb2
 
 
 def test_viewer_controller_2d_viewer(viewer_controller_2d):
@@ -341,14 +341,27 @@ def test_viewer_controller_rois_with_name(grpc_stub, viewer_controller_4d):
     assert len(response.rois) == 10, f"Bad number of ROIs with name mask {len(response.rois)}"
 
 
-def test_viewer_controller_open_vr_viewer_for_mode_mip(grpc_stub, viewer_controller_4d):
+def test_viewer_controller_open_vr_viewer_for_mode_vr_4d(grpc_stub, viewer_controller_4d):
     """ Check that we can open up a MIP viewer. """
     request = viewercontroller_pb2.ViewerControllerOpenVRViewerForModeRequest(
-        viewer_controller=viewer_controller_4d, mode="MIP")
+        viewer_controller=viewer_controller_4d, mode="VR")
+    response = grpc_stub.ViewerControllerOpenVRViewerForMode(request)
+    assert response.status.status == 1, f"Could not open VR viewer"
+
+
+def test_viewer_controller_open_vr_viewer_for_mode_mip_2d(grpc_stub, viewer_controller_2d):
+    """ Check that we can open up a MIP viewer. """
+    request = viewercontroller_pb2.ViewerControllerOpenVRViewerForModeRequest(
+        viewer_controller=viewer_controller_2d, mode="MIP")
     response = grpc_stub.ViewerControllerOpenVRViewerForMode(request)
     assert response.status.status == 1, f"Could not open MIP viewer"
 
 
-def test_viewer_controller_(grpc_stub, viewer_controller_4d):
+def test_viewer_controller_4d(grpc_stub, viewer_controller_4d):
     response = grpc_stub.ViewerControllerVRControllers(viewer_controller_4d)
-    assert response.status.status == 1, f"Could not find any open VRControllers"
+    assert response.status.status == 1, f"Could not find any open VRControllers for 4D viewer"
+
+
+def test_viewer_controller_2d(grpc_stub, viewer_controller_2d):
+    response = grpc_stub.ViewerControllerVRControllers(viewer_controller_2d)
+    assert response.status.status == 1, f"Could not find any open VRControllers for 2D viewer"
