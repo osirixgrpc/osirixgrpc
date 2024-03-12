@@ -718,10 +718,7 @@
             VRController *vrc = [vc openVRViewerForMode:mode];
             NSString *c = [vc curCLUTMenu];
             [vrc ApplyCLUTString: c];
-            float   iwl, iww;
-            [[vc imageView] getWLWW:&iwl :&iww];
-            [vrc setWLWW:iwl :iww];
-            [vc place3DViewerWindow: vrc];
+            [[vrc view] resetImage: [vrc view]];
             [vrc showWindow:vc];
             [[vrc window] makeKeyAndOrderFront:self];
             [[vrc window] display];
