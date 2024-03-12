@@ -715,22 +715,47 @@
         NSString *mode = stringFromGRPCString(request->mode());
         if ([mode isEqualToString:@"VR"] || [mode isEqualToString:@"MIP"])
         {
-            VRController *vrc = [vc openVRViewerForMode:mode];
-            NSString *c = [vc curCLUTMenu];
-            [vrc ApplyCLUTString: c];
-            [[vrc view] resetImage: [vrc view]];
-            [vrc showWindow:vc];
-            [[vrc window] makeKeyAndOrderFront:self];
-            [[vrc window] display];
-            [[vrc window] setTitle: [NSString stringWithFormat:@"%@: %@", [[vrc window] title], [[vc window] title]]];
-            
-            NSString *vrcUID = [cache uidForObject:vrc];
-            if (!vrcUID)
+            // Simulate a button click
+            NSMenuItem *mitem = nil;
+            if ([mode isEqualToString:@"VR"])
             {
-                vrcUID = [cache addObject:vrc];
+                NSMenuItem *mitem = [[NSMenuItem alloc] initWithTitle:@"3D Volume Rendering" action:NULL keyEquivalent:@""];
+                [mitem setTag:4];
             }
-            response->mutable_vr_controller()->set_osirixrpc_uid([vrcUID UTF8String]);
-            response->mutable_status()->set_status(1);
+            else
+            {
+                NSMenuItem *mitem = [[NSMenuItem alloc] initWithTitle:@"3D MIP" action:NULL keyEquivalent:@""];
+                [mitem setTag:3];
+            }
+            [vc VRViewer:mitem];
+            [mitem release];
+            
+            // Find the opened window
+            NSArray *viewers = [[AppController sharedAppController] FindRelatedViewers:[[vc pixList] objectAtIndex:0]];
+            VRController *vrc = nil;
+            for( NSWindowController *v in viewers)
+            {
+                if( [v.windowNibName isEqualToString: @"VR"])
+                {
+                    VRController *vv = (VRController*) v;
+                    if( [vv.style isEqualToString: @"standard"])
+                        vrc = vv;
+                }
+            }
+            if (vrc)
+            {
+                NSString *vrcUID = [cache uidForObject:vrc];
+                if (!vrcUID)
+                {
+                    vrcUID = [cache addObject:vrc];
+                }
+                response->mutable_vr_controller()->set_osirixrpc_uid([vrcUID UTF8String]);
+                response->mutable_status()->set_status(1);
+            }
+            else {
+                response->mutable_status()->set_status(0);
+                response->mutable_status()->set_message("Could not find opened VR window");
+            }
         }
         else
         {
