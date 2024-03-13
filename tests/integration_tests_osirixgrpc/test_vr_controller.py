@@ -110,14 +110,26 @@ def test_vr_controller_roi_volumes(grpc_stub, vr_controller_2d):
     assert len(response.roi_volumes) == 1, f"Bad number of ROIVolumes {len(response.roi_volumes)}"
 
 
-def test_vr_controller_display_roi_volume(grpc_stub, vr_controller_2d):
+def test_vr_controller_display_roi_volume(grpc_stub, vr_controller_2d, roi_volume_test):
     """ Check that a contained ROIVolume can be displayed. """
-    response = grpc_stub.VRControllerROIVolumes(vr_controller_2d)
-    roi_volume = None
-    for rv in response.roi_volumes:
-        if grpc_stub.ROIVolumeName(rv).name == "mask":
-            roi_volume = rv
+    assert roi_volume_test is not None, f"No test ROI volume found."
     request = vrcontroller_pb2.VRControllerDisplayROIVolumeRequest(vr_controller=vr_controller_2d,
-                                                                   roi_volume=roi_volume)
+                                                                   roi_volume=roi_volume_test)
     response = grpc_stub.VRControllerDisplayROIVolume(request)
     assert response.status.status == 1, f"Could not display ROI volume"
+
+
+def test_vr_controller_hide_roi_volume(grpc_stub, vr_controller_2d, roi_volume_test):
+    """ Check that a contained ROIVolume can be hidden. """
+    assert roi_volume_test is not None, f"No test ROI volume found."
+    request = vrcontroller_pb2.VRControllerHideROIVolumeRequest(vr_controller=vr_controller_2d,
+                                                                roi_volume=roi_volume_test)
+    response = grpc_stub.VRControllerHideROIVolume(request)
+    assert response.status.status == 1, f"Could not hide ROI volume"
+
+    # Display again for subsequent tests
+    request = vrcontroller_pb2.VRControllerDisplayROIVolumeRequest(vr_controller=vr_controller_2d,
+                                                                   roi_volume=roi_volume_test)
+    response = grpc_stub.VRControllerDisplayROIVolume(request)
+    assert response.status.status == 1, f"Could not re-display ROI volume"
+

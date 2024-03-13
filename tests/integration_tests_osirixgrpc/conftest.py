@@ -166,3 +166,13 @@ def vr_controller_4d(grpc_stub, viewer_controller_4d):
 def vr_controller_2d(grpc_stub, viewer_controller_2d):
     response = grpc_stub.ViewerControllerVRControllers(viewer_controller_2d)
     yield response.vr_controllers[0]
+
+
+@pytest.fixture(scope="function")
+def roi_volume_test(grpc_stub, vr_controller_2d):
+    response = grpc_stub.VRControllerROIVolumes(vr_controller_2d)
+    roi_volume = None
+    for rv in response.roi_volumes:
+        if grpc_stub.ROIVolumeName(rv).name == "mask":
+            roi_volume = rv
+    yield roi_volume

@@ -31,6 +31,8 @@ pytest test_viewer_controller.py -s
 pytest test_dcm_pix.py -s
 pytest test_roi.py -s
 pytest test_vr_controller.py -s
+pytest test_roi_volume.py -s
+pytest cleanup.py -s
 
 # Deactivate the virtual environment
 deactivate
