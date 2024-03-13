@@ -154,3 +154,15 @@ def roi_pencil_test(grpc_stub, viewer_controller_4d):
     roi = response.roi_slices[39].rois[0]
     assert grpc_stub.ROIName(roi).name == "pencil"
     yield roi
+
+
+@pytest.fixture(scope="function")
+def vr_controller_4d(grpc_stub, viewer_controller_4d):
+    response = grpc_stub.ViewerControllerVRControllers(viewer_controller_4d)
+    yield response.vr_controllers[0]
+
+
+@pytest.fixture(scope="function")
+def vr_controller_2d(grpc_stub, viewer_controller_2d):
+    response = grpc_stub.ViewerControllerVRControllers(viewer_controller_2d)
+    yield response.vr_controllers[0]

@@ -201,6 +201,25 @@ def test_viewer_controller_new_roi_mask(grpc_stub, viewer_controller_4d):
         assert response.status.status == 1, f"Could not create new mask ROI"
 
 
+def test_viewer_controller_new_roi_mask_2d(grpc_stub, viewer_controller_2d):
+    """ Check a new mask ROI can be created in 2D viewer. Same ROI on multiple slices. """
+    rows = 40
+    columns = 40
+    slices = 10
+    buffer_array = np.ones((rows, columns)).ravel().astype("int").tolist()
+    for i in range(slices):
+        buffer = viewercontroller_pb2.ViewerControllerNewROIRequest.Buffer(buffer=buffer_array,
+                                                                           rows=rows,
+                                                                           columns=columns)
+        color = viewercontroller_pb2.ViewerControllerNewROIRequest.Color(r=255, g=0, b=200)
+        request = viewercontroller_pb2.ViewerControllerNewROIRequest(
+            viewer_controller=viewer_controller_2d, movie_idx=0, position=i, itype=20,
+            buffer=buffer, color=color, opacity=0.5, name="mask", buffer_position_x=i*3,
+            buffer_position_y=i*5)
+        response = grpc_stub.ViewerControllerNewROI(request)
+        assert response.status.status == 1, f"Could not create new mask ROI"
+
+
 def test_viewer_controller_new_roi_oval(grpc_stub, viewer_controller_4d):
     """ Check that a new oval ROI can be created. """
     rect = viewercontroller_pb2.ViewerControllerNewROIRequest.Rect(origin_x=66.,
