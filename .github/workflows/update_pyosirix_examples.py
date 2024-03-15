@@ -350,7 +350,7 @@ class UpdatePyosirixExamples:
             categories = "<br>".join([c for c in self.categories_for_readme(readme_path)])
             replacement = replacement +\
                   f"\n  <tr>" +\
-                  f"\n    <td><a href='{name}/{self.readme_filename}'>{name}</a></td>" +\
+                  f"\n    <td><a href='{name.lower()}'>{name}</a></td>" +\
                   f"\n    <td>{description}</td>" +\
                   f"\n    <td>{categories}</td>" +\
                   f"\n    <td><img src='{name}/screenshot.png' alt='{name}' width='400'></td>" +\
