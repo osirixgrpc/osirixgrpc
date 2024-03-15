@@ -3,3 +3,5 @@ mkdocs-material
 mkdocstrings
 pymdown-extensions
 mkdocstrings-python
+numpy
+Pillow

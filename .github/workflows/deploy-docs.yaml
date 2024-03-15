@@ -22,10 +22,13 @@ jobs:
       - name: Install dependencies
         run: pip install -r docs/requirements.txt
 
+      - name: Append examples to documentation.
+        run: python .github/workflows/update_pyosirix_examples.py
+
       - if: github.ref == 'refs/heads/dev'
         name: Append warning to README if dev
         run: |
-          sed -i '/__Welcome__/i ???+ note\n\n    This documentation is for development and testing only. Please see the [main documentation](https://osirixgrpc.github.io/osirixgrpc).\n\n' docs/docs/README.md
+          sed -i '/__Welcome to OsiriXgrpc__/i ???+ note\n\n    This documentation is for development and testing only. Please see the [main documentation](https://osirixgrpc.github.io/osirixgrpc).\n\n' docs/docs/README.md
 
       - name: Build MkDocs Site
         run: |
