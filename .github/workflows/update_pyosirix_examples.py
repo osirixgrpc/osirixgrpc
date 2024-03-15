@@ -1,6 +1,7 @@
 """ Used to update the list of pyOsiriX examples as part of the GitHub deploy-docs workflow. """
 
 import os
+import argparse
 from typing import Dict, Tuple, List
 
 from PIL import Image
@@ -17,10 +18,32 @@ class UpdatePyosirixExamples:
         3. README.md: For each example, the script will be appended as a mkdocs-material snippet.
 
     """
-    def __init__(self, examples_path: str, mkdocs_yaml_path: str, gallery_md_path: str):
+    def __init__(self, examples_path: str, mkdocs_yaml_path: str, gallery_md_path: str,
+                 dry_run: bool = True):
         self._examples_path = examples_path
         self._mkdocs_yaml_path = mkdocs_yaml_path
         self._gallery_md_path = gallery_md_path
+        self._dry_run = dry_run
+
+    @property
+    def examples_path(self):
+        """ The root location of the examples directories. """
+        return self._examples_path
+
+    @property
+    def mkdocs_yaml_path(self):
+        """ The location of the mkdocs configuration file. """
+        return self._mkdocs_yaml_path
+
+    @property
+    def gallery_md_path(self):
+        """ The location of the gallery markdown definition file. """
+        return self._gallery_md_path
+
+    @property
+    def dry_run(self):
+        """ Whether to perform a dry run.  If True, files are not affected, results are printed. """
+        return self._dry_run
 
     @property
     def short_description_tag(self) -> str:
@@ -61,21 +84,6 @@ class UpdatePyosirixExamples:
     def gallery_md_tag(self) -> str:
         """ What we will search for and replace in the gallery.md file. """
         return "  </tr>"
-
-    @property
-    def examples_path(self):
-        """ The root location of the examples directories. """
-        return self._examples_path
-
-    @property
-    def mkdocs_yaml_path(self):
-        """ The location of the mkdocs configuration file. """
-        return self._mkdocs_yaml_path
-
-    @property
-    def gallery_md_path(self):
-        """ The location of the gallery markdown definition file. """
-        return self._gallery_md_path
 
     @staticmethod
     def count_leading_blanks(s: str) -> int:
@@ -342,7 +350,7 @@ class UpdatePyosirixExamples:
             categories = "<br>".join([c for c in self.categories_for_readme(readme_path)])
             replacement = replacement +\
                   f"\n  <tr>" +\
-                  f"\n    <td>{name}</td>" +\
+                  f"\n    <td><a href='{name}/{self.readme_filename}'>{name}</a></td>" +\
                   f"\n    <td>{description}</td>" +\
                   f"\n    <td>{categories}</td>" +\
                   f"\n    <td><img src='{name}/screenshot.png' alt='{name}' width='400'></td>" +\
@@ -405,24 +413,50 @@ class UpdatePyosirixExamples:
 
         # Update the gallery
         updated_gallery_md_contents = self.updated_gallery_md_contents(names)
-        with open(self.gallery_md_path, "w") as fhandle:
-            fhandle.write(updated_gallery_md_contents)
+        if not self.dry_run:
+            with open(self.gallery_md_path, "w") as fhandle:
+                fhandle.write(updated_gallery_md_contents)
+        else:
+            print(f"=======================")
+            print(f"New gallery.md contents")
+            print(f"=======================")
+            print(updated_gallery_md_contents)
 
         # Update the mkdocs config file
         updated_mkdocs_yaml_contents = self.updated_mkdocs_yaml_contents(names)
-        with open(self.mkdocs_yaml_path, "w") as fhandle:
-            fhandle.write(updated_mkdocs_yaml_contents)
+        if not self.dry_run:
+            with open(self.mkdocs_yaml_path, "w") as fhandle:
+                fhandle.write(updated_mkdocs_yaml_contents)
+        else:
+            print(f"========================")
+            print(f"New mkdocs.yaml contents")
+            print(f"========================")
+            print(updated_mkdocs_yaml_contents)
 
         # Update the README files for each example
         for name, path in names.items():
             readme_path = os.path.join(path, self.readme_filename)
             updated_readme_contents = self.updated_readme_contents(readme_path)
-            with open(readme_path, "w") as fhandle:
-                fhandle.write(updated_readme_contents)
+            if not self.dry_run:
+                with open(readme_path, "w") as fhandle:
+                    fhandle.write(updated_readme_contents)
+            else:
+                print(f"{'=' * (20 + len(name))}")
+                print(f"New {name} README contents")
+                print(f"{'=' * (20 + len(name))}")
+                print(updated_readme_contents)
+
+
+def parse_args():
+    parser = argparse.ArgumentParser(description="Update document files with examples.")
+    parser.add_argument("--dry-run", action="store_true", help="Whether to just perform a dry run")
+    return parser.parse_args()
 
 
 if __name__ == "__main__":
+    args = parse_args()
     upe = UpdatePyosirixExamples(examples_path="docs/docs/pyosirix/examples",
                                  mkdocs_yaml_path="docs/mkdocs.yaml",
-                                 gallery_md_path="docs/docs/pyosirix/examples/gallery.md")
+                                 gallery_md_path="docs/docs/pyosirix/examples/gallery.md",
+                                 dry_run=args.dry_run)
     upe.run()
