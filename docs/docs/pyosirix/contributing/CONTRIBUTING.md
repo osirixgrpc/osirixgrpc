@@ -44,13 +44,15 @@ basic premises:
 
 5. Each example should consist of its own directory with the following content:
 
- - `README.md`: A markdown page consisting of key information about the example, the script type, how it should be run, 
-   what data is needed (and the source if applicable), and the expected outcome ([see below](#example-template)).
- - `script.py`: A single python file containing the script that users can run.
- - `screenshot.py`: A helpful, simple image that provides users with a pictorial representation of what the script does.
- - `additional files` (if required): Any other files that might be needed for running the script. Whilst it is possible 
-   to include additional dependent python module files to support you script, it is encouraged not to do this as it 
-   violates _premise 1_. 
+    - `README.md`: A markdown page consisting of key information about the example, the script type, how it should be 
+      run, what data is needed (and the source if applicable), and the expected outcome 
+      ([see below](#example-template)).
+    - `script.py`: A single python file containing the script that users can run.
+    - `screenshot.py`: A helpful, simple image that provides users with a pictorial representation of what the script 
+      does.
+    - `additional files` (if required): Any other files that might be needed for running the script. Whilst it is 
+      possible to include additional dependent python module files to support you script, it is encouraged not to do 
+      this as it violates _premise 1_. 
 
 ### Example template
 This file is also available in the 
