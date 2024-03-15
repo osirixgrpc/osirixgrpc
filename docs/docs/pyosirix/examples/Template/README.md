@@ -9,10 +9,10 @@ Please ensure that the leading comment is left in!
 
 <!-- Choose the relevant categories out of "Database-blue", "Image-green", "ROI-purple" or "VR-red" -->
 __Categories__:
-![Powered By gRPC](https://img.shields.io/badge/Database-blue)
-![Powered By gRPC](https://img.shields.io/badge/Image-green)
-![Powered By gRPC](https://img.shields.io/badge/ROI-purple)
-![Powered By gRPC](https://img.shields.io/badge/VR-red)
+![Database](https://img.shields.io/badge/Database-blue)
+![Image](https://img.shields.io/badge/Image-green)
+![Region of Interest](https://img.shields.io/badge/ROI-purple)
+![Volume Render](https://img.shields.io/badge/VR-red)
 
 <!-- Do not modify. Source image must have size 800 x 600 pixels. -->
 <div style="text-align: center;">

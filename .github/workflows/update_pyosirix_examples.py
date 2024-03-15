@@ -273,17 +273,24 @@ class UpdatePyosirixExamples:
         Returns:
             List: Contains the list of img.shields.io badges for the example.
         """
+
+        def __html_spice__(url: str, alt: str = "") -> str:
+            return f"<img alt='{alt}' src='{url}'>"
+
         categories = []
         with open(readme_path, "r") as fhandle:
             contents = fhandle.read()
-        if "https://img.shields.io/badge/Database-blue" in contents:
-            categories.append("https://img.shields.io/badge/Database-blue")
-        if "https://img.shields.io/badge/Image-green" in contents:
-            categories.append("https://img.shields.io/badge/Image-green")
-        if "https://img.shields.io/badge/ROI-purple" in contents:
-            categories.append("https://img.shields.io/badge/ROI-purple")
-        if "https://img.shields.io/badge/VR-red" in contents:
-            categories.append("https://img.shields.io/badge/VR-red")
+
+        surl = "https://img.shields.io/badge"
+        if f"{surl}/Database-blue" in contents:
+            categories.append(__html_spice__(f"{surl}/Database-blue", "Database"))
+        if f"{surl}/Image-green" in contents:
+            categories.append(__html_spice__(f"{surl}/Image-green", "Image Viewer"))
+        if f"{surl}/ROI-purple" in contents:
+            categories.append(__html_spice__(f"{surl}/ROI-purple", "Region of Interest"))
+        if f"{surl}/VR-red" in contents:
+            categories.append(__html_spice__(f"{surl}/VR-red", "Volume Render Viewer"))
+
         return categories
 
     def mkdocs_yaml_replacement_string(self, names: Dict) -> str:
@@ -338,7 +345,7 @@ class UpdatePyosirixExamples:
                   f"\n    <td>{name}</td>" +\
                   f"\n    <td>{description}</td>" +\
                   f"\n    <td>{categories}</td>" +\
-                  f"\n    <td><img src='{name}/screenshot.png' alt='{name}' width='200'></td>" +\
+                  f"\n    <td><img src='{name}/screenshot.png' alt='{name}' width='400'></td>" +\
                   f"\n  </tr>"
         return replacement
 
