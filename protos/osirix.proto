@@ -201,4 +201,5 @@ message OsirixDisplayedVRControllersResponse{
 message OsirixVersionResponse{
 	Status status = 1;
 	string version = 2;
+	string bundle_name = 3;
 }

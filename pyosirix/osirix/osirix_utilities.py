@@ -3,7 +3,7 @@
 """
 
 from __future__ import annotations
-from typing import List
+from typing import List, Tuple
 
 import grpc  # noqa
 
@@ -182,7 +182,7 @@ class Osirix(osirix.base.OsirixBase):
             vr_controller_objs.append(vr_controller_obj)
         return vr_controller_objs
 
-    def osirix_version(self) -> str:
+    def osirix_version(self) -> Tuple[str, str]:
         """ Return the current version of OsiriX being linked to.
 
         Note that it is better not use this method directly. Use the following instead:
@@ -194,8 +194,9 @@ class Osirix(osirix.base.OsirixBase):
 
         Returns:
             str: The current OsiriX version.
+            str: The bundle name (e.g. "OsiriX MD")
         """
         request = utilities_pb2.Empty()
         response = self.osirix_service_stub.OsirixVersion(request)
         self.response_check(response)
-        return response.version
+        return response.version, response.bundle_name

@@ -18,7 +18,7 @@ __author__ = "Timothy Sum Hon Mun & Matthew D Blackledge"
 import os
 import json
 import warnings
-from typing import List, AnyStr
+from typing import List, AnyStr, Tuple
 
 from . import base
 from . import browser_controller
@@ -196,7 +196,7 @@ def displayed_vr_controllers() -> List[vr_controller.VRController]:
     return osirix_.displayed_vr_controllers()
 
 
-def osirix_version() -> str:
+def osirix_version() -> Tuple[str, str]:
     """ The version of OsiriX being linked to.
 
     This function can also be used as a 'ping' to check that a connection is established.

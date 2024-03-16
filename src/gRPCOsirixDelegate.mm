@@ -146,9 +146,12 @@
 
 + (void) OsirixVersion:(const osirixgrpc::Empty *)request :(osirixgrpc::OsirixVersionResponse *)response :(gRPCCache *)cache
 {
+    // Note this can be found in the Info.plist for OsiriX as "Bundle version string (short)".
     NSString *osirix_version = [NSMutableString stringWithString:[[[NSBundle bundleForClass:[BrowserController class]] infoDictionary] objectForKey:@"CFBundleShortVersionString"]];
+    NSString *bundle_name = [NSMutableString stringWithString:[[[NSBundle bundleForClass:[BrowserController class]] infoDictionary] objectForKey:@"CFBundleName"]];
     response->mutable_status()->set_status(1);
     response->set_version([osirix_version UTF8String]);
+    response->set_bundle_name([bundle_name UTF8String]);
 }
 
 @end
