@@ -12,7 +12,7 @@ __all__ = ["browsercontroller_pb2",
            "viewercontroller_pb2",
            "vrcontroller_pb2"]
 
-__version__ = "0.2.1-dev39"
+__version__ = "0.2.1-dev40"
 
 __author__ = "Timothy Sum Hon Mun & Matthew D Blackledge"
 
