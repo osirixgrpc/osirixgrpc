@@ -181,3 +181,21 @@ class Osirix(osirix.base.OsirixBase):
                                                                   vr_controller)
             vr_controller_objs.append(vr_controller_obj)
         return vr_controller_objs
+
+    def osirix_version(self) -> str:
+        """ Return the current version of OsiriX being linked to.
+
+        Note that it is better not use this method directly. Use the following instead:
+
+        ```python
+        import osirix
+        version = osirix.osirix_version()
+        ```
+
+        Returns:
+            str: The current OsiriX version.
+        """
+        request = utilities_pb2.Empty()
+        response = self.osirix_service_stub.OsirixVersion(request)
+        self.response_check(response)
+        return response.version

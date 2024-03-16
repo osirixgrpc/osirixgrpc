@@ -196,4 +196,24 @@ def displayed_vr_controllers() -> List[vr_controller.VRController]:
     return osirix_.displayed_vr_controllers()
 
 
+def osirix_version() -> str:
+    """ The version of OsiriX being linked to.
+
+    This function can also be used as a 'ping' to check that a connection is established.
+
+    Returns:
+        str: The OsiriX version.
+
+    Example:
+        ```python
+        import osirix
+        version = osirix.osirix_version()
+        ```
+    """
+    osirix_ = global_osirix_instance()
+    if osirix_ is None:
+        raise exceptions.GrpcException("No connection could be established with OsiriX")
+    return osirix_.osirix_version()
+
+
 _establish_global_osirix_instance()
