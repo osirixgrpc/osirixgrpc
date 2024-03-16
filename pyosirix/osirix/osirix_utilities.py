@@ -58,6 +58,11 @@ class OsirixService(object):
             raise osirix.exceptions.GrpcException(
                 "Could not establish a connection with OsiriX.") from exc
 
+    def stop_service(self):
+        """ Stop the insecure client service. """
+        if self.channel:
+            self.channel.close()
+
 
 class Osirix(osirix.base.OsirixBase):
     """ Provides access functionality to core OsiriX objects (2D/3D viewers and Dicom browser).

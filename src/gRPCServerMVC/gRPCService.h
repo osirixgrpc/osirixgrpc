@@ -44,6 +44,7 @@ private:
     gRPCServiceMessageDeclaration(OsirixDisplayed2DViewers, Empty, OsirixDisplayed2DViewersResponse)
     gRPCServiceMessageDeclaration(OsirixFrontmostVRController, Empty, OsirixFrontmostVRControllerResponse)
     gRPCServiceMessageDeclaration(OsirixDisplayedVRControllers, Empty, OsirixDisplayedVRControllersResponse)
+    gRPCServiceMessageDeclaration(OsirixVersion, Empty, OsirixVersionResponse)
 
 # pragma mark ViewerController messages
     gRPCServiceMessageDeclaration(ViewerControllerCloseViewer, ViewerController, Response)

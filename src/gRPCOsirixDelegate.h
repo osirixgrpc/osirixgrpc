@@ -9,5 +9,6 @@ delegateDeclaration(OsirixFrontmostViewer, Empty, OsirixFrontmostViewerResponse)
 delegateDeclaration(OsirixDisplayed2DViewers, Empty, OsirixDisplayed2DViewersResponse)
 delegateDeclaration(OsirixFrontmostVRController, Empty, OsirixFrontmostVRControllerResponse)
 delegateDeclaration(OsirixDisplayedVRControllers, Empty, OsirixDisplayedVRControllersResponse)
+delegateDeclaration(OsirixVersion, Empty, OsirixVersionResponse)
 
 @end

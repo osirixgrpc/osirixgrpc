@@ -50,7 +50,7 @@ def plugin_support_directory() -> AnyStr:
 
 
 def osirixgrpc_port_preference() -> int:
-    """ Extract the preferred port set byt the user in the OsiriXgrpc plugin.
+    """ Extract the preferred port set by the user in the OsiriXgrpc plugin.
 
     It will iterate through the ports set-up by the user in order, and return
     the first open one. If you want more refinement (e.g. using a different

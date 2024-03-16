@@ -30,7 +30,7 @@ class OsirixBase:
 
     def __str__(self):
         s = self.__repr__()
-        pattern = r",?\s*uid\s*=\s*[^,\n]*"  # Prettify be removing osirixrpc_uid
+        pattern = r",?\s*uid\s*=\s*[^,\n]*"  # Prettify by removing osirixrpc_uid
         s_new = re.sub(pattern, "", s)
         return s_new
 

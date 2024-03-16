@@ -22,6 +22,7 @@ gRPCServiceMessageImplementation(OsirixFrontmostViewer, Empty, OsirixFrontmostVi
 gRPCServiceMessageImplementation(OsirixDisplayed2DViewers, Empty, OsirixDisplayed2DViewersResponse, gRPCOsirixDelegate)
 gRPCServiceMessageImplementation(OsirixFrontmostVRController, Empty, OsirixFrontmostVRControllerResponse, gRPCOsirixDelegate)
 gRPCServiceMessageImplementation(OsirixDisplayedVRControllers, Empty, OsirixDisplayedVRControllersResponse, gRPCOsirixDelegate)
+gRPCServiceMessageImplementation(OsirixVersion, Empty, OsirixVersionResponse, gRPCOsirixDelegate)
 
 # pragma mark ViewerController messages
 gRPCServiceMessageImplementation(ViewerControllerCloseViewer, ViewerController, Response, gRPCViewerControllerDelegate)

@@ -22,6 +22,7 @@ rpc OsirixFrontmostViewer (Empty) returns (OsirixFrontmostViewerResponse) {}
 rpc OsirixDisplayed2DViewers (Empty) returns (OsirixDisplayed2DViewersResponse) {}
 rpc OsirixFrontmostVRController (Empty) returns (OsirixFrontmostVRControllerResponse) {}
 rpc OsirixDisplayedVRControllers (Empty) returns (OsirixDisplayedVRControllersResponse) {}
+rpc OsirixVersion (Empty) returns (OsirixVersionResponse) {}
 
 // ROI methods
 rpc ROIFlipHorizontally (ROI) returns (Response) {}
@@ -197,4 +198,7 @@ message OsirixDisplayedVRControllersResponse{
 	repeated VRController vr_controllers = 2;
 }
 
-
+message OsirixVersionResponse{
+	Status status = 1;
+	string version = 2;
+}
