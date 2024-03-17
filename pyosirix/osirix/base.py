@@ -11,11 +11,22 @@ import osirixgrpc
 from osirixgrpc import types_pb2
 
 import osirix
+from osirix.exceptions import GrpcException
 
 # Define the OsiriXgrpc types allowed.
 Pb2Type = Union[types_pb2.DicomStudy, types_pb2.DicomSeries, types_pb2.DicomImage, types_pb2.ROI,
                 types_pb2.ROIVolume, types_pb2.DCMPix, types_pb2.BrowserController,
                 types_pb2.ViewerController, types_pb2.VRController, None]
+
+
+def pyosirix_connection_check(func):
+    """ A decorator function that checks an OsiriX connection is established.  """
+    def wrapper(self, *args, **kwargs):
+        if self.osirix_service.check_connection():
+            return func(self, *args, **kwargs)
+        else:
+            raise GrpcException("No connection with OsiriX available.")
+    return wrapper
 
 
 class OsirixBase:

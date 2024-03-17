@@ -90,7 +90,11 @@ def global_osirix_instance() -> osirix_utilities.Osirix:
                                                      port=port,
                                                      max_send_message_length=500000000,
                                                      max_receive_message_length=500000000)
-            service.start_service()
+            try:
+                service.start_service()
+            except exceptions.GrpcException:
+                print("Could not start global service."
+                      "OsiriX may not be running and you may need to start it.")
             _osirix = osirix_utilities.Osirix(service)
     return _osirix
 

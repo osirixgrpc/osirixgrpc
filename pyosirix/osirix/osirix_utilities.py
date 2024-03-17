@@ -11,6 +11,7 @@ from osirixgrpc import osirix_pb2_grpc
 import osirixgrpc.utilities_pb2 as utilities_pb2
 
 import osirix
+from osirix.base import pyosirix_connection_check
 
 
 class OsirixService(object):
@@ -47,16 +48,27 @@ class OsirixService(object):
             GrpcException: Occurs when something goes wrong trying to set up the connection.
 
         """
+        self.channel = grpc.insecure_channel(self.server_url,
+                                             options=[("max_receive_message_length",
+                                                       self.max_receive_message_length),
+                                                      ("max_send_message_length",
+                                                       self.max_send_message_length)])
+        self.osirix_service_stub = osirix_pb2_grpc.OsiriXServiceStub(self.channel)
+        if not self.check_connection():
+            raise osirix.exceptions.GrpcException("Could not establish a connection with OsiriX.")
+
+    def check_connection(self) -> bool:
+        """ Check that a connection with OsiriX is established.
+
+        Returns:
+            bool: True if a connection is established.
+
+        """
         try:
-            self.channel = grpc.insecure_channel(self.server_url,
-                                                 options=[("max_receive_message_length",
-                                                           self.max_receive_message_length),
-                                                          ("max_send_message_length",
-                                                           self.max_send_message_length)])
-            self.osirix_service_stub = osirix_pb2_grpc.OsiriXServiceStub(self.channel)
-        except Exception as exc:
-            raise osirix.exceptions.GrpcException(
-                "Could not establish a connection with OsiriX.") from exc
+            self.osirix_service_stub.OsirixVersion(utilities_pb2.Empty())
+        except grpc.RpcError:
+            return False
+        return True
 
     def stop_service(self):
         """ Stop the insecure client service. """
@@ -72,6 +84,7 @@ class Osirix(osirix.base.OsirixBase):
     configuration, as described in the main `__init__.py` module.
     """
 
+    @pyosirix_connection_check
     def current_browser(self) -> osirix.browser_controller.BrowserController:
         """ Return an instance of the current Dicom database browser.
 
@@ -93,6 +106,7 @@ class Osirix(osirix.base.OsirixBase):
                                                                              browser_controller)
         return browser_controller_obj
 
+    @pyosirix_connection_check
     def frontmost_viewer(self) -> osirix.viewer_controller.ViewerController:
         """ Return an instance of the front-most 2D viewer.
 
@@ -115,6 +129,7 @@ class Osirix(osirix.base.OsirixBase):
                                                                           viewer_controller)
         return viewer_controller_obj
 
+    @pyosirix_connection_check
     def displayed_2d_viewers(self) -> List[osirix.viewer_controller.ViewerController, ...]:
         """ Return all displayed 2D viewer instances.
 
@@ -138,6 +153,7 @@ class Osirix(osirix.base.OsirixBase):
             viewer_controller_objs.append(viewer_controller_obj)
         return viewer_controller_objs
 
+    @pyosirix_connection_check
     def frontmost_vr_controller(self) -> osirix.vr_controller.VRController:
         """ Return an instance of the front-most 3D viewer.
 
@@ -159,6 +175,7 @@ class Osirix(osirix.base.OsirixBase):
                                                               vr_controller)
         return vr_controller_obj
 
+    @pyosirix_connection_check
     def displayed_vr_controllers(self) -> List[osirix.vr_controller.VRController, ...]:
         """ Return all displayed 3D viewer instances.
 

@@ -19,7 +19,7 @@ from __future__ import annotations
 import datetime
 from typing import List
 
-from osirix.base import OsirixBase
+from osirix.base import OsirixBase, pyosirix_connection_check
 
 
 class DicomStudy(OsirixBase):
@@ -34,6 +34,7 @@ class DicomStudy(OsirixBase):
                f"uid = {self.pb2_object.osirixrpc_uid}"
 
     @property
+    @pyosirix_connection_check
     def date(self) -> datetime.datetime:
         """ The date in which the Dicom data were acquired.
         """
@@ -48,6 +49,7 @@ class DicomStudy(OsirixBase):
         return study_date
 
     @property
+    @pyosirix_connection_check
     def date_added(self) -> datetime.datetime:
         """ The date in which the Dicom data were added to the OsiriX database.
         """
@@ -62,6 +64,7 @@ class DicomStudy(OsirixBase):
         return date_added
 
     @property
+    @pyosirix_connection_check
     def date_of_birth(self) -> datetime.datetime:
         """ The patient date of birth for the Dicom study.
         """
@@ -73,6 +76,7 @@ class DicomStudy(OsirixBase):
         return date_of_birth
 
     @property
+    @pyosirix_connection_check
     def institution_name(self) -> str:
         """ The name of the institution where the Dicom study was performed.
         """
@@ -81,6 +85,7 @@ class DicomStudy(OsirixBase):
         return response.institution_name
 
     @property
+    @pyosirix_connection_check
     def patient_name(self) -> str:
         """ The patient name of the Dicom study
         """
@@ -89,6 +94,7 @@ class DicomStudy(OsirixBase):
         return response.name
 
     @property
+    @pyosirix_connection_check
     def number_of_images(self) -> int:
         """ The number of images within the Dicom study.
         """
@@ -97,6 +103,7 @@ class DicomStudy(OsirixBase):
         return response.no_images
 
     @property
+    @pyosirix_connection_check
     def patient_id(self) -> str:
         """ The patient ID of the Dicom study.
         """
@@ -105,6 +112,7 @@ class DicomStudy(OsirixBase):
         return response.patient_id
 
     @property
+    @pyosirix_connection_check
     def patient_sex(self) -> str:
         """ The patient sex of the Dicom study.
         """
@@ -113,6 +121,7 @@ class DicomStudy(OsirixBase):
         return response.patient_sex
 
     @property
+    @pyosirix_connection_check
     def patient_uid(self) -> str:
         """ The patient UID of the Dicom study.
         """
@@ -121,6 +130,7 @@ class DicomStudy(OsirixBase):
         return response.patient_uid
 
     @property
+    @pyosirix_connection_check
     def performing_physician(self) -> str:
         """ The performing physician name for the Dicom study.
         """
@@ -129,6 +139,7 @@ class DicomStudy(OsirixBase):
         return response.performing_physician
 
     @property
+    @pyosirix_connection_check
     def referring_physician(self) -> str:
         """ The referring physician name for the Dicom study.
         """
@@ -137,6 +148,7 @@ class DicomStudy(OsirixBase):
         return response.referring_physician
 
     @property
+    @pyosirix_connection_check
     def study_instance_uid(self) -> str:
         """ The study instance UID for the Dicom series.
         """
@@ -145,6 +157,7 @@ class DicomStudy(OsirixBase):
         return response.study_instance_uid
 
     @property
+    @pyosirix_connection_check
     def study_name(self) -> str:
         """ The study name for the Dicom series.
         """
@@ -152,6 +165,7 @@ class DicomStudy(OsirixBase):
         self.response_check(response)
         return response.study_name
 
+    @pyosirix_connection_check
     def modalities(self) -> str:
         """ The modalities available within the Dicom study.
 
@@ -162,6 +176,7 @@ class DicomStudy(OsirixBase):
         self.response_check(response)
         return response.modalities
 
+    @pyosirix_connection_check
     def series(self) -> List[DicomSeries]:
         """ The Dicom Series instances associated with the study.
 
@@ -175,6 +190,7 @@ class DicomStudy(OsirixBase):
             series.append(DicomSeries(self.osirix_service, serie))
         return series
 
+    @pyosirix_connection_check
     def images(self) -> List[DicomImage]:
         """ The Dicom Image instances associated with the study.
 
@@ -188,6 +204,7 @@ class DicomStudy(OsirixBase):
             images.append(DicomImage(self.osirix_service, image))
         return images
 
+    @pyosirix_connection_check
     def paths(self) -> List[str]:
         """ The Dicom file paths associated with the study.
 
@@ -199,6 +216,7 @@ class DicomStudy(OsirixBase):
         paths = [path for path in response.paths]
         return paths
 
+    @pyosirix_connection_check
     def no_files(self) -> int:
         """ The number of files comprising the Dicom study.
 
@@ -209,16 +227,7 @@ class DicomStudy(OsirixBase):
         self.response_check(response)
         return response.no_files
 
-    def no_files_excluding_multiframes(self) -> int:
-        """ The number of image files within the Dicom study, excluding multiframes.
-
-        Returns:
-            The number of files.
-        """
-        response = self.osirix_service_stub.DicomStudyNoFilesExcludingMultiFrames(self.pb2_object)
-        self.response_check(response)
-        return response.no_files
-
+    @pyosirix_connection_check
     def raw_no_files(self) -> int:
         """ he number of raw image files within the Dicom study.
 
@@ -243,6 +252,7 @@ class DicomSeries(OsirixBase):
                f"\n     {self.study.__repr__()}"
 
     @property
+    @pyosirix_connection_check
     def date(self) -> datetime.datetime:
         """ The date in which the series was acquired.
         """
@@ -257,6 +267,7 @@ class DicomSeries(OsirixBase):
         return series_date
 
     @property
+    @pyosirix_connection_check
     def images(self) -> List[DicomImage]:
         """ The Dicom Image instances associated with the series.
         """
@@ -268,6 +279,7 @@ class DicomSeries(OsirixBase):
         return images
 
     @property
+    @pyosirix_connection_check
     def modality(self) -> str:
         """ The modality of the Dicom series.
         """
@@ -276,6 +288,7 @@ class DicomSeries(OsirixBase):
         return response.modality
 
     @property
+    @pyosirix_connection_check
     def patient_name(self) -> str:
         """ The patient name of the Dicom series
         """
@@ -284,6 +297,7 @@ class DicomSeries(OsirixBase):
         return response.name
 
     @property
+    @pyosirix_connection_check
     def number_of_images(self) -> int:
         """ The number of images within the Dicom series.
         """
@@ -292,6 +306,7 @@ class DicomSeries(OsirixBase):
         return response.number_of_images
 
     @property
+    @pyosirix_connection_check
     def series_description(self) -> str:
         """ The series description.
         """
@@ -300,6 +315,7 @@ class DicomSeries(OsirixBase):
         return response.series_description
 
     @property
+    @pyosirix_connection_check
     def series_instance_uid(self) -> int:
         """ The series instance UID.
 
@@ -311,6 +327,7 @@ class DicomSeries(OsirixBase):
         return response.series_instance_uid
 
     @property
+    @pyosirix_connection_check
     def sop_class_uid(self) -> int:
         """ The series SOP class UID.
         """
@@ -319,6 +336,7 @@ class DicomSeries(OsirixBase):
         return response.series_sop_class_uid
 
     @property
+    @pyosirix_connection_check
     def study(self) -> DicomStudy:
         """ The Dicom Study containing the series.
         """
@@ -326,6 +344,7 @@ class DicomSeries(OsirixBase):
         self.response_check(response)
         return DicomStudy(self.osirix_service, response.study)
 
+    @pyosirix_connection_check
     def next_series(self) -> DicomSeries:
         """ The next Dicom Series in the OsiriX database.
 
@@ -336,6 +355,7 @@ class DicomSeries(OsirixBase):
         self.response_check(response)
         return DicomSeries(self.osirix_service, response.series)
 
+    @pyosirix_connection_check
     def previous_series(self) -> DicomSeries:
         """ The previous Dicom Series in the OsiriX database.
 
@@ -346,6 +366,7 @@ class DicomSeries(OsirixBase):
         self.response_check(response)
         return DicomSeries(self.osirix_service, response.series)
 
+    @pyosirix_connection_check
     def paths(self) -> List[str]:
         """ The Dicom file paths associated with the series.
 
@@ -357,6 +378,7 @@ class DicomSeries(OsirixBase):
         paths = [path for path in response.paths]
         return paths
 
+    @pyosirix_connection_check
     def sorted_images(self) -> List[DicomImage]:
         """ Dicom image instances sorted by OsiriX user preferences.
 
@@ -386,6 +408,7 @@ class DicomImage(OsirixBase):
                f"\n     {self.series.__repr__()}"
 
     @property
+    @pyosirix_connection_check
     def date(self) -> datetime.datetime:
         """ The date in which the Dicom image were acquired.
         """
@@ -400,6 +423,7 @@ class DicomImage(OsirixBase):
         return image_date
 
     @property
+    @pyosirix_connection_check
     def instance_number(self) -> int:
         """ The instance number for the Dicom image.
         """
@@ -408,6 +432,7 @@ class DicomImage(OsirixBase):
         return response.instance_number
 
     @property
+    @pyosirix_connection_check
     def modality(self) -> str:
         """ The modality of the Dicom image.
         """
@@ -416,6 +441,7 @@ class DicomImage(OsirixBase):
         return response.modality
 
     @property
+    @pyosirix_connection_check
     def number_of_frames(self) -> int:
         """ The number of frames within the Dicom image.
         """
@@ -424,6 +450,7 @@ class DicomImage(OsirixBase):
         return response.number_of_frames
 
     @property
+    @pyosirix_connection_check
     def series(self) -> DicomSeries:
         """ The DicomSeries instance in which the image is contained.
         """
@@ -432,6 +459,7 @@ class DicomImage(OsirixBase):
         return DicomSeries(self.osirix_service, response.series)
 
     @property
+    @pyosirix_connection_check
     def slice_location(self) -> float:
         """ The slice location of the image.
 
@@ -442,6 +470,7 @@ class DicomImage(OsirixBase):
         self.response_check(response)
         return response.slice_location
 
+    @pyosirix_connection_check
     def complete_path(self) -> str:
         """ The path of the source Dicom file.
 
@@ -452,6 +481,7 @@ class DicomImage(OsirixBase):
         self.response_check(response)
         return response.path_name
 
+    @pyosirix_connection_check
     def height(self) -> int:
         """ The number of rows in the image
         Returns:
@@ -461,6 +491,7 @@ class DicomImage(OsirixBase):
         self.response_check(response)
         return response.height
 
+    @pyosirix_connection_check
     def width(self) -> int:
         """ The number of columns in the image
         Returns:
@@ -470,6 +501,7 @@ class DicomImage(OsirixBase):
         self.response_check(response)
         return response.width
 
+    @pyosirix_connection_check
     def sop_instance_uid(self) -> str:
         """ The SOP instance UID for the image.
 
