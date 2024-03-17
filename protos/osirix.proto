@@ -25,6 +25,7 @@ rpc OsirixDisplayedVRControllers (Empty) returns (OsirixDisplayedVRControllersRe
 rpc OsirixVersion (Empty) returns (OsirixVersionResponse) {}
 
 // ROI methods
+rpc ROIDelete (ROI) returns (Response) {}
 rpc ROIFlipHorizontally (ROI) returns (Response) {}
 rpc ROIFlipVertically (ROI) returns (Response) {}
 rpc ROIArea (ROI) returns (ROIAreaResponse) {}

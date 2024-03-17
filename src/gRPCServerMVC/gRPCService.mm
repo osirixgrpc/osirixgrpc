@@ -70,6 +70,7 @@ gRPCServiceMessageImplementation(DCMPixDicomSeries, DCMPix, DCMPixDicomSeriesRes
 gRPCServiceMessageImplementation(DCMPixDicomStudy, DCMPix, DCMPixDicomStudyResponse, gRPCDCMPixDelegate)
 
 # pragma mark ROI messages
+gRPCServiceMessageImplementation(ROIDelete, ROI, Response, gRPCROIDelegate)
 gRPCServiceMessageImplementation(ROIFlipHorizontally, ROI, Response, gRPCROIDelegate)
 gRPCServiceMessageImplementation(ROIFlipVertically, ROI, Response, gRPCROIDelegate)
 gRPCServiceMessageImplementation(ROIArea, ROI, ROIAreaResponse, gRPCROIDelegate)

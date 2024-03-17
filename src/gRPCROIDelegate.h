@@ -3,6 +3,7 @@
 
 @interface gRPCROIDelegate : NSObject
 
+delegateDeclaration(ROIDelete, ROI, Response)
 delegateDeclaration(ROIFlipHorizontally, ROI, Response)
 delegateDeclaration(ROIFlipVertically, ROI, Response)
 delegateDeclaration(ROIArea, ROI, ROIAreaResponse)

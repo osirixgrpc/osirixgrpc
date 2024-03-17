@@ -92,6 +92,7 @@ private:
     gRPCServiceMessageDeclaration(DCMPixDicomStudy, DCMPix, DCMPixDicomStudyResponse)
     
 # pragma mark ROI messages
+    gRPCServiceMessageDeclaration(ROIDelete, ROI, Response)
     gRPCServiceMessageDeclaration(ROIFlipHorizontally, ROI, Response)
     gRPCServiceMessageDeclaration(ROIFlipVertically, ROI, Response)
     gRPCServiceMessageDeclaration(ROIArea, ROI, ROIAreaResponse)
