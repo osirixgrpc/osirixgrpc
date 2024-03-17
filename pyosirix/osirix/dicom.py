@@ -19,10 +19,11 @@ from __future__ import annotations
 import datetime
 from typing import List
 
-from osirix.base import OsirixBase, pyosirix_connection_check
+import osirix
+from osirix.base import pyosirix_connection_check
 
 
-class DicomStudy(OsirixBase):
+class DicomStudy(osirix.base.OsirixBase):
     """ An instance representing a Dicom study within the OsiriX database.
 
     All attributes for this instance are immutable.

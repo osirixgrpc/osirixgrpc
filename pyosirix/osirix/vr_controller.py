@@ -8,6 +8,7 @@ from typing import Tuple, List
 import osirixgrpc.vrcontroller_pb2 as vrcontroller_pb2
 
 import osirix
+from osirix.base import pyosirix_connection_check
 
 
 class VRController(osirix.base.OsirixBase):
@@ -21,6 +22,7 @@ class VRController(osirix.base.OsirixBase):
                f"\n     {self.viewer_2d().__repr__()}"
 
     @property
+    @pyosirix_connection_check
     def rendering_mode(self) -> str:
         """ The rendering mode: "VR" for volume render, "MIP" for maximum intensity projection.
         """
@@ -29,6 +31,7 @@ class VRController(osirix.base.OsirixBase):
         return response.rendering_mode
 
     @rendering_mode.setter
+    @pyosirix_connection_check
     def rendering_mode(self, rendering_mode: str) -> None:
         """ The rendering mode: "VR" for volume render, "MIP" for maximum intensity projection.
         """
@@ -40,6 +43,7 @@ class VRController(osirix.base.OsirixBase):
         self.response_check(response)
 
     @property
+    @pyosirix_connection_check
     def style(self) -> str:
         """ The style of the volume render window.
         """
@@ -48,6 +52,7 @@ class VRController(osirix.base.OsirixBase):
         return response.style
 
     @property
+    @pyosirix_connection_check
     def title(self) -> str:
         """ The title of the volume render window.
         """
@@ -56,6 +61,7 @@ class VRController(osirix.base.OsirixBase):
         return response.title
 
     @property
+    @pyosirix_connection_check
     def wlww(self) -> Tuple[float, float]:
         """ The window level and window width of the viewer.
         """
@@ -64,6 +70,7 @@ class VRController(osirix.base.OsirixBase):
         return response.wl, response.ww
 
     @wlww.setter
+    @pyosirix_connection_check
     def wlww(self, wlww: Tuple[float, float]) -> None:
         # TODO: Do I need to set a tolerance on the WW?
         """The window level and window width of the viewer.
@@ -74,6 +81,7 @@ class VRController(osirix.base.OsirixBase):
         response = self.osirix_service_stub.VRControllerSetWLWW(request)
         self.response_check(response)
 
+    @pyosirix_connection_check
     def blending_controller(self) -> osirix.viewer_controller.ViewerController:
         """ The 2D ViewerController instance currently being blended (fused).
         """
@@ -82,6 +90,7 @@ class VRController(osirix.base.OsirixBase):
         return osirix.viewer_controller.ViewerController(self.osirix_service,
                                                          response.viewer_controller)
 
+    @pyosirix_connection_check
     def viewer_2d(self) -> osirix.viewer_controller.ViewerController:
         """ The 2D ViewerController instance from which the 3D viewer was started.
         """
@@ -90,6 +99,7 @@ class VRController(osirix.base.OsirixBase):
         return osirix.viewer_controller.ViewerController(self.osirix_service,
                                                          response.viewer_controller)
 
+    @pyosirix_connection_check
     def roi_volumes(self) -> List[osirix.roi.ROIVolume]:
         """ Obtain references to all volumetric ROIs.
 
@@ -103,6 +113,7 @@ class VRController(osirix.base.OsirixBase):
             roi_volumes.append(osirix.roi.ROIVolume(self, self.osirix_service, roi_volume))
         return roi_volumes
 
+    @pyosirix_connection_check
     def hide_roi_volume(self, roi_volume: osirix.roi.ROIVolume):
         """ Ensure that an input ROI is hidden on the 3D display.
 
@@ -114,6 +125,7 @@ class VRController(osirix.base.OsirixBase):
         response = self.osirix_service_stub.VRControllerHideROIVolume(request)
         self.response_check(response)
 
+    @pyosirix_connection_check
     def display_roi_volume(self, roi_volume: osirix.roi.ROIVolume):
         """ Ensure that an input ROI is visible on the 3D display.
 

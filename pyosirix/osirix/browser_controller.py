@@ -22,6 +22,7 @@ from typing import Tuple, List
 import osirixgrpc.browsercontroller_pb2 as browsercontroller_pb2
 
 import osirix
+from osirix.base import pyosirix_connection_check
 
 
 class BrowserController(osirix.base.OsirixBase):
@@ -34,6 +35,7 @@ class BrowserController(osirix.base.OsirixBase):
         return f"BrowserController: " \
                f"uid = {self.pb2_object.osirixrpc_uid}"
 
+    @pyosirix_connection_check
     def copy_files_into_database(self, files: List[str]) -> None:
         """ Copy files into the Osirix database.
 
@@ -49,6 +51,7 @@ class BrowserController(osirix.base.OsirixBase):
         response = self.osirix_service_stub.BrowserControllerCopyFilesIfNeeded(request)
         self.response_check(response)
 
+    @pyosirix_connection_check
     def database_selection(self) -> Tuple[List[osirix.dicom.DicomStudy],
                                           List[osirix.dicom.DicomSeries]]:
         """ Queries the user selection of Dicom images.
