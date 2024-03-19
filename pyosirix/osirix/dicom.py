@@ -240,7 +240,7 @@ class DicomStudy(osirix.base.OsirixBase):
         return response.no_files
 
 
-class DicomSeries(OsirixBase):
+class DicomSeries(osirix.base.OsirixBase):
     """ An instance representing a Dicom series within the OsiriX database.
 
     All attributes for this instance are immutable.
@@ -396,7 +396,7 @@ class DicomSeries(OsirixBase):
         return sorted_images
 
 
-class DicomImage(OsirixBase):
+class DicomImage(osirix.base.OsirixBase):
     """ An instance representing a Dicom image within the OsiriX database.
 
     All attributes for this instance are immutable.

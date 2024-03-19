@@ -11,7 +11,7 @@ import numpy as np
 import osirixgrpc.dcmpix_pb2 as dcmpix_pb2
 
 import osirix
-from osiric.base import pyosirix_connection_check
+from osirix.base import pyosirix_connection_check
 
 
 class DCMPix(osirix.base.OsirixBase):
