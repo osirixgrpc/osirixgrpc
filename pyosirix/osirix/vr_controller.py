@@ -17,9 +17,8 @@ class VRController(osirix.base.OsirixBase):
     """
     def __repr__(self):
         return f"VRController: " \
-               f"rendering_mode = {self.rendering_mode}, " \
-               f"uid = {self.pb2_object.osirixrpc_uid}" \
-               f"\n     {self.viewer_2d().__repr__()}"
+               f"{self.title} " \
+               f"({self.rendering_mode})"
 
     @property
     @pyosirix_connection_check

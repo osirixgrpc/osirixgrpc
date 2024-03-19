@@ -32,8 +32,7 @@ class BrowserController(osirix.base.OsirixBase):
     just contiain the same `osirixrpc_uid`.
     """
     def __repr__(self):
-        return f"BrowserController: " \
-               f"uid = {self.pb2_object.osirixrpc_uid}"
+        return f"BrowserController"
 
     @pyosirix_connection_check
     def copy_files_into_database(self, files: List[str]) -> None:

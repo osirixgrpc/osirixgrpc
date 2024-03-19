@@ -30,9 +30,8 @@ class DicomStudy(osirix.base.OsirixBase):
     """
     def __repr__(self):
         return f"DicomStudy: " \
-               f"patient_id = {self.patient_id}, " \
-               f"date = {self.date.strftime('%d/%m/%Y - %H:%M')}, " \
-               f"uid = {self.pb2_object.osirixrpc_uid}"
+               f"{self.patient_id} " \
+               f"({self.date.strftime('%d/%m/%Y')})"
 
     @property
     @pyosirix_connection_check
@@ -247,10 +246,8 @@ class DicomSeries(osirix.base.OsirixBase):
     """
     def __repr__(self):
         return f"DicomSeries: " \
-               f"modality = {self.modality}, "\
-               f"series_description = {self.series_description}, " \
-               f"uid = {self.pb2_object.osirixrpc_uid}" \
-               f"\n     {self.study.__repr__()}"
+               f"{self.series_description} " \
+               f"(N = {len(self.paths())})"
 
     @property
     @pyosirix_connection_check
@@ -403,10 +400,8 @@ class DicomImage(osirix.base.OsirixBase):
     """
     def __repr__(self):
         return f"DicomImage: " \
-               f"instance_number = {self.instance_number}, "\
-               f"slice_location = {self.slice_location:.2f}, " \
-               f"uid = {self.pb2_object.osirixrpc_uid}" \
-               f"\n     {self.series.__repr__()}"
+               f"{self.series.series_description} " \
+               f"({self.instance_number} / {len(self.series.paths())})"
 
     @property
     @pyosirix_connection_check

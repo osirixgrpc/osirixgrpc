@@ -20,9 +20,8 @@ class DCMPix(osirix.base.OsirixBase):
     """
     def __repr__(self):
         return f"DCMPix: " \
-               f"shape = {self.shape}, "\
-               f"uid = {self.pb2_object.osirixrpc_uid}" \
-               f"\n     {self.image_obj().__repr__()}"
+               f"{self.image_obj().modality} " \
+               f"{self.shape}"
 
     @property
     @pyosirix_connection_check

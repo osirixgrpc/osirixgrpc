@@ -28,10 +28,7 @@ class ROIVolume(osirix.base.OsirixBase):
 
     def __repr__(self):
         return f"ROIVolume: " \
-               f"name = {self.name}, " \
-               f"visible = {self.visible}, " \
-               f"uid = {self.pb2_object.osirixrpc_uid}" \
-               f"\n     {self.vr_controller.__repr__()}"
+               f"{self.name}"
 
     @property
     @pyosirix_connection_check
@@ -177,10 +174,7 @@ class ROI(osirix.base.OsirixBase):
     """
     def __repr__(self):
         return f"ROI: " \
-               f"name = {self.name}, " \
-               f"type = {self.itypes()[self.itype]}, " \
-               f"uid = {self.pb2_object.osirixrpc_uid}" \
-               f"\n     {self.pix.__repr__()}"
+               f"{self.name}"
 
     @classmethod
     @pyosirix_connection_check
