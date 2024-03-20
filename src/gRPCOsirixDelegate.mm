@@ -54,17 +54,7 @@
 + (void) OsirixDisplayed2DViewers:(const osirixgrpc::Empty *) request :(osirixgrpc::OsirixDisplayed2DViewersResponse *) response :(gRPCCache *) cache
 {
     NSArray *vcs = [ViewerController getDisplayed2DViewers];
-    
-    if ([vcs count] < 1)
-    {
-        response->mutable_status()->set_status(0);
-        response->mutable_status()->set_message("No ViewerControllers active");
-    }
-    else
-    {
-        response->mutable_status()->set_status(1);
-    }
-    
+        
     for (ViewerController *vc in vcs)
     {
         NSString *uid = nil;
@@ -77,6 +67,7 @@
         vc_->set_osirixrpc_uid([uid UTF8String]);
     }
     
+    response->mutable_status()->set_status(1);
 }
 
 + (void) OsirixFrontmostVRController:(const osirixgrpc::Empty *) request :(osirixgrpc::OsirixFrontmostVRControllerResponse *) response :(gRPCCache *) cache;
@@ -117,31 +108,18 @@
     {
         NSWindowController *wc = [win windowController];
         if( [wc isKindOfClass:[VRController class]])
-            [vrcs addObject:wc];
+        {
+            NSString *uid = nil;
+            if ([cache doesContain:wc])
+                uid = [cache uidForObject:wc];
+            else
+                uid = [cache addObject:wc];
+            
+            osirixgrpc::VRController *vrc_ = response->mutable_vr_controllers()->Add();
+            vrc_->set_osirixrpc_uid([uid UTF8String]);
+        }
     }
-    
-    if ([vrcs count] < 1)
-    {
-        response->mutable_status()->set_status(0);
-        response->mutable_status()->set_message("No VRControllers active");
-    }
-    else
-    {
-        response->mutable_status()->set_status(1);
-    }
-    
-    for (VRController *vrc in vrcs)
-    {
-        NSString *uid = nil;
-        if ([cache doesContain:vrc])
-            uid = [cache uidForObject:vrc];
-        else
-            uid = [cache addObject:vrc];
-        
-        osirixgrpc::VRController *vrc_ = response->mutable_vr_controllers()->Add();
-        vrc_->set_osirixrpc_uid([uid UTF8String]);
-    }
-    
+    response->mutable_status()->set_status(1);
 }
 
 + (void) OsirixVersion:(const osirixgrpc::Empty *)request :(osirixgrpc::OsirixVersionResponse *)response :(gRPCCache *)cache
