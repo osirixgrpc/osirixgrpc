@@ -77,3 +77,13 @@ def series_test(study_test, series_uid_test):
         if series_uid == series_uid_test:
             test_series = serie
     yield test_series
+
+
+@pytest.fixture(scope="function")
+def image_test(series_test, image_uid_test):
+    test_image = None
+    for image in series_test.images:
+        sop_instance_uid = image.sop_instance_uid()
+        if sop_instance_uid == image_uid_test:
+            test_image = image
+    yield test_image

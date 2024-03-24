@@ -475,7 +475,7 @@ class DicomImage(osirix.base.OsirixBase):
         """
         response = self.osirix_service_stub.DicomImageCompletePath(self.pb2_object)
         self.response_check(response)
-        return response.path_name
+        return response.complete_path
 
     @pyosirix_connection_check
     def height(self) -> int:
