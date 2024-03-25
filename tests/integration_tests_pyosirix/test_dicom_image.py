@@ -9,7 +9,7 @@ import pytest
 def test_dicom_image_sop_instance_uid(series_test):
     """ Check that a SOP instance is obtainable from the dicom images. """
     image = series_test.images[0]
-    assert isinstance(image.sop_instance_uid(), str)
+    assert isinstance(image.sop_instance_uid, str)
 
 
 def test_image_available(image_test):
@@ -19,23 +19,23 @@ def test_image_available(image_test):
 
 def test_width(image_test):
     """ Check the image has the intended width. """
-    assert image_test.width() == 320, "Bad image width identified"
+    assert image_test.width == 320, "Bad image width identified"
 
 
 def test_height(image_test):
     """ Check the image has the intended height. """
-    assert image_test.height() == 320, "Bad image width identified"
+    assert image_test.height == 320, "Bad image width identified"
 
 
 def test_complete_path(image_test):
     """ Check that a complete path is provided. """
-    assert os.path.exists(image_test.complete_path()), f"Bad path provided"
+    assert os.path.exists(image_test.complete_path), f"Bad path provided"
 
 
 def test_date(image_test):
     """ Check that the correct date is provided. """
-    real_date = datetime.strptime("20220803190311", "%Y%m%d%H%M%S")
-    assert abs(real_date - image_test.date) <= timedelta(seconds=1.0)
+    date = datetime.strptime("20220803190311", "%Y%m%d%H%M%S")
+    assert abs(date - image_test.date) <= timedelta(seconds=1.0)
 
 
 def test_number_of_frames(image_test):

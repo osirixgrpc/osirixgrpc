@@ -19,8 +19,8 @@ from __future__ import annotations
 import datetime
 from typing import List
 
-import osirix
-from osirix.base import pyosirix_connection_check
+import osirix  # noqa
+from osirix.base import pyosirix_connection_check  # noqa
 
 
 class DicomStudy(osirix.base.OsirixBase):
@@ -165,23 +165,21 @@ class DicomStudy(osirix.base.OsirixBase):
         self.response_check(response)
         return response.study_name
 
+    @property
     @pyosirix_connection_check
     def modalities(self) -> str:
         """ The modalities available within the Dicom study.
 
-        Returns:
-            The modalities of the study seperated by a double backslash.
+        Modalities are seperated by a double backslash (e.g. "PT\\CT")
         """
         response = self.osirix_service_stub.DicomStudyModalities(self.pb2_object)
         self.response_check(response)
         return response.modalities
 
+    @property
     @pyosirix_connection_check
     def series(self) -> List[DicomSeries]:
         """ The Dicom Series instances associated with the study.
-
-        Returns:
-            A list of the DicomSeries instances associated with the study.
         """
         response = self.osirix_service_stub.DicomStudySeries(self.pb2_object)
         self.response_check(response)
@@ -190,12 +188,10 @@ class DicomStudy(osirix.base.OsirixBase):
             series.append(DicomSeries(self.osirix_service, serie))
         return series
 
+    @property
     @pyosirix_connection_check
     def images(self) -> List[DicomImage]:
         """ The Dicom Image instances associated with the study.
-
-        Returns:
-            A list of the DicomImage instances associated with the study.
         """
         response = self.osirix_service_stub.DicomStudyImages(self.pb2_object)
         self.response_check(response)
@@ -204,35 +200,29 @@ class DicomStudy(osirix.base.OsirixBase):
             images.append(DicomImage(self.osirix_service, image))
         return images
 
+    @property
     @pyosirix_connection_check
     def paths(self) -> List[str]:
-        """ The Dicom file paths associated with the study.
-
-        Returns:
-            A list of absolute paths.
+        """ The Dicom file absolute paths associated with the study.
         """
         response = self.osirix_service_stub.DicomStudyPaths(self.pb2_object)
         self.response_check(response)
         paths = [path for path in response.paths]
         return paths
 
+    @property
     @pyosirix_connection_check
     def no_files(self) -> int:
         """ The number of files comprising the Dicom study.
-
-        Returns:
-            The integer number of files contained in the study.
         """
         response = self.osirix_service_stub.DicomStudyNoFiles(self.pb2_object)
         self.response_check(response)
         return response.no_files
 
+    @property
     @pyosirix_connection_check
     def raw_no_files(self) -> int:
-        """ he number of raw image files within the Dicom study.
-
-        Returns:
-            The number of files.
+        """ The number of raw image files within the Dicom study.
         """
         response = self.osirix_service_stub.DicomStudyRawNoFiles(self.pb2_object)
         self.response_check(response)
@@ -247,7 +237,7 @@ class DicomSeries(osirix.base.OsirixBase):
     def __repr__(self):
         return f"DicomSeries: " \
                f"{self.series_description} " \
-               f"(N = {len(self.paths())})"
+               f"(N = {len(self.paths)})"
 
     @property
     @pyosirix_connection_check
@@ -342,28 +332,7 @@ class DicomSeries(osirix.base.OsirixBase):
         self.response_check(response)
         return DicomStudy(self.osirix_service, response.study)
 
-    @pyosirix_connection_check
-    def next_series(self) -> DicomSeries:
-        """ The next Dicom Series in the OsiriX database.
-
-        Returns:
-            The next DicomSeries instance.
-        """
-        response = self.osirix_service_stub.DicomSeriesNextSeries(self.pb2_object)
-        self.response_check(response)
-        return DicomSeries(self.osirix_service, response.series)
-
-    @pyosirix_connection_check
-    def previous_series(self) -> DicomSeries:
-        """ The previous Dicom Series in the OsiriX database.
-
-        Returns:
-            The previous DicomSeries instance.
-        """
-        response = self.osirix_service_stub.DicomSeriesPreviousSeries(self.pb2_object)
-        self.response_check(response)
-        return DicomSeries(self.osirix_service, response.series)
-
+    @property
     @pyosirix_connection_check
     def paths(self) -> List[str]:
         """ The Dicom file paths associated with the series.
@@ -375,6 +344,24 @@ class DicomSeries(osirix.base.OsirixBase):
         self.response_check(response)
         paths = [path for path in response.paths]
         return paths
+
+    @property
+    @pyosirix_connection_check
+    def next_series(self) -> DicomSeries:
+        """ The next Dicom Series in the OsiriX database.
+        """
+        response = self.osirix_service_stub.DicomSeriesNextSeries(self.pb2_object)
+        self.response_check(response)
+        return DicomSeries(self.osirix_service, response.series)
+
+    @property
+    @pyosirix_connection_check
+    def previous_series(self) -> DicomSeries:
+        """ The previous Dicom Series in the OsiriX database.
+        """
+        response = self.osirix_service_stub.DicomSeriesPreviousSeries(self.pb2_object)
+        self.response_check(response)
+        return DicomSeries(self.osirix_service, response.series)
 
     @pyosirix_connection_check
     def sorted_images(self) -> List[DicomImage]:
@@ -401,7 +388,7 @@ class DicomImage(osirix.base.OsirixBase):
     def __repr__(self):
         return f"DicomImage: " \
                f"{self.series.series_description} " \
-               f"({self.instance_number} / {len(self.series.paths())})"
+               f"({self.instance_number} / {len(self.series.paths)})"
 
     @property
     @pyosirix_connection_check
@@ -466,43 +453,37 @@ class DicomImage(osirix.base.OsirixBase):
         self.response_check(response)
         return response.slice_location
 
+    @property
     @pyosirix_connection_check
     def complete_path(self) -> str:
         """ The path of the source Dicom file.
-
-        Returns:
-           The complete path of the Dicom file containing the information contained by the image.
         """
         response = self.osirix_service_stub.DicomImageCompletePath(self.pb2_object)
         self.response_check(response)
         return response.complete_path
 
+    @property
     @pyosirix_connection_check
     def height(self) -> int:
         """ The number of rows in the image
-        Returns:
-           The height (number of rows) of the image.
         """
         response = self.osirix_service_stub.DicomImageHeight(self.pb2_object)
         self.response_check(response)
         return response.height
 
+    @property
     @pyosirix_connection_check
     def width(self) -> int:
         """ The number of columns in the image
-        Returns:
-           The width (number of columns) of the image.
         """
         response = self.osirix_service_stub.DicomImageWidth(self.pb2_object)
         self.response_check(response)
         return response.width
 
+    @property
     @pyosirix_connection_check
     def sop_instance_uid(self) -> str:
         """ The SOP instance UID for the image.
-
-        Returns:
-           The SOP instance UID, a unique Dicom identifier for the image.
         """
         response = self.osirix_service_stub.DicomImageSOPInstanceUID(self.pb2_object)
         self.response_check(response)

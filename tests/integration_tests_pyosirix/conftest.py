@@ -1,7 +1,7 @@
 import os
 import pytest
 
-import osirix
+import osirix  # noqa
 
 
 @pytest.fixture(scope="function")
@@ -70,7 +70,7 @@ def study_test(browser_controller, study_uid_test):
 @pytest.fixture(scope="function")
 def series_test(study_test, series_uid_test):
     """ Return the DicomSeries used during testing purposes """
-    series = study_test.series()
+    series = study_test.series
     test_series = None
     for serie in series:
         series_uid = serie.series_instance_uid
@@ -83,7 +83,7 @@ def series_test(study_test, series_uid_test):
 def image_test(series_test, image_uid_test):
     test_image = None
     for image in series_test.images:
-        sop_instance_uid = image.sop_instance_uid()
+        sop_instance_uid = image.sop_instance_uid
         if sop_instance_uid == image_uid_test:
             test_image = image
     yield test_image

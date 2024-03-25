@@ -1,6 +1,6 @@
 import pytest
 
-import osirix
+import osirix  # noqa
 
 
 def test_global_osirix_instance(global_osirix_instance):

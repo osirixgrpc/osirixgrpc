@@ -5,7 +5,7 @@ from time import time
 import numpy as np
 import pytest
 
-import osirix
+import osirix  # noqa
 
 
 def test_browser_studies_status(browser_controller):
