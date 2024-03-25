@@ -19,14 +19,14 @@ def test_dicom_series_paths(series_test):
 def test_dicom_series_next_series(series_test):
     """ Check there is no next series. """
     with pytest.raises(osirix.exceptions.GrpcException) as exc:
-        series_test.next_series
+        _ = series_test.next_series
     assert str(exc.value) == "No next series", f"Bad error message for no next series"
 
 
 def test_dicom_series_previous_series(series_test):
     """ Check there is no previous series. """
     with pytest.raises(osirix.exceptions.GrpcException) as exc:
-        series_test.previous_series
+        _ = series_test.previous_series
     assert str(exc.value) == "No previous series", f"Bad error message for no previous series"
 
 
