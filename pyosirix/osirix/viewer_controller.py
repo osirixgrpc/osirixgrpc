@@ -11,8 +11,8 @@ import numpy as np
 
 import osirixgrpc.viewercontroller_pb2 as viewercontroller_pb2
 
-import osirix
-from osirix.base import pyosirix_connection_check
+import osirix  # noqa
+from osirix.base import pyosirix_connection_check  # noqa
 
 
 class ViewerController(osirix.base.OsirixBase):
@@ -99,11 +99,19 @@ class ViewerController(osirix.base.OsirixBase):
     def wlww(self, wlww: Tuple[float, float]) -> None:
         """The window level and window width of the viewer.
         """
-        request = viewercontroller_pb2.ViewerControllerSetWLWWRequest(vr_controller=self.pb2_object,
-                                                                      wl=wlww[0],
-                                                                      ww=wlww[1])
+        request = viewercontroller_pb2.ViewerControllerSetWLWWRequest(
+            viewer_controller=self.pb2_object, wl=wlww[0], ww=wlww[1])
         response = self.osirix_service_stub.ViewerControllerSetWLWW(request)
         self.response_check(response)
+
+    @property
+    @pyosirix_connection_check
+    def max_movie_index(self) -> int:
+        """ The maximum movie index in the viewer.
+        """
+        response = self.osirix_service_stub.ViewerControllerMaxMovieIdx(self.pb2_object)
+        self.response_check(response)
+        return response.max_movie_idx
 
     @pyosirix_connection_check
     def pix_list(self, movie_idx: int = None) -> List[osirix.dcm_pix.DCMPix]:
@@ -215,9 +223,22 @@ class ViewerController(osirix.base.OsirixBase):
         Returns:
             The ViewerController instance.
         """
-        response = self.osirix_service_stub.ViewerControllerVRControllers(self.pb2_object)
+        response = self.osirix_service_stub.ViewerControllerBlendingController(self.pb2_object)
         self.response_check(response)
-        return ViewerController(self.osirix_service, response.viewer_controller)
+        return ViewerController(self.osirix_service, response.blending_viewer)
+
+    @pyosirix_connection_check
+    def fuse_with_viewer(self, viewer: ViewerController):
+        """ Fuse another viewer onto this one.
+
+        Args:
+            viewer (osirix.viewer_controller.ViewerController): The viewer to fuse onto the present
+                one.
+        """
+        request = viewercontroller_pb2.ViewerControllerFuseWithViewerRequest(
+            viewer_controller=self.pb2_object, fusion_viewer_controller=viewer.pb2_object)
+        response = self.osirix_service_stub.ViewerControllerFuseWithViewer(request)
+        self.response_check(response)
 
     @pyosirix_connection_check
     def close_viewer(self) -> None:
@@ -227,21 +248,18 @@ class ViewerController(osirix.base.OsirixBase):
         self.response_check(response)
 
     @pyosirix_connection_check
-    def copy_viewer_window(self, in_4d: bool = False) -> None:
-        # TODO: Is it just the first frame if in_4d is False?
-        # TODO: Currently this does not return a reference to the new window.  This would be nice!
-        """ Create a copy of this 2D viewer.
+    def copy_viewer_window(self) -> ViewerController:
+        """ Create a copy of the viewer.
 
         This can be useful for image processing when you want to keep a copy of the original and
         a processed version.
 
-        Args:
-            in_4d (bool): Whether to copy the entire 4D dataset. Default is False.
+        Returns:
+            The new osirix.viewer_controller.ViewerController instance.
         """
-        request = viewercontroller_pb2.ViewerControllerCopyViewerWindowRequest(
-            viewer_controller=self.pb2_object, in_4d=in_4d)
-        response = self.osirix_service_stub.ViewerControllerCopyViewerWindow(request)
+        response = self.osirix_service_stub.ViewerControllerCopyViewerWindow(self.pb2_object)
         self.response_check(response)
+        return ViewerController(self.osirix_service, response.viewer_controller)
 
     @pyosirix_connection_check
     def cur_dcm(self) -> osirix.dcm_pix.DCMPix:
@@ -271,19 +289,6 @@ class ViewerController(osirix.base.OsirixBase):
         return response.is_volumic
 
     @pyosirix_connection_check
-    def max_movie_index(self) -> int:
-        """ The maximum movie index in the viewer.
-
-        Note this equals the number of frames minus 1.
-
-        Returns:
-            The maximum frame index.
-        """
-        response = self.osirix_service_stub.ViewerControllerMaxMovieIdx(self.pb2_object)
-        self.response_check(response)
-        return response.max_movie_idx
-
-    @pyosirix_connection_check
     def needs_display_update(self) -> None:
         """ Tell the viewer it should update its display.
 
@@ -293,16 +298,43 @@ class ViewerController(osirix.base.OsirixBase):
         self.response_check(response)
 
     @pyosirix_connection_check
-    def resample_viewer_controller(self, vc: ViewerController):
+    def resample_viewer_controller(self, vc: ViewerController) -> ViewerController:
         """ Resample this (moving) ViewerController based on another (fixed) ViewerController.
+
+        Note that the original moving viewer is closed, so a reference to the new one is returned.
+        This means it is generally advised to the call the method in the following manner:
+
+        `moving_viewer = moving_viewer.resample_viewer_controller(fixed_viewer)`
 
         Args:
             vc (osirix.viewer_controller.ViewerController): The fixed viewer.
+
+        Returns:
+            The resampled viewer window.
         """
         request = viewercontroller_pb2.ViewerControllerResampleViewerControllerRequest(
             viewer_controller=self.pb2_object, fixed_viewer_controller=vc.pb2_object)
         response = self.osirix_service_stub.ViewerControllerResampleViewerController(request)
         self.response_check(response)
+        return ViewerController(self.osirix_service, response.resampled_viewer)
+
+    @pyosirix_connection_check
+    def open_vr_viewer(self, mode: str = "VR") -> osirix.vr_controller.VRController:
+        """ Open a new 3D viewer for the enclosed data.
+
+        Args:
+            mode (str): Either 'VR' for volume render, or 'MIP' for a maximum intensity projection.
+
+        Returns:
+            A VRController instance.
+        """
+        if mode not in ["VR", "MIP"]:
+            raise ValueError("`mode` must be either 'VR' or 'MIP'")
+        request = viewercontroller_pb2.ViewerControllerOpenVRViewerForModeRequest(
+            viewer_controller=self.pb2_object, mode=mode)
+        response = self.osirix_service_stub.ViewerControllerOpenVRViewerForMode(request)
+        self.response_check(response)
+        return osirix.vr_controller.VRController(self.osirix_service, response.vr_controller)
 
     @pyosirix_connection_check
     def new_roi(self, itype: int = 15, name: str = "", position: idx = 0, movie_idx: int = 0,
@@ -427,22 +459,20 @@ class ViewerController(osirix.base.OsirixBase):
         return self.new_roi(points=points, itype=itype, **kwargs)
 
     @pyosirix_connection_check
-    def new_measurement_roi(self, start_column: float, end_column: float, start_row: float,
-                            end_row: NDArray, **kwargs) -> osirix.roi.ROI:
+    def new_measurement_roi(self, start: Tuple[float, float], end: Tuple[float, float], **kwargs)\
+            -> osirix.roi.ROI:
         """ Create a new length measurement ROI within the viewer.
 
         Args:
-            start_column (float): The starting column position of the ROI
-            end_column (float): The ending column position of the ROI
-            start_row (float): The starting row position of the ROI
-            end_row (float): The ending row position of the ROI
+            start (float, float): The starting position of the ROI (column, row).
+            end (float, float): The ending position of the ROI (column, row).
             **kwargs: See `new_roi` for all additional comments.
 
         Returns:
              The created ROI instance.
         """
-        points = np.array([[start_column, start_row],
-                           [end_column, end_row]])
+        points = np.array([[start[0], start[1]],
+                           [end[0], end[1]]])
         return self.new_roi(points=points, itype=5, **kwargs)
 
     @pyosirix_connection_check

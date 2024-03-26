@@ -22,6 +22,8 @@ pip install -i https://pypi.org/simple/ --extra-index-url https://test.pypi.org/
 pytest test_osirix_utilities.py -s -x
 pytest test_browser_controller.py -s -x
 pytest test_dicom_image.py -s
+pytest test_dicom_series.py -s
+pytest test_dicom_study.py -s
 
 # Deactivate the virtual environment
 deactivate

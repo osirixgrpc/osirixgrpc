@@ -87,3 +87,23 @@ def image_test(series_test, image_uid_test):
         if sop_instance_uid == image_uid_test:
             test_image = image
     yield test_image
+
+
+@pytest.fixture(scope="function")
+def viewer_controller_2d():
+    viewers = osirix.displayed_2d_viewers()
+    viewer_controller = None
+    for viewer in viewers:
+        if viewer.max_movie_index == 1:
+            viewer_controller = viewer
+    yield viewer_controller
+
+
+@pytest.fixture(scope="function")
+def viewer_controller_4d():
+    viewers = osirix.displayed_2d_viewers()
+    viewer_controller = None
+    for viewer in viewers:
+        if viewer.max_movie_index > 1:
+            viewer_controller = viewer
+    yield viewer_controller
