@@ -25,19 +25,11 @@ static gRPCCache *_objectCache = nil;
 
 -(void) dealloc{
     [cache release];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:OsirixRemoveROINotification object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:OsirixCloseViewerNotification object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:OsirixWindow3dCloseNotification object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:OsirixActiveLocalDatabaseDidChangeNotification object:nil];
     [super dealloc];
 }
 
 -(id) init{
-    cache = [[NSMutableDictionary alloc] init];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(osirixRemoveROINotificationTarget:) name:OsirixRemoveROINotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(osirixCloseViewerNotificationTarget:) name:OsirixCloseViewerNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(osirixWindow3dCloseNotificationTarget:) name:OsirixWindow3dCloseNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(OsirixActiveLocalDatabaseDidChangeNotificationTarget:) name:OsirixActiveLocalDatabaseDidChangeNotification object:nil];
+    cache = [NSMapTable mapTableWithKeyOptions:NSMapTableStrongMemory valueOptions:NSMapTableWeakMemory];
     return self;
 }
 
@@ -96,9 +88,9 @@ static gRPCCache *_objectCache = nil;
     return uid;
 }
 
--(BOOL)doesContain:(id)object
+-(BOOL)doesContain:(id)obj
 {
-    return [cache doesContain:object];
+    return [cache doesContain:obj];
 }
 
 -(id)objectForUID:(NSString *)uid
@@ -106,13 +98,13 @@ static gRPCCache *_objectCache = nil;
     return [cache objectForKey:uid];
 }
 
--(NSString *)uidForObject:(id)object
+-(NSString *)uidForObject:(id)obj
 {
     NSString *uid = nil;
     for (NSString *uid_ in [cache keyEnumerator])
     {
-        void * object_ = [cache objectForKey:uid_];
-        if (object_ == object)
+        void * obj_ = [cache objectForKey:uid_];
+        if (obj_ == obj)
         {
             uid = uid_;
         }
@@ -122,7 +114,8 @@ static gRPCCache *_objectCache = nil;
 
 -(NSArray *)uids
 {
-    return [cache allKeys];
+    NSEnumerator *keyEnumerator = [cache keyEnumerator];
+    return [keyEnumerator allObjects];
 }
 
 -(void)clearCache

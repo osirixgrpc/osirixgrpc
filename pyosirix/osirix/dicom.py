@@ -299,7 +299,10 @@ class DicomSeries(osirix.base.OsirixBase):
         """ The series description.
         """
         response = self.osirix_service_stub.DicomSeriesSeriesDescription(self.pb2_object)
-        self.response_check(response)
+        try:
+            self.response_check(response)
+        except osirix.exceptions.GrpcException:
+            return "unknown series description"
         return response.series_description
 
     @property
