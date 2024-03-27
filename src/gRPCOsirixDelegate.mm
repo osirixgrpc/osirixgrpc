@@ -75,6 +75,9 @@
     VRController *vrc = nil;
     for( NSWindow *win in [NSApp orderedWindows])
     {
+        if (![win isVisible] && ![win isMiniaturized]) {
+            continue;
+        }
         NSWindowController *wc = [win windowController];
         if( [wc isKindOfClass:[VRController class]])
         {
@@ -103,9 +106,11 @@
 
 + (void) OsirixDisplayedVRControllers:(const osirixgrpc::Empty *) request :(osirixgrpc::OsirixDisplayedVRControllersResponse *) response :(gRPCCache *) cache
 {
-    NSMutableArray *vrcs = [NSMutableArray array];
     for( NSWindow *win in [NSApp orderedWindows])
     {
+        if (![win isVisible] && ![win isMiniaturized]) {
+            continue;
+        }
         NSWindowController *wc = [win windowController];
         if( [wc isKindOfClass:[VRController class]])
         {

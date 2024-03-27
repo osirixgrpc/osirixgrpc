@@ -63,16 +63,16 @@ class DCMPix(osirix.base.OsirixBase):
     @property
     @pyosirix_connection_check
     def origin(self) -> Tuple[float, float, float]:
-        """ The origin of the image (rows, columns, slices).
+        """ The origin of the image (x, y, z).
 
         NOTE: It can be more accurate to get the slice location by loading the dicom file via the
         `source_file` property (using pydicom for example), and using the ImagePositionPatient tag.
         """
         response = self.osirix_service_stub.DCMPixOrigin(self.pb2_object)
         self.response_check(response)
-        return (float(response.origin_rows),
-                float(response.origin_columns),
-                float(response.origin_slices))
+        return (float(response.origin_x),
+                float(response.origin_y),
+                float(response.origin_z))
 
     @property
     @pyosirix_connection_check

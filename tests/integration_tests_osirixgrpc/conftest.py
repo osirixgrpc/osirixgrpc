@@ -129,7 +129,7 @@ def image_test(grpc_stub, series_test, image_uid_test):
 
 
 @pytest.fixture(scope="function")
-def dcm_pix_test(grpc_stub, viewer_controller_2d, image_test):
+def dcm_pix_test(grpc_stub, viewer_controller_2d):
     request = viewercontroller_pb2.ViewerControllerPixListRequest(
         viewer_controller=viewer_controller_2d, movie_idx=0)
     response = grpc_stub.ViewerControllerPixList(request)

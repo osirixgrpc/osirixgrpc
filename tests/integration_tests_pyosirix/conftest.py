@@ -107,3 +107,17 @@ def viewer_controller_4d():
         if viewer.max_movie_index > 1:
             viewer_controller = viewer
     yield viewer_controller
+
+
+@pytest.fixture(scope="function")
+def dcm_pix_test(viewer_controller_2d):
+    yield viewer_controller_2d.pix_list(0)[0]
+
+
+@pytest.fixture(scope="function")
+def roi_mask_test(viewer_controller_4d):
+    roi_slice = viewer_controller_4d.roi_list(0)[0]
+    assert len(roi_slice) > 0
+    roi = roi_slice[0]
+    assert roi.name == "pyosirix_mask"
+    yield roi
