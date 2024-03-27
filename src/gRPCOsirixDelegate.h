@@ -11,4 +11,8 @@ delegateDeclaration(OsirixFrontmostVRController, Empty, OsirixFrontmostVRControl
 delegateDeclaration(OsirixDisplayedVRControllers, Empty, OsirixDisplayedVRControllersResponse)
 delegateDeclaration(OsirixVersion, Empty, OsirixVersionResponse)
 
+delegateDeclaration(OsirixCacheUids, Empty, OsirixCacheUidsResponse)
+delegateDeclaration(OsirixCacheObjectForUid, OsirixCacheObjectForUidRequest, OsirixCacheObjectForUidResponse)
+
+
 @end

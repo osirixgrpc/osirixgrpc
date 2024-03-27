@@ -33,55 +33,6 @@ static gRPCCache *_objectCache = nil;
     return self;
 }
 
--(void)osirixRemoveROINotificationTarget:(NSNotification *)notification
-{
-    // Remove the ROI if present.
-    ROI *roi = [notification object];
-    if ([self doesContain:roi])
-    {
-        [self removeObject:roi];
-    }
-}
-
--(void)osirixCloseViewerNotificationTarget:(NSNotification *)notification
-{
-    // A little more complicated as need to check for DCMPix also.  ROIs should be dealt with by another function.
-    ViewerController *vc = [notification object];
-    for (long j = 0; j < [vc maxMovieIndex]; j++)
-    {
-        NSArray *pixList = [vc pixList:j];
-        
-        for (DCMPix *pix in pixList){
-            if ([self doesContain:pix])
-            {
-                [self removeObject:pix];
-            }
-        }
-    }
-    [self removeObject:vc];
-}
-
--(void)osirixWindow3dCloseNotificationTarget:(NSNotification *)notification
-{
-    VRController *vc = [notification object];
-    if ([self doesContain:vc])
-    {
-        [self removeObject:vc];
-    }
-}
-
--(void)OsirixActiveLocalDatabaseDidChangeNotificationTarget:(NSNotification *)notification
-{
-    // Might as well remove everything other than the BrowserController as everything will be closed down.
-    for (id object in [cache objectEnumerator])
-    {
-        if (![object isKindOfClass:[BrowserController class]])
-        {
-            [self removeObject:object];
-        }
-    }
-}
-
 -(NSString *)generateUniqueID
 {
     NSString *uid = [[NSUUID UUID] UUIDString];
@@ -95,7 +46,13 @@ static gRPCCache *_objectCache = nil;
 
 -(id)objectForUID:(NSString *)uid
 {
-    return [cache objectForKey:uid];
+    id obj = [cache objectForKey:uid];
+    
+    // Check whether still active
+    if (obj == nil) {
+        [cache removeObjectForKey:uid];
+    }
+    return obj;
 }
 
 -(NSString *)uidForObject:(id)obj

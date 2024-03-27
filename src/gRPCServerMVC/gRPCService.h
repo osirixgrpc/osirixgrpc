@@ -45,6 +45,10 @@ private:
     gRPCServiceMessageDeclaration(OsirixFrontmostVRController, Empty, OsirixFrontmostVRControllerResponse)
     gRPCServiceMessageDeclaration(OsirixDisplayedVRControllers, Empty, OsirixDisplayedVRControllersResponse)
     gRPCServiceMessageDeclaration(OsirixVersion, Empty, OsirixVersionResponse)
+    
+# pragma mark cache messages
+    gRPCServiceMessageDeclaration(OsirixCacheUids, Empty, OsirixCacheUidsResponse)
+    gRPCServiceMessageDeclaration(OsirixCacheObjectForUid, OsirixCacheObjectForUidRequest, OsirixCacheObjectForUidResponse)
 
 # pragma mark ViewerController messages
     gRPCServiceMessageDeclaration(ViewerControllerCloseViewer, ViewerController, Response)

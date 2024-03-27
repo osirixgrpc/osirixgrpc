@@ -24,6 +24,10 @@ rpc OsirixFrontmostVRController (Empty) returns (OsirixFrontmostVRControllerResp
 rpc OsirixDisplayedVRControllers (Empty) returns (OsirixDisplayedVRControllersResponse) {}
 rpc OsirixVersion (Empty) returns (OsirixVersionResponse) {}
 
+// Cache methods - debug only
+rpc OsirixCacheUids (Empty) returns (OsirixCacheUidsResponse) {}
+rpc OsirixCacheObjectForUid (OsirixCacheObjectForUidRequest) returns (OsirixCacheObjectForUidResponse) {}
+
 // ROI methods
 rpc ROIDelete (ROI) returns (Response) {}
 rpc ROIFlipHorizontally (ROI) returns (Response) {}
@@ -203,4 +207,20 @@ message OsirixVersionResponse{
 	Status status = 1;
 	string version = 2;
 	string bundle_name = 3;
+}
+
+
+// Cache requests / responses
+message OsirixCacheUidsResponse {
+	Status status = 1;
+	repeated string uids = 2;
+}
+
+message OsirixCacheObjectForUidResponse {
+	Status status = 1;
+	string object_type = 2;
+}
+
+message OsirixCacheObjectForUidRequest {
+	string uid = 1;
 }
