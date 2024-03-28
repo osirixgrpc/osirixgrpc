@@ -3,11 +3,12 @@
 """
 
 from __future__ import annotations
-from typing import List, Tuple
+from typing import List, Tuple, Dict
 
 import grpc  # noqa
 
-from osirixgrpc import osirix_pb2_grpc
+from osirixgrpc import osirix_pb2_grpc, types_pb2
+import osirixgrpc.osirix_pb2 as osirix_pb2
 import osirixgrpc.utilities_pb2 as utilities_pb2
 
 import osirix
@@ -217,3 +218,63 @@ class Osirix(osirix.base.OsirixBase):
         response = self.osirix_service_stub.OsirixVersion(request)
         self.response_check(response)
         return response.version, response.bundle_name
+
+    def __osirix_cache_uids__(self) -> List[str]:
+        """ Return a list of UIDs available to osirixgrpc
+
+        Returns:
+            List: The list of available UIDs.
+        """
+        response = self.osirix_service_stub.OsirixCacheUids(utilities_pb2.Empty())
+        self.response_check(response)
+        return response.uids
+
+    def __osirix_cache_object_for_uid__(self, uid: str):
+        """ Return an object for a particular UID
+
+        Args:
+            uid (str): The UID for which to obtain the object
+
+        Returns:
+            id: The object.
+        """
+        request = osirix_pb2.OsirixCacheObjectForUidRequest(uid=uid)
+        response = self.osirix_service_stub.OsirixCacheObjectForUid(request)
+        self.response_check(response)
+        if response.object_type == "BrowserController":
+            return osirix.browser_controller.BrowserController(self.osirix_service,
+                                                               types_pb2.BrowserController(
+                                                                   osirixrpc_uid=uid))
+        elif response.object_type == "ViewerController":
+            return osirix.viewer_controller.ViewerController(self.osirix_service,
+                                                             types_pb2.ViewerController(
+                                                                 osirixrpc_uid=uid))
+        elif response.object_type == "VRController":
+            return osirix.vr_controller.VRController(self.osirix_service,
+                                                     types_pb2.VRController(osirixrpc_uid=uid))
+        elif response.object_type == "DicomImage":
+            return osirix.dicom.DicomImage(self.osirix_service,
+                                           types_pb2.DicomImage(osirixrpc_uid=uid))
+        elif response.object_type == "DicomSeries":
+            return osirix.dicom.DicomSeries(self.osirix_service,
+                                           types_pb2.DicomSeries(osirixrpc_uid=uid))
+        elif response.object_type == "DicomStudy":
+            return osirix.dicom.DicomStudy(self.osirix_service,
+                                           types_pb2.DicomStudy(osirixrpc_uid=uid))
+        elif response.object_type == "ROI":
+            return osirix.roi.ROI(self.osirix_service, types_pb2.ROI(osirixrpc_uid=uid))
+        elif response.object_type == "ROIVolume":
+            return osirix.roi.ROIVolume(self.osirix_service, types_pb2.ROIVolume(osirixrpc_uid=uid))
+        elif response.object_type == "DCMPix":
+            return osirix.dcm_pix.DCMPix(self.osirix_service, types_pb2.DCMPix(osirixrpc_uid=uid))
+        else:
+            return response.object_type
+
+    def __osirix_cache_objects__(self) -> Dict:
+        """ Return an object for a particular UID
+
+        Returns:
+            Dict: All objects keyed by the uid: {uid: object}
+        """
+        uids = self.__osirix_cache_uids__()
+        return {uid: self.__osirix_cache_object_for_uid__(uid) for uid in uids}

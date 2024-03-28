@@ -25,12 +25,19 @@ static gRPCCache *_objectCache = nil;
 
 -(void) dealloc{
     [cache release];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:OsirixCloseViewerNotification object:nil];
     [super dealloc];
 }
 
 -(id) init{
     cache = [NSMapTable mapTableWithKeyOptions:NSMapTableStrongMemory valueOptions:NSMapTableWeakMemory];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(osirixCloseViewerNotificationTarget:) name:OsirixCloseViewerNotification object:nil];
     return self;
+}
+-(void)osirixCloseViewerNotificationTarget:(NSNotification *)notification
+{
+    ViewerController *vc = [notification object];
+    [self removeObject:vc];
 }
 
 -(NSString *)generateUniqueID
