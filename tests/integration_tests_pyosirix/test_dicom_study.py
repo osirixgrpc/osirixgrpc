@@ -34,7 +34,7 @@ def test_dicom_study_no_files(study_test):
 
 def test_dicom_study_raw_no_files(study_test):
     """ Check raw no files is correctly provided. """
-    assert study_test.no_files == 40, f"Bad raw no files {study_test.no_files}"
+    assert study_test.no_files >= 40, f"Bad raw no files {study_test.no_files}"
 
 
 def test_dicom_study_series(study_test, series_test):

@@ -20,7 +20,7 @@ class DCMPix(osirix.base.OsirixBase):
     """
     def __repr__(self):
         return f"DCMPix: " \
-               f"{self.image_obj().modality} " \
+               f"{self.slice_location:.2f} " \
                f"{self.shape}"
 
     @property

@@ -180,11 +180,15 @@ class DicomStudy(osirix.base.OsirixBase):
     @pyosirix_connection_check
     def series(self) -> List[DicomSeries]:
         """ The Dicom Series instances associated with the study.
+
+        This will ignore any series associated with the OsiriX ROI Dicom SRs.
         """
         response = self.osirix_service_stub.DicomStudySeries(self.pb2_object)
         self.response_check(response)
         series = []
         for serie in response.series:
+            if serie.modality == "SR":
+                continue
             series.append(DicomSeries(self.osirix_service, serie))
         return series
 
@@ -204,16 +208,18 @@ class DicomStudy(osirix.base.OsirixBase):
     @pyosirix_connection_check
     def paths(self) -> List[str]:
         """ The Dicom file absolute paths associated with the study.
+
+        This will ignore any paths associated with the OsiriX ROI Dicom SRs.
         """
-        response = self.osirix_service_stub.DicomStudyPaths(self.pb2_object)
-        self.response_check(response)
-        paths = [path for path in response.paths]
+        images = self.images
+        paths = [image.complete_path for image in images if image.modality != "SR"]
         return paths
 
     @property
     @pyosirix_connection_check
     def no_files(self) -> int:
         """ The number of files comprising the Dicom study.
+
         """
         response = self.osirix_service_stub.DicomStudyNoFiles(self.pb2_object)
         self.response_check(response)
@@ -223,6 +229,9 @@ class DicomStudy(osirix.base.OsirixBase):
     @pyosirix_connection_check
     def raw_no_files(self) -> int:
         """ The number of raw image files within the Dicom study.
+
+        Note that this will include the OsiriX ROI SR files if any exist.  Using `no_files` provides
+            the number of accessible images.
         """
         response = self.osirix_service_stub.DicomStudyRawNoFiles(self.pb2_object)
         self.response_check(response)
@@ -390,7 +399,6 @@ class DicomImage(osirix.base.OsirixBase):
     """
     def __repr__(self):
         return f"DicomImage: " \
-               f"{self.series.series_description} " \
                f"({self.instance_number} / {len(self.series.paths)})"
 
     @property
