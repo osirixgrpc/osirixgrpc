@@ -75,7 +75,6 @@ def test_roi_centroid(roi_closed_polygon_test):
 
 def test_roi_flip_horizontally(roi_closed_polygon_test):
     """ Check the ROI can be flipped horizontally (and reset). """
-    old_points = roi_closed_polygon_test.points
     flip_points = np.array([[50.5, 10.5],
                             [10.5, 10.5],
                             [10.5, 50.5],
@@ -83,12 +82,11 @@ def test_roi_flip_horizontally(roi_closed_polygon_test):
     roi_closed_polygon_test.flip_horizontally()
     assert np.allclose(roi_closed_polygon_test.points, flip_points), \
         f"Could not ROI flip horizontally"
-    roi_closed_polygon_test.points = old_points
+    roi_closed_polygon_test.flip_horizontally()
 
 
 def test_roi_flip_vertically(roi_closed_polygon_test):
     """ Check the ROI can be flipped vertically (and reset). """
-    old_points = roi_closed_polygon_test.points
     flip_points = np.array([[10.5, 50.5],
                             [50.5, 50.5],
                             [50.5, 10.5],
@@ -96,12 +94,11 @@ def test_roi_flip_vertically(roi_closed_polygon_test):
     roi_closed_polygon_test.flip_vertically()
     assert np.allclose(roi_closed_polygon_test.points, flip_points), \
         f"Could not ROI flip vertically"
-    roi_closed_polygon_test.points = old_points
+    roi_closed_polygon_test.flip_vertically()
 
 
 def test_roi_move(roi_closed_polygon_test):
     """ Check the ROI can be moved by 10.5 columns and 5.5 rows (and reset). """
-    old_points = roi_closed_polygon_test.points
     move_points = np.array([[21.0, 16.0],
                             [61.0, 16.0],
                             [61.0, 56.0],
@@ -109,12 +106,11 @@ def test_roi_move(roi_closed_polygon_test):
     roi_closed_polygon_test.roi_move(columns=10.5, rows=5.5)
     assert np.allclose(roi_closed_polygon_test.points, move_points), \
         f"Could not move ROI properly"
-    roi_closed_polygon_test.points = old_points
+    roi_closed_polygon_test.roi_move(columns=-10.5, rows=-5.5)
 
 
 def test_roi_rotate(roi_closed_polygon_test):
     """ Check that an ROI can be rotated by 90 degrees (and reset). """
-    old_points = roi_closed_polygon_test.points
     rotate_points = np.array([[50.5, 10.5],
                               [50.5, 50.5],
                               [10.5, 50.5],
@@ -122,10 +118,10 @@ def test_roi_rotate(roi_closed_polygon_test):
     roi_closed_polygon_test.rotate(theta=90., center=None)  # About the centroid.
     assert np.allclose(roi_closed_polygon_test.points, rotate_points), \
         f"Could not rotate ROI properly"
-    roi_closed_polygon_test.points = old_points
+    roi_closed_polygon_test.rotate(theta=-90., center=None)  # About the centroid.
 
 
 def test_roi_pix(viewer_controller_4d, roi_closed_polygon_test):
     """ Check the correct DCMPix instance is returned. """
-    assert viewer_controller_4d.pix_list(0)[39].pb2_objects.osirixrpc_uid ==\
+    assert viewer_controller_4d.pix_list(0)[39].pb2_object.osirixrpc_uid ==\
            roi_closed_polygon_test.pix.pb2_object.osirixrpc_uid, f"Bad DCMPix returned"
