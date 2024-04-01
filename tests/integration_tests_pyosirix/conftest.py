@@ -121,3 +121,14 @@ def roi_mask_test(viewer_controller_4d):
     roi = roi_slice[0]
     assert roi.name == "pyosirix_mask"
     yield roi
+
+
+@pytest.fixture(scope="function")
+def roi_pencil_test(grpc_stub, viewer_controller_4d):
+    roi = None
+    for roi_slice in viewer_controller_4d.roi_list(0):
+        for roi_ in roi_slice:
+            if roi_.name == "pyosirix_pencil":
+                roi = roi
+    assert roi is not None, f"Could not find a pencil roi with name 'pyosirix_pencil'"
+    yield roi

@@ -187,7 +187,8 @@ class DicomStudy(osirix.base.OsirixBase):
         self.response_check(response)
         series = []
         for serie in response.series:
-            if serie.modality == "SR":
+            response = self.osirix_service_stub.DicomSeriesModality(serie)
+            if response.modality == "SR":
                 continue
             series.append(DicomSeries(self.osirix_service, serie))
         return series
