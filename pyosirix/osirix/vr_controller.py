@@ -34,7 +34,7 @@ class VRController(osirix.base.OsirixBase):
     def rendering_mode(self, rendering_mode: str) -> None:
         """ The rendering mode: "VR" for volume render, "MIP" for maximum intensity projection.
         """
-        if not rendering_mode == "VR" or rendering_mode == "MIP":
+        if rendering_mode not in ["VR", "MIP"]:
             raise ValueError("Bad rendering_mode. Must be 'VR' or 'MIP'")
         request = vrcontroller_pb2.VRControllerSetRenderingModeRequest(
             vr_controller=self.pb2_object, rendering_mode=rendering_mode)
@@ -134,4 +134,9 @@ class VRController(osirix.base.OsirixBase):
         request = vrcontroller_pb2.VRControllerDisplayROIVolumeRequest(
             vr_controller=self.pb2_object, roi_volume=roi_volume.pb2_object)
         response = self.osirix_service_stub.VRControllerDisplayROIVolume(request)
+        self.response_check(response)
+
+    @pyosirix_connection_check
+    def needs_display_update(self):
+        response = self.osirix_service_stub.VRControllerNeedsDisplayUpdate(self.pb2_object)
         self.response_check(response)

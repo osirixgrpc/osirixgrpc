@@ -137,3 +137,20 @@ def roi_open_polygon_test(viewer_controller_4d):
     assert roi.name == "pyosirix_open_polygon", \
         f"Could not find a pencil roi with name 'pyosirix_open_polygon'"
     yield roi
+
+
+@pytest.fixture(scope="function")
+def vr_controller_4d(viewer_controller_4d):
+    yield viewer_controller_4d.vr_controllers()[0]
+
+
+@pytest.fixture(scope="function")
+def vr_controller_2d(viewer_controller_2d):
+    yield viewer_controller_2d.vr_controllers()[0]
+
+
+@pytest.fixture(scope="function")
+def roi_volume_test(vr_controller_2d):
+    roi_volume = vr_controller_2d.roi_volumes()[0]
+    assert roi_volume.name == "pyosirix_mask", f"Could not find correctly names ROI"
+    yield roi_volume
