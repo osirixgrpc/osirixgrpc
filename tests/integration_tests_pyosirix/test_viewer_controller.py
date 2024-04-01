@@ -308,9 +308,11 @@ def test_viewer_controller_new_roi_axis(viewer_controller_4d):
 
 def test_viewer_controller_new_roi_closed_polygon(viewer_controller_4d):
     """ Check that a new closed polygon ROI can be created. """
-    points = [[50.20499802, 32.32217407], [53.27367783, 38.77323914], [64.68674469, 25.43341637],
-              [69.71873474, 36.01180649], [41.8967247, 36.27430344], [68.91729736, 23.42099953]]
-    roi = viewer_controller_4d.new_polygon_roi(points=points,
+    new_points = np.array([[10.5, 10.5],
+                           [50.5, 10.5],
+                           [50.5, 50.5],
+                           [10.5, 50.5]])
+    roi = viewer_controller_4d.new_polygon_roi(points=new_points,
                                                closed=True,
                                                name="pyosirix_closed_polygon",
                                                position=39,
@@ -323,9 +325,11 @@ def test_viewer_controller_new_roi_closed_polygon(viewer_controller_4d):
 
 def test_viewer_controller_new_roi_open_polygon(viewer_controller_4d):
     """ Check that a new open polygon ROI can be created. """
-    points = [[50.20499802, 32.32217407], [53.27367783, 38.77323914], [64.68674469, 25.43341637],
-              [69.71873474, 36.01180649], [41.8967247, 36.27430344], [68.91729736, 23.42099953]]
-    roi = viewer_controller_4d.new_polygon_roi(points=points,
+    new_points = np.array([[10.5, 10.5],
+                           [50.5, 10.5],
+                           [50.5, 50.5],
+                           [10.5, 50.5]])
+    roi = viewer_controller_4d.new_polygon_roi(points=new_points,
                                                closed=False,
                                                name="pyosirix_open_polygon",
                                                position=38,
