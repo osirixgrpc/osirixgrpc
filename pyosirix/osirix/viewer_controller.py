@@ -114,6 +114,15 @@ class ViewerController(osirix.base.OsirixBase):
         return response.max_movie_idx
 
     @pyosirix_connection_check
+    def close(self):
+        """ Close the viewer.
+
+        Note: This will close any associated viewers (e.g. VRControllers).
+        """
+        response = self.osirix_service_stub.ViewerControllerCloseViewer(self.pb2_object)
+        self.response_check(response)
+
+    @pyosirix_connection_check
     def pix_list(self, movie_idx: int = None) -> List[osirix.dcm_pix.DCMPix]:
         """ Access the list of DCMPix objects contained within the 2D viewer.
 

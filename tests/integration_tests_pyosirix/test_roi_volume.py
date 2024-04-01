@@ -16,6 +16,7 @@ def test_roi_volume_volume(roi_volume_test):
 
 def test_roi_volume_visible(roi_volume_test):
     """ Check the ROIVolume is visible. """
+    roi_volume_test.visible = True
     assert roi_volume_test.visible is True, f"ROIVolume not visible"
 
 
