@@ -23,7 +23,7 @@ Please ensure you check our [official documentation](https://osirixgrpc.github.i
 
 ## Installation
 ```
-pip install -i https://pypi.org/simple/ --extra-index-url https://test.pypi.org/simple/ pyosirix==0.2.1-dev52
+pip install -i https://pypi.org/simple/ --extra-index-url https://test.pypi.org/simple/ pyosirix==0.2.1-dev53
 ```
 
 ## Requirements
