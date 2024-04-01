@@ -306,6 +306,36 @@ def test_viewer_controller_new_roi_axis(viewer_controller_4d):
     assert isinstance(roi, osirix.roi.ROI), f"Did not return ROI instance"
 
 
+def test_viewer_controller_new_roi_closed_polygon(viewer_controller_4d):
+    """ Check that a new closed polygon ROI can be created. """
+    points = [[50.20499802, 32.32217407], [53.27367783, 38.77323914], [64.68674469, 25.43341637],
+              [69.71873474, 36.01180649], [41.8967247, 36.27430344], [68.91729736, 23.42099953]]
+    roi = viewer_controller_4d.new_polygon_roi(points=points,
+                                               closed=True,
+                                               name="pyosirix_closed_polygon",
+                                               position=39,
+                                               movie_idx=0,
+                                               thickness=3.0,
+                                               color=(0, 255, 0),
+                                               opacity=1.0)
+    assert isinstance(roi, osirix.roi.ROI), f"Did not return ROI instance"
+
+
+def test_viewer_controller_new_roi_open_polygon(viewer_controller_4d):
+    """ Check that a new open polygon ROI can be created. """
+    points = [[50.20499802, 32.32217407], [53.27367783, 38.77323914], [64.68674469, 25.43341637],
+              [69.71873474, 36.01180649], [41.8967247, 36.27430344], [68.91729736, 23.42099953]]
+    roi = viewer_controller_4d.new_polygon_roi(points=points,
+                                               closed=False,
+                                               name="pyosirix_open_polygon",
+                                               position=38,
+                                               movie_idx=0,
+                                               thickness=3.0,
+                                               color=(255, 255, 0),
+                                               opacity=1.0)
+    assert isinstance(roi, osirix.roi.ROI), f"Did not return ROI instance"
+
+
 def test_viewer_controller_roi_list(viewer_controller_4d):
     """ Check that the list of ROIs can be returned. """
     roi_slices = viewer_controller_4d.roi_list(1)

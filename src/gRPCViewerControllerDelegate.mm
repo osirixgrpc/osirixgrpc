@@ -7,6 +7,7 @@
 #import <OsiriXAPI/ROI.h>
 #import <OsiriXAPI/MyPoint.h>
 #import <OsiriXAPI/DCMView.h>
+#import <OsirixAPI/Notifications.h>
 
 @implementation gRPCViewerControllerDelegate
 
@@ -88,6 +89,10 @@
     {
         response->mutable_status()->set_status(1);
         [vc needsDisplayUpdate];
+        for( DCMView *v in [[vc seriesView] imageViews])
+        {
+            [v drawRect: [v frame]];
+        }
     }
     else
     {

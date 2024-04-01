@@ -124,11 +124,16 @@ def roi_mask_test(viewer_controller_4d):
 
 
 @pytest.fixture(scope="function")
-def roi_pencil_test(grpc_stub, viewer_controller_4d):
-    roi = None
-    for roi_slice in viewer_controller_4d.roi_list(0):
-        for roi_ in roi_slice:
-            if roi_.name == "pyosirix_pencil":
-                roi = roi
-    assert roi is not None, f"Could not find a pencil roi with name 'pyosirix_pencil'"
+def roi_closed_polygon_test(viewer_controller_4d):
+    roi = viewer_controller_4d.roi_list(0)[39][0]
+    assert roi.name == "pyosirix_closed_polygon", \
+        f"Could not find a pencil roi with name 'pyosirix_closed_polygon'"
+    yield roi
+
+
+@pytest.fixture(scope="function")
+def roi_open_polygon_test(viewer_controller_4d):
+    roi = viewer_controller_4d.roi_list(0)[38][0]
+    assert roi.name == "pyosirix_open_polygon", \
+        f"Could not find a pencil roi with name 'pyosirix_open_polygon'"
     yield roi

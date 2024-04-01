@@ -177,7 +177,6 @@ class ROI(osirix.base.OsirixBase):
                f"{self.name}"
 
     @classmethod
-    @pyosirix_connection_check
     def itypes(cls, reverse_order: bool = False) -> Dict:
         """ Provides a map between the integer ROI type and a text descriptor.
 
@@ -369,11 +368,17 @@ class ROI(osirix.base.OsirixBase):
     @pyosirix_connection_check
     def itype(self) -> int:
         # TODO: We need to more than provide an integer here. It should be a text description.
-        """ The ROI type
+        """ The ROI type as an integer
         """
         response = self.osirix_service_stub.ROIIType(self.pb2_object)
         self.response_check(response)
         return int(response.itype)
+
+    @property
+    @pyosirix_connection_check
+    def stype(self) -> str:
+        """ The type of the ROI as a string """
+        return self.itypes()[self.itype]
 
     @pyosirix_connection_check
     def delete(self) -> None:
