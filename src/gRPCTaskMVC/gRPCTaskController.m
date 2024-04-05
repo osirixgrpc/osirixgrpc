@@ -113,6 +113,18 @@
     [task setStandardOutput:pipeStdOut];
     [task setStandardError:pipeStdErr];
     
+    // Set any environment variables (python path only at present)
+    if ([script language] == gRPCPython)
+    {
+        [task setEnvironment:@{@"HOME": NSHomeDirectory(),
+                               @"PATH": [NSString stringWithFormat:@"%@:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin", [interpreterURL URLByDeletingLastPathComponent]]}];
+    }
+    else
+    {
+        [task setEnvironment:@{@"HOME": NSHomeDirectory(),
+                               @"PATH": @"/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"}];
+    }
+
     // Set up the stdout to print to screen
     NSFileHandle *fileHandleStdOut = [pipeStdOut fileHandleForReading];
     [fileHandleStdOut waitForDataInBackgroundAndNotify];

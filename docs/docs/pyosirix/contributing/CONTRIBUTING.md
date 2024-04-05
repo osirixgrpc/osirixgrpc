@@ -50,9 +50,14 @@ basic premises:
     - `script.py`: A single python file containing the script that users can run.
     - `screenshot.py`: A helpful, simple image that provides users with a pictorial representation of what the script 
       does.
-    - `additional files` (if required): Any other files that might be needed for running the script. Whilst it is 
+    - `requirements.txt`: Any python requirements needed by the script. The user should be able to use this to install
+      the necessary third-party packages needed to run your file using `pip install -r requirements.txt`. See the 
+      [Requirements File Format](https://pip.pypa.io/en/stable/reference/requirements-file-format/) for more 
+      information. __Note__: If no additional packages are required, please explicitly state this by just providing an
+      empty `requirements.txt` file.
+    - `additional files` (optional): Any other files that might be needed for running the script. Whilst it is 
       possible to include additional dependent python module files to support you script, it is encouraged not to do 
-      this as it violates _premise 1_. 
+      this as it violates _premise 1_.
 
 ### Example template
 This file is also available in the 
