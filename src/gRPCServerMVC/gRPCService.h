@@ -44,6 +44,11 @@ private:
     gRPCServiceMessageDeclaration(OsirixDisplayed2DViewers, Empty, OsirixDisplayed2DViewersResponse)
     gRPCServiceMessageDeclaration(OsirixFrontmostVRController, Empty, OsirixFrontmostVRControllerResponse)
     gRPCServiceMessageDeclaration(OsirixDisplayedVRControllers, Empty, OsirixDisplayedVRControllersResponse)
+    gRPCServiceMessageDeclaration(OsirixVersion, Empty, OsirixVersionResponse)
+    
+# pragma mark cache messages
+    gRPCServiceMessageDeclaration(OsirixCacheUids, Empty, OsirixCacheUidsResponse)
+    gRPCServiceMessageDeclaration(OsirixCacheObjectForUid, OsirixCacheObjectForUidRequest, OsirixCacheObjectForUidResponse)
 
 # pragma mark ViewerController messages
     gRPCServiceMessageDeclaration(ViewerControllerCloseViewer, ViewerController, Response)
@@ -55,8 +60,8 @@ private:
     gRPCServiceMessageDeclaration(ViewerControllerROIsWithName, ViewerControllerROIsWithNameRequest, ViewerControllerROIsWithNameResponse)
     gRPCServiceMessageDeclaration(ViewerControllerSelectedROIs, ViewerController, ViewerControllerSelectedROIsResponse)
     gRPCServiceMessageDeclaration(ViewerControllerIsDataVolumic, ViewerControllerIsDataVolumicRequest, ViewerControllerIsDataVolumicResponse)
-    gRPCServiceMessageDeclaration(ViewerControllerCopyViewerWindow, ViewerControllerCopyViewerWindowRequest, Response)
-    gRPCServiceMessageDeclaration(ViewerControllerResampleViewerController, ViewerControllerResampleViewerControllerRequest, Response)
+    gRPCServiceMessageDeclaration(ViewerControllerCopyViewerWindow, ViewerController, ViewerControllerCopyViewerWindowResponse)
+    gRPCServiceMessageDeclaration(ViewerControllerResampleViewerController, ViewerControllerResampleViewerControllerRequest, ViewerControllerResampleViewerControllerResponse)
     gRPCServiceMessageDeclaration(ViewerControllerBlendingController, ViewerController, ViewerControllerBlendingControllerResponse)
     gRPCServiceMessageDeclaration(ViewerControllerVRControllers, ViewerController, ViewerControllerVRControllersResponse)
     gRPCServiceMessageDeclaration(ViewerControllerTitle, ViewerController, ViewerControllerTitleResponse)
@@ -69,6 +74,7 @@ private:
     gRPCServiceMessageDeclaration(ViewerControllerWLWW, ViewerController, ViewerControllerWLWWResponse)
     gRPCServiceMessageDeclaration(ViewerControllerSetWLWW, ViewerControllerSetWLWWRequest, Response)
     gRPCServiceMessageDeclaration(ViewerControllerOpenVRViewerForMode, ViewerControllerOpenVRViewerForModeRequest, ViewerControllerOpenVRViewerForModeResponse)
+    gRPCServiceMessageDeclaration(ViewerControllerFuseWithViewer, ViewerControllerFuseWithViewerRequest, Response)
     
 # pragma mark DCMPix messages
     gRPCServiceMessageDeclaration(DCMPixConvertToRGB, DCMPixConvertToRGBRequest, Response)
@@ -90,6 +96,7 @@ private:
     gRPCServiceMessageDeclaration(DCMPixDicomStudy, DCMPix, DCMPixDicomStudyResponse)
     
 # pragma mark ROI messages
+    gRPCServiceMessageDeclaration(ROIDelete, ROI, Response)
     gRPCServiceMessageDeclaration(ROIFlipHorizontally, ROI, Response)
     gRPCServiceMessageDeclaration(ROIFlipVertically, ROI, Response)
     gRPCServiceMessageDeclaration(ROIArea, ROI, ROIAreaResponse)
@@ -139,6 +146,8 @@ private:
 # pragma mark BrowserController messages
     gRPCServiceMessageDeclaration(BrowserControllerDatabaseSelection, BrowserController, BrowserControllerDatabaseSelectionResponse)
     gRPCServiceMessageDeclaration(BrowserControllerCopyFilesIfNeeded, BrowserControllerCopyFilesIfNeededRequest, Response)
+    gRPCServiceMessageDeclaration(BrowserControllerOpenViewerFromImages, BrowserControllerOpenViewerFromImagesRequest, BrowserControllerOpenViewerFromImagesResponse)
+    gRPCServiceMessageDeclaration(BrowserControllerDatabaseStudies, BrowserController, BrowserControllerDatabaseStudiesResponse)
     
 # pragma mark DicomImage messages
     gRPCServiceMessageDeclaration(DicomImageWidth, DicomImage, DicomImageWidthResponse)
@@ -173,7 +182,6 @@ private:
     gRPCServiceMessageDeclaration(DicomStudyModalities, DicomStudy, DicomStudyModalitiesResponse)
     gRPCServiceMessageDeclaration(DicomStudyNoFiles, DicomStudy, DicomStudyNoFilesResponse)
     gRPCServiceMessageDeclaration(DicomStudyRawNoFiles, DicomStudy, DicomStudyRawNoFilesResponse)
-    gRPCServiceMessageDeclaration(DicomStudyNoFilesExcludingMultiFrames, DicomStudy, DicomStudyNoFilesExcludingMultiFramesResponse)
     gRPCServiceMessageDeclaration(DicomStudyNumberOfImages, DicomStudy, DicomStudyNumberOfImagesResponse)
     gRPCServiceMessageDeclaration(DicomStudySeries, DicomStudy, DicomStudySeriesResponse)
     gRPCServiceMessageDeclaration(DicomStudyName, DicomStudy, DicomStudyNameResponse)

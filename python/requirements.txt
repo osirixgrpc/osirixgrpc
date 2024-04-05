@@ -1,7 +1,2 @@
 grpcio>=1.55.0
 grpcio-tools>=1.55.0
-hatchling
-hatch-requirements-txt
-pip
-wheel
-twine

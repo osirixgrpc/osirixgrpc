@@ -28,36 +28,95 @@ static gRPCCache *_objectCache = nil;
     [[NSNotificationCenter defaultCenter] removeObserver:self name:OsirixRemoveROINotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:OsirixCloseViewerNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:OsirixWindow3dCloseNotification object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:OsirixActiveLocalDatabaseDidChangeNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NSOutlineViewSelectionDidChangeNotification object:nil];
     [super dealloc];
 }
 
 -(id) init{
-    cache = [[NSMutableDictionary alloc] init];
+    cache = [NSMapTable mapTableWithKeyOptions:NSMapTableStrongMemory valueOptions:NSMapTableWeakMemory];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(osirixRemoveROINotificationTarget:) name:OsirixRemoveROINotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(osirixCloseViewerNotificationTarget:) name:OsirixCloseViewerNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(osirixWindow3dCloseNotificationTarget:) name:OsirixWindow3dCloseNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(OsirixActiveLocalDatabaseDidChangeNotificationTarget:) name:OsirixActiveLocalDatabaseDidChangeNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(NSOutlineViewSelectionDidChangeNotificationTarget:) name:NSOutlineViewSelectionDidChangeNotification object:[BrowserController currentBrowser]];
     return self;
+}
+
+- (void) cleanUpNilFiles {
+    for (NSString *uid in [cache keyEnumerator]){
+        id object = [cache objectForKey:uid];
+        if (object == nil) {
+            [cache removeObjectForKey:uid];
+        }
+    }
+}
+
+- (void) cleanupDatabaseFiles {
+    // This is a little hacky.  This will be called prior to every access to look for stragglers.
+    // These checks have some nasty dependecies and need to be run in order.
+    
+    // 0. Storage array
+    NSMutableArray *uids_to_remove = [NSMutableArray array];
+    
+    // 1. Clean up images wth no file.
+    for (NSString *uid in [cache keyEnumerator])
+    {
+        id object = [cache objectForKey:uid];
+        if ([object isKindOfClass:[DicomImage class]]) {
+            if (![[NSFileManager defaultManager] fileExistsAtPath:[(DicomImage *)object completePath]])
+            {
+                [uids_to_remove addObject:uid];
+            }
+        }
+    }
+    [self removeObjectsWithUids:uids_to_remove];
+    [uids_to_remove removeAllObjects];
+    
+    // 2. Clean up series wth no images.
+    for (NSString *uid in [cache keyEnumerator])
+    {
+        id object = [cache objectForKey:uid];
+        if ([object isKindOfClass:[DicomSeries class]]) {
+            if ([(DicomSeries *)object numberOfImages] == 0)
+            {
+                [uids_to_remove addObject:uid];
+            }
+        }
+    }
+    [self removeObjectsWithUids:uids_to_remove];
+    [uids_to_remove removeAllObjects];
+    
+    // 3. Clean up studies wth no series.
+    for (NSString *uid in [cache keyEnumerator])
+    {
+        id object = [cache objectForKey:uid];
+        if ([object isKindOfClass:[DicomStudy class]]) {
+            if ([[(DicomStudy *)object series] count] == 0)
+            {
+                [uids_to_remove addObject:uid];
+            }
+        }
+    }
+    [self removeObjectsWithUids:uids_to_remove];
+    [uids_to_remove removeAllObjects];
 }
 
 -(void)osirixRemoveROINotificationTarget:(NSNotification *)notification
 {
-    // Remove the ROI if present.
     ROI *roi = [notification object];
     if ([self doesContain:roi])
     {
         [self removeObject:roi];
     }
+    [self cleanUpNilFiles];
 }
 
 -(void)osirixCloseViewerNotificationTarget:(NSNotification *)notification
 {
-    // A little more complicated as need to check for DCMPix also.  ROIs should be dealt with by another function.
     ViewerController *vc = [notification object];
     for (long j = 0; j < [vc maxMovieIndex]; j++)
     {
         NSArray *pixList = [vc pixList:j];
+        NSArray *roiList = [vc roiList:j];
         
         for (DCMPix *pix in pixList){
             if ([self doesContain:pix])
@@ -65,8 +124,18 @@ static gRPCCache *_objectCache = nil;
                 [self removeObject:pix];
             }
         }
+        for (NSArray *roi_slice in roiList){
+            for (ROI *roi in roi_slice)
+            {
+                if ([self doesContain:roi])
+                {
+                    [self removeObject:roi];
+                }
+            }
+        }
     }
     [self removeObject:vc];
+    [self cleanUpNilFiles];
 }
 
 -(void)osirixWindow3dCloseNotificationTarget:(NSNotification *)notification
@@ -76,18 +145,13 @@ static gRPCCache *_objectCache = nil;
     {
         [self removeObject:vc];
     }
+    [self cleanUpNilFiles];
 }
 
--(void)OsirixActiveLocalDatabaseDidChangeNotificationTarget:(NSNotification *)notification
+-(void)NSOutlineViewSelectionDidChangeNotificationTarget:(NSNotification *)notification
 {
-    // Might as well remove everything other than the BrowserController as everything will be closed down.
-    for (id object in [cache objectEnumerator])
-    {
-        if (![object isKindOfClass:[BrowserController class]])
-        {
-            [self removeObject:object];
-        }
-    }
+    [self cleanupDatabaseFiles];
+    [self cleanUpNilFiles];
 }
 
 -(NSString *)generateUniqueID
@@ -96,23 +160,31 @@ static gRPCCache *_objectCache = nil;
     return uid;
 }
 
--(BOOL)doesContain:(id)object
+-(BOOL)doesContain:(id)obj
 {
-    return [cache doesContain:object];
+    bool containsObject = NO;
+    for (id o in [cache objectEnumerator]) {
+        if (o == obj) {
+            containsObject = YES;
+            break;
+        }
+    }
+    return containsObject;
 }
 
 -(id)objectForUID:(NSString *)uid
 {
-    return [cache objectForKey:uid];
+    id obj = [cache objectForKey:uid];
+    return obj;
 }
 
--(NSString *)uidForObject:(id)object
+-(NSString *)uidForObject:(id)obj
 {
     NSString *uid = nil;
     for (NSString *uid_ in [cache keyEnumerator])
     {
-        void * object_ = [cache objectForKey:uid_];
-        if (object_ == object)
+        void * obj_ = [cache objectForKey:uid_];
+        if (obj_ == obj)
         {
             uid = uid_;
         }
@@ -122,7 +194,8 @@ static gRPCCache *_objectCache = nil;
 
 -(NSArray *)uids
 {
-    return [cache allKeys];
+    NSEnumerator *keyEnumerator = [cache keyEnumerator];
+    return [keyEnumerator allObjects];
 }
 
 -(void)clearCache
@@ -133,20 +206,23 @@ static gRPCCache *_objectCache = nil;
 -(NSString *)addObject:(id)obj{
     
     NSString *uid = [self uidForObject:obj];
-    
     if(!uid)
     {
         uid = [self generateUniqueID];
         [cache setObject:obj forKey:uid];
     }
-    
     return uid;
+}
+
+-(void) removeObjectsWithUids: (NSArray *)uids
+{
+    for (NSString* uid in uids)
+        [cache removeObjectForKey:uid];
 }
 
 -(void)removeObject:(id)obj
 {
     NSString *uid = [self uidForObject:obj];
-    
     if (uid)
     {
         [cache removeObjectForKey:uid];

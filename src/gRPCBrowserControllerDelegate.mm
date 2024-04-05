@@ -1,6 +1,8 @@
 #import "gRPCBrowserControllerDelegate.h"
 
 #import <OsiriXAPI/browserController.h>
+#import <OsiriXAPI/AppController.h>
+#import <OsiriXAPI/MyOutlineView.h>
 
 @implementation gRPCBrowserControllerDelegate
 
@@ -63,6 +65,94 @@
         }
         [bc copyFilesIntoDatabaseIfNeeded:paths options:[NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithBool:YES], @"COPYDATABASE", [NSNumber numberWithInt:0], @"COPYDATABASEMODE", [NSNumber numberWithBool:YES], @"async", nil]];
         response->mutable_status()->set_status(1);
+    }
+    else
+    {
+        response->mutable_status()->set_status(0);
+        response->mutable_status()->set_message("No BrowserController cached");
+    }
+
+}
+
++ (void) BrowserControllerOpenViewerFromImages:(const osirixgrpc::BrowserControllerOpenViewerFromImagesRequest *) request :(osirixgrpc::BrowserControllerOpenViewerFromImagesResponse *) response :(gRPCCache *) cache
+{
+    NSString *uid = stringFromGRPCString(request->browser().osirixrpc_uid());
+
+    BrowserController *bc = [cache objectForUID:uid];
+
+    if (bc)
+    {
+        @try
+        {
+            NSMutableArray *frames = [NSMutableArray array];
+            int n_frames = request->frames_size();
+            for (int i = 0; i < n_frames; i++) {
+                osirixgrpc::BrowserControllerOpenViewerFromImagesRequest_FrameImages frame = request->frames(i);
+                NSMutableArray *frame_images = [NSMutableArray array];
+                int n_images = frame.images_size();
+                for (int j = 0; j < n_images; j++) {
+                    osirixgrpc::DicomImage dicom_image = frame.images(j);
+                    NSString *dicom_image_uid = stringFromGRPCString(dicom_image.osirixrpc_uid());
+                    DicomImage *image = [cache objectForUID:dicom_image_uid];
+                    [frame_images addObject:image];
+                }
+                [frames addObject:frame_images];
+            }
+            ViewerController *opened_viewer = [bc openViewerFromImages:frames movie:request->movie() viewer:nil keyImagesOnly:NO];
+            [[AppController sharedAppController] performSelector: @selector(tileWindows:) withObject:nil afterDelay: 0.1];
+            
+            [[AppController sharedAppController] checkAllWindowsAreVisible: self makeKey: YES];
+            
+            // Add to cache
+            NSString *viewer_uid = [cache addObject:opened_viewer];
+            response->mutable_viewer()->set_osirixrpc_uid([viewer_uid UTF8String]);
+            response->mutable_status()->set_status(1);
+        }
+        @catch (NSException *exception)
+        {
+            response->mutable_status()->set_status(0);
+            response->mutable_status()->set_message([[exception reason] UTF8String]);
+        }
+    }
+    else
+    {
+        response->mutable_status()->set_status(0);
+        response->mutable_status()->set_message("No BrowserController cached");
+    }
+
+}
+
++ (void) BrowserControllerDatabaseStudies:(const osirixgrpc::BrowserController *)request :(osirixgrpc::BrowserControllerDatabaseStudiesResponse *)response :(gRPCCache *)cache
+{
+    NSString *uid = stringFromGRPCString(request->osirixrpc_uid());
+
+    BrowserController *bc = [cache objectForUID:uid];
+    
+    if (bc)
+    {
+        @try
+        {
+            NSInteger rows = [[bc databaseOutline] numberOfRows];
+            for (NSInteger idx = 0; idx < rows; idx++){
+                id item = [[bc databaseOutline] itemAtRow:idx];
+                if ([item isKindOfClass:[DicomStudy class]])
+                {
+                    NSString *studyUID = [cache uidForObject:item];
+                    if (!studyUID)
+                    {
+                        studyUID = [cache addObject:item];
+                    }
+                    osirixgrpc::DicomStudy *study_ = response->mutable_studies()->Add();
+                    study_->set_osirixrpc_uid([studyUID UTF8String]);
+                }
+            }
+            response->mutable_status()->set_status(1);
+        }
+        @catch (NSException *exception)
+        {
+            response->mutable_status()->set_status(0);
+            response->mutable_status()->set_message([[exception reason] UTF8String]);
+        }
     }
     else
     {

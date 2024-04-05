@@ -11,14 +11,20 @@ import numpy as np
 
 import osirixgrpc.viewercontroller_pb2 as viewercontroller_pb2
 
-import osirix
+import osirix  # noqa
+from osirix.base import pyosirix_connection_check  # noqa
 
 
 class ViewerController(osirix.base.OsirixBase):
     """ Represents one of the displayed volume render windows.
 
     """
+    def __repr__(self):
+        return f"ViewerController: " \
+               f"{self.title}"
+
     @property
+    @pyosirix_connection_check
     def idx(self) -> int:
         """ The slice index currently being displayed to the viewer (starting at 0).
 
@@ -29,6 +35,7 @@ class ViewerController(osirix.base.OsirixBase):
         return int(response.idx)
 
     @idx.setter
+    @pyosirix_connection_check
     def idx(self, idx: int) -> None:
         """ The slice index currently being displayed to the viewer (starting at 0).
 
@@ -40,6 +47,7 @@ class ViewerController(osirix.base.OsirixBase):
         self.response_check(response)
 
     @property
+    @pyosirix_connection_check
     def modality(self) -> str:
         """ The modality of the displayed data.
         """
@@ -48,6 +56,7 @@ class ViewerController(osirix.base.OsirixBase):
         return response.modality
 
     @property
+    @pyosirix_connection_check
     def movie_idx(self) -> int:
         """ The frame currently being displayed by the viewer.
         """
@@ -56,6 +65,7 @@ class ViewerController(osirix.base.OsirixBase):
         return response.movie_idx
 
     @movie_idx.setter
+    @pyosirix_connection_check
     def movie_idx(self, movie_idx: int) -> None:
         """ The frame currently being displayed by the viewer.
         """
@@ -67,6 +77,7 @@ class ViewerController(osirix.base.OsirixBase):
         self.response_check(response)
 
     @property
+    @pyosirix_connection_check
     def title(self) -> str:
         """ The title of the 2D viewing window.
         """
@@ -75,6 +86,7 @@ class ViewerController(osirix.base.OsirixBase):
         return response.title
 
     @property
+    @pyosirix_connection_check
     def wlww(self) -> Tuple[float, float]:
         """The window level and window width of the viewer.
         """
@@ -83,15 +95,34 @@ class ViewerController(osirix.base.OsirixBase):
         return response.wl, response.ww
 
     @wlww.setter
+    @pyosirix_connection_check
     def wlww(self, wlww: Tuple[float, float]) -> None:
         """The window level and window width of the viewer.
         """
-        request = viewercontroller_pb2.ViewerControllerSetWLWWRequest(vr_controller=self.pb2_object,
-                                                                      wl=wlww[0],
-                                                                      ww=wlww[1])
+        request = viewercontroller_pb2.ViewerControllerSetWLWWRequest(
+            viewer_controller=self.pb2_object, wl=wlww[0], ww=wlww[1])
         response = self.osirix_service_stub.ViewerControllerSetWLWW(request)
         self.response_check(response)
 
+    @property
+    @pyosirix_connection_check
+    def max_movie_index(self) -> int:
+        """ The maximum movie index in the viewer.
+        """
+        response = self.osirix_service_stub.ViewerControllerMaxMovieIdx(self.pb2_object)
+        self.response_check(response)
+        return response.max_movie_idx
+
+    @pyosirix_connection_check
+    def close(self):
+        """ Close the viewer.
+
+        Note: This will close any associated viewers (e.g. VRControllers).
+        """
+        response = self.osirix_service_stub.ViewerControllerCloseViewer(self.pb2_object)
+        self.response_check(response)
+
+    @pyosirix_connection_check
     def pix_list(self, movie_idx: int = None) -> List[osirix.dcm_pix.DCMPix]:
         """ Access the list of DCMPix objects contained within the 2D viewer.
 
@@ -110,6 +141,7 @@ class ViewerController(osirix.base.OsirixBase):
         self.response_check(response)
         return [osirix.dcm_pix.DCMPix(self.osirix_service, pix) for pix in response.pix]
 
+    @pyosirix_connection_check
     def roi_list(self, movie_idx: int = None) -> List[List[osirix.roi.ROI]]:
         """ Access a list of lists of ROI objects contained within the 2D viewer.
 
@@ -141,6 +173,7 @@ class ViewerController(osirix.base.OsirixBase):
             rois.append(rois_)
         return rois
 
+    @pyosirix_connection_check
     def rois_with_name(self, name: str, movie_idx: int = None, in_4d: bool = False)\
             -> List[osirix.roi.ROI]:
         """ Return a list of ROIs with a given name.
@@ -166,6 +199,7 @@ class ViewerController(osirix.base.OsirixBase):
             rois.append(osirix.roi.ROI(self.osirix_service, roi))
         return rois
 
+    @pyosirix_connection_check
     def selected_rois(self) -> List[osirix.roi.ROI]:
         """ Return a list of the user-selected ROIs
 
@@ -179,6 +213,7 @@ class ViewerController(osirix.base.OsirixBase):
             rois.append(osirix.roi.ROI(self.osirix_service, roi))
         return rois
 
+    @pyosirix_connection_check
     def vr_controllers(self) -> List[osirix.vr_controller.VRController]:
         """ Return the list of currently displayed 3D viewers associates with this 2D window.
         """
@@ -189,6 +224,7 @@ class ViewerController(osirix.base.OsirixBase):
             vrs.append(osirix.vr_controller.VRController(self.osirix_service, vr_controller))
         return vrs
 
+    @pyosirix_connection_check
     def blending_controller(self) -> ViewerController:
         # TODO: What happens if there isn't one. Does it return None?
         """ Return the viewer controller instance that is being fused with this one.
@@ -196,32 +232,45 @@ class ViewerController(osirix.base.OsirixBase):
         Returns:
             The ViewerController instance.
         """
-        response = self.osirix_service_stub.ViewerControllerVRControllers(self.pb2_object)
+        response = self.osirix_service_stub.ViewerControllerBlendingController(self.pb2_object)
         self.response_check(response)
-        return ViewerController(self.osirix_service, response.viewer_controller)
+        return ViewerController(self.osirix_service, response.blending_viewer)
 
+    @pyosirix_connection_check
+    def fuse_with_viewer(self, viewer: ViewerController):
+        """ Fuse another viewer onto this one.
+
+        Args:
+            viewer (osirix.viewer_controller.ViewerController): The viewer to fuse onto the present
+                one.
+        """
+        request = viewercontroller_pb2.ViewerControllerFuseWithViewerRequest(
+            viewer_controller=self.pb2_object, fusion_viewer_controller=viewer.pb2_object)
+        response = self.osirix_service_stub.ViewerControllerFuseWithViewer(request)
+        self.response_check(response)
+
+    @pyosirix_connection_check
     def close_viewer(self) -> None:
         """ Close the viewer
         """
         response = self.osirix_service_stub.ViewerControllerCloseViewer(self.pb2_object)
         self.response_check(response)
 
-    def copy_viewer_window(self, in_4d: bool = False) -> None:
-        # TODO: Is it just the first frame if in_4d is False?
-        # TODO: Currently this does not return a reference to the new window.  This would be nice!
-        """ Create a copy of this 2D viewer.
+    @pyosirix_connection_check
+    def copy_viewer_window(self) -> ViewerController:
+        """ Create a copy of the viewer.
 
         This can be useful for image processing when you want to keep a copy of the original and
         a processed version.
 
-        Args:
-            in_4d (bool): Whether to copy the entire 4D dataset. Default is False.
+        Returns:
+            The new osirix.viewer_controller.ViewerController instance.
         """
-        request = viewercontroller_pb2.ViewerControllerCopyViewerWindowRequest(
-            viewer_controller=self.pb2_object, in_4d=in_4d)
-        response = self.osirix_service_stub.ViewerControllerCopyViewerWindow(request)
+        response = self.osirix_service_stub.ViewerControllerCopyViewerWindow(self.pb2_object)
         self.response_check(response)
+        return ViewerController(self.osirix_service, response.viewer_controller)
 
+    @pyosirix_connection_check
     def cur_dcm(self) -> osirix.dcm_pix.DCMPix:
         """ Return the currently displayed DCMPix instance.
 
@@ -232,6 +281,7 @@ class ViewerController(osirix.base.OsirixBase):
         self.response_check(response)
         return osirix.dcm_pix.DCMPix(self.osirix_service, response.pix)
 
+    @pyosirix_connection_check
     def is_data_volumic(self, in_4d: bool = False) -> bool:
         """ Does the underlying data have sufficient geometric properties for volume rendering.
 
@@ -247,18 +297,7 @@ class ViewerController(osirix.base.OsirixBase):
         self.response_check(response)
         return response.is_volumic
 
-    def max_movie_index(self) -> int:
-        """ The maximum movie index in the viewer.
-
-        Note this equals the number of frames minus 1.
-
-        Returns:
-            The maximum frame index.
-        """
-        response = self.osirix_service_stub.ViewerControllerMaxMovieIdx(self.pb2_object)
-        self.response_check(response)
-        return response.max_movie_idx
-
+    @pyosirix_connection_check
     def needs_display_update(self) -> None:
         """ Tell the viewer it should update its display.
 
@@ -267,17 +306,46 @@ class ViewerController(osirix.base.OsirixBase):
         response = self.osirix_service_stub.ViewerControllerNeedsDisplayUpdate(self.pb2_object)
         self.response_check(response)
 
-    def resample_viewer_controller(self, vc: ViewerController):
+    @pyosirix_connection_check
+    def resample_viewer_controller(self, vc: ViewerController) -> ViewerController:
         """ Resample this (moving) ViewerController based on another (fixed) ViewerController.
+
+        Note that the original moving viewer is closed, so a reference to the new one is returned.
+        This means it is generally advised to the call the method in the following manner:
+
+        `moving_viewer = moving_viewer.resample_viewer_controller(fixed_viewer)`
 
         Args:
             vc (osirix.viewer_controller.ViewerController): The fixed viewer.
+
+        Returns:
+            The resampled viewer window.
         """
         request = viewercontroller_pb2.ViewerControllerResampleViewerControllerRequest(
             viewer_controller=self.pb2_object, fixed_viewer_controller=vc.pb2_object)
         response = self.osirix_service_stub.ViewerControllerResampleViewerController(request)
         self.response_check(response)
+        return ViewerController(self.osirix_service, response.resampled_viewer)
 
+    @pyosirix_connection_check
+    def open_vr_viewer(self, mode: str = "VR") -> osirix.vr_controller.VRController:
+        """ Open a new 3D viewer for the enclosed data.
+
+        Args:
+            mode (str): Either 'VR' for volume render, or 'MIP' for a maximum intensity projection.
+
+        Returns:
+            A VRController instance.
+        """
+        if mode not in ["VR", "MIP"]:
+            raise ValueError("`mode` must be either 'VR' or 'MIP'")
+        request = viewercontroller_pb2.ViewerControllerOpenVRViewerForModeRequest(
+            viewer_controller=self.pb2_object, mode=mode)
+        response = self.osirix_service_stub.ViewerControllerOpenVRViewerForMode(request)
+        self.response_check(response)
+        return osirix.vr_controller.VRController(self.osirix_service, response.vr_controller)
+
+    @pyosirix_connection_check
     def new_roi(self, itype: int = 15, name: str = "", position: idx = 0, movie_idx: int = 0,
                 buffer_position_column: int = 0, buffer_position_row: int = 0,
                 color: Tuple[float, float, float] = (0, 255, 0), thickness: float = 1.0,
@@ -369,6 +437,7 @@ class ViewerController(osirix.base.OsirixBase):
         self.response_check(response)
         return osirix.roi.ROI(self.osirix_service, response.roi)
 
+    @pyosirix_connection_check
     def new_mask_roi(self, buffer: NDArray, **kwargs) -> osirix.roi.ROI:
         """ Create a new mask ROI within the viewer.
 
@@ -381,6 +450,7 @@ class ViewerController(osirix.base.OsirixBase):
         """
         return self.new_roi(buffer=buffer, itype=20, **kwargs)
 
+    @pyosirix_connection_check
     def new_polygon_roi(self, points: NDArray, closed: bool = True, **kwargs) -> osirix.roi.ROI:
         """ Create a new polygon ROI within the viewer.
 
@@ -397,24 +467,24 @@ class ViewerController(osirix.base.OsirixBase):
             itype = 11
         return self.new_roi(points=points, itype=itype, **kwargs)
 
-    def new_measurement_roi(self, start_column: float, end_column: float, start_row: float,
-                            end_row: NDArray, **kwargs) -> osirix.roi.ROI:
+    @pyosirix_connection_check
+    def new_measurement_roi(self, start: Tuple[float, float], end: Tuple[float, float], **kwargs)\
+            -> osirix.roi.ROI:
         """ Create a new length measurement ROI within the viewer.
 
         Args:
-            start_column (float): The starting column position of the ROI
-            end_column (float): The ending column position of the ROI
-            start_row (float): The starting row position of the ROI
-            end_row (float): The ending row position of the ROI
+            start (float, float): The starting position of the ROI (column, row).
+            end (float, float): The ending position of the ROI (column, row).
             **kwargs: See `new_roi` for all additional comments.
 
         Returns:
              The created ROI instance.
         """
-        points = np.array([[start_column, start_row],
-                           [end_column, end_row]])
+        points = np.array([[start[0], start[1]],
+                           [end[0], end[1]]])
         return self.new_roi(points=points, itype=5, **kwargs)
 
+    @pyosirix_connection_check
     def new_point_roi(self, column: float, row: float, **kwargs) -> osirix.roi.ROI:
         """ Create a new 2D point ROI within the viewer.
 
@@ -429,6 +499,7 @@ class ViewerController(osirix.base.OsirixBase):
         rect = np.array([column, row, 0, 0])
         return self.new_roi(rect=rect, itype=19, **kwargs)
 
+    @pyosirix_connection_check
     def new_text_roi(self, column: float, row: float, name: str, **kwargs) -> osirix.roi.ROI:
         """ Create a new text-box ROI within the viewer.
 
@@ -444,6 +515,7 @@ class ViewerController(osirix.base.OsirixBase):
         rect = np.array([column, row, 0, 0])
         return self.new_roi(rect=rect, itype=13, name=name, **kwargs)
 
+    @pyosirix_connection_check
     def new_arrow_roi(self, tail: Tuple[float, float], head: Tuple[float, float],  **kwargs)\
             -> osirix.roi.ROI:
         """ Create a new text-box ROI within the viewer.
@@ -459,6 +531,7 @@ class ViewerController(osirix.base.OsirixBase):
         points = np.vstack([head, tail])
         return self.new_roi(points=points, itype=14, **kwargs)
 
+    @pyosirix_connection_check
     def new_oval_roi(self, center: Tuple[float, float], width: float, height: float, **kwargs)\
             -> osirix.roi.ROI:
         """ Create a new oval ROI within the viewer.
@@ -475,6 +548,7 @@ class ViewerController(osirix.base.OsirixBase):
         rect = np.array([center[0], center[1], width / 2, height / 2])
         return self.new_roi(rect=rect, itype=9, **kwargs)
 
+    @pyosirix_connection_check
     def new_rectangle_roi(self, center: Tuple[float, float], width: float, height: float, **kwargs)\
             -> osirix.roi.ROI:
         """ Create a new rectangle ROI within the viewer.
@@ -491,6 +565,7 @@ class ViewerController(osirix.base.OsirixBase):
         rect = np.array([center[0] - width / 2, center[1] - height / 2, width, height])
         return self.new_roi(rect=rect, itype=6, **kwargs)
 
+    @pyosirix_connection_check
     def new_angle_roi(self, p1: Tuple[float, float], p2: Tuple[float, float],
                       p3: Tuple[float, float], **kwargs) -> osirix.roi.ROI:
         """ Create a new angle ROI within the viewer.
@@ -513,6 +588,7 @@ class ViewerController(osirix.base.OsirixBase):
         points = np.vstack([np.array(p1), np.array(p2), np.array(p3)])
         return self.new_roi(points=points, itype=12, **kwargs)
 
+    @pyosirix_connection_check
     def new_dynamic_angle_roi(self, p1: Tuple[float, float], p2: Tuple[float, float],
                               p3: Tuple[float, float], p4: Tuple[float, float], **kwargs)\
             -> osirix.roi.ROI:
@@ -538,6 +614,7 @@ class ViewerController(osirix.base.OsirixBase):
         points = np.vstack([np.array(p1), np.array(p2), np.array(p3), np.array(p4)])
         return self.new_roi(points=points, itype=27, **kwargs)
 
+    @pyosirix_connection_check
     def new_axis_roi(self, p1: Tuple[float, float], p2: Tuple[float, float],
                      p3: Tuple[float, float], p4: Tuple[float, float], **kwargs) -> osirix.roi.ROI:
         """ Create a new axis ROI within the viewer.
@@ -555,6 +632,7 @@ class ViewerController(osirix.base.OsirixBase):
         points = np.vstack([np.array(p1), np.array(p2), np.array(p3), np.array(p4)])
         return self.new_roi(points=points, itype=26, **kwargs)
 
+    @pyosirix_connection_check
     def new_tagt_roi(self, a: Tuple[float, float], b: Tuple[float, float],
                      c: Tuple[float, float], d: Tuple[float, float], **kwargs) -> osirix.roi.ROI:
         """ Create a new tTAGT ROI within the viewer.
@@ -583,6 +661,7 @@ class ViewerController(osirix.base.OsirixBase):
                             np.array(b)])
         return self.new_roi(points=points, itype=29, **kwargs)
 
+    @pyosirix_connection_check
     def new_oval_angle_roi(self, center: Tuple[float, float], width: float,
                            height: float, **kwargs) -> osirix.roi.ROI:
         """ Create a new angle oval ROI within the viewer.

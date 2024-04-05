@@ -21,3 +21,44 @@ look at existing code and follow the same syntax used, and/or raise an
 
 ### Class structure
  - All 
+
+## Contributing pyOsiriX Example Scripts
+We welcome example scripts from developers to help showcase its functionality to other users.  We follow a blog-like 
+format for examples so that information provided can be quite flexible. However, examples should follow the following 
+basic premises:
+
+1. Keep examples simple. We like to ensure that each example performs a specific operation rather than a complex 
+   processing pipeline. This ensures that examples remain modular and can be reused within different contexts. If your 
+   example contains different steps, think about how these can be broken down and submit as multiple example scripts. 
+2. Do not use complex/private datasets. This helps us reduce the need for hosting bespoke datasets within the pyOsiriX 
+   project. If certain data is needed (processing PET data for example), try to use public datasets, such as those 
+   provided by [The Cancer Imaging Archive](https://www.cancerimagingarchive.net/), and provide the data source in your 
+   example description.
+3. Follow the [Example Template](#example-template) when structuring the example description.
+4. Ensure that the example covers one of the following script categories:
+
+    - __Database__: Performs operations on the OsiriX database.
+    - __Image__: Filters images displayed in the 2D viewer windows (including generation of regions of interest).
+    - __ROI__: Generates results from existing regions of interest within the 2D image viewer.
+    - __VR__: Filters data displayed within the volume render window.
+
+5. Each example should consist of its own directory with the following content:
+
+    - `README.md`: A markdown page consisting of key information about the example, the script type, how it should be 
+      run, what data is needed (and the source if applicable), and the expected outcome 
+      ([see below](#example-template)).
+    - `script.py`: A single python file containing the script that users can run.
+    - `screenshot.py`: A helpful, simple image that provides users with a pictorial representation of what the script 
+      does.
+    - `additional files` (if required): Any other files that might be needed for running the script. Whilst it is 
+      possible to include additional dependent python module files to support you script, it is encouraged not to do 
+      this as it violates _premise 1_. 
+
+### Example template
+This file is also available in the 
+[project repository](https://github.com/osirixgrpc/osirixgrpc/tree/dev/docs/docs/pyosirix/examples/template).
+```
+----8<----
+Template/README.md::54
+----8<----
+```

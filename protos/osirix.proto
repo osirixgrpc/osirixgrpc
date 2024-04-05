@@ -22,8 +22,14 @@ rpc OsirixFrontmostViewer (Empty) returns (OsirixFrontmostViewerResponse) {}
 rpc OsirixDisplayed2DViewers (Empty) returns (OsirixDisplayed2DViewersResponse) {}
 rpc OsirixFrontmostVRController (Empty) returns (OsirixFrontmostVRControllerResponse) {}
 rpc OsirixDisplayedVRControllers (Empty) returns (OsirixDisplayedVRControllersResponse) {}
+rpc OsirixVersion (Empty) returns (OsirixVersionResponse) {}
+
+// Cache methods - debug only
+rpc OsirixCacheUids (Empty) returns (OsirixCacheUidsResponse) {}
+rpc OsirixCacheObjectForUid (OsirixCacheObjectForUidRequest) returns (OsirixCacheObjectForUidResponse) {}
 
 // ROI methods
+rpc ROIDelete (ROI) returns (Response) {}
 rpc ROIFlipHorizontally (ROI) returns (Response) {}
 rpc ROIFlipVertically (ROI) returns (Response) {}
 rpc ROIArea (ROI) returns (ROIAreaResponse) {}
@@ -99,8 +105,8 @@ rpc ViewerControllerCurDCM (ViewerController) returns (ViewerControllerCurDCMRes
 rpc ViewerControllerROIsWithName (ViewerControllerROIsWithNameRequest) returns (ViewerControllerROIsWithNameResponse) {}
 rpc ViewerControllerSelectedROIs (ViewerController) returns (ViewerControllerSelectedROIsResponse) {}
 rpc ViewerControllerIsDataVolumic (ViewerControllerIsDataVolumicRequest) returns (ViewerControllerIsDataVolumicResponse) {}
-rpc ViewerControllerCopyViewerWindow (ViewerControllerCopyViewerWindowRequest) returns (Response) {}
-rpc ViewerControllerResampleViewerController (ViewerControllerResampleViewerControllerRequest) returns (Response) {}
+rpc ViewerControllerCopyViewerWindow (ViewerController) returns (ViewerControllerCopyViewerWindowResponse) {}
+rpc ViewerControllerResampleViewerController (ViewerControllerResampleViewerControllerRequest) returns (ViewerControllerResampleViewerControllerResponse) {}
 rpc ViewerControllerBlendingController (ViewerController) returns (ViewerControllerBlendingControllerResponse) {}
 rpc ViewerControllerVRControllers (ViewerController) returns (ViewerControllerVRControllersResponse) {}
 rpc ViewerControllerTitle (ViewerController) returns (ViewerControllerTitleResponse) {}
@@ -113,10 +119,13 @@ rpc ViewerControllerSetIdx (ViewerControllerSetIdxRequest) returns (Response) {}
 rpc ViewerControllerWLWW (ViewerController) returns (ViewerControllerWLWWResponse) {}
 rpc ViewerControllerSetWLWW (ViewerControllerSetWLWWRequest) returns (Response) {}
 rpc ViewerControllerOpenVRViewerForMode (ViewerControllerOpenVRViewerForModeRequest) returns (ViewerControllerOpenVRViewerForModeResponse) {}
+rpc ViewerControllerFuseWithViewer (ViewerControllerFuseWithViewerRequest) returns (Response) {}
 
 // BrowserController methods
 rpc BrowserControllerDatabaseSelection (BrowserController) returns (BrowserControllerDatabaseSelectionResponse) {}
 rpc BrowserControllerCopyFilesIfNeeded (BrowserControllerCopyFilesIfNeededRequest) returns (Response) {}
+rpc BrowserControllerOpenViewerFromImages (BrowserControllerOpenViewerFromImagesRequest) returns (BrowserControllerOpenViewerFromImagesResponse) {}
+rpc BrowserControllerDatabaseStudies (BrowserController) returns (BrowserControllerDatabaseStudiesResponse) {}
 
 // DicomImage methods
 rpc DicomImageWidth (DicomImage) returns (DicomImageWidthResponse) {}
@@ -151,7 +160,6 @@ rpc DicomStudyImages (DicomStudy) returns (DicomStudyImagesResponse) {}
 rpc DicomStudyModalities (DicomStudy) returns (DicomStudyModalitiesResponse) {}
 rpc DicomStudyNoFiles (DicomStudy) returns (DicomStudyNoFilesResponse) {}
 rpc DicomStudyRawNoFiles (DicomStudy) returns (DicomStudyRawNoFilesResponse) {}
-rpc DicomStudyNoFilesExcludingMultiFrames (DicomStudy) returns (DicomStudyNoFilesExcludingMultiFramesResponse) {}
 rpc DicomStudyNumberOfImages (DicomStudy) returns (DicomStudyNumberOfImagesResponse) {}
 rpc DicomStudySeries (DicomStudy) returns (DicomStudySeriesResponse) {}
 rpc DicomStudyName (DicomStudy) returns (DicomStudyNameResponse) {}
@@ -195,4 +203,24 @@ message OsirixDisplayedVRControllersResponse{
 	repeated VRController vr_controllers = 2;
 }
 
+message OsirixVersionResponse{
+	Status status = 1;
+	string version = 2;
+	string bundle_name = 3;
+}
 
+
+// Cache requests / responses
+message OsirixCacheUidsResponse {
+	Status status = 1;
+	repeated string uids = 2;
+}
+
+message OsirixCacheObjectForUidResponse {
+	Status status = 1;
+	string object_type = 2;
+}
+
+message OsirixCacheObjectForUidRequest {
+	string uid = 1;
+}

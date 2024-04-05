@@ -85,9 +85,19 @@ message ViewerControllerWLWWResponse{
 	float ww = 3;
 }
 
+message ViewerControllerCopyViewerWindowResponse{
+	Status status = 1;
+	ViewerController viewer_controller = 2;
+}
+
 message ViewerControllerOpenVRViewerForModeResponse{
 	Status status = 1;
 	VRController vr_controller = 2;
+}
+
+message ViewerControllerResampleViewerControllerResponse{
+	Status status = 1;
+	ViewerController resampled_viewer = 2;
 }
 
 
@@ -150,11 +160,6 @@ message ViewerControllerResampleViewerControllerRequest{
 	ViewerController fixed_viewer_controller = 2;
 }
 
-message ViewerControllerCopyViewerWindowRequest{
-	ViewerController viewer_controller = 1;
-	bool in_4d = 2;
-}
-
 message ViewerControllerSetMovieIdxRequest{
 	ViewerController viewer_controller = 1;
 	int32 movie_idx = 2;
@@ -181,4 +186,7 @@ message ViewerControllerOpenVRViewerForModeRequest{
 	string mode = 2;
 }
 
-
+message ViewerControllerFuseWithViewerRequest{
+	ViewerController viewer_controller = 1;
+	ViewerController fusion_viewer_controller = 2;
+}

@@ -11,14 +11,14 @@ Typical usage example:
 
 from __future__ import annotations
 
-__version__ = "0.2.1-dev10"
+__version__ = "0.2.1-dev54"
 
 __author__ = "Timothy Sum Hon Mun & Matthew D Blackledge"
 
 import os
 import json
 import warnings
-from typing import List, AnyStr
+from typing import List, AnyStr, Tuple
 
 from . import base
 from . import browser_controller
@@ -50,7 +50,7 @@ def plugin_support_directory() -> AnyStr:
 
 
 def osirixgrpc_port_preference() -> int:
-    """ Extract the preferred port set byt the user in the OsiriXgrpc plugin.
+    """ Extract the preferred port set by the user in the OsiriXgrpc plugin.
 
     It will iterate through the ports set-up by the user in order, and return
     the first open one. If you want more refinement (e.g. using a different
@@ -90,7 +90,11 @@ def global_osirix_instance() -> osirix_utilities.Osirix:
                                                      port=port,
                                                      max_send_message_length=500000000,
                                                      max_receive_message_length=500000000)
-            service.start_service()
+            try:
+                service.start_service()
+            except exceptions.GrpcException:
+                print("Could not start global service."
+                      "OsiriX may not be running and you may need to start it.")
             _osirix = osirix_utilities.Osirix(service)
     return _osirix
 
@@ -194,6 +198,26 @@ def displayed_vr_controllers() -> List[vr_controller.VRController]:
     if osirix_ is None:
         raise exceptions.GrpcException("No connection could be established with OsiriX")
     return osirix_.displayed_vr_controllers()
+
+
+def osirix_version() -> Tuple[str, str]:
+    """ The version of OsiriX being linked to.
+
+    This function can also be used as a 'ping' to check that a connection is established.
+
+    Returns:
+        str: The OsiriX version.
+
+    Example:
+        ```python
+        import osirix
+        version = osirix.osirix_version()
+        ```
+    """
+    osirix_ = global_osirix_instance()
+    if osirix_ is None:
+        raise exceptions.GrpcException("No connection could be established with OsiriX")
+    return osirix_.osirix_version()
 
 
 _establish_global_osirix_instance()

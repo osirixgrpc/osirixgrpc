@@ -14,24 +14,31 @@ import osirixgrpc.roi_pb2 as roi_pb2
 import osirixgrpc.roivolume_pb2 as roivolume_pb2
 
 import osirix
+from osirix.base import pyosirix_connection_check
 
 
 class ROIVolume(osirix.base.OsirixBase):
     """ Represents a single volumetric region of interest in a 3D viewer (`VRController`)
 
     """
-
-    def __init__(self, vr_controller: osirix.vr_controller.VRController, *args, **kwargs):
-        super(ROIVolume, self).__init__(*args, **kwargs)
+    def __init__(self, vr_controller: osirix.vr_controller.VRController,
+                 osirix_service: osirix.osirix_utilities.OsirixService, *args, **kwargs):
+        super(ROIVolume, self).__init__(osirix_service, *args, **kwargs)
         self._vr_controller = vr_controller
 
+    def __repr__(self):
+        return f"ROIVolume: " \
+               f"{self.name}"
+
     @property
+    @pyosirix_connection_check
     def vr_controller(self) -> osirix.vr_controller.VRController:
         """ The 3D volume render window in which this ROI is shown.
         """
         return self._vr_controller
 
     @property
+    @pyosirix_connection_check
     def texture(self) -> bool:
         """ Whether the volume ROI is textured
         """
@@ -40,6 +47,7 @@ class ROIVolume(osirix.base.OsirixBase):
         return response.texture
 
     @texture.setter
+    @pyosirix_connection_check
     def texture(self, texture: bool):
         """ Whether the volume ROI is textured
         """
@@ -49,6 +57,7 @@ class ROIVolume(osirix.base.OsirixBase):
         self.response_check(response)
 
     @property
+    @pyosirix_connection_check
     def visible(self) -> bool:
         """ Whether the volume ROI is visible in the 3D viewer
         """
@@ -57,6 +66,7 @@ class ROIVolume(osirix.base.OsirixBase):
         return response.visible
 
     @visible.setter
+    @pyosirix_connection_check
     def visible(self, set_visible: bool):
         """ Whether the volume ROI is visible in the 3D viewer
         """
@@ -66,6 +76,7 @@ class ROIVolume(osirix.base.OsirixBase):
             self.vr_controller.display_roi_volume(self)
 
     @property
+    @pyosirix_connection_check
     def name(self) -> str:
         """ The name of the ROI volume.
         """
@@ -74,6 +85,7 @@ class ROIVolume(osirix.base.OsirixBase):
         return response.name
 
     @property
+    @pyosirix_connection_check
     def color(self) -> Tuple[float, float, float]:
         """ The color of the volume ROI as a (r, g, b) tuple (each channel in range 0-1)
         """
@@ -82,6 +94,7 @@ class ROIVolume(osirix.base.OsirixBase):
         return response.r, response.g, response.b
 
     @color.setter
+    @pyosirix_connection_check
     def color(self, color: Tuple[float, float, float]):
         """ The color of the volume ROI as a (r, g, b) tuple (each channel in range 0-1)
         """
@@ -100,6 +113,7 @@ class ROIVolume(osirix.base.OsirixBase):
         self.response_check(response)
 
     @property
+    @pyosirix_connection_check
     def opacity(self) -> float:
         """ The opacity of the ROI volume in the range 0-1
         """
@@ -108,6 +122,7 @@ class ROIVolume(osirix.base.OsirixBase):
         return float(response.opacity)
 
     @opacity.setter
+    @pyosirix_connection_check
     def opacity(self, opacity: float):
         """ The opacity of the ROI volume in the range 0-1
         """
@@ -120,6 +135,7 @@ class ROIVolume(osirix.base.OsirixBase):
         self.response_check(response)
 
     @property
+    @pyosirix_connection_check
     def factor(self) -> float:
         """ The factor of the ROI volume in the range 0-1
         """
@@ -128,6 +144,7 @@ class ROIVolume(osirix.base.OsirixBase):
         return float(response.factor)
 
     @factor.setter
+    @pyosirix_connection_check
     def factor(self, factor: float):
         """ The factor of the ROI volume in the range 0-1
         """
@@ -139,6 +156,7 @@ class ROIVolume(osirix.base.OsirixBase):
         response = self.osirix_service_stub.ROIVolumeSetFactor(request)
         self.response_check(response)
 
+    @pyosirix_connection_check
     def volume(self) -> float:
         """ The volume of the ROI
 
@@ -154,6 +172,10 @@ class ROI(osirix.base.OsirixBase):
     """ Represents a single region of interest in a 2D viewer (`ViewerController`)
 
     """
+    def __repr__(self):
+        return f"ROI: " \
+               f"{self.name}"
+
     @classmethod
     def itypes(cls, reverse_order: bool = False) -> Dict:
         """ Provides a map between the integer ROI type and a text descriptor.
@@ -217,6 +239,7 @@ class ROI(osirix.base.OsirixBase):
         return mapping
 
     @property
+    @pyosirix_connection_check
     def color(self) -> Tuple[int, int, int]:
         """ The color of the volume ROI as a (r, g, b) tuple (each channel in range 0-255)
         """
@@ -225,6 +248,7 @@ class ROI(osirix.base.OsirixBase):
         return response.r, response.g, response.b
 
     @color.setter
+    @pyosirix_connection_check
     def color(self, color: Tuple[int, int, int]) -> None:
         """ The color of the volume ROI as a (r, g, b) tuple (each channel in range 0-255)
         """
@@ -243,6 +267,7 @@ class ROI(osirix.base.OsirixBase):
         self.response_check(response)
 
     @property
+    @pyosirix_connection_check
     def name(self) -> str:
         """ The name of the ROI
         """
@@ -251,6 +276,7 @@ class ROI(osirix.base.OsirixBase):
         return response.name
 
     @name.setter
+    @pyosirix_connection_check
     def name(self, name: str) -> None:
         """ The name of the ROI
         """
@@ -259,6 +285,7 @@ class ROI(osirix.base.OsirixBase):
         self.response_check(response)
 
     @property
+    @pyosirix_connection_check
     def opacity(self) -> float:
         """ The opacity of the ROI, ranging from 0 (transparent) to 1 (opaque)
         """
@@ -267,6 +294,7 @@ class ROI(osirix.base.OsirixBase):
         return response.opacity
 
     @opacity.setter
+    @pyosirix_connection_check
     def opacity(self, opacity: float) -> None:
         """ The opacity of the ROI, ranging from 0 (transparent) to 1 (opaque)
         """
@@ -278,6 +306,7 @@ class ROI(osirix.base.OsirixBase):
         self.response_check(response)
 
     @property
+    @pyosirix_connection_check
     def points(self) -> NDArray:
         """ The vertices of any polygon-based ROI. An array with shape [N, 2].
         """
@@ -289,6 +318,7 @@ class ROI(osirix.base.OsirixBase):
         return np.array(points)
 
     @points.setter
+    @pyosirix_connection_check
     def points(self, points: NDArray) -> None:
         """ The vertices of any polygon-based ROI. An array with shape [N, 2].
         """
@@ -305,6 +335,7 @@ class ROI(osirix.base.OsirixBase):
         self.response_check(response)
 
     @property
+    @pyosirix_connection_check
     def thickness(self) -> float:
         """ The line thickness (in points) of any polygon-based ROI.
         """
@@ -313,6 +344,7 @@ class ROI(osirix.base.OsirixBase):
         return response.thickness
 
     @thickness.setter
+    @pyosirix_connection_check
     def thickness(self, thickness: float) -> None:
         """ The line thickness (in points) of any polygon-based ROI.
         """
@@ -324,6 +356,7 @@ class ROI(osirix.base.OsirixBase):
         self.response_check(response)
 
     @property
+    @pyosirix_connection_check
     def pix(self) -> osirix.dcm_pix.DCMPix:
         """ The DCMPix instance coupled with the ROI. This should be the one on which it is drawn.
         """
@@ -332,14 +365,29 @@ class ROI(osirix.base.OsirixBase):
         return osirix.dcm_pix.DCMPix(self.osirix_service, response.pix)
 
     @property
+    @pyosirix_connection_check
     def itype(self) -> int:
         # TODO: We need to more than provide an integer here. It should be a text description.
-        """ The ROI type
+        """ The ROI type as an integer
         """
         response = self.osirix_service_stub.ROIIType(self.pb2_object)
         self.response_check(response)
         return int(response.itype)
 
+    @property
+    @pyosirix_connection_check
+    def stype(self) -> str:
+        """ The type of the ROI as a string """
+        return self.itypes()[self.itype]
+
+    @pyosirix_connection_check
+    def delete(self) -> None:
+        """ Delete the ROI.  This cannot be undone!
+        """
+        response = self.osirix_service_stub.ROIDelete(self.pb2_object)
+        self.response_check(response)
+
+    @pyosirix_connection_check
     def centroid(self) -> Tuple[float, float]:
         """ The centroid of the ROI in format (column, row). Non-integer values are permitted.
         """
@@ -347,18 +395,21 @@ class ROI(osirix.base.OsirixBase):
         self.response_check(response)
         return response.x, response.y
 
+    @pyosirix_connection_check
     def flip_horizontally(self) -> None:
         """ Flip the ROI horizontally
         """
         response = self.osirix_service_stub.ROIFlipHorizontally(self.pb2_object)
         self.response_check(response)
 
+    @pyosirix_connection_check
     def flip_vertically(self) -> None:
         """ Flip the ROI vertically
         """
         response = self.osirix_service_stub.ROIFlipVertically(self.pb2_object)
         self.response_check(response)
 
+    @pyosirix_connection_check
     def roi_area(self) -> float:
         """ The area of the ROI in squared centimeters.
         """
@@ -366,6 +417,7 @@ class ROI(osirix.base.OsirixBase):
         self.response_check(response)
         return response.area
 
+    @pyosirix_connection_check
     def roi_move(self, columns: int, rows: int) -> None:
         # TODO: This could be float, but need to change the protocol definition.
         """ Move the ROI by a specified number of columns and rows.
@@ -379,6 +431,7 @@ class ROI(osirix.base.OsirixBase):
         response = self.osirix_service_stub.ROIMove(request)
         self.response_check(response)
 
+    @pyosirix_connection_check
     def rotate(self, theta: float, center: Tuple[float, float] = None) -> None:
         """ Rotate the ROI by angle theta, about a given
 

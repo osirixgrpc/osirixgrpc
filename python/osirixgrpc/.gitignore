@@ -1,0 +1,2 @@
+# Ignore all files other than __init__.py and README.md.  All files are auto-generated during build.
+*pb2*

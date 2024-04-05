@@ -11,7 +11,7 @@
 
 @interface gRPCCache : NSObject
 {
-    NSMutableDictionary *cache;
+    NSMapTable *cache;
 }
 
 /**
@@ -22,19 +22,62 @@
 /**
  Add an OsiriX object to the cache
  
- @param obj The object to add to the dictionary.  This will be a no-op if already referenced.
+ @param obj The object to add to the cache.  This will be a no-op if already referenced.
  
  @return The unique ID for the cahced object.
  */
 -(NSString *)addObject:(id)obj;
+
+/**
+ Remove an OsiriX object from the cache
+ 
+ @param obj The object to be removed from the cache.  This will be a no-op if not present.
+ 
+ @return void
+ */
 -(void)removeObject:(id)obj;
 
--(BOOL)doesContain:(id)object;
--(NSString *)uidForObject:(id)object;
+/**
+ Does the cache contain a specifid OsiriX object?
+ 
+ @param obj The object to be checked.
+ 
+ @return BOOL
+ */
+-(BOOL)doesContain:(id)obj;
+
+/**
+ Return the unique identifier for an OsiriX object.
+ 
+ @param obj The object to be searched.
+ 
+ @return An NSSrting containing the unique identifier. Returns `nil` if the object if not cached.
+ */
+-(NSString *)uidForObject:(id)obj;
+
+/**
+ Return the OsiriX object cached for a unique identifier..
+ 
+ @param uid An NSString specifying the unique identifer.
+ 
+ @return The OsiriX object.  `nil` if no object is cached for the uid.
+ */
 -(id)objectForUID:(NSString *)uid;
 
+
+/**
+ Return the array of all contained uids.
+ 
+ @return An NSArray of the uids (all NSString references).
+ */
 -(NSArray *)uids;
 
+
+/**
+ Empty the cache.
+ 
+ @return void
+ */
 -(void)clearCache;
 
 @end

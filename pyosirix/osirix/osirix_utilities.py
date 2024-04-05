@@ -3,14 +3,16 @@
 """
 
 from __future__ import annotations
-from typing import List
+from typing import List, Tuple, Dict
 
 import grpc  # noqa
 
-from osirixgrpc import osirix_pb2_grpc
+from osirixgrpc import osirix_pb2_grpc, types_pb2
+import osirixgrpc.osirix_pb2 as osirix_pb2
 import osirixgrpc.utilities_pb2 as utilities_pb2
 
 import osirix
+from osirix.base import pyosirix_connection_check
 
 
 class OsirixService(object):
@@ -47,16 +49,32 @@ class OsirixService(object):
             GrpcException: Occurs when something goes wrong trying to set up the connection.
 
         """
+        self.channel = grpc.insecure_channel(self.server_url,
+                                             options=[("max_receive_message_length",
+                                                       self.max_receive_message_length),
+                                                      ("max_send_message_length",
+                                                       self.max_send_message_length)])
+        self.osirix_service_stub = osirix_pb2_grpc.OsiriXServiceStub(self.channel)
+        if not self.check_connection():
+            raise osirix.exceptions.GrpcException("Could not establish a connection with OsiriX.")
+
+    def check_connection(self) -> bool:
+        """ Check that a connection with OsiriX is established.
+
+        Returns:
+            bool: True if a connection is established.
+
+        """
         try:
-            self.channel = grpc.insecure_channel(self.server_url,
-                                                 options=[("max_receive_message_length",
-                                                           self.max_receive_message_length),
-                                                          ("max_send_message_length",
-                                                           self.max_send_message_length)])
-            self.osirix_service_stub = osirix_pb2_grpc.OsiriXServiceStub(self.channel)
-        except Exception as exc:
-            raise osirix.exceptions.GrpcException(
-                "Could not establish a connection with OsiriX.") from exc
+            self.osirix_service_stub.OsirixVersion(utilities_pb2.Empty())
+        except grpc.RpcError:
+            return False
+        return True
+
+    def stop_service(self):
+        """ Stop the insecure client service. """
+        if self.channel:
+            self.channel.close()
 
 
 class Osirix(osirix.base.OsirixBase):
@@ -67,6 +85,7 @@ class Osirix(osirix.base.OsirixBase):
     configuration, as described in the main `__init__.py` module.
     """
 
+    @pyosirix_connection_check
     def current_browser(self) -> osirix.browser_controller.BrowserController:
         """ Return an instance of the current Dicom database browser.
 
@@ -88,6 +107,7 @@ class Osirix(osirix.base.OsirixBase):
                                                                              browser_controller)
         return browser_controller_obj
 
+    @pyosirix_connection_check
     def frontmost_viewer(self) -> osirix.viewer_controller.ViewerController:
         """ Return an instance of the front-most 2D viewer.
 
@@ -110,6 +130,7 @@ class Osirix(osirix.base.OsirixBase):
                                                                           viewer_controller)
         return viewer_controller_obj
 
+    @pyosirix_connection_check
     def displayed_2d_viewers(self) -> List[osirix.viewer_controller.ViewerController, ...]:
         """ Return all displayed 2D viewer instances.
 
@@ -133,6 +154,7 @@ class Osirix(osirix.base.OsirixBase):
             viewer_controller_objs.append(viewer_controller_obj)
         return viewer_controller_objs
 
+    @pyosirix_connection_check
     def frontmost_vr_controller(self) -> osirix.vr_controller.VRController:
         """ Return an instance of the front-most 3D viewer.
 
@@ -154,6 +176,7 @@ class Osirix(osirix.base.OsirixBase):
                                                               vr_controller)
         return vr_controller_obj
 
+    @pyosirix_connection_check
     def displayed_vr_controllers(self) -> List[osirix.vr_controller.VRController, ...]:
         """ Return all displayed 3D viewer instances.
 
@@ -176,3 +199,82 @@ class Osirix(osirix.base.OsirixBase):
                                                                   vr_controller)
             vr_controller_objs.append(vr_controller_obj)
         return vr_controller_objs
+
+    def osirix_version(self) -> Tuple[str, str]:
+        """ Return the current version of OsiriX being linked to.
+
+        Note that it is better not use this method directly. Use the following instead:
+
+        ```python
+        import osirix
+        version = osirix.osirix_version()
+        ```
+
+        Returns:
+            str: The current OsiriX version.
+            str: The bundle name (e.g. "OsiriX MD")
+        """
+        request = utilities_pb2.Empty()
+        response = self.osirix_service_stub.OsirixVersion(request)
+        self.response_check(response)
+        return response.version, response.bundle_name
+
+    def __osirix_cache_uids__(self) -> List[str]:
+        """ Return a list of UIDs available to osirixgrpc
+
+        Returns:
+            List: The list of available UIDs.
+        """
+        response = self.osirix_service_stub.OsirixCacheUids(utilities_pb2.Empty())
+        self.response_check(response)
+        return response.uids
+
+    def __osirix_cache_object_for_uid__(self, uid: str):
+        """ Return an object for a particular UID
+
+        Args:
+            uid (str): The UID for which to obtain the object
+
+        Returns:
+            id: The object.
+        """
+        request = osirix_pb2.OsirixCacheObjectForUidRequest(uid=uid)
+        response = self.osirix_service_stub.OsirixCacheObjectForUid(request)
+        self.response_check(response)
+        if response.object_type == "BrowserController":
+            return osirix.browser_controller.BrowserController(self.osirix_service,
+                                                               types_pb2.BrowserController(
+                                                                   osirixrpc_uid=uid))
+        elif response.object_type == "ViewerController":
+            return osirix.viewer_controller.ViewerController(self.osirix_service,
+                                                             types_pb2.ViewerController(
+                                                                 osirixrpc_uid=uid))
+        elif response.object_type == "VRController":
+            return osirix.vr_controller.VRController(self.osirix_service,
+                                                     types_pb2.VRController(osirixrpc_uid=uid))
+        elif response.object_type == "DicomImage":
+            return osirix.dicom.DicomImage(self.osirix_service,
+                                           types_pb2.DicomImage(osirixrpc_uid=uid))
+        elif response.object_type == "DicomSeries":
+            return osirix.dicom.DicomSeries(self.osirix_service,
+                                           types_pb2.DicomSeries(osirixrpc_uid=uid))
+        elif response.object_type == "DicomStudy":
+            return osirix.dicom.DicomStudy(self.osirix_service,
+                                           types_pb2.DicomStudy(osirixrpc_uid=uid))
+        elif response.object_type == "ROI":
+            return osirix.roi.ROI(self.osirix_service, types_pb2.ROI(osirixrpc_uid=uid))
+        elif response.object_type == "ROIVolume":
+            return osirix.roi.ROIVolume(self.osirix_service, types_pb2.ROIVolume(osirixrpc_uid=uid))
+        elif response.object_type == "DCMPix":
+            return osirix.dcm_pix.DCMPix(self.osirix_service, types_pb2.DCMPix(osirixrpc_uid=uid))
+        else:
+            return response.object_type
+
+    def __osirix_cache_objects__(self) -> Dict:
+        """ Return an object for a particular UID
+
+        Returns:
+            Dict: All objects keyed by the uid: {uid: object}
+        """
+        uids = self.__osirix_cache_uids__()
+        return {uid: self.__osirix_cache_object_for_uid__(uid) for uid in uids}

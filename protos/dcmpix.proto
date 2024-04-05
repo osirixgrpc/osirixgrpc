@@ -74,9 +74,9 @@ message DCMPixSpacingResponse{
 
 message DCMPixOriginResponse{
 	Status status = 1;
-	float origin_rows = 2;
-	float origin_columns = 3;
-	float origin_slices = 4;
+	float origin_x = 2;
+	float origin_y = 3;
+	float origin_z = 4;
 }
 
 message DCMPixOrientationResponse{
