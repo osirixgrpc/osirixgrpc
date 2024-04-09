@@ -47,6 +47,7 @@ rm "$OUTDIR/osirixgrpc"/osirixgrpc_report_*.html
 deactivate
 
 # Remove the virtual environment after testing
+cd ../
 rm -rf test_osirixgrpc_env
 
 # Tell the user tests have finished.
