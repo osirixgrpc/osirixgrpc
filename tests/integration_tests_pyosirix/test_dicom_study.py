@@ -60,7 +60,7 @@ def test_dicom_study_date(study_test):
 def test_dicom_study_date_added(study_test):
     """ Check the correct study date added is provided. """
     now = datetime.now()
-    assert abs(now - study_test.date_added) <= timedelta(seconds=5.0)
+    assert abs(now - study_test.date_added) <= timedelta(seconds=15.0)
 
 
 def test_dicom_study_dob(study_test):

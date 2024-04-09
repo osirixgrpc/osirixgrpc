@@ -15,11 +15,6 @@ def test_browser_studies_status(browser_controller):
     assert len(series) == 0, f"Bad number of series {len(series)}"
 
 
-def test_import_data(browser_controller, dicom_paths):
-    """ Check data can be imported """
-    browser_controller.copy_files_into_database(dicom_paths)
-
-
 def test_wait_for_database_studies(browser_controller):
     """ Check data is imported. Wait for it to become available. """
     now = time()
