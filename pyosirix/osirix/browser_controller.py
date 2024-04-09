@@ -35,7 +35,7 @@ class BrowserController(osirix.base.OsirixBase):
     just contiain the same `osirixrpc_uid`.
     """
     def __repr__(self):
-        return f"BrowserController"
+        return "BrowserController"
 
     @pyosirix_connection_check
     def copy_files_into_database(self, files: List[str]) -> None:
@@ -96,10 +96,10 @@ class BrowserController(osirix.base.OsirixBase):
             ValueError: When instances other than DicomImage are provided in `dicom_images`.
         """
         dicom_images = np.array(dicom_images)
-        if not len(dicom_images) > 0:
-            raise ValueError(f"The number of input images must be one or greater.")
+        if len(dicom_images) <= 0:
+            raise ValueError("The number of input images must be one or greater.")
         if not dicom_images.ndim == 1:
-            raise ValueError(f"The input array must be one dimensional.")
+            raise ValueError("The input array must be one dimensional.")
         for dicom_image in dicom_images:
             if not isinstance(dicom_image, osirix.dicom.DicomImage):
                 raise ValueError("Only instances of DicomImage are permitted as input.")
@@ -137,14 +137,14 @@ class BrowserController(osirix.base.OsirixBase):
         """
         dicom_images = np.array(dicom_images)
         if not dicom_images.ndim == 2:
-            raise ValueError(f"The input array must be two dimensional.")
+            raise ValueError("The input array must be two dimensional.")
 
         n_frames, n_images = dicom_images.shape
         if not n_frames > 1:
-            raise ValueError(f"Number of input frames must be > 1. "
-                             f"For single frame use `open_viewer_2d`.")
+            raise ValueError("Number of input frames must be > 1. "
+                             "For single frame use `open_viewer_2d`.")
         if not n_images > 0:
-            raise ValueError(f"Number of input images must be 1 or greater.")
+            raise ValueError("Number of input images must be 1 or greater.")
 
         frames = []
         for i in range(n_frames):

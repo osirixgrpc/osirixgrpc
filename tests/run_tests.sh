@@ -47,7 +47,7 @@ rm "$OUTDIR/osirixgrpc"/osirixgrpc_report_*.html
 deactivate
 
 # Remove the virtual environment after testing
-rm -rf test_pyosirix_env
+rm -rf test_osirixgrpc_env
 
 # Tell the user tests have finished.
 echo "Tests finished. It is now safe to run OsiriX again."

@@ -11,7 +11,7 @@ Typical usage example:
 
 from __future__ import annotations
 
-__version__ = "0.2.1-dev56"
+__version__ = "0.2.1-dev57"
 
 __author__ = "Timothy Sum Hon Mun & Matthew D Blackledge"
 
@@ -117,7 +117,7 @@ def current_browser() -> browser_controller.BrowserController:
     Example:
         ```python
         import osirix
-        browser = osirix.current_browser2()
+        browser = osirix.current_browser()
         ```
     """
     osirix_ = global_osirix_instance()

@@ -5,7 +5,6 @@
 from __future__ import annotations
 
 from typing import Union
-import re
 
 import osirixgrpc
 from osirixgrpc import types_pb2
