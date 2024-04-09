@@ -166,13 +166,13 @@ class DCMPix(osirix.base.OsirixBase):
         response = self.osirix_service_stub.DCMPixComputeROI(request)
         self.response_check(response)
         roi_dict = {
-            'mean': response.mean,
-            'total': response.total,
-            'std_dev': response.std_dev,
-            'min': response.min,
-            'max': response.max,
-            'skewness': response.skewness,
-            'kurtosis': response.kurtosis
+            "mean": response.mean,
+            "total": response.total,
+            "std_dev": response.std_dev,
+            "min": response.min,
+            "max": response.max,
+            "skewness": response.skewness,
+            "kurtosis": response.kurtosis
         }
         return roi_dict
 
@@ -185,7 +185,7 @@ class DCMPix(osirix.base.OsirixBase):
                 3 = merge.
         """
         if mode not in [0, 1, 2, 3]:
-            raise ValueError('Mode must 0, 1, 2, or 3')
+            raise ValueError("Mode must 0, 1, 2, or 3")
         request = dcmpix_pb2.DCMPixConvertToBWRequest(pix=self.pb2_object,
                                                       bw_channel=mode)
         response = self.osirix_service_stub.DCMPixConvertToBW(request)

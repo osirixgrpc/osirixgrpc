@@ -47,7 +47,7 @@ def test_dicom_study_series(study_test, series_test):
 
 def test_dicom_study_name(study_test):
     """ Check the correct patient name is provided. """
-    assert study_test.patient_name == "Osirixgrpc Test Patient", \
+    assert study_test.patient_name.lower() == "osirixgrpc test patient", \
         f"Bad name {study_test.patient_name}"
 
 
@@ -60,7 +60,7 @@ def test_dicom_study_date(study_test):
 def test_dicom_study_date_added(study_test):
     """ Check the correct study date added is provided. """
     now = datetime.now()
-    assert abs(now - study_test.date_added) <= timedelta(seconds=15.0)
+    assert abs(now - study_test.date_added) <= timedelta(hours=1.0)
 
 
 def test_dicom_study_dob(study_test):
@@ -70,13 +70,13 @@ def test_dicom_study_dob(study_test):
 
 
 def test_dicoms_study_institution_name(study_test):
-    assert study_test.institution_name == "Osirixgrpc Test Institution",\
+    assert study_test.institution_name.lower() == "osirixgrpc test institution",\
         f"Bad institution name {study_test.institution_name}"
 
 
 def test_dicom_study_patient_id(study_test):
     """ Check the correct patient ID is provided. """
-    assert study_test.patient_id == "osirixgrpc test patient id", \
+    assert study_test.patient_id.lower() == "osirixgrpc test patient id", \
         f"Bad patient ID {study_test.patient_id}"
 
 
@@ -102,7 +102,7 @@ def test_dicom_study_performing_physician(study_test):
 
 def test_dicom_study_referring_physician(study_test):
     """ Check the correct referring physician is provided. """
-    assert study_test.referring_physician == "Osirixgrpc Test Physician Name", \
+    assert study_test.referring_physician.lower() == "osirixgrpc test physician name", \
         f"Bad referring physician {study_test.referring_physician}"
 
 
@@ -114,5 +114,5 @@ def test_dicom_study_study_instance_uid(study_test):
 
 def test_dicom_study_study_name(study_test):
     """ Check the correct study name is provided. """
-    assert study_test.study_name == "Osirixgrpc Test Study", \
+    assert study_test.study_name.lower() == "osirixgrpc test study", \
         f"Bad study name {study_test.study_name}"

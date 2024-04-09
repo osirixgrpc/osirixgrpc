@@ -117,7 +117,7 @@ def current_browser() -> browser_controller.BrowserController:
     Example:
         ```python
         import osirix
-        browser = osirix.current_browser2()
+        browser = osirix.current_browser()
         ```
     """
     osirix_ = global_osirix_instance()

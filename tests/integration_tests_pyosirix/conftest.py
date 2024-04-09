@@ -152,5 +152,5 @@ def vr_controller_2d(viewer_controller_2d):
 @pytest.fixture(scope="function")
 def roi_volume_test(vr_controller_2d):
     roi_volume = vr_controller_2d.roi_volumes()[0]
-    assert roi_volume.name == "pyosirix_mask", f"Could not find correctly names ROI"
+    assert roi_volume.name == "pyosirix_mask", f"Could not find correctly named ROI"
     yield roi_volume
