@@ -15,11 +15,11 @@
 	<key>CFBundlePackageType</key>
 	<string>BNDL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>0.2.1-dev57</string>
+	<string>0.2.1-dev58</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>0.2.1-dev57</string>
+	<string>0.2.1-dev58</string>
 	<key>MenuTitles</key>
 	<array>
 		<string>Server Configuration</string>
