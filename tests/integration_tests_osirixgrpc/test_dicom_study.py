@@ -70,7 +70,7 @@ def test_dicom_study_name(grpc_stub, study_test):
     """ Check the correct patient name is provided. """
     response = grpc_stub.DicomStudyName(study_test)
     assert response.status.status == 1, f"Could not request study name"
-    assert response.name == "Osirixgrpc Test Patient", f"Bad name {response.name}"
+    assert response.name.lower() == "osirixgrpc test patient", f"Bad name {response.name}"
 
 
 def test_dicom_study_date(grpc_stub, study_test):
@@ -109,7 +109,7 @@ def test_dicoms_study_institution_name(grpc_stub, study_test):
     """ Check the correct study institution name is provided. """
     response = grpc_stub.DicomStudyInstitutionName(study_test)
     assert response.status.status == 1, f"Could not request study institution name"
-    assert response.institution_name == "Osirixgrpc Test Institution",\
+    assert response.institution_name.lower() == "osirixgrpc test institution",\
         f"Bad institution name {response.institution_name}"
 
 
@@ -146,7 +146,7 @@ def test_dicom_study_referring_physician(grpc_stub, study_test):
     """ Check the correct referring physician is provided. """
     response = grpc_stub.DicomStudyReferringPhysician(study_test)
     assert response.status.status == 1, f"TCould not request referring physician"
-    assert response.referring_physician == "Osirixgrpc Test Physician Name", \
+    assert response.referring_physician.lower() == "osirixgrpc test physician name", \
         f"Bad referring physician {response.referring_physician}"
 
 

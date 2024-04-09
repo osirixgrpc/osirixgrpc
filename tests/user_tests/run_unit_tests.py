@@ -26,8 +26,6 @@ class RunUnitTests:
 
     def run(self):
         # 1. Move to the working directory
-        os.system("which python")
-
         os.chdir(self.__working_directory__())
 
         # 2. Clone the osirixgrpc repository and move to dev branch
