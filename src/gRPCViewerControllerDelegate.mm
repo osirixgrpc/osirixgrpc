@@ -271,12 +271,12 @@
                 
             // Add to viewer list
             int movieIdx = request->movie_idx();
-            int position = request->position();
+            int idx = request->idx();
             NSMutableArray *rois = [vc roiList:movieIdx];
-            [(NSMutableArray *)[rois objectAtIndex:position] addObject:[roi autorelease]];
+            [(NSMutableArray *)[rois objectAtIndex:idx] addObject:[roi autorelease]];
             
             // Set the DCMPix
-            [roi setPix:[[vc pixList:movieIdx] objectAtIndex:position]];
+            [roi setPix:[[vc pixList:movieIdx] objectAtIndex:idx]];
             
             // Add to cache
             NSString *roi_uid = [cache addObject:roi];

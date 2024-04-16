@@ -146,7 +146,7 @@ message ViewerControllerNewROIRequest{
 	ViewerController viewer_controller = 1;
 	int32 itype = 2;
 	string name = 3;
-	int32 position = 4;
+	int32 idx = 4;
 	int32 movie_idx = 5;
 	int32 buffer_position_x = 6;
 	int32 buffer_position_y = 7;
