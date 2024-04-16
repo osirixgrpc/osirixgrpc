@@ -37,14 +37,48 @@ class ViewerController(osirix.base.OsirixBase):
     @idx.setter
     @pyosirix_connection_check
     def idx(self, idx: int) -> None:
-        """ The slice index currently being displayed to the viewer (starting at 0).
+        """ The data slice index currently being displayed to the viewer (starting at 0).
 
-        Note that the index displayed on the viewer is this value plus one.
+        Note that this may not be equal to the index displayed on the viewer when
+            `data_flipped` is True.
         """
         request = viewercontroller_pb2.ViewerControllerSetIdxRequest(
             viewer_controller=self.pb2_object, idx=idx)
         response = self.osirix_service_stub.ViewerControllerSetIdx(request)
         self.response_check(response)
+
+    @property
+    @pyosirix_connection_check
+    def displayed_idx(self) -> int:
+        """ The data slice index currently being displayed to the viewer (starting at 0).
+
+        Note that this may not be equal to the index displayed on the viewer when
+            `data_flipped` is True.
+        """
+        response = self.osirix_service_stub.ViewerControllerDisplayedIdx(self.pb2_object)
+        self.response_check(response)
+        return int(response.displayed_idx)
+
+    @displayed_idx.setter
+    @pyosirix_connection_check
+    def displayed_idx(self, idx: int) -> None:
+        """ The slice index currently being displayed to the viewer (starting at 0).
+
+        Note that the index displayed on the viewer is this value plus one.
+        """
+        request = viewercontroller_pb2.ViewerControllerSetDisplayedIdxRequest(
+            viewer_controller=self.pb2_object, displayed_idx=idx)
+        response = self.osirix_service_stub.ViewerControllerSetDisplayedIdx(request)
+        self.response_check(response)
+
+    @property
+    @pyosirix_connection_check
+    def flipped_data(self) -> int:
+        """ Whether the slices data are flipped in the viewer.
+        """
+        response = self.osirix_service_stub.ViewerControllerFlippedData(self.pb2_object)
+        self.response_check(response)
+        return int(response.flipped_data)
 
     @property
     @pyosirix_connection_check

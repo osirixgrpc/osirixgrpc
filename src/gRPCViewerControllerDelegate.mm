@@ -654,7 +654,7 @@
     if (vc)
     {
         response->mutable_status()->set_status(1);
-        response->set_idx((int)[vc imageIndex]);
+        response->set_idx((int)[[vc imageView] curImage]);
     }
     else
     {
@@ -684,6 +684,71 @@
             response->mutable_status()->set_status(1);
             [[vc imageView] setIndex:(unsigned short)idx];
         }
+    }
+    else
+    {
+        response->mutable_status()->set_status(0);
+        response->mutable_status()->set_message("No ViewerController cached");
+    }
+}
+
++ (void) ViewerControllerDisplayedIdx:(const osirixgrpc::ViewerController *) request :(osirixgrpc::ViewerControllerDisplayedIdxResponse *) response :(gRPCCache *) cache
+{
+    NSString *uid = stringFromGRPCString(request->osirixrpc_uid())
+    
+    ViewerController *vc = [cache objectForUID:uid];
+    
+    if (vc)
+    {
+        response->mutable_status()->set_status(1);
+        response->set_displayed_idx((int)[vc imageIndex]);
+    }
+    else
+    {
+        response->mutable_status()->set_status(0);
+        response->mutable_status()->set_message("No ViewerController cached");
+    }
+    
+}
+
++ (void) ViewerControllerSetDisplayedIdx:(const osirixgrpc::ViewerControllerSetDisplayedIdxRequest *) request :(osirixgrpc::Response *) response :(gRPCCache *) cache
+{
+    NSString *uid = stringFromGRPCString(request->viewer_controller().osirixrpc_uid())
+    
+    ViewerController *vc = [cache objectForUID:uid];
+    
+    if (vc)
+    {
+        long idx = (long)request->displayed_idx();
+        if (idx >= [[vc pixList] count] || idx < 0)
+        {
+            NSString *msg = [NSString stringWithFormat:@"Index %ld is out of range", idx];
+            response->mutable_status()->set_status(0);
+            response->mutable_status()->set_message([msg UTF8String]);
+        }
+        else
+        {
+            response->mutable_status()->set_status(1);
+            [vc setImageIndex:(unsigned long)idx];
+        }
+    }
+    else
+    {
+        response->mutable_status()->set_status(0);
+        response->mutable_status()->set_message("No ViewerController cached");
+    }
+}
+
++ (void) ViewerControllerFlippedData:(const osirixgrpc::ViewerController *) request :(osirixgrpc::ViewerControllerFlippedDataResponse *) response :(gRPCCache *) cache
+{
+    NSString *uid = stringFromGRPCString(request->osirixrpc_uid())
+    
+    ViewerController *vc = [cache objectForUID:uid];
+    
+    if (vc)
+    {
+        response->mutable_status()->set_status(1);
+        response->set_flipped_data([[vc imageView] flippedData]);
     }
     else
     {

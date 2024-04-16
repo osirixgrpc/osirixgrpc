@@ -116,6 +116,9 @@ rpc ViewerControllerSetMovieIdx (ViewerControllerSetMovieIdxRequest) returns (Re
 rpc ViewerControllerMaxMovieIdx (ViewerController) returns (ViewerControllerMaxMovieIdxResponse) {}
 rpc ViewerControllerIdx (ViewerController) returns (ViewerControllerIdxResponse) {}
 rpc ViewerControllerSetIdx (ViewerControllerSetIdxRequest) returns (Response) {}
+rpc ViewerControllerDisplayedIdx (ViewerController) returns (ViewerControllerDisplayedIdxResponse) {}
+rpc ViewerControllerSetDisplayedIdx (ViewerControllerSetDisplayedIdxRequest) returns (Response) {}
+rpc ViewerControllerFlippedData (ViewerController) returns (ViewerControllerFlippedDataResponse) {}
 rpc ViewerControllerWLWW (ViewerController) returns (ViewerControllerWLWWResponse) {}
 rpc ViewerControllerSetWLWW (ViewerControllerSetWLWWRequest) returns (Response) {}
 rpc ViewerControllerOpenVRViewerForMode (ViewerControllerOpenVRViewerForModeRequest) returns (ViewerControllerOpenVRViewerForModeResponse) {}
