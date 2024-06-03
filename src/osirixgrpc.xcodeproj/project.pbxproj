@@ -1073,6 +1073,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MARKETING_VERSION = 0.1.2;
 				OTHER_CFLAGS = "";
+				OTHER_CODE_SIGN_FLAGS = "--timestamp";
 				OTHER_LDFLAGS = (
 					"-undefined",
 					dynamic_lookup,
@@ -1137,6 +1138,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MARKETING_VERSION = 0.1.2;
 				OTHER_CFLAGS = "";
+				OTHER_CODE_SIGN_FLAGS = "--timestamp";
 				OTHER_LDFLAGS = (
 					"-undefined",
 					dynamic_lookup,

@@ -136,11 +136,23 @@ jobs:
           cd src/$BUILD_PATH
           zip -r ../../osirixgrpc.osirixplugin.zip osirixgrpc.osirixplugin
 
+      - name: Install Apple certificate
+        env:
+          TEAM_ID: ${{ secrets.TEAM_ID }}
+          APP_SPECIFIC_PASSWORD: ${{ secrets.APP_SPECIFIC_PASSWORD }}
+          APPLE_ID: ${{ secrets.APPLE_ID }}
+        run: |
+          xcrun notarytool submit osirixgrpc.osirixplugin.zip --apple-id $APPLE_ID --password $APP_SPECIFIC_PASSWORD --team-id $TEAM_ID --wait
+
+      - name: Staple Notarization
+        run: |
+          xcrun stapler staple src/$BUILD_PATH/osirixgrpc.osirixplugin
+
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: osirixgrpc-zip
-          path: osirixgrpc.osirixplugin.zip
+          name: osirixgrpc
+          path: src/$BUILD_PATH/osirixgrpc.osirixplugin
 
   publish-pypi:
     needs: build
