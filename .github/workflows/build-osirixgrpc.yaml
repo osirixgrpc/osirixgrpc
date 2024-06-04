@@ -146,7 +146,8 @@ jobs:
 
       - name: Zip plugin
         run: |
-          zip -r osirixgrpc.osirixplugin.zip src/$BUILD_PATH/osirixgrpc.osirixplugin
+          cd src/$BUILD_PATH
+          zip -r ../../osirixgrpc.osirixplugin.zip osirixgrpc.osirixplugin
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4

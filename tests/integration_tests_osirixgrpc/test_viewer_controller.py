@@ -194,7 +194,7 @@ def test_viewer_controller_new_roi_mask(grpc_stub, viewer_controller_4d):
                                                                            columns=columns)
         color = viewercontroller_pb2.ViewerControllerNewROIRequest.Color(r=255, g=0, b=200)
         request = viewercontroller_pb2.ViewerControllerNewROIRequest(
-            viewer_controller=viewer_controller_4d, movie_idx=0, position=i, itype=20,
+            viewer_controller=viewer_controller_4d, movie_idx=0, idx=i, itype=20,
             buffer=buffer, color=color, opacity=0.5, name="mask", buffer_position_x=i*3,
             buffer_position_y=i*5)
         response = grpc_stub.ViewerControllerNewROI(request)
@@ -213,7 +213,7 @@ def test_viewer_controller_new_roi_mask_2d(grpc_stub, viewer_controller_2d):
                                                                            columns=columns)
         color = viewercontroller_pb2.ViewerControllerNewROIRequest.Color(r=255, g=0, b=200)
         request = viewercontroller_pb2.ViewerControllerNewROIRequest(
-            viewer_controller=viewer_controller_2d, movie_idx=0, position=i, itype=20,
+            viewer_controller=viewer_controller_2d, movie_idx=0, idx=i, itype=20,
             buffer=buffer, color=color, opacity=0.5, name="mask", buffer_position_x=i*3,
             buffer_position_y=i*5)
         response = grpc_stub.ViewerControllerNewROI(request)
@@ -228,7 +228,7 @@ def test_viewer_controller_new_roi_oval(grpc_stub, viewer_controller_4d):
                                                                    height=10.)
     color = viewercontroller_pb2.ViewerControllerNewROIRequest.Color(r=255, g=100, b=200)
     request = viewercontroller_pb2.ViewerControllerNewROIRequest(
-        viewer_controller=viewer_controller_4d, movie_idx=1, position=0, itype=9, rectangle=rect,
+        viewer_controller=viewer_controller_4d, movie_idx=1, idx=0, itype=9, rectangle=rect,
         color=color, opacity=0.5, name="oval", thickness=3.0)
     response = grpc_stub.ViewerControllerNewROI(request)
     assert response.status.status == 1, f"Could not create oval ROI"
@@ -240,7 +240,7 @@ def test_viewer_controller_new_roi_arrow(grpc_stub, viewer_controller_4d):
               viewercontroller_pb2.ViewerControllerNewROIRequest.Point2D(x=99., y=24.)]
     color = viewercontroller_pb2.ViewerControllerNewROIRequest.Color(r=0, g=255, b=0)
     request = viewercontroller_pb2.ViewerControllerNewROIRequest(
-        viewer_controller=viewer_controller_4d, points=points, movie_idx=1, position=0, itype=14,
+        viewer_controller=viewer_controller_4d, points=points, movie_idx=1, idx=0, itype=14,
         color=color, opacity=0.5, name="arrow", thickness=3.0)
     response = grpc_stub.ViewerControllerNewROI(request)
     assert response.status.status == 1, f"Could not create arrow ROI"
@@ -252,7 +252,7 @@ def test_viewer_controller_new_roi_point(grpc_stub, viewer_controller_4d):
                                                                    width=20., height=10.)
     color = viewercontroller_pb2.ViewerControllerNewROIRequest.Color(r=0, g=255, b=255)
     request = viewercontroller_pb2.ViewerControllerNewROIRequest(
-        viewer_controller=viewer_controller_4d, rectangle=rect, movie_idx=1, position=0, itype=19,
+        viewer_controller=viewer_controller_4d, rectangle=rect, movie_idx=1, idx=0, itype=19,
         color=color, opacity=1.0, name="2D point", thickness=3.0)
     response = grpc_stub.ViewerControllerNewROI(request)
     assert response.status.status == 1, f"Could not create oval ROI"
@@ -264,7 +264,7 @@ def test_viewer_controller_new_roi_troi(grpc_stub, viewer_controller_4d):
                                                                    width=20., height=10.)
     color = viewercontroller_pb2.ViewerControllerNewROIRequest.Color(r=255, g=100, b=100)
     request = viewercontroller_pb2.ViewerControllerNewROIRequest(
-        viewer_controller=viewer_controller_4d, rectangle=rect, movie_idx=1, position=0, itype=6,
+        viewer_controller=viewer_controller_4d, rectangle=rect, movie_idx=1, idx=0, itype=6,
         color=color, opacity=1.0, name="tROI (rectangle)", thickness=3.0)
     response = grpc_stub.ViewerControllerNewROI(request)
     assert response.status.status == 1, f"Could not create rectangle ROI (tROI)"
@@ -276,7 +276,7 @@ def test_viewer_controller_new_roi_text(grpc_stub, viewer_controller_4d):
                                                                    width=20., height=10.)
     color = viewercontroller_pb2.ViewerControllerNewROIRequest.Color(r=255, g=100, b=100)
     request = viewercontroller_pb2.ViewerControllerNewROIRequest(
-        viewer_controller=viewer_controller_4d, rectangle=rect, movie_idx=1, position=0, itype=13,
+        viewer_controller=viewer_controller_4d, rectangle=rect, movie_idx=1, idx=0, itype=13,
         color=color, opacity=1.0, name="text", thickness=3.0)
     response = grpc_stub.ViewerControllerNewROI(request)
     assert response.status.status == 1, f"Could not create text ROI"
@@ -290,7 +290,7 @@ def test_viewer_controller_new_roi_ttagt(grpc_stub, viewer_controller_4d):
               points]
     color = viewercontroller_pb2.ViewerControllerNewROIRequest.Color(r=100, g=250, b=220)
     request = viewercontroller_pb2.ViewerControllerNewROIRequest(
-        viewer_controller=viewer_controller_4d, points=points, movie_idx=1, position=0, itype=29,
+        viewer_controller=viewer_controller_4d, points=points, movie_idx=1, idx=0, itype=29,
         color=color, opacity=1.0, name="tTAGT", thickness=3.0)
     response = grpc_stub.ViewerControllerNewROI(request)
     assert response.status.status == 1, f"Could not create tTAGT ROI"
@@ -305,7 +305,7 @@ def test_viewer_controller_new_roi_pencil(grpc_stub, viewer_controller_4d):
                   for v in verts]
         color = viewercontroller_pb2.ViewerControllerNewROIRequest.Color(r=100, g=50, b=220)
         request = viewercontroller_pb2.ViewerControllerNewROIRequest(
-            viewer_controller=viewer_controller_4d, points=points, movie_idx=0, position=i,
+            viewer_controller=viewer_controller_4d, points=points, movie_idx=0, idx=i,
             itype=15, color=color, opacity=1.0, name="pencil", thickness=3.0)
         response = grpc_stub.ViewerControllerNewROI(request)
         assert response.status.status == 1, f"Could not create pencil ROI"
@@ -318,7 +318,7 @@ def test_viewer_controller_new_roi_angle(grpc_stub, viewer_controller_4d):
               viewercontroller_pb2.ViewerControllerNewROIRequest.Point2D(x=90., y=9.)]
     color = viewercontroller_pb2.ViewerControllerNewROIRequest.Color(r=100, g=50, b=220)
     request = viewercontroller_pb2.ViewerControllerNewROIRequest(
-        viewer_controller=viewer_controller_4d, points=points, movie_idx=1, position=0, itype=12,
+        viewer_controller=viewer_controller_4d, points=points, movie_idx=1, idx=0, itype=12,
         color=color, opacity=1.0, name="angle", thickness=3.0)
     response = grpc_stub.ViewerControllerNewROI(request)
     assert response.status.status == 1, f"Could not create angle ROI"
@@ -330,7 +330,7 @@ def test_viewer_controller_new_roi_measure(grpc_stub, viewer_controller_4d):
               viewercontroller_pb2.ViewerControllerNewROIRequest.Point2D(x=67., y=11.)]
     color = viewercontroller_pb2.ViewerControllerNewROIRequest.Color(r=100, g=50, b=0)
     request = viewercontroller_pb2.ViewerControllerNewROIRequest(
-        viewer_controller=viewer_controller_4d, points=points, movie_idx=1, position=0, itype=5,
+        viewer_controller=viewer_controller_4d, points=points, movie_idx=1, idx=0, itype=5,
         color=color, opacity=1.0, name="measure", thickness=3.0)
     response = grpc_stub.ViewerControllerNewROI(request)
     assert response.status.status == 1, f"Could not create measure ROI"
