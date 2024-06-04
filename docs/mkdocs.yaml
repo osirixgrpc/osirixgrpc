@@ -1,5 +1,5 @@
 # This provides set up for mkdocs documentation generation.
-site_name: OsiriXgrpc v0.2.1-dev62
+site_name: OsiriXgrpc v0.2.1-dev63
 site_url: 
 repo_url: https://github.com/osirixgrpc/osirixgrpc
 docs_dir: docs
