@@ -11,7 +11,7 @@ Typical usage example:
 
 from __future__ import annotations
 
-__version__ = "0.2.1-dev65"
+__version__ = "0.2.1-dev66"
 
 __author__ = "Timothy Sum Hon Mun & Matthew D Blackledge"
 
