@@ -131,22 +131,23 @@ jobs:
           mkdir -p src/"$BUILD_PATH"
           xcodebuild -project src/osirixgrpc.xcodeproj -scheme osirixgrpc_build -destination "generic/platform=macOS" CONFIGURATION_BUILD_DIR="$BUILD_PATH" build
           
-      - name: Zip plugin
-        run: |
-          cd src/$BUILD_PATH
-          zip -r ../../osirixgrpc.osirixplugin.zip osirixgrpc.osirixplugin
-
-      - name: Install Apple certificate
+      - name: Notarize plugin
         env:
           TEAM_ID: ${{ secrets.TEAM_ID }}
           APP_SPECIFIC_PASSWORD: ${{ secrets.APP_SPECIFIC_PASSWORD }}
           APPLE_ID: ${{ secrets.APPLE_ID }}
         run: |
+          zip -r osirixgrpc.osirixplugin.zip src/$BUILD_PATH/osirixgrpc.osirixplugin
           xcrun notarytool submit osirixgrpc.osirixplugin.zip --apple-id $APPLE_ID --password $APP_SPECIFIC_PASSWORD --team-id $TEAM_ID --wait
 
       - name: Staple Notarization
         run: |
           xcrun stapler staple src/$BUILD_PATH/osirixgrpc.osirixplugin
+
+      - name: Zip plugin
+        run: |
+          cd src/$BUILD_PATH
+          zip -r ../../osirixgrpc.osirixplugin.zip osirixgrpc.osirixplugin
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
