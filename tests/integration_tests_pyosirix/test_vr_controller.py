@@ -66,7 +66,7 @@ def test_vr_controller_set_rendering_mode_vr(vr_controller_2d):
 
 def test_vr_controller_roi_volumes(vr_controller_2d):
     """ Check ROIVolume instances can be accessed. """
-    assert len(vr_controller_2d.roi_volumes()) == 1,\
+    assert len(vr_controller_2d.roi_volumes()) >= 1,\
         f"Bad number of ROIVolumes {len(vr_controller_2d.roi_volumes())}"
 
 

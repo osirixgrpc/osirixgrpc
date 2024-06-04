@@ -19,6 +19,7 @@ def test_delete_rois_2d(grpc_stub, viewer_controller_2d):
     __delete_rois_in_viewer__(grpc_stub, viewer_controller_2d)
 
 
+
 def test_close_viewer_2d(grpc_stub, viewer_controller_2d):
     """ Close the 2D viewer (and the associated VRController). """
     response = grpc_stub.ViewerControllerCloseViewer(viewer_controller_2d)

@@ -146,6 +146,7 @@ jobs:
 
       - name: Zip plugin
         run: |
+          rm osirixgrpc.osirixplugin.zip
           cd src/$BUILD_PATH
           zip -r ../../osirixgrpc.osirixplugin.zip osirixgrpc.osirixplugin
 

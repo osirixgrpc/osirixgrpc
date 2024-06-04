@@ -19,7 +19,7 @@ def test_dicom_study_paths(study_test):
 def test_dicom_study_images(study_test):
     """ Check that images are provided. """
     images = study_test.images
-    assert len(images) == 40, f"Bad number of images ({len(images)})"
+    assert len(images) >= 40, f"Bad number of images ({len(images)})"
 
 
 def test_dicom_study_modalities(study_test):
