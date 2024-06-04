@@ -116,27 +116,26 @@ def dcm_pix_test(viewer_controller_2d):
 
 @pytest.fixture(scope="function")
 def roi_mask_test(viewer_controller_4d):
-    roi_slice = viewer_controller_4d.roi_list(0)[0]
-    assert len(roi_slice) > 0
-    roi = roi_slice[0]
-    assert roi.name == "pyosirix_mask"
-    yield roi
+    rois = viewer_controller_4d.rois_with_name("pyosirix_mask", movie_idx=0)
+    assert len(rois) > 0, \
+        f"Could not find an roi with name 'pyosirix_mask'"
+    yield rois[0]
 
 
 @pytest.fixture(scope="function")
 def roi_closed_polygon_test(viewer_controller_4d):
-    roi = viewer_controller_4d.roi_list(0)[39][0]
-    assert roi.name == "pyosirix_closed_polygon", \
+    rois = viewer_controller_4d.rois_with_name("pyosirix_closed_polygon", movie_idx=0)
+    assert len(rois) > 0, \
         f"Could not find a pencil roi with name 'pyosirix_closed_polygon'"
-    yield roi
+    yield rois[0]
 
 
 @pytest.fixture(scope="function")
 def roi_open_polygon_test(viewer_controller_4d):
-    roi = viewer_controller_4d.roi_list(0)[38][0]
-    assert roi.name == "pyosirix_open_polygon", \
+    rois = viewer_controller_4d.rois_with_name("pyosirix_open_polygon", movie_idx=0)
+    assert len(rois) > 0, \
         f"Could not find a pencil roi with name 'pyosirix_open_polygon'"
-    yield roi
+    yield rois[0]
 
 
 @pytest.fixture(scope="function")
