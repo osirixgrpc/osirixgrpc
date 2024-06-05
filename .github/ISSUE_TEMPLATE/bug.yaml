@@ -45,21 +45,19 @@ body:
         5. See attached an error file...
     validations:
       required: true
-  - type: dropdown
+  - type: input
     id: osirixgrpc-version
     attributes:
       label: OsiriXgrpc Version
       description: What version of OsiriXgrpc are you running?
-      options:
-        - "1.0.0"
-      default: 0
+      placeholder: "0.2.1-dev67"
     validations:
       required: true
   - type: input
     id: osirix-version
     attributes:
-      label: OsiriX Version
-      description: What version of OsiriX are you running? (see bottom-right in OsiriX &rarr; About OsiriX )
+      label: OsiriX/Horos Version
+      description: What version of OsiriX/Horos are you running? (see bottom-right in OsiriX &rarr; About OsiriX )
       placeholder: "14.0"
     validations:
       required: true
@@ -77,8 +75,8 @@ body:
       label: Architecture
       description: What Mac architecture are you using? (output of `arch` from terminal)
       options:
-        - x86_64
-        - arm64
+        - x86_64 (Intel)
+        - arm64 (Apple Silicon)
       default: 0
     validations:
       required: true
