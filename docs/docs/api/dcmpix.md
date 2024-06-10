@@ -23,9 +23,9 @@ response = osirix_stub.DCMPixXyz(request) # (1)
 
 1. `response` is a  `DCMPixXyzResponse` class, and `request` a `DCMPixXyzRequest` class.
 
-``` { .c++ title="osirix.proto (lines 60-76)"}
+``` { .c++ title="osirix.proto (lines 66-82)"}
 ----8<----
-protos/osirix.proto:60:76
+protos/osirix.proto:66:82
 ----8<----
 ```
 

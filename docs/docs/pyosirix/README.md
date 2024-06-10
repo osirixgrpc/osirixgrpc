@@ -33,7 +33,8 @@ pip install -i https://pypi.org/simple/ --extra-index-url https://test.pypi.org/
 ## Contributions
 If you would like to contribute to pyOsiriX, please have a look at our 
 [contributing](https://osirixgrpc.github.io/osirixgrpc/contributing/CONTRIBUTING.html) page. We are always eager to hear
-your ideas and improve pyOsiriX. Example ways to contribute include:
+your ideas and improve pyOsiriX. Examples include:
+
  1. Publishing example scripts of pyOsiriX in use. For example, something small that helps your day-to-day workflows.
  2. Editing documentation or suggesting changes.
  3. Reporting any bugs you find by [raising an issue](https://github.com/osirixgrpc/osirixgrpc/issues).

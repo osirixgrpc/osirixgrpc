@@ -22,9 +22,9 @@ response = osirix_stub.ROIVolumeXyz(request) # (1)
 
 1. `response` is a  `ROIVolumeXyzResponse` class, and `request` a `ROIVolumeXyzRequest` class.
 
-``` { .c++ title="osirix.proto (lines 47-57)"}
+``` { .c++ title="osirix.proto (lines 53-63)"}
 ----8<----
-protos/osirix.proto:47:57
+protos/osirix.proto:53:63
 ----8<----
 ```
 

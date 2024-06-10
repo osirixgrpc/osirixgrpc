@@ -22,9 +22,9 @@ response = osirix_stub.VRControllerXyz(request) # (1)
 
 1. `response` is a  `VRControllerXyzResponse` class, and `request` a `VRControllerXyzRequest` class.
 
-``` { .c++ title="osirix.proto (lines 79-90)"}
+``` { .c++ title="osirix.proto (lines 85-96)"}
 ----8<----
-protos/osirix.proto:79:90
+protos/osirix.proto:85:96
 ----8<----
 ```
 

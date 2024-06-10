@@ -22,9 +22,9 @@ response = osirix_stub.BrowserControllerXyz(request) # (1)
 
 1. `response` is a  `BrowserControllerXyzResponse` class, and `request` a `BrowserControllerXyzRequest` class.
 
-``` { .c++ title="osirix.proto (lines 118-119)"}
+``` { .c++ title="osirix.proto (lines 128-131)"}
 ----8<----
-protos/osirix.proto:118:119
+protos/osirix.proto:128:131
 ----8<----
 ```
 
@@ -47,9 +47,9 @@ x2 = response.arg2
 ...
 ```
 
-``` { .c++ title="browsercontroller.proto (lines 9-13)"}
+``` { .c++ title="browsercontroller.proto (lines 9-23)"}
 ----8<----
-protos/browsercontroller.proto:9:13
+protos/browsercontroller.proto:9:23
 ----8<----
 ```
 
@@ -72,8 +72,8 @@ from osirixgrpc import browsercontroller_pb2
 request = browsercontroller_pb2.BrowserControllerXyzRequest(arg1 = x1, arg2 = x2, ...)
 ```
 
-``` { .c++ title="browsercontroller.proto (lines 16-)"}
+``` { .c++ title="browsercontroller.proto (lines 26-)"}
 ----8<----
-protos/browsercontroller.proto:16:
+protos/browsercontroller.proto:26:
 ----8<----
 ```

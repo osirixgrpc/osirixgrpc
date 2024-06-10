@@ -81,5 +81,73 @@ The task console provides all stdout and stderr messages for the registered scri
 interface. Outputs can be saved and the console can be cleared.
 ![Task Console](assets/plugin/task_console.png)
 
+## OsiriXgrpc Basics
+The figure below presents the core OsiriXgrpc components, their core functionality, and how they interact with one 
+another. Note that this is meant to be an overview only.  Precise implementation details will depend on the API you use
+to interact with OsiriX through OsiriXgrpc, for example through the [OsiriXgrpc API](api/README.md) or via the 
+[pyOsiriX submodule](pyosirix/README.md). 
+![Overview](assets/class%20overview/overview.png)
 
-__Congratulations!__ You should now be ready to create client scripts to interact with OsiriX!
+### BrowserController
+Represents the core Dicom database of OsiriX. It contains references to all the Dicom instances that have been 
+imported as three nested objects: [DicomStudy](#dicomstudy), [DicomSeries](#dicomseries), and [DicomImage](#dicomimage).
+Access to the Browser can be achieved in OsiriXgrpc using the [`OsirixCurrentBrowser` message](api/README.md).
+See the [BrowserController API](api/dicomstudy.md) for more details.
+
+### DicomStudy
+Represents a complete Dicom study, encompassing both instances of [DicomSeries](#dicomseries) and 
+[DicomImage](#dicomimage). Also contains relevant metadata for the enclosed Dicom instance (patient name, study date,
+modalities etc.). See the [DicomStudy API](api/dicomstudy.md) for more details.
+
+### DicomSeries
+Represents a Dicom series, encompassing instances [DicomImage](#dicomimage). Also contains relevant metadata for the 
+enclosed Dicom instance (series description, modality etc.). See the [DicomSeries API](api/dicomseries.md) for more 
+details.
+
+### DicomImage
+Represents a Dicom image (frame). Contains the complete path of the stored Dicom file on the host machine, accessible 
+via the [`DicomImageCompletePath`](api/dicomimage.md) message. Also contains relevant metadata for the 
+image (width, height, SOPInstanceUID). See the [DicomSeries API](api/dicomseries.md) for more details.
+
+### ViewerController
+An open 2D image viewer, with all associated viewing details such as windowing setting, color-lookup table, displayed 
+slice etc. Use this to change how images are displayed within OsiriX to the user. Contained data are always displayed 
+in 4D, with only a single frame if no movie data are displayed. 
+Access to the currently active viewer (framed by a red box) can be achieved in OsiriXgrpc using the 
+[`OsirixFrontmostViewer` message](api/README.md), or access to all viewers via the 
+[`OsirixDisplayed2DViewers` message](api/README.md). See the [ViewerController API](api/viewercontroller.md) for 
+more details.
+
+### DCMPix
+An object representing raw image data, including the location of the original Dicom file. Can be either greyscale 
+(floating points values) or ARGB format (each channel is unsigned short with range 0-255). There are utility messages 
+that allow you convert between the two. See the [DCMPix API](api/dcmpix.md) for more details.
+
+### ROI
+Regions of interest drawn by the user. In general there are two kinds: polygonal and mask. However, polygonal ROIs
+come in different forms depending on how the user has drawn them (e.g. closed, open, line measurement). For more 
+information on this, it is best to check the [pyOsiriX documentation](pyosirix/api/roi.md). However, in general,
+polygonal ROIs are represented as an ordered list of 2-element tuples, each representing a column/row for a vertex 
+(non-integer). Mask ROIs are represented by a 2D array of boolean values. Other ROI attributes such as color, name,
+thickness, opacity etc. can be modified. Creation of new ROIs must be dones through the appropriate 
+[ViewerController](#viewercontroller) object.  See the [ROI API](api/roi.md) for other details.
+
+### VRController
+Represents the viewer displaying 3D data. These are always associated with some underlying 2D data via a 
+[ViewerController](#viewercontroller) object. Access to the currently active controller can be achieved in OsiriXgrpc 
+using the [`OsirixFrontmostVRController` message](api/README.md), or access to all viewers via the 
+[`OsirixDisplayedVRControllers` message](api/README.md).
+Provides access and allows control of display attributes including windowing settings and whether the volume render is 
+in Maximum Intensity Project (MIP) or Volume Render (VR) mode. Also provides access to instances of 
+(ROIVolume)[#roivolume]. See the [VRController API](api/vrcontroller.md) for more details.
+
+### ROIVolume
+__Note__: ROIs in OsiriX are grouped by name!
+Represents a volume of ROIs, all of which have the same name. Volumes can on;y be generated where there is a single ROI 
+of the same name on each imaging slice. Provides some immutable attributes such as ROI volume, and some mutable ones 
+such as color, opacity and texture. See the [ROIVolume API](api/roivolume.md) for more details.
+
+## Next Steps
+__Congratulations!__ You should now be ready to create client scripts to interact with OsiriX.
+For next steps see [Basics of OsiriXgrpc](api/README.md), __or even better__ we suggest the 
+[pyOsiriX documentation](pyosirix/README.md).

@@ -22,9 +22,9 @@ response = osirix_stub.ROIXyz(request) # (1)
 
 1. `response` is a  `ROIXyzResponse` class, and `request` a `ROIXyzRequest` class.
 
-``` { .c++ title="osirix.proto (lines 27-44)"}
+``` { .c++ title="osirix.proto (lines 32-50)"}
 ----8<----
-protos/osirix.proto:27:44
+protos/osirix.proto:32:50
 ----8<----
 ```
 
@@ -72,8 +72,8 @@ from osirixgrpc import roi_pb2
 request = roi_pb2.ROIXyzRequest(arg1 = x1, arg2 = x2, ...)
 ```
 
-``` { .c++ title="roi.proto (lines 61-)"}
+``` { .c++ title="roi.proto (lines 62-)"}
 ----8<----
-protos/roi.proto:61:
+protos/roi.proto:62:
 ----8<----
 ```

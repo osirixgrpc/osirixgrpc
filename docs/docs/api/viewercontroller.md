@@ -22,9 +22,9 @@ response = osirix_stub.ViewerControllerXyz(request) # (1)
 
 1. `response` is a  `ViewerControllerXyzResponse` class, and `request` a `ViewerControllerXyzRequest` class.
 
-``` { .c++ title="osirix.proto (lines 93-115)"}
+``` { .c++ title="osirix.proto (lines 99-125)"}
 ----8<----
-protos/osirix.proto:93:115
+protos/osirix.proto:99:125
 ----8<----
 ```
 
@@ -47,7 +47,7 @@ x2 = response.arg2
 ...
 ```
 
-``` { .c++ title="viewercontroller.proto (lines 9-91)"}
+``` { .c++ title="viewercontroller.proto (lines 9-111)"}
 ----8<----
 protos/viewercontroller.proto:9:91
 ----8<----
@@ -72,8 +72,8 @@ from osirixgrpc import viewercontroller_pb2
 request = viewercontroller_pb2.ViewerControllerXyzRequest(arg1 = x1, arg2 = x2, ...)
 ```
 
-``` { .c++ title="viewercontroller.proto (lines 95-)"}
+``` { .c++ title="viewercontroller.proto (lines 115-)"}
 ----8<----
-protos/viewercontroller.proto:95:
+protos/viewercontroller.proto:115:
 ----8<----
 ```

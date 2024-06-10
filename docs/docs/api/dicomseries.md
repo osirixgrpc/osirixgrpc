@@ -22,9 +22,9 @@ response = osirix_stub.DicomSeriesXyz(request) # (1)
 
 1. `response` is a  `DicomSeriesXyzResponse` class, and `request` a `DicomSeries` class.
 
-``` { .c++ title="osirix.proto (lines 134-146)"}
+``` { .c++ title="osirix.proto (lines 146-158)"}
 ----8<----
-protos/osirix.proto:134:146
+protos/osirix.proto:146:158
 ----8<----
 ```
 
