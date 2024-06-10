@@ -46,14 +46,23 @@ body:
         Let us know in as much detail as possible what it is you need and why. 
         If helpful, please do attach some screenshots or figure that might help explain this a little better.
       placeholder: |
-        **Is your feature request related to a problem? Please describe.**
-        A clear and concise description of what the problem is. Ex. I'm always frustrated when [...]
-
-        **Describe the solution you'd like**
-        A clear and concise description of what you want to happen.
-
-        **Describe alternatives you've considered**
-        A clear and concise description of any alternative solutions or features you've considered.
+        **To which aspect of OsiriXgrpc is the feature request intended?**
+        Is this related to ROIs, Dicom Browser Controller, etc.
+        
+        **Short description of the new functionality**
+        What would you like the new functionality to achieve?
+        
+        **Why would this improve the functionality of OsiriXgrpc?**
+        Why does this matter to you?
+        
+        **Have you been using any work-around so far?**
+        Please let us know how much of an issue this has been for you.
+        
+        **How urgent is the new functionality to you?**
+        Does OsiriXgrpc fail to meet your needs without?
+        
+        **Would you be willing to help develop/test the new functionality?**
+        Please contact us if so.
 
         **Additional context**
         Add any other context or screenshots about the feature request here.

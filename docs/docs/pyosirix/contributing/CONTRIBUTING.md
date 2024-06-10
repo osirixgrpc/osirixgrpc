@@ -1,5 +1,5 @@
 # Contributing to pyOsiriX
-For general notes on contributing, please see the main [contributing page](../../contributing/CONTRIBUTING.md) page
+For general notes on contributing, please see the main [contributing page](../../contributing/CONTRIBUTING.md)
 for OsiriXgrpc as this sub-package follows the same processes. Specific instructions for code standards for conding 
 conventions are provided below.
 
@@ -20,7 +20,12 @@ look at existing code and follow the same syntax used, and/or raise an
    regions-of-interest, viewers, dicoms accessors).
 
 ### Class structure
- - All 
+ - All methods must have the decorator `@pyosirix_connection_check`.
+ - All class properties (get/set or just get) must include the decorator `@property`. Please ensure
+   that attributes are chosen properly.  For example `color` is an attribute. The method `rotate` is not.
+ - Please include a docstring for each method. Ideally with an example if deemed necessary.
+ - Please name the method appropriately using snake case. For example, if the method in OsiriXgrpc is `ROIRotate`, name
+   it `rotate`.
 
 ## Contributing pyOsiriX Example Scripts
 We welcome example scripts from developers to help showcase its functionality to other users.  We follow a blog-like 
@@ -53,7 +58,8 @@ basic premises:
     - `requirements.txt`: Any python requirements needed by the script. The user should be able to use this to install
       the necessary third-party packages needed to run your file using `pip install -r requirements.txt`. See the 
       [Requirements File Format](https://pip.pypa.io/en/stable/reference/requirements-file-format/) for more 
-      information. __Note__: If no additional packages are required, please explicitly state this by just providing an
+      information. Please try and minimize the number of requirements (do not just dump your current environment). 
+      __Note__: If no additional packages are required, please explicitly state this by providing an
       empty `requirements.txt` file.
     - `additional files` (optional): Any other files that might be needed for running the script. Whilst it is 
       possible to include additional dependent python module files to support you script, it is encouraged not to do 
