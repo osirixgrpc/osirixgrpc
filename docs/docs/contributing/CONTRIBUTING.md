@@ -146,14 +146,20 @@ functionality and user experience.
 
 ### Version Control
 
-OsiriXgrpc uses semantic versioning using a traditional Gitflow scheme as illustrated in the figure below. All 
-development takes place within within the `dev` branch prior to release in the main branch. This branch exists in one of 
-two phases:
+OsiriXgrpc uses semantic versioning (`major.minor.patch-releasebuild`) using a traditional Gitflow scheme as illustrated 
+in the figure below. All development takes place within the `dev` branch prior to release in the main branch. This 
+branch exists in one of two phases:
 
 1. __Development__ phase. Each version is appended by the `_devX`, where `X` increments after each additional
   feature is merged. New features are accepted in this stage.
 2. __Release Candidate__ phase. Each version will be appended by the `_rcX`, where `X` increments after each additional
   hot-fix applied during user testing. No new features will be accepted during this phase.
+
+Once all tests are complete, the `dev` branch is merged with `main`, and the software remains a beta release for an
+incubation period of 2 months, before being fully released. During this period, on;y hotfixes may be made. It provides
+us with some buffer to perform tests on the main branch.
+
+Any release with `major` = 0 means that we may make subtle changes to the technology prior to 1.0.0.
 
 ![OsiriXgrpc version control](../assets/osirixgrpc.drawio.svg)
 
@@ -168,7 +174,7 @@ commands available to bump2version within this project, and example increments i
   </tr>
   <tr>
     <td><code>bumpversion release</code></td>
-    <td>1.0.0-dev5 &rarr; 1.0.0-rc0 &rarr; 1.0.0</td>
+    <td>1.0.0-dev5 &rarr; 1.0.0-rc0 &rarr; 1.0.0-beta0 &rarr; 1.0.0</td>
   </tr>
   <tr>
     <td><code>bumpversion patch</code></td>
@@ -209,6 +215,7 @@ developers before being implemented.
 | docs/api                | Description files for all OsiriXgrpc client API (in Python).                         |
 | docs/assets             | Location for all figures and other supporting information not in Markdown format.    |
 | docs/contributing       | Instruction for how to contribute to the project.                                    |
+| docs/pyosirix           | Documentation for the pyOsiriX sub-package.                                          |
 | docs/getting_started.md | Core instructions on how to install and use the OsiriX plugin (e.g. user-interface). |
 | docs/README.md          | The homepage for the documentation.                                                  |
 | mkdocs.yaml             | yaml configuration file for the mkdocs build                                         | 
@@ -325,6 +332,7 @@ Please use the relevant label for each issue that you submit on the GitHub proje
 | `bug`             | If you encounter a bug then please let us know using the provided template. See [Bug Reporting](#bug-reporting) for more information.                 |
 | `feature_request` | What else would you like see from OsiriXgrpc? Is there any functionality in OsiriX that you think warrant exposure through API?                       |
 | `documentation`   | Tell us how we can improve our [documentation](#documentation). This includes everything from fixing spelling mistakes to improving interpretability. |
+| `generic`         | Any other issue you have with OsiriXgrpc.                                                                                                             |
 
 
 ## Contact
