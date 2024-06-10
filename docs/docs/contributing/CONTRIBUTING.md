@@ -156,10 +156,11 @@ branch exists in one of two phases:
   hot-fix applied during user testing. No new features will be accepted during this phase.
 
 Once all tests are complete, the `dev` branch is merged with `main`, and the software remains a beta release for an
-incubation period of 2 months, before being fully released. During this period, on;y hotfixes may be made. It provides
-us with some buffer to perform tests on the main branch.
+incubation period of 2 months, before being fully released. During this period, only hotfixes may be made with no 
+change to the core infrastructure (i.e. nomenclature to remain consistent). This provides us with some buffer to perform 
+tests on the main branch and obtain feedback from external users.
 
-Any release with `major` = 0 means that we may make subtle changes to the technology prior to 1.0.0.
+Any release with `major` = 0 means that we may make subtle changes to the technology prior to 1.0.0 (i.e. no promises!).
 
 ![OsiriXgrpc version control](../assets/osirixgrpc.drawio.svg)
 
@@ -297,10 +298,21 @@ Google Form that checks successful completion and obtains feedback on each of th
 In addition, we will ask testers to run some automated unit tests. Automated unit testing for OsiriXgrpc presents 
 substantial challenges - this complexity arises from its dependency on symbols and functions embedded within the OsiriX 
 executable. Consequently, to maintain the quality and reliability of OsiriXgrpc, we incorporate unit testing into our 
-user tests. This approach also ensures comprehensive validation through real-world usage scenarios. These unit tests 
-will deploy an output file (`osirixgrpc_unit_tests.txt`) on the testers Desktop, which will be requested to be sent back
-to us for processing. This file will not capture any personal information, other than the versions of macOS, OsiriX,
-and OsiriXgrpc the tester has used.
+user tests. This approach also ensures comprehensive validation through real-world usage scenarios. 
+
+To run automated unit tests:
+
+1. Clone the latest [repository](https://github.com/osirixgrpc/osirixgrpc), or pull changes.
+2. Switch to the `dev` branch (`git checkout dev`).
+3. Open up OsiriX and move to or create an empty database (no Dicom studies/series displayed).
+4. Ensure that an OsiriXgrpc port `50001` is established and running (see [Getting Started](../getting_started.md#server-configuration))
+5. Change directory to `tests` (`cd tests` from the main repository).
+6. Run the shell script: `bash run_tests.sh`
+
+Please wait while OsiriX runs through all the tests (many screen will open and close). The shell script will indicate 
+testing is complete. Unit tests will save results to an output directory on your Desktop `osirixgrpc_tests`. Please
+zip this folder and [send it to us](#contact). Contained files do not capture any personal information, other than the 
+versions of macOS, OsiriX, and OsiriXgrpc.
 
 ## Feature Requests
 
