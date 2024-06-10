@@ -50,7 +50,7 @@ body:
     attributes:
       label: OsiriXgrpc Version
       description: What version of OsiriXgrpc are you running?
-      placeholder: "0.2.1-dev68"
+      placeholder: "0.2.1-dev69"
     validations:
       required: true
   - type: input
