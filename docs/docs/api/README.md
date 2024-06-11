@@ -1,7 +1,8 @@
 # Basics
 
-> ___Note___: This is the long-winded way to do things. We _strongly_ encourage using the [pyosirix](404.html) library
-  for day-to-day development. However, this does provide an indication of what is happening "under the hood".
+> ___Note___: This is the long-winded way to do things. We _strongly_ encourage using the 
+  [pyosirix](../pyosirix/README.md) library for day-to-day development. However, this does provide an indication of
+  what is happening "under the hood".
  
 gRPC supports many [languages](https://grpc.io/docs/languages/), including C++, Java, Go, Node.js, and PHP. 
 We currently only support use of Python because the libraries available image processing and machine-learning,

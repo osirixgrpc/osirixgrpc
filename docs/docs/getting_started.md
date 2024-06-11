@@ -15,7 +15,7 @@ The OsiriXgrpc plugin consists of three core functionalities, all of which are a
    recorded.
 
 ## Installation
-1. Download the [latest release](404.html).
+1. Download the [latest release](https://github.com/osirixgrpc/osirixgrpc/releases/latest).
 2. Extract the downloaded archive.
 3. Drag the `osirixgrpc.osirixplugin` file to the OsiriX application you want to install to.
 4. Follow instructions for further installation.
