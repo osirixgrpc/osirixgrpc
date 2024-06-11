@@ -1,0 +1,2 @@
+osirix
+numpy

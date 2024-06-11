@@ -66,6 +66,11 @@ class UpdatePyosirixExamples:
         return "screenshot.png"
 
     @property
+    def requirements_filename(self) -> str:
+        """ The expected name of the requirements file. """
+        return "requirements.txt"
+
+    @property
     def image_resolution(self) -> Tuple[int, int]:
         """ The expected resolution (columns, rows) of the screenshot file. """
         return 800, 600
@@ -96,6 +101,28 @@ class UpdatePyosirixExamples:
             int: The number of leading blank spaces.
         """
         return len(s) - len(s.lstrip(' '))
+
+    def check_valid_example_requirements(self, requirements_path:str) -> Tuple[bool, str]:
+        """ Check that an example requirements.txt file is valid.
+
+        Checks:
+            1. The file exists.
+            2. It has the right filename.
+
+        Args:
+            requirements_path (str): The path to the requirements.txt file.
+
+        Returns:
+              bool: Whether the requirements file is valid.
+              str: A comment about why there was a failure (empty if not used).
+        """
+        if not os.path.exists(requirements_path):
+            return False, "No requirements.txt at specified location."
+
+        if not os.path.basename(requirements_path) == self.requirements_filename:
+            return False, f"Invalid filename {requirements_path}"
+
+        return True , ""
 
     def check_valid_example_readme(self, readme_path: str) -> Tuple[bool, str]:
         """ Check that an example README.md file is valid.
@@ -191,8 +218,9 @@ class UpdatePyosirixExamples:
             1. Presence of README.md
             2. Presence of screenshot.png (at resolution 800 x 400)
             3. Presence of script.py
-            4. Presence of the tag for the short description within README.md
-            5. No additional files/directories other than "additional files"
+            4. Presence of requirements.txt
+            5. Presence of the tag for the short description within README.md
+            6. No additional files/directories other than "additional files"
 
         Args:
             path (str): The template directory to check.
@@ -219,6 +247,12 @@ class UpdatePyosirixExamples:
 
         # Check there is a script.py file
         script_path = os.path.join(path, "script.py")
+        bok, message = self.check_valid_example_script(script_path)
+        if not bok:
+            return False, message
+
+        # Check there is a requirements.txt file
+        requirements_path = os.path.join(path, "requirements.txt")
         bok, message = self.check_valid_example_script(script_path)
         if not bok:
             return False, message
@@ -391,6 +425,25 @@ class UpdatePyosirixExamples:
                      f"```"
         return append_str
 
+    @staticmethod
+    def readme_append_requirements(requirements_path: str) -> str:
+        """ Create string to append the requirements to the end of a README file.
+
+        Args:
+            requirements_path (str): The path to the example requirements.txt file.
+
+        Returns:
+            str: The string to append to the end of the readme.
+        """
+        append_str = f"\n" + \
+                     f"## Requirements\n" + \
+                     f"```python\n" + \
+                     f"----8<----\n" + \
+                     f"{requirements_path.split('/')[-2]}/requirements.txt\n" + \
+                     f"----8<----\n" + \
+                     f"```"
+        return append_str
+
     def updated_readme_contents(self, readme_path: str) -> str:
         """ Update the README.md file to include the python script at the end.
 
@@ -403,6 +456,7 @@ class UpdatePyosirixExamples:
         with open(readme_path, "r") as fhandle:
             contents = fhandle.read()
             contents = contents + self.readme_append_string(readme_path)
+            contents = contents + self.readme_append_requirements(readme_path)
         return contents
 
     def run(self):
