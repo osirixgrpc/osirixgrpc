@@ -39,3 +39,6 @@ template.
 
  - Support for other scripting languages including Java and Ruby.
  - Improve security through SSL/TCL encryption.
+
+## Funding
+We thank the MedTech SuperConnector for helping to support this work: https://medtechsuperconnector.com/
