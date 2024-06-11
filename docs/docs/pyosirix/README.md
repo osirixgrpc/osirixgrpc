@@ -21,7 +21,7 @@ Example functionality includes:
 
 ## Installation
 ```
-pip install -i https://pypi.org/simple/ --extra-index-url https://test.pypi.org/simple/ pyosirix==0.2.1-dev72
+pip install -i https://pypi.org/simple/ --extra-index-url https://test.pypi.org/simple/ pyosirix==0.2.1-dev73
 ```
 
 ## Requirements
