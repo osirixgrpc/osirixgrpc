@@ -6,6 +6,8 @@ BUILD_PATH="build"
 
 if ! [ -d grpc ]; then
 
+    brew install cmake
+
     # Clone grpc
     # ==========
     git clone --recurse-submodules -b v"$GRPC_VERSION" https://github.com/grpc/grpc

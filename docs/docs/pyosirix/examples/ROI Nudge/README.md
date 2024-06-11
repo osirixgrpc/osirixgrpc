@@ -47,6 +47,7 @@ There is no limit on what information you wish to provide and subsection heading
 ## Details
 This script also shows how to integrate additional an additional (modal) user-interface through PyQt5.
 To use it:
+
   - Select some ROIs in a viewer.
   - Select the number of rows/columns to shift by.
   - Hold down the direction keys to move the selected ROIs in that particular direction.
