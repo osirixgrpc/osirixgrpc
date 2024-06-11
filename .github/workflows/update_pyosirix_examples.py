@@ -426,8 +426,7 @@ class UpdatePyosirixExamples:
                      f"----8<----\n" +\
                      f"{readme_path.split('/')[-2]}/script.py\n" +\
                      f"----8<----\n" +\
-                     f"```" +\
-                     f""
+                     f"```\n"
         return append_str
 
     @staticmethod
