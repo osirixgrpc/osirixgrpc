@@ -243,6 +243,7 @@ class DicomStudy(osirix.base.OsirixBase):
 class DicomSeries(osirix.base.OsirixBase):
     """ An instance representing a Dicom series within the OsiriX database.
 
+    All attributes for this instance are immutable.
     """
     def __repr__(self):
         return f"DicomSeries: " \
@@ -396,6 +397,7 @@ class DicomSeries(osirix.base.OsirixBase):
 class DicomImage(osirix.base.OsirixBase):
     """ An instance representing a Dicom image within the OsiriX database.
 
+    All attributes for this instance are immutable.
     """
     def __repr__(self):
         return f"DicomImage: " \

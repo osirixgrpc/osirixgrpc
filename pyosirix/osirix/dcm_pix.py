@@ -25,6 +25,9 @@ from osirix.base import pyosirix_connection_check
 
 
 class DCMPix(osirix.base.OsirixBase):
+    """ Represents a single image displayed within a 2D OsiriX viewer (`ViewerController`)
+
+    """
     def __repr__(self):
         return f"DCMPix: " \
                f"{self.slice_location:.2f} " \
@@ -130,7 +133,7 @@ class DCMPix(osirix.base.OsirixBase):
 
     @image.setter
     @pyosirix_connection_check
-    def image(self, image_arr: NDArray):
+    def image(self, image_arr: NDArray) -> None:
         """ The image data as a Numpy array.
 
         If the image is RGB format, then the shape will be (rows, columns, 4), whereas if the image
@@ -160,8 +163,14 @@ class DCMPix(osirix.base.OsirixBase):
             roi (osirix.roi.ROI): The region of interest from which to compute the statistics.
 
         Returns:
-            A dictionary containing the following key-value pairs: "mean", "std", "min", "max",
-                "skewness", "kurtosis"
+            The following statistics in a dictionary:
+                - "mean"
+                - "total"
+                - "std_dev"
+                - "min"
+                - "max"
+                - "skewness"
+                - "kurtosis"
         """
         request = dcmpix_pb2.DCMPixComputeROIRequest(pix=self.pb2_object, roi=roi.pb2_object)
         response = self.osirix_service_stub.DCMPixComputeROI(request)

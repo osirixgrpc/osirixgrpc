@@ -30,6 +30,15 @@ class OsirixService(object):
             messages to the OsiriXgrpc server. None if no connection established.
         channel (grpc._channel.Channel): An insecure gRPC channel configuration.
 
+     Example usage:
+        ```python
+        import osirix
+        port = 50051    # You can use any unused port
+        domain = "localhost:"
+        server_url_localhost = 'localhost:' + str(port)
+	    osirix_service = osirix.osirix_utilities.OsirixService(domain=domain, port=port)
+        ```
+
     """
     def __init__(self, domain: str = "127.0.0.1", port: int = 50051,
                  max_send_message_length: int = 500000000,
@@ -62,7 +71,8 @@ class OsirixService(object):
         """ Check that a connection with OsiriX is established.
 
         Returns:
-            True if a connection is established.
+            bool: True if a connection is established.
+
         """
         try:
             self.osirix_service_stub.OsirixVersion(utilities_pb2.Empty())
@@ -90,6 +100,7 @@ class Osirix(osirix.base.OsirixBase):
 
         Note that it is better not use this method directly. Use the following instead:
 
+        Example usage:
         ```python
         import osirix
         browser = osirix.current_browser()
@@ -113,6 +124,7 @@ class Osirix(osirix.base.OsirixBase):
         If there are more than one, look for the viewer highlighted by a red boundary.
         Note that it is better not use this method directly. Use the following instead:
 
+        Example usage:
         ```python
         import osirix
         viewer = osirix.frontmost_viewer()
@@ -135,6 +147,7 @@ class Osirix(osirix.base.OsirixBase):
 
         Note that it is better not use this method directly. Use the following instead:
 
+        Example usage:
         ```python
         import osirix
         viewers = osirix.displayed_2d_viewers()
@@ -159,6 +172,7 @@ class Osirix(osirix.base.OsirixBase):
 
         Note that it is better not use this method directly. Use the following instead:
 
+        Example usage:
         ```python
         import osirix
         vr_controller = osirix.frontmost_vr_controller()
@@ -181,6 +195,7 @@ class Osirix(osirix.base.OsirixBase):
 
         Note that it is better not use this method directly. Use the following instead:
 
+        Example usage:
         ```python
         import osirix
         vr_controllers = osirix.displayed_vr_controllers()

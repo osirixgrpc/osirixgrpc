@@ -49,8 +49,8 @@ class ViewerController(osirix.base.OsirixBase):
     def idx(self, idx: int) -> None:
         """ The data slice index currently being displayed to the viewer (starting at 0).
 
-        Note that this may not be equal to the index displayed on the viewer when `data_flipped` is
-            True.
+        Note that this may not be equal to the index displayed on the viewer when
+            `data_flipped` is True.
         """
         request = viewercontroller_pb2.ViewerControllerSetIdxRequest(
             viewer_controller=self.pb2_object, idx=idx)
@@ -62,8 +62,8 @@ class ViewerController(osirix.base.OsirixBase):
     def displayed_idx(self) -> int:
         """ The data slice index currently being displayed to the viewer (starting at 0).
 
-        Note that this may not be equal to the index displayed on the viewer when `data_flipped` is
-            True.
+        Note that this may not be equal to the index displayed on the viewer when
+            `data_flipped` is True.
         """
         response = self.osirix_service_stub.ViewerControllerDisplayedIdx(self.pb2_object)
         self.response_check(response)
@@ -72,7 +72,7 @@ class ViewerController(osirix.base.OsirixBase):
     @displayed_idx.setter
     @pyosirix_connection_check
     def displayed_idx(self, idx: int) -> None:
-        """ The data slice index currently being displayed to the viewer (starting at 0).
+        """ The slice index currently being displayed to the viewer (starting at 0).
 
         Note that the index displayed on the viewer is this value plus one.
         """
@@ -172,7 +172,7 @@ class ViewerController(osirix.base.OsirixBase):
 
         Args:
             movie_idx (int): The frame from which to extract the DCMPix instances. If `None`, then
-                use the currently displayed movie_idx.
+                use the currently displayed movie_idx. Default is `None`.
 
         Returns:
             The list of osirix.dcm_pix.DCMPix instances requested for a particular frame.
@@ -194,7 +194,7 @@ class ViewerController(osirix.base.OsirixBase):
 
         Args:
             movie_idx (int): The frame from which to extract the ROI instances. If `None`, then
-                use the currently displayed movie_idx.
+                use the currently displayed movie_idx. Default is `None`.
 
         Returns:
             A list of lists of osirix.roi.ROI instances requested for a particular frame.
@@ -224,8 +224,8 @@ class ViewerController(osirix.base.OsirixBase):
         Args:
             name (str): The name of ROIs to look for.
             movie_idx (int): The frame from which to extract the ROI instances. If `None`, then
-                use the currently displayed movie_idx.
-            in_4d (bool): Whether to look through all frames.
+                use the currently displayed movie_idx. Default is `None`.
+            in_4d (bool): Whether to look through all frames. Default is False.
 
         Returns:
             A list of ROIs with the given name.
@@ -260,6 +260,15 @@ class ViewerController(osirix.base.OsirixBase):
     @pyosirix_connection_check
     def vr_controllers(self) -> List[osirix.vr_controller.VRController]:
         """ Return the list of currently displayed 3D viewers associates with this 2D window.
+
+        Returns:
+            List containing multiple VRController instances
+
+        Example usage:
+             ```python
+                frontmost_viewer = osirix.frontmost_viewer()
+                vr_controllers = frontmost_viewer.vr_controllers()
+             ```
         """
         response = self.osirix_service_stub.ViewerControllerVRControllers(self.pb2_object)
         self.response_check(response)
@@ -274,7 +283,13 @@ class ViewerController(osirix.base.OsirixBase):
         """ Return the viewer controller instance that is being fused with this one.
 
         Returns:
-            The blending viewer instance.
+            The ViewerController instance.
+
+        Example usage:
+             ```python
+                frontmost_viewer = osirix.frontmost_viewer()
+                blending_controller = frontmost_viewer.blending_controller()
+             ```
         """
         response = self.osirix_service_stub.ViewerControllerBlendingController(self.pb2_object)
         self.response_check(response)
@@ -287,6 +302,12 @@ class ViewerController(osirix.base.OsirixBase):
         Args:
             viewer (osirix.viewer_controller.ViewerController): The viewer to fuse onto the present
                 one.
+
+        Example usage:
+             ```python
+                frontmost_viewer = osirix.frontmost_viewer()
+                frontmost_viewer.fuse_with_viewer(another_viewer_controller)
+             ```
         """
         request = viewercontroller_pb2.ViewerControllerFuseWithViewerRequest(
             viewer_controller=self.pb2_object, fusion_viewer_controller=viewer.pb2_object)
@@ -309,6 +330,12 @@ class ViewerController(osirix.base.OsirixBase):
 
         Returns:
             The new osirix.viewer_controller.ViewerController instance.
+
+         Example usage:
+             ```python
+                frontmost_viewer = osirix.frontmost_viewer()
+                frontmost_viewer.copy_viewer_window(another_viewer_controller)
+             ```
         """
         response = self.osirix_service_stub.ViewerControllerCopyViewerWindow(self.pb2_object)
         self.response_check(response)
@@ -319,7 +346,13 @@ class ViewerController(osirix.base.OsirixBase):
         """ Return the currently displayed DCMPix instance.
 
         Returns:
-            The currently displayed DCMPix instance.
+            the currently displayed DCMPix instance.
+
+        Example usage:
+             ```python
+                frontmost_viewer = osirix.frontmost_viewer()
+                frontmost_viewer.cur_dcm()
+             ```
         """
         response = self.osirix_service_stub.ViewerControllerCurDCM(self.pb2_object)
         self.response_check(response)
@@ -334,6 +367,12 @@ class ViewerController(osirix.base.OsirixBase):
 
         Returns:
             Is the data volumic?
+
+        Example usage:
+             ```python
+                frontmost_viewer = osirix.frontmost_viewer()
+                frontmost_viewer.is_data_volumic()
+             ```
         """
         request = viewercontroller_pb2.ViewerControllerIsDataVolumicRequest(
             viewer_controller=self.pb2_object, in_4d=in_4d)
@@ -346,6 +385,12 @@ class ViewerController(osirix.base.OsirixBase):
         """ Tell the viewer it should update its display.
 
         This is particularly important if you want to see changes to pixel values in real time.
+
+        Example usage:
+             ```python
+                frontmost_viewer = osirix.frontmost_viewer()
+                frontmost_viewer.needs_display_update()
+             ```
         """
         response = self.osirix_service_stub.ViewerControllerNeedsDisplayUpdate(self.pb2_object)
         self.response_check(response)
@@ -364,6 +409,12 @@ class ViewerController(osirix.base.OsirixBase):
 
         Returns:
             The resampled viewer window.
+
+        Example usage:
+             ```python
+                frontmost_viewer = osirix.frontmost_viewer()
+                frontmost_viewer.resample_viewer_controller(another_viewer_controller)
+             ```
         """
         request = viewercontroller_pb2.ViewerControllerResampleViewerControllerRequest(
             viewer_controller=self.pb2_object, fixed_viewer_controller=vc.pb2_object)
@@ -380,6 +431,12 @@ class ViewerController(osirix.base.OsirixBase):
 
         Returns:
             A VRController instance.
+
+        Example usage:
+             ```python
+                frontmost_viewer = osirix.frontmost_viewer()
+                frontmost_viewer.open_vr_viewer(mode="VR")
+             ```
         """
         if mode not in ["VR", "MIP"]:
             raise ValueError("`mode` must be either 'VR' or 'MIP'")
@@ -423,6 +480,7 @@ class ViewerController(osirix.base.OsirixBase):
         Raises:
             ValueError: When `buffer`, `points` and `rect` are all None.
             ValueError: When the input data is of invalid format.
+
         """
         if buffer is None and rect is None and points is None:
             raise ValueError("buffer, rect and points cannot be None at the same time.")
@@ -486,7 +544,7 @@ class ViewerController(osirix.base.OsirixBase):
 
         Args:
             buffer (NDArray): The buffer mask as a 2D boolean Numpy array.
-            **kwargs: See `new_roi` for all additional parameters.
+            **kwargs: See `new_roi` for all additional comments.
 
         Returns:
              The created ROI instance.
@@ -500,7 +558,7 @@ class ViewerController(osirix.base.OsirixBase):
         Args:
             points (NDArray): The vertices of the ROI.  Must have shape (N, 2).
             closed (bool): Whether the polygon is closed.
-            **kwargs: See `new_roi` for all additional parameters.
+            **kwargs: See `new_roi` for all additional comments.
 
         Returns:
              The created ROI instance.
@@ -518,7 +576,7 @@ class ViewerController(osirix.base.OsirixBase):
         Args:
             start (float, float): The starting position of the ROI (column, row).
             end (float, float): The ending position of the ROI (column, row).
-            **kwargs: See `new_roi` for all additional parameters.
+            **kwargs: See `new_roi` for all additional comments.
 
         Returns:
              The created ROI instance.
@@ -534,7 +592,7 @@ class ViewerController(osirix.base.OsirixBase):
         Args:
             column (float): The column position of the ROI
             row (float): The row position of the ROI
-            **kwargs: See `new_roi` for all additional parameters.
+            **kwargs: See `new_roi` for all additional comments.
 
         Returns:
              The created ROI instance.
@@ -550,7 +608,7 @@ class ViewerController(osirix.base.OsirixBase):
             column (float): The column position of the ROI
             row (float): The row position of the ROI
             name (str): The text to show
-            **kwargs: See `new_roi` for all additional parameters.
+            **kwargs: See `new_roi` for all additional comments.
 
         Returns:
              The created ROI instance.
@@ -566,7 +624,7 @@ class ViewerController(osirix.base.OsirixBase):
         Args:
             tail (float, float): The (column, row) position of the arrow tail.
             head (float, float): The (column, row) position of the arrow hear.
-            **kwargs: See `new_roi` for all additional parameters.
+            **kwargs: See `new_roi` for all additional comments.
 
         Returns:
              The created ROI instance.
@@ -583,7 +641,7 @@ class ViewerController(osirix.base.OsirixBase):
             center (float, float): The (column, row) center of the oval ROI.
             width (float): The width of the oval ROI.
             height (float): The height of the oval ROI.
-            **kwargs: See `new_roi` for all additional parameters.
+            **kwargs: See `new_roi` for all additional comments.
 
         Returns:
              The created ROI instance.
@@ -600,7 +658,7 @@ class ViewerController(osirix.base.OsirixBase):
             center (float, float): The (column, row) center of the rectangle ROI.
             width (float): The width of the rectangle ROI.
             height (float): The height of the rectangle ROI.
-            **kwargs: See `new_roi` for all additional parameters.
+            **kwargs: See `new_roi` for all additional comments.
 
         Returns:
              The created ROI instance.
@@ -614,9 +672,8 @@ class ViewerController(osirix.base.OsirixBase):
         """ Create a new angle ROI within the viewer.
 
         This draws two connected vectors:
-
-            - v = p2 &rarr; p1
-            - u = p2 &rarr; p3
+            - v = p2 -> p1
+            - u = p2 -> p3
 
         The displayed angle is the angle between these two vectors.
 
@@ -624,7 +681,7 @@ class ViewerController(osirix.base.OsirixBase):
             p1 (float, float): The (column, row) position of the first angle vertex.
             p2 (float, float): The (column, row) position of the second angle vertex.
             p3 (float, float): The (column, row) position of the third angle vertex.
-            **kwargs: See `new_roi` for all additional parameters.
+            **kwargs: See `new_roi` for all additional comments.
 
         Returns:
              The created ROI instance.
@@ -639,9 +696,8 @@ class ViewerController(osirix.base.OsirixBase):
         """ Create a new dynamic angle ROI within the viewer.
 
         This draws two vectors:
-
-            - v = p2 &rarr; p1
-            - u = p3 &rarr; p4
+            - v = p2 -> p1
+            - u = p3 -> p4
 
         The displayed angle is the angle between these two vectors. The vector p2 -> p3 is also
         drawn.
@@ -651,7 +707,7 @@ class ViewerController(osirix.base.OsirixBase):
             p2 (float, float): The (column, row) position of the second angle vertex.
             p3 (float, float): The (column, row) position of the third angle vertex.
             p4 (float, float): The (column, row) position of the fourth angle vertex.
-            **kwargs: See `new_roi` for all additional parameters.
+            **kwargs: See `new_roi` for all additional comments.
 
         Returns:
              The created ROI instance.
@@ -669,7 +725,7 @@ class ViewerController(osirix.base.OsirixBase):
             p2 (float, float): The (column, row) position of the second vertex.
             p3 (float, float): The (column, row) position of the third vertex.
             p4 (float, float): The (column, row) position of the fourth vertex.
-            **kwargs: See `new_roi` for all additional parameters.
+            **kwargs: See `new_roi` for all additional comments.
 
         Returns:
              The created ROI instance.
@@ -694,7 +750,7 @@ class ViewerController(osirix.base.OsirixBase):
             b (float, float): The (column, row) position of point B.
             c (float, float): The (column, row) position of point C.
             d (float, float): The (column, row) position of point D.
-            **kwargs: See `new_roi` for all additional parameters.
+            **kwargs: See `new_roi` for all additional comments.
 
         Returns:
              The created ROI instance.
@@ -720,7 +776,7 @@ class ViewerController(osirix.base.OsirixBase):
             center (float, float): The (column, row) center of the oval ROI.
             width (float): The width of the oval ROI.
             height (float): The height of the oval ROI.
-            **kwargs: See `new_roi` for all additional parameters.
+            **kwargs: See `new_roi` for all additional comments.
 
         Returns:
              The created ROI instance.

@@ -1,16 +1,19 @@
 """ Provides access to core functionality of the OsiriX database.
 
-There should only ever be one, but it is OK to create multiple pyOsiriX instances, they will
-just contiain the same `osirixrpc_uid`.
+At present this includes operations:
 
-Example usage:
-    ```python
-    import osirix
+ - Copy files into the database.
+ - Interrogating the user selection of Dicom objects.
 
-    database = osirix.current_browser()  # Get the current browser instance
-    images_path = "/path/to/dicoms"  # Define the location of the images
-    database.copy_files_into_database(images_path)  # Load the images (on separate process).
-    ```
+ Example usage:
+     ```python
+     import os
+     import osirix
+
+     database = osirix.current_browser()  # Get the current browser instance
+     images_path = "/path/to/dicoms"  # Define the location of the images
+     database.copy_files_into_database(images_path)  # Load the images (on separate process).
+     ```
 """
 
 from __future__ import annotations
@@ -26,6 +29,11 @@ from osirix.base import pyosirix_connection_check
 
 
 class BrowserController(osirix.base.OsirixBase):
+    """ The main OsiriX Dicom database window.
+
+    There should only ever be one, but it is OK to create multiple pyOsiriX instances, they will
+    just contain the same `osirixrpc_uid`.
+    """
     def __repr__(self):
         return "BrowserController"
 
@@ -39,6 +47,13 @@ class BrowserController(osirix.base.OsirixBase):
 
         Args:
             files (List[str]): The list of files to copy, as absolute paths.
+
+        Example usage:
+             ```python
+             database = osirix.current_browser()  # Get the current browser instance
+             images_path = "/path/to/dicoms"  # Define the location of the images
+             database.copy_files_into_database(images_path)  # Load the images (on separate process).
+             ```
         """
         request = browsercontroller_pb2.BrowserControllerCopyFilesIfNeededRequest(
             browser=self.pb2_object, paths=files)
@@ -53,6 +68,12 @@ class BrowserController(osirix.base.OsirixBase):
         Returns:
             The selected Dicom study instances
             The selected Dicom series instances
+
+        Example usage:
+             ```python
+             database = osirix.current_browser()  # Get the current browser instance
+             database.database_selection() # Gets a tuple consisting a list of DicomStudy and a list of DicomSeries items
+             ```
         """
         response = self.osirix_service_stub.BrowserControllerDatabaseSelection(self.pb2_object)
         self.response_check(response)
@@ -80,12 +101,18 @@ class BrowserController(osirix.base.OsirixBase):
                 have at least one element.
 
         Returns:
-            The resulting new viewer controller.
+            osirix.viewer_controller.ViewerController: The resulting new viewer controller.
 
         Raises:
             ValueError: When the number of images in `dicom_images` is less than 1.
             ValueError: When `dicom_images` is multidimensional.
             ValueError: When instances other than DicomImage are provided in `dicom_images`.
+
+        Example usage:
+             ```python
+             database = osirix.current_browser()  # Get the current browser instance
+             database.open_viewer_2d(dicom_images) # A ViewerController is opened that shows the DicomImages provided in the array.
+             ```
         """
         dicom_images = np.array(dicom_images)
         if len(dicom_images) <= 0:
@@ -119,13 +146,19 @@ class BrowserController(osirix.base.OsirixBase):
             dicom_images (NDArray): An array of shape (N_frames, N_images).
 
         Returns:
-            The resulting new viewer controller.
+            osirix.viewer_controller.ViewerController: The resulting new viewer controller.
 
         Raises:
             ValueError: When N_frames is less than 2.
             ValueError: When N_images is less than 1.
             ValueError: When `dicom_images` shape is not 2-dimensional.
             ValueError: When instances other than DicomImage are provided in the `dicom_images`.
+
+        Example usage:
+             ```python
+             database = osirix.current_browser()  # Get the current browser instance
+             database.open_viewer_4d(dicom_images) # A 4D ViewerController is opened that shows the DicomImages provided in the array.
+             ```
         """
         dicom_images = np.array(dicom_images)
         if not dicom_images.ndim == 2:
