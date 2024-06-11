@@ -9,6 +9,8 @@
     <th> </th>
   </tr>
 </table>
- 
-To contribute an example, please see the
-[contributing documentation](../contributing/CONTRIBUTING.md#contributing-pyosirix-example-scripts)
+
+Please note that this page is in development. We will try to release new examples as often as possible! 
+Please check out the [pyOsiriX API](../api/browser_controller.md) for more examples.
+If you would like to contribute an example (or suggest something), please see
+[contributing documentation](../contributing/CONTRIBUTING.md#contributing-pyosirix-example-scripts).
