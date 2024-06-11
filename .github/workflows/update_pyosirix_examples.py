@@ -260,7 +260,11 @@ class UpdatePyosirixExamples:
         # Check there are no erroneous files/folders
         erroneous_files = []
         for f in os.listdir(path):
-            if f not in ["script.py", "screenshot.png", "README.md", "additional files"]:
+            if f not in ["script.py",
+                         "screenshot.png",
+                         "README.md",
+                         "requirements.txt",
+                         "additional files"]:
                 erroneous_files.append(f)
         if len(erroneous_files) > 0:
             return False, f"Erroneous files detected: {erroneous_files}"
