@@ -14,8 +14,9 @@ medical research, fostering an environment of collaboration and innovation.
 <table>
   <tr>
     <td><b>Example Scripts</b></td>
-    <td>We strongly encourage developers to share scripts of OsiriXgrpc in use.  Please see our <a href="404.html">
-        submitting examples</a> section for more information.</td>
+    <td>We strongly encourage developers to share scripts of OsiriXgrpc in use.  Please see
+        <a href="../pyosirix/contributing/CONTRIBUTING.md">Contributing pyOsiriX Example Scripts</a> section for more 
+        information.</td>
   </tr>
   <tr>
     <td><b>Documentation</b></td>

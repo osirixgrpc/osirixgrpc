@@ -39,6 +39,13 @@ class BrowserController(osirix.base.OsirixBase):
 
         Args:
             files (List[str]): The list of files to copy, as absolute paths.
+
+        Example usage:
+             ```python
+             database = osirix.current_browser()
+             images_path = "/path/to/dicoms"
+             database.copy_files_into_database(images_path)
+             ```
         """
         request = browsercontroller_pb2.BrowserControllerCopyFilesIfNeededRequest(
             browser=self.pb2_object, paths=files)
@@ -53,6 +60,12 @@ class BrowserController(osirix.base.OsirixBase):
         Returns:
             The selected Dicom study instances
             The selected Dicom series instances
+
+        Example usage:
+             ```python
+             database = osirix.current_browser()
+             studies, series = database.database_selection()
+             ```
         """
         response = self.osirix_service_stub.BrowserControllerDatabaseSelection(self.pb2_object)
         self.response_check(response)
@@ -86,6 +99,15 @@ class BrowserController(osirix.base.OsirixBase):
             ValueError: When the number of images in `dicom_images` is less than 1.
             ValueError: When `dicom_images` is multidimensional.
             ValueError: When instances other than DicomImage are provided in `dicom_images`.
+
+        Example usage:
+             ```python
+             database = osirix.current_browser()
+             studies, series = database.database_selection()
+             if len(series) == 0:
+                 raise ValueError("No dicom series selected.")
+             database.open_viewer_2d(series[0].sorted_images())
+             ```
         """
         dicom_images = np.array(dicom_images)
         if len(dicom_images) <= 0:
@@ -126,6 +148,15 @@ class BrowserController(osirix.base.OsirixBase):
             ValueError: When N_images is less than 1.
             ValueError: When `dicom_images` shape is not 2-dimensional.
             ValueError: When instances other than DicomImage are provided in the `dicom_images`.
+
+        Example usage:
+             ```python
+             database = osirix.current_browser()
+             studies, series = database.database_selection()
+             if len(series) < 2:
+                 raise ValueError("Need at least two selected series.")
+             database.open_viewer_4d(np.array([s.sorted_images() for s in series]))
+             ```
         """
         dicom_images = np.array(dicom_images)
         if not dicom_images.ndim == 2:

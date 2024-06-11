@@ -90,6 +90,17 @@ class VRController(osirix.base.OsirixBase):
     @pyosirix_connection_check
     def blending_controller(self) -> osirix.viewer_controller.ViewerController:
         """ The 2D ViewerController instance currently being blended (fused).
+
+        Returns:
+            The fused ViewerController instance.
+
+        Example usage:
+            ```python
+            vr_controllers = frontmost_viewer.vr_controllers()
+            if len(vr_controllers) > 0:
+                vr_controller = vr_controllers[0]
+                fused_viewer = vr_controller.blending_controller()
+            ```
         """
         response = self.osirix_service_stub.VRControllerBlendingController(self.pb2_object)
         self.response_check(response)
@@ -99,6 +110,17 @@ class VRController(osirix.base.OsirixBase):
     @pyosirix_connection_check
     def viewer_2d(self) -> osirix.viewer_controller.ViewerController:
         """ The 2D ViewerController instance from which the 3D viewer was started.
+
+        Returns:
+            The ViewerController instance.
+
+        Example usage:
+            ```python
+            vr_controllers = frontmost_viewer.vr_controllers()
+            if len(vr_controllers) > 0:
+                vr_controller = vr_controllers[0]
+                viewer_controller = vr_controller.viewer_2d()
+            ```
         """
         response = self.osirix_service_stub.VRControllerViewer2D(self.pb2_object)
         self.response_check(response)
@@ -111,6 +133,24 @@ class VRController(osirix.base.OsirixBase):
 
         Returns:
             A list of ROIVolume instances.
+
+        Example usage:
+            ```python
+            frontmost_viewer = osirix.frontmost_viewer()
+            vr_controllers = frontmost_viewer.vr_controllers()
+            if len(vr_controllers) == 0:
+                print("No open VR Controller.  Creating one.")
+                vr_controller = frontmost_viewer.open_vr_viewer(mode="MIP")
+            else:
+                vr_controller = vr_controllers[0]
+
+            roi_volumes = vr_controller.roi_volumes()
+            if len(roi_volumes) == 0:
+                print("No valid ROI volumes available")
+            for roi_volume in roi_volumes:
+                print(f"Displaying ROI volume with name {roi_volume.name}")
+                roi_volume.visible = True
+            ```
         """
         response = self.osirix_service_stub.VRControllerROIVolumes(self.pb2_object)
         self.response_check(response)
@@ -145,5 +185,14 @@ class VRController(osirix.base.OsirixBase):
 
     @pyosirix_connection_check
     def needs_display_update(self):
+        """ Update the VRController display
+
+        Example usage:
+            ```python
+            vr_controllers = frontmost_viewer.vr_controllers()
+            vr_controller = vr_controllers[0]
+            vr_controller.needs_display_update()
+            ```
+        """
         response = self.osirix_service_stub.VRControllerNeedsDisplayUpdate(self.pb2_object)
         self.response_check(response)

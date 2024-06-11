@@ -1,5 +1,13 @@
 """ Provide access to the core OsiriX objects: 2D/3D viewers and the database (browser).
 
+Example usage:
+    ```python
+    import osirix
+
+    port = 50051    # You can use any unused port
+    domain = "localhost"
+    osirix_service = osirix.osirix_utilities.OsirixService(domain=domain, port=port)
+    ```
 """
 
 from __future__ import annotations
@@ -21,7 +29,7 @@ class OsirixService(object):
     Attributes:
         domain (str): The domain with which to establish the connection.  Currently, only
             "127.0.0.1" is supported (localhost). Default is "127.0.0.1".
-        port (str): The port number with which to establish the connection. Default is "50051".
+        port (int): The port number with which to establish the connection. Default is 50051.
         max_send_message_length (int): The maximum number of bytes permitted in a send message.
             Default is 500000000 (500 MB).
         max_receive_message_length (int): The maximum number of bytes permitted in a receive
@@ -29,7 +37,6 @@ class OsirixService(object):
         osirix_service_stub (osirix_pb2_grpc.OsiriXServiceStub): The service stub used to send gRPC
             messages to the OsiriXgrpc server. None if no connection established.
         channel (grpc._channel.Channel): An insecure gRPC channel configuration.
-
     """
     def __init__(self, domain: str = "127.0.0.1", port: int = 50051,
                  max_send_message_length: int = 500000000,

@@ -260,6 +260,15 @@ class ViewerController(osirix.base.OsirixBase):
     @pyosirix_connection_check
     def vr_controllers(self) -> List[osirix.vr_controller.VRController]:
         """ Return the list of currently displayed 3D viewers associates with this 2D window.
+
+        Returns:
+            Any VRController instances associated with this 2D window.
+
+        Example usage:
+            ```python
+            frontmost_viewer = osirix.frontmost_viewer()
+            vr_controllers = frontmost_viewer.vr_controllers()
+            ```
         """
         response = self.osirix_service_stub.ViewerControllerVRControllers(self.pb2_object)
         self.response_check(response)
@@ -270,11 +279,16 @@ class ViewerController(osirix.base.OsirixBase):
 
     @pyosirix_connection_check
     def blending_controller(self) -> ViewerController:
-        # TODO: What happens if there isn't one. Does it return None?
         """ Return the viewer controller instance that is being fused with this one.
 
         Returns:
             The blending viewer instance.
+
+        Example usage:
+            ```python
+            frontmost_viewer = osirix.frontmost_viewer()
+            blending_controller = frontmost_viewer.blending_controller()
+            ```
         """
         response = self.osirix_service_stub.ViewerControllerBlendingController(self.pb2_object)
         self.response_check(response)
@@ -287,6 +301,12 @@ class ViewerController(osirix.base.OsirixBase):
         Args:
             viewer (osirix.viewer_controller.ViewerController): The viewer to fuse onto the present
                 one.
+
+        Example usage:
+            ```python
+            frontmost_viewer = osirix.frontmost_viewer()
+            frontmost_viewer.fuse_with_viewer(another_viewer_controller)
+            ```
         """
         request = viewercontroller_pb2.ViewerControllerFuseWithViewerRequest(
             viewer_controller=self.pb2_object, fusion_viewer_controller=viewer.pb2_object)
@@ -309,6 +329,12 @@ class ViewerController(osirix.base.OsirixBase):
 
         Returns:
             The new osirix.viewer_controller.ViewerController instance.
+
+        Example usage:
+            ```python
+            frontmost_viewer = osirix.frontmost_viewer()
+            acopy = frontmost_viewer.copy_viewer_window()
+            ```
         """
         response = self.osirix_service_stub.ViewerControllerCopyViewerWindow(self.pb2_object)
         self.response_check(response)
@@ -320,6 +346,12 @@ class ViewerController(osirix.base.OsirixBase):
 
         Returns:
             The currently displayed DCMPix instance.
+
+        Example usage:
+            ```python
+            frontmost_viewer = osirix.frontmost_viewer()
+            pix = frontmost_viewer.cur_dcm()
+            ```
         """
         response = self.osirix_service_stub.ViewerControllerCurDCM(self.pb2_object)
         self.response_check(response)
@@ -357,7 +389,9 @@ class ViewerController(osirix.base.OsirixBase):
         Note that the original moving viewer is closed, so a reference to the new one is returned.
         This means it is generally advised to the call the method in the following manner:
 
-        `moving_viewer = moving_viewer.resample_viewer_controller(fixed_viewer)`
+        ```python
+        moving_viewer = moving_viewer.resample_viewer_controller(fixed_viewer)
+        ```
 
         Args:
             vc (osirix.viewer_controller.ViewerController): The fixed viewer.
@@ -380,6 +414,12 @@ class ViewerController(osirix.base.OsirixBase):
 
         Returns:
             A VRController instance.
+
+        Example usage:
+            ```python
+            frontmost_viewer = osirix.frontmost_viewer()
+            vr_controller = frontmost_viewer.open_vr_viewer(mode="VR")
+            ```
         """
         if mode not in ["VR", "MIP"]:
             raise ValueError("`mode` must be either 'VR' or 'MIP'")
