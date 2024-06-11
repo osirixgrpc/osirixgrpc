@@ -3,6 +3,7 @@
 # Define and create the output directory
 OUTDIR="$HOME/Desktop/osirixgrpc_tests"
 if [ ! -d "$OUTDIR" ]; then
+    mkdir "$OUTDIR"
     mkdir "$OUTDIR/osirixgrpc"
     mkdir "$OUTDIR/pyosirix"
 fi
