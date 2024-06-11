@@ -1,5 +1,13 @@
 """ Functionality for the 3D viewer.
 
+Example usage:
+    ```python
+    import osirix
+
+    vr_controller = osirix.frontmost_vr_controller()  # Raises GrpcException if not available.
+    vr_controller.wlww = (50, 100)  # Set the window level and width
+    print(f"This window has {len(vr_controller.roi_volumes())} ROI volumes")
+    ```
 """
 
 from __future__ import annotations
@@ -71,7 +79,6 @@ class VRController(osirix.base.OsirixBase):
     @wlww.setter
     @pyosirix_connection_check
     def wlww(self, wlww: Tuple[float, float]) -> None:
-        # TODO: Do I need to set a tolerance on the WW?
         """The window level and window width of the viewer.
         """
         request = vrcontroller_pb2.VRControllerSetWLWWRequest(vr_controller=self.pb2_object,

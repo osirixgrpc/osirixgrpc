@@ -1,5 +1,15 @@
 """ Provides functionality for the images displayed in a 2D OsiriX viewer.
 
+Example usage:
+     ```python
+     import osirix
+     import matplotlib.pyplot as plt
+
+     viewer = osirix.frontmost_viewer()  # Raises GrpcException error if no viewer is available.
+     pix = viewer.cur_dcm()  # Get the currently displayed DCMPix object
+     plt.imshow(pix.image, cmap = "gray")  # Display the image data (pix.image is a 2D numpy array)
+     plt.show()
+     ```
 """
 
 from __future__ import annotations
@@ -15,9 +25,6 @@ from osirix.base import pyosirix_connection_check
 
 
 class DCMPix(osirix.base.OsirixBase):
-    """ Represents a single image displayed within a 2D OsiriX viewer (`ViewerController`)
-
-    """
     def __repr__(self):
         return f"DCMPix: " \
                f"{self.slice_location:.2f} " \
@@ -153,14 +160,8 @@ class DCMPix(osirix.base.OsirixBase):
             roi (osirix.roi.ROI): The region of interest from which to compute the statistics.
 
         Returns:
-            The following statistics:
-                - "mean"
-                - "total"
-                - "std_dev"
-                - "min"
-                - "max"
-                - "skewness"
-                - "kurtosis"
+            A dictionary containing the following key-value pairs: "mean", "std", "min", "max",
+                "skewness", "kurtosis"
         """
         request = dcmpix_pb2.DCMPixComputeROIRequest(pix=self.pb2_object, roi=roi.pb2_object)
         response = self.osirix_service_stub.DCMPixComputeROI(request)

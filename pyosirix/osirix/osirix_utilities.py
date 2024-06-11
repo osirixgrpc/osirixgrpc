@@ -62,8 +62,7 @@ class OsirixService(object):
         """ Check that a connection with OsiriX is established.
 
         Returns:
-            bool: True if a connection is established.
-
+            True if a connection is established.
         """
         try:
             self.osirix_service_stub.OsirixVersion(utilities_pb2.Empty())

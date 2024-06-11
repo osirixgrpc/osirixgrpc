@@ -1,5 +1,7 @@
 """ Classes that represent the core objects within the OsiriX database.
 
+All attributes for these classes are immutable.
+
 Example usage:
     ```python
     import osirix
@@ -26,7 +28,6 @@ from osirix.base import pyosirix_connection_check  # noqa
 class DicomStudy(osirix.base.OsirixBase):
     """ An instance representing a Dicom study within the OsiriX database.
 
-    All attributes for this instance are immutable.
     """
     def __repr__(self):
         return f"DicomStudy: " \
@@ -242,7 +243,6 @@ class DicomStudy(osirix.base.OsirixBase):
 class DicomSeries(osirix.base.OsirixBase):
     """ An instance representing a Dicom series within the OsiriX database.
 
-    All attributes for this instance are immutable.
     """
     def __repr__(self):
         return f"DicomSeries: " \
@@ -320,8 +320,8 @@ class DicomSeries(osirix.base.OsirixBase):
     def series_instance_uid(self) -> int:
         """ The series instance UID.
 
-        Warning: This seems to generate some unexpected results. It is better to access directly
-            by reading the dicom files (via DicomSeries.paths) with pydicom.
+        This seems to generate some unexpected results. It is better to access directly
+            by reading the dicom files (via DicomSeries.paths) using the pydicom library.
         """
         response = self.osirix_service_stub.DicomSeriesSeriesInstanceUID(self.pb2_object)
         self.response_check(response)
@@ -396,7 +396,6 @@ class DicomSeries(osirix.base.OsirixBase):
 class DicomImage(osirix.base.OsirixBase):
     """ An instance representing a Dicom image within the OsiriX database.
 
-    All attributes for this instance are immutable.
     """
     def __repr__(self):
         return f"DicomImage: " \

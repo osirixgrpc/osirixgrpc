@@ -1,5 +1,47 @@
 """ Functionality for the regions of interest in 2D (`ROI`) and 3D (`ROIVolume`) viewers.
 
+The following `ROI` types are available in pyOsiriX, seperated into 2 core groups:
+
+1. Brush ROIs: Described by a 2D array of boolean values (0 = outside ROI, 1 = within ROI).
+
+    - tPlain: The only brush ROI type.
+
+2. Point-based ROIs: Described by a set of N 2-element vertices as a shape (N, 2) array.
+
+    - tMeasure: A ruler measurement. N = 2.
+    - tROI: A square ROI. N = 4. Created by rectangle.
+    - tOval: An oval-based ROI. No limit on N. Created by rectangle.
+    - tOPolygon: An open polygon. No limit on N.
+    - tCPolygon: A closed polygon. No limit on N.
+    - tAngle: An angle measurement. N = 3.
+    - tText: A text box. Created by rectangle.
+    - tArrow: An arrow. N = 2 (arrow head then tail).
+    - tPencil: A closed polygon. No limit it N.
+    - t2DPoint: A single point ROI. Created by rectangle.
+    - tAxis: An axis-based ROI for bi-dimensional measurement. N = 4.
+    - tDynAngle: The angle between two lines. N = 4.
+    - tTAGT: A pair of oriented perpendicular lines for measuring distance. N = 6.
+    - tBall: A circular ROI representing a slice of a 3D ball ROI. No limit on N.
+        It is not possible to create a new tBall ROI with pyOsiriX.
+    - tOvalAngle: An oval with an additional angle specifier. No limit on N. Created by
+        rectangle.
+
+Example usage:
+    ```python
+    import osirix
+    import matplotlib.pyplot as plt
+
+    viewer = osirix.frontmost_viewer()  # Raises GrpcException error if no viewer is available.
+    rois = viewer.selected_rois()  # Get the currently selected ROI object.
+    if len(rois) == 0:
+        raise ValueError("No ROIs found.")
+    roi = rois[0]
+    roi_type = roi.itypes()[roi.itype]  # Get the selected ROI type.
+    if roi_type == "tPlain":
+        raise ValueError("Cannot plot mask (brush) ROI vertices")
+    plt.plot(roi.points[:, 0], roi.points[:, 1], "ko")  # Plot the ROI vertices.
+    plt.show()
+    ```
 """
 
 from __future__ import annotations
@@ -178,42 +220,11 @@ class ROI(osirix.base.OsirixBase):
 
     @classmethod
     def itypes(cls, reverse_order: bool = False) -> Dict:
-        """ Provides a map between the integer ROI type and a text descriptor.
-
-        The following ROI types are available in pyOsiriX, seperated into 2 core group:
-
-        Brush ROIs: Described by a 2D array of boolean values (0 = outside ROI, 1 = within ROI).
-
-            - tPlain: The only brush ROI type.
-
-        Point-based ROIs: Described by a set of N 2-element vertices as a shape (N, 2) array.
-
-        Note that even though all ROIs have vertices accessible via a `points` attribute, and a
-        majority of them are created by directly supplying the vertices, a few are instead created
-        by supplying the rectangle information (column, row, width, height).
-
-            - tMeasure: A ruler measurement. N = 2.
-            - tROI: A square ROI. N = 4. Created by rectangle.
-            - tOval: An oval-based ROI. No limit on N. Created by rectangle.
-            - tOPolygon: An open polygon. No limit on N.
-            - tCPolygon: A closed polygon. No limit on N.
-            - tAngle: An angle measurement. N = 3.
-            - tText: A text box. Created by rectangle.
-            - tArrow: An arrow. N = 2 (arrow head then tail).
-            - tPencil: A closed polygon. No limit it N.
-            - t2DPoint: A single point ROI. Created by rectangle.
-            - tAxis: An axis-based ROI for bi-dimensional measurement. N = 4.
-            - tDynAngle: The angle between two lines. N = 4.
-            - tTAGT: A pair of oriented perpendicular lines for measuring distance. N = 6.
-            - tBall: A circular ROI representing a slice of a 3D ball ROI. No limit on N.
-                It is not possible to create a new tBall ROI with pyOsiriX.
-            - tOvalAngle: An oval with an additional angle specifier. No limit on N. Created by
-                rectangle.
+        """ A map between the integer ROI type (itype) and a text descriptor.
 
         Args:
             reverse_order (bool): If `False` then the mapping is provided in the form
-                `{identifier: descriptor}`, where `identifier` is a unique integer. If `True`,
-                the mapping is returned in reverse order:  `{descriptor: identifier}`.
+                `{itype: descriptor}` else it is returned in reverse order: `{descriptor: itype}`.
 
         Returns:
             A mapping between ROI itype and textual descriptor.
@@ -424,8 +435,9 @@ class ROI(osirix.base.OsirixBase):
 
         Args:
             columns (int): The number of columns to move.
-                positive = left-right, negative = right-left.
-            rows (int): The number of rows to move (up = negative, down = positive)
+                positive = left &rarr; right, negative = right &rarr; left.
+            rows (int): The number of rows to move.
+                positive = downwards, negative = upwards.
         """
         request = roi_pb2.ROIMoveRequest(roi=self.pb2_object, columns=columns, rows=rows)
         response = self.osirix_service_stub.ROIMove(request)
@@ -439,7 +451,7 @@ class ROI(osirix.base.OsirixBase):
             theta (float): The angle by which to rotate (in degrees). Positive is clockwise.
             center (Tuple[float, float]): The position (column, row) about which to rotate.
                 These can be non-integer values. If `None`, then rotation is about the centroid of
-                the ROI. Default is `None`.
+                the ROI.
         """
         if center is None:
             center = self.centroid()

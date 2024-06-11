@@ -1,19 +1,16 @@
 """ Provides access to core functionality of the OsiriX database.
 
-At present this includes operations:
+There should only ever be one, but it is OK to create multiple pyOsiriX instances, they will
+just contiain the same `osirixrpc_uid`.
 
- - Copy files into the database.
- - Interrogating the user selection of Dicom objects.
+Example usage:
+    ```python
+    import osirix
 
- Example usage:
-     ```python
-     import os
-     import osirix
-
-     database = osirix.current_browser()  # Get the current browser instance
-     images_path = "/path/to/dicoms"  # Define the location of the images
-     database.copy_files_into_database(images_path)  # Load the images (on separate process).
-     ```
+    database = osirix.current_browser()  # Get the current browser instance
+    images_path = "/path/to/dicoms"  # Define the location of the images
+    database.copy_files_into_database(images_path)  # Load the images (on separate process).
+    ```
 """
 
 from __future__ import annotations
@@ -29,11 +26,6 @@ from osirix.base import pyosirix_connection_check
 
 
 class BrowserController(osirix.base.OsirixBase):
-    """ The main OsiriX Dicom database window.
-
-    There should only ever be one, but it is OK to create multiple pyOsiriX instances, they will
-    just contiain the same `osirixrpc_uid`.
-    """
     def __repr__(self):
         return "BrowserController"
 
@@ -88,7 +80,7 @@ class BrowserController(osirix.base.OsirixBase):
                 have at least one element.
 
         Returns:
-            osirix.viewer_controller.ViewerController: The resulting new viewer controller.
+            The resulting new viewer controller.
 
         Raises:
             ValueError: When the number of images in `dicom_images` is less than 1.
@@ -127,7 +119,7 @@ class BrowserController(osirix.base.OsirixBase):
             dicom_images (NDArray): An array of shape (N_frames, N_images).
 
         Returns:
-            osirix.viewer_controller.ViewerController: The resulting new viewer controller.
+            The resulting new viewer controller.
 
         Raises:
             ValueError: When N_frames is less than 2.
