@@ -12,3 +12,9 @@ protos/cpp/
 
 # Any Python cache files
 __pycache__
+
+# The plugin bundle
+osirixgrpc.osirixplugin.zip
+
+# PyCharm project files
+.idea/*

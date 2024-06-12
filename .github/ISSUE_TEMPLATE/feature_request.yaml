@@ -1,0 +1,78 @@
+name: Feature Request
+description: Request a new feature
+title: "Feature: "
+labels: ["feature_request"]
+projects: ["osirixgrpc/osirixgrpc"]
+assignees:
+  - mdblackledge
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for offering suggestions for new features!
+  - type: input
+    id: contact
+    attributes:
+      label: Contact Details
+      description: How can we get in touch with you if we need more info?
+      placeholder: ex. email@example.com
+    validations:
+      required: false
+  - type: dropdown
+    id: feature-scope
+    attributes:
+      label: Feature Scope
+      description: Are you requesting a new feature for OsiriXgrpc, the pyOsiriX extension, or either?
+      options:
+        - OsiriXgrpc
+        - pyOsiriX
+        - Either/Not Sure
+      default: 0
+    validations:
+      required: true
+  - type: input
+    id: osirixgrpc-version
+    attributes:
+      label: OsiriXgrpc Version
+      description: What version of OsiriXgrpc are you running?
+      placeholder: "0.2.1-beta0"
+    validations:
+      required: true
+  - type: textarea
+    id: feature-description
+    attributes:
+      label: What would you like to see?
+      description: |
+        Let us know in as much detail as possible what it is you need and why. 
+        If helpful, please do attach some screenshots or figure that might help explain this a little better.
+      placeholder: |
+        **To which aspect of OsiriXgrpc is the feature request intended?**
+        Is this related to ROIs, Dicom Browser Controller, etc.
+        
+        **Short description of the new functionality**
+        What would you like the new functionality to achieve?
+        
+        **Why would this improve the functionality of OsiriXgrpc?**
+        Why does this matter to you?
+        
+        **Have you been using any work-around so far?**
+        Please let us know how much of an issue this has been for you.
+        
+        **How urgent is the new functionality to you?**
+        Does OsiriXgrpc fail to meet your needs without?
+        
+        **Would you be willing to help develop/test the new functionality?**
+        Please contact us if so.
+
+        **Additional context**
+        Add any other context or screenshots about the feature request here.
+    validations:
+      required: true
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Code of Conduct
+      description: By submitting this issue, you agree to follow our [Code of Conduct](osirixgrpc.github.io/osirixgrpc/contributing/CODE_OF_CONDUCT.html)
+      options:
+        - label: I agree to follow this project's Code of Conduct
+          required: true

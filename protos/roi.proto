@@ -68,8 +68,8 @@ message ROIRotateRequest{
 
 message ROIMoveRequest{
 	ROI roi = 1;
-	int32 columns = 2;
-	int32 rows = 3;
+	float columns = 2;
+	float rows = 3;
 }
 
 message ROISetNameRequest{

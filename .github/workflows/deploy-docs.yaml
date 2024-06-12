@@ -1,0 +1,52 @@
+name: MkDocs Build
+
+on:
+  push:
+    branches:
+      - main
+      - dev
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3
+
+      - name: Install dependencies
+        run: pip install -r docs/requirements.txt
+
+      - name: Append examples to documentation.
+        run: python .github/workflows/update_pyosirix_examples.py
+
+      - if: github.ref == 'refs/heads/dev'
+        name: Append warning to README if dev
+        run: |
+          sed -i '/__Welcome to OsiriXgrpc__/i ???+ note\n\n    This documentation is for development and testing only. Please see the [main documentation](https://osirixgrpc.github.io/osirixgrpc).\n\n' docs/docs/README.md
+
+      - name: Build MkDocs Site
+        run: |
+          cd docs
+          mkdocs build
+    
+      - if: github.ref == 'refs/heads/main'
+        name: Deploy docs to GitHub Pages
+        run: |
+          cd docs
+          mkdocs gh-deploy --force
+
+      - if: github.ref == 'refs/heads/dev'
+        name: Deploy dev docs to Netlify
+        uses: netlify/actions/cli@master
+        with:
+          args: deploy --dir=docs/site --prod
+        env:
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_TOKEN }}
+

@@ -7,6 +7,25 @@
 
 @implementation gRPCROIDelegate
 
++ (void) ROIDelete:(const osirixgrpc::ROI *) request :(osirixgrpc::Response *) response :(gRPCCache *) cache
+{
+    NSString *uid = stringFromGRPCString(request->osirixrpc_uid());
+    
+    ROI *roi = [cache objectForUID:uid];
+    
+    if (roi)
+    {
+        [ROI deleteROI:roi];
+        response->mutable_status()->set_status(1);
+    }
+    else
+    {
+        response->mutable_status()->set_status(0);
+        response->mutable_status()->set_message("No ROI cached");
+    }
+    
+}
+
 + (void) ROIFlipHorizontally:(const osirixgrpc::ROI *) request :(osirixgrpc::Response *) response :(gRPCCache *) cache
 {
     NSString *uid = stringFromGRPCString(request->osirixrpc_uid());
@@ -53,7 +72,7 @@
     
     if (roi)
     {
-        float area = [roi roiArea]; // TODO: I think there is a version conflict between the OsiriX.framework and Horos?
+        float area = [roi areaPix] * [roi pixelSpacingX] * [roi pixelSpacingY] / 100.0;  // in cm^2
         response->set_area(area);
         response->mutable_status()->set_status(1);
     }

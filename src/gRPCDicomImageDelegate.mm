@@ -73,7 +73,7 @@
     if (image)
     {
         NSString *path = [image completePath];
-        response->set_path_name([path UTF8String]);
+        response->set_complete_path([path UTF8String]);
         response->mutable_status()->set_status(1);
     }
     else
@@ -183,7 +183,7 @@
     
     if (image)
     {
-        response->set_slice_locations([[image sliceLocation] floatValue]);
+        response->set_slice_location([[image sliceLocation] floatValue]);
         response->mutable_status()->set_status(1);
     }
     else

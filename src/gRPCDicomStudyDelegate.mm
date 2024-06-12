@@ -139,34 +139,6 @@
     
 }
 
-+ (void) DicomStudyNoFilesExcludingMultiFrames:(const osirixgrpc::DicomStudy *) request :(osirixgrpc::DicomStudyNoFilesExcludingMultiFramesResponse *) response :(gRPCCache *)cache
-{
-    NSString *uid = stringFromGRPCString(request->osirixrpc_uid());
-    
-    DicomStudy *study = [cache objectForUID:uid];
-    
-    if (study)
-    {
-        NSNumber *noFilesExcludingMultiFrames = [study noFilesExcludingMultiFrames];
-        if (noFilesExcludingMultiFrames)
-        {
-            response->set_no_files([noFilesExcludingMultiFrames intValue]);
-            response->mutable_status()->set_status(1);
-        }
-        else
-        {
-            response->mutable_status()->set_status(0);
-            response->mutable_status()->set_message("Number of files exclusing multi frames not available");
-        }
-    }
-    else
-    {
-        response->mutable_status()->set_status(0);
-        response->mutable_status()->set_message("No DicomStudy cached");
-    }
-    
-}
-
 + (void) DicomStudyNumberOfImages:(const osirixgrpc::DicomStudy *) request :(osirixgrpc::DicomStudyNumberOfImagesResponse *) response :(gRPCCache *)cache
 {
     NSString *uid = stringFromGRPCString(request->osirixrpc_uid());

@@ -113,35 +113,43 @@
     
     if (pix)
     {
-        NSString *uid_roi = stringFromGRPCString(request->roi().osirixrpc_uid());
-        ROI *roi = [cache objectForUID:uid_roi];
-        if (roi)
+        if(![pix isRGB])
         {
-            float mean, total, dev, max, min;
-            [pix computeROI:roi :&mean :&total :&dev :&min :&max];
-            response->set_mean(mean);
-            response->set_total(total);
-            response->set_std_dev(dev);
-            response->set_max(max);
-            response->set_min(min);
-            
-            long count = 0;
-            float *values = (float *)[pix getROIValue: &count :roi :nil];
-            float kurtosis = [DCMPix kurtosis:values length:count mean:mean];
-            float skewness = [DCMPix skewness:values length:count mean:mean];
-            if (values)
+            NSString *uid_roi = stringFromGRPCString(request->roi().osirixrpc_uid());
+            ROI *roi = [cache objectForUID:uid_roi];
+            if (roi)
             {
-                free(values);
+                float mean, total, dev, max, min;
+                [pix computeROI:roi :&mean :&total :&dev :&min :&max];
+                response->set_mean(mean);
+                response->set_total(total);
+                response->set_std_dev(dev);
+                response->set_max(max);
+                response->set_min(min);
+                
+                long count = 0;
+                float *values = (float *)[pix getROIValue: &count :roi :nil];
+                float kurtosis = [DCMPix kurtosis:values length:count mean:mean];
+                float skewness = [DCMPix skewness:values length:count mean:mean];
+                if (values)
+                {
+                    free(values);
+                }
+                
+                response->set_kurtosis(kurtosis);
+                response->set_skewness(skewness);
+                response->mutable_status()->set_status(1);
             }
-            
-            response->set_kurtosis(kurtosis);
-            response->set_skewness(skewness);
-            response->mutable_status()->set_status(1);
+            else
+            {
+                response->mutable_status()->set_status(0);
+                response->mutable_status()->set_message("No ROI cached");
+            }
         }
         else
         {
             response->mutable_status()->set_status(0);
-            response->mutable_status()->set_message("No ROI cached");
+            response->mutable_status()->set_message("No values provided for RGB pix");
         }
     }
     else
@@ -160,40 +168,48 @@
     
     if (pix)
     {
-        NSString *uid_roi = stringFromGRPCString(request->roi().osirixrpc_uid());
-        ROI *roi = [cache objectForUID:uid_roi];
-        if (roi)
+        if (![pix isRGB])
         {
-            float *values;
-            @try
+            NSString *uid_roi = stringFromGRPCString(request->roi().osirixrpc_uid());
+            ROI *roi = [cache objectForUID:uid_roi];
+            if (roi)
             {
-                long count = 0;
-                float *locations;
-                values = (float *)[pix getROIValue: &count :roi :&locations];
-                
-                for (int i = 0; i < count; i++)
+                float *values;
+                @try
                 {
-                    response->mutable_values()->Add(values[i]);
-                    response->mutable_column_indices()->Add(locations[2 * i]);
-                    response->mutable_row_indices()->Add(locations[2 * i + 1]);
+                    long count = 0;
+                    float *locations;
+                    values = (float *)[pix getROIValue: &count :roi :&locations];
+                    
+                    for (int i = 0; i < count; i++)
+                    {
+                        response->mutable_values()->Add(values[i]);
+                        response->mutable_column_indices()->Add(locations[2 * i]);
+                        response->mutable_row_indices()->Add(locations[2 * i + 1]);
+                    }
+                    response->mutable_status()->set_status(1);
                 }
-                response->mutable_status()->set_status(1);
+                @catch (NSException *exception)
+                {
+                    response->mutable_status()->set_status(1);
+                    response->mutable_status()->set_message("Could not compute indices");
+                }
+                @finally
+                {
+                    if (values)
+                        free(values);
+                }
             }
-            @catch (NSException *exception)
+            else
             {
-                response->mutable_status()->set_status(1);
-                response->mutable_status()->set_message("Could not compute indices");
-            }
-            @finally
-            {
-                if (values)
-                    free(values);
+                response->mutable_status()->set_status(0);
+                response->mutable_status()->set_message("No ROI cached");
             }
         }
         else
         {
             response->mutable_status()->set_status(0);
-            response->mutable_status()->set_message("No ROI cached");
+            response->mutable_status()->set_message("No values provided for RGB pix");
         }
     }
     else
@@ -259,9 +275,9 @@
         float orix = [pix originX];
         float oriy = [pix originY];
         float oriz = [pix originZ];
-        response->set_origin_columns(orix);
-        response->set_origin_rows(oriy);
-        response->set_origin_slices(oriz);
+        response->set_origin_x(orix);
+        response->set_origin_y(oriy);
+        response->set_origin_z(oriz);
         response->mutable_status()->set_status(1);
     }
     else

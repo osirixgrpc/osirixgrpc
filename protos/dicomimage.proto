@@ -23,7 +23,7 @@ package osirixgrpc;
 
  message DicomImageCompletePathResponse{
  	Status status = 1;
- 	string path_name = 2;
+ 	string complete_path = 2;
  }
 
  message DicomImageDateResponse{
@@ -54,7 +54,7 @@ package osirixgrpc;
 
  message DicomImageSliceLocationResponse{
  	Status status = 1;
- 	float slice_locations = 2;
+ 	float slice_location = 2;
  }
 
  message DicomImageInstanceNumberResponse{

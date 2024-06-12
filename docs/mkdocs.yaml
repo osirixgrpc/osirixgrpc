@@ -1,13 +1,12 @@
 # This provides set up for mkdocs documentation generation.
-
-site_name: OsiriXgrpc v0.2.1-dev0
+site_name: OsiriXgrpc v0.2.1-beta0
 site_url: 
 repo_url: https://github.com/osirixgrpc/osirixgrpc
-docs_dir: docfiles
+docs_dir: docs
 
 # Copyright
 copyright: Copyright &copy; Matthew D Blackledge
-edit_uri: edit/main/docs/docfiles
+edit_uri: edit/main/docs/docs
 use_directory_urls: false
 theme:
   name: material  # This theme is available through "mkdocs materials" extension.
@@ -34,7 +33,12 @@ theme:
 
 plugins:
   - search
-  # - with-pdf  # Uncomment if creating a pdf version of the documentation.
+  - mkdocstrings
+  - mkdocstrings:
+      default_handler: python
+      handlers:
+        python:
+          paths: [ "../pyosirix" ]
 
 # Documentation extensions.
 markdown_extensions:
@@ -47,13 +51,30 @@ markdown_extensions:
   - pymdownx.superfences
   - attr_list  # Attribute lists, used here for images.
   - md_in_html  # Markdown in HTML for adding markdown syntax to HTML, used here for images.
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
   - pymdownx.snippets:
-      base_path: ["../"] # Root of the repository
+      base_path: ["..", "docs/pyosirix/examples"] # Root of the repository
 
 # The page tree. This links the layout of the generated documentation site to the page contents.
 nav:
   - Home: README.md  # Where the home page of the documentation will be stored.
   - Getting Started: getting_started.md
+  - pyOsiriX:
+    - Getting Started: pyosirix/README.md
+    - API:
+      - browser_controller: pyosirix/api/browser_controller.md
+      - dcm_pix: pyosirix/api/dcm_pix.md
+      - dicom: pyosirix/api/dicom.md
+      - osirix_utilities: pyosirix/api/osirix_utilities.md
+      - roi: pyosirix/api/roi.md
+      - viewer_controller: pyosirix/api/viewer_controller.md
+      - vr_controller: pyosirix/api/vr_controller.md
+    - Examples:
+      - Gallery: pyosirix/examples/gallery.md
+    - Contributing:
+      - Home: pyosirix/contributing/CONTRIBUTING.md
   - API:
     - Basics: api/README.md
     - Regions of Interest: api/roi.md
@@ -66,4 +87,5 @@ nav:
     - Dicom Series: api/dicomseries.md
     - Dicom Study: api/dicomstudy.md
   - Contributing:
-    - Home: contributing/README.md
+    - Home: contributing/CONTRIBUTING.md
+    - Code of Conduct: contributing/CODE_OF_CONDUCT.md

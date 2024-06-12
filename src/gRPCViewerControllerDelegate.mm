@@ -7,44 +7,30 @@
 #import <OsiriXAPI/ROI.h>
 #import <OsiriXAPI/MyPoint.h>
 #import <OsiriXAPI/DCMView.h>
-
-void copyVolumeDataForViewerController(ViewerController *vC, NSData** vD, NSMutableArray ** newPixList, int v)
-{
-    *vD = nil;
-    *newPixList = nil;
-    
-    // First calculate the amount of memory needed for the new serie
-    NSArray        *pL = [vC pixList: v];
-    DCMPix        *curPix;
-    long        mem = 0;
-    
-    for( int i = 0; i < [pL count]; i++)
-    {
-        curPix = [pL objectAtIndex: i];
-        mem += [curPix pheight] * [curPix pwidth] * 4;        // each pixel contains either a 32-bit float or a 32-bit ARGB value
-    }
-    
-    unsigned char *fVolumePtr = (unsigned char *)malloc( mem);    // ALWAYS use malloc for allocating memory !
-    if( fVolumePtr)
-    {
-        // Copy the source series in the new one !
-        memcpy( fVolumePtr, [vC volumePtr: v], mem);
-        
-        // Create a NSData object to control the new pointer
-        *vD = [[[NSData alloc] initWithBytesNoCopy:fVolumePtr length:mem freeWhenDone:YES] autorelease];
-        
-        // Now copy the DCMPix with the new fVolumePtr
-        *newPixList = [NSMutableArray array];
-        for( int i = 0; i < [pL count]; i++)
-        {
-            curPix = [[[pL objectAtIndex: i] copy] autorelease];
-            [curPix setfImage: (float*) (fVolumePtr + [curPix pheight] * [curPix pwidth] * 4 * i)];
-            [*newPixList addObject: curPix];
-        }
-    }
-}
+#import <OsirixAPI/Notifications.h>
 
 @implementation gRPCViewerControllerDelegate
+
++ (NSArray *) VRControllersAssociatedWithVewierController:(ViewerController *) viewer withStyle: (nullable NSString *)style
+{
+    NSArray *viewers = [[AppController sharedAppController] FindRelatedViewers:[viewer pixList:0]];
+    NSMutableArray *vr_viewers = [NSMutableArray array];
+    for( NSWindowController *v in viewers)
+    {
+        if( [v.windowNibName isEqualToString: @"VR"])
+        {
+            if (style)
+            {
+                VRController *vv = (VRController*) v;
+                if( [vv.style isEqualToString: style])
+                    [vr_viewers addObject:vv];
+            }
+            else
+                [vr_viewers addObject:v];
+        }
+    }
+    return vr_viewers;
+}
 
 + (void) ViewerControllerCloseViewer:(const osirixgrpc::ViewerController *) request :(osirixgrpc::Response *) response :(gRPCCache *) cache
 {
@@ -103,6 +89,10 @@ void copyVolumeDataForViewerController(ViewerController *vC, NSData** vD, NSMuta
     {
         response->mutable_status()->set_status(1);
         [vc needsDisplayUpdate];
+        for( DCMView *v in [[vc seriesView] imageViews])
+        {
+            [v drawRect: [v frame]];
+        }
     }
     else
     {
@@ -281,9 +271,12 @@ void copyVolumeDataForViewerController(ViewerController *vC, NSData** vD, NSMuta
                 
             // Add to viewer list
             int movieIdx = request->movie_idx();
-            int position = request->position();
+            int idx = request->idx();
             NSMutableArray *rois = [vc roiList:movieIdx];
-            [(NSMutableArray *)[rois objectAtIndex:position] addObject:[roi autorelease]];
+            [(NSMutableArray *)[rois objectAtIndex:idx] addObject:[roi autorelease]];
+            
+            // Set the DCMPix
+            [roi setPix:[[vc pixList:movieIdx] objectAtIndex:idx]];
             
             // Add to cache
             NSString *roi_uid = [cache addObject:roi];
@@ -421,51 +414,25 @@ void copyVolumeDataForViewerController(ViewerController *vC, NSData** vD, NSMuta
     }
 }
 
-+ (void) ViewerControllerCopyViewerWindow:(const osirixgrpc::ViewerControllerCopyViewerWindowRequest *) request :(osirixgrpc::Response *) response :(gRPCCache *) cache
++ (void) ViewerControllerCopyViewerWindow:(const osirixgrpc::ViewerController *) request :(osirixgrpc::ViewerControllerCopyViewerWindowResponse *) response :(gRPCCache *) cache
 {
-    NSString *uid = stringFromGRPCString(request->viewer_controller().osirixrpc_uid())
-    
+    NSString *uid = stringFromGRPCString(request->osirixrpc_uid())
+
     ViewerController *vc = [cache objectForUID:uid];
     
     if (vc)
     {
         @try
         {
-            ViewerController *new2DViewer = nil;
-            
-            NSData *vD = nil;
-            NSMutableArray *newPixList = nil;
-            
-            BOOL in4D = request->in_4d();
-            
-            copyVolumeDataForViewerController(vc, &vD, &newPixList, 0);
-            if (!vD) {
-                response->mutable_status()->set_status(0);
-                response->mutable_status()->set_message("Could not generate 4D viewer");
-            }
-            else
-            {
-                // CAUTION: The DicomFile array is identical!
-                new2DViewer = [vc newWindow:newPixList :[vc fileList: 0] :vD];
-                [new2DViewer roiDeleteAll: vc];
-                
-                if (in4D && [vc maxMovieIndex] > 1) {
-                    for( int v = 1; v < [vc maxMovieIndex]; v++)
-                    {
-                        vD = nil;
-                        newPixList = nil;
-                        copyVolumeDataForViewerController(vc, &vD, &newPixList, v);
-                        if( vD)
-                            [new2DViewer addMovieSerie:newPixList :[vc fileList: v] :vD];
-                    }
-                }
-                response->mutable_status()->set_status(1);
-            }
+            ViewerController *new2DViewer = [vc copyViewerWindow];
+            NSString *new_uid = [cache addObject:new2DViewer];
+            response->mutable_viewer_controller()->set_osirixrpc_uid([new_uid UTF8String]);
+            response->mutable_status()->set_status(1);
         }
         @catch (NSException *exception)
         {
             response->mutable_status()->set_status(0);
-            response->mutable_status()->set_message("Could not generate 4D viewer");
+            response->mutable_status()->set_message("Could not generate new viewer");
         }
     }
     else
@@ -476,7 +443,7 @@ void copyVolumeDataForViewerController(ViewerController *vC, NSData** vD, NSMuta
     
 }
 
-+ (void) ViewerControllerResampleViewerController:(const osirixgrpc::ViewerControllerResampleViewerControllerRequest *) request :(osirixgrpc::Response *) response :(gRPCCache *) cache
++ (void) ViewerControllerResampleViewerController:(const osirixgrpc::ViewerControllerResampleViewerControllerRequest *) request :(osirixgrpc::ViewerControllerResampleViewerControllerResponse *) response :(gRPCCache *) cache
 {
     NSString *uid = stringFromGRPCString(request->viewer_controller().osirixrpc_uid())
     
@@ -488,7 +455,9 @@ void copyVolumeDataForViewerController(ViewerController *vC, NSData** vD, NSMuta
         ViewerController *vc_fixed = [cache objectForUID:uid_fixed];
         if (vc_fixed)
         {
-            [vc_fixed resampleSeries:vc];
+            ViewerController *new2DViewer = [vc_fixed resampleSeries:vc];
+            NSString *new_uid = [cache addObject:new2DViewer];
+            response->mutable_resampled_viewer()->set_osirixrpc_uid([new_uid UTF8String]);
             response->mutable_status()->set_status(1);
         }
         else
@@ -526,7 +495,8 @@ void copyVolumeDataForViewerController(ViewerController *vC, NSData** vD, NSMuta
         }
         else
         {
-            response->mutable_status()->set_status(1); // Should not really return an "error" here.
+            response->mutable_status()->set_status(0);
+            response->mutable_status()->set_message("No blending controller active");
         }
     }
     else
@@ -546,19 +516,16 @@ void copyVolumeDataForViewerController(ViewerController *vC, NSData** vD, NSMuta
     
     if (vc)
     {
-        NSArray *viewers = [[AppController sharedAppController] FindRelatedViewers:[vc pixList:0]];
-        for( NSWindowController *v in viewers)
+        NSArray *viewers = [gRPCViewerControllerDelegate VRControllersAssociatedWithVewierController:vc withStyle:nil];
+        for( VRController *v in viewers)
         {
-            if( [v.windowNibName isEqualToString: @"VR"])
+            NSString *vr_uid = [cache uidForObject:v];
+            if (!vr_uid)
             {
-                NSString *vr_uid = [cache uidForObject:v];
-                if (!vr_uid)
-                {
-                    vr_uid = [cache addObject:v];
-                }
-                osirixgrpc::VRController *vrc = response->mutable_vr_controllers()->Add();
-                vrc->set_osirixrpc_uid([vr_uid UTF8String]);
+                vr_uid = [cache addObject:v];
             }
+            osirixgrpc::VRController *vrc = response->mutable_vr_controllers()->Add();
+            vrc->set_osirixrpc_uid([vr_uid UTF8String]);
         }
         response->mutable_status()->set_status(1);
     }
@@ -687,7 +654,7 @@ void copyVolumeDataForViewerController(ViewerController *vC, NSData** vD, NSMuta
     if (vc)
     {
         response->mutable_status()->set_status(1);
-        response->set_idx((int)[vc imageIndex]);
+        response->set_idx((int)[[vc imageView] curImage]);
     }
     else
     {
@@ -717,6 +684,71 @@ void copyVolumeDataForViewerController(ViewerController *vC, NSData** vD, NSMuta
             response->mutable_status()->set_status(1);
             [[vc imageView] setIndex:(unsigned short)idx];
         }
+    }
+    else
+    {
+        response->mutable_status()->set_status(0);
+        response->mutable_status()->set_message("No ViewerController cached");
+    }
+}
+
++ (void) ViewerControllerDisplayedIdx:(const osirixgrpc::ViewerController *) request :(osirixgrpc::ViewerControllerDisplayedIdxResponse *) response :(gRPCCache *) cache
+{
+    NSString *uid = stringFromGRPCString(request->osirixrpc_uid())
+    
+    ViewerController *vc = [cache objectForUID:uid];
+    
+    if (vc)
+    {
+        response->mutable_status()->set_status(1);
+        response->set_displayed_idx((int)[vc imageIndex]);
+    }
+    else
+    {
+        response->mutable_status()->set_status(0);
+        response->mutable_status()->set_message("No ViewerController cached");
+    }
+    
+}
+
++ (void) ViewerControllerSetDisplayedIdx:(const osirixgrpc::ViewerControllerSetDisplayedIdxRequest *) request :(osirixgrpc::Response *) response :(gRPCCache *) cache
+{
+    NSString *uid = stringFromGRPCString(request->viewer_controller().osirixrpc_uid())
+    
+    ViewerController *vc = [cache objectForUID:uid];
+    
+    if (vc)
+    {
+        long idx = (long)request->displayed_idx();
+        if (idx >= [[vc pixList] count] || idx < 0)
+        {
+            NSString *msg = [NSString stringWithFormat:@"Index %ld is out of range", idx];
+            response->mutable_status()->set_status(0);
+            response->mutable_status()->set_message([msg UTF8String]);
+        }
+        else
+        {
+            response->mutable_status()->set_status(1);
+            [vc setImageIndex:(unsigned long)idx];
+        }
+    }
+    else
+    {
+        response->mutable_status()->set_status(0);
+        response->mutable_status()->set_message("No ViewerController cached");
+    }
+}
+
++ (void) ViewerControllerFlippedData:(const osirixgrpc::ViewerController *) request :(osirixgrpc::ViewerControllerFlippedDataResponse *) response :(gRPCCache *) cache
+{
+    NSString *uid = stringFromGRPCString(request->osirixrpc_uid())
+    
+    ViewerController *vc = [cache objectForUID:uid];
+    
+    if (vc)
+    {
+        response->mutable_status()->set_status(1);
+        response->set_flipped_data([[vc imageView] flippedData]);
     }
     else
     {
@@ -774,19 +806,72 @@ void copyVolumeDataForViewerController(ViewerController *vC, NSData** vD, NSMuta
         NSString *mode = stringFromGRPCString(request->mode());
         if ([mode isEqualToString:@"VR"] || [mode isEqualToString:@"MIP"])
         {
-            VRController *vrc = [vc openVRViewerForMode:mode];
-            NSString *vrcUID = [cache uidForObject:vrc];
-            if (!vrcUID)
+            // Check whether one exists
+            NSArray *viewers = [gRPCViewerControllerDelegate VRControllersAssociatedWithVewierController:vc withStyle:@"standard"];
+            
+            // Create one if not
+            if([viewers count] == 0)
             {
-                vrcUID = [cache addObject:vrc];
+                // Simulate a button click
+                NSMenuItem *mitem = [[NSMenuItem alloc] initWithTitle:@"3D Volume Rendering" action:NULL keyEquivalent:@""];
+                [mitem setTag:4];
+                [vc VRViewer:mitem];
+                [mitem release];
+                
+                // Find the opened window
+                viewers = [gRPCViewerControllerDelegate VRControllersAssociatedWithVewierController:vc withStyle:@"standard"];
             }
-            response->mutable_vr_controller()->set_osirixrpc_uid([vrcUID UTF8String]);
-            response->mutable_status()->set_status(1);
+            
+            if ([viewers count] > 0)
+            {
+                VRController *vrc = (VRController *)[viewers objectAtIndex:0];
+                [vrc setRenderingMode:mode];
+                [[vrc window] makeKeyAndOrderFront:self];
+                
+                NSString *vrcUID = [cache uidForObject:vrc];
+                if (!vrcUID)
+                {
+                    vrcUID = [cache addObject:vrc];
+                }
+                response->mutable_vr_controller()->set_osirixrpc_uid([vrcUID UTF8String]);
+                response->mutable_status()->set_status(1);
+            }
+            else {
+                response->mutable_status()->set_status(0);
+                response->mutable_status()->set_message("Could not find opened VR window");
+            }
         }
         else
         {
             response->mutable_status()->set_status(0);
             response->mutable_status()->set_message("Unavailable mode");
+        }
+    }
+    else
+    {
+        response->mutable_status()->set_status(0);
+        response->mutable_status()->set_message("No ViewerController cached");
+    }
+}
+
++(void) ViewerControllerFuseWithViewer:(const osirixgrpc::ViewerControllerFuseWithViewerRequest *)request :(osirixgrpc::Response *)response :(gRPCCache *)cache
+{
+    NSString *uid = stringFromGRPCString(request->viewer_controller().osirixrpc_uid())
+    
+    ViewerController *vc = [cache objectForUID:uid];
+    if (vc)
+    {
+        NSString *fuid = stringFromGRPCString(request->fusion_viewer_controller().osirixrpc_uid())
+        ViewerController *fvc = [cache objectForUID:fuid];
+        if (fvc)
+        {
+            [vc ActivateBlending:fvc];
+            response->mutable_status()->set_status(1);
+        }
+        else
+        {
+            response->mutable_status()->set_status(0);
+            response->mutable_status()->set_message("No fusion ViewerController cached");
         }
     }
     else

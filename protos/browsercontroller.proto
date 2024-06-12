@@ -12,8 +12,27 @@ message BrowserControllerDatabaseSelectionResponse{
 	repeated DicomStudy studies = 3;
 }
 
+message BrowserControllerOpenViewerFromImagesResponse{
+	Status status = 1;
+	ViewerController viewer = 2;
+}
+
+message BrowserControllerDatabaseStudiesResponse{
+	Status status = 1;
+	repeated DicomStudy studies = 2;
+}
+
 // Message requests
 message BrowserControllerCopyFilesIfNeededRequest{
 	BrowserController browser = 1;
 	repeated string paths = 2;
+}
+
+message BrowserControllerOpenViewerFromImagesRequest{
+	message FrameImages{
+		repeated DicomImage images = 1;
+	}
+	BrowserController browser = 1;
+	repeated FrameImages frames = 2;
+	bool movie = 3;
 }
