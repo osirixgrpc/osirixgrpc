@@ -3,7 +3,7 @@
 ![Welcome to OsiriXgrpc!](https://raw.githubusercontent.com/osirixgrpc/osirixgrpc/dev/docs/docs/assets/logo/logo-large.png)
 
 [![Powered By gRPC](https://img.shields.io/badge/powered_by-gRPC-green?labelColor=red)](https://grpc.io)
-[![GitHub License](https://img.shields.io/github/license/osirixgrpc/osirixgrpc?color=blue)](https://github.com/osirixgrpc/osirixgrpc/blob/main/LICENSE)
+[![GitHub License](https://img.shields.io/github/license/osirixgrpc/osirixgrpc?color=blue)](https://github.com/osirixgrpc/osirixgrpc/blob/main/LICENSE.txt)
 ![PyPI - Downloads](https://img.shields.io/pypi/dm/osirixgrpc)
 [![Static Badge](https://img.shields.io/badge/issues-osirixgrpc-red?logo=github)](https://github.com/osirixgrpc/osirixgrpc/issues)
 [![Static Badge](https://img.shields.io/badge/citation-AI2ASE-green?logo=googlescholar)](https://ai-2-ase.github.io/papers/29%5cCameraReady%5cAAAI_OsiriXgrpc__Rapid_prototyping_and_development_of_state_of_the_art_artificial_intelligence_in_OsiriX_cam_ready.pdf)

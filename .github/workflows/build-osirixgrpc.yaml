@@ -11,7 +11,7 @@ jobs:
     runs-on: macos-latest-xlarge
 
     env:
-      GRPC_VERSION: 1.55.0
+      GRPC_VERSION: 1.64.0
       BUILD_PATH: "build"
 
     steps:
