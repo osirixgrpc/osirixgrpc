@@ -11,7 +11,7 @@ jobs:
     runs-on: macos-latest-xlarge
 
     env:
-      GRPC_VERSION: 1.64.0
+      GRPC_VERSION: 1.65.0
       BUILD_PATH: "build"
 
     steps:
@@ -59,7 +59,7 @@ jobs:
           path: |
             grpc/install
           key: |
-            ${{ runner.os }}-build-$GRPC_VERSION
+            ${{ runner.os }}-build-"$GRPC_VERSION"
 
       - if: ${{ steps.cache-grpc.outputs.cache-hit != 'true' }}
         name: Clone gRPC repository
@@ -162,7 +162,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      GRPC_VERSION: 1.55.0
+      GRPC_VERSION: 1.65.0
 
     steps:
       - name: Checkout code
