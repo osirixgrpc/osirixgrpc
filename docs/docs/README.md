@@ -43,4 +43,4 @@ template.
 ## Funding
 We thank the MedTech SuperConnector for helping to support this work: https://medtechsuperconnector.com/. This work has 
 also been supported by the Sarcoma Accelerator Consortium (https://sarcomaaccelerator.org.uk/).
-![Sarcoma Accelerator Consortium](https://raw.githubusercontent.com/osirixgrpc/osirixgrpc/dev/docs/docs/assets/sarcoma_accelerator.png)
+![Sarcoma Accelerator Consortium](https://raw.githubusercontent.com/osirixgrpc/osirixgrpc/main/docs/docs/assets/sarcoma_accelerator.png)

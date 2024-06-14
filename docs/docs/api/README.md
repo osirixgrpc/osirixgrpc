@@ -8,7 +8,7 @@ gRPC supports many [languages](https://grpc.io/docs/languages/), including C++, 
 We currently only support use of Python because the libraries available image processing and machine-learning,
 and offers a relatively short learning curve. All examples are therefore shown in Python, but if you are 
 interested in generating the GRPC code for other client languages, then please see the 
-[contributing](../contributing/README.md) section and enclosed pages.
+[contributing](../contributing/CONTRIBUTING.md) section and enclosed pages.
 
 ## Requirements
 The requirements for working with the Python osirixgrpc library are
