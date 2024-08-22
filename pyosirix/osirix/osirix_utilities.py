@@ -39,8 +39,8 @@ class OsirixService(object):
         channel (grpc._channel.Channel): An insecure gRPC channel configuration.
     """
     def __init__(self, domain: str = "127.0.0.1", port: int = 50051,
-                 max_send_message_length: int = 500000000,
-                 max_receive_message_length: int = 500000000):
+                 max_send_message_length: int = 512 * 1024 * 1024,
+                 max_receive_message_length: int = 512 * 1024 * 1024):
         self.port = port
         self.domain = domain
         self.server_url = domain + ":" + str(self.port)
@@ -57,9 +57,9 @@ class OsirixService(object):
 
         """
         self.channel = grpc.insecure_channel(self.server_url,
-                                             options=[("max_receive_message_length",
+                                             options=[("grpc.max_receive_message_length",
                                                        self.max_receive_message_length),
-                                                      ("max_send_message_length",
+                                                      ("grpc.max_send_message_length",
                                                        self.max_send_message_length)])
         self.osirix_service_stub = osirix_pb2_grpc.OsiriXServiceStub(self.channel)
         if not self.check_connection():
@@ -206,6 +206,7 @@ class Osirix(osirix.base.OsirixBase):
             vr_controller_objs.append(vr_controller_obj)
         return vr_controller_objs
 
+    @pyosirix_connection_check
     def osirix_version(self) -> Tuple[str, str]:
         """ Return the current version of OsiriX being linked to.
 

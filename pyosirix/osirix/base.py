@@ -38,6 +38,11 @@ class OsirixBase:
         self._osirix_service_stub = osirix_service.osirix_service_stub
         self.pb2_object = pb2_object  # The protobuf object created using osirixgrpc (private)
 
+    def __eq__(self, other):
+        """ We let osirixgrpc handle this.
+        """
+        return self.pb2_object == other.pb2_object
+
     @property
     def osirix_service(self) -> osirix.osirix_utilities.OsirixService:
         """ The OsiriX service from which the instance was created.

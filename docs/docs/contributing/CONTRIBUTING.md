@@ -224,10 +224,10 @@ developers before being implemented.
 
 ### Requirements
 Building documentation requires both [mkdocs](https://www.mkdocs.org/) and 
-[mkdocs-material](https://squidfunk.github.io/mkdocs-material/) to be installed.  These can be installed using the 
-Python Package Index:
+[mkdocs-material](https://squidfunk.github.io/mkdocs-material/) to be installed.  These can be installed using the `requirements.txt` file within the `docs`
+folder:
 ```bash
-pip install mkdocs mkdocs-material
+pip install -r docs/requirements.txt
 ```
 
 ### Building Documentation
@@ -242,7 +242,7 @@ When developing documentation, however, it can be beneficial to run the MkDocs s
 ```bash
 mkdocs serve
 ```
-By connecting to the established service (linking to `http://localhost:8000/` in a we-browser), it is then possible to 
+By connecting to the established service (linking to `http://localhost:8000/` in a web-browser), it is then possible to 
 view changes to documentation in real-time.
 
 ### Deploying Documentation

@@ -18,7 +18,7 @@ __author__ = "Timothy Sum Hon Mun & Matthew D Blackledge"
 import os
 import json
 import warnings
-from typing import List, AnyStr, Tuple
+from typing import List, AnyStr, Tuple, Dict
 
 from . import base
 from . import browser_controller
@@ -49,7 +49,19 @@ def plugin_support_directory() -> AnyStr:
     return support_directory
 
 
-def osirixgrpc_port_preference() -> int:
+def allowed_plugin_types() -> Dict:
+    """ The plugin types allowed, both integer and string names.
+
+    Returns:
+        Dict: The allowed plugin types.
+    """
+    return {1: "gRPCImageRenderTool",
+            2: "gRPCROITool",
+            3: "gRPCVolumeRenderTool",
+            4: "gRPCDatabaseTool"}
+
+
+def osirixgrpc_port_preference() -> int | None:
     """ Extract the preferred port set by the user in the OsiriXgrpc plugin.
 
     It will iterate through the ports set-up by the user in order, and return
@@ -64,12 +76,60 @@ def osirixgrpc_port_preference() -> int:
     support_directory = plugin_support_directory()
     server_configs = os.path.join(support_directory,
                                   "server_configs.json")
+    if not os.path.exists(server_configs):
+        return None
+
     with open(server_configs, "rb") as fhandle:
         server_configs_dict = json.load(fhandle)
         for item in server_configs_dict:
             if item["active"] == "YES":
                 port = item["port"]
     return port
+
+
+def install_script(name: str, plugin_type: int, path: str, interpreter_path: str = None,
+                   blocking: bool = False) -> None:
+    """ Install a plugin into OsiriX.
+
+    Args:
+        name (str): The name of the plugin.
+        plugin_type (int): The plugin type: 1 = Image, 2 = ROI, 3 = VR, 4 = Database.
+        path (str): The path of the script that will be run.
+        interpreter_path (str): The interpreter path to run the script.
+        blocking (bool): Whether to block OsiriX while running the script.
+    """
+    # Perform checks.
+    if plugin_type not in allowed_plugin_types().keys():
+        raise ValueError("Plugin type must be 1 (Image), 2 (ROI), 3 (VR), or 4 (Database).")
+
+    # Open the script configs.
+    support_directory = plugin_support_directory()
+    script_configs_path = os.path.join(support_directory,
+                                       "script_configs.json")
+    if not os.path.exists(script_configs_path):
+        raise FileNotFoundError("No script configs file found.")
+
+    with open(script_configs_path, "r") as fhandle:
+        script_configs = json.load(fhandle)
+
+    # Check that the name is valid.
+    for script_config in script_configs:
+        if script_config["name"] == name and script_config["type"] == plugin_type:
+            raise ValueError("Duplicate script found")
+
+    # Append the new script information
+    blocking_str = "NO"
+    if blocking:
+        blocking_str = "YES"
+    script_config_new = {"name": name,
+                         "type": allowed_plugin_types()[plugin_type],
+                         "path": path,
+                         "interpreterPath": interpreter_path,
+                         "blocking": blocking}
+
+    # Save to file
+    with open(script_configs_path, "w") as fhandle:
+        json.dump(script_config_new, fhandle)
 
 
 def global_osirix_instance() -> osirix_utilities.Osirix:
@@ -88,8 +148,8 @@ def global_osirix_instance() -> osirix_utilities.Osirix:
         if port is not None:
             service = osirix_utilities.OsirixService(domain="127.0.0.1",
                                                      port=port,
-                                                     max_send_message_length=500000000,
-                                                     max_receive_message_length=500000000)
+                                                     max_send_message_length=512 * 1024 * 1024,
+                                                     max_receive_message_length=512 * 1024 * 1024)
             try:
                 service.start_service()
             except exceptions.GrpcException:

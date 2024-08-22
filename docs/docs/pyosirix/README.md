@@ -21,7 +21,7 @@ Example functionality includes:
 
 ## Installation
 ```
-pip install -i https://pypi.org/simple/ --extra-index-url https://test.pypi.org/simple/ pyosirix==0.2.1-beta4
+pip install pyosirix
 ```
 
 ## Requirements
@@ -42,7 +42,7 @@ your ideas and improve pyOsiriX. Examples include:
 Please contact us at [osirixgrpc@gmail.com](mailto:osirixgrpc@gmail.com) to find out more.
 
 ## Examples of use
-__Note__: These are for exemplary use only and just touch on what is capable with OsiriXgrpc. Over time we will compile 
+__Note__: These are for exemplary use only and just touch on what is possible with OsiriXgrpc. Over time we will compile 
 a list of more complete examples as found in the [documentation](https://osirixgrpc.github.io/osirixgrpc/pyosirix).
 
 ### Accessing the 2D viewer
@@ -81,7 +81,7 @@ frontmost_viewer.needs_display_update()  # Tell OsiriX to redraw itself
 
 ### Accessing ROIs
 Similarly to images, ROIs can be obtained as an array for each requested frame in the 2D OsiriX viewer. Each element of 
-the array is another array, containing however, many ROIs are on that slice (some may be empty). This will produce a 
+the array is another array, containing however many ROIs are on that slice (some may be empty). This will produce a 
 list of unique ROI names in the viewer.
 ```python
 import osirix

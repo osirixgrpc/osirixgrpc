@@ -142,10 +142,11 @@ in Maximum Intensity Project (MIP) or Volume Render (VR) mode. Also provides acc
 (ROIVolume)[#roivolume]. See the [VRController API](api/vrcontroller.md) for more details.
 
 ### ROIVolume
-__Note__: ROIs in OsiriX are grouped by name!
-Represents a volume of ROIs, all of which have the same name. Volumes can on;y be generated where there is a single ROI 
+Represents a volume of ROIs, all of which have the same name. Volumes can only be generated where there is a single ROI 
 of the same name on each imaging slice. Provides some immutable attributes such as ROI volume, and some mutable ones 
 such as color, opacity and texture. See the [ROIVolume API](api/roivolume.md) for more details.
+
+__Note__: ROIs in OsiriX are grouped by name!
 
 ## Next Steps
 __Congratulations!__ You should now be ready to create client scripts to interact with OsiriX.

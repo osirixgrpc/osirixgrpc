@@ -41,6 +41,8 @@ template.
  - Improve security through SSL/TCL encryption.
 
 ## Funding
-We thank the MedTech SuperConnector for helping to support this work: https://medtechsuperconnector.com/. This work has 
-also been supported by the Sarcoma Accelerator Consortium (https://sarcomaaccelerator.org.uk/).
+We thank the MedTech SuperConnector for helping to support this work: https://medtechsuperconnector.com/. 
+This work was also supported by the International Accelerator Award funded by Cancer Research UK [C56167/A29363], 
+Associazione Italiana per la Ricerca sul Cancro [AIRC - 24297] and Fundacion Científica – Asociacion Espanola Contra el 
+Cancer [Foundation AECC - GEACC19007MA] (https://sarcomaaccelerator.org.uk/).
 ![Sarcoma Accelerator Consortium](https://raw.githubusercontent.com/osirixgrpc/osirixgrpc/main/docs/docs/assets/sarcoma_accelerator.png)

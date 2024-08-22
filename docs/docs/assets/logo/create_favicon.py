@@ -2,7 +2,7 @@
 
 import sys
 
-from PIL import Image, ImageOps
+from PIL import Image
 
 
 def create_favicon(input_path, output_path, size=(16, 16)):
