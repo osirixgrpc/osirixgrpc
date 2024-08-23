@@ -1,0 +1,5 @@
+osirix
+numpy
+PyQt5
+SimpleITK
+pydicom
