@@ -105,6 +105,16 @@ NS_ASSUME_NONNULL_BEGIN
  */
 + (NSInteger)alertWithMessageText:(nonnull NSString *)message :(nonnull NSString *)firstButton :(nullable NSString *)secondButton :(nullable NSString *)thirdButton :(nullable NSString *)informativeTextWithFormat, ...;
 
+
+/**
+ * Execute a bash command and return the result (e.g. `pwd` would return the working directory as a NSString instance).
+ *
+ * @param command The bash commend to execute.
+ *
+ * @return An NSString defining the output of the command.
+ */
++ (NSString*)executeBashCommand: (NSString *)command;
+
 @end
 
 NS_ASSUME_NONNULL_END

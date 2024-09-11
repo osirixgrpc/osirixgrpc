@@ -174,4 +174,28 @@
     return response;
 }
 
++ (NSString*)executeBashCommand:(NSString *)command {
+    // Create an NSTask to run the provided bash command
+    NSTask *task = [[NSTask alloc] init];
+    [task setLaunchPath:@"/bin/bash"];
+    [task setArguments:@[@"-c", command]];
+
+    // Create a pipe to capture the output of the command
+    NSPipe *pipe = [NSPipe pipe];
+    [task setStandardOutput:pipe];
+    [task setStandardError:pipe]; // Capture both stdout and stderr
+
+    // Launch the task
+    [task launch];
+    [task waitUntilExit]; // Wait for the task to finish
+
+    // Read the output from the pipe
+    NSFileHandle *file = [pipe fileHandleForReading];
+    NSData *outputData = [file readDataToEndOfFile];
+    NSString *outputString = [[NSString alloc] initWithData:outputData encoding:NSUTF8StringEncoding];
+
+    // Return the output as a string
+    return [outputString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+}
+
 @end
