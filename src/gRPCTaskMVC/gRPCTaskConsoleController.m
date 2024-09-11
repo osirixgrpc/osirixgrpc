@@ -7,7 +7,7 @@
 
 - (id)init
 {
-    self = [super initWithWindowNibName:@"gRPCTaskConsole"];
+    self = [super initWithWindowNibName:@"gRPCTaskConsoleWindow"];
     if (!self) {
         gRPCLogError(@"Could not initialize task console");
         return  nil;
