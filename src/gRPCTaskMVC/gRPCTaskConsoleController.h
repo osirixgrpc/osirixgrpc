@@ -4,16 +4,16 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface gRPCTaskController : NSWindowController
+@interface gRPCTaskConsoleController : NSWindowController
 {
     IBOutlet NSTextView *textView;
     IBOutlet NSTextField *infoLabel;
 }
 
-@property (retain, nonatomic) NSColor * stdOutColor;
-@property (retain, nonatomic) NSColor * stdErrColor;
+@property (retain, nonatomic) NSColor * consoleStdOutColor;
+@property (retain, nonatomic) NSColor * consoleStdErrColor;
 @property (retain, nonatomic) NSColor * consoleTextColor;
-@property (retain, nonatomic) NSColor * backgroundColor;
+@property (retain, nonatomic) NSColor * consoleBackgroundColor;
 
 - (void)runScript:(gRPCScript *)script;
 

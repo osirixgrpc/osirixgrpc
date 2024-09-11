@@ -1,21 +1,21 @@
-#import "gRPCTaskController.h"
+#import "gRPCTaskConsoleController.h"
 #import "gRPCUtilities.h"
 
-@implementation gRPCTaskController
+@implementation gRPCTaskConsoleController
 
-@synthesize stdOutColor, stdErrColor, backgroundColor, consoleTextColor;
+@synthesize consoleStdOutColor, consoleStdErrColor, consoleBackgroundColor, consoleTextColor;
 
 - (id)init
 {
-    self = [super initWithWindowNibName:@"gRPCTaskWindow"];
+    self = [super initWithWindowNibName:@"gRPCTaskConsole"];
     if (!self) {
-        gRPCLogError(@"Could not initialize task controller");
+        gRPCLogError(@"Could not initialize task console");
         return  nil;
     }
-    stdOutColor = [NSColor greenColor];
-    stdErrColor = [NSColor redColor];
+    consoleStdOutColor = [NSColor greenColor];
+    consoleStdErrColor = [NSColor redColor];
     consoleTextColor = [NSColor whiteColor];
-    backgroundColor = [NSColor blackColor];
+    consoleBackgroundColor = [NSColor blackColor];
     
     return self;
 }
@@ -25,7 +25,7 @@
     [[self window] setLevel: NSStatusWindowLevel];
     [textView setEditable:NO];
     [textView setDrawsBackground:YES];
-    [textView setBackgroundColor:backgroundColor];
+    [textView setBackgroundColor:consoleBackgroundColor];
     [infoLabel setStringValue:@""];
     [textView displayIfNeeded];
 }
@@ -56,7 +56,7 @@
     NSData *data = [fileHandle availableData];
     if ([data length] > 0)
     {
-        [self appendTextToView:[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] withColor:stdOutColor];
+        [self appendTextToView:[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] withColor:consoleStdOutColor];
         [fileHandle waitForDataInBackgroundAndNotify];
     }
     else
@@ -71,7 +71,7 @@
     NSData *data = [fileHandle availableData];
     if ([data length] > 0)
     {
-        [self appendTextToView:[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] withColor:stdErrColor];
+        [self appendTextToView:[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] withColor:consoleStdErrColor];
         [fileHandle waitForDataInBackgroundAndNotify];
     }
     else
