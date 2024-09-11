@@ -142,16 +142,20 @@
     [textView setString:@""];
     
     // Launch the task and wait if required.
-    [task launch];
-    
-    // Append text to the view so we know this is a new session
-    
-    [self appendTextToView:[NSString stringWithFormat:@"Starting task with file: %@\n%@\n", [scriptURL path], [self currentTimeString]] withColor:consoleTextColor];
+    NSError *error = nil;
+    bool bOK = [task launchAndReturnError:&error];
+    if (!bOK) {
+        [self appendTextToView:[NSString stringWithFormat:@"Could not start script: %@", [error localizedDescription]] withColor:stdErrColor];
+    }
+    else {
+        // Append text to the view so we know this is a new session
+        [self appendTextToView:[NSString stringWithFormat:@"Starting task with file: %@\n%@\n", [scriptURL path], [self currentTimeString]] withColor:consoleTextColor];
 
-    
-    if (blocking)
-    {
-        [task waitUntilExit];
+        
+        if (blocking)
+        {
+            [task waitUntilExit];
+        }
     }
 }
 

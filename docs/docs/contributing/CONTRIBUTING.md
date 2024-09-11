@@ -15,7 +15,7 @@ medical research, fostering an environment of collaboration and innovation.
   <tr>
     <td><b>Example Scripts</b></td>
     <td>We strongly encourage developers to share scripts of OsiriXgrpc in use.  Please see
-        <a href="../pyosirix/contributing/CONTRIBUTING.md">Contributing pyOsiriX Example Scripts</a> section for more 
+        <a href="../pyosirix/contributing/CONTRIBUTING.html">Contributing pyOsiriX Example Scripts</a> section for more 
         information.</td>
   </tr>
   <tr>
@@ -224,10 +224,7 @@ developers before being implemented.
 
 ### Requirements
 Building documentation requires both [mkdocs](https://www.mkdocs.org/) and 
-[mkdocs-material](https://squidfunk.github.io/mkdocs-material/) to be installed.  These can be installed using the 
-Python Package Index:
 ```bash
-pip install mkdocs mkdocs-material
 ```
 
 ### Building Documentation
@@ -242,7 +239,6 @@ When developing documentation, however, it can be beneficial to run the MkDocs s
 ```bash
 mkdocs serve
 ```
-By connecting to the established service (linking to `http://localhost:8000/` in a we-browser), it is then possible to 
 view changes to documentation in real-time.
 
 ### Deploying Documentation
