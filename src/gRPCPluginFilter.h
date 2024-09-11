@@ -4,7 +4,7 @@
 #import "gRPCServerController.h"
 #import "gRPCToolbarController.h"
 #import "gRPCScriptController.h"
-#import "gRPCTaskController.h"
+#import "gRPCTaskConsoleController.h"
 
 /*
  The core class for the plugin, and used to interface with OsiriX.
@@ -21,7 +21,7 @@
     gRPCServerController *serverController;
     gRPCToolbarController *toolbarController;
     gRPCScriptController *scriptController;
-    gRPCTaskController *taskContoller;
+    gRPCTaskConsoleController *taskConsoleContoller;
     
 }
 

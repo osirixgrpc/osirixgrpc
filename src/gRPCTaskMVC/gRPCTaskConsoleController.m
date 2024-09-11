@@ -145,7 +145,7 @@
     NSError *error = nil;
     bool bOK = [task launchAndReturnError:&error];
     if (!bOK) {
-        [self appendTextToView:[NSString stringWithFormat:@"Could not start script: %@", [error localizedDescription]] withColor:stdErrColor];
+        [self appendTextToView:[NSString stringWithFormat:@"Could not start script: %@", [error localizedDescription]] withColor:consoleStdErrColor];
     }
     else {
         // Append text to the view so we know this is a new session
