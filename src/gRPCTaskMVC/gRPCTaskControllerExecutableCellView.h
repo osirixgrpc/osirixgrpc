@@ -1,13 +1,6 @@
-//
-//  gRPCScriptControllerInterpreterCellView.h
-//  osirixgrpc
-//
-//  Created by adminmblackledge on 06/06/2021.
-//
-
 #import <Cocoa/Cocoa.h>
 
-@interface gRPCScriptControllerInterpreterCellView : NSTableCellView
+@interface gRPCTaskControllerExecutableCellView : NSTableCellView
 {
     IBOutlet NSButton *openButton;
     IBOutlet NSTextField *textField;

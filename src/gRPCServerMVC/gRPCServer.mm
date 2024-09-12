@@ -1,10 +1,3 @@
-//
-//  ServiceManager.m
-//  ConsoleApp
-//
-//  Created by Richard Holbrey on 12/12/2020.
-//
-
 #import "gRPCServer.h"
 #import "gRPCErrorCodes.h"
 #import "gRPCService.h"
