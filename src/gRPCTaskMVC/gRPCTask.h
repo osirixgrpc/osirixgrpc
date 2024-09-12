@@ -32,7 +32,7 @@ typedef enum {
     BOOL blocking;
     gRPCTaskType type;
     NSURL *executable;
-    NSArray *arguments;
+    NSString *arguments;
 }
 
 /*!
@@ -78,9 +78,9 @@ typedef enum {
  * @property arguments
  *
  * @abstract
- * An array of arguments that will be passed to the executable when run.
+ * A string of arguments that will be passed to the executable when run.
  */
-@property (readwrite, assign) NSArray *arguments;
+@property (readwrite, assign) NSString *arguments;
 
 /*!
  * @method initWithExecutableURL: name: type: arguments: isBlocking:
@@ -107,7 +107,7 @@ typedef enum {
  * @param blocking
  * Whether to run the task modally (blocking) or not.
  */
-- (id) initWithExecutableURL:(NSURL *)url_ name:(NSString *)name_ type:(gRPCTaskType)type_ arguments:(NSArray *)arguments_ blocking:(BOOL) blocking_;
+- (id) initWithExecutableURL:(NSURL *)url_ name:(NSString *)name_ type:(gRPCTaskType)type_ arguments:(NSString *)arguments_ blocking:(BOOL) blocking_;
 
 /*!
  * @method isEqualToTask:
@@ -116,7 +116,7 @@ typedef enum {
  * Used to define equality between two tasks
  *
  * @discussion
- * Tasks will be considered equal if the following properties are equivalent: name
+ * Tasks will be considered equal if the following properties are equivalent: name, type
  *
  * @return
  * Boolean value indicating equality

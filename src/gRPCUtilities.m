@@ -174,6 +174,17 @@
     return response;
 }
 
+
++ (NSString *) currentTimeString
+{
+    NSDate *currDate = [NSDate date];
+    NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"[dd/MM/YY - HH:mm:ss]"];
+    NSString* dateString = [dateFormatter stringFromDate:currDate];
+    [dateFormatter release];
+    return dateString;
+}
+
 + (NSString*)executeBashCommand:(NSString *)command {
     // Create an NSTask to run the provided bash command
     NSTask *task = [[NSTask alloc] init];

@@ -23,7 +23,7 @@
 	<key>MenuTitles</key>
 	<array>
 		<string>Server Configuration</string>
-		<string>Script Management</string>
+		<string>Task Management</string>
 		<string>Task Console</string>
 	</array>
 	<key>NSPrincipalClass</key>

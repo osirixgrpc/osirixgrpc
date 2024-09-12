@@ -42,24 +42,20 @@
     // Check that a support directory exists and create of not.
     [self checkSupportDirectoryExists];
     
-    // Start the script manager
-    scriptController = [[gRPCScriptController alloc] initWithStorageURL:[NSURL fileURLWithPath:[gRPCPluginFilter pluginSupportDirectory]]];
+    // Start the task manager
+    taskController = [[gRPCTaskController alloc] initWithStorageURL:[NSURL fileURLWithPath:[gRPCPluginFilter pluginSupportDirectory]]];
     
     // Create the service controller and start a service.
     serverController = [[gRPCServerController alloc] initWithStorageURL:[NSURL fileURLWithPath:[gRPCPluginFilter pluginSupportDirectory]]];
     
-    // Create the task contoller - will be used to run script processes
-    taskConsoleContoller = [[gRPCTaskConsoleController alloc] init];
-    
-    // The toolbar controller will be used to control all interactions with the toolbar buttons (for starting user scripts)
-    toolbarController = [[gRPCToolbarController alloc] initWithScriptController:scriptController andTaskController:taskConsoleContoller];
+    // The toolbar controller will be used to control all interactions with the toolbar buttons (for starting user tasks)
+    toolbarController = [[gRPCToolbarController alloc] initWithTaskController:taskController];
 }
 
 - (void) dealloc
 {
-    [scriptController release];
+    [taskController release];
     [serverController release];
-    [taskConsoleContoller release];
     [toolbarController release];
     [super dealloc];
 }
@@ -76,12 +72,12 @@
         [serverController showWindow:self];
     }
 
-    if ([menuName isEqualToString:@"Script Management"]) {
-        [scriptController showWindow:self];
+    if ([menuName isEqualToString:@"Task Management"]) {
+        [taskController showWindow:self];
     }
 
     if ([menuName isEqualToString:@"Task Console"]) {
-        [taskConsoleContoller showWindow:self];
+        [[taskController taskConsole] showWindow:self];
     }
 
     return 0;

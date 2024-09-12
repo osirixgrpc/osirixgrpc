@@ -3,14 +3,13 @@
 
 #import "gRPCServerController.h"
 #import "gRPCToolbarController.h"
-#import "gRPCScriptController.h"
-#import "gRPCTaskConsoleController.h"
+#import "gRPCTaskController.h"
 
 /*
  The core class for the plugin, and used to interface with OsiriX.
  
  This will be responsible for:
-    1. Initialising and deallocating all created plugin controllers (ServerController, ScriptController, TaskController, ToolbarController) during runtime.
+    1. Initialising and deallocating all created plugin controllers (ServerController, TaskController, ToolbarController) during runtime.
     2. Redirecting requests from the toolbar controller.
     3. Managing the support directory and plugin identifier string.
  
@@ -20,8 +19,7 @@
     
     gRPCServerController *serverController;
     gRPCToolbarController *toolbarController;
-    gRPCScriptController *scriptController;
-    gRPCTaskConsoleController *taskConsoleContoller;
+    gRPCTaskController *taskController;
     
 }
 

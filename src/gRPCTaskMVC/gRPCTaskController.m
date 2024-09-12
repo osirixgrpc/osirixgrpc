@@ -1,12 +1,10 @@
 #import "gRPCTaskController.h"
-#import "gRPCTaskControllerInterpreterCellView.h"
-#import "gRPCTaskControllerBlockingCellView.h"
-#import "gRPCTaskControllerTypeCellView.h"
 #import "gRPCLog.h"
+#import "gRPCUtilities.h"
 
 @implementation gRPCTaskController
 
-@synthesize tasks, storageURL;
+@synthesize tasks, storageURL, taskConsole;
 
 + (NSString *) gRPCTaskControllerErrorDomain
 {
@@ -34,6 +32,11 @@
         return nil;
     }
     
+    configPanel = [[gRPCTaskConfigurationController alloc] init];
+    [configPanel setDelegate:self];
+    
+    taskConsole = [[gRPCTaskConsoleController alloc] init];
+    
     tasks = [self loadTasks];
     
     return self;
@@ -43,6 +46,8 @@
 {
     [tasks release];
     [storageURL release];
+    [configPanel release];
+    [taskConsole release];
     [super dealloc];
 }
 
@@ -64,7 +69,7 @@
         NSString *name = [task name];
         BOOL blocking = [task blocking];
         gRPCTaskType type = [task type];
-        NSString *argumentsString = [[task arguments] componentsJoinedByString:@"/"];
+        NSString *argumentsString = [task arguments];
         
         NSString *blockingString = @"NO";
         if (blocking)
@@ -130,15 +135,15 @@
             }
             
             gRPCTaskType taskType;
-            if ([typeString isEqualToString:@"gRPCImageTool"])
+            if ([typeString isEqualToString:@"gRPCImageTask"])
             {
                 taskType = gRPCImageTask;
             }
-            else if ([typeString isEqualToString:@"gRPCROITool"])
+            else if ([typeString isEqualToString:@"gRPCROITask"])
             {
                 taskType = gRPCROITask;
             }
-            else if ([typeString isEqualToString:@"gRPCDatabaseTool"])
+            else if ([typeString isEqualToString:@"gRPCDatabaseTask"])
             {
                 taskType = gRPCDatabaseTask;
             }
@@ -147,9 +152,7 @@
                 taskType = gRPCVolumeRenderTask;
             }
             
-            NSArray *arguments = [argumentsString componentsSeparatedByString:@" "];
-            
-            gRPCTask *task = [[gRPCTask alloc] initWithExecutableURL:[NSURL fileURLWithPath:executableString] name:name type:taskType arguments:arguments blocking:blocking];
+            gRPCTask *task = [[gRPCTask alloc] initWithExecutableURL:[NSURL fileURLWithPath:executableString] name:name type:taskType arguments:argumentsString blocking:blocking];
             [tasks_ addObject:task];
         }
     }
@@ -159,28 +162,16 @@
 #pragma mark -
 #pragma mark Accessors
 
-- (gRPCTask *)taskWithName:(NSString *)name
+- (gRPCTask *)taskWithName:(NSString *)name andType: (gRPCTaskType) type
 {
     for (gRPCTask *task in tasks)
     {
-        if ([task.name isEqualToString:name])
+        if ([task.name isEqualToString:name] && task.type == type)
         {
             return task;
         }
     }
     return nil;
-}
-
-- (BOOL)taskPresentWithName:(NSString *)name
-{
-    for (gRPCTask *task in tasks)
-    {
-        if ([task.name isEqualToString:name])
-        {
-            return TRUE;
-        }
-    }
-    return FALSE;
 }
 
 - (NSArray *) taskNamesForType:(gRPCTaskType)type
@@ -197,16 +188,20 @@
     return taskNames;
 }
 
-- (NSArray *) taskNames
-{
-    NSMutableArray *taskNames = [NSMutableArray array];
-    for (gRPCTask *task in tasks)
-        [taskNames addObject:[task name]];
-    return taskNames;
-}
-
 # pragma mark -
 # pragma mark Register/unregister
+
+- (BOOL) registerTask:(gRPCTask *)task
+{
+    for (gRPCTask *task_ in tasks)
+    {
+        if ([task isEqualToTask:task_])
+            return FALSE;
+    }
+    [tasks addObject:task];
+    [self saveTasks:tasks];
+    return TRUE;
+}
 
 - (void) unregisterTask: (gRPCTask *)task
 {
@@ -228,92 +223,29 @@
 }
 
 # pragma mark -
+# pragma mark Task panel delegate methods
+
+- (void)didPressOK {
+    NSLog(@"User pressed OK");
+    // Handle OK action
+}
+
+- (void)didPressCancel {
+    [configPanel close];
+}
+
+# pragma mark -
 # pragma mark Task window methods
-
-- (IBAction)executableChanged:(id)sender
-{
-    NSOpenPanel *openPanel = [NSOpenPanel openPanel];
-    [openPanel setTitle:@"Select the executable"];
-    [openPanel setCanChooseFiles:YES];
-    [openPanel setCanChooseDirectories:NO];
-    [openPanel setCanCreateDirectories:NO];
-    if ([openPanel runModal] == NSModalResponseOK)
-    {
-        NSURL *url = [openPanel URL];
-        long row = [taskTable rowForView:sender];
-        gRPCTask *task = [tasks objectAtIndex:row];
-        [task setExecutable:url];
-        [self saveTasks:tasks];
-        [taskTable reloadData];
-    }
-}
-
-- (IBAction)blockingChanged:(id)sender
-{
-    int value = [(NSButton *)sender intValue];
-    long row = [taskTable rowForView:sender];
-    gRPCTask *task = [tasks objectAtIndex:row];
-    [task setBlocking:value>0?YES:NO];
-    [self saveTasks:tasks];
-    [taskTable reloadData];
-}
-
-- (IBAction)typeChanged:(id)sender
-{
-    long value = [(NSPopUpButton *)sender indexOfSelectedItem];
-    long row = [taskTable rowForView:sender];
-    gRPCTask *task = [tasks objectAtIndex:row];
-    switch (value) {
-        case 0:
-            [task setType:gRPCImageTask];
-            break;
-        case 1:
-            [task setType:gRPCROITask];
-            break;
-        case 2:
-            [task setType:gRPCVolumeRenderTask];
-            break;
-        case 3:
-            [task setType:gRPCDatabaseTask];
-            break;
-        default:
-            gRPCLogError(@"Incorrect button value encountered.");
-    }
-    [self saveTasks:tasks];
-    [taskTable reloadData];
-}
-
-- (IBAction) nameChanged:(id)sender
-{
-    NSString *name = [(NSTextField *)sender stringValue];
-    long row = [taskTable rowForView:sender];
-    gRPCTask *task = [tasks objectAtIndex:row];
-    [task setName:name];
-    [self saveTasks:tasks];
-    [taskTable reloadData];
-}
-
-- (NSInteger) numberOfRowsInTableView:(NSTableView *)tableView
-{
-    return [tasks count];
-}
 
 - (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
 {
     NSString *identifier = [tableColumn identifier];
     gRPCTask *task = (gRPCTask *)[tasks objectAtIndex:row];
     
-    if ([identifier isEqualToString:@"executable"])
+    if ([identifier isEqualToString:@"blocking"])
     {
-        gRPCTaskControllerInterpreterCellView *view = [tableView makeViewWithIdentifier:@"executable" owner:self];
-        [[view textField] setStringValue: [[task executable] path]];
-        [[view textField] setToolTip:[[task executable] path]];
-        return view;
-    }
-    else if ([identifier isEqualToString:@"blocking"])
-    {
-        gRPCTaskControllerBlockingCellView *view = [tableView makeViewWithIdentifier:@"blocking" owner:self];
-        [[view checkBox] setIntValue:[task blocking]?1:0];
+        NSTableCellView *view = [tableView makeViewWithIdentifier:@"blocking" owner:self];
+        [[view textField] setStringValue:[task blocking]?@"Y":@"N"];
         return view;
     }
     else if ([identifier isEqualToString:@"name"])
@@ -324,20 +256,19 @@
     }
     else if ([identifier isEqualToString:@"type"])
     {
-        gRPCTaskControllerTypeCellView *view = [tableView makeViewWithIdentifier:@"type" owner:self];
-        [[view popUpButton] addItemsWithTitles:@[@"Image", @"ROI", @"VR", @"Database"]];
+        NSTableCellView *view = [tableView makeViewWithIdentifier:@"type" owner:self];
         switch ([task type]) {
             case gRPCImageTask:
-                [[view popUpButton] selectItemAtIndex:0];
+                [[view textField] setStringValue:@"Image"];
                 break;
             case gRPCROITask:
-                [[view popUpButton] selectItemAtIndex:1];
+                [[view textField] setStringValue:@"ROI"];
                 break;
             case gRPCVolumeRenderTask:
-                [[view popUpButton] selectItemAtIndex:2];
+                [[view textField] setStringValue:@"VR"];
                 break;
             case gRPCDatabaseTask:
-                [[view popUpButton] selectItemAtIndex:3];
+                [[view textField] setStringValue:@"Database"];
                 break;
             default:
                 break;
@@ -353,17 +284,14 @@
 // Used by the IBAction for user requests to register a task
 - (void) registerTaskAction
 {
-    NSOpenPanel *openPanel = [NSOpenPanel openPanel];
-    [openPanel setTitle:@"Select the task file location"];
-    [openPanel setCanChooseFiles:YES];
-    [openPanel setCanChooseDirectories:NO];
-    [openPanel setCanCreateDirectories:NO];
-    if ([openPanel runModal] == NSModalResponseOK)
-    {
-        NSURL *url = [openPanel URL];
-        [self registerTaskAtURL:url];
-    }
-    [taskTable reloadData];
+    // Load the window
+    [self.window beginSheet:configPanel.window completionHandler:^(NSModalResponse returnCode) {
+            if (returnCode == NSModalResponseOK) {
+                NSLog(@"Tool added.");
+            } else {
+                NSLog(@"Operation cancelled.");
+            }
+        }];
 }
 
 // Used by the IBAction for user requests to unregister a task
@@ -373,6 +301,11 @@
     gRPCTask *task = [tasks objectAtIndex:row];
     [self unregisterTask:task];
     [taskTable reloadData];
+}
+
+- (void) editTaskAction
+{
+    NSLog(@"Editing task");
 }
 
 - (IBAction)addRemoveTask:(id)sender
@@ -385,9 +318,76 @@
         case 1:
             [self registerTaskAction];
             break;
+        case 2:
+            [self editTaskAction];
+            break;
         default:
             break;
     }
+}
+
+# pragma mark -
+# pragma mark Run Task
+- (void) runTask:(gRPCTask *)task
+{
+    // Get all relevant paramters for the task
+    NSURL *executableURL = [task executable];
+    BOOL blocking = [task blocking];
+    NSMutableArray *arguments = [[[task arguments] componentsSeparatedByString:@" "] mutableCopy];
+    
+    // Set up a task handle and pipe for stderr/stdout
+    NSTask *taskHandle = [[[NSTask alloc] init] autorelease];
+    NSPipe *pipeStdErr = [[[NSPipe alloc] init] autorelease];
+    NSPipe *pipeStdOut = [[[NSPipe alloc] init] autorelease];
+    
+    // Set task variables
+    [taskHandle setExecutableURL:executableURL];
+    [taskHandle setStandardOutput:pipeStdOut];
+    [taskHandle setStandardError:pipeStdErr];
+    [taskHandle setEnvironment:@{@"HOME": NSHomeDirectory()}];
+    
+    // Perform a case-insensitive search for "python"
+    NSRange range = [[executableURL lastPathComponent] rangeOfString:@"python" options:NSCaseInsensitiveSearch];
+    if (range.location != NSNotFound) {
+        [arguments insertObject:@"-u" atIndex:0]; // Don't buffer stdout/stderr
+    }
+    [taskHandle setArguments:arguments];
+
+    // Set up the stdout to print to screen
+    NSFileHandle *fileHandleStdOut = [pipeStdOut fileHandleForReading];
+    [fileHandleStdOut waitForDataInBackgroundAndNotify];
+    [[NSNotificationCenter defaultCenter] addObserver:[self taskConsole] selector:@selector(stdOutDataAvailable:) name:NSFileHandleDataAvailableNotification object:fileHandleStdOut];
+    
+    // Set up the stderr to print to screen
+    NSFileHandle *fileHandleStdErr = [pipeStdErr fileHandleForReading];
+    [fileHandleStdErr waitForDataInBackgroundAndNotify];
+    [[NSNotificationCenter defaultCenter] addObserver:[self taskConsole] selector:@selector(stdErrDataAvailable:) name:NSFileHandleDataAvailableNotification object:fileHandleStdErr];
+    
+    // Listen for when the task terminates
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(taskTerminated:) name:NSTaskDidTerminateNotification object:task];
+    
+    // Launch the task and wait if required.
+    NSError *error = nil;
+    bool bOK = [taskHandle launchAndReturnError:&error];
+    if (!bOK) {
+        [[self taskConsole] appendTextToView:[NSString stringWithFormat:@"Could not start script: %@", [error localizedDescription]]];
+    }
+    else {
+        // Append text to the view so we know this is a new session
+        [[self taskConsole] appendTextToView:[NSString stringWithFormat:@"Starting task with executable: %@\n%@\n", [executableURL path], [gRPCUtilities currentTimeString]]];
+
+        
+        if (blocking)
+        {
+            [taskHandle waitUntilExit];
+        }
+    }
+}
+
+- (void) taskTerminated:(id) sender
+{
+    [[self taskConsole] appendTextToView:[NSString stringWithFormat:@"Task finished: %@\n\n", [gRPCUtilities currentTimeString]]];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 @end

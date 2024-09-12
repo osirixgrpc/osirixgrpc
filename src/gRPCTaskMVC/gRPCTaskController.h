@@ -1,6 +1,8 @@
 #import <Cocoa/Cocoa.h>
 
 #import "gRPCTask.h"
+#import "gRPCTaskConfigurationController.h"
+#import "gRPCTaskConsoleController.h"
 
 /**
  * Manages the location, properties and runtime of installed tasks.
@@ -13,11 +15,13 @@
  * Utility methods are provided for adding and removing tasks.
  */
 
-@interface gRPCTaskController : NSWindowController <NSWindowDelegate, NSTableViewDataSource, NSTableViewDelegate>
+@interface gRPCTaskController : NSWindowController <NSWindowDelegate, NSTableViewDataSource, NSTableViewDelegate, gRPCTaskConfigurationDelegate>
 {
     IBOutlet NSTableView *taskTable;
     NSURL *storageURL;
     NSMutableArray *tasks;
+    gRPCTaskConfigurationController *configPanel;
+    gRPCTaskConsoleController *taskConsole;
 }
 
 # pragma mark -
@@ -38,6 +42,14 @@
  * NSMutableArray of gRPCTask instances.
  */
 @property (readonly) NSMutableArray *tasks;
+
+/*!
+ * @property taskConsole
+ *
+ * @abstract
+ * The gRPCTaskConsoleController attributed with this controller.
+ */
+@property (readonly) gRPCTaskConsoleController *taskConsole;
 
 # pragma mark -
 # pragma mark initializer
@@ -62,22 +74,13 @@
  * @param name
  * The name of the task.
  *
+ * @param type
+ * The type of the task.
+ *
  * @return
  * The `gRPCTask` instance with the requested name
  */
-- (gRPCTask *) taskWithName: (NSString *)name;
-
-/*!
- * @abstract
- * Check whether a task with a given name exists in the database.
- *
- * @param name
- * The name of the task.
- *
- * @return
- * Whether a task with the specified name is present.
- */
-- (BOOL) taskPresentWithName:(NSString *)name;
+- (gRPCTask *) taskWithName:(NSString *)name andType:(gRPCTaskType)type;
 
 /*!
  * @abstract
@@ -100,10 +103,13 @@
  * @abstract
  * Register a task from a given URL
  *
- * @param url
- * The URL of the task that needs registration.
+ * @param task
+ * The task to register.
+ *
+ * @return
+ * Whether the registration was successful.
  */
-- (void) registerTaskAtURL:(NSURL *)url;
+- (BOOL) registerTask:(gRPCTask *)task;
 
 /*!
  * @abstract
@@ -138,5 +144,7 @@
 - (IBAction)addRemoveTask:(id)sender;
 
 + (NSString *) gRPCTaskControllerErrorDomain;
+
+- (void)runTask:(gRPCTask *)task;
 
 @end

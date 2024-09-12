@@ -7,14 +7,14 @@
 - (BOOL) isEqualToTask:(gRPCTask *) task
 {
     BOOL isEqual = FALSE;
-    if ([name isEqualToString:[task name]])
+    if ([name isEqualToString:[task name]] && type == [task type])
     {
         isEqual = TRUE;
     }
     return isEqual;
 }
 
-- (id) initWithExecutableURL:(NSURL *)url_ name:(NSString *)name_ type:(gRPCTaskType)type_ arguments:(NSArray *)arguments_ blocking:(BOOL) blocking_
+- (id) initWithExecutableURL:(NSURL *)url_ name:(NSString *)name_ type:(gRPCTaskType)type_ arguments:(NSString *)arguments_ blocking:(BOOL) blocking_
 {
     if ((self = [super init]))
     {
@@ -52,7 +52,7 @@
     name = [[coder decodeObjectOfClass:[NSString class] forKey:@"name"] retain];
     type = (int)[coder decodeIntegerForKey:@"type"];
     blocking = [coder decodeBoolForKey:@"blocking"];
-    arguments = [[coder decodeObjectOfClass:[NSArray class] forKey:@"arguments"] retain];
+    arguments = [[coder decodeObjectOfClass:[NSString class] forKey:@"arguments"] retain];
     return self;
 }
 

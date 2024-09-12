@@ -1,22 +1,20 @@
 #import "gRPCToolbarController.h"
-#import "gRPCTaskConsoleController.h"
+#import "gRPCTask.h"
 
 @implementation gRPCToolbarController
 
-- (id) initWithScriptController:(gRPCScriptController *) scriptController_ andTaskController:(gRPCTaskConsoleController *) taskConsoleController_
+- (id) initWithTaskController:(gRPCTaskController *) taskController_
 {
     if (self = [super init])
     {
-        scriptController = [scriptController_ retain];
-        taskConsoleController = [taskConsoleController_ retain];
+        taskController = [taskController_ retain];
     }
     return self;
 }
 
 - (void) dealloc
 {
-    [scriptController release];
-    [taskConsoleController release];
+    [taskController release];
     [super dealloc];
 }
 
@@ -56,20 +54,18 @@
     NSMenu *imageFilterMenu = [[[NSMenu alloc] init] autorelease];
     NSMenu *roiFilterMenu = [[[NSMenu alloc] init] autorelease];
     
-    for (gRPCScript *script in [scriptController scripts])
+    for (NSString *taskName in [taskController taskNamesForType:gRPCImageTask])
     {
-        gRPCScriptType type = [script type];
-        NSMenu *subMenu = nil;
-        if (type == gRPCImageTool)
-            subMenu = imageFilterMenu;
-        else if (type == gRPCROITool)
-            subMenu = roiFilterMenu;
-        if (subMenu)
-        {
-            NSMenuItem *scriptMenuItem = [[[NSMenuItem alloc] initWithTitle:[script name] action:@selector(runScript:) keyEquivalent:@""] autorelease];
-            [subMenu addItem:scriptMenuItem];
-            [scriptMenuItem setTarget:self];
-        }
+        NSMenuItem *taskMenuItem = [[[NSMenuItem alloc] initWithTitle:taskName action:@selector(runImageTask:) keyEquivalent:@""] autorelease];
+        [imageFilterMenu addItem:taskMenuItem];
+        [taskMenuItem setTarget:self];
+    }
+    
+    for (NSString *taskName in [taskController taskNamesForType:gRPCROITask])
+    {
+        NSMenuItem *taskMenuItem = [[[NSMenuItem alloc] initWithTitle:taskName action:@selector(runROITask:) keyEquivalent:@""] autorelease];
+        [roiFilterMenu addItem:taskMenuItem];
+        [taskMenuItem setTarget:self];
     }
     
     if ([[imageFilterMenu itemArray] count] > 0)
@@ -108,15 +104,11 @@
     NSMenuItem *item0 = [[[NSMenuItem alloc] initWithTitle:@"" action:nil keyEquivalent:@""] autorelease];
     [menu addItem:item0];
     
-    for (gRPCScript *script in [scriptController scripts])
+    for (NSString *taskName in [taskController taskNamesForType:gRPCVolumeRenderTask])
     {
-        gRPCScriptType type = [script type];
-        if (type == gRPCVolumeRenderTool)
-        {
-            NSMenuItem *scriptMenuItem = [[[NSMenuItem alloc] initWithTitle:[script name] action:@selector(runScript:) keyEquivalent:@""] autorelease];
-            [menu addItem:scriptMenuItem];
-            [scriptMenuItem setTarget:self];
-        }
+        NSMenuItem *taskMenuItem = [[[NSMenuItem alloc] initWithTitle:taskName action:@selector(runVRTask:) keyEquivalent:@""] autorelease];
+        [menu addItem:taskMenuItem];
+        [taskMenuItem setTarget:self];
     }
     
     [popUpButtonVRController setMenu:menu];
@@ -143,15 +135,11 @@
     NSMenuItem *item0 = [[[NSMenuItem alloc] initWithTitle:@"" action:nil keyEquivalent:@""] autorelease];
     [menu addItem:item0];
     
-    for (gRPCScript *script in [scriptController scripts])
+    for (NSString *taskName in [taskController taskNamesForType:gRPCDatabaseTask])
     {
-        gRPCScriptType type = [script type];
-        if (type == gRPCDatabaseTool)
-        {
-            NSMenuItem *scriptMenuItem = [[[NSMenuItem alloc] initWithTitle:[script name] action:@selector(runScript:) keyEquivalent:@""] autorelease];
-            [menu addItem:scriptMenuItem];
-            [scriptMenuItem setTarget:self];
-        }
+        NSMenuItem *taskMenuItem = [[[NSMenuItem alloc] initWithTitle:taskName action:@selector(runBrowserTask:) keyEquivalent:@""] autorelease];
+        [menu addItem:taskMenuItem];
+        [taskMenuItem setTarget:self];
     }
     
     [popUpButtonBrowserController setMenu:menu];
@@ -163,12 +151,36 @@
     return toolbarItem;
 }
 
-- (void) runScript: (NSMenuItem *)item
+- (void) runImageTask: (NSMenuItem *)item
 {
     // Get the relevant variables
-    NSString *scriptName = [item title];
-    gRPCScript *script = [scriptController scriptWithName:scriptName];
-    [taskConsoleController runScript:script];
+    NSString *taskName = [item title];
+    gRPCTask *task = [taskController taskWithName:taskName andType: gRPCImageTask];
+    [taskController runTask:task];
+}
+
+- (void) runROITask: (NSMenuItem *)item
+{
+    // Get the relevant variables
+    NSString *taskName = [item title];
+    gRPCTask *task = [taskController taskWithName:taskName andType: gRPCROITask];
+    [taskController runTask:task];
+}
+
+- (void) runVRTask: (NSMenuItem *)item
+{
+    // Get the relevant variables
+    NSString *taskName = [item title];
+    gRPCTask *task = [taskController taskWithName:taskName andType:gRPCVolumeRenderTask];
+    [taskController runTask:task];
+}
+
+- (void) runBrowserTask: (NSMenuItem *)item
+{
+    // Get the relevant variables
+    NSString *taskName = [item title];
+    gRPCTask *task = [taskController taskWithName:taskName andType:gRPCDatabaseTask];
+    [taskController runTask:task];
 }
 
 @end

@@ -105,6 +105,12 @@ NS_ASSUME_NONNULL_BEGIN
  */
 + (NSInteger)alertWithMessageText:(nonnull NSString *)message :(nonnull NSString *)firstButton :(nullable NSString *)secondButton :(nullable NSString *)thirdButton :(nullable NSString *)informativeTextWithFormat, ...;
 
+/**
+ * Get the current time as a string.
+ *
+ * @return An NSString defining the time with format @"[dd/MM/YY - HH:mm:ss]".
+ */
++ (NSString *) currentTimeString;
 
 /**
  * Execute a bash command and return the result (e.g. `pwd` would return the working directory as a NSString instance).
