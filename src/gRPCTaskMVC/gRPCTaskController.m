@@ -231,11 +231,17 @@
 }
 
 - (void)didPressCancel {
+    NSLog(@"User pressed Cancel");
     [configPanel close];
 }
 
 # pragma mark -
-# pragma mark Task window methods
+# pragma mark Table delegate methods
+
+- (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView
+{
+    return [tasks count];
+}
 
 - (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
 {
@@ -281,20 +287,20 @@
     }
 }
 
-// Used by the IBAction for user requests to register a task
+# pragma mark -
+# pragma mark Window actions
+
 - (void) registerTaskAction
 {
-    // Load the window
-    [self.window beginSheet:configPanel.window completionHandler:^(NSModalResponse returnCode) {
-            if (returnCode == NSModalResponseOK) {
-                NSLog(@"Tool added.");
-            } else {
-                NSLog(@"Operation cancelled.");
-            }
-        }];
+    // Load the defaults
+    [configPanel setName:@"New Task"];
+    [configPanel setArguments:@""];
+    [configPanel setType:gRPCImageTask];
+    [configPanel setBlocking:FALSE];
+    [configPanel setExecutable:[NSURL fileURLWithPath:@"/bin/bash"]];
+    [self.window beginSheet:configPanel.window completionHandler:nil];
 }
 
-// Used by the IBAction for user requests to unregister a task
 - (void) unregisterTaskAction
 {
     NSInteger row = [taskTable selectedRow];
@@ -305,7 +311,14 @@
 
 - (void) editTaskAction
 {
-    NSLog(@"Editing task");
+    NSInteger row = [taskTable selectedRow];
+    gRPCTask *task = [tasks objectAtIndex:row];
+    [configPanel setName:[task name]];
+    [configPanel setArguments:[task arguments]];
+    [configPanel setType:[task type]];
+    [configPanel setBlocking:[task blocking]];
+    [configPanel setExecutable:[task executable]];
+    [self.window beginSheet:configPanel.window completionHandler:nil];
 }
 
 - (IBAction)addRemoveTask:(id)sender

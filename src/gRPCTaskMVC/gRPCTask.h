@@ -17,10 +17,10 @@
  * Volume render manipulation.  Task available from the VRController window menu.
  */
 typedef enum {
-    gRPCImageTask,
-    gRPCROITask,
-    gRPCDatabaseTask,
-    gRPCVolumeRenderTask
+    gRPCImageTask = 0,
+    gRPCROITask = 1,
+    gRPCVolumeRenderTask = 2,
+    gRPCDatabaseTask = 3
 } gRPCTaskType;
 
 /*!

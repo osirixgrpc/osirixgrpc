@@ -8,7 +8,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="gRPCTaskController">
             <connections>
-                <outlet property="scriptTable" destination="azt-Ad-EjX" id="jC9-SJ-h9d"/>
+                <outlet property="taskTable" destination="azt-Ad-EjX" id="QjP-61-eVx"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="Mp9-U6-aUg"/>
             </connections>
         </customObject>
@@ -183,10 +183,10 @@
                                 <segment image="NSAddTemplate" width="32" tag="1"/>
                                 <segment image="NSTouchBarComposeTemplate"/>
                             </segments>
-                            <connections>
-                                <action selector="addRemoveScript:" target="-2" id="bzl-4H-hGT"/>
-                            </connections>
                         </segmentedCell>
+                        <connections>
+                            <action selector="addRemoveTask:" target="-2" id="bqg-4N-gcK"/>
+                        </connections>
                     </segmentedControl>
                 </subviews>
             </view>

@@ -1,30 +1,36 @@
 #import "gRPCTaskConfigurationController.h"
 #import "gRPCTask.h"
+#import "gRPCUtilities.h"
 
 @implementation gRPCTaskConfigurationController
 
-@synthesize delegate;
+@synthesize delegate, name, executable, type, arguments, blocking;
 
-- (id) initWithName: (NSString *)name executable: (NSURL *)executable arguments: (NSString *) arguments type: (gRPCTaskType)type blocking: (BOOL) blocking
+- (id) init
 {
     self = [super initWithWindowNibName:@"gRPCTaskConfigurationPanel"];
     if (!self) {
         gRPCLogError(@"Could not initialize task config panel");
         return  nil;
     }
-    
-    [nameField setStringValue:name];
-    [executablePath setURL:executable];
-    
     return self;
 }
 
-- (void)windowDidLoad {
-    [super windowDidLoad];
+- (void) windowDidLoad {
+    [typeSelection addItemsWithTitles:@[@"Image", @"ROI", @"VR", @"Database"]];
     
-    // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
+    // Set up binding.
+    [nameField bind:@"value" toObject:self withKeyPath:@"name" options:@{NSContinuouslyUpdatesValueBindingOption: @(YES)}];
+    [typeSelection bind:@"selectedIndex" toObject:self withKeyPath:@"type" options:nil];
+    [blockingField bind:@"value" toObject:self withKeyPath:@"blocking" options:nil];
+    [argumentsField bind:@"value" toObject:self withKeyPath:@"arguments" options:@{NSContinuouslyUpdatesValueBindingOption: @(YES)}];
+    [executablePath bind:@"value" toObject:self withKeyPath:@"executable" options:nil];
+    
+    [super windowDidLoad];
 }
 
+# pragma mark -
+# pragma mark actions
 
 - (IBAction) okPushed:(id)sender
 {
@@ -38,12 +44,16 @@
 
 - (IBAction) loadFileAsArgument:(id)sender
 {
-    NSLog(@"Load argument pushed");
+    NSURL *path = [gRPCUtilities selectURLWithExtension:nil allowingDirectories:YES allowingFiles:YES];
+    if (path)
+        [self setArguments:[NSString stringWithFormat:@"%@ \"%@\"", arguments, [path path]]];
 }
 
 - (IBAction) loadFileAsExecutable:(id)sender
 {
-    NSLog(@"Load executable pushed");
+    NSURL *executable = [gRPCUtilities selectURLWithExtension:nil allowingDirectories:NO allowingFiles:YES];
+    if (executable)
+        [self setExecutable:executable];
 }
 
 @end
