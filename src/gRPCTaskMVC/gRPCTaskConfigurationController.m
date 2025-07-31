@@ -4,7 +4,7 @@
 
 @implementation gRPCTaskConfigurationController
 
-@synthesize delegate, name, executable, type, arguments, blocking;
+@synthesize delegate, task;
 
 - (id) init
 {
@@ -20,11 +20,11 @@
     [typeSelection addItemsWithTitles:@[@"Image", @"ROI", @"VR", @"Database"]];
     
     // Set up binding.
-    [nameField bind:@"value" toObject:self withKeyPath:@"name" options:@{NSContinuouslyUpdatesValueBindingOption: @(YES)}];
-    [typeSelection bind:@"selectedIndex" toObject:self withKeyPath:@"type" options:nil];
-    [blockingField bind:@"value" toObject:self withKeyPath:@"blocking" options:nil];
-    [argumentsField bind:@"value" toObject:self withKeyPath:@"arguments" options:@{NSContinuouslyUpdatesValueBindingOption: @(YES)}];
-    [executablePath bind:@"value" toObject:self withKeyPath:@"executable" options:nil];
+    [nameField bind:@"value" toObject:self withKeyPath:@"task.name" options:@{NSContinuouslyUpdatesValueBindingOption: @(YES)}];
+    [typeSelection bind:@"selectedIndex" toObject:self withKeyPath:@"task.type" options:nil];
+    [blockingField bind:@"value" toObject:self withKeyPath:@"task.blocking" options:nil];
+    [argumentsField bind:@"value" toObject:self withKeyPath:@"task.arguments" options:@{NSContinuouslyUpdatesValueBindingOption: @(YES)}];
+    [executablePath bind:@"value" toObject:self withKeyPath:@"task.executable" options:nil];
     
     [super windowDidLoad];
 }
@@ -44,16 +44,16 @@
 
 - (IBAction) loadFileAsArgument:(id)sender
 {
-    NSURL *path = [gRPCUtilities selectURLWithExtension:nil allowingDirectories:YES allowingFiles:YES];
-    if (path)
-        [self setArguments:[NSString stringWithFormat:@"%@ \"%@\"", arguments, [path path]]];
+    NSURL *url = [gRPCUtilities selectURLWithExtension:nil allowingDirectories:YES allowingFiles:YES];
+    if (url)
+        [self.task setArguments:[NSString stringWithFormat:@"%@ '%@'", task.arguments, [url path]]];
 }
 
 - (IBAction) loadFileAsExecutable:(id)sender
 {
     NSURL *executable = [gRPCUtilities selectURLWithExtension:nil allowingDirectories:NO allowingFiles:YES];
     if (executable)
-        [self setExecutable:executable];
+        [self.task setExecutable:executable];
 }
 
 @end

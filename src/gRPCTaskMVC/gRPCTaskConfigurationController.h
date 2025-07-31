@@ -16,11 +16,7 @@
     IBOutlet NSButton *blockingField;
 }
 
+@property (readwrite, copy) gRPCTask *task;
 @property (retain, nonatomic) gRPCTaskController *delegate;
-@property (nonatomic, copy) NSString *name;
-@property (nonatomic, copy) NSString *arguments;
-@property (nonatomic, copy) NSURL *executable;
-@property (nonatomic, assign) gRPCTaskType type;
-@property (nonatomic, assign) BOOL blocking;
 
 @end

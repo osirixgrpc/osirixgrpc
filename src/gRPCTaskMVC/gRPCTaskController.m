@@ -293,11 +293,8 @@
 - (void) registerTaskAction
 {
     // Load the defaults
-    [configPanel setName:@"New Task"];
-    [configPanel setArguments:@""];
-    [configPanel setType:gRPCImageTask];
-    [configPanel setBlocking:FALSE];
-    [configPanel setExecutable:[NSURL fileURLWithPath:@"/bin/bash"]];
+    gRPCTask *task = [[gRPCTask alloc] initWithExecutableURL:[NSURL fileURLWithPath:@"/bin/bash"] name:@"New Task" type:gRPCImageTask arguments:@"" blocking:FALSE];
+    [configPanel setTask:task];
     [self.window beginSheet:configPanel.window completionHandler:nil];
 }
 
@@ -313,11 +310,7 @@
 {
     NSInteger row = [taskTable selectedRow];
     gRPCTask *task = [tasks objectAtIndex:row];
-    [configPanel setName:[task name]];
-    [configPanel setArguments:[task arguments]];
-    [configPanel setType:[task type]];
-    [configPanel setBlocking:[task blocking]];
-    [configPanel setExecutable:[task executable]];
+    [configPanel setTask:task];
     [self.window beginSheet:configPanel.window completionHandler:nil];
 }
 
@@ -341,12 +334,35 @@
 
 # pragma mark -
 # pragma mark Run Task
+
+-(NSArray *) seperateArguments: (NSString *) argumentsString
+{
+    
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"'[^']*'|\\S+"
+                                                                           options:0
+                                                                             error:nil];
+
+    NSMutableArray *resultArray = [NSMutableArray array];
+
+    // Find matches using the regular expression
+    [regex enumerateMatchesInString:argumentsString
+                            options:0
+                              range:NSMakeRange(0, [argumentsString length])
+                         usingBlock:^(NSTextCheckingResult *match, NSMatchingFlags flags, BOOL *stop) {
+        NSString *matchString = [argumentsString substringWithRange:match.range];
+        [resultArray addObject:matchString];
+    }];
+    
+    return resultArray;
+}
+
 - (void) runTask:(gRPCTask *)task
 {
     // Get all relevant paramters for the task
     NSURL *executableURL = [task executable];
     BOOL blocking = [task blocking];
-    NSMutableArray *arguments = [[[task arguments] componentsSeparatedByString:@" "] mutableCopy];
+    NSString *argumentsString = [task arguments];
+    NSMutableArray *arguments = [[self seperateArguments:argumentsString] mutableCopy];
     
     // Set up a task handle and pipe for stderr/stdout
     NSTask *taskHandle = [[[NSTask alloc] init] autorelease];

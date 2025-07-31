@@ -116,7 +116,7 @@
                                                 </tableCellView>
                                             </prototypeCellViews>
                                         </tableColumn>
-                                        <tableColumn identifier="address" width="371" minWidth="40" maxWidth="1000" id="gKA-AB-qJn">
+                                        <tableColumn identifier="address" width="342" minWidth="40" maxWidth="1000" id="gKA-AB-qJn">
                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="IP Address">
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
@@ -129,11 +129,11 @@
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                             <prototypeCellViews>
                                                 <tableCellView id="ECR-mx-fXC">
-                                                    <rect key="frame" x="65" y="1" width="375" height="17"/>
+                                                    <rect key="frame" x="65" y="1" width="346" height="17"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iol-bs-jRw">
-                                                            <rect key="frame" x="0.0" y="1" width="375" height="16"/>
+                                                            <rect key="frame" x="0.0" y="1" width="346" height="16"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                             <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="5R1-Pc-1Z7">
                                                                 <font key="font" usesAppearanceFont="YES"/>

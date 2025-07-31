@@ -87,7 +87,7 @@ CA
                         </textFieldCell>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ey8-xt-zsH">
-                        <rect key="frame" x="18" y="222" width="38" height="16"/>
+                        <rect key="frame" x="18" y="221" width="38" height="16"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" lineBreakMode="clipping" title="Type:" id="0Xq-Mt-Wb9">
                             <font key="font" metaFont="system"/>
@@ -105,7 +105,7 @@ CA
                         </textFieldCell>
                     </textField>
                     <button toolTip="Should the task block OsiriX operations?" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F58-Dj-Mua">
-                        <rect key="frame" x="385" y="221" width="78" height="18"/>
+                        <rect key="frame" x="385" y="220" width="78" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="check" title="Blocking" bezelStyle="regularSquare" imagePosition="left" inset="2" id="pVl-sy-x0Y">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -113,7 +113,7 @@ CA
                         </buttonCell>
                     </button>
                     <popUpButton toolTip="Where should the button to run this task appear?" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kuK-yf-OTO">
-                        <rect key="frame" x="59" y="216" width="115" height="25"/>
+                        <rect key="frame" x="59" y="215" width="115" height="25"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="8ik-ET-rn4">
                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>

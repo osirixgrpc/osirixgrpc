@@ -14,7 +14,7 @@
     return isEqual;
 }
 
-- (id) initWithExecutableURL:(NSURL *)url_ name:(NSString *)name_ type:(gRPCTaskType)type_ arguments:(NSString *)arguments_ blocking:(BOOL) blocking_
+- (id) initWithExecutableURL:(NSURL *)url_ name:(NSString *)name_ type:(gRPCTaskType)type_ arguments:(NSMutableArray *)arguments_ blocking:(BOOL) blocking_
 {
     if ((self = [super init]))
     {
@@ -52,7 +52,7 @@
     name = [[coder decodeObjectOfClass:[NSString class] forKey:@"name"] retain];
     type = (int)[coder decodeIntegerForKey:@"type"];
     blocking = [coder decodeBoolForKey:@"blocking"];
-    arguments = [[coder decodeObjectOfClass:[NSString class] forKey:@"arguments"] retain];
+    arguments = [[coder decodeObjectOfClass:[NSMutableArray class] forKey:@"arguments"] retain];
     return self;
 }
 
