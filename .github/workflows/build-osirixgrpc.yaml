@@ -5,10 +5,11 @@ on:
     branches:
       - main
       - dev
+      - change_gh_instance
 
 jobs:
   build:
-    runs-on: macos-latest-xlarge
+    runs-on: macos-latest
 
     env:
       GRPC_VERSION: 1.55.0
