@@ -60,7 +60,9 @@ jobs:
           path: |
             grpc/install
           key: |
-            ${{ runner.os }}-build-"$GRPC_VERSION"
+            ${{ runner.os }}-build-${{ env.GRPC_VERSION }}
+          restore-keys: |
+            ${{ runner.os }}-build-
 
       - if: ${{ steps.cache-grpc.outputs.cache-hit != 'true' }}
         name: Clone gRPC repository
