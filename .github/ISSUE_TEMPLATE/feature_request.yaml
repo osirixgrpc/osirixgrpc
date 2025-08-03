@@ -35,7 +35,7 @@ body:
     attributes:
       label: OsiriXgrpc Version
       description: What version of OsiriXgrpc are you running?
-      placeholder: "0.2.1-beta5"
+      placeholder: "0.2.1-beta6"
     validations:
       required: true
   - type: textarea
