@@ -60,7 +60,7 @@ jobs:
           path: |
             grpc/install
           key: |
-            ${{ runner.os }}-build-${{ env.GRPC_VERSION }}
+            ${{ runner.os }}-build-"$GRPC_VERSION"
           restore-keys: |
             ${{ runner.os }}-build-
 
