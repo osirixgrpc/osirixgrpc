@@ -5,6 +5,7 @@ on:
     branches:
       - main
       - dev
+      - add_user_gaze
 
 jobs:
   build:
