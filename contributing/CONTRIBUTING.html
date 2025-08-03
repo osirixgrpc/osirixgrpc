@@ -1,0 +1,2070 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../api/dicomstudy.html">
+      
+      
+        <link rel="next" href="CODE_OF_CONDUCT.html">
+      
+      
+      <link rel="icon" href="../assets/logo/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.16">
+    
+    
+      
+        <title>Home - OsiriXgrpc v0.2.1-beta6</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.7e37652d.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#contributing-to-osirixgrpc" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../index.html" title="OsiriXgrpc v0.2.1-beta6" class="md-header__button md-logo" aria-label="OsiriXgrpc v0.2.1-beta6" data-md-component="logo">
+      
+  <img src="../assets/logo/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            OsiriXgrpc v0.2.1-beta6
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Home
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/osirixgrpc/osirixgrpc" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../index.html" title="OsiriXgrpc v0.2.1-beta6" class="md-nav__button md-logo" aria-label="OsiriXgrpc v0.2.1-beta6" data-md-component="logo">
+      
+  <img src="../assets/logo/logo.png" alt="logo">
+
+    </a>
+    OsiriXgrpc v0.2.1-beta6
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/osirixgrpc/osirixgrpc" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting_started.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Getting Started
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    pyOsiriX
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            pyOsiriX
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pyosirix/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Getting Started
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    API
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            API
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pyosirix/api/browser_controller.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    browser_controller
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pyosirix/api/dcm_pix.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    dcm_pix
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pyosirix/api/dicom.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    dicom
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pyosirix/api/osirix_utilities.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    osirix_utilities
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pyosirix/api/roi.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    roi
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pyosirix/api/viewer_controller.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    viewer_controller
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pyosirix/api/vr_controller.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    vr_controller
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Examples
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            Examples
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pyosirix/examples/gallery.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Gallery
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pyosirix/examples/ROI%20Nudge/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ROI Nudge
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pyosirix/examples/Read%20ITK/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Read ITK
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pyosirix/examples/Template/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Template
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Contributing
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            Contributing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pyosirix/contributing/CONTRIBUTING.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    API
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            API
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Basics
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/roi.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Regions of Interest
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/roivolume.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ROI Volumes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/dcmpix.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    DCMPix
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/vrcontroller.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    VR Controller
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/viewercontroller.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Viewer Controller
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/browsercontroller.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Browser Controller
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/dicomimage.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Dicom Image
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/dicomseries.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Dicom Series
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/dicomstudy.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Dicom Study
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Contributing
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Contributing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="CONTRIBUTING.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ways-to-contribute" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ways to Contribute
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#code-of-conduct" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code of Conduct
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#coding-guidelines" class="md-nav__link">
+    <span class="md-ellipsis">
+      Coding Guidelines
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Coding Guidelines">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#project-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Project Structure
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modifying-source-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      Modifying Source Code
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#version-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      Version Control
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#building" class="md-nav__link">
+    <span class="md-ellipsis">
+      Building
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Documentation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Documentation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirements
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#building-documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Building Documentation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deploying-documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deploying Documentation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#suggesting-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Suggesting Changes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bug-reporting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bug Reporting
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#user-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      User Testing
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#feature-requests" class="md-nav__link">
+    <span class="md-ellipsis">
+      Feature Requests
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      Issues
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contact" class="md-nav__link">
+    <span class="md-ellipsis">
+      Contact
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="CODE_OF_CONDUCT.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Code of Conduct
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ways-to-contribute" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ways to Contribute
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#code-of-conduct" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code of Conduct
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#coding-guidelines" class="md-nav__link">
+    <span class="md-ellipsis">
+      Coding Guidelines
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Coding Guidelines">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#project-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Project Structure
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modifying-source-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      Modifying Source Code
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#version-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      Version Control
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#building" class="md-nav__link">
+    <span class="md-ellipsis">
+      Building
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Documentation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Documentation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirements
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#building-documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Building Documentation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deploying-documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deploying Documentation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#suggesting-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Suggesting Changes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bug-reporting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bug Reporting
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#user-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      User Testing
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#feature-requests" class="md-nav__link">
+    <span class="md-ellipsis">
+      Feature Requests
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      Issues
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contact" class="md-nav__link">
+    <span class="md-ellipsis">
+      Contact
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="contributing-to-osirixgrpc">Contributing to OsiriXgrpc</h1>
+<p><strong>Welcome</strong> to the contributions section!</p>
+<p>OsiriXgrpc is an emerging open-source initiative by the Institute of Cancer Research, dedicated to accelerating the 
+field of medical image science and processing. At the heart of our mission lies a commitment to the democratization of 
+knowledge and empowerment of medical imaging researchers worldwide. By harnessing the advanced capabilities of OsiriX's 
+user interface and DICOM database, our project aims to streamline the development process of robust medical imaging 
+tools, allowing researchers to concentrate on groundbreaking scientific discoveries, including pioneering AI. </p>
+<p>As a community-driven project, we invite contributors from diverse backgrounds to join us in shaping the future of 
+medical research, fostering an environment of collaboration and innovation.</p>
+<h2 id="ways-to-contribute">Ways to Contribute</h2>
+<table>
+  <tr>
+    <td><b>Example Scripts</b></td>
+    <td>We strongly encourage developers to share scripts of OsiriXgrpc in use.  Please see
+        <a href="../pyosirix/contributing/CONTRIBUTING.html">Contributing pyOsiriX Example Scripts</a> section for more 
+        information.</td>
+  </tr>
+  <tr>
+    <td><b>Documentation</b></td>
+    <td>We encourage feedback on our documentation to improve the user experience and ensure it makes sense. We 
+        currently do not support localization, but should the project be successful we would encourage this moving
+        forward. Please see our <a href="#documentation">instructions for project documentation</a> for more 
+        information.</td>
+  </tr>
+  <tr>
+    <td><b>Testing</b></td>
+    <td>We greatly appreciate our testers, who provide core feedback on OsiriXgrpc and have a key role in deciding the 
+        future of the project. Please <a href="#contact">contact us</a> if you would like to become an official 
+        tester!</td>
+  </tr>
+  <tr>
+    <td><b>Bug Tracking</b></td>
+    <td>We will endeavour to fix all bugs encountered in OsiriXgrpc as soon as possible. If you encounter a bug, please
+        see our <a href="#bug-reporting">bug reporting</a> section.</td>
+  </tr>
+  <tr>
+    <td><b>Feature Suggestions</b></td>
+    <td>We cannot improve OsiriXgrpc without good ideas coming from users. If you would like to request a new feature
+        this can be done as a feature request on the project    
+        <a href="https://github.com/osirixgrpc/osirixgrpc/issues"> issue tracker</a>.  Please note that acceptance and 
+        importance of features will be discussed and agreed by our developers following discussion with you. We cannot 
+        guarantee that all feature requests will be implemented, or how quickly they will be delivered.</td>
+  </tr>
+  <tr>
+    <td><b>Feature Development</b></td>
+    <td>If you would like to help develop the core OsiriXgrpc plugin, we are keen to improve and evolve every 
+      aspect of it. This includes: 
+      <ul>
+        <li>Expose additional OsiriX functionality to OsiriXgrpc</li>
+        <li>Optimize CI/CD of the plugin (all performed in GitHub)</li>
+        <li>Improve the user experience through additional plugin features</li>
+        <li>Boost security of the GRPC connections through SSL connections.</li>
+        <li>Ensure that key updates to OsiriX are monitored and fixed within the plugin</li>
+      </ul>
+      Please see the remainder of this documentation to see how this can be done, and <a href="contact">let us 
+      know</a> about your ideas!</td>
+  </tr>
+</table>
+
+<h2 id="code-of-conduct">Code of Conduct</h2>
+<p>Please see our <a href="CODE_OF_CONDUCT.html">Code of Conduct</a> for more information.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>In order to help contribute to the OsiriXgrpc project there are a few things you will need. Some may not be required 
+depending on the level contributions you want to make.</p>
+<table>
+  <tr>
+    <td><b>Mac</b></td>
+    <td>OsiriX works on macOS.  We currently support (and have tested) compatability of OsiriXgrpc on macOS Monterey and
+        above, on both Intel and M1/M2/M3 native processors. We always advise ensuring that your operating system is 
+        up-to-date.</td>
+  </tr>
+  <tr>
+    <td><b>OsiriX</b></td>
+    <td>A copy of the <a href="https://www.osirix-viewer.com/osirix/osirix-md/download-osirix-lite/">latest OsiriX 
+        app</a> downloaded on your system. This will be crucial for testing the OsiriXgrpc plugin, developing new 
+        features, and authoring new OsiriXgrpc scripts.</td>
+  </tr>
+  <tr>
+    <td><b>Xcode</b></td>
+    <td>Xcode is freely available from the App store, and is only required if you want to develop new features for the
+        core OsiriXgrpc plugin, or build the source code.</td>
+  </tr>
+  <tr>
+    <td><b>GitHub Account</b></td>
+    <td>You will need a GitHub account to interact with the OsiriXgrpc source code, create pull requests for new
+        features that you have developed, and raise new issues or report bugs on the project 
+        <a href="https://github.com/osirixgrpc/osirixgrpc/issues"> issue tracker</a>.</td>
+  </tr>
+</table>
+
+<h2 id="coding-guidelines">Coding Guidelines</h2>
+<h3 id="project-structure">Project Structure</h3>
+<p>There are several core files and directories at the <a href="https://github.com/osirixgrpc/osirixgrpc">root of the project</a></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>.github</strong></td>
+<td>Issue templates and CI/CD workflows for GitHub Actions.</td>
+</tr>
+<tr>
+<td><strong>cpp</strong></td>
+<td>Auto-generated C++ protobuf files (not under version control).</td>
+</tr>
+<tr>
+<td><strong>docs</strong></td>
+<td>All externally-facing documentation (definition files in markdown).</td>
+</tr>
+<tr>
+<td><strong>protos</strong></td>
+<td>gRPC protocol files, which need to be modified to provide additional OsiriX functionality.</td>
+</tr>
+<tr>
+<td><strong>pyosirix</strong></td>
+<td>Source code for the pyOsiriX sub-project, including translation of all functionality into Python classes. .</td>
+</tr>
+<tr>
+<td><strong>python</strong></td>
+<td>Source code for the osirixgrpc pip project. Sub-folder <code>osirixgrpc</code> is automatically generated (not under version control).</td>
+</tr>
+<tr>
+<td><strong>src</strong></td>
+<td>Source files for building the OsiriXgrpc plugin. This is also where gRPC methods are implemented.</td>
+</tr>
+<tr>
+<td><strong>tests</strong></td>
+<td>Integration tests for the plugin and protobuf files. Note these are not automated and run manually.</td>
+</tr>
+<tr>
+<td>.bumpversion.cfg</td>
+<td>Rules to increment version numbers scattered throughout the project.</td>
+</tr>
+<tr>
+<td>build.sh</td>
+<td>A utility shell script used to compile gRPC from source and build all protobuf files from definition (.proto) files on a host machine.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="modifying-source-code">Modifying Source Code</h3>
+<p>When making changes to the source code, we recommend the following process to ensure your contributions can be 
+efficiently reviewed and integrated:</p>
+<ol>
+<li><strong>Fork the Repository</strong> Start by forking the repository. This creates your own copy of the project where you can make 
+   your changes. </li>
+<li><strong>Build the Plugin</strong> Before making any changes, please familiarize yourself with the <a href="#building">build process</a>. </li>
+<li><strong>Make Your Changes</strong> Implement your changes in your forked repository. To facilitate a smooth review process, we 
+   suggest:<ul>
+<li>Isolate Changes: Keep your changes focused. Large or complex modifications may require more extensive review and 
+  have a higher chance of being rejected.</li>
+<li>Communicate Intentions: Let us know about your planned changes in advance. This helps us coordinate contributions 
+  and include them in our release planning.</li>
+</ul>
+</li>
+<li><strong>Submit a Pull Request (PR)</strong> Once you're satisfied with your changes, submit them back to the main project via a 
+   pull request. Ensure your PR targets the <code>dev</code> branch. For guidance on creating a pull request, see GitHub's 
+   <a href="https://docs.github.com/articles/creating-a-pull-request-from-a-fork">documentation</a> on Creating a pull request from 
+   a fork. </li>
+<li><strong>Review Process</strong> Your pull request will undergo a review by the project maintainers. During this phase:<ul>
+<li>Merge Upstream Changes: You may be asked to merge changes from the upstream <code>dev</code> branch into your fork to resolve 
+  any conflicts. </li>
+<li>Version Bumping: If your changes are accepted, you'll be asked to bump the version by executing bumpversion build. 
+   This step is crucial for maintaining version control and ensuring compatibility. </li>
+</ul>
+</li>
+<li><strong>Final Steps</strong> After addressing any review comments and completing the version bump, your changes will be merged into 
+   the <code>dev</code> branch.</li>
+</ol>
+<p><strong>Additional Tips for a Successful Contribution</strong></p>
+<ul>
+<li><strong>Follow Coding Standards</strong> Adhere to the coding standards and guidelines provided in the repository documentation to 
+    increase the likelihood of your changes being accepted. </li>
+<li><strong>Test Thoroughly</strong> Before submitting your pull request, thoroughly test your changes to ensure they work as expected 
+    and do not introduce any new issues.</li>
+</ul>
+<p>By following these guidelines, you can contribute valuable improvements to osirixgrpc and help enhance its 
+functionality and user experience.</p>
+<h3 id="version-control">Version Control</h3>
+<p>OsiriXgrpc uses semantic versioning (<code>major.minor.patch-releasebuild</code>) using a traditional Gitflow scheme as illustrated 
+in the figure below. All development takes place within the <code>dev</code> branch prior to release in the main branch. This 
+branch exists in one of two phases:</p>
+<ol>
+<li><strong>Development</strong> phase. Each version is appended by the <code>_devX</code>, where <code>X</code> increments after each additional
+  feature is merged. New features are accepted in this stage.</li>
+<li><strong>Release Candidate</strong> phase. Each version will be appended by the <code>_rcX</code>, where <code>X</code> increments after each additional
+  hot-fix applied during user testing. No new features will be accepted during this phase.</li>
+</ol>
+<p>Once all tests are complete, the <code>dev</code> branch is merged with <code>main</code>, and the software remains a beta release for an
+incubation period of 2 months, before being fully released. During this period, only hotfixes may be made with no 
+change to the core infrastructure (i.e. nomenclature to remain consistent). This provides us with some buffer to perform 
+tests on the main branch and obtain feedback from external users.</p>
+<p>Any release with <code>major</code> = 0 means that we may make subtle changes to the technology prior to 1.0.0 (i.e. no promises!).</p>
+<p><img alt="OsiriXgrpc version control" src="../assets/osirixgrpc.drawio.svg" /></p>
+<p>Versioning is controlled by <a href="https://pypi.org/project/bump2version/">bump2version</a>. Please don't bump the version until 
+your code is ready to be merged after review of the pull request to ensure it uses the intended version. Below are the
+commands available to bump2version within this project, and example increments in each case:</p>
+<table>
+  <tr>
+    <td><code>bumpversion build</code></td>
+    <td>1.0.0-dev0 &rarr; 1.0.0-dev1 &rarr; 1.0.0-dev2 &rarr; ... <br> <i>or</i> <br>
+        1.0.0-rc0 &rarr; 1.0.0-rc1 &rarr; 1.0.0-rc2 &rarr; ...</td>
+  </tr>
+  <tr>
+    <td><code>bumpversion release</code></td>
+    <td>1.0.0-dev5 &rarr; 1.0.0-rc0 &rarr; 1.0.0-beta0 &rarr; 1.0.0</td>
+  </tr>
+  <tr>
+    <td><code>bumpversion patch</code></td>
+    <td>1.0.0 &rarr; 1.0.1-dev0 &rarr; 1.0.2-dev0 &rarr; ...</td>
+  </tr>
+  <tr>
+    <td><code>bumpversion minor</code></td>
+    <td>1.0.2 &rarr; 1.1.0-dev0 &rarr; 1.2.0-dev0 &rarr; ...</td>
+  </tr>
+  <tr>
+    <td><code>bumpversion major</code></td>
+    <td>1.2.0 &rarr; 2.0.0-dev0 &rarr; 3.0.0-dev0 &rarr; ...</td>
+  </tr>
+</table>
+
+<h3 id="building">Building</h3>
+<p>To build the plugin, please use the <code>build.sh</code> script provided, which emulates the final build performed as during 
+CI/CD in the <code>main</code> and <code>dev</code> branches.  This script performs the following operations within your repository:</p>
+<ol>
+<li>Clone the correct version of gRPC (to a directory called <code>grpc</code>).</li>
+<li>Build Intel (x86_64) and Apple Silicon (arm64) gRPC libraries and executables.</li>
+<li>Combine the libraries into universal binary files using the <code>lipo</code> tool.</li>
+<li>Use the compiled executables to C++ and Python implementation files from the protocol files (in <code>protos</code> directory).</li>
+<li>Ensure the OsiriXgrpc python package (<code>Python</code> directory) has the correct <code>requirements.txt</code> definitions.</li>
+<li>Build and zip the plugin bundle. This will result in a file called <code>osirixgrpc.osirixplugin.zip</code>.</li>
+</ol>
+<p><strong>Note</strong>: The built file will not be signed and thus should not be shared. Please ensure you share your changes with us
+by issuing a <a href="#modifying-source-code">pull request</a>, and we will ensure your changes are incorporated into a signed
+plugin for distribution during the next release.</p>
+<h2 id="documentation">Documentation</h2>
+<p>All documentation is written in Markdown format and compiled using <a href="https://www.mkdocs.org/">MkDocs</a>. The organization 
+of documentation should be kept consistent, and any changes to layout need to be fully discussed and agreed with all
+developers before being implemented. </p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>docs/api</td>
+<td>Description files for all OsiriXgrpc client API (in Python).</td>
+</tr>
+<tr>
+<td>docs/assets</td>
+<td>Location for all figures and other supporting information not in Markdown format.</td>
+</tr>
+<tr>
+<td>docs/contributing</td>
+<td>Instruction for how to contribute to the project.</td>
+</tr>
+<tr>
+<td>docs/pyosirix</td>
+<td>Documentation for the pyOsiriX sub-package.</td>
+</tr>
+<tr>
+<td>docs/getting_started.md</td>
+<td>Core instructions on how to install and use the OsiriX plugin (e.g. user-interface).</td>
+</tr>
+<tr>
+<td>docs/README.md</td>
+<td>The homepage for the documentation.</td>
+</tr>
+<tr>
+<td>mkdocs.yaml</td>
+<td>yaml configuration file for the mkdocs build</td>
+</tr>
+</tbody>
+</table>
+<h3 id="requirements">Requirements</h3>
+<p>Building documentation requires both <a href="https://www.mkdocs.org/">mkdocs</a> and 
+<a href="https://squidfunk.github.io/mkdocs-material/">mkdocs-material</a> to be installed.  These can be installed using the <code>requirements.txt</code> file within the <code>docs</code>
+folder:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>docs/requirements.txt
+</span></code></pre></div></p>
+<h3 id="building-documentation">Building Documentation</h3>
+<p>To build the documentation from source it is sufficient to run the following command, from the <code>docs</code> folder within the
+project root:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>mkdocs<span class="w"> </span>build
+</span></code></pre></div>
+This will create a new directory, <code>site</code>, which contains all built html documentation for deployment.</p>
+<p>When developing documentation, however, it can be beneficial to run the MkDocs server (again from the <code>docs</code> folder):
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>mkdocs<span class="w"> </span>serve
+</span></code></pre></div>
+By connecting to the established service (linking to <code>http://localhost:8000/</code> in a web-browser), it is then possible to 
+view changes to documentation in real-time.</p>
+<h3 id="deploying-documentation">Deploying Documentation</h3>
+<p>Collaborators should not directly modify the deployed documentation. Instead, this will be performed as part
+of OsiriXgrpc continuous integration. The OsiriXgrpc documentation will be deployed from either the <code>main</code> or <code>dev</code> 
+branches to one of two sites, following a push to the GitHub repository:</p>
+<table>
+<thead>
+<tr>
+<th>Branch</th>
+<th>Site</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>main</code></td>
+<td><a href="https://osirixgrpc.github.io/osirixgrpc">https://osirixgrpc.github.io/osirixgrpc</a></td>
+<td>All documentation for OsiriXgrpc releases</td>
+</tr>
+<tr>
+<td><code>dev</code></td>
+<td><a href="https://osirixgrpc.netlify.app">https://osirixgrpc.netlify.app</a></td>
+<td>Documentation in development mode and for user testing of next release.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="suggesting-changes">Suggesting Changes</h3>
+<p>If you would like to suggest a change to the documentation please let us know through the project 
+<a href="https://github.com/osirixgrpc/osirixgrpc/issues"> issue tracker</a>, ensuring you 
+choose a <code>documentation</code> label for the issue. If you wish to help contribute to the documentation, then please fork the
+latest copy of the repository, modify it, and submit a pull request to the main branch. </p>
+<h2 id="bug-reporting">Bug Reporting</h2>
+<p>If you encounter any bugs with the OsiriXgrpc plugin then please let us know through the 
+<a href="https://github.com/osirixgrpc/osirixgrpc/issues"> issue tracker</a>, ensuring you choose a <code>bug</code> label.  When 
+you raise the issue, please using the relevant template for bugs, which will include the following information:</p>
+<ul>
+  <li> Is the bug related to the plugin (OsiriXgrpc) or a client issue (pyOsiriX)? </li>
+  <li> What steps could we use to reproduce the bug? </li>
+  <li> If the issue is related to a script that you used, please send us (where possible):
+    <ol>
+      <li> The script that caused the issue. </li>
+      <li> The output of the Task Console (from OsiriX click `Plugins` &rarr; `Database` &rarr; `osirixgrpc` &rarr; 
+         `Task Console`) </li>
+    </ol>
+  </li>
+  <li> If the issue is plugin related, please send us any information provided by Mac when the error occurred. </li>
+  <li> OsiriX version. </li>
+  <li> OsiriXgrpc version. </li>
+  <li> macOS version. </li>
+  <li> Processor (Intel or Mac M1/M2/M3). </li>
+</ul>
+
+<h2 id="user-testing">User Testing</h2>
+<p>OsiriXgrpc relies on frequent user testing to ensure stability and usability of all developed features. We are keen to
+<a href="#contact">hear</a> from anyone who would like to contribute to testing and help us improve OsiriXgrpc (please check our 
+<a href="#prerequisites">prerequisites</a> for user testing).</p>
+<p>User testing takes place prior to each major and minor release of OsiriXgrpc. Each user test consists of completing a
+Google Form that checks successful completion and obtains feedback on each of the following general operations:</p>
+<ol>
+<li>Installation of OsiriXgrpc.</li>
+<li>Initiating an OsiriXgrpc server.</li>
+<li>Installing a script.</li>
+<li>Running a script.</li>
+</ol>
+<p>In addition, we will ask testers to run some automated unit tests. Automated unit testing for OsiriXgrpc presents 
+substantial challenges - this complexity arises from its dependency on symbols and functions embedded within the OsiriX 
+executable. Consequently, to maintain the quality and reliability of OsiriXgrpc, we incorporate unit testing into our 
+user tests. This approach also ensures comprehensive validation through real-world usage scenarios. </p>
+<p>To run automated unit tests:</p>
+<ol>
+<li>Clone the latest <a href="https://github.com/osirixgrpc/osirixgrpc">repository</a>, or pull changes.</li>
+<li>Switch to the <code>dev</code> branch (<code>git checkout dev</code>).</li>
+<li>Open up OsiriX and move to or create an empty database (no Dicom studies/series displayed).</li>
+<li>Ensure that an OsiriXgrpc port <code>50001</code> is established and running (see <a href="../getting_started.html#server-configuration">Getting Started</a>)</li>
+<li>Change directory to <code>tests</code> (<code>cd tests</code> from the main repository).</li>
+<li>Run the shell script: <code>bash run_tests.sh</code></li>
+</ol>
+<p>Please wait while OsiriX runs through all the tests (many screen will open and close). The shell script will indicate 
+testing is complete. Unit tests will save results to an output directory on your Desktop <code>osirixgrpc_tests</code>. Please
+zip this folder and <a href="#contact">send it to us</a>. Contained files do not capture any personal information, other than the 
+versions of macOS, OsiriX, and OsiriXgrpc.</p>
+<h2 id="feature-requests">Feature Requests</h2>
+<p>We warmly invite fresh insights and suggestions for enhancing OsiriXgrpc. Your contributions could range from extending 
+OsiriX features via our API, refining our user interface, to offering ideas for optimizing our workflow or enhancing our 
+documentation. Every piece of feedback is invaluable to us. While we are committed to incorporating your suggestions to 
+the best of our ability, please remember that OsiriXgrpc thrives on community involvement and operates on a voluntary 
+basis. Consequently, we cannot provide specific timelines for the introduction of new features. Additionally, it's 
+crucial to acknowledge that our ability to implement certain enhancements is contingent upon the functionalities 
+available within the OsiriX application itself.</p>
+<p>If you wish request new features, please use our 
+<a href="https://github.com/osirixgrpc/osirixgrpc/issues"> issue tracker</a> ensuring that you use a <code>feature request</code> 
+label, using the <code>feature_request</code> issue template.  This includes the following information</p>
+<ul>
+  <li>To which aspect of OsiriXgrpc is the feature request intended?</li>
+  <li>Short description of the new functionality</li>
+  <li>Why would this improve the functionality of OsiriXgrpc?</li>
+  <li>Have you been using any work-around so far?</li>
+  <li>How urgent is the new functionality to you?</li>
+  <li>Would you be willing to help develop/test the new functionality?</li>
+</ul>
+
+<h2 id="issues">Issues</h2>
+<p>Please use the relevant label for each issue that you submit on the GitHub project.</p>
+<table>
+<thead>
+<tr>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>bug</code></td>
+<td>If you encounter a bug then please let us know using the provided template. See <a href="#bug-reporting">Bug Reporting</a> for more information.</td>
+</tr>
+<tr>
+<td><code>feature_request</code></td>
+<td>What else would you like see from OsiriXgrpc? Is there any functionality in OsiriX that you think warrant exposure through API?</td>
+</tr>
+<tr>
+<td><code>documentation</code></td>
+<td>Tell us how we can improve our <a href="#documentation">documentation</a>. This includes everything from fixing spelling mistakes to improving interpretability.</td>
+</tr>
+<tr>
+<td><code>generic</code></td>
+<td>Any other issue you have with OsiriXgrpc.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="contact">Contact</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Contact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Matt Blackledge</td>
+<td>matthew.blackledge@icr.ac.uk</td>
+</tr>
+<tr>
+<td>Timothy Sum Hon Mun</td>
+<td>timothy.sumhonmun@icr.ac.uk</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; Matthew D Blackledge
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy", "content.code.select", "content.code.annotate"], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.50899def.min.js"></script>
+      
+    
+  </body>
+</html>
