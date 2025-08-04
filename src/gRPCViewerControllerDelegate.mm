@@ -886,23 +886,24 @@
 
 +(void) ViewerControllerWindowInformation:(const osirixgrpc::ViewerController *)request :(osirixgrpc::ViewerControllerWindowInformationResponse *)response :(gRPCCache *)cache
 {
-    NSString *uid = stringFromGRPCString(request->viewer_controller().osirixrpc_uid())
+    NSString *uid = stringFromGRPCString(request->osirixrpc_uid());
     
     ViewerController *vc = [cache objectForUID:uid];
     if (vc)
     {
-        NSString *fuid = stringFromGRPCString(request->fusion_viewer_controller().osirixrpc_uid())
-        ViewerController *fvc = [cache objectForUID:fuid];
-        if (fvc)
-        {
-            [vc ActivateBlending:fvc];
-            response->mutable_status()->set_status(1);
-        }
-        else
-        {
-            response->mutable_status()->set_status(0);
-            response->mutable_status()->set_message("No fusion ViewerController cached");
-        }
+        DCMView *view = [vc imageView];
+        response->set_curdcm_pwidth([[view curDCM] pwidth]);
+        response->set_curdcm_pheight([[view curDCM] pheight]);
+        response->set_curdcm_pixel_ratio([[view curDCM] pixelRatio]);
+        response->set_rotation([view rotation]);
+        response->set_xflipped([view xFlipped]);
+        response->set_yflipped([view yFlipped]);
+        response->set_origin_x([view origin].x);
+        response->set_origin_y([view origin].y);
+        response->set_drawingframerect_origin_x([view drawingFrameRect].origin.x);
+        response->set_drawingframerect_origin_y([view drawingFrameRect].origin.y);
+        response->set_drawingframerect_size_w([view drawingFrameRect].size.width);
+        response->set_drawingframerect_size_h([view drawingFrameRect].size.height);
     }
     else
     {
