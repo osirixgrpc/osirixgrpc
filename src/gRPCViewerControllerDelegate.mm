@@ -56,9 +56,6 @@
     
     ViewerController *vc = [cache objectForUID:uid];
     
-    DCMView *view = [vc imageView];
-    [view ConvertFromGL2Screen:<#(NSPoint)#>];
-    
     if (vc)
     {
         long movie_idx = (long)request->movie_idx();
