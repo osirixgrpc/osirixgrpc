@@ -123,6 +123,8 @@ rpc ViewerControllerWLWW (ViewerController) returns (ViewerControllerWLWWRespons
 rpc ViewerControllerSetWLWW (ViewerControllerSetWLWWRequest) returns (Response) {}
 rpc ViewerControllerOpenVRViewerForMode (ViewerControllerOpenVRViewerForModeRequest) returns (ViewerControllerOpenVRViewerForModeResponse) {}
 rpc ViewerControllerFuseWithViewer (ViewerControllerFuseWithViewerRequest) returns (Response) {}
+rpc ViewerControllerWindowInformation (ViewerController) returns (ViewerControllerWindowInformationResponse) {}
+
 
 // BrowserController methods
 rpc BrowserControllerDatabaseSelection (BrowserController) returns (BrowserControllerDatabaseSelectionResponse) {}

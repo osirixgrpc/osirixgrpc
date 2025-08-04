@@ -23,6 +23,8 @@ if ! [ -d grpc ]; then
           -DgRPC_BUILD_TESTS=OFF \
           -DCMAKE_INSTALL_PREFIX=../../install-x86_64 \
           -DCMAKE_OSX_ARCHITECTURES=x86_64\
+          -DCMAKE_POLICY_VERSION_MINIMUM=3.5\
+          
           ../..
     make -j 4
     make install
