@@ -896,25 +896,20 @@
         // Assume in screen coordinates (mouse) for now
         float x = request->x();
         float y = request->y();
-        NSPoint pt = NSMakePoint(x, y);
         
-        pt = [view ConvertFromGL2Screen:pt];
-        
-        NSArray<NSString *> *stringArray = @[[NSString stringWithFormat:@"pwidth: %lu", [[view curDCM] pwidth]],
-                                             [NSString stringWithFormat:@"pheight: %lu", [[view curDCM] pheight]],
-                                             [NSString stringWithFormat:@"pixelRatio: %f", [[view curDCM] pixelRatio]],
-                                             [NSString stringWithFormat:@"rotation: %f", [view rotation]],
-                                             [NSString stringWithFormat:@"xflipped: %d", int([view xFlipped])],
-                                             [NSString stringWithFormat:@"yflipped: %d", int([view yFlipped])],
-                                             [NSString stringWithFormat:@"originx: %d", int([view origin].x)],
-                                             [NSString stringWithFormat:@"originy: %d", int([view origin].y)],
-                                             [NSString stringWithFormat:@"set_drawingframerect_origin_x: %f", [view drawingFrameRect].origin.x],
-                                             [NSString stringWithFormat:@"set_drawingframerect_origin_y: %f", [view drawingFrameRect].origin.y],
-                                             [NSString stringWithFormat:@"set_drawingframerect_size_w: %f", [view drawingFrameRect].size.width],
-                                             [NSString stringWithFormat:@"set_drawingframerect_size_h: %f", [view drawingFrameRect].size.height],
-                                             [NSString stringWithFormat:@"Conversion: (%f, %f)", pt.x, pt.y]];
+        NSRect rect = NSMakeRect(x, y, 0, 0);
+        rect = [[vc window] convertRectFromScreen: rect];
+        NSPoint pt = rect.origin;
+        pt = [view convertPointFromBacking:pt];
 
-        NSString *result = [stringArray componentsJoinedByString:@", "];
+        // Convert to top-left origin system
+        pt.x -= view.drawingFrameRect.size.width / 2.0;
+        pt.y = view.drawingFrameRect.size.height - pt.y;
+        pt.y -= view.drawingFrameRect.size.height / 2.0;
+
+        pt = [view ConvertFromUpLeftView2GL:pt];
+
+        NSString *result = [NSString stringWithFormat:@"%f, %f", pt.x, pt.y];
         response->set_result([result UTF8String]);
         
     }
