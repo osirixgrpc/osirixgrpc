@@ -112,19 +112,13 @@ message ViewerControllerResampleViewerControllerResponse{
 
 message ViewerControllerWindowInformationResponse{
 	Status status = 1;
-	float curdcm_pixel_ratio = 2;
-	int32 curdcm_pheight = 3;
-	int32 curdcm_pwidth = 4;
-	float origin_x = 5;
-	float origin_y = 6;
-	float scale_value = 7;
-	float rotation = 8;
-	float drawingframerect_origin_x = 9;
-	float drawingframerect_origin_y = 10;
-	float drawingframerect_size_w = 11;
-	float drawingframerect_size_h = 12;
-	bool xflipped = 13;
-	bool yflipped = 14;
+	string result = 2;
+}
+
+message ViewerControllerWindowInformationRequest{
+	ViewerController viewer_controller = 1;
+	float x = 2;
+	float y = 3;
 }
 
 
