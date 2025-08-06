@@ -893,23 +893,23 @@
         
         DCMView *view = [vc imageView];
         
-        // Assume in screen coordinates (mouse) for now
-        float x = request->x();
-        float y = request->y();
-        
-        NSRect rect = NSMakeRect(x, y, 0, 0);
-        rect = [[vc window] convertRectFromScreen: rect];
-        NSPoint pt = rect.origin;
-        pt = [view convertPointFromBacking:pt];
+//        // Assume in screen coordinates (mouse) for now
+//        float x = request->x();
+//        float y = request->y();
+//        
+//        NSRect rect = NSMakeRect(x, y, 0, 0);
+//        rect = [[vc window] convertRectFromScreen: rect];
+//        NSPoint pt = rect.origin;
+//        pt = [view convertPointFromBacking:pt];
+//
+//        // Convert to top-left origin system
+//        pt.x -= view.drawingFrameRect.size.width / 2.0;
+//        pt.y = view.drawingFrameRect.size.height - pt.y;
+//        pt.y -= view.drawingFrameRect.size.height / 2.0;
+//
+//        pt = [view ConvertFromUpLeftView2GL:pt];
 
-        // Convert to top-left origin system
-        pt.x -= view.drawingFrameRect.size.width / 2.0;
-        pt.y = view.drawingFrameRect.size.height - pt.y;
-        pt.y -= view.drawingFrameRect.size.height / 2.0;
-
-        pt = [view ConvertFromUpLeftView2GL:pt];
-
-        NSString *result = [NSString stringWithFormat:@"%f, %f", pt.x, pt.y];
+        NSString *result = [NSString stringWithFormat:@"%f, %f, %f", [view scaleValue], [view origin].x, [view origin].y];
         response->set_result([result UTF8String]);
         
     }
