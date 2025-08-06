@@ -46,7 +46,7 @@
     else
     {
         response->mutable_status()->set_status(0);
-        response->mutable_status()->set_message("No ViewerController cached 22");
+        response->mutable_status()->set_message("No ViewerController cached");
     }
 }
 
@@ -75,7 +75,7 @@
     else
     {
         response->mutable_status()->set_status(0);
-        response->mutable_status()->set_message("No ViewerController cached 22");
+        response->mutable_status()->set_message("No ViewerController cached");
     }
 }
 
@@ -97,7 +97,7 @@
     else
     {
         response->mutable_status()->set_status(0);
-        response->mutable_status()->set_message("No ViewerController cached 22");
+        response->mutable_status()->set_message("No ViewerController cached");
     }
 }
 
@@ -132,7 +132,7 @@
     else
     {
         response->mutable_status()->set_status(0);
-        response->mutable_status()->set_message("No ViewerController cached 22");
+        response->mutable_status()->set_message("No ViewerController cached");
     }
 }
 
@@ -292,7 +292,7 @@
     else
     {
         response->mutable_status()->set_status(0);
-        response->mutable_status()->set_message("No ViewerController cached 22");
+        response->mutable_status()->set_message("No ViewerController cached");
     }
     
 }
@@ -320,7 +320,7 @@
     else
     {
         response->mutable_status()->set_status(0);
-        response->mutable_status()->set_message("No ViewerController cached 22");
+        response->mutable_status()->set_message("No ViewerController cached");
     }
 }
 
@@ -361,7 +361,7 @@
     else
     {
         response->mutable_status()->set_status(0);
-        response->mutable_status()->set_message("No ViewerController cached 22");
+        response->mutable_status()->set_message("No ViewerController cached");
     }
 }
 
@@ -389,7 +389,7 @@
     else
     {
         response->mutable_status()->set_status(0);
-        response->mutable_status()->set_message("No ViewerController cached 22");
+        response->mutable_status()->set_message("No ViewerController cached");
     }
     
 }
@@ -410,7 +410,7 @@
     else
     {
         response->mutable_status()->set_status(0);
-        response->mutable_status()->set_message("No ViewerController cached 22");
+        response->mutable_status()->set_message("No ViewerController cached");
     }
 }
 
@@ -438,7 +438,7 @@
     else
     {
         response->mutable_status()->set_status(0);
-        response->mutable_status()->set_message("No ViewerController cached 22");
+        response->mutable_status()->set_message("No ViewerController cached");
     }
     
 }
@@ -469,7 +469,7 @@
     else
     {
         response->mutable_status()->set_status(0);
-        response->mutable_status()->set_message("No ViewerController cached 22");
+        response->mutable_status()->set_message("No ViewerController cached");
     }
     
 }
@@ -502,7 +502,7 @@
     else
     {
         response->mutable_status()->set_status(0);
-        response->mutable_status()->set_message("No ViewerController cached 22");
+        response->mutable_status()->set_message("No ViewerController cached");
     }
     
 }
@@ -532,7 +532,7 @@
     else
     {
         response->mutable_status()->set_status(0);
-        response->mutable_status()->set_message("No ViewerController cached 22");
+        response->mutable_status()->set_message("No ViewerController cached");
     }
     
     
@@ -553,7 +553,7 @@
     else
     {
         response->mutable_status()->set_status(0);
-        response->mutable_status()->set_message("No ViewerController cached 22");
+        response->mutable_status()->set_message("No ViewerController cached");
     }
     
 }
@@ -573,7 +573,7 @@
     else
     {
         response->mutable_status()->set_status(0);
-        response->mutable_status()->set_message("No ViewerController cached 22");
+        response->mutable_status()->set_message("No ViewerController cached");
     }
     
 }
@@ -593,7 +593,7 @@
     else
     {
         response->mutable_status()->set_status(0);
-        response->mutable_status()->set_message("No ViewerController cached 22");
+        response->mutable_status()->set_message("No ViewerController cached");
     }
 }
 
@@ -620,7 +620,7 @@
     else
     {
         response->mutable_status()->set_status(0);
-        response->mutable_status()->set_message("No ViewerController cached 22");
+        response->mutable_status()->set_message("No ViewerController cached");
     }
     
 }
@@ -640,7 +640,7 @@
     else
     {
         response->mutable_status()->set_status(0);
-        response->mutable_status()->set_message("No ViewerController cached 22");
+        response->mutable_status()->set_message("No ViewerController cached");
     }
     
 }
@@ -659,7 +659,7 @@
     else
     {
         response->mutable_status()->set_status(0);
-        response->mutable_status()->set_message("No ViewerController cached 22");
+        response->mutable_status()->set_message("No ViewerController cached");
     }
     
 }
@@ -688,7 +688,7 @@
     else
     {
         response->mutable_status()->set_status(0);
-        response->mutable_status()->set_message("No ViewerController cached 22");
+        response->mutable_status()->set_message("No ViewerController cached");
     }
 }
 
@@ -706,7 +706,7 @@
     else
     {
         response->mutable_status()->set_status(0);
-        response->mutable_status()->set_message("No ViewerController cached 22");
+        response->mutable_status()->set_message("No ViewerController cached");
     }
     
 }
@@ -735,7 +735,7 @@
     else
     {
         response->mutable_status()->set_status(0);
-        response->mutable_status()->set_message("No ViewerController cached 22");
+        response->mutable_status()->set_message("No ViewerController cached");
     }
 }
 
@@ -753,7 +753,7 @@
     else
     {
         response->mutable_status()->set_status(0);
-        response->mutable_status()->set_message("No ViewerController cached 22");
+        response->mutable_status()->set_message("No ViewerController cached");
     }
 }
 
@@ -772,7 +772,7 @@
     else
     {
         response->mutable_status()->set_status(0);
-        response->mutable_status()->set_message("No ViewerController cached 22");
+        response->mutable_status()->set_message("No ViewerController cached");
     }
     
 }
@@ -791,7 +791,7 @@
     else
     {
         response->mutable_status()->set_status(0);
-        response->mutable_status()->set_message("No ViewerController cached 22");
+        response->mutable_status()->set_message("No ViewerController cached");
     }
 }
 
@@ -850,7 +850,7 @@
     else
     {
         response->mutable_status()->set_status(0);
-        response->mutable_status()->set_message("No ViewerController cached 22");
+        response->mutable_status()->set_message("No ViewerController cached");
     }
 }
 
@@ -877,7 +877,7 @@
     else
     {
         response->mutable_status()->set_status(0);
-        response->mutable_status()->set_message("No ViewerController cached 22");
+        response->mutable_status()->set_message("No ViewerController cached");
     }
 }
 
@@ -885,47 +885,44 @@
 {
     NSString *uid = stringFromGRPCString(request->viewer_controller().osirixrpc_uid());
     
-    response->set_result([uid UTF8String]);
+    ViewerController *vc = [cache objectForUID:uid];
     
-//    ViewerController *vc = [cache objectForUID:uid];
-//    
-//    if (vc)
-//    {
-//        response->mutable_status()->set_status(1);
-//        
-//        DCMView *view = [vc imageView];
-//        
-//        // Assume in screen coordinates (mouse) for now
-//        float x = request->x();
-//        float y = request->y();
-//        NSPoint pt = NSMakePoint(x, y);
-//        
-//        pt = [view ConvertFromGL2Screen:pt];
-//        
-//        NSArray<NSString *> *stringArray = @[[NSString stringWithFormat:@"pwidth: %lu", [[view curDCM] pwidth]],
-//                                             [NSString stringWithFormat:@"pheight: %lu", [[view curDCM] pheight]],
-//                                             [NSString stringWithFormat:@"pixelRatio: %f", [[view curDCM] pixelRatio]],
-//                                             [NSString stringWithFormat:@"rotation: %f", [view rotation]],
-//                                             [NSString stringWithFormat:@"xflipped: %d", int([view xFlipped])],
-//                                             [NSString stringWithFormat:@"yflipped: %d", int([view yFlipped])],
-//                                             [NSString stringWithFormat:@"originx: %d", int([view origin].x)],
-//                                             [NSString stringWithFormat:@"originy: %d", int([view origin].y)],
-//                                             [NSString stringWithFormat:@"set_drawingframerect_origin_x: %f", [view drawingFrameRect].origin.x],
-//                                             [NSString stringWithFormat:@"set_drawingframerect_origin_y: %f", [view drawingFrameRect].origin.y],
-//                                             [NSString stringWithFormat:@"set_drawingframerect_size_w: %f", [view drawingFrameRect].size.width],
-//                                             [NSString stringWithFormat:@"set_drawingframerect_size_h: %f", [view drawingFrameRect].size.height],
-//                                             [NSString stringWithFormat:@"Conversion: (%f, %f)", pt.x, pt.y]];
-//
-//        NSString *result = [stringArray componentsJoinedByString:@", "];
-//        response->set_result([result UTF8String]);
-//        
-//    }
-//    else
-//    {
-//        response->mutable_status()->set_status(0);
-//        NSString *msg = [NSString stringWithFormat: @"No ViewerController cached 22 111 %@", uid];
-//        response->mutable_status()->set_message([msg UTF8String]);
-//    }
+    if (vc)
+    {
+        response->mutable_status()->set_status(1);
+        
+        DCMView *view = [vc imageView];
+        
+        // Assume in screen coordinates (mouse) for now
+        float x = request->x();
+        float y = request->y();
+        NSPoint pt = NSMakePoint(x, y);
+        
+        pt = [view ConvertFromGL2Screen:pt];
+        
+        NSArray<NSString *> *stringArray = @[[NSString stringWithFormat:@"pwidth: %lu", [[view curDCM] pwidth]],
+                                             [NSString stringWithFormat:@"pheight: %lu", [[view curDCM] pheight]],
+                                             [NSString stringWithFormat:@"pixelRatio: %f", [[view curDCM] pixelRatio]],
+                                             [NSString stringWithFormat:@"rotation: %f", [view rotation]],
+                                             [NSString stringWithFormat:@"xflipped: %d", int([view xFlipped])],
+                                             [NSString stringWithFormat:@"yflipped: %d", int([view yFlipped])],
+                                             [NSString stringWithFormat:@"originx: %d", int([view origin].x)],
+                                             [NSString stringWithFormat:@"originy: %d", int([view origin].y)],
+                                             [NSString stringWithFormat:@"set_drawingframerect_origin_x: %f", [view drawingFrameRect].origin.x],
+                                             [NSString stringWithFormat:@"set_drawingframerect_origin_y: %f", [view drawingFrameRect].origin.y],
+                                             [NSString stringWithFormat:@"set_drawingframerect_size_w: %f", [view drawingFrameRect].size.width],
+                                             [NSString stringWithFormat:@"set_drawingframerect_size_h: %f", [view drawingFrameRect].size.height],
+                                             [NSString stringWithFormat:@"Conversion: (%f, %f)", pt.x, pt.y]];
+
+        NSString *result = [stringArray componentsJoinedByString:@", "];
+        response->set_result([result UTF8String]);
+        
+    }
+    else
+    {
+        response->mutable_status()->set_status(0);
+        response->mutable_status()->set_message("No ViewerController cached");
+    }
 }
 
 @end
