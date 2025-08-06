@@ -906,9 +906,9 @@
         [results addObject:[NSString stringWithFormat:@"Window coords: %f, %f", rect.origin.x, rect.origin.y]];
         
 //        // Convert to backing
-//        NSPoint pt = rect.origin;
-//        pt = [view convertPointToBacking:pt];
-//        [results addObject:[NSString stringWithFormat:@"Convert from backing: %f, %f", pt.x, pt.y]];
+        NSPoint pt = rect.origin;
+        pt = [view convertPointToBacking:pt];
+        [results addObject:[NSString stringWithFormat:@"Convert from backing: %f, %f", pt.x, pt.y]];
 //
 //        pt.x -= view.drawingFrameRect.size.width / 2.0;
 //        pt.y -= view.drawingFrameRect.size.height / 2.0;
