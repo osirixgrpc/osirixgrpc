@@ -893,23 +893,32 @@
         
         DCMView *view = [vc imageView];
         
-//        // Assume in screen coordinates (mouse) for now
-//        float x = request->x();
-//        float y = request->y();
-//        
-//        NSRect rect = NSMakeRect(x, y, 0, 0);
-//        rect = [[vc window] convertRectFromScreen: rect];
+        NSMutableArray *results = [NSMutableArray array];
+        
+        // Screen coordinates
+        float x = request->x();
+        float y = request->y();
+        [results addObject:[NSString stringWithFormat:@"Input mouse coords: %f, %f", x, y]];
+        
+        // Convert to window cooredinates
+        NSRect rect = NSMakeRect(x, y, 0, 0);
+        rect = [[vc window] convertRectFromScreen: rect];
+        [results addObject:[NSString stringWithFormat:@"Window coords: %f, %f", rect.origin.x, rect.origin.y]];
+        
+//        // Convert to backing
 //        NSPoint pt = rect.origin;
-//        pt = [view convertPointFromBacking:pt];
+//        pt = [view convertPointToBacking:pt];
+//        [results addObject:[NSString stringWithFormat:@"Convert from backing: %f, %f", pt.x, pt.y]];
 //
-//        // Convert to top-left origin system
 //        pt.x -= view.drawingFrameRect.size.width / 2.0;
-//        pt.y = view.drawingFrameRect.size.height - pt.y;
 //        pt.y -= view.drawingFrameRect.size.height / 2.0;
+//        pt.y = view.drawingFrameRect.size.height - pt.y;
+//        [results addObject:[NSString stringWithFormat:@"Convert NSView2GL: %f, %f", pt.x, pt.y]];
 //
-//        pt = [view ConvertFromUpLeftView2GL:pt];
+//        pt.y += view.drawingFrameRect.size.height / 2.0;
+//        pt.x += view.drawingFrameRect.size.width / 2.0;
 
-        NSString *result = [NSString stringWithFormat:@"%f, %f, %f", [view scaleValue], [view origin].x, [view origin].y];
+        NSString *result = [results componentsJoinedByString:@"\n"];
         response->set_result([result UTF8String]);
         
     }
