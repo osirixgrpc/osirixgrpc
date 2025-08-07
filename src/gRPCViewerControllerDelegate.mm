@@ -895,6 +895,10 @@
         
         NSMutableArray *results = [NSMutableArray array];
         
+        NSEvent *event = [NSApp currentEvent];
+        NSPoint screenLocation = [NSEvent mouseLocation];
+        [results addObject:[NSString stringWithFormat:@"Real mouse coors: %f, %f", screenLocation.x, screenLocation.y]];
+        
         // Screen coordinates
         float x = request->x();
         float y = request->y();
