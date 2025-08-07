@@ -905,8 +905,16 @@
         rect = [[vc window] convertRectFromScreen: rect];
         [results addObject:[NSString stringWithFormat:@"Window coords: %f, %f", rect.origin.x, rect.origin.y]];
         
-        // Get the view dimensions
-        [results addObject:[NSString stringWithFormat:@"Rect w: %f, h: %f", view.drawingFrameRect.size.width, view.drawingFrameRect.size.height]];
+        // Convert to backing
+        NSPoint pt = rect.origin;
+        pt = [view convertPoint:pt toView:nil];
+        [results addObject:[NSString stringWithFormat:@"Convert from backing: %f, %f", pt.x, pt.y]];
+        
+        [results addObject:[NSString stringWithFormat:@"View rect ox: %f, oy: %f, w: %f, h: %f", view.drawingFrameRect.origin.x, view.drawingFrameRect.origin.y, view.drawingFrameRect.size.width, view.drawingFrameRect.size.height]];
+        
+        [results addObject:[NSString stringWithFormat:@"Scale value: %f", view.scaleValue]];
+        
+        [results addObject:[NSString stringWithFormat:@"View origin x: %f, y: %f", view.origin.x, view.origin.y]];
 
         NSString *result = [results componentsJoinedByString:@"\n"];
         response->set_result([result UTF8String]);
