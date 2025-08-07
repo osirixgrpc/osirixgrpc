@@ -895,11 +895,7 @@
         
         NSMutableArray *results = [NSMutableArray array];
         
-        NSEvent *event = [NSApp currentEvent];
-        NSPoint screenLocation = [NSEvent mouseLocation];
-        [results addObject:[NSString stringWithFormat:@"Real mouse coors: %f, %f", screenLocation.x, screenLocation.y]];
-        
-        // Screen coordinates
+        // Mouse coordinates (in system points)
         float x = request->x();
         float y = request->y();
         [results addObject:[NSString stringWithFormat:@"Input mouse coords: %f, %f", x, y]];
@@ -909,22 +905,8 @@
         rect = [[vc window] convertRectFromScreen: rect];
         [results addObject:[NSString stringWithFormat:@"Window coords: %f, %f", rect.origin.x, rect.origin.y]];
         
-        NSRect rectm = NSMakeRect(screenLocation.x, screenLocation.y, 0, 0);
-        rectm = [[vc window] convertRectFromScreen: rectm];
-        [results addObject:[NSString stringWithFormat:@"Window coords (mouse): %f, %f", rectm.origin.x, rectm.origin.y]];
-        
-        // Convert to backing
-        NSPoint pt = rect.origin;
-        pt = [view convertPoint:pt toView:nil];
-        [results addObject:[NSString stringWithFormat:@"Convert from backing: %f, %f", pt.x, pt.y]];
-//
-//        pt.x -= view.drawingFrameRect.size.width / 2.0;
-//        pt.y -= view.drawingFrameRect.size.height / 2.0;
-//        pt.y = view.drawingFrameRect.size.height - pt.y;
-//        [results addObject:[NSString stringWithFormat:@"Convert NSView2GL: %f, %f", pt.x, pt.y]];
-//
-//        pt.y += view.drawingFrameRect.size.height / 2.0;
-//        pt.x += view.drawingFrameRect.size.width / 2.0;
+        // Get the view dimensions
+        [results addObject:[NSString stringWithFormat:@"Rect w: %f, h: %f", view.drawingFrameRect.size.width, view.drawingFrameRect.size.height]];
 
         NSString *result = [results componentsJoinedByString:@"\n"];
         response->set_result([result UTF8String]);
