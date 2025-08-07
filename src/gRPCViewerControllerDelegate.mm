@@ -909,6 +909,10 @@
         rect = [[vc window] convertRectFromScreen: rect];
         [results addObject:[NSString stringWithFormat:@"Window coords: %f, %f", rect.origin.x, rect.origin.y]];
         
+        NSRect rectm = NSMakeRect(screenLocation.x, screenLocation.y, 0, 0);
+        rectm = [[vc window] convertRectFromScreen: rectm];
+        [results addObject:[NSString stringWithFormat:@"Window coords (mouse): %f, %f", rectm.origin.x, rectm.origin.y]];
+        
         // Convert to backing
         NSPoint pt = rect.origin;
         pt = [view convertPoint:pt toView:nil];
