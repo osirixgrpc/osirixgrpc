@@ -893,6 +893,8 @@
         
         DCMView *view = [vc imageView];
         
+        NSWindow *win = [vc window];
+        
         NSMutableArray *results = [NSMutableArray array];
         
         // Mouse coordinates (in system points)
@@ -910,12 +912,22 @@
         pt = [view convertPoint:pt toView:nil];
         [results addObject:[NSString stringWithFormat:@"Convert from backing: %f, %f", pt.x, pt.y]];
         
-        [results addObject:[NSString stringWithFormat:@"View rect ox: %f, oy: %f, w: %f, h: %f", view.drawingFrameRect.origin.x, view.drawingFrameRect.origin.y, view.drawingFrameRect.size.width, view.drawingFrameRect.size.height]];
+        [results addObject:[NSString stringWithFormat:@"Window frame ox, oy, w, h: %f, %f, %f, %f", win.frame.origin.x, win.frame.origin.y, win.frame.size.width, win.frame.size.height]];
+        
+        NSRect content = [win contentRectForFrameRect:win.frame];
+        [results addObject:[NSString stringWithFormat:@"Content frame ox, oy, w, h: %f, %f, %f, %f", content.origin.x, content.origin.y, content.size.width, content.size.height]];
+        
+        NSRect vFrame = [view frame];
+        [results addObject:[NSString stringWithFormat:@"View frame ox, oy, w, h: %f, %f, %f, %f", vFrame.origin.x, vFrame.origin.y, vFrame.size.width, vFrame.size.height]];
+        
+        [results addObject:[NSString stringWithFormat:@"View rect ox, oy, w, h: %f, %f, %f, %f", view.drawingFrameRect.origin.x, view.drawingFrameRect.origin.y, view.drawingFrameRect.size.width, view.drawingFrameRect.size.height]];
         
         [results addObject:[NSString stringWithFormat:@"Scale value: %f", view.scaleValue]];
         
-        [results addObject:[NSString stringWithFormat:@"View origin x: %f, y: %f", view.origin.x, view.origin.y]];
-
+        [results addObject:[NSString stringWithFormat:@"Rotation: %f", view.rotation]];
+        
+        [results addObject:[NSString stringWithFormat:@"View origin x, y: %f, %f", view.origin.x, view.origin.y]];
+        
         NSString *result = [results componentsJoinedByString:@"\n"];
         response->set_result([result UTF8String]);
         
