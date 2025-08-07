@@ -905,9 +905,9 @@
         rect = [[vc window] convertRectFromScreen: rect];
         [results addObject:[NSString stringWithFormat:@"Window coords: %f, %f", rect.origin.x, rect.origin.y]];
         
-//        // Convert to backing
+        // Convert to backing
         NSPoint pt = rect.origin;
-        pt = [view convertPointToBacking:pt];
+        pt = [view convertPoint:pt toView:nil];
         [results addObject:[NSString stringWithFormat:@"Convert from backing: %f, %f", pt.x, pt.y]];
 //
 //        pt.x -= view.drawingFrameRect.size.width / 2.0;
