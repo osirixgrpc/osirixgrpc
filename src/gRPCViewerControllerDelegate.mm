@@ -909,7 +909,7 @@
         
         // Convert to backing
         NSPoint pt = rect.origin;
-        pt = [view convertPoint:pt toView:nil];
+        pt = [view convertPoint:pt fromView:nil];
         [results addObject:[NSString stringWithFormat:@"Convert from backing: %f, %f", pt.x, pt.y]];
         
         [results addObject:[NSString stringWithFormat:@"Window frame ox, oy, w, h: %f, %f, %f, %f", win.frame.origin.x, win.frame.origin.y, win.frame.size.width, win.frame.size.height]];
