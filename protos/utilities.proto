@@ -7,6 +7,11 @@ message Status{
 	string message = 2;
 }
 
+message Point2D{
+	float x = 1;
+	float y = 2;
+}
+
 // Base response for methods that don't pass results (e.g. setters)
 message Response{
 	Status status = 1;

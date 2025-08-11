@@ -203,9 +203,8 @@
                 for (int i = 0; i < count; i++)
                 {
                     NSPoint point;
-                    osirixgrpc::ViewerControllerNewROIRequest_Point2D point_ = request->points(i);
-                    point.x = point_.x();
-                    point.y = point_.y();
+                    point.x = request->points(i).x();
+                    point.y = request->points(i).y();
                     MyPoint *point__ = [MyPoint point:point];
                     [point_array setObject:point__ atIndexedSubscript:i];
                 }
@@ -881,7 +880,7 @@
     }
 }
 
-+(void) ViewerControllerWindowInformation:(const osirixgrpc::ViewerControllerWindowInformationRequest *)request :(osirixgrpc::ViewerControllerWindowInformationResponse *)response :(gRPCCache *)cache
++(void) ViewerControllerImagePixelCoordinatesFromScreenCoordinates:(const osirixgrpc::ViewerControllerImagePixelCoordinatesFromScreenCoordinatesRequest *)request :(osirixgrpc::ViewerControllerImagePixelCoordinatesFromScreenCoordinatesResponse *)response :(gRPCCache *) cache
 {
     NSString *uid = stringFromGRPCString(request->viewer_controller().osirixrpc_uid());
     
@@ -889,48 +888,59 @@
     
     if (vc)
     {
-        response->mutable_status()->set_status(1);
-        
         DCMView *view = [vc imageView];
-        
         NSWindow *win = [vc window];
+        float screen_x = request->screen_coords().x();
+        float screen_y = request->screen_coords().y();
+        float scale = view.scaleValue;
+        float rotation = view.rotation;
+        float im_ori_x = view.origin.x;
+        float im_ori_y = view.origin.y;
+        float pixel_ratio = [view.curDCM pixelRatio];
+        float im_cols = float([view.curDCM pwidth]);
+        float im_rows = float([view.curDCM pheight]);
+        float view_ori_x = [view drawingFrameRect].origin.x;
+        float view_ori_y = [view drawingFrameRect].origin.y;
+        float view_width = [view drawingFrameRect].size.width;
+        float view_height = [view drawingFrameRect].size.height;
         
-        NSMutableArray *results = [NSMutableArray array];
-        
-        // Mouse coordinates (in system points)
-        float x = request->x();
-        float y = request->y();
-        [results addObject:[NSString stringWithFormat:@"Input mouse coords: %f, %f", x, y]];
-        
-        // Convert to window cooredinates
-        NSRect rect = NSMakeRect(x, y, 0, 0);
-        rect = [[vc window] convertRectFromScreen: rect];
-        [results addObject:[NSString stringWithFormat:@"Window coords: %f, %f", rect.origin.x, rect.origin.y]];
+        // Convert to window coordinates
+        NSPoint pt = [[vc window] convertRectFromScreen: NSMakeRect(screen_x, screen_y, 0, 0)].origin;
         
         // Convert to backing
-        NSPoint pt = rect.origin;
         pt = [view convertPoint:pt fromView:nil];
-        [results addObject:[NSString stringWithFormat:@"Convert from backing: %f, %f", pt.x, pt.y]];
         
-        [results addObject:[NSString stringWithFormat:@"Window frame ox, oy, w, h: %f, %f, %f, %f", win.frame.origin.x, win.frame.origin.y, win.frame.size.width, win.frame.size.height]];
+        // The location of pt compared to the centre of the view
+        pt.x = pt.x - 0.5 * view_width;
+        pt.y = pt.y - 0.5 * view_height;
         
-        NSRect content = [win contentRectForFrameRect:win.frame];
-        [results addObject:[NSString stringWithFormat:@"Content frame ox, oy, w, h: %f, %f, %f, %f", content.origin.x, content.origin.y, content.size.width, content.size.height]];
+        // Un-rotate
+        float xx = pt.x * cos(rotation * M_PI / 180) - pt.y * sin(rotation * M_PI / 180);
+        float yy = pt.x * sin(rotation * M_PI / 180) + pt.y * cos(rotation * M_PI / 180);
+        pt.x = xx;
+        pt.y = yy;
         
-        NSRect vFrame = [view frame];
-        [results addObject:[NSString stringWithFormat:@"View frame ox, oy, w, h: %f, %f, %f, %f", vFrame.origin.x, vFrame.origin.y, vFrame.size.width, vFrame.size.height]];
+        // Un-shift
+        pt.x = pt.x - im_ori_x;
+        pt.y = pt.y - im_ori_y;
         
-        [results addObject:[NSString stringWithFormat:@"View rect ox, oy, w, h: %f, %f, %f, %f", view.drawingFrameRect.origin.x, view.drawingFrameRect.origin.y, view.drawingFrameRect.size.width, view.drawingFrameRect.size.height]];
+        // Un-scale
+        pt.x = pt.x / scale;
+        pt.y = pt.y / scale;
         
-        [results addObject:[NSString stringWithFormat:@"Scale value: %f", view.scaleValue]];
+        // Normalize to pixels
+        pt.y = pt.y / pixel_ratio;
         
-        [results addObject:[NSString stringWithFormat:@"Rotation: %f", view.rotation]];
+        // Back to pixle coordinates
+        pt.x = pt.x + im_cols / 2;
+        pt.y = pt.y + im_rows / 2;
         
-        [results addObject:[NSString stringWithFormat:@"View origin x, y: %f, %f", view.origin.x, view.origin.y]];
+        // Invert y
+        pt.y = im_rows - pt.y;
         
-        NSString *result = [results componentsJoinedByString:@"\n"];
-        response->set_result([result UTF8String]);
-        
+        response->set_column(pt.x);
+        response->set_row(pt.y);
+        response->mutable_status()->set_status(1);
     }
     else
     {
