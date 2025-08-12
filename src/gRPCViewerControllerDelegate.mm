@@ -915,6 +915,12 @@
         pt = [view convertPoint:pt fromView:nil];
         [results addObject:[NSString stringWithFormat:@"Convert to backing: %f, %f", pt.x, pt.y]];
         
+        // To raw pixels
+        NSScreen *screen = win.screen;
+        CGFloat backing_scale = screen.backingScaleFactor;
+        pt.x = pt.x * backing_scale;
+        pt.y = pt.y * backing_scale;
+        
         // The location of pt compared to the centre of the view
         pt.x = pt.x - 0.5 * view_width;
         pt.y = pt.y - 0.5 * view_height;
