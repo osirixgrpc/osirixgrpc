@@ -124,7 +124,7 @@ rpc ViewerControllerSetWLWW (ViewerControllerSetWLWWRequest) returns (Response) 
 rpc ViewerControllerOpenVRViewerForMode (ViewerControllerOpenVRViewerForModeRequest) returns (ViewerControllerOpenVRViewerForModeResponse) {}
 rpc ViewerControllerFuseWithViewer (ViewerControllerFuseWithViewerRequest) returns (Response) {}
 rpc ViewerControllerImagePixelCoordinatesFromScreenCoordinates (ViewerControllerImagePixelCoordinatesFromScreenCoordinatesRequest) returns (ViewerControllerImagePixelCoordinatesFromScreenCoordinatesResponse) {}
-
+rpc ViewerControllerWindowInformation (ViewerControllerWindowInformationRequest) returns (ViewerControllerWindowInformationResponse) {}
 
 // BrowserController methods
 rpc BrowserControllerDatabaseSelection (BrowserController) returns (BrowserControllerDatabaseSelectionResponse) {}
