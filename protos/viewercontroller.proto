@@ -115,6 +115,7 @@ message ViewerControllerImagePixelCoordinatesFromScreenCoordinatesResponse{
 	float row = 2;
 	float column = 3;
 	bool in_image = 4;
+	string result = 5;
 }
 
 

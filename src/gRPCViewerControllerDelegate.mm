@@ -904,42 +904,56 @@
         float view_width = [view drawingFrameRect].size.width;
         float view_height = [view drawingFrameRect].size.height;
         
+        NSMutableArray *results = [NSMutableArray array];
+        [results addObject:[NSString stringWithFormat:@"Input mouse coords: %f, %f", screen_x, screen_y]];
+        
         // Convert to window coordinates
         NSPoint pt = [[vc window] convertRectFromScreen: NSMakeRect(screen_x, screen_y, 0, 0)].origin;
+        [results addObject:[NSString stringWithFormat:@"Window coords: %f, %f", pt.x, pt.y]];
         
         // Convert to backing
         pt = [view convertPoint:pt fromView:nil];
+        [results addObject:[NSString stringWithFormat:@"Convert to backing: %f, %f", pt.x, pt.y]];
         
         // The location of pt compared to the centre of the view
         pt.x = pt.x - 0.5 * view_width;
         pt.y = pt.y - 0.5 * view_height;
+        [results addObject:[NSString stringWithFormat:@"Center coords: %f, %f", pt.x, pt.y]];
         
         // Un-rotate
         float xx = pt.x * cos(rotation * M_PI / 180) - pt.y * sin(rotation * M_PI / 180);
         float yy = pt.x * sin(rotation * M_PI / 180) + pt.y * cos(rotation * M_PI / 180);
         pt.x = xx;
         pt.y = yy;
+        [results addObject:[NSString stringWithFormat:@"Unrotate: %f, %f", pt.x, pt.y]];
         
         // Un-shift
         pt.x = pt.x - im_ori_x;
         pt.y = pt.y - im_ori_y;
+        [results addObject:[NSString stringWithFormat:@"Un-shift: %f, %f", pt.x, pt.y]];
         
         // Un-scale
         pt.x = pt.x / scale;
         pt.y = pt.y / scale;
+        [results addObject:[NSString stringWithFormat:@"Un-scale: %f, %f", pt.x, pt.y]];
         
         // Normalize to pixels
         pt.y = pt.y / pixel_ratio;
+        [results addObject:[NSString stringWithFormat:@"Norm: %f, %f", pt.x, pt.y]];
         
         // Back to pixle coordinates
         pt.x = pt.x + im_cols / 2;
         pt.y = pt.y + im_rows / 2;
+        [results addObject:[NSString stringWithFormat:@"Pixels: %f, %f", pt.x, pt.y]];
         
         // Invert y
         pt.y = im_rows - pt.y;
+        [results addObject:[NSString stringWithFormat:@"Invert: %f, %f", pt.x, pt.y]];
         
         response->set_column(pt.x);
         response->set_row(pt.y);
+        NSString *result = [results componentsJoinedByString:@"\n"];
+        response->set_result([result UTF8String]);
         response->mutable_status()->set_status(1);
     }
     else
