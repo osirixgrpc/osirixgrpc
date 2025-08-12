@@ -890,6 +890,8 @@
     {
         DCMView *view = [vc imageView];
         NSWindow *win = [vc window];
+        NSScreen *screen = win.screen;
+        CGFloat backing_scale = screen.backingScaleFactor;
         float screen_x = request->screen_coords().x();
         float screen_y = request->screen_coords().y();
         float scale = view.scaleValue;
@@ -904,119 +906,58 @@
         float view_width = [view drawingFrameRect].size.width;
         float view_height = [view drawingFrameRect].size.height;
         
-        NSMutableArray *results = [NSMutableArray array];
-        [results addObject:[NSString stringWithFormat:@"Input mouse coords: %f, %f", screen_x, screen_y]];
-        
         // Convert to window coordinates
         NSPoint pt = [[vc window] convertRectFromScreen: NSMakeRect(screen_x, screen_y, 0, 0)].origin;
-        [results addObject:[NSString stringWithFormat:@"Window coords: %f, %f", pt.x, pt.y]];
         
         // Convert to backing
         pt = [view convertPoint:pt fromView:nil];
-        [results addObject:[NSString stringWithFormat:@"Convert to backing: %f, %f", pt.x, pt.y]];
         
-        // To raw pixels
-        NSScreen *screen = win.screen;
-        CGFloat backing_scale = screen.backingScaleFactor;
+        // Convert to raw pixels
         pt.x = pt.x * backing_scale;
         pt.y = pt.y * backing_scale;
         
         // The location of pt compared to the centre of the view
         pt.x = pt.x - 0.5 * view_width;
         pt.y = pt.y - 0.5 * view_height;
-        [results addObject:[NSString stringWithFormat:@"Center coords: %f, %f", pt.x, pt.y]];
         
         // Un-rotate
         float xx = pt.x * cos(rotation * M_PI / 180) - pt.y * sin(rotation * M_PI / 180);
         float yy = pt.x * sin(rotation * M_PI / 180) + pt.y * cos(rotation * M_PI / 180);
         pt.x = xx;
         pt.y = yy;
-        [results addObject:[NSString stringWithFormat:@"Unrotate: %f, %f", pt.x, pt.y]];
         
         // Un-shift
         pt.x = pt.x - im_ori_x;
         pt.y = pt.y - im_ori_y;
-        [results addObject:[NSString stringWithFormat:@"Un-shift: %f, %f", pt.x, pt.y]];
         
         // Un-scale
         pt.x = pt.x / scale;
         pt.y = pt.y / scale;
-        [results addObject:[NSString stringWithFormat:@"Un-scale: %f, %f", pt.x, pt.y]];
         
         // Normalize to pixels
         pt.y = pt.y / pixel_ratio;
-        [results addObject:[NSString stringWithFormat:@"Norm: %f, %f", pt.x, pt.y]];
         
-        // Back to pixle coordinates
+        // Back to pixel coordinates
         pt.x = pt.x + im_cols / 2;
         pt.y = pt.y + im_rows / 2;
-        [results addObject:[NSString stringWithFormat:@"Pixels: %f, %f", pt.x, pt.y]];
         
         // Invert y
         pt.y = im_rows - pt.y;
-        [results addObject:[NSString stringWithFormat:@"Invert: %f, %f", pt.x, pt.y]];
         
         response->set_column(pt.x);
         response->set_row(pt.y);
-        NSString *result = [results componentsJoinedByString:@"\n"];
-        response->set_result([result UTF8String]);
+        
+        // Set the contained status
+        int px = (int)pt.x;
+        int py = (int)pt.y;
+        if (px >= 0 && py >= 0 && px < im_cols && py < im_rows) {
+            response->set_in_image(TRUE);
+        }
+        else {
+            response->set_in_image(FALSE);
+        }
+        
         response->mutable_status()->set_status(1);
-    }
-    else
-    {
-        response->mutable_status()->set_status(0);
-        response->mutable_status()->set_message("No ViewerController cached");
-    }
-}
-
-+(void) ViewerControllerWindowInformation:(const osirixgrpc::ViewerControllerWindowInformationRequest *)request :(osirixgrpc::ViewerControllerWindowInformationResponse *)response :(gRPCCache *)cache
-{
-    NSString *uid = stringFromGRPCString(request->viewer_controller().osirixrpc_uid());
-
-    ViewerController *vc = [cache objectForUID:uid];
-
-    if (vc)
-    {
-        response->mutable_status()->set_status(1);
-        
-        DCMView *view = [vc imageView];
-        
-        NSWindow *win = [vc window];
-        NSMutableArray *results = [NSMutableArray array];
-        
-        // Mouse coordinates (in system points)
-        float x = request->x();
-        float y = request->y();
-        [results addObject:[NSString stringWithFormat:@"Input mouse coords: %f, %f", x, y]];
-        
-        // Convert to window cooredinates
-        NSRect rect = NSMakeRect(x, y, 0, 0);
-        rect = [[vc window] convertRectFromScreen: rect];
-        [results addObject:[NSString stringWithFormat:@"Window coords: %f, %f", rect.origin.x, rect.origin.y]];
-        
-        // Convert to backing
-        NSPoint pt = rect.origin;
-        pt = [view convertPoint:pt fromView:nil];
-        [results addObject:[NSString stringWithFormat:@"Convert from backing: %f, %f", pt.x, pt.y]];
-        
-        [results addObject:[NSString stringWithFormat:@"Window frame ox, oy, w, h: %f, %f, %f, %f", win.frame.origin.x, win.frame.origin.y, win.frame.size.width, win.frame.size.height]];
-        
-        NSRect content = [win contentRectForFrameRect:win.frame];
-        [results addObject:[NSString stringWithFormat:@"Content frame ox, oy, w, h: %f, %f, %f, %f", content.origin.x, content.origin.y, content.size.width, content.size.height]];
-        
-        NSRect vFrame = [view frame];
-        [results addObject:[NSString stringWithFormat:@"View frame ox, oy, w, h: %f, %f, %f, %f", vFrame.origin.x, vFrame.origin.y, vFrame.size.width, vFrame.size.height]];
-        
-        [results addObject:[NSString stringWithFormat:@"View rect ox, oy, w, h: %f, %f, %f, %f", view.drawingFrameRect.origin.x, view.drawingFrameRect.origin.y, view.drawingFrameRect.size.width, view.drawingFrameRect.size.height]];
-        
-        [results addObject:[NSString stringWithFormat:@"Scale value: %f", view.scaleValue]];
-        
-        [results addObject:[NSString stringWithFormat:@"Rotation: %f", view.rotation]];
-        
-        [results addObject:[NSString stringWithFormat:@"View origin x, y: %f, %f", view.origin.x, view.origin.y]];
-        
-        NSString *result = [results componentsJoinedByString:@"\n"];
-        response->set_result([result UTF8String]);
     }
     else
     {
