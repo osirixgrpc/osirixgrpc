@@ -1,2 +1,2 @@
 numpy
-osirixgrpc==0.2.1-beta7
+osirixgrpc-gaze==0.2.1-beta7
