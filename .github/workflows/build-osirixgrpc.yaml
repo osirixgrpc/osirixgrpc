@@ -224,6 +224,16 @@ jobs:
           TWINE_USERNAME: __token__
           TWINE_PASSWORD: ${{ secrets.PYPI_TOKEN }}
 
+      - if: github.ref == 'refs/heads/add_user_gaze'
+        name: Build and publish osirixgrpc (gaze)
+        run: |
+          cd python
+          python3 -m build
+          python3 -m twine upload --repository testpypi dist/*
+        env:
+          TWINE_USERNAME: __token__
+          TWINE_PASSWORD: ${{ secrets.PYPI_TEST_TOKEN }}
+
       # Publish pyosirix
       - if: github.ref == 'refs/heads/dev'
         name: Build and publish pyosirix (dev)
@@ -244,3 +254,13 @@ jobs:
         env:
           TWINE_USERNAME: __token__
           TWINE_PASSWORD: ${{ secrets.PYPI_TOKEN }}
+
+      - if: github.ref == 'refs/heads/add_user_gaze'
+        name: Build and publish pyosirix (gaze)
+        run: |
+          cd pyosirix
+          python3 -m build
+          python3 -m twine upload --repository testpypi dist/*
+        env:
+          TWINE_USERNAME: __token__
+          TWINE_PASSWORD: ${{ secrets.PYPI_TEST_TOKEN }}

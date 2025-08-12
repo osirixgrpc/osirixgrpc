@@ -20,6 +20,7 @@ from numpy.typing import NDArray
 import numpy as np
 
 import osirixgrpc.viewercontroller_pb2 as viewercontroller_pb2
+import osirixgrpc.utilities_pb2 as utilities_pb2
 
 import osirix  # noqa
 from osirix.base import pyosirix_connection_check  # noqa
@@ -430,6 +431,35 @@ class ViewerController(osirix.base.OsirixBase):
         return osirix.vr_controller.VRController(self.osirix_service, response.vr_controller)
 
     @pyosirix_connection_check
+    def pixel_coordinates_for_screen_coordinates(self, x: float, y: float) -> Tuple[float, float]:
+        """ Return the image coordinates for a set of screen points.
+
+        Note: The input is expected to be in screen points, that is, accounting for Retina view is applicable.
+
+        Args:
+            x (float): The screen points in x direction (columns).
+            y (float): The screen points in y direction (rows).
+
+        Returns:
+            column: The column index of the image
+            row: The row index of the image
+
+        Example usage:
+            ```python
+            frontmost_viewer = osirix.frontmost_viewer()
+            mouse_loc = NSEvent.mouseLocation()
+            column, row = frontmost_viewer.pixel_coordinates_for_screen_coordinates(mouse_loc.x, mouse_loc.y)
+            ```
+        """
+        request = viewercontroller_pb2.ViewerControllerImagePixelCoordinatesFromScreenCoordinatesRequest(
+            viewer_controller=vc,
+            screen_coords=utilities_pb2.Point2D(x=x, y=y)
+        )
+        response = osirix_service_stub.ViewerControllerImagePixelCoordinatesFromScreenCoordinates(request)
+        self.response_check(response)
+        return response.column, response.row
+
+    @pyosirix_connection_check
     def new_roi(self, itype: int = 15, name: str = "", idx: int = 0, movie_idx: int = 0,
                 buffer_position_column: int = 0, buffer_position_row: int = 0,
                 color: Tuple[float, float, float] = (0, 255, 0), thickness: float = 1.0,
@@ -509,9 +539,7 @@ class ViewerController(osirix.base.OsirixBase):
             points = np.array(points)
             if points.ndim != 2:
                 raise ValueError("`points` must be two-dimensional")
-            points_request = [
-                viewercontroller_pb2.ViewerControllerNewROIRequest.Point2D(x=p[0], y=p[1]) for p in
-                points]
+            points_request = [utilities_pb2.Point2D(x=p[0], y=p[1]) for p in points]
             request = viewercontroller_pb2.ViewerControllerNewROIRequest(
                 viewer_controller=self.pb2_object, idx=idx, movie_idx=movie_idx,
                 color=color_request, opacity=opacity, name=name, points=points_request,
