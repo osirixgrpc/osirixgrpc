@@ -15,7 +15,8 @@
     
     if (roi)
     {
-        [ROI deleteROI:roi];
+        NSArray *rois = [NSArray arrayWithObject:roi];
+        [ROI deleteROIs:rois];
         response->mutable_status()->set_status(1);
     }
     else
