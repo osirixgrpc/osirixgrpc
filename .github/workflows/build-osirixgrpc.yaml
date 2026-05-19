@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-    runs-on: macos-latest
+    runs-on: macos-15
 
     env:
       GRPC_VERSION: 1.55.0
@@ -74,12 +74,12 @@ jobs:
           cd cmake/build-x86_64
           cmake -DgRPC_INSTALL=ON \
                 -DgRPC_BUILD_TESTS=OFF \
+                -DBUILD_TESTING=OFF \
                 -DCMAKE_INSTALL_PREFIX=../../install-x86_64 \
                 -DCMAKE_OSX_ARCHITECTURES=x86_64 \
                 -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
                 -DCMAKE_CXX_STANDARD=17 \
                 -DCMAKE_CXX_STANDARD_REQUIRED=ON \
-                -DgRPC_ZLIB_PROVIDER=package \
                 ../..
           make -j 4
           make install
@@ -93,12 +93,12 @@ jobs:
           cd cmake/build-arm64
           cmake -DgRPC_INSTALL=ON \
                 -DgRPC_BUILD_TESTS=OFF \
+                -DBUILD_TESTING=OFF \
                 -DCMAKE_INSTALL_PREFIX=../../install-arm64 \
                 -DCMAKE_OSX_ARCHITECTURES=arm64 \
                 -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
                 -DCMAKE_CXX_STANDARD=17 \
                 -DCMAKE_CXX_STANDARD_REQUIRED=ON \
-                -DgRPC_ZLIB_PROVIDER=package \
                 ../..
           make -j 4
           make install
