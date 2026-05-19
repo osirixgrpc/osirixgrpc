@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-    runs-on: macos-latest-xlarge
+    runs-on: macos-latest
 
     env:
       GRPC_VERSION: 1.55.0
@@ -76,6 +76,9 @@ jobs:
                 -DgRPC_BUILD_TESTS=OFF \
                 -DCMAKE_INSTALL_PREFIX=../../install-x86_64 \
                 -DCMAKE_OSX_ARCHITECTURES=x86_64 \
+                -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
+                -DCMAKE_CXX_STANDARD=17 \
+                -DCMAKE_CXX_STANDARD_REQUIRED=ON \
                 ../..
           make -j 4
           make install
@@ -91,6 +94,9 @@ jobs:
                 -DgRPC_BUILD_TESTS=OFF \
                 -DCMAKE_INSTALL_PREFIX=../../install-arm64 \
                 -DCMAKE_OSX_ARCHITECTURES=arm64 \
+                -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
+                -DCMAKE_CXX_STANDARD=17 \
+                -DCMAKE_CXX_STANDARD_REQUIRED=ON \
                 ../..
           make -j 4
           make install
