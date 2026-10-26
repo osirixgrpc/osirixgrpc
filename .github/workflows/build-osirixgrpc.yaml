@@ -9,7 +9,9 @@ on:
 
 jobs:
   build:
-    runs-on: macos-latest
+    # Pin to a stable hosted runner label; macos-latest can sit in the queue when
+    # GitHub is temporarily out of available macOS runners.
+    runs-on: macos-13
 
     env:
       GRPC_VERSION: 1.55.0
